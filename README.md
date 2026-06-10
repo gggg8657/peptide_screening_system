@@ -634,6 +634,53 @@ boltz_cross:
 
 ## 실행 가이드
 
+### ⭐ 0. 무한 발굴 엔진 (Continuous Discovery) — 백그라운드 무한 실행
+
+STOP 파일이 생길 때까지 epoch 를 무한 반복하며 SSTR2-선택성 후보를 누적 발굴한다. run 간 학습은 디스크에 영속(`experiment_log.jsonl` 서열 dedup·bandit + `global_selectivity_leaderboard.json` Δmargin + `baseline_cache.json` native 1회 측정 후 재사용). 첫 epoch만 native SST-14 를 도킹하고 이후엔 변이만 도킹한다. 상세: [`_workspace/CONTINUOUS_DISCOVERY.md`](AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/_workspace/CONTINUOUS_DISCOVERY.md).
+
+**전제**: vLLM(Qwen3-32B)이 `localhost:8000` 가동 중.
+
+```bash
+cd AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri
+
+# ── 방법 1: tmux (권장 — SSH 끊겨도 유지, 재접속 가능) ──
+tmux new -s discovery          # 세션 생성 후, 세션 안에서:
+~/miniforge3/envs/bio-tools/bin/python scripts/run_continuous_discovery.py \
+  --input data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb \
+  --n-candidates 8 --max-iterations 4 --top-k 5 --selectivity-max-per-iter 2 \
+  2>&1 | tee runs/pyrosetta_flow/discovery_run.log
+# 빠져나오기: Ctrl+b 누른 뒤 d   |   재접속: tmux attach -t discovery
+
+# ── 방법 2: nohup ──
+nohup ~/miniforge3/envs/bio-tools/bin/python scripts/run_continuous_discovery.py \
+  --input data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb \
+  --n-candidates 8 --max-iterations 4 --top-k 5 --selectivity-max-per-iter 2 \
+  > runs/pyrosetta_flow/discovery_run.log 2>&1 &
+echo $! > runs/pyrosetta_flow/discovery.pid    # PID 저장
+```
+
+**모니터링 / 정지 / 실시간 조절**
+
+```bash
+tail -f runs/pyrosetta_flow/discovery_run.log                    # 진행 로그
+cat runs/pyrosetta_flow/discovery_status.json | python -m json.tool   # 상태 요약
+
+touch _workspace/STOP_DISCOVERY        # graceful 정지(현재 epoch 마치고 멈춤)
+rm _workspace/STOP_DISCOVERY           # 재개 전 반드시 삭제
+kill $(cat runs/pyrosetta_flow/discovery.pid)   # 강제 종료(nohup)
+
+$EDITOR _workspace/discovery_control.json   # 실시간 튜닝(다음 epoch부터 반영, 재시작 불필요)
+```
+
+| 동작 | 명령 |
+|------|------|
+| 정지(graceful) | `touch _workspace/STOP_DISCOVERY` |
+| 재개 전 정리 | `rm _workspace/STOP_DISCOVERY` |
+| 실시간 튜닝 | `_workspace/discovery_control.json` 편집 |
+| 진행 모니터 | `runs/pyrosetta_flow/discovery_status.json` |
+
+> **성공 기준**: Δmargin>0 (native SST-14 초과 선택성) & ΔG≤−15 & 독성≤native(hc50). epoch 당 ~1~1.5시간(8후보×4iter), 하룻밤 ~10–15 epoch 누적.
+
 ### 1. 전체 8-step 사이클 (LOCAL MODE)
 
 ```bash
