@@ -1,0 +1,27 @@
+/home/dongjukim/miniforge3/envs/bio-tools/lib/python3.11/site-packages/torch/cuda/__init__.py:65: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+
+[continuous] ===== EPOCH 1 시작 (seed=2000, mut≤3, n_cand=8, max_iter=4) =====
+  [history] Loaded 222 unique sequences from prior runs (dedup enabled)
+  [history] Top prior hit: AGCKYEFWKTFTSC ddG=-144.1
+  [baseline] trial 1/3: ddG=388.706 total=441.094
+  [baseline] trial 2/3: ddG=10.986 total=-32.185
+  [baseline] trial 3/3: ddG=0.542 total=4.344
+  [baseline] 캐시 저장 (이후 epoch 재사용): baseline_cache.json
+  [bandit] Thompson sampling focus: [13, 1, 2]
+  [bo] BayesianPeptideOptimizer initialized
+  [sel-loop] 글로벌 warm-start: 9 서열 기측정, 역대 best Δ=0.077
+  [sel-loop] in-loop selectivity 활성화 (조건부 게이트)
+[2026-06-10 12:01:22][Planner] INFO: 최초 실험 계획 생성 시작
+[2026-06-10 12:01:27][Planner] INFO: LLM 기반 초기 계획 생성 완료: 20260218_1430_iter01
+[2026-06-10 12:04:20][QCRanker] INFO: 게이트 적용 시작: 8개 후보
+[2026-06-10 12:04:20][QCRanker] INFO:   Gate1 (pLDDT): DISABLED - 전체 통과
+[2026-06-10 12:04:20][QCRanker] INFO:   Gate2 (Docking): DISABLED - 전체 통과
+[2026-06-10 12:04:20][QCRanker] INFO:   Gate3 (Rosetta): 6/8 통과
+[2026-06-10 12:04:20][QCRanker] INFO:   Gate4 (Selectivity): DISABLED - 전체 통과
+[2026-06-10 12:04:20][QCRanker] INFO: 게이트 완료: 6 통과 / 2 실패
+[2026-06-10 12:04:20][QCRanker] INFO: 랭킹 완료: 6개 후보 순위 결정
+[2026-06-10 12:04:20][QCRanker] INFO: QC 보고서: 6/8 통과 (75.0%)
+[2026-06-10 12:04:20][QCRanker] INFO: Top-5 by ddG: [('iter01_cand006', '-37.59'), ('iter01_cand005', '-32.62'), ('iter01_cand001', '-31.56'), ('iter01_cand003', '-21.68'), ('iter01_cand007', '-19.57')]
+[2026-06-10 12:04:20][QCRanker] INFO: 랭킹 모드: ddg_primary - ddG 기준 상위 5개 선정
+  [sel-loop] AGCKNWFWKTFTSC: margin=8.6183 Δ=-4.7517 (native이하)

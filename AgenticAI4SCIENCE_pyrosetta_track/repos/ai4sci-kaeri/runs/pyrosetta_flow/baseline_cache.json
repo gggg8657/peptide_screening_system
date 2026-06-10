@@ -1,0 +1,7 @@
+{
+  "template_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
+  "sequence": "AGCKNFFWKTFTSC",
+  "ddg": 0.5416,
+  "total_score": 4.344,
+  "clash_score": 0.0
+}
