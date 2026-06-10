@@ -835,6 +835,50 @@ AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/archive
 
 ---
 
+## 📊 결과 한눈에 보기 (무한 발굴 엔진 산출물)
+
+실험 결과는 **DB 가 아니라 파일**로 남는다 (검사 가능·fail-closed·git 추적). 전부
+`AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/` 아래.
+
+| 파일 | 내용 | 역할 |
+|------|------|------|
+| **`experiment_log.jsonl`** | 모든 run·모든 후보가 1줄(JSON)씩 append (서열·ddG·clash·plddt·selectivity·status) | **마스터 결과 테이블** (append-only, 무한 누적) |
+| **`global_selectivity_leaderboard.json`** | 선택성 측정 후보 top-50 (Δmargin 내림차순, 서열 dedup) | **선택성 리더보드** (역대 best 기억) |
+| **`discovery_status.json`** | 현재 epoch·다양성 레벨·역대 best Δmargin·통과 후보 수·epoch history | **무한 엔진 실시간 현황** |
+| **`baseline_cache.json`** | native SST-14 기준 ddG/margin (첫 epoch 1회 측정 후 재사용) | 비교 기준선 |
+| **`<output-json>.json`** | 한 run 전체: baseline+iterations[]+final_candidates[]+summary | run 단위 요약 |
+| **`sst14_agentic_mutdock/iter_NN/cand_NNN.pdb`** | 도킹된 후보 3D 구조 | Mol* 로 보는 구조 파일 |
+| **`archives/*_dashboard.json`** | 완료 run 스냅샷 | 영구 보관 |
+
+### CLI 로 빠르게 확인
+
+```bash
+cd AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow
+
+# 무한 엔진 현황 (epoch·best Δmargin·통과 수·다양성)
+cat discovery_status.json | python -m json.tool
+
+# 선택성 리더보드 top (Δmargin 순)
+python -c "import json; d=json.load(open('global_selectivity_leaderboard.json')); \
+[print(f\"{e['delta_margin']:+.3f}  ddG={e['ddg']:.1f}  {e['sequence']}\") for e in d['entries'][:10]]"
+
+# 모든 후보 결과 → 표 (ddG 강한 순 top 20)
+python -c "import json; \
+rows=[json.loads(l) for l in open('experiment_log.jsonl') if '\"candidate\"' in l]; \
+ok=[r for r in rows if r.get('status')=='success']; \
+ok.sort(key=lambda r:r['ddg']); \
+print(f\"{'iter':>4} {'ddG':>9} {'clash':>6}  sequence\"); \
+[print(f\"{r['iteration']:>4} {r['ddg']:>9.2f} {r['clash']:>6.1f}  {r['sequence']}\") for r in ok[:20]]"
+
+# 후보 구조를 Mol* 없이 빠르게 — PDB 경로만
+ls sst14_agentic_mutdock/iter_*/cand_*.pdb | head
+```
+
+> 웹에서 이 파일들을 테이블·차트·Mol* 구조뷰어로 보는 것이 차기 작업
+> (`_workspace/GOAL_UI_2026-06-10.md` — 무한엔진 웹 모니터링·제어 UI).
+
+---
+
 ## UI / API
 
 ### Backend FastAPI (`port 8787`)
