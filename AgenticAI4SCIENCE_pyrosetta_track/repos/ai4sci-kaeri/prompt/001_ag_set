@@ -1,0 +1,168 @@
+1) Co-Scientist 에이전트 구성 추천 (핵심은 “명확한 산출물” + “게이트(QC) 기반 루프”)
+에이전트 역할(최소 5개로 충분히 강력)
+
+Planner(연구 설계/실험 기획)
+
+목표/제약/예산(시간·GPU)/스코어 기준 정의
+
+각 step의 입력/출력 스키마 고정(파일명/폴더 구조 포함)
+
+Builder(실행 오케스트레이터)
+
+Step01~07 실행 순서 관리, 실패 시 재시도/대체 경로 수행
+
+모든 실행을 “재현 가능”하게 로그/설정 저장
+
+QC & Ranker(품질관리·랭킹)
+
+ESMFold pLDDT, FoldMason lDDT, Docking score, ddG 등을 단일 랭킹 테이블로 통합
+
+게이트 조건(예: pLDDT< X면 폐기)을 적용
+
+Scientist Critic(비판적 검토/원인 분석)
+
+“왜 이 후보가 좋/나쁜지”를 구조적 근거로 설명
+
+다음 iteration에서 바꿀 파라미터/전략 제안
+
+Reporter(최종 리포트/그림 자동화)
+
+PyMOL 스크립트로 인터페이스/핫스팟/출판 품질 렌더
+
+실험 기록(설정/결과/랭킹/선정 이유)까지 한 번에 문서화
+
+옵션: Safety/Compliance Agent(데이터/모델 사용 정책, 외부 API 사용 시 키/로그 보안 점검) – BioNeMo API 쓰면 특히 유용.
+
+2) End-to-End 루프 설계(“게이트”가 성능을 만든다)
+1회 Iteration의 표준 흐름
+
+Step01(OpenFold3): SSTR2 구조 준비(체인/리간드 유무/포켓 정의 포함)
+
+Step02(RFdiffusion): 포켓 타겟 de novo 펩타이드 백본 N개 생성
+
+Step03(ProteinMPNN): 백본당 서열 K개 생성(다양성 확보)
+
+Step04(ESMFold): 빠른 구조 QC → pLDDT 게이트로 컷
+
+Step05(DiffDock/Boltz-2): 결합 포즈/친화도 평가 → docking gate
+
+Step06(PyRosetta/FlexPepDock + ddG): 상위 M개 정밀 정제/에너지 → 최종 점수
+
+Step07(PyMOL + FoldMason): 구조 정렬/인터페이스 분석/그림+표 자동 생성
+
+게이트 예시(너가 상황 맞게 숫자만 바꾸면 됨)
+
+ESMFold 평균 pLDDT ≥ 75 (또는 인터페이스 주변 residue pLDDT 기준)
+
+Docking score 상위 **Top 10~20%**만 Rosetta 진입
+
+Rosetta ddG ≤ -X (더 음수일수록 안정 결합) + clash/constraint 위반 0
+
+“자기 설계”가 되려면 추가해야 하는 것
+
+Iteration마다 **무엇을 바꿨는지(가설/변경점)**를 명시적으로 기록
+
+변경 후보:
+
+RFdiffusion 조건(길이, secondary structure bias, hotspot residue, constraints)
+
+MPNN 다양성(temperature, sampling 수, 제한 아미노산)
+
+도킹 엔진 교대(DiffDock↔Boltz-2), scoring 가중치 변경
+
+Rosetta constraint/relax protocol 변형
+
+3) 바로 사용할 “Co-Scientist 구성 지시 마스터 프롬프트”
+
+아래 프롬프트는 co-scientist에 그대로 붙여넣는 용도야.
+(중요: 너 환경의 실행 커맨드/경로만 {}에 채워 넣으면 됨)
+
+당신은 “SSTR2 펩타이드 바인더 설계” Co-Scientist 오케스트레이터다.
+목표는 OpenFold3 → RFdiffusion → ProteinMPNN → ESMFold → DiffDock/Boltz-2 → PyRosetta(FlexPepDock, ddG) → PyMOL(+FoldMason) 을 end-to-end로 자동화하여,
+(1) 고품질 바인더 후보를 생성/랭킹하고 (2) 실패 원인을 분석해 다음 iteration 설계를 스스로 개선하는 에이전틱 연구 루프를 구축하는 것이다.
+
+[전제]
+- 각 툴은 로컬/환경에서 단독 실행 테스트가 완료되어 있다.
+- 당신은 실제 실행은 “도구 호출(tool call)”로 수행한다고 가정하며,
+  각 step의 입력/출력 파일을 표준화하고, 모든 설정/로그를 저장하여 재현 가능해야 한다.
+
+[최종 산출물(반드시 생성)]
+A. 실행 가능한 파이프라인 설계
+   - 에이전트 역할(Planner/Builder/QC-Ranker/Critic/Reporter)과 메시지 흐름
+   - Step01~07의 입력/출력 스키마(파일명 규칙 포함)
+   - 오류/재시도/대체 경로 정책
+B. 실험 운영 계획
+   - 1 iteration 정의(N_backbone, N_seq, QC gate, Top-K 선별 기준)
+   - 점수 통합 방식(가중치/정규화)과 랭킹 테이블 포맷(CSV)
+C. “자기 설계 루프”
+   - Critic이 결과를 해석해 다음 iteration에서 바꿀 파라미터 후보를 제안하는 규칙
+   - 변경점/가설/결과를 기록하는 lab-notebook 템플릿(Markdown)
+D. 자동 리포팅
+   - 최종 Top-N 후보에 대해 PyMOL 스크립트로 인터페이스 렌더, 접촉 잔기/거리, 핫스팟 표를 생성
+   - FoldMason lDDT 기반 정렬/품질 비교 결과를 포함
+
+[제약/품질 기준]
+- 빠른 QC(ESMFold)에서 평균 pLDDT < {PLDDT_GATE} 는 폐기한다.
+- 도킹에서 상위 {DOCK_TOP_PCT}%만 Rosetta 정제로 넘긴다.
+- Rosetta ddG, clash score, constraint 위반을 고려해 최종 점수를 계산한다.
+- 모든 산출물은 run_id(예: YYYYMMDD_HHMM_iterXX) 기준으로 폴더에 저장한다.
+
+[폴더/파일 규칙(반드시 준수)]
+runs/{run_id}/
+  00_config/ (모든 설정 yaml/json, seed, 커맨드 기록)
+  01_receptor/ (SSTR2 구조, pocket 정의)
+  02_backbone/ (RFdiffusion outputs)
+  03_sequence/ (MPNN outputs)
+  04_qc/ (ESMFold structures + pLDDT summary)
+  05_docking/ (poses + affinity scores)
+  06_rosetta/ (refined models + ddG)
+  07_viz/ (PyMOL session/png, interface tables)
+  08_reports/ (rank_table.csv, summary.md, decision_log.md)
+
+[도구 호출 인터페이스(당신이 가정할 것)]
+- run_openfold3(receptor_id, out_dir, params)
+- run_rfdiffusion(receptor_pdb, pocket_def, n, out_dir, params)
+- run_proteinmpnn(backbone_pdbs, k_per_backbone, out_dir, params)
+- run_esmfold(seqs_or_fastas, out_dir, params) -> returns plddt table
+- run_docking(models, receptor_pdb, engine={diffdock|boltz2}, out_dir, params)
+- run_pyrosetta_flexpep(models_with_poses, out_dir, params) -> returns ddG table
+- run_foldmason(models, ref_model, out_dir, params) -> returns lddt table
+- run_pymol_render(models, receptor_pdb, out_dir, script_params)
+
+위 도구들이 실제로 존재한다고 가정하고, 각 step을 어떻게 호출/연결할지 “구체적인 실행 계획”을 작성하라.
+또한 실패/예외(도킹 실패, 구조 깨짐, 서열 중복, 모델 수 과다) 시의 처리 로직을 명확히 설계하라.
+
+[출력 형식]
+1) 에이전트 아키텍처(텍스트 다이어그램)
+2) Step01~07 상세 스펙(입력/출력/검증/재시도)
+3) 랭킹 스코어 정의(수식 또는 의사코드)
+4) iteration 운영 파라미터 기본값(권장 N/K/Top-M)
+5) 실험 노트 템플릿(Markdown)
+6) 마지막에, “첫 번째 run”을 위한 구체적 체크리스트(5~10개)
+
+지금부터 시작하라.
+
+4) “자기 설계 루프”를 더 똑똑하게 만드는 규칙(짧게)
+
+Critic이 그냥 감상문 쓰지 않게, 규칙 기반 액션을 넣는 게 좋아:
+
+실패 유형 분류 → 대응 액션 매핑
+
+pLDDT 낮음: MPNN sampling 파라미터 조정 / backbone 길이 제한 / helix bias
+
+docking 점수는 좋은데 ddG 나쁨: FlexPepDock constraint 강화 / hotspot residue 지정 / sidechain repack 조건 수정
+
+특정 포켓에서만 실패: pocket 정의(잔기 리스트) 재설정 / receptor 상태(활성/비활성) 바꿔서 Step01 재시작
+
+변경점은 매 iteration 1~2개만
+
+그래야 원인-결과 추적 가능(연구 자동화의 핵심)
+
+원하면 내가 위 마스터 프롬프트를 너 환경에 맞게 더 “실행형”으로 바꿔서,
+
+각 tool call의 params에 들어갈 권장 파라미터 묶음(yaml 템플릿),
+
+rank_table.csv 컬럼 스키마(예: backbone_id, seq_id, plddt_mean, dock_score, ddg, lddt, final_score, pass_fail_reason),
+
+그리고 PyMOL에서 “출판용 4컷 자동 생성(overview/closeup/interface contacts/electrostatics)” 스크립트 프롬프트
+까지 한 번에 세팅해줄게.

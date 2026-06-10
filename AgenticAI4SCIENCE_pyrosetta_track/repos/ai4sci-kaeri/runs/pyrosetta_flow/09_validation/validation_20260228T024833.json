@@ -1,0 +1,47 @@
+{
+  "timestamp": "20260228T024833",
+  "results": [
+    {
+      "id": "iter01_cand007",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -43.548,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -480.259,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter02_cand003",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -39.634,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 4.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -399.859,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

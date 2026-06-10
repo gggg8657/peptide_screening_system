@@ -1,0 +1,26 @@
+{
+  "timestamp": "20260305T060727",
+  "results": [
+    {
+      "id": "LIT-02_FCCKNFFWKTCTSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -42.3492,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -448.2354,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

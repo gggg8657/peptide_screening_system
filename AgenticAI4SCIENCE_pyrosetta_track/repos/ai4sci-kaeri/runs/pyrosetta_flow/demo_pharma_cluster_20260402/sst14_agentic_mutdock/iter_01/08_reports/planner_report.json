@@ -1,0 +1,10 @@
+{
+  "type": "planner",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_4002",
+  "timestamp": "2026-04-02T06:52:33.585247+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and charged residues at position 6 will improve binding affinity to SSTR2 through enhanced hydrophobic and electrostatic interactions.",
+  "strategy": "ddg_only",
+  "critic_feedback_used": null,
+  "previous_best_ddg": null
+}

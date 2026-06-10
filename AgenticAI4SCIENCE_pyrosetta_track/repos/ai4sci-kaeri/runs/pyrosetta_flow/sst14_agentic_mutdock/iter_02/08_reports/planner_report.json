@@ -1,0 +1,33 @@
+{
+  "type": "planner",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-06-10T07:06:07.065307+00:00",
+  "hypothesis": "Mutations at positions 5 and 11 will enhance SSTR2-specific interactions by introducing aromatic residues at position 5 (to complement SSTR2 ECL2 residues 192/193/195/197) and hydrophobic residues at position 11 (to avoid steric clashes with SSTR3/5 TM6 residues 272/273/276/279). This should increase the selectivity margin by differentiating SSTR2 from off-targets.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current design strategy must incorporate explicit selectivity optimization, particularly by targeting non-pharmacophore positions to disrupt off-target interactions.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "Disrupt conserved-pocket contacts at non-pharmacophore positions to reduce off-target binding to SSTR3/SSTR5 while preserving the pharmacophore FWKT(7-10) and Cys3/Cys14."
+      },
+      {
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_only",
+        "new_value": "selectivity_weighted",
+        "rationale": "Prioritize selectivity over binding strength by incorporating Δmargin into the scoring function, ensuring candidates are evaluated for their ability to outperform native SST-14 in selectivity."
+      }
+    ]
+  },
+  "previous_best_ddg": -31.3721
+}

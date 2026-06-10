@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 4,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:20:40.132360+00:00",
+  "hypothesis": "Introducing charged residues at position 6 and hydrophobic residues at positions 5 and 11 will enhance binding affinity by optimizing electrostatic interactions and hydrophobic packing in the SSTR2 binding pocket.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural quality is prioritized over ddG magnitude in current scoring, requiring balance between binding affinity and model reliability.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -10.0,
+        "rationale": "Current threshold rejects candidates with physiologically relevant ddG values. Lowering the threshold allows more negative ddG (better binding) to pass."
+      },
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 15,
+        "rationale": "Strict clash thresholds are rejecting valid candidates with minor steric clashes. Increasing allows more flexible sampling."
+      }
+    ]
+  },
+  "previous_best_ddg": -43.5958
+}

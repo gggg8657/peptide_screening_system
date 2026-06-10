@@ -1,0 +1,146 @@
+{
+  "task": "Task #38 — SSTR2-SST14 complex Boltz docking",
+  "date": "2026-05-19",
+  "input": {
+    "receptor": "data/somatostatin_receptor/SSTR2_7XNA.pdb",
+    "peptide": "AGCKNFFWKTFTSC",
+    "receptor_msa": "runs_local/alphafold_receptors/AF-P30874-F1-msa.a3m"
+  },
+  "config": {
+    "boltz_env": "boltz",
+    "cuda_devices": "2,3",
+    "n_samples": 5,
+    "top_k": 3,
+    "recycling_steps": 3,
+    "sampling_steps": 100
+  },
+  "n_models_total": 5,
+  "all_models": [
+    {
+      "model_idx": 0,
+      "iptm": 0.9531514644622803,
+      "ptm": 0.7181529402732849,
+      "confidence_score": 0.7593570947647095
+    },
+    {
+      "model_idx": 3,
+      "iptm": 0.9379768967628479,
+      "ptm": 0.6921272873878479,
+      "confidence_score": 0.7474316358566284
+    },
+    {
+      "model_idx": 1,
+      "iptm": 0.9352789521217346,
+      "ptm": 0.6865565776824951,
+      "confidence_score": 0.7579247951507568
+    },
+    {
+      "model_idx": 2,
+      "iptm": 0.9327191114425659,
+      "ptm": 0.6801648736000061,
+      "confidence_score": 0.7569301724433899
+    },
+    {
+      "model_idx": 4,
+      "iptm": 0.9298596382141113,
+      "ptm": 0.6691938638687134,
+      "confidence_score": 0.7466142177581787
+    }
+  ],
+  "top_k_validation": [
+    {
+      "rank": 1,
+      "model_idx": 0,
+      "iptm": 0.9531514644622803,
+      "ptm": 0.7181529402732849,
+      "confidence_score": 0.7593570947647095,
+      "iptm_pass": true,
+      "pdb_dest": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
+      "ss_bond": {
+        "ok": true,
+        "sg3_sg14_dist": 1.918,
+        "threshold": 2.3,
+        "note": "SG-SG 거리 1.918 Å (OK)"
+      },
+      "pocket_placement": {
+        "ok": false,
+        "centroid": [
+          -37.396,
+          8.553,
+          -8.813
+        ],
+        "pocket_center": [
+          -5.595,
+          -28.626,
+          52.21
+        ],
+        "dist": 78.214,
+        "radius": 13.035,
+        "note": "centroid→pocket거리 78.2 Å, pocket반경 13.0 Å (외부 FAIL)"
+      }
+    },
+    {
+      "rank": 2,
+      "model_idx": 3,
+      "iptm": 0.9379768967628479,
+      "ptm": 0.6921272873878479,
+      "confidence_score": 0.7474316358566284,
+      "iptm_pass": true,
+      "pdb_dest": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_2.pdb",
+      "ss_bond": {
+        "ok": true,
+        "sg3_sg14_dist": 0.712,
+        "threshold": 2.3,
+        "note": "SG-SG 거리 0.712 Å (OK)"
+      },
+      "pocket_placement": {
+        "ok": false,
+        "centroid": [
+          -6.87,
+          31.017,
+          23.033
+        ],
+        "pocket_center": [
+          -5.595,
+          -28.626,
+          52.21
+        ],
+        "dist": 66.409,
+        "radius": 13.035,
+        "note": "centroid→pocket거리 66.4 Å, pocket반경 13.0 Å (외부 FAIL)"
+      }
+    },
+    {
+      "rank": 3,
+      "model_idx": 1,
+      "iptm": 0.9352789521217346,
+      "ptm": 0.6865565776824951,
+      "confidence_score": 0.7579247951507568,
+      "iptm_pass": true,
+      "pdb_dest": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_3.pdb",
+      "ss_bond": {
+        "ok": true,
+        "sg3_sg14_dist": 1.284,
+        "threshold": 2.3,
+        "note": "SG-SG 거리 1.284 Å (OK)"
+      },
+      "pocket_placement": {
+        "ok": false,
+        "centroid": [
+          24.608,
+          25.639,
+          2.314
+        ],
+        "pocket_center": [
+          -5.595,
+          -28.626,
+          52.21
+        ],
+        "dist": 79.665,
+        "radius": 13.035,
+        "note": "centroid→pocket거리 79.7 Å, pocket반경 13.0 Å (외부 FAIL)"
+      }
+    }
+  ],
+  "proteinmpnn_receptor_context_ready": true
+}

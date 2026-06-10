@@ -1,0 +1,34 @@
+{
+  "ref_pdb": "data/somatostatin_receptor/SSTR2_7XNA.pdb",
+  "method": "pymol",
+  "results": {
+    "SSTR1": {
+      "rmsd": 3.125,
+      "aligned_atoms": 264,
+      "method": "cealign",
+      "input": "data/somatostatin_receptor/SSTR1_9IK8.pdb",
+      "output": "data/somatostatin_receptor/SSTR1_aligned.pdb"
+    },
+    "SSTR3": {
+      "rmsd": 3.086,
+      "aligned_atoms": 272,
+      "method": "cealign",
+      "input": "data/somatostatin_receptor/SSTR3_8XIR.pdb",
+      "output": "data/somatostatin_receptor/SSTR3_aligned.pdb"
+    },
+    "SSTR4": {
+      "rmsd": 3.019,
+      "aligned_atoms": 248,
+      "method": "cealign",
+      "input": "data/somatostatin_receptor/SSTR4_7XMT.pdb",
+      "output": "data/somatostatin_receptor/SSTR4_aligned.pdb"
+    },
+    "SSTR5": {
+      "rmsd": 2.77,
+      "aligned_atoms": 256,
+      "method": "cealign",
+      "input": "data/somatostatin_receptor/SSTR5_8ZBJ.pdb",
+      "output": "data/somatostatin_receptor/SSTR5_aligned.pdb"
+    }
+  }
+}

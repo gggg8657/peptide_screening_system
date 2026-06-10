@@ -1,0 +1,41 @@
+best_model: glm_z1_32b
+experiments:
+- flow: v2_sequential
+  gate_mode: static
+  id: V2P2-01
+  model: glm_z1_32b
+  seed: 42
+- flow: v2_sequential
+  gate_mode: static
+  id: V2P2-02
+  model: glm_z1_32b
+  seed: 137
+- flow: v2_sequential
+  gate_mode: static
+  id: V2P2-03
+  model: glm_z1_32b
+  seed: 256
+- flow: v2_sequential
+  gate_mode: adaptive
+  id: V2P2-04
+  model: glm_z1_32b
+  seed: 42
+- flow: v2_sequential
+  gate_mode: adaptive
+  id: V2P2-05
+  model: glm_z1_32b
+  seed: 137
+- flow: v2_sequential
+  gate_mode: adaptive
+  id: V2P2-06
+  model: glm_z1_32b
+  seed: 256
+max_iterations: 5
+n_candidates: 8
+phase: v2_phase2
+seeds:
+- 42
+- 137
+- 256
+top_k: 5
+validation_n_trials: 1

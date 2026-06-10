@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 6,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T11:22:40.175047+00:00",
+  "hypothesis": "Introducing an aromatic residue at position 2 (Y) and a medium‑sized hydrophobic residue at position 8 (M) will increase binding affinity by enhancing π–π and hydrophobic interactions with SSTR2, while maintaining backbone stability.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Incorporating a pLDDT constraint and relaxing the clash threshold will reduce structural failures, improve docking geometry, and increase the proportion of candidates that meet all QC gates.",
+    "proposed_changes": [
+      {
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_plus_constraints",
+        "new_value": "ddg_plus_pLDDT_constraints",
+        "rationale": "All top candidates have pLDDT=0.0, indicating low structural confidence. Adding a pLDDT constraint will penalize designs with poor predicted structure quality and encourage more reliable folds."
+      },
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 20,
+        "rationale": "The current clash threshold is too strict, causing 4 candidates to fail the clash gate. Raising the limit will allow more designs to pass while still monitoring for excessive steric clashes."
+      }
+    ]
+  },
+  "previous_best_ddg": -45.0269
+}

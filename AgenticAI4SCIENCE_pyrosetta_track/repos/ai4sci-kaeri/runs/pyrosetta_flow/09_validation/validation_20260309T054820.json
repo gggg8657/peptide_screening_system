@@ -1,0 +1,152 @@
+{
+  "timestamp": "20260309T054820",
+  "results": [
+    {
+      "id": "NOV-01_YSCKNFFWKTFTSN",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -43.92,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -473.1411,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "LIT-01_AGCKNFFWKTFTSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -43.78,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -482.7171,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "LIT-02_FCCKNFFWKTCTSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -42.11,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 6.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -357.8918,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "NOV-02_AGCKNDFWKTFGSE",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -41.47,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -474.6363,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "SAN-02_AGCKNFFWATFTSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -39.53,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -466.2268,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "SAN-01_AGCKNFFAKTFTSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -38.22,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -478.2747,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "LIT-03_APCKNFFWKTFSSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -37.3,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -473.0897,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+# V2 Phase 1: V1 vs V2 직접 비교
+# Top-3 models × 2 versions (V1 already done, V2 new) × 2 gates × 3 seeds = 36
+# V1 결과는 Phase 2A sequential+adaptive/static에서 재사용
+
+phase: v2_phase1
+n_candidates: 8
+max_iterations: 5
+top_k: 5
+validation_n_trials: 1
+
+seeds: [42, 137, 256]
+
+experiments:
+  # Qwen3-32B — V2 sequential
+  - {id: "V2P1-01", model: qwen3_32b,     flow: v2_sequential, seed: 42,  gate_mode: static}
+  - {id: "V2P1-02", model: qwen3_32b,     flow: v2_sequential, seed: 137, gate_mode: static}
+  - {id: "V2P1-03", model: qwen3_32b,     flow: v2_sequential, seed: 256, gate_mode: static}
+  - {id: "V2P1-04", model: qwen3_32b,     flow: v2_sequential, seed: 42,  gate_mode: adaptive}
+  - {id: "V2P1-05", model: qwen3_32b,     flow: v2_sequential, seed: 137, gate_mode: adaptive}
+  - {id: "V2P1-06", model: qwen3_32b,     flow: v2_sequential, seed: 256, gate_mode: adaptive}
+
+  # DeepSeek-R1-32B — V2 sequential
+  - {id: "V2P1-07", model: deepseek_r1_32b, flow: v2_sequential, seed: 42,  gate_mode: static}
+  - {id: "V2P1-08", model: deepseek_r1_32b, flow: v2_sequential, seed: 137, gate_mode: static}
+  - {id: "V2P1-09", model: deepseek_r1_32b, flow: v2_sequential, seed: 256, gate_mode: static}
+  - {id: "V2P1-10", model: deepseek_r1_32b, flow: v2_sequential, seed: 42,  gate_mode: adaptive}
+  - {id: "V2P1-11", model: deepseek_r1_32b, flow: v2_sequential, seed: 137, gate_mode: adaptive}
+  - {id: "V2P1-12", model: deepseek_r1_32b, flow: v2_sequential, seed: 256, gate_mode: adaptive}
+
+  # GLM-Z1-32B — V2 sequential
+  - {id: "V2P1-13", model: glm_z1_32b,    flow: v2_sequential, seed: 42,  gate_mode: static}
+  - {id: "V2P1-14", model: glm_z1_32b,    flow: v2_sequential, seed: 137, gate_mode: static}
+  - {id: "V2P1-15", model: glm_z1_32b,    flow: v2_sequential, seed: 256, gate_mode: static}
+  - {id: "V2P1-16", model: glm_z1_32b,    flow: v2_sequential, seed: 42,  gate_mode: adaptive}
+  - {id: "V2P1-17", model: glm_z1_32b,    flow: v2_sequential, seed: 137, gate_mode: adaptive}
+  - {id: "V2P1-18", model: glm_z1_32b,    flow: v2_sequential, seed: 256, gate_mode: adaptive}

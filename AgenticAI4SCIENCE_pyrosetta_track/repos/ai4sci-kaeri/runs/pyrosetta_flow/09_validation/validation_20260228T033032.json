@@ -1,0 +1,257 @@
+{
+  "timestamp": "20260228T033032",
+  "results": [
+    {
+      "id": "iter06_cand008",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -17.272,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 3.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -406.823,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter08_cand005",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -14.848,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -428.014,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter07_cand003",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -9.647,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 3.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -401.921,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter01_cand006",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -8.293,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -430.356,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter05_cand005",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -3.807,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 11.0,
+          "passed": false
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": 119.302,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "iter05_cand003",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 2.779,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 2.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -410.247,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter06_cand004",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 7.904,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 5.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -394.889,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter02_cand006",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 18.607,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 4.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -364.729,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter08_cand003",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 21.941,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 4.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -374.506,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter01_cand003",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 22.498,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 2.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -394.479,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter05_cand008",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 28.941,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 5.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -347.786,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter03_cand005",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 32.517,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 13.0,
+          "passed": false
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -242.153,
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

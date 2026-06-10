@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:19:03.991498+00:00",
+  "hypothesis": "Aromatic/hydrophobic residues at positions 5-6 and 11 will improve binding affinity through enhanced hydrophobic interactions and π-π stacking with SSTR2's aromatic residues",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Initial hypothesis underestimated the magnitude of required stability improvements for SSTR2 binding.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -10.0,
+        "rationale": "Current threshold rejects candidates with significantly better stability (ddG=-37.2 vs -5.0)."
+      },
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Reduce clash tolerance to prioritize structural integrity in docking interactions."
+      }
+    ]
+  },
+  "previous_best_ddg": -37.2393
+}

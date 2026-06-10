@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSTR2 AI Co-Scientist — Autonomous Radiopharmaceutical Peptide Screening Platform</title>
+  <style>
+    /* ============================================================
+       Base reset & typography
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0b1a2e;
+      --navy-mid:  #102540;
+      --navy-card: #152d4a;
+      --teal:      #0e9e8e;
+      --teal-light:#16c2af;
+      --teal-dim:  #0a6b60;
+      --sky:       #38bdf8;
+      --sky-dim:   #0ea5e9;
+      --accent:    #f59e0b;    /* amber — gate warnings */
+      --green:     #22d3a1;    /* positive ΔG / selective */
+      --red:       #f87171;    /* clash gate */
+      --text:      #e2eaf4;
+      --text-muted:#8faabf;
+      --text-dim:  #4e6a82;
+      --border:    rgba(56,189,248,.18);
+      --card-glow: rgba(14,158,142,.08);
+      --radius:    10px;
+      --radius-lg: 16px;
+      --shadow:    0 4px 24px rgba(0,0,0,.45);
+      --shadow-card: 0 2px 12px rgba(0,0,0,.35);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; }
+    h1 { font-size: clamp(1.9rem, 4vw, 3rem); }
+    h2 { font-size: clamp(1.3rem, 2.8vw, 1.9rem); }
+    h3 { font-size: 1.05rem; }
+    h4 { font-size: .9rem; font-weight: 600; letter-spacing: .03em; }
+
+    p { color: var(--text-muted); }
+
+    a { color: var(--sky); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code, .mono {
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: .85em;
+      background: rgba(56,189,248,.1);
+      border: 1px solid rgba(56,189,248,.2);
+      border-radius: 4px;
+      padding: .1em .35em;
+      color: var(--sky);
+    }
+
+    /* ============================================================
+       Layout utilities
+    ============================================================ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: .97rem;
+      margin-bottom: 40px;
+      max-width: 680px;
+    }
+
+    /* ============================================================
+       Hero
+    ============================================================ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 80px;
+      background: var(--navy-mid);
+    }
+
+    /* Decorative background grid */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(14,158,142,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,158,142,.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* Radial glow */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center,
+        rgba(14,158,142,.22) 0%,
+        rgba(11,26,46,0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(14,158,142,.15);
+      border: 1px solid rgba(14,158,142,.35);
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-size: .78rem;
+      color: var(--teal-light);
+      margin-bottom: 24px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .hero-badge::before {
+      content: "●";
+      font-size: .6rem;
+      color: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .35; }
+    }
+
+    .hero-title {
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .hero-title .accent { color: var(--teal-light); }
+
+    .hero-subtitle-en {
+      font-size: clamp(.9rem, 2vw, 1.1rem);
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      letter-spacing: .01em;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.4vw, 1.35rem);
+      color: var(--sky);
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 36px;
+      border-left: 3px solid var(--teal);
+      padding-left: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-chip .icon { font-size: 1em; }
+
+    .hero-peptide {
+      background: linear-gradient(135deg, rgba(14,158,142,.18), rgba(21,45,74,.5));
+      border: 1px solid rgba(14,158,142,.3);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      max-width: 560px;
+    }
+
+    .hero-peptide-label {
+      font-size: .72rem;
+      color: var(--teal-light);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .peptide-seq {
+      font-family: "SFMono-Regular", "Consolas", monospace;
+      font-size: 1.15rem;
+      letter-spacing: .12em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .peptide-seq .cys { color: var(--accent); font-weight: 700; }
+    .peptide-seq .fwkt { color: var(--teal-light); font-weight: 700; }
+
+    .peptide-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       Intro / What is it
+    ============================================================ */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .intro-body {
+      font-size: .97rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .intro-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .intro-pill {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .intro-pill-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .intro-pill-text strong {
+      display: block;
+      font-size: .85rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .intro-pill-text span {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       Feature cards grid
+    ============================================================ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(14,158,142,.45);
+      transform: translateY(-2px);
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--card-glow);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-card-num {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: .72rem;
+      color: var(--text-dim);
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: block;
+      line-height: 1;
+    }
+
+    .feature-name {
+      color: var(--text);
+      margin-bottom: 4px;
+      font-size: .95rem;
+      font-weight: 700;
+    }
+
+    .feature-benefit {
+      font-size: .85rem;
+      color: var(--teal-light);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .feature-how {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 8px;
+    }
+
+    .feature-how .hl { color: var(--text); font-weight: 600; }
+    .feature-how .metric { color: var(--green); font-weight: 600; }
+    .feature-how .warn { color: var(--accent); font-weight: 600; }
+
+    /* ============================================================
+       How to Use — steps
+    ============================================================ */
+    .steps-container {
+      max-width: 800px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 24px 0;
+      position: relative;
+    }
+
+    .step + .step {
+      border-top: 1px solid var(--border);
+    }
+
+    .step-num-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dim));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .9rem;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(14,158,142,.15);
+    }
+
+    .step-connector {
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal-dim), transparent);
+      margin-top: 6px;
+    }
+
+    .step:last-child .step-connector { display: none; }
+
+    .step-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      padding-top: 8px;
+    }
+
+    .step-body {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .step-code {
+      background: rgba(11,26,46,.8);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-family: "SFMono-Regular", "Consolas", monospace;
+      font-size: .78rem;
+      color: var(--sky);
+      margin-top: 8px;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .step-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .step-tag {
+      font-size: .72rem;
+      background: rgba(56,189,248,.1);
+      border: 1px solid rgba(56,189,248,.2);
+      border-radius: 4px;
+      padding: 2px 8px;
+      color: var(--sky);
+    }
+
+    /* ============================================================
+       Architecture diagram — pure CSS
+    ============================================================ */
+    .arch-wrapper {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .arch-diagram {
+      min-width: 700px;
+      padding: 32px 0;
+    }
+
+    /* Row helpers */
+    .arch-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .arch-row-center {
+      justify-content: center;
+    }
+
+    .arch-row-spread {
+      justify-content: center;
+      gap: 32px;
+    }
+
+    /* Box */
+    .arch-box {
+      background: var(--navy-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-box.primary {
+      border-color: rgba(14,158,142,.5);
+      background: linear-gradient(135deg, rgba(14,158,142,.12), rgba(21,45,74,.7));
+    }
+
+    .arch-box.accent-box {
+      border-color: rgba(56,189,248,.4);
+      background: rgba(56,189,248,.07);
+    }
+
+    .arch-box.results-box {
+      border-color: rgba(34,211,161,.4);
+      background: rgba(34,211,161,.07);
+    }
+
+    .arch-box-title {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .arch-box-sub {
+      font-size: .72rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .arch-box-sub .hi { color: var(--teal-light); font-weight: 600; }
+
+    /* Arrows */
+    .arch-arrow-h {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+    }
+
+    .arch-arrow-h::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal-dim), var(--teal-light));
+    }
+
+    .arch-arrow-h::after {
+      content: "▶";
+      font-size: .65rem;
+      color: var(--teal-light);
+      margin-left: -2px;
+    }
+
+    .arch-arrow-h.bidir::before { background: linear-gradient(90deg, var(--sky-dim), var(--sky)); }
+    .arch-arrow-h.bidir::after { color: var(--sky); }
+
+    .arch-arrow-bidir-label {
+      font-size: .7rem;
+      color: var(--text-dim);
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    .arch-arrow-v {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 36px;
+    }
+
+    .arch-arrow-v::before {
+      content: "";
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal-light), var(--teal-dim));
+    }
+
+    .arch-arrow-v::after {
+      content: "▼";
+      font-size: .65rem;
+      color: var(--teal-light);
+      margin-top: -2px;
+    }
+
+    .arch-researcher {
+      font-size: .82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .arch-researcher strong {
+      color: var(--text);
+    }
+
+    .arch-section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .arch-section-divider::before,
+    .arch-section-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .arch-section-divider-label {
+      font-size: .7rem;
+      color: var(--text-dim);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       Tech specs table
+    ============================================================ */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .85rem;
+    }
+
+    .specs-table th, .specs-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .specs-table thead tr {
+      background: rgba(14,158,142,.15);
+    }
+
+    .specs-table thead th {
+      color: var(--teal-light);
+      font-size: .78rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .specs-table tbody tr:nth-child(even) {
+      background: rgba(255,255,255,.02);
+    }
+
+    .specs-table tbody tr:hover {
+      background: rgba(14,158,142,.06);
+    }
+
+    .specs-table td:first-child {
+      color: var(--text);
+      font-weight: 600;
+      white-space: nowrap;
+      width: 200px;
+    }
+
+    .specs-table td:last-child {
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       Honesty / Validation note
+    ============================================================ */
+    .validity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .validity-card {
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+
+    .validity-card.real {
+      background: rgba(34,211,161,.07);
+      border: 1px solid rgba(34,211,161,.25);
+    }
+
+    .validity-card.surrogate {
+      background: rgba(245,158,11,.07);
+      border: 1px solid rgba(245,158,11,.25);
+    }
+
+    .validity-card.guard {
+      background: rgba(56,189,248,.07);
+      border: 1px solid rgba(56,189,248,.25);
+    }
+
+    .validity-card.biology {
+      background: rgba(167,139,250,.07);
+      border: 1px solid rgba(167,139,250,.25);
+    }
+
+    .validity-card-badge {
+      display: inline-block;
+      font-size: .67rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 800;
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+
+    .validity-card.real .validity-card-badge    { background: rgba(34,211,161,.2);  color: var(--green); }
+    .validity-card.surrogate .validity-card-badge{ background: rgba(245,158,11,.2); color: var(--accent); }
+    .validity-card.guard .validity-card-badge   { background: rgba(56,189,248,.2);  color: var(--sky); }
+    .validity-card.biology .validity-card-badge { background: rgba(167,139,250,.2); color: #c4b5fd; }
+
+    .validity-card h4 {
+      color: var(--text);
+      margin-bottom: 8px;
+      font-size: .87rem;
+    }
+
+    .validity-card p {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .validity-bottom-note {
+      background: linear-gradient(135deg, rgba(14,158,142,.1), rgba(21,45,74,.5));
+      border: 1px solid rgba(14,158,142,.3);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      font-size: .88rem;
+      color: var(--text-muted);
+    }
+
+    .validity-bottom-note strong { color: var(--teal-light); }
+
+    /* ============================================================
+       Footer
+    ============================================================ */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+      font-size: .82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-brand span { color: var(--teal-light); }
+
+    .footer-access {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 12px;
+      color: var(--sky);
+      font-size: .8rem;
+      font-family: "SFMono-Regular", monospace;
+    }
+
+    .footer-link::before { content: "🔗"; font-size: .75rem; }
+
+    .footer-note {
+      color: var(--text-dim);
+      width: 100%;
+      font-size: .78rem;
+    }
+
+    /* ============================================================
+       Responsive
+    ============================================================ */
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; }
+      .validity-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 40px 1fr; gap: 12px; }
+      .arch-diagram { min-width: 520px; }
+      .arch-row-spread { gap: 16px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .hero { padding: 60px 0 48px; }
+      .section { padding: 48px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-meta { gap: 8px; }
+      .hero-chip { font-size: .72rem; padding: 4px 10px; }
+      .specs-table td:first-child { white-space: normal; width: auto; }
+    }
+
+    /* ============================================================
+       Utility
+    ============================================================ */
+    .text-center { text-align: center; }
+    .mt-4 { margin-top: 4px; }
+    .mt-8 { margin-top: 8px; }
+    .mb-8 { margin-bottom: 8px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* Nav (print hide) */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,26,46,.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+    }
+
+    .top-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .top-nav-brand {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--teal-light);
+      white-space: nowrap;
+    }
+
+    .top-nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .top-nav-links a {
+      font-size: .78rem;
+      color: var(--text-muted);
+      transition: color .15s;
+    }
+
+    .top-nav-links a:hover { color: var(--teal-light); text-decoration: none; }
+
+    @media print {
+      .top-nav { display: none; }
+      .hero { padding-top: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .top-nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav class="top-nav" role="navigation" aria-label="페이지 네비게이션">
+  <div class="container top-nav-inner">
+    <span class="top-nav-brand">SSTR2 AI Co-Scientist</span>
+    <ul class="top-nav-links">
+      <li><a href="#intro">개요</a></li>
+      <li><a href="#features">핵심 기능</a></li>
+      <li><a href="#howto">사용법</a></li>
+      <li><a href="#architecture">아키텍처</a></li>
+      <li><a href="#specs">Tech Specs</a></li>
+      <li><a href="#validity">과학적 검증</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     PANEL 1 — HERO
+============================================================ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+
+    <div class="hero-badge" aria-label="시스템 상태: 운영 중">
+      SSTR2-Targeted Radiopharmaceutical Screening
+    </div>
+
+    <h1 class="hero-title" id="hero-title">
+      <span class="accent">SSTR2</span> AI Co-Scientist
+    </h1>
+
+    <p class="hero-subtitle-en">
+      Autonomous Radiopharmaceutical Peptide Screening Platform
+    </p>
+
+    <p class="hero-tagline">
+      "Real physics. Real AI agents. Real candidates."
+    </p>
+
+    <div class="hero-meta" role="list" aria-label="플랫폼 주요 특징">
+      <div class="hero-chip" role="listitem">
+        <span class="icon" aria-hidden="true">🤖</span>
+        3 LLM Agents (Planner · Critic · Reporter)
+      </div>
+      <div class="hero-chip" role="listitem">
+        <span class="icon" aria-hidden="true">⚗️</span>
+        PyRosetta FlexPepDock · 실제 물리 기반 ΔG
+      </div>
+      <div class="hero-chip" role="listitem">
+        <span class="icon" aria-hidden="true">🎯</span>
+        SSTR1/3/4/5 Off-target 스크리닝
+      </div>
+      <div class="hero-chip" role="listitem">
+        <span class="icon" aria-hidden="true">⚡</span>
+        4 × NVIDIA H100 NVL · Qwen3-32B vLLM
+      </div>
+      <div class="hero-chip" role="listitem">
+        <span class="icon" aria-hidden="true">🖥️</span>
+        React 19 · Mol* 3D 뷰어 · 실시간 대시보드
+      </div>
+    </div>
+
+    <div class="hero-peptide" role="figure" aria-label="SST-14 펩타이드 서열 정보">
+      <div class="hero-peptide-label">SST-14 기준 서열 (14 잔기 환형 펩타이드)</div>
+      <div class="peptide-seq" aria-label="서열: AG-CYS-KN-FWKT-FTS-CYS">
+        A G <span class="cys" title="Cys3 — disulfide anchor">C</span> K N
+        <span class="fwkt" title="FWKT pharmacophore — 변이 금지 구간">F W K T</span>
+        F T S <span class="cys" title="Cys14 — disulfide anchor">C</span>
+      </div>
+      <div class="peptide-note">
+        <span style="color:var(--accent); font-weight:700;">C</span> = Cys3–Cys14 이황화결합 (구조 고정) &nbsp;|&nbsp;
+        <span style="color:var(--teal-light); font-weight:700;">FWKT</span> = Pharmacophore (변이 불가 구간) &nbsp;|&nbsp;
+        나머지 잔기 = 변이 탐색 대상
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 2 — INTRO / Who is it for
+============================================================ -->
+<section class="section" id="intro" aria-labelledby="intro-title">
+  <div class="container">
+    <div class="section-label">플랫폼 소개</div>
+    <h2 class="section-title" id="intro-title">무엇을 하는 시스템인가?</h2>
+
+    <div class="intro-grid">
+      <div>
+        <p class="intro-body">
+          SSTR2 AI Co-Scientist는 자율형 에이전트 기반 신약 후보 발굴 플랫폼입니다.
+          모체 소마토스타틴 펩타이드 <strong style="color:var(--text)">SST-14
+          (AGCKNFFWKTFTSC, Cys3–Cys14 이황화결합을 가진 14잔기 환형 펩타이드)</strong>의 변이체를
+          스크리닝하여 <strong style="color:var(--text)">SSTR2 (소마토스타틴 수용체 2형)</strong>에
+          더 강하게 결합하면서, 혈중 반감기가 길고 근연 off-target(SSTR1/3/4/5)에는 선택적인
+          후보물질을 탐색합니다.
+        </p>
+        <br />
+        <p class="intro-body">
+          Planner · Critic · Reporter 3종의 로컬 LLM 에이전트가 폐쇄형 자기개선 루프를
+          구동하며, <strong style="color:var(--text)">PyRosetta FlexPepDock</strong>을 통한
+          실제 전원자 분자역학 도킹으로 결합 에너지 ΔG를 산출합니다. 모든 과정은
+          실시간 웹 대시보드를 통해 투명하게 모니터링됩니다.
+        </p>
+        <br />
+        <p class="intro-body">
+          <strong style="color:var(--teal-light)">주요 대상 연구자:</strong>
+          방사성의약품 · 펩타이드 치료제 연구팀 (SSTR2-targeted PRRT / DOTATATE 계열 연구),
+          조기 인-실리코 스크리닝 주기 단축을 원하는 팀, 과학적 엄밀성과 감사 추적성을
+          포기하지 않는 연구자.
+        </p>
+      </div>
+
+      <div class="intro-pills" role="list" aria-label="핵심 가치 요약">
+        <div class="intro-pill" role="listitem">
+          <div class="intro-pill-icon" aria-hidden="true">🔬</div>
+          <div class="intro-pill-text">
+            <strong>물리 기반 점수 — 추측 없음</strong>
+            <span>ΔG는 PyRosetta InterfaceAnalyzerMover로 직접 계산. 가중합 휴리스틱이 아닌 실제 분자역학.</span>
+          </div>
+        </div>
+        <div class="intro-pill" role="listitem">
+          <div class="intro-pill-icon" aria-hidden="true">🧠</div>
+          <div class="intro-pill-text">
+            <strong>로컬 LLM — 외부 API 의존 없음</strong>
+            <span>Qwen3-32B를 vLLM으로 로컬 서빙 (포트 8000, OpenAI 호환). 데이터 유출 없음.</span>
+          </div>
+        </div>
+        <div class="intro-pill" role="listitem">
+          <div class="intro-pill-icon" aria-hidden="true">🎛️</div>
+          <div class="intro-pill-text">
+            <strong>완전 감사 가능한 루프</strong>
+            <span>매 이터레이션 Planner 목표, Critic 진단, Reporter 노트북이 기록되어 재현 가능.</span>
+          </div>
+        </div>
+        <div class="intro-pill" role="listitem">
+          <div class="intro-pill-icon" aria-hidden="true">🛡️</div>
+          <div class="intro-pill-text">
+            <strong>반(反)환각 가드 레이어</strong>
+            <span>pharmacology_guards.py가 문헌값·유효 범위·부호 규약을 강제하고 신뢰도 등급을 태그.</span>
+          </div>
+        </div>
+        <div class="intro-pill" role="listitem">
+          <div class="intro-pill-icon" aria-hidden="true">📊</div>
+          <div class="intro-pill-text">
+            <strong>다목적 파레토 최적화</strong>
+            <span>ΔG 40% · 선택성 25% · 안정성 20% · ADMET 15% — 단일 지표 과최적화 없음.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 3 — KEY FEATURES
+============================================================ -->
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-label">핵심 기능</div>
+    <h2 class="section-title" id="features-title">11가지 핵심 기능</h2>
+    <p class="section-subtitle">
+      자율 루프부터 물리 도킹, Pareto 최적화, 반(反)환각 가드까지 —
+      전체 스크리닝 파이프라인을 하나의 시스템으로.
+    </p>
+
+    <div class="features-grid" role="list">
+
+      <!-- Feature 1 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f1-name">
+        <span class="feature-card-num" aria-hidden="true">01</span>
+        <span class="feature-icon" aria-hidden="true">🔄</span>
+        <h3 class="feature-name" id="f1-name">Agentic AI Discovery Loop</h3>
+        <p class="feature-benefit">Planner · Critic · Reporter — 지치지 않는 AI 연구자가 루프를 구동합니다.</p>
+        <div class="feature-how">
+          3개 LLM 에이전트가 N-이터레이션 루프를 주도.
+          <span class="hl">Planner</span>가 목표·목적 모드(auto / ddg_only / ddg_plus_constraints)를 설정하고,
+          <span class="hl">Scientist Critic</span>은 실패를 진단해 라운드당 최대 2개의 파라미터 변경을 제안(adaptive gating),
+          <span class="hl">Reporter</span>는 이터레이션 노트북·랭킹·PyMOL 렌더 스크립트를 작성합니다.
+          모든 에이전트는 <span class="hl">Qwen3-32B (vLLM)</span>으로 로컬 서빙 — 외부 API 의존 없음.
+        </div>
+      </article>
+
+      <!-- Feature 2 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f2-name">
+        <span class="feature-card-num" aria-hidden="true">02</span>
+        <span class="feature-icon" aria-hidden="true">⚗️</span>
+        <h3 class="feature-name" id="f2-name">Physics-Based Docking (PyRosetta FlexPepDock ΔG)</h3>
+        <p class="feature-benefit">결합 점수는 추측이 아닌 진짜 전원자 분자역학에서 나옵니다.</p>
+        <div class="feature-how">
+          각 후보 복합체를 <span class="hl">PyRosetta FlexPepDock</span>으로 정제 후
+          <span class="hl">InterfaceAnalyzerMover</span>로 계면 결합 에너지 ΔG 계산
+          (ΔG = E(complex) − E(receptor) − E(peptide), kcal/mol / Rosetta Energy Units).
+          입체 충돌 점수(fa_rep)도 함께 보고.
+          게이트: <span class="metric">ΔG ≤ −5.0 kcal/mol</span>, 충돌 ≤ 10 REU.
+        </div>
+      </article>
+
+      <!-- Feature 3 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f3-name">
+        <span class="feature-card-num" aria-hidden="true">03</span>
+        <span class="feature-icon" aria-hidden="true">🎯</span>
+        <h3 class="feature-name" id="f3-name">Multi-Objective Screening</h3>
+        <p class="feature-benefit">ΔG · 반감기 · 선택성 · ADMET — 4가지 목표를 동시에 최적화합니다.</p>
+        <div class="feature-how">
+          비용 계층형 목적 스택(<span class="hl">multiobjective.py</span>)이
+          결합 ΔG, 서열 기반 반감기 추정, SSTR2 선택성 마진,
+          ADMET 합리성 대리지표(Instability Index · GRAVY · Boman index · pI)를 결합.
+          기본 목적 가중치:
+          <span class="metric">ΔG 40%</span> ·
+          <span class="metric">선택성 25%</span> ·
+          <span class="metric">안정성/반감기 20%</span> ·
+          <span class="metric">ADMET 15%</span>.
+        </div>
+      </article>
+
+      <!-- Feature 4 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f4-name">
+        <span class="feature-card-num" aria-hidden="true">04</span>
+        <span class="feature-icon" aria-hidden="true">🔒</span>
+        <h3 class="feature-name" id="f4-name">SSTR2 Selectivity Off-Target Screening</h3>
+        <p class="feature-benefit">SSTR1/3/4/5 4형제 수용체 대상 실제 도킹으로 선택성을 증명합니다.</p>
+        <div class="feature-how">
+          상위 후보를 큐레이션된 단일 체인 <span class="hl">SSTR1, SSTR3, SSTR4, SSTR5</span>
+          수용체 구조(AlphaFold 유래, SSTR2 프레임 사전 정렬)에 동일한 FlexPepDock + InterfaceAnalyzer 파이프라인으로 도킹.
+          <span class="metric">selectivity_margin = ΔG(worst off-target) − ΔG(SSTR2)</span>;
+          양수 = SSTR2 특이적.
+          게이트: <span class="metric">마진 ≥ 10 kcal/mol</span>.
+        </div>
+      </article>
+
+      <!-- Feature 5 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f5-name">
+        <span class="feature-card-num" aria-hidden="true">05</span>
+        <span class="feature-icon" aria-hidden="true">📈</span>
+        <h3 class="feature-name" id="f5-name">Bayesian Optimization + Thompson Sampling</h3>
+        <p class="feature-benefit">어디를 변이시킬지 학습하여 실험 예산을 더 스마트하게 씁니다.</p>
+        <div class="feature-how">
+          <span class="hl">Thompson-sampling 다중-무장 밴딧</span>이 변이 가능 위치별
+          Beta(α, β) 신념을 유지하고 매 라운드 집중 위치를 샘플링(<span class="hl">bandit.py</span>).
+          보완적인 <span class="hl">GP 베이지안 최적화기</span>(BoTorch qNEHVI 다목적 획득 함수,
+          ESM-2 또는 one-hot 임베딩)가 다음 변이를 제안(<span class="hl">bayesian_optimizer.py</span>).
+        </div>
+      </article>
+
+      <!-- Feature 6 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f6-name">
+        <span class="feature-card-num" aria-hidden="true">06</span>
+        <span class="feature-icon" aria-hidden="true">📊</span>
+        <h3 class="feature-name" id="f6-name">Multi-Trial Statistical Validation</h3>
+        <p class="feature-benefit">단일 도킹 노이즈를 제거 — 여러 시드로 재현성을 검증합니다.</p>
+        <div class="feature-how">
+          설정 가능한 <span class="hl">N-trial 검증</span>
+          (1=off · 3=빠름 · 5=표준 · <span class="metric">10=논문 수준</span>)이
+          최종 후보를 여러 시드로 재도킹하여 ΔG의 중앙값 / 평균 / <span class="hl">표준편차</span>를 보고하며
+          CV(변동계수)가 낮으면 조기 중단. 측정 1회 서열은 UI에서
+          <span class="warn">"재현성 미검증"</span>으로 표시.
+        </div>
+      </article>
+
+      <!-- Feature 7 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f7-name">
+        <span class="feature-card-num" aria-hidden="true">07</span>
+        <span class="feature-icon" aria-hidden="true">🔗</span>
+        <h3 class="feature-name" id="f7-name">Disulfide-Bond Preservation (Cys3–Cys14)</h3>
+        <p class="feature-benefit">SST-14를 약물로 만드는 환형 골격이 항상 보호됩니다.</p>
+        <div class="feature-how">
+          변이 엔진이 <span class="hl">Cys3 · Cys14</span> 앵커 위치를 변이 금지 구간으로 처리.
+          주변 위치만 변이하여 <span class="hl">Cys3–Cys14 이황화결합</span>을 보전.
+          UI에서 <span class="hl">"Disulfide Constraint"</span> 토글로 노출.
+        </div>
+      </article>
+
+      <!-- Feature 8 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f8-name">
+        <span class="feature-card-num" aria-hidden="true">08</span>
+        <span class="feature-icon" aria-hidden="true">🧩</span>
+        <h3 class="feature-name" id="f8-name">Pharmacophore (FWKT) Constraints</h3>
+        <p class="feature-benefit">SSTR2 인식 핵심 구간을 고정하여 변이체가 수용체 결합 능력을 유지합니다.</p>
+        <div class="feature-how">
+          <span class="hl">FWKT 약효단 (7~10번 위치)</span>은 불변으로 고정.
+          제안된 모든 변이체는 <span class="hl">_preserves_pharmacophore()</span>로 검사되며
+          위반 시 최대 3회 재시도 후 폴백
+          (<span class="hl">PHARMACOPHORE_RETRY_LIMIT = 3</span>).
+        </div>
+      </article>
+
+      <!-- Feature 9 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f9-name">
+        <span class="feature-card-num" aria-hidden="true">09</span>
+        <span class="feature-icon" aria-hidden="true">📐</span>
+        <h3 class="feature-name" id="f9-name">Pareto Ranking (NSGA-II)</h3>
+        <p class="feature-benefit">가중합 편향 없이 진정한 트레이드오프 경계면을 도출합니다.</p>
+        <div class="feature-how">
+          <span class="hl">NSGA-II 비지배 정렬 + 군집 거리</span>(pymoo)로
+          {ΔG, 안정성, 약물 가능성, 다양성} 목적 집합에 대해 후보를 랭킹
+          (<span class="hl">pareto_ranking.py</span>).
+          충돌 및 하드-위반 제약 조건 하에 기존 가중합 점수를 대체.
+        </div>
+      </article>
+
+      <!-- Feature 10 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f10-name">
+        <span class="feature-card-num" aria-hidden="true">10</span>
+        <span class="feature-icon" aria-hidden="true">🖥️</span>
+        <h3 class="feature-name" id="f10-name">Web Dashboard — 실시간 Mission Control</h3>
+        <p class="feature-benefit">AI 연구자의 작업을 실시간으로 감시하고, 3D 구조를 검사하며, 클릭 하나로 실험을 제어합니다.</p>
+        <div class="feature-how">
+          <span class="hl">React + Vite</span> 대시보드 ↔ <span class="hl">FastAPI</span> 백엔드.
+          실시간 에이전트 타임라인 · 루프 진행도 · 수렴 그래프 · ΔG 분포.
+          <span class="hl">Mol* (molstar 5.6.1)</span> 3D 뷰어 (복합체 / 카툰 / 볼앤스틱 / 표면 4종 모드)
+          + PyMOL 렌더 갤러리.
+          정렬 가능한 후보 테이블 (ΔG · Total Score · Clash · Final Score · 재현성 · 도구설명).
+          실험 파라미터 설정 및 Start / Stop 제어.
+        </div>
+      </article>
+
+      <!-- Feature 11 -->
+      <article class="feature-card" role="listitem" aria-labelledby="f11-name">
+        <span class="feature-card-num" aria-hidden="true">11</span>
+        <span class="feature-icon" aria-hidden="true">🛡️</span>
+        <h3 class="feature-name" id="f11-name">Pharmacology Guards — Anti-Hallucination</h3>
+        <p class="feature-benefit">AI가 날조한 약리학 수치가 결과에 포함되는 것을 전용 가드 레이어가 차단합니다.</p>
+        <div class="feature-how">
+          독립적인 선언형 가드 모듈(<span class="hl">pharmacology_guards.py</span>)이
+          문헌 근거 값·유효 수치 범위·부호 규약을 강제하고,
+          휴리스틱 함수를 정직하게 레이블링하며,
+          API 응답에 <span class="hl">신뢰도 등급</span>을 태그.
+          회귀 테스트 <span class="metric">39+개</span>로 백업.
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 4 — HOW TO USE
+============================================================ -->
+<section class="section" id="howto" aria-labelledby="howto-title">
+  <div class="container">
+    <div class="section-label">시작하기</div>
+    <h2 class="section-title" id="howto-title">8단계 사용법</h2>
+    <p class="section-subtitle">
+      서비스 기동부터 결과 해석까지 — 8단계로 첫 스크리닝 실행.
+    </p>
+
+    <div class="steps-container" role="list">
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">LLM 서버 기동 (Qwen3-32B on H100)</div>
+          <div class="step-body">
+            H100에서 vLLM으로 Qwen3-32B를 서빙합니다. 포트 8000에 OpenAI 호환 엔드포인트가 생성됩니다.
+          </div>
+          <div class="step-code">./_launch_vllm.sh
+# → "qwen3-32b" on :8000 (OpenAI-compatible)</div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">백엔드 API 기동 (FastAPI, 포트 8787)</div>
+          <div class="step-body">
+            conda 환경을 활성화하고 uvicorn으로 FastAPI 서버를 기동합니다.
+            Swagger UI: <code>http://localhost:8787/docs</code>
+          </div>
+          <div class="step-code">conda activate bio-tools
+uvicorn backend.main:app --host 0.0.0.0 --port 8787 --reload</div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">3</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">프론트엔드 대시보드 기동 (Vite, 포트 5173)</div>
+          <div class="step-body">
+            Node.js 패키지를 설치하고 개발 서버를 실행합니다.
+          </div>
+          <div class="step-code">cd frontend && npm install && npm run dev</div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">4</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">대시보드 열기</div>
+          <div class="step-body">
+            브라우저에서 <strong style="color:var(--sky)">http://localhost:5173</strong> 접속.
+            루트 경로는 메인 <strong style="color:var(--text)">Silo B (SST-14 돌연변이 시뮬레이션)</strong> 스크리닝 뷰로 자동 리다이렉트됩니다.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">localhost:5173</span>
+            <span class="step-tag">Silo B 스크리닝 뷰</span>
+            <span class="step-tag">Mol* 3D 뷰어</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">5</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">실험 구성 (Experiment Control 패널)</div>
+          <div class="step-body">
+            <strong style="color:var(--text)">Iterations (N)</strong> — Planner–Critic 루프 횟수<br/>
+            <strong style="color:var(--text)">LLM 모델/프로바이더</strong> — vLLM (Qwen3-32B) 자동 감지; Ollama 폴백 지원<br/>
+            <strong style="color:var(--text)">이터레이션당 후보 수</strong>, <strong style="color:var(--text)">목적 모드</strong> (Auto / ΔG Only / ΔG + Constraints)<br/>
+            <strong style="color:var(--text)">검증 트라이얼</strong> — Off / 3 Quick / 5 Std / 10 Paper<br/>
+            <strong style="color:var(--text)">기능 토글</strong> — Disulfide Constraint, Bandit Guidance, Convergence Detection, ADMET Gate, Cross-Run Dedup, SAR Analysis
+          </div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">6</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">Start 클릭 → 실시간 모니터링</div>
+          <div class="step-body">
+            에이전트 타임라인, 루프 진행률 바, 수렴 그래프, ΔG 분포가
+            실시간으로 업데이트됩니다.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">Agent Timeline</span>
+            <span class="step-tag">ΔG Distribution</span>
+            <span class="step-tag">Convergence Graph</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">7</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">결과 해석 (Candidate Table)</div>
+          <div class="step-body">
+            <strong style="color:var(--text)">ΔG (kcal/mol)</strong> — 결합 에너지; 더 음수 = 강한 결합 (게이트 ≤ −5.0)<br/>
+            <strong style="color:var(--text)">Clash (REU)</strong> — 입체 충돌; 낮을수록 우수 (amber > 5, red > 10; 게이트 ≤ 10)<br/>
+            <strong style="color:var(--text)">Total Score / Final Score</strong> — Rosetta 총 에너지 및 복합 랭킹 점수<br/>
+            <strong style="color:var(--text)">Half-life / ADMET</strong> — 랭킹 대리지표 (실제 PK 값 아님, 우선순위 참고용)<br/>
+            <strong style="color:var(--text)">Selectivity margin</strong> — SSTR2 대 최악 off-target; 양수 ≥ 10 = 선택적<br/>
+            <strong style="color:var(--text)">Reproducibility</strong> — 멀티-트라이얼 검증의 중앙값 ΔG 및 트라이얼 수
+          </div>
+        </div>
+      </div>
+
+      <div class="step" role="listitem">
+        <div class="step-num-wrap" aria-hidden="true">
+          <div class="step-num">8</div>
+          <div class="step-connector"></div>
+        </div>
+        <div>
+          <div class="step-title">상위 후보 검토 → 습식 실험 설계</div>
+          <div class="step-body">
+            Pareto 랭킹 최종 후보 목록과 Mol* 뷰어의 3D 구조를 검토합니다.
+            이 쇼트리스트가 이후 습식 실험(wet-lab) 평가의 입력이 됩니다.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">Pareto 프론트</span>
+            <span class="step-tag">Mol* 3D 검토</span>
+            <span class="step-tag">PyMOL 렌더 갤러리</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 5 — ARCHITECTURE
+============================================================ -->
+<section class="section" id="architecture" aria-labelledby="arch-title">
+  <div class="container">
+    <div class="section-label">시스템 아키텍처</div>
+    <h2 class="section-title" id="arch-title">Architecture at a Glance</h2>
+    <p class="section-subtitle">
+      UI에서 FastAPI 백엔드 → 에이전트 루프 → vLLM + PyRosetta → 결과까지의 데이터 흐름.
+    </p>
+
+    <div class="arch-wrapper" role="img" aria-label="시스템 아키텍처 다이어그램: Web Dashboard → FastAPI Backend → Agentic Loop → vLLM / PyRosetta → Results">
+      <div class="arch-diagram">
+
+        <!-- Researcher -->
+        <div style="text-align:center; margin-bottom:8px;">
+          <div style="display:inline-block; background:rgba(167,139,250,.12); border:1px solid rgba(167,139,250,.3); border-radius:8px; padding:8px 20px;">
+            <span style="font-size:.8rem; color:#c4b5fd; font-weight:700;">👩‍🔬 Researcher</span>
+            <span style="font-size:.72rem; color:var(--text-dim); margin-left:8px;">configure &amp; start run</span>
+          </div>
+        </div>
+
+        <!-- Arrow down -->
+        <div style="display:flex; justify-content:center; margin:4px 0;">
+          <div style="width:2px; height:28px; background:linear-gradient(to bottom, rgba(167,139,250,.5), var(--teal-light));"></div>
+        </div>
+
+        <!-- Tier 1: Dashboard + Backend -->
+        <div class="arch-row" style="justify-content:center; gap:0; flex-wrap:nowrap;">
+          <div class="arch-box primary" style="min-width:200px;">
+            <div class="arch-box-title">🖥️ Web Dashboard</div>
+            <div class="arch-box-sub">
+              React + Vite <span class="hi">:5173</span><br/>
+              Mol* 3D · Live Charts
+            </div>
+          </div>
+
+          <!-- Bidirectional arrow -->
+          <div style="display:flex; flex-direction:column; align-items:center; padding:0 6px; justify-content:center; gap:2px; min-width:80px;">
+            <div style="display:flex; align-items:center; gap:2px;">
+              <div style="font-size:.6rem; color:var(--sky);">◄</div>
+              <div style="width:44px; height:2px; background:linear-gradient(90deg, var(--sky-dim), var(--sky));"></div>
+            </div>
+            <div style="font-size:.66rem; color:var(--text-dim); text-align:center; line-height:1.3;">HTTP<br/>/api</div>
+            <div style="display:flex; align-items:center; gap:2px;">
+              <div style="width:44px; height:2px; background:linear-gradient(90deg, var(--sky-dim), var(--sky));"></div>
+              <div style="font-size:.6rem; color:var(--sky);">►</div>
+            </div>
+          </div>
+
+          <div class="arch-box accent-box" style="min-width:220px;">
+            <div class="arch-box-title">⚙️ Backend API (FastAPI)</div>
+            <div class="arch-box-sub">
+              <span class="hi">:8787</span> · 20+ routers<br/>
+              experiment · status · selectivity<br/>
+              admet · flexpepdock · validation …
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow down -->
+        <div style="display:flex; justify-content:center; margin:4px 0;">
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            <div style="width:2px; height:24px; background:linear-gradient(to bottom, var(--teal-light), var(--teal-dim));"></div>
+            <div style="font-size:.6rem; color:var(--teal-light); margin-top:-1px;">▼</div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-bottom:4px;">
+          <span style="font-size:.68rem; color:var(--text-dim); letter-spacing:.08em; text-transform:uppercase;">drives</span>
+        </div>
+
+        <!-- Tier 2: Agentic Loop -->
+        <div style="display:flex; justify-content:center;">
+          <div class="arch-box primary" style="min-width:500px; max-width:560px; border-color:rgba(14,158,142,.6);">
+            <div class="arch-box-title" style="font-size:.9rem; margin-bottom:6px;">🔄 Agentic Loop (N iterations)</div>
+            <div class="arch-box-sub" style="font-size:.78rem; line-height:1.7;">
+              <span class="hi">Planner</span> → mutate → dock → ΔG →
+              <span class="hi">Critic</span> → <span class="hi">Reporter</span>
+              <br/>
+              <span style="color:var(--text-dim);">(+ Thompson Bandit guidance · Bayesian Optimizer · Pharmacophore/Disulfide checks)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow down to split -->
+        <div style="display:flex; justify-content:center; margin:4px 0;">
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            <div style="width:2px; height:20px; background:linear-gradient(to bottom, var(--teal-dim), transparent);"></div>
+          </div>
+        </div>
+
+        <!-- Section divider label -->
+        <div style="display:flex; align-items:center; gap:10px; margin:4px 10%;">
+          <div style="flex:1; height:1px; background:var(--border);"></div>
+          <span style="font-size:.67rem; color:var(--text-dim); letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;">reasoning · physics engines</span>
+          <div style="flex:1; height:1px; background:var(--border);"></div>
+        </div>
+
+        <!-- Tier 3: vLLM + PyRosetta -->
+        <div class="arch-row arch-row-spread" style="margin-top:8px;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+            <div style="font-size:.68rem; color:var(--text-dim); letter-spacing:.06em; text-transform:uppercase;">reasoning</div>
+            <div style="width:2px; height:16px; background:linear-gradient(to bottom, var(--teal-dim), rgba(56,189,248,.6));"></div>
+            <div style="font-size:.6rem; color:var(--sky);">▼</div>
+          </div>
+          <div style="width:200px;"></div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+            <div style="font-size:.68rem; color:var(--text-dim); letter-spacing:.06em; text-transform:uppercase;">physics</div>
+            <div style="width:2px; height:16px; background:linear-gradient(to bottom, var(--teal-dim), rgba(34,211,161,.6));"></div>
+            <div style="font-size:.6rem; color:var(--green);">▼</div>
+          </div>
+        </div>
+
+        <div class="arch-row arch-row-spread" style="margin-top:0;">
+          <div class="arch-box accent-box" style="min-width:180px; max-width:220px; border-color:rgba(56,189,248,.4);">
+            <div class="arch-box-title">🤖 vLLM · Qwen3-32B</div>
+            <div class="arch-box-sub">
+              Planner / Critic / Reporter<br/>
+              <span class="hi">:8000</span> OpenAI-compatible<br/>
+              H100 NVL 전용 GPU
+            </div>
+          </div>
+
+          <div class="arch-box results-box" style="min-width:200px; max-width:240px; border-color:rgba(34,211,161,.4);">
+            <div class="arch-box-title">⚗️ PyRosetta FlexPepDock</div>
+            <div class="arch-box-sub">
+              ΔG + Clash (fa_rep)<br/>
+              Off-target SSTR1/3/4/5 도킹<br/>
+              InterfaceAnalyzerMover
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow to results -->
+        <div style="display:flex; justify-content:center; margin:12px 0 4px;">
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            <div style="width:2px; height:22px; background:linear-gradient(to bottom, rgba(34,211,161,.5), var(--green));"></div>
+            <div style="font-size:.6rem; color:var(--green);">▼</div>
+          </div>
+        </div>
+
+        <!-- Results box -->
+        <div style="display:flex; justify-content:center;">
+          <div class="arch-box results-box" style="min-width:500px; max-width:560px; border-color:rgba(34,211,161,.5);">
+            <div class="arch-box-title" style="color:var(--green); margin-bottom:4px;">✅ Results</div>
+            <div class="arch-box-sub" style="font-size:.78rem; line-height:1.7;">
+              Pareto-ranked candidates · JSON artifacts · PyMOL renders<br/>
+              Reproducibility stats · Selectivity margins<br/>
+              <span style="color:var(--text-dim);">→ 대시보드로 스트리밍 전송</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p style="font-size:.8rem; color:var(--text-muted); margin-top:16px; line-height:1.7;">
+      <strong style="color:var(--text)">요약:</strong>
+      연구자가 대시보드에서 실험을 구성하고 시작하면, FastAPI 백엔드가 에이전트 루프를 구동합니다.
+      <strong style="color:var(--teal-light)">Planner</strong>가 Thompson 밴딧 + 베이지안 최적화기의 안내를 받아 변이를 제안하고,
+      PyRosetta가 각 후보를 도킹하여 <strong style="color:var(--teal-light)">ΔG</strong>를 계산하며,
+      <strong style="color:var(--teal-light)">Critic</strong>이 결과를 분석하여 게이트를 조정하고,
+      <strong style="color:var(--teal-light)">Reporter</strong>가 모든 것을 기록합니다.
+      LLM 추론은 <strong style="color:var(--text)">vLLM·Qwen3-32B</strong>에서, 물리 계산은 <strong style="color:var(--text)">PyRosetta</strong>에서 실행됩니다.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 6 — TECH SPECS
+============================================================ -->
+<section class="section" id="specs" aria-labelledby="specs-title">
+  <div class="container">
+    <div class="section-label">기술 사양</div>
+    <h2 class="section-title" id="specs-title">Tech Specs</h2>
+    <p class="section-subtitle">전체 스택 구성 — LLM 에이전트부터 물리 엔진, 프론트엔드, 하드웨어까지.</p>
+
+    <div style="overflow-x:auto;">
+      <table class="specs-table" aria-label="기술 스택 사양 표">
+        <thead>
+          <tr>
+            <th scope="col">레이어</th>
+            <th scope="col">기술 / 세부 사항</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LLM 에이전트</td>
+            <td>
+              <code>Qwen3-32B</code>, <strong>vLLM</strong> 서빙 (OpenAI 호환 API, 포트 8000); Ollama 폴백 지원 (예: qwen3:8b, gemma3:1b)
+            </td>
+          </tr>
+          <tr>
+            <td>도킹 / 물리 엔진</td>
+            <td>
+              <strong>PyRosetta</strong> FlexPepDock + InterfaceAnalyzerMover (실제 전원자 ΔG)
+            </td>
+          </tr>
+          <tr>
+            <td>구조 예측 / QC</td>
+            <td>
+              <strong>ESMFold</strong> (pLDDT 구조 품질 게이팅)
+            </td>
+          </tr>
+          <tr>
+            <td>최적화</td>
+            <td>
+              Thompson-sampling 밴딧; 베이지안 최적화 (BoTorch qNEHVI GP); NSGA-II Pareto (pymoo)
+            </td>
+          </tr>
+          <tr>
+            <td>백엔드</td>
+            <td>
+              <strong>FastAPI</strong> + Uvicorn (포트 8787), 20+ 라우터 (experiment, status, selectivity, admet, flexpepdock, validation, …)
+            </td>
+          </tr>
+          <tr>
+            <td>프론트엔드</td>
+            <td>
+              <strong>React 19</strong> + TypeScript + Vite 7, React Router 7, Mol* (molstar 5.6.1), Tailwind-style UI
+            </td>
+          </tr>
+          <tr>
+            <td>3D 시각화</td>
+            <td>
+              <strong>Mol*</strong> 뷰어 (복합체 / 카툰 / 볼앤스틱 / 표면 4종 모드) + PyMOL 렌더 갤러리
+            </td>
+          </tr>
+          <tr>
+            <td>하드웨어</td>
+            <td>
+              <strong>4 × NVIDIA H100 NVL</strong> GPU (LLM 서빙 전용 H100; 물리 연산은 CPU/GPU)
+            </td>
+          </tr>
+          <tr>
+            <td>환경</td>
+            <td>
+              Python 3.12 (<code>bio-tools</code> conda 환경), Node.js 20+, PyRosetta 라이선스 설치
+            </td>
+          </tr>
+          <tr>
+            <td>테스트 커버리지</td>
+            <td>
+              pyrosetta_flow pytest 스위트 (<strong>118개 테스트</strong>, ~93% 커버리지);
+              프론트엔드 Vitest (<strong>32개 테스트</strong>);
+              약리학 가드 회귀 (<strong>39+ 테스트</strong>)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 7 — SCIENTIFIC VALIDITY NOTE
+============================================================ -->
+<section class="section" id="validity" aria-labelledby="validity-title">
+  <div class="container">
+    <div class="section-label">과학적 검증</div>
+    <h2 class="section-title" id="validity-title">정직하게 공개합니다 — Scientific Validity Note</h2>
+    <p class="section-subtitle">
+      AI 플랫폼이 무엇을 실측하고, 무엇을 추정하는지 명확히 구분합니다.
+      이 투명성이 플랫폼의 핵심 차별점입니다.
+    </p>
+
+    <div class="validity-grid" role="list">
+
+      <div class="validity-card real" role="listitem" aria-labelledby="v1-title">
+        <span class="validity-card-badge">실제 물리 측정값</span>
+        <h4 id="v1-title">결합 ΔG — 진짜 전원자 인터페이스 에너지</h4>
+        <p>
+          PyRosetta <strong>InterfaceAnalyzerMover</strong>가 FlexPepDock 정제 복합체에서 계산
+          (kcal/mol / Rosetta Energy Units). 실제 전원자 계면 에너지이지만
+          <strong>절대 친화도(Ki/Kd)가 아닌 상대 점수</strong>임을 명시합니다.
+        </p>
+      </div>
+
+      <div class="validity-card real" role="listitem" aria-labelledby="v2-title">
+        <span class="validity-card-badge">실제 물리 측정값</span>
+        <h4 id="v2-title">선택성 마진 — 실제 off-target 도킹 결과</h4>
+        <p>
+          SSTR1/3/4/5 대상 <strong>실제 도킹</strong>에서 나온 수치입니다.
+          동일한 FlexPepDock + InterfaceAnalyzer 엔진으로 계산되며,
+          양수 마진(≥ 10 kcal/mol)은 진짜 수용체 아형 분별 능력을 의미합니다.
+        </p>
+      </div>
+
+      <div class="validity-card surrogate" role="listitem" aria-labelledby="v3-title">
+        <span class="validity-card-badge">명시적 대리지표 (추정값)</span>
+        <h4 id="v3-title">반감기 · ADMET 점수</h4>
+        <p>
+          서열 기반 <strong>랭킹 대리지표</strong>이며 임상 PK 값이 아닙니다.
+          in-vitro 혈청 안정성 또는 투과성 분석으로 검증되지 않았습니다.
+          후보 <strong>우선순위 결정용</strong>이며 코드베이스에서도 그렇게 레이블링됩니다
+          (anti-hallucination 면책 조항이 <code>multiobjective.py</code>에 내장).
+        </p>
+      </div>
+
+      <div class="validity-card guard" role="listitem" aria-labelledby="v4-title">
+        <span class="validity-card-badge">환각 방지 가드</span>
+        <h4 id="v4-title">날조 수치 차단 — Pharmacology Guard Layer</h4>
+        <p>
+          전용 <strong>pharmacology guard 레이어</strong>가 문헌 값, 유효 수치 범위, 부호 규약을
+          강제하고 모든 결과에 <strong>신뢰도 등급</strong>을 태그합니다.
+          AI가 생성한 수치가 근거 없이 사실처럼 보이는 것을 방지합니다.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Biological sanity check -->
+    <div class="validity-card biology" role="note" aria-label="생물학적 건전성 검사" style="margin-bottom:20px;">
+      <span class="validity-card-badge">생물학적 건전성 검사</span>
+      <h4>SST-14 참조 복원 — 파이프라인이 진짜 수용체 아형 분별을 측정함을 확인</h4>
+      <p>
+        네이티브 <strong>SST-14는 범 작용제(pan-agonist)</strong>로 5종의 소마토스타틴 수용체 아형 모두에 결합합니다
+        — 즉 SSTR2 선택적이지 않습니다. 플랫폼의 선택성 스크린이 이를 정확히 재현합니다:
+        변이되지 않은 SST-14 참조는 SSTR2 선택성 마진이 거의 없음을 보여주며,
+        파이프라인이 실제 수용체 아형 분별을 측정하고 있음을 확인합니다.
+        후보물질은 변이가 결합을 진짜로 SSTR2 쪽으로 기울였을 때만 양수 선택성 마진을 획득합니다.
+      </p>
+    </div>
+
+    <!-- Bottom line -->
+    <div class="validity-bottom-note" role="note" aria-label="최종 요약">
+      <strong>결론:</strong>
+      이 플랫폼은 정직한 물리 기반 결합·선택성 수치로 <em>우선순위 결정을 가속화</em>하며,
+      휴리스틱 추정값을 투명하게 표시합니다. 습식 실험(wet-lab) 결정을 위한 입력으로 설계되었으며,
+      습식 실험을 대체하지 않습니다.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer role="contentinfo">
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span>SSTR2</span> AI Co-Scientist
+      </div>
+      <div style="font-size:.75rem; color:var(--text-dim); margin-top:4px;">
+        Autonomous Radiopharmaceutical Peptide Screening Platform
+      </div>
+    </div>
+
+    <div class="footer-access" aria-label="서비스 접속 주소">
+      <a class="footer-link" href="http://localhost:5173" target="_blank" rel="noopener noreferrer"
+         aria-label="대시보드: localhost:5173">
+        localhost:5173 — Dashboard
+      </a>
+      <a class="footer-link" href="http://localhost:8787/docs" target="_blank" rel="noopener noreferrer"
+         aria-label="API Swagger: localhost:8787">
+        localhost:8787 — API (Swagger)
+      </a>
+      <a class="footer-link" href="http://localhost:8000" target="_blank" rel="noopener noreferrer"
+         aria-label="vLLM LLM 서버: localhost:8000">
+        localhost:8000 — vLLM (Qwen3-32B)
+      </a>
+    </div>
+
+    <div class="footer-note">
+      SST-14 (AGCKNFFWKTFTSC) · Cys3–Cys14 disulfide · FWKT pharmacophore ·
+      PyRosetta FlexPepDock · NSGA-II Pareto · 4 × H100 NVL ·
+      환경: <code>bio-tools</code> conda · Python 3.12 · Node.js 20+
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

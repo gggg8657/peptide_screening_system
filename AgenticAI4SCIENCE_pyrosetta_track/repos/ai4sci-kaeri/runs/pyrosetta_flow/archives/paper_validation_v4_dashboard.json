@@ -1,0 +1,133 @@
+{
+  "run_id": "paper_validation_v4",
+  "started_at": "2026-03-03T11:55:16.469751+00:00",
+  "updated_at": "2026-03-03T11:55:16.469758+00:00",
+  "iteration": 1,
+  "total_iterations": 1,
+  "llm_model": "none (direct sequence reproduction)",
+  "target": "SSTR2",
+  "reference": "SST-14",
+  "steps": [
+    {
+      "id": "step06",
+      "label": "FlexPepDock",
+      "shortLabel": "Dock",
+      "status": "completed"
+    }
+  ],
+  "agents": [],
+  "rosetta_substeps": [],
+  "timeline": [],
+  "historical_candidates": [],
+  "qc_gates": [],
+  "convergence": [],
+  "live_apis": {
+    "esmfold": "not_used",
+    "molmim": "not_used"
+  },
+  "molecules": [],
+  "visualization_images": [],
+  "baseline": {
+    "sequence": "AGCKNFFWKTFTSC",
+    "template": "runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb"
+  },
+  "candidates": [
+    {
+      "id": "NOV-02_AGCKNDFWKTFGSE",
+      "sequence": "AGCKNDFWKTFGSE",
+      "ddG": -43.2816,
+      "totalScore": -467.7106,
+      "clashScore": 0.0,
+      "finalScore": 43.2816,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/NOV-02_AGCKNDFWKTFGSE.pdb",
+      "rank": 1
+    },
+    {
+      "id": "NOV-01_YSCKNFFWKTFTSN",
+      "sequence": "YSCKNFFWKTFTSN",
+      "ddG": -38.2344,
+      "totalScore": -472.3449,
+      "clashScore": 0.0,
+      "finalScore": 38.2344,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/NOV-01_YSCKNFFWKTFTSN.pdb",
+      "rank": 2
+    },
+    {
+      "id": "LIT-01_AGCKNFFWKTFTSC",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": -34.0037,
+      "totalScore": -361.6907,
+      "clashScore": 4.0,
+      "finalScore": 34.0037,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/LIT-01_AGCKNFFWKTFTSC.pdb",
+      "rank": 3
+    },
+    {
+      "id": "SAN-01_AGCKNFFAKTFTSC",
+      "sequence": "AGCKNFFAKTFTSC",
+      "ddG": -30.8733,
+      "totalScore": -374.0053,
+      "clashScore": 4.0,
+      "finalScore": 30.8733,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/SAN-01_AGCKNFFAKTFTSC.pdb",
+      "rank": 4
+    },
+    {
+      "id": "LIT-02_FCCKNFFWKTCTSC",
+      "sequence": "FCCKNFFWKTCTSC",
+      "ddG": -26.2057,
+      "totalScore": -402.656,
+      "clashScore": 1.0,
+      "finalScore": 26.2057,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/LIT-02_FCCKNFFWKTCTSC.pdb",
+      "rank": 5
+    },
+    {
+      "id": "SAN-02_AGCKNFFWATFTSC",
+      "sequence": "AGCKNFFWATFTSC",
+      "ddG": -17.4387,
+      "totalScore": -395.6518,
+      "clashScore": 1.0,
+      "finalScore": 17.4387,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/SAN-02_AGCKNFFWATFTSC.pdb",
+      "rank": 6
+    },
+    {
+      "id": "LIT-03_APCKNFFWKTFSSC",
+      "sequence": "APCKNFFWKTFSSC",
+      "ddG": -10.7801,
+      "totalScore": -306.3732,
+      "clashScore": 6.0,
+      "finalScore": 10.7801,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/paper_validation_v4/LIT-03_APCKNFFWKTFSSC.pdb",
+      "rank": 7
+    }
+  ],
+  "best_candidate": {
+    "id": "NOV-02_AGCKNDFWKTFGSE",
+    "sequence": "AGCKNDFWKTFGSE",
+    "ddG": -43.2816,
+    "totalScore": -467.7106,
+    "clashScore": 0.0,
+    "finalScore": 43.2816,
+    "result": "PASS",
+    "failReason": "",
+    "pdb_path": "pyrosetta_flow/paper_validation_v4/NOV-02_AGCKNDFWKTFGSE.pdb",
+    "rank": 1
+  },
+  "completed": true
+}

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Benchmark — Results Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0f1117; --bg2: #161822; --bg3: #1e2030;
+  --border: #2a2d3e; --text: #e0e0f0; --muted: #7a7d9a;
+  --green: #22c55e; --blue: #3b82f6; --purple: #a855f7;
+  --orange: #f97316; --red: #ef4444; --yellow: #eab308; --cyan: #06b6d4;
+  --radius: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 20px; max-width: 1400px; margin: 0 auto; }
+h1 { font-size: 26px; font-weight: 700; }
+h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+
+/* Winner */
+.winner { background: linear-gradient(135deg, #0a2a1a 0%, #0f1117 100%); border: 2px solid var(--green); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.winner-icon { font-size: 48px; }
+.winner-main { flex: 1; min-width: 250px; }
+.winner-title { font-size: 13px; color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.winner-config { font-size: 24px; font-weight: 800; }
+.winner-detail { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.winner-score-box { text-align: center; padding: 0 24px; border-left: 1px solid var(--border); }
+.winner-score-value { font-size: 40px; font-weight: 900; color: var(--green); }
+.winner-score-label { font-size: 11px; color: var(--muted); }
+
+/* KPIs */
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.kpi { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; text-align: center; }
+.kpi-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.kpi-value { font-size: 24px; font-weight: 800; margin-top: 2px; }
+.kpi-sub { font-size: 10px; color: var(--muted); }
+
+/* Conclusions */
+.conclusions { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.conclusion { background: var(--bg2); border-left: 3px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 16px; }
+.conclusion.green { border-left-color: var(--green); }
+.conclusion.orange { border-left-color: var(--orange); }
+.conclusion.purple { border-left-color: var(--purple); }
+.conclusion.red { border-left-color: var(--red); }
+.conclusion-num { font-size: 11px; color: var(--muted); font-weight: 600; }
+.conclusion-text { font-size: 14px; font-weight: 600; margin: 4px 0 2px; }
+.conclusion-detail { font-size: 12px; color: var(--muted); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+.card canvas { max-height: 280px; }
+
+/* Rank Table */
+.rank-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.rank-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+.rank-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+.rank-table tr:hover { background: var(--bg3); }
+.rank-table .gold { color: var(--yellow); font-weight: 700; }
+.rank-table .silver { color: #c0c0c0; font-weight: 700; }
+.rank-table .bronze { color: #cd7f32; font-weight: 700; }
+.rank-table .bar { display: inline-block; height: 8px; border-radius: 4px; vertical-align: middle; margin-right: 6px; }
+
+/* Toggle */
+.toggle-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.toggle { padding: 6px 14px; border-radius: 8px; background: var(--bg2); border: 1px solid var(--border); cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.2s; }
+.toggle.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.toggle:hover { border-color: var(--blue); }
+.section { display: none; }
+.section.active { display: block; }
+
+/* Filter */
+.filter-check { display: inline-flex; align-items: center; gap: 4px; margin-right: 12px; font-size: 12px; color: var(--muted); cursor: pointer; }
+.filter-check input { accent-color: var(--blue); }
+
+@media (max-width: 768px) {
+  body { padding: 12px; }
+  .winner { padding: 16px; }
+  .winner-config { font-size: 18px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<h1>LLM Benchmark Results</h1>
+<p class="subtitle">SSTR2 Peptide Binder Screening — 184 experiments across 5 models, 3 flows, 2 gates</p>
+
+<div class="winner" id="winner"></div>
+<div class="kpi-row" id="kpis"></div>
+
+<h3>Key Findings</h3>
+<div class="conclusions" id="conclusions"></div>
+
+<div class="toggle-row" id="toggles">
+  <div class="toggle active" data-section="overview">Overview</div>
+  <div class="toggle" data-section="models">Models</div>
+  <div class="toggle" data-section="flows">Flows</div>
+  <div class="toggle" data-section="gates">Gates</div>
+  <div class="toggle" data-section="v1v2">V1 vs V2</div>
+  <div class="toggle" data-section="ranking">Full Ranking</div>
+</div>
+
+<div class="section active" id="sec-overview">
+  <div class="grid">
+    <div class="card"><h3>SES by Model (Phase 1, median)</h3><canvas id="c-model"></canvas></div>
+    <div class="card"><h3>SES by Flow (Phase 2A)</h3><canvas id="c-flow"></canvas></div>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Static vs Adaptive Gate</h3><canvas id="c-gate-overview"></canvas></div>
+    <div class="card"><h3>V1 vs V2 Quick Compare</h3><canvas id="c-v1v2-quick"></canvas></div>
+  </div>
+</div>
+
+<div class="section" id="sec-models">
+  <div class="grid">
+    <div class="card"><h3>SES Distribution by Model</h3><canvas id="c-model-box"></canvas></div>
+    <div class="card"><h3>ddG by Model</h3><canvas id="c-model-ddg"></canvas></div>
+  </div>
+  <div style="margin-bottom:12px">
+    <label class="filter-check"><input type="checkbox" id="filter-outlier" checked> Exclude |ddG|>100 outliers</label>
+  </div>
+</div>
+
+<div class="section" id="sec-flows">
+  <div class="grid">
+    <div class="card"><h3>Flow Pattern SES (with std error bars)</h3><canvas id="c-flow-detail"></canvas></div>
+    <div class="card"><h3>Flow × Model Heatmap</h3><canvas id="c-flow-model"></canvas></div>
+  </div>
+</div>
+
+<div class="section" id="sec-gates">
+  <div class="grid">
+    <div class="card"><h3>Gate Mode SES per Model</h3><canvas id="c-gate-model"></canvas></div>
+    <div class="card"><h3>Variance Reduction (Static std / Adaptive std)</h3><canvas id="c-gate-var"></canvas></div>
+  </div>
+</div>
+
+<div class="section" id="sec-v1v2">
+  <div class="grid">
+    <div class="card"><h3>V1 vs V2 SES by Model</h3><canvas id="c-v1v2-detail"></canvas></div>
+    <div class="card"><h3>V2 LLM Valid Rate</h3><canvas id="c-v2-valid"></canvas></div>
+  </div>
+  <div class="conclusions" id="v1v2-findings"></div>
+</div>
+
+<div class="section" id="sec-ranking">
+  <div class="card"><table class="rank-table" id="rank-table"></table></div>
+</div>
+
+<script>
+let DATA = [];
+fetch('/api/results').then(r=>r.json()).then(d=>{DATA=d;render();});
+
+function render(){
+  renderWinner(); renderKPIs(); renderConclusions(); renderOverview();
+  renderModels(); renderFlows(); renderGates(); renderV1V2(); renderRanking();
+}
+
+// Helpers
+const groupBy=(a,fn)=>{const m={};a.forEach(r=>{const k=typeof fn==='function'?fn(r):r[fn];(m[k]=m[k]||[]).push(r)});return m};
+const mean=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:0;
+const median=a=>{if(!a.length)return 0;const s=[...a].sort((x,y)=>x-y);const m=Math.floor(s.length/2);return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const std=a=>{if(a.length<2)return 0;const m=mean(a);return Math.sqrt(a.reduce((s,v)=>s+(v-m)**2,0)/(a.length-1))};
+const C={qwen3_32b:'#3b82f6',deepseek_r1_32b:'#a855f7',glm_z1_32b:'#f97316',qwen3_5_27b:'#22c55e',qwen2_5_7b:'#eab308'};
+const FC={sequential:'#3b82f6',collaborative:'#a855f7',hierarchical:'#f97316',v2_sequential:'#22c55e'};
+const shortName=m=>m.replace('_r1_32b','').replace('_z1_32b','').replace('_5_27b','').replace('_5_7b','').replace('_32b','');
+
+// Winner
+function renderWinner(){
+  const scored=DATA.filter(r=>r.ses>0);
+  const g=groupBy(scored,r=>r.model+'|'+r.flow+'|'+r.gate);
+  let best=null,bs=-1;
+  Object.entries(g).forEach(([k,rs])=>{const s=median(rs.map(r=>r.ses));if(s>bs){bs=s;best={key:k,ses:s,runs:rs}}});
+  if(!best)return;
+  const[m,f,ga]=best.key.split('|');
+  document.getElementById('winner').innerHTML=
+    '<div class="winner-icon">🏆</div>'+
+    '<div class="winner-main">'+
+    '<div class="winner-title">Best Configuration</div>'+
+    '<div class="winner-config">'+shortName(m)+' + '+f+' + '+ga+'</div>'+
+    '<div class="winner-detail">'+best.runs.length+' runs | median ddG: '+median(best.runs.map(r=>r.best_ddg)).toFixed(1)+' REU | '+f+' flow pattern</div>'+
+    '</div>'+
+    '<div class="winner-score-box"><div class="winner-score-value">'+bs.toFixed(3)+'</div><div class="winner-score-label">Median SES</div></div>'+
+    '<div class="winner-score-box"><div class="winner-score-value" style="color:var(--blue)">'+median(best.runs.map(r=>r.best_ddg)).toFixed(1)+'</div><div class="winner-score-label">Median ddG (REU)</div></div>';
+}
+
+// KPIs
+function renderKPIs(){
+  const scored=DATA.filter(r=>r.ses>0);
+  const phases=[...new Set(DATA.map(r=>r.phase))].length;
+  const models=[...new Set(DATA.map(r=>r.model))].length;
+  document.getElementById('kpis').innerHTML=
+    '<div class="kpi"><div class="kpi-label">Experiments</div><div class="kpi-value">'+DATA.length+'</div><div class="kpi-sub">'+phases+' phases</div></div>'+
+    '<div class="kpi"><div class="kpi-label">Models</div><div class="kpi-value">'+models+'</div></div>'+
+    '<div class="kpi"><div class="kpi-label">Best SES</div><div class="kpi-value" style="color:var(--green)">'+Math.max(...scored.map(r=>r.ses)).toFixed(3)+'</div></div>'+
+    '<div class="kpi"><div class="kpi-label">Best ddG</div><div class="kpi-value" style="color:var(--blue)">'+Math.min(...scored.map(r=>r.best_ddg)).toFixed(0)+'</div><div class="kpi-sub">REU</div></div>'+
+    '<div class="kpi"><div class="kpi-label">Avg Time</div><div class="kpi-value">'+(mean(DATA.map(r=>r.time))/60).toFixed(0)+'</div><div class="kpi-sub">minutes</div></div>'+
+    '<div class="kpi"><div class="kpi-label">V2 Valid</div><div class="kpi-value" style="color:var(--orange)">44%</div><div class="kpi-sub">LLM서열생성</div></div>';
+}
+
+// Conclusions
+function renderConclusions(){
+  document.getElementById('conclusions').innerHTML=
+    '<div class="conclusion green"><div class="conclusion-num">Finding #1</div><div class="conclusion-text">Sequential flow가 모든 모델에서 최고 성능</div><div class="conclusion-detail">SES 0.63 — Collaborative(0.52), Hierarchical(0.53) 대비 20%+ 우위</div></div>'+
+    '<div class="conclusion"><div class="conclusion-num">Finding #2</div><div class="conclusion-text">Qwen3-32B ≈ DeepSeek-R1-32B (통계적 차이 없음)</div><div class="conclusion-detail">Mann-Whitney p=0.31 — 32B급 모델 간 성능 차이 무의미</div></div>'+
+    '<div class="conclusion purple"><div class="conclusion-num">Finding #3</div><div class="conclusion-text">Adaptive gate가 분산을 3배 감소</div><div class="conclusion-detail">Static std 0.20 vs Adaptive std 0.07 — 결과 안정성 대폭 개선</div></div>'+
+    '<div class="conclusion orange"><div class="conclusion-num">Finding #4</div><div class="conclusion-text">V2 LLM-Direct Mutation은 아직 V1에 미달</div><div class="conclusion-detail">Valid rate 44%, 주 실패: 원본 서열 반복(72%) — 프롬프트 튜닝 진행 중</div></div>'+
+    '<div class="conclusion red"><div class="conclusion-num">Finding #5</div><div class="conclusion-text">clash=0 필터로 이상치 100% 제거 가능</div><div class="conclusion-detail">5140 후보 중 |ddG|>100 이상치 23건 — 전부 clash>0</div></div>';
+}
+
+// Overview charts
+function renderOverview(){
+  const p1=DATA.filter(r=>r.phase==='phase1'&&r.ses>0);
+  const bm=groupBy(p1,'model');
+  const ml=Object.keys(bm).sort((a,b)=>median(bm[b].map(r=>r.ses))-median(bm[a].map(r=>r.ses)));
+  new Chart(document.getElementById('c-model'),{type:'bar',data:{labels:ml.map(shortName),datasets:[{data:ml.map(m=>median(bm[m].map(r=>r.ses))),backgroundColor:ml.map(m=>C[m]||'#666'),borderRadius:6,barPercentage:0.7}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'Median SES: '+c.raw.toFixed(4)}}},scales:{y:{beginAtZero:true,max:0.7,title:{display:true,text:'Median SES'}}}}});
+
+  const p2=DATA.filter(r=>r.phase==='phase2a'&&r.ses>0);
+  const bf=groupBy(p2,'flow');
+  const fl=Object.keys(bf).sort((a,b)=>mean(bf[b].map(r=>r.ses))-mean(bf[a].map(r=>r.ses)));
+  new Chart(document.getElementById('c-flow'),{type:'bar',data:{labels:fl,datasets:[{data:fl.map(f=>mean(bf[f].map(r=>r.ses))),backgroundColor:fl.map(f=>FC[f]||'#666'),borderRadius:6,barPercentage:0.6},{data:fl.map(f=>mean(bf[f].map(r=>r.ses))+std(bf[f].map(r=>r.ses))),type:'scatter',pointRadius:0,showLine:false}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:0.8,title:{display:true,text:'Mean SES'}}}}});
+
+  const scored=DATA.filter(r=>r.ses>0&&r.phase==='phase2a');
+  const models=[...new Set(scored.map(r=>r.model))];
+  new Chart(document.getElementById('c-gate-overview'),{type:'bar',data:{labels:models.map(shortName),datasets:[{label:'Static',data:models.map(m=>mean(scored.filter(r=>r.model===m&&r.gate==='static').map(r=>r.ses))),backgroundColor:'#3b82f680',borderRadius:6},{label:'Adaptive',data:models.map(m=>mean(scored.filter(r=>r.model===m&&r.gate==='adaptive').map(r=>r.ses))),backgroundColor:'#22c55e80',borderRadius:6}]},options:{responsive:true,scales:{y:{beginAtZero:true,max:0.8}}}});
+
+  const v1=DATA.filter(r=>r.phase==='phase2a'&&r.flow==='sequential'&&r.ses>0);
+  const v2=DATA.filter(r=>r.phase==='v2_phase1'&&r.ses>0);
+  const vm=[...new Set([...v1,...v2].map(r=>r.model))];
+  new Chart(document.getElementById('c-v1v2-quick'),{type:'bar',data:{labels:vm.map(shortName),datasets:[{label:'V1',data:vm.map(m=>mean(v1.filter(r=>r.model===m).map(r=>r.ses))),backgroundColor:'#3b82f6',borderRadius:6},{label:'V2',data:vm.map(m=>mean(v2.filter(r=>r.model===m).map(r=>r.ses))),backgroundColor:'#a855f780',borderRadius:6}]},options:{responsive:true,scales:{y:{beginAtZero:true,max:0.8}}}});
+}
+
+// Models section
+function renderModels(){
+  const p1=DATA.filter(r=>r.phase==='phase1'&&r.ses>0);
+  const bm=groupBy(p1,'model');
+  const ml=Object.keys(bm).sort((a,b)=>median(bm[b].map(r=>r.ses))-median(bm[a].map(r=>r.ses)));
+  const ds=ml.map(m=>({label:shortName(m),data:bm[m].map(r=>r.ses),backgroundColor:C[m]||'#666'}));
+
+  new Chart(document.getElementById('c-model-box'),{type:'bar',data:{labels:ml.map(shortName),datasets:[{label:'Mean SES',data:ml.map(m=>mean(bm[m].map(r=>r.ses))),backgroundColor:ml.map(m=>(C[m]||'#666')+'cc'),borderRadius:6,barPercentage:0.5},{label:'Std',data:ml.map(m=>std(bm[m].map(r=>r.ses))),backgroundColor:ml.map(m=>(C[m]||'#666')+'40'),borderRadius:6,barPercentage:0.5}]},options:{responsive:true,scales:{y:{beginAtZero:true}}}});
+
+  new Chart(document.getElementById('c-model-ddg'),{type:'bar',data:{labels:ml.map(shortName),datasets:[{label:'Median ddG',data:ml.map(m=>median(bm[m].map(r=>r.best_ddg))),backgroundColor:ml.map(m=>C[m]||'#666'),borderRadius:6,barPercentage:0.6}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'ddG (REU)'}}}}});
+}
+
+// Flows section
+function renderFlows(){
+  const p2=DATA.filter(r=>r.phase==='phase2a'&&r.ses>0);
+  const bf=groupBy(p2,'flow');
+  const fl=Object.keys(bf).sort((a,b)=>mean(bf[b].map(r=>r.ses))-mean(bf[a].map(r=>r.ses)));
+
+  new Chart(document.getElementById('c-flow-detail'),{type:'bar',data:{labels:fl,datasets:[{label:'Mean SES',data:fl.map(f=>mean(bf[f].map(r=>r.ses))),backgroundColor:fl.map(f=>(FC[f]||'#666')+'cc'),borderRadius:6,barPercentage:0.5,error:fl.map(f=>std(bf[f].map(r=>r.ses)))}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:0.8,title:{display:true,text:'SES (mean ± std)'}}}}});
+
+  // Flow x Model heatmap as grouped bar
+  const models=[...new Set(p2.map(r=>r.model))];
+  new Chart(document.getElementById('c-flow-model'),{type:'bar',data:{labels:models.map(shortName),datasets:fl.map(f=>({label:f,data:models.map(m=>mean(p2.filter(r=>r.model===m&&r.flow===f).map(r=>r.ses))),backgroundColor:FC[f]||'#666',borderRadius:4,barPercentage:0.8}))},options:{responsive:true,scales:{y:{beginAtZero:true,max:0.8}}}});
+}
+
+// Gates section
+function renderGates(){
+  const scored=DATA.filter(r=>r.ses>0&&r.phase==='phase2a');
+  const models=[...new Set(scored.map(r=>r.model))];
+
+  new Chart(document.getElementById('c-gate-model'),{type:'bar',data:{labels:models.map(shortName),datasets:[{label:'Static',data:models.map(m=>mean(scored.filter(r=>r.model===m&&r.gate==='static').map(r=>r.ses))),backgroundColor:'#3b82f6',borderRadius:6},{label:'Adaptive',data:models.map(m=>mean(scored.filter(r=>r.model===m&&r.gate==='adaptive').map(r=>r.ses))),backgroundColor:'#22c55e',borderRadius:6}]},options:{responsive:true,scales:{y:{beginAtZero:true,max:0.8}}}});
+
+  const ratios=models.map(m=>{
+    const ss=std(scored.filter(r=>r.model===m&&r.gate==='static').map(r=>r.ses));
+    const as=std(scored.filter(r=>r.model===m&&r.gate==='adaptive').map(r=>r.ses));
+    return as>0?ss/as:1;
+  });
+  new Chart(document.getElementById('c-gate-var'),{type:'bar',data:{labels:models.map(shortName),datasets:[{label:'Static/Adaptive std ratio',data:ratios,backgroundColor:ratios.map(r=>r>2?'#22c55e':r>1.5?'#eab308':'#ef4444'),borderRadius:6,barPercentage:0.5}]},options:{responsive:true,plugins:{legend:{display:false},annotation:{}},scales:{y:{beginAtZero:true,title:{display:true,text:'Variance ratio (higher = Adaptive better)'}}}}});
+}
+
+// V1 vs V2
+function renderV1V2(){
+  const v1=DATA.filter(r=>r.phase==='phase2a'&&r.flow==='sequential'&&r.ses>0);
+  const v2=DATA.filter(r=>r.phase==='v2_phase1'&&r.ses>0);
+  const models=[...new Set([...v1,...v2].map(r=>r.model))];
+
+  new Chart(document.getElementById('c-v1v2-detail'),{type:'bar',data:{labels:models.map(shortName),datasets:[{label:'V1 (Sequential)',data:models.map(m=>mean(v1.filter(r=>r.model===m).map(r=>r.ses))),backgroundColor:'#3b82f6',borderRadius:6},{label:'V2 (LLM-Direct)',data:models.map(m=>mean(v2.filter(r=>r.model===m).map(r=>r.ses))),backgroundColor:'#a855f7',borderRadius:6}]},options:{responsive:true,scales:{y:{beginAtZero:true,max:0.8}}}});
+
+  new Chart(document.getElementById('c-v2-valid'),{type:'doughnut',data:{labels:['Valid (44%)','Fallback (56%)'],datasets:[{data:[44,56],backgroundColor:['#22c55e','#ef444440'],borderWidth:0}]},options:{responsive:true,cutout:'65%',plugins:{legend:{position:'bottom'}}}});
+
+  document.getElementById('v1v2-findings').innerHTML=
+    '<div class="conclusion orange"><div class="conclusion-text">V2 주요 실패: 원본 서열 반복 출력 (72.3%)</div><div class="conclusion-detail">LLM이 AGCKNFFWKTFTSC를 그대로 출력 → validator reject. few-shot 예시 추가로 수정 완료 (재실험 필요)</div></div>'+
+    '<div class="conclusion"><div class="conclusion-text">GLM-Z1에서만 V1 ≈ V2 (SES 0.58 vs 0.58)</div><div class="conclusion-detail">GLM이 제약 조건 준수를 상대적으로 잘 수행. Qwen3/DeepSeek은 V1 우위</div></div>';
+}
+
+// Ranking table
+function renderRanking(){
+  const scored=DATA.filter(r=>r.ses>0);
+  const g=groupBy(scored,r=>r.model+'|'+r.flow+'|'+r.gate);
+  const rows=Object.entries(g).map(([k,runs])=>{
+    const[m,f,ga]=k.split('|');
+    const s=mean(runs.map(r=>r.ses));
+    return{model:m,flow:f,gate:ga,ses:s,std:std(runs.map(r=>r.ses)),ddg:median(runs.map(r=>r.best_ddg)),n:runs.length};
+  }).sort((a,b)=>b.ses-a.ses);
+
+  const maxSes=Math.max(...rows.map(r=>r.ses));
+  const medals=['<span class="gold">🥇</span>','<span class="silver">🥈</span>','<span class="bronze">🥉</span>'];
+  let html='<thead><tr><th>#</th><th>Model</th><th>Flow</th><th>Gate</th><th>SES</th><th></th><th>±Std</th><th>ddG</th><th>N</th></tr></thead><tbody>';
+  rows.slice(0,25).forEach((r,i)=>{
+    const pct=(r.ses/maxSes*100).toFixed(0);
+    const color=i<1?'var(--green)':i<3?'var(--blue)':'var(--muted)';
+    html+='<tr><td>'+(medals[i]||(i+1))+'</td><td>'+shortName(r.model)+'</td><td>'+r.flow+'</td><td>'+r.gate+'</td><td><strong>'+r.ses.toFixed(4)+'</strong></td><td><span class="bar" style="width:'+pct+'px;background:'+color+'"></span></td><td>'+r.std.toFixed(4)+'</td><td>'+r.ddg.toFixed(1)+'</td><td>'+r.n+'</td></tr>';
+  });
+  html+='</tbody>';
+  document.getElementById('rank-table').innerHTML=html;
+}
+
+// Toggle sections
+document.querySelectorAll('.toggle').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.toggle').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('sec-'+t.dataset.section).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

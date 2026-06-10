@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_9999",
+  "timestamp": "2026-04-02T11:19:57.592155+00:00",
+  "hypothesis": "Aromatic residue enrichment at positions 5 and 6, combined with hydrophobic optimization at position 11, will improve binding affinity through enhanced hydrophobic packing and π-π stacking interactions in the SSTR2 binding pocket.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural sampling issues dominate over ddG optimization in current parameter space",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Current clash threshold allows excessive steric clashes"
+      },
+      {
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 12,
+        "rationale": "Insufficient sampling leads to poor model diversity"
+      }
+    ]
+  },
+  "previous_best_ddg": -39.0624
+}

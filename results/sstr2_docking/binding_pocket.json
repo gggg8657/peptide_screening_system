@@ -1,0 +1,262 @@
+{
+  "pdb_source": "../../data/fold_test1/fold_test1_model_0.pdb",
+  "ligand_chain": "A",
+  "receptor_chain": "B",
+  "cutoff_angstrom": 5.0,
+  "num_pocket_residues": 35,
+  "pocket_residues": [
+    {
+      "chain": "B",
+      "resid": 50,
+      "resname": "TYR"
+    },
+    {
+      "chain": "B",
+      "resid": 92,
+      "resname": "PHE"
+    },
+    {
+      "chain": "B",
+      "resid": 99,
+      "resname": "LEU"
+    },
+    {
+      "chain": "B",
+      "resid": 102,
+      "resname": "GLN"
+    },
+    {
+      "chain": "B",
+      "resid": 119,
+      "resname": "MET"
+    },
+    {
+      "chain": "B",
+      "resid": 122,
+      "resname": "ASP"
+    },
+    {
+      "chain": "B",
+      "resid": 126,
+      "resname": "GLN"
+    },
+    {
+      "chain": "B",
+      "resid": 127,
+      "resname": "PHE"
+    },
+    {
+      "chain": "B",
+      "resid": 177,
+      "resname": "ILE"
+    },
+    {
+      "chain": "B",
+      "resid": 184,
+      "resname": "ARG"
+    },
+    {
+      "chain": "B",
+      "resid": 192,
+      "resname": "SER"
+    },
+    {
+      "chain": "B",
+      "resid": 193,
+      "resname": "CYS"
+    },
+    {
+      "chain": "B",
+      "resid": 194,
+      "resname": "THR"
+    },
+    {
+      "chain": "B",
+      "resid": 195,
+      "resname": "ILE"
+    },
+    {
+      "chain": "B",
+      "resid": 197,
+      "resname": "TRP"
+    },
+    {
+      "chain": "B",
+      "resid": 200,
+      "resname": "GLU"
+    },
+    {
+      "chain": "B",
+      "resid": 201,
+      "resname": "SER"
+    },
+    {
+      "chain": "B",
+      "resid": 202,
+      "resname": "GLY"
+    },
+    {
+      "chain": "B",
+      "resid": 205,
+      "resname": "TYR"
+    },
+    {
+      "chain": "B",
+      "resid": 206,
+      "resname": "THR"
+    },
+    {
+      "chain": "B",
+      "resid": 208,
+      "resname": "PHE"
+    },
+    {
+      "chain": "B",
+      "resid": 209,
+      "resname": "ILE"
+    },
+    {
+      "chain": "B",
+      "resid": 212,
+      "resname": "THR"
+    },
+    {
+      "chain": "B",
+      "resid": 269,
+      "resname": "TRP"
+    },
+    {
+      "chain": "B",
+      "resid": 272,
+      "resname": "PHE"
+    },
+    {
+      "chain": "B",
+      "resid": 275,
+      "resname": "PHE"
+    },
+    {
+      "chain": "B",
+      "resid": 276,
+      "resname": "ASN"
+    },
+    {
+      "chain": "B",
+      "resid": 279,
+      "resname": "SER"
+    },
+    {
+      "chain": "B",
+      "resid": 284,
+      "resname": "ILE"
+    },
+    {
+      "chain": "B",
+      "resid": 286,
+      "resname": "PRO"
+    },
+    {
+      "chain": "B",
+      "resid": 290,
+      "resname": "LEU"
+    },
+    {
+      "chain": "B",
+      "resid": 291,
+      "resname": "LYS"
+    },
+    {
+      "chain": "B",
+      "resid": 294,
+      "resname": "PHE"
+    },
+    {
+      "chain": "B",
+      "resid": 298,
+      "resname": "VAL"
+    },
+    {
+      "chain": "B",
+      "resid": 302,
+      "resname": "TYR"
+    }
+  ],
+  "hotspot_res": [
+    "B50",
+    "B92",
+    "B99",
+    "B102",
+    "B119",
+    "B122",
+    "B126",
+    "B127",
+    "B177",
+    "B184",
+    "B192",
+    "B193",
+    "B194",
+    "B195",
+    "B197",
+    "B200",
+    "B201",
+    "B202",
+    "B205",
+    "B206",
+    "B208",
+    "B209",
+    "B212",
+    "B269",
+    "B272",
+    "B275",
+    "B276",
+    "B279",
+    "B284",
+    "B286",
+    "B290",
+    "B291",
+    "B294",
+    "B298",
+    "B302"
+  ],
+  "receptor_pdb": "./sstr2_receptor.pdb",
+  "rfdiffusion": {
+    "contigs": "B1-369/0 10-30",
+    "hotspot_res": [
+      "B50",
+      "B92",
+      "B99",
+      "B102",
+      "B119",
+      "B122",
+      "B126",
+      "B127",
+      "B177",
+      "B184",
+      "B192",
+      "B193",
+      "B194",
+      "B195",
+      "B197",
+      "B200",
+      "B201",
+      "B202",
+      "B205",
+      "B206",
+      "B208",
+      "B209",
+      "B212",
+      "B269",
+      "B272",
+      "B275",
+      "B276",
+      "B279",
+      "B284",
+      "B286",
+      "B290",
+      "B291",
+      "B294",
+      "B298",
+      "B302"
+    ]
+  }
+}

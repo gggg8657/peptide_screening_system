@@ -1,0 +1,18 @@
+{
+  "team": "",
+  "project": "PRST_N_FM",
+  "syncFolder": "Linear Issues",
+  "autoSync": true,
+  "syncInterval": 15,
+  "conflictStrategy": "manual",
+  "template": "## {{title}}\n\n**Status**: {{status}} | **Assignee**: {{assignee}} | **Priority**: {{priority}}\n**Linear**: [{{identifier}}]({{url}})\n\n---\n\n",
+  "labels": [],
+  "statusEmoji": {
+    "Backlog": "📋",
+    "Todo": "📝",
+    "In Progress": "🔄",
+    "In Review": "👀",
+    "Done": "✅",
+    "Cancelled": "❌"
+  }
+}

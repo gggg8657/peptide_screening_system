@@ -1,0 +1,56 @@
+{
+  "n_train": 2418,
+  "filter": "human",
+  "cv": {
+    "GBR": {
+      "cv_r2_log": 0.5922,
+      "cv_spearman_hours": 0.7463,
+      "cv_r2_hours": 0.1892
+    },
+    "RF": {
+      "cv_r2_log": 0.6422,
+      "cv_spearman_hours": 0.7836,
+      "cv_r2_hours": 0.2493
+    }
+  },
+  "benchmark_spearman": 0.2651,
+  "feat_cols": [
+    "length",
+    "frac_A",
+    "frac_C",
+    "frac_D",
+    "frac_E",
+    "frac_F",
+    "frac_G",
+    "frac_H",
+    "frac_I",
+    "frac_K",
+    "frac_L",
+    "frac_M",
+    "frac_N",
+    "frac_P",
+    "frac_Q",
+    "frac_R",
+    "frac_S",
+    "frac_T",
+    "frac_V",
+    "frac_W",
+    "frac_Y",
+    "gravy",
+    "net_charge",
+    "n_arg_lys",
+    "n_met",
+    "n_cys",
+    "n_pro",
+    "cleavage_sites",
+    "cleavage_density",
+    "nterm_KR",
+    "has_D",
+    "is_cyclic",
+    "chem_mod",
+    "nter_capped",
+    "cter_capped",
+    "lipid_or_peg"
+  ],
+  "best_model": "RF"
+}

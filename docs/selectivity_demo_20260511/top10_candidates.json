@@ -1,0 +1,65 @@
+{
+  "top10": [
+    {
+      "seq": "AGCKNTFWKTFTSA",
+      "ddg": -99.479,
+      "source": "sst14_mutdock_512",
+      "iter": null
+    },
+    {
+      "seq": "AGCKFDFWKTLTSC",
+      "ddg": -93.845,
+      "source": "sst14_mutdock_777",
+      "iter": null
+    },
+    {
+      "seq": "FGCKNFFWKTLASC",
+      "ddg": -48.584,
+      "source": "sst14_mutdock_2048",
+      "iter": null
+    },
+    {
+      "seq": "AICKNFFWKTFTSC",
+      "ddg": -48.529,
+      "source": "sst14_mutdock_42",
+      "iter": null
+    },
+    {
+      "seq": "AGCKNFFWKTFTSC",
+      "ddg": -48.438,
+      "source": "sst14_mutdock_100",
+      "iter": null
+    },
+    {
+      "seq": "IKCINFFWKTFTSC",
+      "ddg": -48.145,
+      "source": "sst14_mutdock_100",
+      "iter": null
+    },
+    {
+      "seq": "AGCKYFFWKTFTSC",
+      "ddg": -47.291,
+      "source": "sst14_mutdock_4096",
+      "iter": null
+    },
+    {
+      "seq": "AGCLNFFWKTFTSC",
+      "ddg": -47.049,
+      "source": "sst14_mutdock_314",
+      "iter": null
+    },
+    {
+      "seq": "QGCKNFFWKTFTSC",
+      "ddg": -46.909,
+      "source": "sst14_mutdock_256",
+      "iter": null
+    },
+    {
+      "seq": "AGCKFWFWKTFTSC",
+      "ddg": -46.887,
+      "source": "sst14_mutdock_4096",
+      "iter": null
+    }
+  ],
+  "wild_type": "AGCKNFFWKTFTSC"
+}

@@ -1,0 +1,571 @@
+{
+  "variants": [
+    {
+      "variant_id": "var_001",
+      "sequence": "SGCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_002",
+      "sequence": "CGCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1C"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_003",
+      "sequence": "GGCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1G"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_004",
+      "sequence": "TGCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1T"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_005",
+      "sequence": "VGCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1V"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_006",
+      "sequence": "AACKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "G2A"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_007",
+      "sequence": "ANCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "G2N"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_008",
+      "sequence": "ASCKNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "G2S"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_009",
+      "sequence": "AGCRNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "K4R"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 2,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_010",
+      "sequence": "AGCENFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "K4E"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_011",
+      "sequence": "AGCQNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "K4Q"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_012",
+      "sequence": "AGCNNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "K4N"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_013",
+      "sequence": "AGCSNFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "K4S"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_014",
+      "sequence": "AGCKDFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5D"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_015",
+      "sequence": "AGCKHFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5H"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_016",
+      "sequence": "AGCKSFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5S"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_017",
+      "sequence": "AGCKEFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5E"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_018",
+      "sequence": "AGCKGFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5G"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_019",
+      "sequence": "AGCKKFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5K"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_020",
+      "sequence": "AGCKQFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5Q"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_021",
+      "sequence": "AGCKRFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5R"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_022",
+      "sequence": "AGCKTFFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5T"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_023",
+      "sequence": "AGCKNYFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F6Y"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 3,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_024",
+      "sequence": "AGCKNWFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F6W"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_025",
+      "sequence": "AGCKNIFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F6I"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_026",
+      "sequence": "AGCKNLFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F6L"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_027",
+      "sequence": "AGCKNMFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F6M"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_028",
+      "sequence": "AGCKNFFWKTYTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F11Y"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 3,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_029",
+      "sequence": "AGCKNFFWKTWTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F11W"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_030",
+      "sequence": "AGCKNFFWKTITSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F11I"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_031",
+      "sequence": "AGCKNFFWKTLTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F11L"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_032",
+      "sequence": "AGCKNFFWKTMTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "F11M"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_033",
+      "sequence": "AGCKNFFWKTFSSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "T12S"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_034",
+      "sequence": "AGCKNFFWKTFASC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "T12A"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_035",
+      "sequence": "AGCKNFFWKTFNSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "T12N"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_036",
+      "sequence": "AGCKNFFWKTFVSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "T12V"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_037",
+      "sequence": "AGCKNFFWKTFTAC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13A"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_038",
+      "sequence": "AGCKNFFWKTFTNC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13N"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_039",
+      "sequence": "AGCKNFFWKTFTTC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13T"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 1,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_040",
+      "sequence": "AGCKNFFWKTFTDC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13D"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_041",
+      "sequence": "AGCKNFFWKTFTEC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13E"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_042",
+      "sequence": "AGCKNFFWKTFTGC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13G"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_043",
+      "sequence": "AGCKNFFWKTFTKC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13K"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_044",
+      "sequence": "AGCKNFFWKTFTQC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "S13Q"
+      ],
+      "n_mutations": 1,
+      "blosum_total_score": 0,
+      "source": "single_mutant"
+    },
+    {
+      "variant_id": "var_045",
+      "sequence": "AGCKGYFWKTFTSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5G",
+        "F6Y"
+      ],
+      "n_mutations": 2,
+      "blosum_total_score": 3,
+      "source": "combinatorial"
+    },
+    {
+      "variant_id": "var_046",
+      "sequence": "AGCENFFWKTFVSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "K4E",
+        "T12V"
+      ],
+      "n_mutations": 2,
+      "blosum_total_score": 1,
+      "source": "combinatorial"
+    },
+    {
+      "variant_id": "var_047",
+      "sequence": "ANCKNFFWKTITSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "G2N",
+        "F11I"
+      ],
+      "n_mutations": 2,
+      "blosum_total_score": 0,
+      "source": "combinatorial"
+    },
+    {
+      "variant_id": "var_048",
+      "sequence": "AGCKSFFWKTFTDC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "N5S",
+        "S13D"
+      ],
+      "n_mutations": 2,
+      "blosum_total_score": 1,
+      "source": "combinatorial"
+    },
+    {
+      "variant_id": "var_049",
+      "sequence": "AGCKNFFWKTFNNC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "T12N",
+        "S13N"
+      ],
+      "n_mutations": 2,
+      "blosum_total_score": 1,
+      "source": "combinatorial"
+    },
+    {
+      "variant_id": "var_050",
+      "sequence": "SGCKNFFWKTFTKC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S",
+        "S13K"
+      ],
+      "n_mutations": 2,
+      "blosum_total_score": 1,
+      "source": "combinatorial"
+    }
+  ],
+  "seed_sequence": "AGCKNFFWKTFTSC",
+  "fixed_positions": {
+    "3": "C",
+    "7": "F",
+    "8": "W",
+    "9": "K",
+    "10": "T",
+    "14": "C"
+  },
+  "total_generated": 50,
+  "strategy": "approach_b"
+}

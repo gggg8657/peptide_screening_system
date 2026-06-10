@@ -1,0 +1,9 @@
+id: collaborative
+name: "Collaborative"
+description: "Debate-based: Planner↔Critic pre-execution debate + joint evaluation"
+llm_calls_per_iter: "5-7"  # varies by debate rounds
+runner_class: "runners.collaborative.CollaborativeFlowRunner"
+
+# Collaborative-specific params
+debate_max_rounds: 2       # Phase 2B tests {2, 3}
+debate_consensus_mode: "critic_approval"  # critic_approval | majority_vote

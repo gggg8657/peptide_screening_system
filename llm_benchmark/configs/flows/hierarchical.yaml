@@ -1,0 +1,9 @@
+id: hierarchical
+name: "Hierarchical"
+description: "Orchestrator-managed: central LLM delegates to Planner/Critic/Reporter"
+llm_calls_per_iter: "4-6"  # Orchestrator + delegated agents
+runner_class: "runners.hierarchical.HierarchicalFlowRunner"
+
+# Hierarchical-specific params
+orchestrator_model: "same"      # same | cross  (Phase 2B tests both)
+orchestrator_cross_model: null   # set when orchestrator_model=cross

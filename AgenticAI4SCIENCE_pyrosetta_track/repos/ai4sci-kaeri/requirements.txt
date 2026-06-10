@@ -1,0 +1,17 @@
+# AI-Scientist SSTR2 Pipeline — Python Dependencies
+# pip install -r requirements.txt
+
+# Web Framework
+fastapi==0.135.1
+uvicorn[standard]==0.41.0
+pydantic==2.12.5
+
+# HTTP
+requests==2.32.5
+
+# Bio / Scientific (conda env bio-tools에 이미 설치됨; CI/bare-pip 환경용 명시)
+biopython>=1.79
+python-multipart>=0.0.22
+
+# Testing
+pytest>=7.0

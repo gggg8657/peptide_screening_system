@@ -1,0 +1,36 @@
+orchestration:
+  join_policy: all_of
+  required_silos: [A, B, C]
+  optional_silos: []
+  silo_modes:
+    A: strict
+    B: fast
+    C: strict
+  wait_timeout_sec: 7200
+  on_system_fatal: abort
+
+resources:
+  scheduler_mode: adaptive
+  max_workers:
+    A: 3
+    B: 2
+    C: 1
+  queue_priority: [C, B, A]
+
+failure_policy:
+  classify:
+    scientific: [gate_fail, score_below_threshold, constraint_violation]
+    system: [runtime_error, dependency_error, io_error, timeout]
+  recovery:
+    retry_max: 3
+    backoff_sec: [10, 30, 60]
+    healthcheck_required: true
+
+ranking:
+  fusion:
+    method: weighted_sum
+    normalize: minmax
+    weights:
+      A: 0.34
+      B: 0.33
+      C: 0.33

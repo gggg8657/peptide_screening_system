@@ -1,0 +1,33 @@
+{
+  "type": "critic",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:18:44.773948+00:00",
+  "hypothesis": "Initial hypothesis underestimated the magnitude of required stability improvements for SSTR2 binding.",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -5.0,
+      "new_value": -10.0,
+      "rationale": "Current threshold rejects candidates with significantly better stability (ddG=-37.2 vs -5.0)."
+    },
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reduce clash tolerance to prioritize structural integrity in docking interactions."
+    }
+  ],
+  "current_params": {
+    "n_candidates": 4,
+    "objective_mode": "ddg_only",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/cand_004.pdb"
+  ],
+  "receptor_pdb": "runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb"
+}

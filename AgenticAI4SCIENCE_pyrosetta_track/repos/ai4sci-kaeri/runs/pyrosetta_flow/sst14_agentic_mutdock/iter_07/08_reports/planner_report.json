@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 7,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T11:28:03.304764+00:00",
+  "hypothesis": "Introducing positively charged residues at positions 12 and 14 will increase binding affinity by stabilizing electrostatic interactions with negatively charged residues in the SSTR2 binding pocket, while maintaining the peptide backbone conformation.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "We hypothesize that relaxing the ddG and clash thresholds will enable the selection of designs with stronger predicted binding while maintaining acceptable structural integrity, thereby improving the overall success rate.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -30.0,
+        "rationale": "The current ddG threshold is too strict, rejecting candidates with highly favorable binding energies (e.g., -43.4). Lowering the threshold to -30.0 will allow these promising designs to pass the ddG gate."
+      },
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 20,
+        "rationale": "A higher clash tolerance will reduce the number of candidates failing due to minor steric clashes, which currently account for 4 failures."
+      }
+    ]
+  },
+  "previous_best_ddg": -43.4309
+}

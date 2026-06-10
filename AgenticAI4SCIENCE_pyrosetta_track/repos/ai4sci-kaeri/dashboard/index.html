@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSTR2 Peptide Binder Design — Pipeline Monitor</title>
+  <style>
+    /* ─── Reset & Variables ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-base:    #0a0a0f;
+      --bg-surface: #111118;
+      --bg-card:    #16161f;
+      --bg-card2:   #1c1c28;
+      --border:     #2a2a3a;
+      --border-hi:  #3a3a52;
+
+      --text-primary:   #f0f0ff;
+      --text-secondary: #8888aa;
+      --text-muted:     #55556a;
+
+      --accent:   #6c7fff;
+      --accent2:  #a78bfa;
+      --green:    #22d3a0;
+      --yellow:   #facc15;
+      --red:      #f87171;
+      --orange:   #fb923c;
+
+      --step-completed: #22d3a0;
+      --step-running:   #6c7fff;
+      --step-pending:   #3a3a52;
+      --step-failed:    #f87171;
+
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --mono: 'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace;
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ─── Scrollbar ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ─── Header ────────────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .header-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .header-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .run-id {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(34,211,160,0.08);
+      border: 1px solid rgba(34,211,160,0.25);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    /* ─── Main layout ───────────────────────────────────────────── */
+    .main {
+      display: grid;
+      grid-template-columns: 260px 1fr 280px;
+      grid-template-rows: auto 1fr auto;
+      gap: 0;
+      min-height: calc(100vh - 58px);
+    }
+
+    /* Pipeline diagram spans full width */
+    .pipeline-row {
+      grid-column: 1 / -1;
+      padding: 24px 28px 0;
+    }
+
+    .left-col  { padding: 20px 0 24px 28px; }
+    .center-col { padding: 20px 20px 24px; overflow: hidden; }
+    .right-col  { padding: 20px 28px 24px 0; }
+
+    /* ─── Section headings ──────────────────────────────────────── */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ─── Cards ─────────────────────────────────────────────────── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .card + .card { margin-top: 12px; }
+
+    .card-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .card-body { padding: 16px; }
+
+    /* ─── Pipeline diagram ──────────────────────────────────────── */
+    .pipeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .pipeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .pipeline-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .pipeline-meta {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .step-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .step-box {
+      position: relative;
+      width: 100px;
+      padding: 10px 8px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--bg-card2);
+      text-align: center;
+      cursor: default;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .step-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .step-box.completed {
+      border-color: var(--step-completed);
+      background: rgba(34,211,160,0.06);
+    }
+
+    .step-box.running {
+      border-color: var(--step-running);
+      background: rgba(108,127,255,0.08);
+      box-shadow: 0 0 16px rgba(108,127,255,0.2);
+      animation: stepGlow 2s ease-in-out infinite;
+    }
+
+    .step-box.pending {
+      border-color: var(--step-pending);
+      opacity: 0.65;
+    }
+
+    .step-box.failed {
+      border-color: var(--step-failed);
+      background: rgba(248,113,113,0.06);
+    }
+
+    @keyframes stepGlow {
+      0%, 100% { box-shadow: 0 0 16px rgba(108,127,255,0.2); }
+      50%       { box-shadow: 0 0 28px rgba(108,127,255,0.45); }
+    }
+
+    .step-number {
+      font-size: 9px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .step-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .step-agent-tag {
+      font-size: 9px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .step-status-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .step-status-dot.completed { background: var(--step-completed); }
+    .step-status-dot.running   { background: var(--step-running); animation: pulse 1.2s ease-in-out infinite; }
+    .step-status-dot.pending   { background: var(--step-pending); }
+    .step-status-dot.failed    { background: var(--step-failed); }
+
+    .step-connector {
+      display: flex;
+      align-items: center;
+      margin: 0 -1px;
+      flex-shrink: 0;
+    }
+
+    .connector-line {
+      width: 22px;
+      height: 2px;
+      background: var(--border);
+    }
+
+    .connector-line.active {
+      background: linear-gradient(90deg, var(--step-completed), var(--step-running));
+    }
+
+    .connector-arrow {
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--border);
+    }
+
+    .connector-arrow.active {
+      border-left-color: var(--step-running);
+    }
+
+    .step-node-meta {
+      text-align: center;
+    }
+
+    .step-status-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .step-status-label.completed { color: var(--step-completed); }
+    .step-status-label.running   { color: var(--step-running); }
+    .step-status-label.pending   { color: var(--text-muted); }
+    .step-status-label.failed    { color: var(--step-failed); }
+
+    /* ─── Agent cards ────────────────────────────────────────────── */
+    .agent-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .agent-card + .agent-card { margin-top: 6px; }
+
+    .agent-card.active {
+      border-color: var(--accent);
+      background: rgba(108,127,255,0.06);
+    }
+
+    .agent-card.error {
+      border-color: var(--red);
+    }
+
+    .agent-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .agent-avatar.llm  { background: rgba(167,139,250,0.18); color: var(--accent2); }
+    .agent-avatar.code { background: rgba(34,211,160,0.15); color: var(--green); }
+
+    .agent-info { flex: 1; min-width: 0; }
+
+    .agent-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .agent-role {
+      font-size: 10px;
+      color: var(--text-secondary);
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .agent-llm {
+      font-size: 9px;
+      font-family: var(--mono);
+      color: var(--text-muted);
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin-top: 3px;
+      display: inline-block;
+    }
+
+    .agent-status-indicator {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .status-pill {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 2px 7px;
+      border-radius: 20px;
+    }
+
+    .status-pill.idle   { background: rgba(136,136,170,0.12); color: var(--text-muted); }
+    .status-pill.active { background: rgba(108,127,255,0.18); color: var(--accent); }
+    .status-pill.error  { background: rgba(248,113,113,0.15); color: var(--red); }
+
+    .type-badge {
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+
+    .type-badge.llm  { background: rgba(167,139,250,0.15); color: var(--accent2); }
+    .type-badge.code { background: rgba(34,211,160,0.12); color: var(--green); }
+
+    /* ─── Iteration / Progress ───────────────────────────────────── */
+    .iter-overview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .metric-box {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+
+    .metric-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1;
+      font-family: var(--mono);
+    }
+
+    .metric-sub {
+      font-size: 10px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .metric-value.good   { color: var(--green); }
+    .metric-value.accent { color: var(--accent); }
+
+    .trend-up   { color: var(--green); }
+    .trend-down { color: var(--red); }
+
+    /* Progress bar */
+    .progress-wrap {
+      margin-bottom: 16px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7px;
+    }
+
+    .progress-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .progress-pct {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-base);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -2px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 6px var(--accent2);
+    }
+
+    /* ddG chart */
+    .ddg-chart {
+      margin-bottom: 14px;
+    }
+
+    .ddg-chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .ddg-chart-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .ddg-best {
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .chart-area {
+      height: 80px;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px 4px;
+      position: relative;
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Convergence */
+    .convergence-box {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .convergence-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .convergence-value {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    .convergence-note {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ─── QC Gate table ──────────────────────────────────────────── */
+    .gate-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .gate-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gate-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(42,42,58,0.5);
+      vertical-align: middle;
+    }
+
+    .gate-table tr:last-child td { border-bottom: none; }
+
+    .gate-table tr:hover td {
+      background: rgba(255,255,255,0.015);
+    }
+
+    .gate-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 12px;
+    }
+
+    .gate-threshold {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .gate-bar-wrap {
+      width: 120px;
+    }
+
+    .gate-bar-track {
+      height: 5px;
+      background: var(--bg-base);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 3px;
+    }
+
+    .gate-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .gate-bar-fill.pass-high  { background: var(--green); }
+    .gate-bar-fill.pass-mid   { background: var(--yellow); }
+    .gate-bar-fill.pass-low   { background: var(--orange); }
+
+    .gate-counts {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .pass-num { color: var(--green); font-weight: 700; }
+    .fail-num { color: var(--red);   font-weight: 700; }
+
+    .gate-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .gate-badge.good { background: rgba(34,211,160,0.12); color: var(--green); }
+    .gate-badge.warn { background: rgba(250,204,21,0.10); color: var(--yellow); }
+    .gate-badge.poor { background: rgba(251,146,60,0.12); color: var(--orange); }
+
+    /* ─── Design Decisions sidebar ───────────────────────────────── */
+    .decision-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+
+    .decision-card + .decision-card { margin-top: 8px; }
+
+    .decision-tag {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .decision-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .decision-meta {
+      font-size: 10px;
+      font-family: var(--mono);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .decision-chip {
+      display: inline-block;
+      background: rgba(108,127,255,0.1);
+      border: 1px solid rgba(108,127,255,0.25);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin: 2px 2px 0 0;
+    }
+
+    .rejected-list {
+      margin-top: 6px;
+    }
+
+    .rejected-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--text-muted);
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(42,42,58,0.4);
+    }
+
+    .rejected-item:last-child { border-bottom: none; }
+
+    .rejected-x {
+      color: var(--red);
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .key-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .kpi-box {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .kpi-num {
+      font-size: 16px;
+      font-weight: 800;
+      font-family: var(--mono);
+      color: var(--green);
+    }
+
+    .kpi-lbl {
+      font-size: 9px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────── */
+    footer {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      padding: 10px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .footer-left { font-family: var(--mono); }
+
+    .footer-right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+    }
+
+    /* ─── Divider ────────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 14px 0;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .main {
+        grid-template-columns: 240px 1fr;
+        grid-template-rows: auto auto auto;
+      }
+
+      .pipeline-row { grid-column: 1 / -1; }
+      .right-col { grid-column: 1 / -1; padding: 0 24px 24px; }
+
+      .iter-overview { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .left-col, .center-col, .right-col {
+        padding: 16px 16px 0;
+      }
+
+      .right-col { padding-bottom: 16px; }
+
+      header { padding: 0 16px; }
+      .pipeline-row { padding: 16px 16px 0; }
+
+      .iter-overview { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ Header ═══════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-left">
+    <div class="logo-mark">S2</div>
+    <div>
+      <div class="header-title">SSTR2 Peptide Binder Design</div>
+      <div class="header-subtitle">AI-Scientist Pipeline Monitor · KAERI</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="run-id" id="runIdDisplay"></span>
+    <span class="live-badge">
+      <span class="live-dot"></span>
+      LIVE
+    </span>
+  </div>
+</header>
+
+<!-- ═══ Main Grid ══════════════════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- ── Pipeline Architecture Diagram (full width) ────────────────── -->
+  <section class="pipeline-row">
+    <div class="pipeline-card">
+      <div class="pipeline-header">
+        <div>
+          <div class="pipeline-title">파이프라인 아키텍처 / Pipeline Architecture</div>
+          <div class="pipeline-meta">8-step sequential workflow · 6-Agent Hybrid System</div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <span style="display:flex; align-items:center; gap:5px; font-size:10px; color:var(--green);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span> Completed
+          </span>
+          <span style="display:flex; align-items:center; gap:5px; font-size:10px; color:var(--accent);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;"></span> Running
+          </span>
+          <span style="display:flex; align-items:center; gap:5px; font-size:10px; color:var(--text-muted);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--step-pending);display:inline-block;"></span> Pending
+          </span>
+        </div>
+      </div>
+      <div class="pipeline-flow" id="pipelineFlow"></div>
+    </div>
+  </section>
+
+  <!-- ── Left: Agent Status Panel ──────────────────────────────────── -->
+  <aside class="left-col">
+    <p class="section-label">에이전트 현황 / Agent Status</p>
+    <div id="agentList"></div>
+  </aside>
+
+  <!-- ── Center: Iteration Progress ────────────────────────────────── -->
+  <main class="center-col">
+    <p class="section-label">반복 진행 현황 / Iteration Progress</p>
+
+    <div class="iter-overview" id="iterOverview"></div>
+
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-label">전체 이터레이션 진행률 / Overall Iteration Progress</span>
+        <span class="progress-pct" id="iterPct">—</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="iterBar" style="width:0%;"></div>
+      </div>
+    </div>
+
+    <div class="ddg-chart">
+      <div class="ddg-chart-header">
+        <span class="ddg-chart-title">ddG 수렴 추세 / ddG Convergence Trend (kcal/mol)</span>
+        <span class="ddg-best" id="bestDdgDisplay">—</span>
+      </div>
+      <div class="chart-area">
+        <svg class="chart-svg" id="ddgSvg" viewBox="0 0 400 60" preserveAspectRatio="none"></svg>
+      </div>
+    </div>
+
+    <div class="convergence-box">
+      <div>
+        <div class="convergence-label">수렴 델타 / Convergence Delta</div>
+        <div class="convergence-note">임계값: ≤ 0.3 kcal/mol → 조기 종료 / Threshold: ≤ 0.3 → early stop</div>
+      </div>
+      <div>
+        <div class="convergence-value" id="convergenceDelta">—</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- QC Gate Table -->
+    <p class="section-label">QC 게이트 결과 / QC Gate Results</p>
+    <div class="card" style="margin-top:0;">
+      <div class="card-header">
+        <span class="card-title">품질 관리 게이트 현황 / Quality Control Gates</span>
+        <span style="font-size:10px; color:var(--text-muted);">이터레이션 3 기준</span>
+      </div>
+      <div style="padding: 0;">
+        <table class="gate-table" id="gateTable">
+          <thead>
+            <tr>
+              <th>게이트 / Gate</th>
+              <th>임계값 / Threshold</th>
+              <th style="min-width:130px;">통과율 / Pass Rate</th>
+              <th>통과 / Pass</th>
+              <th>실패 / Fail</th>
+              <th>평가 / Grade</th>
+            </tr>
+          </thead>
+          <tbody id="gateTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Right: Design Decisions ───────────────────────────────────── -->
+  <aside class="right-col">
+    <p class="section-label">설계 결정 / Design Decisions</p>
+
+    <div class="decision-card">
+      <div class="decision-tag">LLM 선택 / LLM Selection</div>
+      <div class="decision-value" id="decLlm">—</div>
+      <div class="decision-meta" id="decLlmMeta">—</div>
+    </div>
+
+    <div class="decision-card">
+      <div class="decision-tag">아키텍처 / Architecture</div>
+      <div class="decision-value" id="decArch">—</div>
+      <div style="margin-top:6px;" id="decChips"></div>
+    </div>
+
+    <div class="decision-card">
+      <div class="decision-tag">검토 후 제외 모델 / Rejected Models</div>
+      <div class="rejected-list" id="rejectedList"></div>
+    </div>
+
+    <div class="decision-card" style="margin-top:8px;">
+      <div class="decision-tag">검증 실험 주요 지표 / Validation KPIs</div>
+      <div class="key-metrics">
+        <div class="kpi-box">
+          <div class="kpi-num">74.2</div>
+          <div class="kpi-lbl">MMLU Score</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-num">128K</div>
+          <div class="kpi-lbl">Context</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-num" style="color:var(--accent);">3+3</div>
+          <div class="kpi-lbl">LLM+Code</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-num" style="color:var(--accent2);">6</div>
+          <div class="kpi-lbl">Agents</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="section-label">시스템 정보 / System Info</p>
+    <div style="background:var(--bg-card2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; font-family:var(--mono); font-size:10px; color:var(--text-secondary); line-height:1.9;">
+      <div>Framework: <span style="color:var(--text-primary);">AI-Scientist v2</span></div>
+      <div>Target: <span style="color:var(--text-primary);">SSTR2 (5L2S)</span></div>
+      <div>Peptide len: <span style="color:var(--text-primary);">15–25 aa</span></div>
+      <div>RFdiffusion: <span style="color:var(--text-primary);">50 designs/iter</span></div>
+      <div>Selectivity: <span style="color:var(--text-primary);">vs SSTR1/3/4/5</span></div>
+    </div>
+  </aside>
+
+  <!-- ── Footer ────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-left">
+      <span id="footerTs"></span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-badge">KAERI · 한국원자력연구원</span>
+      <span class="footer-badge">AI-Scientist Pipeline</span>
+      <span class="footer-badge" style="color:var(--green); border-color:rgba(34,211,160,0.3);">Monitor v1.0</span>
+    </div>
+  </footer>
+
+</div><!-- .main -->
+
+<!-- ═══ JavaScript ════════════════════════════════════════════════════ -->
+<script>
+/* ── Mock Data ────────────────────────────────────────────────────── */
+const pipelineData = {
+  run_id: "20260218_0028_iter01_bbf0",
+  current_iteration: 3,
+  max_iterations: 5,
+  convergence_delta: 0.5,
+  best_ddg: -8.2,
+  ddg_history: [-2.1, -5.4, -8.2],
+  agents: [
+    {name:"Planner",      role:"연구 설계/실험 기획",      type:"LLM",  llm:"Qwen 2.5 7B", status:"idle"},
+    {name:"Builder",      role:"실행 오케스트레이터",      type:"Code", llm:"none",         status:"active"},
+    {name:"QCRanker",     role:"품질관리 및 랭킹",         type:"Code", llm:"none",         status:"idle"},
+    {name:"DiversityMgr", role:"구조 다양성 관리",         type:"Code", llm:"none",         status:"idle"},
+    {name:"Critic",       role:"비판적 검토/원인 분석",    type:"LLM",  llm:"Qwen 2.5 7B", status:"idle"},
+    {name:"Reporter",     role:"최종 리포트/그림 자동화",  type:"LLM",  llm:"Qwen 2.5 7B", status:"idle"},
+  ],
+  steps: [
+    {name:"Step01", label:"Receptor Prep",  status:"completed", agent:"Builder"},
+    {name:"Step02", label:"RFdiffusion",    status:"completed", agent:"Builder"},
+    {name:"Step03", label:"ProteinMPNN",    status:"completed", agent:"Builder"},
+    {name:"Step04", label:"ESMFold QC",     status:"running",   agent:"Builder"},
+    {name:"Step05", label:"DiffDock",       status:"pending",   agent:"Builder"},
+    {name:"Step05b",label:"Selectivity",    status:"pending",   agent:"Builder"},
+    {name:"Step06", label:"PyRosetta",      status:"pending",   agent:"Builder"},
+    {name:"Step07", label:"Analysis",       status:"pending",   agent:"Reporter"},
+  ],
+  gates: {
+    plddt:       {passed:35, failed:15, threshold:"≥ 75",     label:"pLDDT Score"},
+    docking:     {passed:8,  failed:27, threshold:"Top 20%",  label:"Docking Score"},
+    rosetta:     {passed:5,  failed:3,  threshold:"ddG ≤ −5.0",label:"PyRosetta ddG"},
+    selectivity: {passed:4,  failed:1,  threshold:"margin ≤ −2.0",label:"Selectivity"},
+  },
+  design_decisions: {
+    llm:        "Qwen 2.5 7B",
+    llm_metrics:"MMLU 74.2 | JSON native | 128K ctx",
+    architecture:"6-Agent Hybrid (3 LLM + 3 Code)",
+    rejected: [
+      "Llama 3.2 11B (≈8B text tokens)",
+      "Gemma 2 9B (8K ctx limit)",
+      "Mistral 7B (MMLU 63.5)",
+    ]
+  }
+};
+
+/* ── Helpers ──────────────────────────────────────────────────────── */
+function $(id) { return document.getElementById(id); }
+
+function initials(name) {
+  return name.slice(0,2).toUpperCase();
+}
+
+function passRate(p, f) {
+  const total = p + f;
+  return total === 0 ? 0 : Math.round((p / total) * 100);
+}
+
+function gradeClass(rate) {
+  if (rate >= 60) return "good";
+  if (rate >= 30) return "warn";
+  return "poor";
+}
+
+function gradeLabel(rate) {
+  if (rate >= 60) return "Good";
+  if (rate >= 30) return "Fair";
+  return "Low";
+}
+
+function barClass(rate) {
+  if (rate >= 60) return "pass-high";
+  if (rate >= 30) return "pass-mid";
+  return "pass-low";
+}
+
+/* ── Run ID & Footer ──────────────────────────────────────────────── */
+$("runIdDisplay").textContent = pipelineData.run_id;
+
+function updateFooterTime() {
+  const now = new Date();
+  $("footerTs").textContent =
+    "Last updated: " + now.toISOString().replace("T"," ").slice(0,19) + " KST";
+}
+updateFooterTime();
+setInterval(updateFooterTime, 10000);
+
+/* ── Pipeline flow ────────────────────────────────────────────────── */
+(function renderPipeline() {
+  const container = $("pipelineFlow");
+  const steps = pipelineData.steps;
+
+  steps.forEach((step, i) => {
+    const node = document.createElement("div");
+    node.className = "step-node";
+
+    const isActive = i > 0 &&
+      (steps[i-1].status === "completed" || steps[i-1].status === "running");
+
+    node.innerHTML = `
+      <div class="step-box ${step.status}" title="${step.name}: ${step.label} (${step.agent})">
+        <span class="step-status-dot ${step.status}"></span>
+        <div class="step-number">${step.name}</div>
+        <div class="step-label">${step.label}</div>
+        <div class="step-agent-tag">${step.agent}</div>
+      </div>
+      <div class="step-node-meta">
+        <div class="step-status-label ${step.status}">${step.status.toUpperCase()}</div>
+      </div>
+    `;
+    container.appendChild(node);
+
+    if (i < steps.length - 1) {
+      const conn = document.createElement("div");
+      conn.className = "step-connector";
+      const lineActive = isActive || step.status === "completed";
+      conn.innerHTML = `
+        <div class="connector-line ${lineActive ? 'active' : ''}"></div>
+        <div class="connector-arrow ${lineActive ? 'active' : ''}"></div>
+      `;
+      container.appendChild(conn);
+    }
+  });
+})();
+
+/* ── Agent List ───────────────────────────────────────────────────── */
+(function renderAgents() {
+  const list = $("agentList");
+  pipelineData.agents.forEach(agent => {
+    const typeKey = agent.type.toLowerCase();
+    const card = document.createElement("div");
+    card.className = `agent-card ${agent.status}`;
+    card.innerHTML = `
+      <div class="agent-avatar ${typeKey}">${initials(agent.name)}</div>
+      <div class="agent-info">
+        <div class="agent-name">${agent.name}</div>
+        <div class="agent-role">${agent.role}</div>
+        ${agent.llm !== "none"
+          ? `<div class="agent-llm">${agent.llm}</div>`
+          : `<div class="agent-llm">Code-only</div>`}
+      </div>
+      <div class="agent-status-indicator">
+        <span class="status-pill ${agent.status}">${agent.status.toUpperCase()}</span>
+        <span class="type-badge ${typeKey}">${agent.type}</span>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+})();
+
+/* ── Iteration Overview ───────────────────────────────────────────── */
+(function renderIterOverview() {
+  const d = pipelineData;
+  const pct = Math.round((d.current_iteration / d.max_iterations) * 100);
+
+  $("iterOverview").innerHTML = `
+    <div class="metric-box">
+      <div class="metric-label">현재 이터레이션 / Current Iter</div>
+      <div class="metric-value accent">${d.current_iteration}</div>
+      <div class="metric-sub">of ${d.max_iterations} total</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">Best ddG</div>
+      <div class="metric-value good">${d.best_ddg}</div>
+      <div class="metric-sub">kcal/mol <span class="trend-up">▼ improving</span></div>
+    </div>
+  `;
+
+  $("iterBar").style.width = pct + "%";
+  $("iterPct").textContent = pct + "%";
+  $("bestDdgDisplay").textContent = "Best: " + d.best_ddg + " kcal/mol";
+  $("convergenceDelta").textContent = "Δ " + d.convergence_delta + " kcal/mol";
+})();
+
+/* ── ddG SVG Chart ────────────────────────────────────────────────── */
+(function renderDdgChart() {
+  const history = pipelineData.ddg_history;
+  const svg = $("ddgSvg");
+  const W = 400, H = 60;
+  const padding = { l:10, r:10, t:8, b:8 };
+  const innerW = W - padding.l - padding.r;
+  const innerH = H - padding.t - padding.b;
+
+  const minVal = Math.min(...history) * 1.15;
+  const maxVal = Math.max(...history) * 0.5;
+
+  function xPos(i)   { return padding.l + (i / (history.length - 1)) * innerW; }
+  function yPos(val) {
+    return padding.t + innerH - ((val - minVal) / (maxVal - minVal)) * innerH;
+  }
+
+  /* Grid lines */
+  [0, 0.5, 1].forEach(f => {
+    const y = padding.t + innerH * (1 - f);
+    const gridLine = document.createElementNS("http://www.w3.org/2000/svg","line");
+    gridLine.setAttribute("x1", padding.l);
+    gridLine.setAttribute("x2", W - padding.r);
+    gridLine.setAttribute("y1", y);
+    gridLine.setAttribute("y2", y);
+    gridLine.setAttribute("stroke","#2a2a3a");
+    gridLine.setAttribute("stroke-width","0.5");
+    svg.appendChild(gridLine);
+  });
+
+  /* Gradient fill */
+  const defs = document.createElementNS("http://www.w3.org/2000/svg","defs");
+  defs.innerHTML = `
+    <linearGradient id="ddgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#22d3a0" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#22d3a0" stop-opacity="0.02"/>
+    </linearGradient>
+  `;
+  svg.appendChild(defs);
+
+  /* Area path */
+  const areaPoints = history.map((v,i) => `${xPos(i)},${yPos(v)}`).join(" L ");
+  const lastX = xPos(history.length - 1);
+  const baseY = padding.t + innerH;
+  const area = document.createElementNS("http://www.w3.org/2000/svg","path");
+  area.setAttribute("d",
+    `M ${padding.l},${baseY} L ${areaPoints} L ${lastX},${baseY} Z`);
+  area.setAttribute("fill","url(#ddgGrad)");
+  svg.appendChild(area);
+
+  /* Line */
+  const linePath = "M " + history.map((v,i) => `${xPos(i)},${yPos(v)}`).join(" L ");
+  const line = document.createElementNS("http://www.w3.org/2000/svg","path");
+  line.setAttribute("d", linePath);
+  line.setAttribute("fill","none");
+  line.setAttribute("stroke","#22d3a0");
+  line.setAttribute("stroke-width","2");
+  line.setAttribute("stroke-linecap","round");
+  line.setAttribute("stroke-linejoin","round");
+  svg.appendChild(line);
+
+  /* Data points */
+  history.forEach((val, i) => {
+    const cx = xPos(i), cy = yPos(val);
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    circle.setAttribute("cx", cx);
+    circle.setAttribute("cy", cy);
+    circle.setAttribute("r", "4");
+    circle.setAttribute("fill", i === history.length-1 ? "#22d3a0" : "#0a0a0f");
+    circle.setAttribute("stroke","#22d3a0");
+    circle.setAttribute("stroke-width","2");
+    svg.appendChild(circle);
+
+    const text = document.createElementNS("http://www.w3.org/2000/svg","text");
+    text.setAttribute("x", cx);
+    text.setAttribute("y", cy - 8);
+    text.setAttribute("text-anchor","middle");
+    text.setAttribute("font-size","8");
+    text.setAttribute("fill","#8888aa");
+    text.setAttribute("font-family","monospace");
+    text.textContent = val;
+    svg.appendChild(text);
+
+    const label = document.createElementNS("http://www.w3.org/2000/svg","text");
+    label.setAttribute("x", cx);
+    label.setAttribute("y", padding.t + innerH + 10);
+    label.setAttribute("text-anchor","middle");
+    label.setAttribute("font-size","7");
+    label.setAttribute("fill","#55556a");
+    label.setAttribute("font-family","monospace");
+    label.textContent = "Iter " + (i+1);
+    svg.appendChild(label);
+  });
+})();
+
+/* ── QC Gate Table ────────────────────────────────────────────────── */
+(function renderGates() {
+  const tbody = $("gateTableBody");
+  const gates = pipelineData.gates;
+
+  const gateOrder = ["plddt","docking","rosetta","selectivity"];
+  const gateEmoji = ["pLDDT ≥75","Docking","PyRosetta ddG","Selectivity"];
+
+  gateOrder.forEach((key, idx) => {
+    const g = gates[key];
+    const rate = passRate(g.passed, g.failed);
+    const bc = barClass(rate);
+    const gc = gradeClass(rate);
+    const gl = gradeLabel(rate);
+    const total = g.passed + g.failed;
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span class="gate-name">${g.label}</span></td>
+      <td><span class="gate-threshold">${g.threshold}</span></td>
+      <td>
+        <div class="gate-bar-wrap">
+          <div class="gate-bar-track">
+            <div class="gate-bar-fill ${bc}" style="width:${rate}%;"></div>
+          </div>
+          <div class="gate-counts">${rate}% (${total} samples)</div>
+        </div>
+      </td>
+      <td><span class="pass-num">${g.passed}</span></td>
+      <td><span class="fail-num">${g.failed}</span></td>
+      <td><span class="gate-badge ${gc}">${gl}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+})();
+
+/* ── Design Decisions ─────────────────────────────────────────────── */
+(function renderDecisions() {
+  const dd = pipelineData.design_decisions;
+
+  $("decLlm").textContent = dd.llm;
+  $("decLlmMeta").textContent = dd.llm_metrics;
+  $("decArch").textContent = dd.architecture;
+
+  const chips = ["LLM: Qwen 2.5 7B","Code: Python 3.11","JSON: Native","Context: 128K"];
+  $("decChips").innerHTML = chips.map(c =>
+    `<span class="decision-chip">${c}</span>`).join("");
+
+  $("rejectedList").innerHTML = dd.rejected.map(r =>
+    `<div class="rejected-item"><span class="rejected-x">✕</span>${r}</div>`
+  ).join("");
+})();
+
+/* ── Animate progress bar on load ────────────────────────────────── */
+window.addEventListener("load", () => {
+  const d = pipelineData;
+  const pct = Math.round((d.current_iteration / d.max_iterations) * 100);
+  setTimeout(() => {
+    $("iterBar").style.width = pct + "%";
+  }, 200);
+
+  /* Animate gate bars */
+  document.querySelectorAll(".gate-bar-fill").forEach(el => {
+    const w = el.style.width;
+    el.style.width = "0%";
+    setTimeout(() => { el.style.width = w; }, 300);
+  });
+});
+</script>
+</body>
+</html>

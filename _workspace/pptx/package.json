@@ -1,0 +1,8 @@
+{
+  "name": "pptx-build-scripts",
+  "private": true,
+  "description": "PPTXGenJS 빌드 — Action Items Audit 등",
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}

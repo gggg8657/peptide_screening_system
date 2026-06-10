@@ -1,0 +1,34 @@
+{
+  "type": "critic",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:21:52.693603+00:00",
+  "hypothesis": "Structural quality is more critical than previously assumed; need to explicitly optimize pLDDT alongside ddG",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Reduce structural clashes that may be causing poor pLDDT scores"
+    },
+    {
+      "parameter_name": "objective_mode",
+      "old_value": "ddg_plus_constraints",
+      "new_value": "ddg_plus_plddt",
+      "rationale": "Prioritize both ddG and pLDDT to balance binding affinity with model quality"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 4,
+    "objective_mode": "ddg_plus_constraints",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_02/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_02/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_02/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_02/cand_004.pdb"
+  ],
+  "receptor_pdb": "runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb"
+}

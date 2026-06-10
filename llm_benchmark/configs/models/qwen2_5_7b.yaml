@@ -1,0 +1,6 @@
+id: M1
+name: "Qwen2.5-7B-Instruct"
+hf_id: "Qwen/Qwen2.5-7B-Instruct"
+size_b: 7
+vram_gb: 15
+key_strength: "Lightweight baseline"

@@ -1,0 +1,135 @@
+{
+  "pipeline": "Arm 1: Small Molecule Screening",
+  "receptor": "/mnt/g/repos/bio/results/sstr2_docking/sstr2_receptor.pdb",
+  "seeds": {
+    "Paltusotine_core": "CC1=CC(=CC(=C1)OCC2=CC=NC=C2)C(=O)NC3CCCCC3",
+    "SSTR2_agonist_1": "c1ccc2c(c1)c(=O)n(c(=O)[nH]2)CC(=O)O",
+    "Indole_scaffold": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+    "Benzimidazole_hit": "c1ccc2[nH]c(nc2c1)CCNC(=O)c1ccccc1"
+  },
+  "total_candidates": 40,
+  "docked_candidates": 15,
+  "results": [
+    {
+      "seed_name": "SSTR2_agonist_1",
+      "seed_smiles": "c1ccc2c(c1)c(=O)n(c(=O)[nH]2)CC(=O)O",
+      "smiles": "Cn1c(=O)c(C(=O)O)c(CC(=O)C(C)(C)C)c2ccccc21",
+      "qed_score": 0.9440825607233443,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Paltusotine_core",
+      "seed_smiles": "CC1=CC(=CC(=C1)OCC2=CC=NC=C2)C(=O)NC3CCCCC3",
+      "smiles": "O=C(COc1cc2ccccc2cc(=O)n1)NC1CCCCC1",
+      "qed_score": 0.9411865027288295,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Indole_scaffold",
+      "seed_smiles": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+      "smiles": "CNC(=O)Cc1c(OC(F)(F)F)ccc2ccccc12",
+      "qed_score": 0.9399442826374501,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Indole_scaffold",
+      "seed_smiles": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+      "smiles": "CCC(=O)N1CC[C@H]2[C@@H](CCN2C(=O)c2c[nH]c3ccccc23)C1",
+      "qed_score": 0.9226712638541061,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "SSTR2_agonist_1",
+      "seed_smiles": "c1ccc2c(c1)c(=O)n(c(=O)[nH]2)CC(=O)O",
+      "smiles": "O=C(O)c1cccn(CC2CC3(CCCC3)C2)c1=O",
+      "qed_score": 0.9091080633744725,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Benzimidazole_hit",
+      "seed_smiles": "c1ccc2[nH]c(nc2c1)CCNC(=O)c1ccccc1",
+      "smiles": "Cc1cccc(C2(NC(=O)c3ccccc3)CCC2)c1",
+      "qed_score": 0.8981207141298282,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Indole_scaffold",
+      "seed_smiles": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+      "smiles": "CNC(=O)CSCc1c(Cl)[nH]c2ccccc12",
+      "qed_score": 0.895646002438859,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Paltusotine_core",
+      "seed_smiles": "CC1=CC(=CC(=C1)OCC2=CC=NC=C2)C(=O)NC3CCCCC3",
+      "smiles": "O=c1[nH]c2c(c(=O)n1Cc1ccc(CCC3CCCCC3)cc1)CCCC2",
+      "qed_score": 0.8701966707813618,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Indole_scaffold",
+      "seed_smiles": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+      "smiles": "CNC1CCN(Cc2c[nH]c3ccccc23)CC1",
+      "qed_score": 0.8667617708663036,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Paltusotine_core",
+      "seed_smiles": "CC1=CC(=CC(=C1)OCC2=CC=NC=C2)C(=O)NC3CCCCC3",
+      "smiles": "O=C(NCC(=O)C1CCCCC1)c1ccc(=O)[nH]c1",
+      "qed_score": 0.8568304216708262,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "SSTR2_agonist_1",
+      "seed_smiles": "c1ccc2c(c1)c(=O)n(c(=O)[nH]2)CC(=O)O",
+      "smiles": "O=C(O)Cc1cn(CC(=O)O)c(=O)c2ccccc12",
+      "qed_score": 0.8445555877343252,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Indole_scaffold",
+      "seed_smiles": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+      "smiles": "CSCC(=O)Oc1[nH]c2ccccc2c1C#N",
+      "qed_score": 0.8438333769883597,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Benzimidazole_hit",
+      "seed_smiles": "c1ccc2[nH]c(nc2c1)CCNC(=O)c1ccccc1",
+      "smiles": "Cc1n[nH]cc1CCNC(=O)c1ccccc1",
+      "qed_score": 0.8378163248390984,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Indole_scaffold",
+      "seed_smiles": "c1ccc2c(c1)[nH]cc2CC(=O)NC",
+      "smiles": "c1ccc2c(CN3CCCCCC3)c[nH]c2c1",
+      "qed_score": 0.8325936766052888,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    },
+    {
+      "seed_name": "Benzimidazole_hit",
+      "seed_smiles": "c1ccc2[nH]c(nc2c1)CCNC(=O)c1ccccc1",
+      "smiles": "CCN(CCNC(=O)c1ccc[nH]1)Cc1ccnc(C)c1",
+      "qed_score": 0.8178135534467661,
+      "docking_status": "failed",
+      "docking_error": "API 오류 [404]: 404 page not found\n"
+    }
+  ],
+  "timestamp": "2026-02-09T23:49:16.705040"
+}

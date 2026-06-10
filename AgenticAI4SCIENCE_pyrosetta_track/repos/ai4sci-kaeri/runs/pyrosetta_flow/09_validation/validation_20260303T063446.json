@@ -1,0 +1,47 @@
+{
+  "timestamp": "20260303T063446",
+  "results": [
+    {
+      "id": "NOV-01_YSCKNFFWKTFTSN",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -43.922,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -473.1411,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "LIT-03_APCKNFFWKTFSSC",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -37.3034,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -473.0897,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

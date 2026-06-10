@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 8,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T11:33:20.407029+00:00",
+  "hypothesis": "Adding additional aromatic residues at positions 6, 7, 11 and introducing a negatively charged residue at position 5 will increase hydrophobic and electrostatic complementarity with the SSTR2 binding pocket, resulting in a more negative ddG compared to the best candidate from iteration 7.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current designs are limited by rigid backbone sampling, leading to structural clashes. Introducing flexible backbone sampling or side‑chain rotamer optimization should reduce clashes and improve stability scores.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "The single structural failure is due to a clash exceeding the current threshold. Tightening the clash limit will reduce such failures without discarding too many candidates."
+      },
+      {
+        "parameter_name": "n_candidates",
+        "old_value": 14,
+        "new_value": 20,
+        "rationale": "Increasing the pool size provides more diversity and a higher chance of generating candidates that satisfy all QC gates."
+      }
+    ]
+  },
+  "previous_best_ddg": -45.7107
+}

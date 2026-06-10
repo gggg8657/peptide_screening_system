@@ -1,0 +1,62 @@
+{
+  "SSTR1": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_gpcr_only/SSTR1_gpcr.pdb",
+    "n_atom": 4358,
+    "ncaa_center": [
+      155.6393606557377,
+      171.2944344262295,
+      114.9980573770492
+    ],
+    "gpcr_chain": "A",
+    "round": 2,
+    "improvement": "single GPCR chain only (G-protein/scFv \uc81c\uac70)"
+  },
+  "SSTR2": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_gpcr_only/SSTR2_gpcr.pdb",
+    "n_atom": 3694,
+    "ncaa_center": [
+      -0.012940000000000056,
+      -21.721799999999998,
+      58.961760000000005
+    ],
+    "gpcr_chain": "A",
+    "round": 2,
+    "improvement": "single GPCR chain only (G-protein/scFv \uc81c\uac70)"
+  },
+  "SSTR3": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_gpcr_only/SSTR3_gpcr.pdb",
+    "n_atom": 2242,
+    "ncaa_center": [
+      153.8631403508772,
+      123.94973684210527,
+      99.72357894736841
+    ],
+    "gpcr_chain": "A",
+    "round": 2,
+    "improvement": "single GPCR chain only (G-protein/scFv \uc81c\uac70)"
+  },
+  "SSTR4": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_gpcr_only/SSTR4_gpcr.pdb",
+    "n_atom": 1955,
+    "ncaa_center": [
+      152.15618181818184,
+      118.2120606060606,
+      142.6317878787879
+    ],
+    "gpcr_chain": "A",
+    "round": 2,
+    "improvement": "single GPCR chain only (G-protein/scFv \uc81c\uac70)"
+  },
+  "SSTR5": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_gpcr_only/SSTR5_gpcr.pdb",
+    "n_atom": 2034,
+    "ncaa_center": [
+      119.71475,
+      94.747125,
+      78.511375
+    ],
+    "gpcr_chain": "E",
+    "round": 2,
+    "improvement": "single GPCR chain only (G-protein/scFv \uc81c\uac70)"
+  }
+}

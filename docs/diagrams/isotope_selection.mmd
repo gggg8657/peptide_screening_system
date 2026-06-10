@@ -1,0 +1,107 @@
+%% Radionuclide Selection Guide for Validated Peptide Candidates
+%% Decision tree: Purpose → Isotope → Chelator → Peptide Requirements
+
+flowchart TB
+
+    %% ── Input ────────────────────────────────────────────
+    INPUT["Validated Candidate Peptide\n(Passed All 5 Structural Rules)"]
+
+    %% ── Purpose Decision ─────────────────────────────────
+    PURPOSE{"Clinical Purpose?"}
+
+    %% ── Diagnostic Branch ────────────────────────────────
+    subgraph DIAG["Diagnostic Pathway"]
+        direction TB
+        D1["68Ga\nt1/2 = 68 min | beta+ | PET"]
+        D2{"Chelator\nSelection"}
+        D3["NOTA\n(Preferred)\nHigher 68Ga Stability\nKd ~ 10^-26"]
+        D4["DOTA\n(Alternative)\nLower 68Ga Affinity\nKd ~ 10^-21"]
+        D5["Required Peptide Properties:\n- Rapid blood clearance\n- High tumor uptake (SUVmax)\n- Low background signal\n- Hydrophilic (neg. GRAVY)\n- Short metabolic half-life OK"]
+
+        D1 --> D2
+        D2 -->|"Preferred"| D3
+        D2 -->|"If Theranostic\nPlanned"| D4
+        D1 ~~~ D5
+    end
+
+    %% ── Therapeutic Beta Branch ──────────────────────────
+    subgraph BETA["Beta Therapy Pathway"]
+        direction TB
+        T1["177Lu\nt1/2 = 6.7 d | beta- | 497 keV\nTissue Range: 1-2 mm"]
+        T2["Chelator: DOTA\n(Standard for 177Lu)\nKd ~ 10^-23"]
+        T3["Required Peptide Properties:\n- High metabolic stability\n- High SSTR2 affinity (IC50 < 5 nM)\n- Renal protection compatible\n  (co-infusion with Lys/Arg)\n- Low instability index\n- Cys3-Cys14 intact for stability"]
+
+        T1 --> T2
+        T2 ~~~ T3
+    end
+
+    %% ── Therapeutic Alpha Branch ─────────────────────────
+    subgraph ALPHA["Alpha Therapy Pathway"]
+        direction TB
+        A1["225Ac\nt1/2 = 10 d | alpha | 5.8 MeV\nTissue Range: 50-80 um"]
+        A2["Chelator: DOTA\n(With Daughter Recoil\nConsideration)"]
+        A3["Daughter Nuclides:\n221Fr -> 217At -> 213Bi\n(Redistribution Risk)"]
+        A4["Required Peptide Properties:\n- Ultra-high SSTR2 affinity\n  (IC50 < 1 nM preferred)\n- Minimal off-target binding\n- Excellent tumor retention\n- N-term chelator fully\n  accessible (steric check)\n- High in vivo stability"]
+
+        A1 --> A2
+        A2 --> A3
+        A2 ~~~ A4
+    end
+
+    %% ── Theranostic Branch ───────────────────────────────
+    subgraph THERA["Theranostic Pathway"]
+        direction TB
+        TH1["Theranostic Pair\n68Ga (Dx) + 177Lu (Tx)"]
+        TH2["Shared Chelator: DOTA\n(Enables Same-Construct\nDiagnostic + Therapeutic Use)"]
+        TH3["Clinical Protocol:\n1. 68Ga-DOTA-Peptide PET Scan\n2. Confirm SSTR2+ Uptake\n3. 177Lu-DOTA-Peptide Therapy\n4. Post-therapy SPECT Imaging"]
+        TH4["Required Peptide Properties:\n- All 177Lu requirements PLUS\n- Suitable PET pharmacokinetics\n- Validated in both contexts\n- Dosimetry-guided therapy"]
+
+        TH1 --> TH2 --> TH3
+        TH2 ~~~ TH4
+    end
+
+    %% ── Flow ─────────────────────────────────────────────
+    INPUT --> PURPOSE
+
+    PURPOSE -->|"Diagnostic\n(Staging, Monitoring)"| D1
+    PURPOSE -->|"Therapeutic\n(Bulky Disease)"| T1
+    PURPOSE -->|"Therapeutic\n(Micrometastases)"| A1
+    PURPOSE -->|"Theranostic\n(Dx + Tx)"| TH1
+
+    %% ── Clinical Precedent References ────────────────────
+    D1 -.-|"e.g. 68Ga-DOTATATE\n(NETSPOT)"| REF1((" "))
+    T1 -.-|"e.g. 177Lu-DOTATATE\n(LUTATHERA)"| REF2((" "))
+    A1 -.-|"e.g. 225Ac-DOTATATE\n(Investigational)"| REF3((" "))
+    TH1 -.-|"e.g. NETTER-1 Trial\n(Dx/Tx Paradigm)"| REF4((" "))
+
+    %% ── Styles ───────────────────────────────────────────
+    classDef input fill:#0D47A1,stroke:#0D47A1,color:#FFFFFF,stroke-width:2px
+    classDef decision fill:#37474F,stroke:#263238,color:#FFFFFF,stroke-width:2px
+    classDef diagnostic fill:#EF6C00,stroke:#E65100,color:#FFFFFF,stroke-width:1px
+    classDef betatherapy fill:#6A1B9A,stroke:#4A148C,color:#FFFFFF,stroke-width:1px
+    classDef alphatherapy fill:#C62828,stroke:#B71C1C,color:#FFFFFF,stroke-width:1px
+    classDef theranostic fill:#00695C,stroke:#004D40,color:#FFFFFF,stroke-width:1px
+    classDef chelator fill:#1565C0,stroke:#0D47A1,color:#FFFFFF,stroke-width:1px
+    classDef properties fill:#ECEFF1,stroke:#90A4AE,color:#37474F,stroke-width:1px
+    classDef annotation fill:none,stroke:none,color:#78909C
+
+    class INPUT input
+    class PURPOSE decision
+    class D1,D2 diagnostic
+    class D3,D4 chelator
+    class D5 properties
+    class T1 betatherapy
+    class T2 chelator
+    class T3 properties
+    class A1 alphatherapy
+    class A2,A3 chelator
+    class A4 properties
+    class TH1 theranostic
+    class TH2 chelator
+    class TH3,TH4 properties
+    class REF1,REF2,REF3,REF4 annotation
+
+    style DIAG fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#E65100
+    style BETA fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px,color:#4A148C
+    style ALPHA fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#B71C1C
+    style THERA fill:#E0F2F1,stroke:#00695C,stroke-width:2px,color:#004D40

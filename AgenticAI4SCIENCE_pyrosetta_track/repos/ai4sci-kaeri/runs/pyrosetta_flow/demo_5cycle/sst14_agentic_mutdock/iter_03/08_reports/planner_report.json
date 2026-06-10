@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:22:16.156367+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and charged residues at position 6 will enhance binding affinity by optimizing hydrophobic and electrostatic interactions with the SSTR2 receptor.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural quality is more critical than previously assumed; need to explicitly optimize pLDDT alongside ddG",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Reduce structural clashes that may be causing poor pLDDT scores"
+      },
+      {
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_plus_constraints",
+        "new_value": "ddg_plus_plddt",
+        "rationale": "Prioritize both ddG and pLDDT to balance binding affinity with model quality"
+      }
+    ]
+  },
+  "previous_best_ddg": -24.7143
+}

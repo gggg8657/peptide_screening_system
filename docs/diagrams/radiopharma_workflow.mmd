@@ -1,0 +1,80 @@
+%% Radiopharmaceutical Candidate Discovery Workflow
+%% Color scheme: In Silico=Blue, Synthesis=Green, Imaging=Orange, Therapy=Purple
+
+flowchart LR
+
+    %% ── In Silico Phase ──────────────────────────────────
+    subgraph IN_SILICO["In Silico Phase"]
+        direction TB
+        A1["AI Co-Scientist\n(5-Agent System)"]
+        A2["Candidate Generation\n(SST-14 Mutation Simulation)"]
+        A3["ddG Screening\n(FlexPepDock / Rosetta)"]
+        A4["Pharmacological Validation\n(13 Properties)"]
+        A5["Structural Rules Check\n(5 PASS/FAIL Rules)"]
+
+        A1 --> A2 --> A3 --> A4 --> A5
+    end
+
+    %% ── Pre-clinical Synthesis Phase ─────────────────────
+    subgraph SYNTHESIS["Pre-clinical Synthesis Phase"]
+        direction TB
+        B1["Solid-Phase Peptide\nSynthesis (SPPS)"]
+        B2["SSTR2 Binding Assay\n(IC50 Determination)"]
+        B3["Chelator Conjugation\n(DOTA / NOTA)"]
+        B4["Radiolabeling\n(68Ga / 177Lu / 225Ac)"]
+
+        B1 --> B2 --> B3 --> B4
+    end
+
+    %% ── Imaging Phase ────────────────────────────────────
+    subgraph IMAGING["Diagnostic Imaging Phase"]
+        direction TB
+        C1["68Ga-PET Imaging"]
+        C2["Biodistribution\nStudy"]
+        C3["Dosimetry\nCalculation"]
+
+        C1 --> C2 --> C3
+    end
+
+    %% ── Therapy Phase ────────────────────────────────────
+    subgraph THERAPY["Therapeutic Phase"]
+        direction TB
+        D1["177Lu Beta Therapy\n(t1/2 = 6.7d, 497 keV)"]
+        D2["225Ac Alpha Therapy\n(t1/2 = 10d, 5.8 MeV)"]
+        D3["Efficacy Study\n(Tumor Response)"]
+
+        D1 --> D3
+        D2 --> D3
+    end
+
+    %% ── Phase Connections ────────────────────────────────
+    A5 -->|"Top Candidates\nRecommended"| B1
+    B4 -->|"Labeled\nConjugate"| C1
+    C3 -->|"Dosimetry\nCleared"| D1
+    C3 -->|"Dosimetry\nCleared"| D2
+
+    %% ── Dashboard UI Component Annotations ───────────────
+    A3 -.-|"CandidateTable\n(ddG, clash, totalScore)"| UI_A["Dashboard"]
+    A4 -.-|"PharmacologyPanel\n(GRAVY, Boman, pI, MW...)"| UI_A
+    A5 -.-|"ValidationPanel\n(5 Structural Rules)"| UI_A
+    B2 -.-|"ADMET Panel\n(Binding Affinity)"| UI_B["Dashboard"]
+    C1 -.-|"MoleculeViewer\n(3D Complex View)"| UI_C["Dashboard"]
+    C2 -.-|"VisualizationPanel\n(PyMOL 4-Panel Renders)"| UI_C
+
+    %% ── Styles ───────────────────────────────────────────
+    classDef insilico fill:#1565C0,stroke:#0D47A1,color:#FFFFFF,stroke-width:2px
+    classDef synthesis fill:#2E7D32,stroke:#1B5E20,color:#FFFFFF,stroke-width:2px
+    classDef imaging fill:#EF6C00,stroke:#E65100,color:#FFFFFF,stroke-width:2px
+    classDef therapy fill:#6A1B9A,stroke:#4A148C,color:#FFFFFF,stroke-width:2px
+    classDef dashboard fill:#ECEFF1,stroke:#90A4AE,color:#37474F,stroke-width:1px,stroke-dasharray:4
+
+    class A1,A2,A3,A4,A5 insilico
+    class B1,B2,B3,B4 synthesis
+    class C1,C2,C3 imaging
+    class D1,D2,D3 therapy
+    class UI_A,UI_B,UI_C dashboard
+
+    style IN_SILICO fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    style SYNTHESIS fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    style IMAGING fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#E65100
+    style THERAPY fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px,color:#4A148C

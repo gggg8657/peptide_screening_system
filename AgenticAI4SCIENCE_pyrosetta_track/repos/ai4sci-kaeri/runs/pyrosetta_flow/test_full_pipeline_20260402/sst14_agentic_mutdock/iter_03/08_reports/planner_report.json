@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_9999",
+  "timestamp": "2026-04-02T11:23:09.620864+00:00",
+  "hypothesis": "Mutating positions 5, 6, and 11 to aromatic/hydrophobic residues will enhance binding affinity by optimizing hydrophobic interactions and charge complementarity in the SSTR2 binding pocket",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural refinement must be explicitly prioritized alongside energy optimization to achieve both favorable binding affinity and model quality",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -10.0,
+        "rationale": "Current ddG threshold is too lenient, filtering out candidates with more favorable binding energies"
+      },
+      {
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_plus_constraints",
+        "new_value": "ddg_plus_refinement",
+        "rationale": "Prioritize structural refinement alongside energy optimization to address low pLDDT/dock scores"
+      }
+    ]
+  },
+  "previous_best_ddg": -45.6241
+}

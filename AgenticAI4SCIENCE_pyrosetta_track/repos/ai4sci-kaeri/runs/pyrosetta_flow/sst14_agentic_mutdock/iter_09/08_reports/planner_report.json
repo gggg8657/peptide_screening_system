@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 9,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T11:38:47.216437+00:00",
+  "hypothesis": "Adding a negative charge at the N‑terminus (position 1) and increasing hydrophobicity at position 2 will strengthen electrostatic and van der Waals interactions with the SSTR2 binding pocket, while keeping a small residue at position 6 will reduce steric clashes and improve overall binding affinity.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The primary bottleneck is the overly stringent ddG threshold; relaxing this constraint while slightly increasing clash tolerance should improve candidate quality and pass rate.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -20.0,
+        "rationale": "The ddG gate is rejecting many candidates that have highly negative ddG values, suggesting the threshold is too strict. Raising the threshold to -20.0 will allow more designs to pass while still filtering out overly destabilizing mutations."
+      },
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 15,
+        "rationale": "Two candidates failed the clash gate, indicating that the current clash tolerance may be too tight for the generated structures. A modest increase to 15 will provide additional flexibility for side‑chain packing."
+      }
+    ]
+  },
+  "previous_best_ddg": -43.3765
+}

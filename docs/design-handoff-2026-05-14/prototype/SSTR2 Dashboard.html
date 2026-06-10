@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>BIO · SSTR2 AI Co-Scientist — UI Design Canvas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/molstar@4.7.0/build/viewer/molstar.css" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; }
+  /* Make artboards isolate their styles */
+  .dc-card { isolation: isolate; }
+  /* The design canvas root font */
+  .dc-canvas { font-family: "Inter", system-ui, sans-serif; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/molstar@4.7.0/build/viewer/molstar.js"></script>
+
+<script src="data.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+<script type="text/babel" src="molstar_viewer.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="pipeline_flow.jsx"></script>
+<script type="text/babel" src="variant_a.jsx"></script>
+<script type="text/babel" src="variant_b.jsx"></script>
+<script type="text/babel" src="variant_c.jsx"></script>
+<script type="text/babel" src="screen_launcher.jsx"></script>
+<script type="text/babel" src="screen_benchmark.jsx"></script>
+<script type="text/babel" src="screen_wetlab.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+const { useState } = React;
+
+function App() {
+  return (
+    <>
+      <AppTweaks />
+      <DesignCanvas>
+        <DCSection
+          id="intro"
+          data-screen-label="00 Intro"
+          title="SSTR2 AI Co-Scientist · UI Direction"
+          subtitle="Clinical / data-first interface for a dual-silo peptide design pipeline. Real values from boltz_summary.json (2026-05-11) · cand03 AICKNFFWKTFTSC, T2, +0.008 margin, SSTR2 selective."
+        >
+        <DCArtboard
+          id="brief"
+          label="Brief"
+          width={420}
+          height={640}
+        >
+          <div style={{
+            padding: "28px 24px", height: "100%",
+            background: "#fafaf9", color: "#1c1917",
+            fontFamily: "Inter, sans-serif", fontSize: 13, lineHeight: 1.55,
+            display: "flex", flexDirection: "column", gap: 14,
+            overflow: "auto",
+          }}>
+            <div>
+              <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: "#78716c" }}>Project</div>
+              <div style={{ fontSize: 22, fontWeight: 600, lineHeight: 1.15, letterSpacing: -0.3, marginTop: 4 }}>
+                PRST_N_FM<br/>
+                <span style={{ color: "#78716c", fontWeight: 400 }}>SSTR2 AI Co-Scientist</span>
+              </div>
+              <div style={{ fontSize: 11.5, color: "#57534e", marginTop: 6 }}>KAERI · AI for Biology Lab</div>
+            </div>
+
+            <div style={{ height: 1, background: "#e7e5e4" }} />
+
+            <div>
+              <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: "#78716c", marginBottom: 4 }}>System</div>
+              <p style={{ margin: 0 }}>
+                <strong>Dual-silo pipeline</strong> (de novo + mutation) over 8 steps, gated by pLDDT / docking / selectivity / ddG / stability. A 5-agent LLM loop drives iteration. Target <span style={{ fontFamily: "JetBrains Mono, monospace" }}>SSTR2 (P30874, 7XNA)</span>.
+              </p>
+            </div>
+
+            <div>
+              <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: "#78716c", marginBottom: 4 }}>v2 추가</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 11.5, lineHeight: 1.6 }}>
+                <li>silo-specific 파이프라인 (A · B · Combined 각각 다른 모듈)</li>
+                <li>per-stage 진행률, in/out 카운트, gate label</li>
+                <li>Tweaks 패널 (color hue · density · font)</li>
+                <li>Mol* 실제 viewer (PDB 7XNA from RCSB)</li>
+                <li>Run launcher · LLM benchmark · Wetlab order 화면</li>
+              </ul>
+            </div>
+
+            <div>
+              <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: "#78716c", marginBottom: 4 }}>Variants</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <Variant n="A" name="Run Console" who="Operator · daily runs">live pipeline + agents</Variant>
+                <Variant n="B" name="Selectivity" who="Reviewer · drill-down">heatmap + 3D drawer</Variant>
+                <Variant n="C" name="Candidate Review" who="PI · approve">dark · cand03 deep-dive</Variant>
+                <Variant n="D" name="Run Launcher" who="Operator · start">config + gate sliders</Variant>
+                <Variant n="E" name="LLM Benchmark" who="Eng · model picking">5 LLM × 3 flow</Variant>
+                <Variant n="F" name="Wetlab Order" who="Lab manager · PO">in-vitro Ki assay</Variant>
+              </div>
+            </div>
+
+            <div style={{ flex: 1 }} />
+
+            <div style={{ fontSize: 10, color: "#a8a29e", lineHeight: 1.5 }}>
+              Tweaks 패널은 우측 하단 토글에서 열림 — 색/밀도/폰트를 라이브 변경.
+            </div>
+          </div>
+        </DCArtboard>
+
+        <DCArtboard
+          id="variant_a"
+          label="A · Run Console (operator)"
+          width={1440}
+          height={950}
+        >
+          <VariantA />
+        </DCArtboard>
+
+        <DCArtboard
+          id="variant_b"
+          label="B · Selectivity Explorer (reviewer)"
+          width={1440}
+          height={1100}
+        >
+          <VariantB />
+        </DCArtboard>
+
+        <DCArtboard
+          id="variant_c"
+          label="C · Candidate Review (PI · dark)"
+          width={1440}
+          height={1000}
+        >
+          <VariantC />
+        </DCArtboard>
+        </DCSection>
+
+        <DCSection
+          id="ops"
+          data-screen-label="01 Operations"
+          title="Operations · 새 화면"
+          subtitle="실행 launcher · LLM benchmark · wetlab order. 같은 디자인 시스템 (Inter + JetBrains Mono, stone neutrals + accent hue)."
+        >
+        <DCArtboard
+          id="screen_launcher"
+          label="D · Run Launcher"
+          width={1280}
+          height={1200}
+        >
+          <ScreenLauncher />
+        </DCArtboard>
+
+        <DCArtboard
+          id="screen_benchmark"
+          label="E · LLM Benchmark (5 × 3)"
+          width={1320}
+          height={1100}
+        >
+          <ScreenBenchmark />
+        </DCArtboard>
+
+        <DCArtboard
+          id="screen_wetlab"
+          label="F · Wetlab Order · in-vitro Ki"
+          width={1320}
+          height={1300}
+        >
+          <ScreenWetlab />
+        </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+    </>
+  );
+}
+
+function Variant({ n, name, who, children }) {
+  return (
+    <div style={{
+      display: "grid", gridTemplateColumns: "28px 1fr",
+      gap: 10, alignItems: "start",
+      padding: "8px 10px", border: "1px solid #e7e5e4", borderRadius: 3, background: "#fff",
+    }}>
+      <div style={{
+        width: 22, height: 22, borderRadius: 3,
+        background: "#1c1917", color: "#fff",
+        display: "grid", placeItems: "center", fontFamily: "JetBrains Mono, monospace", fontWeight: 700, fontSize: 12,
+      }}>{n}</div>
+      <div>
+        <div style={{ fontWeight: 600 }}>{name}</div>
+        <div style={{ fontSize: 10, color: "#a8a29e", marginBottom: 4, fontFamily: "JetBrains Mono, monospace" }}>{who}</div>
+        <div style={{ fontSize: 11.5, color: "#57534e" }}>{children}</div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

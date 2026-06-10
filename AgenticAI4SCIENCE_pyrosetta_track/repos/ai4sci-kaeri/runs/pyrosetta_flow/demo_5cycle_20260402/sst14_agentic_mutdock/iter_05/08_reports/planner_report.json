@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 5,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:24:11.590508+00:00",
+  "hypothesis": "Mutating positions 5, 6, and 11 to aromatic or charged residues will improve binding affinity (ddG) by optimizing interactions with the SSTR2 receptor's binding pocket.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural refinement needs stricter balance between energy optimization and geometric constraints",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 15,
+        "rationale": "Low clash tolerance may be causing structural artifacts that degrade pLDDT and docking scores"
+      },
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -8.0,
+        "rationale": "Current ddG threshold may be too lenient for high-affinity designs, allowing structurally unstable candidates"
+      }
+    ]
+  },
+  "previous_best_ddg": -44.424
+}

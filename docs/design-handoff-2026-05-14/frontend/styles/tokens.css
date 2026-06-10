@@ -1,0 +1,89 @@
+/* CSS tokens — OKLCH 기반 light/dark + accent hue 가변
+ *
+ * 위치: src/styles/tokens.css
+ *
+ * 사용: src/index.css 에서 import:
+ *   @import "tailwindcss";
+ *   @import "./styles/tokens.css";
+ *
+ *   @theme {
+ *     --color-bg: var(--bg);
+ *     --color-text-base: var(--text);
+ *     ...
+ *   }
+ *
+ * 자세한 Tailwind v4 통합은 FRONTEND_INTEGRATION.md § 1 참조.
+ */
+
+:root {
+  --accent-hue: 200;
+  --pos-hue: 145;
+  --warn-hue: 60;
+  --neg-hue: 25;
+  --violet-hue: 290;
+  --teal-hue: 180;
+}
+
+:root,
+[data-theme="light"] {
+  --bg: #fafaf9;
+  --bg-elev: #ffffff;
+  --bg-sunk: #f5f5f4;
+  --border: #e7e5e4;
+  --border-strong: #d6d3d1;
+  --text: #1c1917;
+  --text-mute: #57534e;
+  --text-dim: #a8a29e;
+
+  --accent: oklch(0.58 0.13 var(--accent-hue));
+  --accent-soft: oklch(0.94 0.04 var(--accent-hue));
+  --accent-text: oklch(0.42 0.13 var(--accent-hue));
+
+  --pos: oklch(0.55 0.13 var(--pos-hue));
+  --pos-soft: oklch(0.94 0.06 var(--pos-hue));
+  --warn: oklch(0.62 0.15 60);
+  --warn-soft: oklch(0.94 0.08 70);
+  --neg: oklch(0.55 0.2 var(--neg-hue));
+  --neg-soft: oklch(0.94 0.07 var(--neg-hue));
+
+  --violet: oklch(0.55 0.15 var(--violet-hue));
+  --violet-soft: oklch(0.94 0.05 var(--violet-hue));
+  --teal: oklch(0.55 0.1 var(--teal-hue));
+  --teal-soft: oklch(0.94 0.04 var(--teal-hue));
+}
+
+[data-theme="dark"] {
+  --bg: #0c0a09;
+  --bg-elev: #18181b;
+  --bg-sunk: #0a0a0a;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --text: #f5f5f4;
+  --text-mute: #a8a29e;
+  --text-dim: #57534e;
+
+  --accent: oklch(0.72 0.13 var(--accent-hue));
+  --accent-soft: oklch(0.28 0.05 var(--accent-hue));
+  --accent-text: oklch(0.82 0.12 var(--accent-hue));
+
+  --pos: oklch(0.72 0.14 var(--pos-hue));
+  --pos-soft: oklch(0.25 0.05 var(--pos-hue));
+  --warn: oklch(0.78 0.15 70);
+  --warn-soft: oklch(0.28 0.07 70);
+  --neg: oklch(0.7 0.18 var(--neg-hue));
+  --neg-soft: oklch(0.28 0.08 var(--neg-hue));
+
+  --violet: oklch(0.74 0.15 var(--violet-hue));
+  --violet-soft: oklch(0.28 0.06 var(--violet-hue));
+  --teal: oklch(0.72 0.1 var(--teal-hue));
+  --teal-soft: oklch(0.25 0.04 var(--teal-hue));
+}
+
+/* Tabular nums + ligature 통일 */
+body {
+  font-feature-settings: "cv11", "ss01", "ss03", "tnum";
+}
+.font-mono,
+[class*="font-mono"] {
+  font-feature-settings: "tnum", "zero";
+}

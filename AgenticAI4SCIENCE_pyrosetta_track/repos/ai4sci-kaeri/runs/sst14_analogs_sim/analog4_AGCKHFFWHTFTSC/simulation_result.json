@@ -1,0 +1,63 @@
+{
+  "sequence": "AGCKHFFWHTFTSC",
+  "mutations": [
+    "N5H",
+    "K9H"
+  ],
+  "pre_dock_score": -82.688,
+  "post_dock_score": -82.688,
+  "ddg": -4.955,
+  "bound_score": -82.688,
+  "unbound_score": -77.732,
+  "clash_score": 564.019,
+  "per_residue_energy": {
+    "ALA1": 0.342,
+    "GLY2": 2.592,
+    "CYS3": 8.078,
+    "LYS4": 1.355,
+    "HIS5": 1.206,
+    "PHE6": -1.308,
+    "PHE7": 6.38,
+    "TRP8": 1.744,
+    "HIS9": 2.043,
+    "THR10": 1.576,
+    "PHE11": 10.92,
+    "THR12": 1.367,
+    "SER13": -0.86,
+    "CYS14": 4.925
+  },
+  "interface_hbonds": 5,
+  "hbond_details": [
+    {
+      "donor": "LYS4",
+      "acceptor": "SER215",
+      "energy": -0.458
+    },
+    {
+      "donor": "PHE7",
+      "acceptor": "TYR219",
+      "energy": -0.924
+    },
+    {
+      "donor": "HIS9",
+      "acceptor": "GLN140",
+      "energy": -0.439
+    },
+    {
+      "donor": "THR208",
+      "acceptor": "THR12",
+      "energy": -1.067
+    },
+    {
+      "donor": "GLN201",
+      "acceptor": "CYS14",
+      "energy": -1.965
+    }
+  ],
+  "salt_bridges": [],
+  "n_salt_bridges": 0,
+  "refined_pdb": "runs/sst14_analogs_sim/analog4_AGCKHFFWHTFTSC/refined.pdb",
+  "score_function": "ref2015",
+  "elapsed_sec": 4.5,
+  "complete": true
+}

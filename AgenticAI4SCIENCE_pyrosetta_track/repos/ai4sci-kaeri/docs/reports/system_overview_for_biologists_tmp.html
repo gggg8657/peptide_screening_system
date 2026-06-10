@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>system_overview_for_biologists.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sstr2-%EB%B0%A9%EC%82%AC%EC%84%B1%EC%9D%98%EC%95%BD%ED%92%88-ai-co-scientist-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%80%EC%9D%B4%EB%93%9C">SSTR2 방사성의약품 AI Co-Scientist 시스템 가이드</h1>
+<blockquote>
+<p><strong>독자 대상</strong>: 생명공학/약학 박사 — 프로그래밍 경험 없이도 전체 흐름을 이해할 수 있도록 작성<br>
+<strong>작성일</strong>: 2026-04-02 | <strong>버전</strong>: 코드 기준 현행</p>
+</blockquote>
+<hr>
+<h2 id="%EB%AA%A9%EC%B0%A8">목차</h2>
+<ol>
+<li><a href="#1-%EA%B0%9C%EC%9A%94--%EC%99%9C-ai%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80">개요 — 왜 AI가 필요한가</a></li>
+<li><a href="#2-%EC%A0%84%EC%B2%B4-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%ED%9D%90%EB%A6%84">전체 파이프라인 흐름</a></li>
+<li><a href="#3-%EC%95%BD%EB%A6%AC%ED%95%99%EC%A0%81-%ED%8F%89%EA%B0%80-%EC%B2%B4%EA%B3%84">약리학적 평가 체계</a>
+<ul>
+<li>3.1 <a href="#31-15%EA%B0%80%EC%A7%80-%EB%AC%BC%EB%A6%AC%ED%99%94%ED%95%99-%EC%A7%80%ED%91%9C">15가지 물리화학 지표</a></li>
+<li>3.2 <a href="#32-5%EA%B0%80%EC%A7%80-%EA%B5%AC%EC%A1%B0-%EA%B7%9C%EC%B9%99-passfail">5가지 구조 규칙 (PASS/FAIL)</a></li>
+</ul>
+</li>
+<li><a href="#4-ae-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EB%B6%84%EB%A5%98">A~E 클러스터 분류</a></li>
+<li><a href="#5-%ED%98%84%EC%9E%AC-%EC%95%A1%EC%85%98-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%83%81%ED%83%9C-%EC%9A%94%EC%95%BD">현재 액션 아이템 상태 요약</a></li>
+<li><a href="#appendix-a-a-01-%EC%83%81%EC%84%B8">Appendix A: A-01 상세 — PepCalc → pharma_properties</a></li>
+<li><a href="#appendix-b-a-02-%EC%83%81%EC%84%B8">Appendix B: A-02 상세 — ADMETlab → pepADMET</a></li>
+<li><a href="#appendix-c-a-03-%EC%83%81%EC%84%B8">Appendix C: A-03 상세 — SSTR 선택성 스크리닝</a></li>
+<li><a href="#appendix-d-a-04-%EC%83%81%EC%84%B8">Appendix D: A-04 상세 — A~E 클러스터 자동 분류</a></li>
+<li><a href="#appendix-e-a-08-%EC%83%81%EC%84%B8">Appendix E: A-08 상세 — 3종 신규 메트릭</a></li>
+<li><a href="#appendix-f-a-09-%EC%83%81%EC%84%B8">Appendix F: A-09 상세 — pepADMET 논문 검토</a></li>
+<li><a href="#appendix-g-a-10-%EC%83%81%EC%84%B8">Appendix G: A-10 상세 — 방사선 분해 안정성</a></li>
+</ol>
+<hr>
+<h2 id="1-%EA%B0%9C%EC%9A%94--%EC%99%9C-ai%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80">1. 개요 — 왜 AI가 필요한가</h2>
+<h3 id="sstr2%EB%9E%80">SSTR2란?</h3>
+<p>**SSTR2(Somatostatin Receptor Type 2)**는 소마토스타틴 수용체의 하나로, 신경내분비종양(NET) 세포 표면에 과발현된다. DOTATATE(¹⁷⁷Lu-DOTATATE, Lutathera®)와 같은 방사성의약품이 이 수용체에 결합하여 진단(⁶⁸Ga-PET) 및 치료(PRRT)에 사용된다.</p>
+<h3 id="sst-14%EB%9E%80">SST-14란?</h3>
+<p>**SST-14(Somatostatin-14)**는 SSTR2에 자연적으로 결합하는 14개 아미노산 펩타이드:</p>
+<pre class="hljs"><code><div>A - G - C - K - N - F - F - W - K - T - F - T - S - C
+1   2   3   4   5   6   7   8   9  10  11  12  13  14
+              [이황화결합: Cys3 ↔ Cys14]
+                          [FWKT 약물단: 7~10번]
+</div></code></pre>
+<ul>
+<li><strong>Cys3–Cys14 이황화 결합</strong>: 고리형 구조를 유지하여 수용체 친화성에 필수</li>
+<li><strong>FWKT 약물단 (Phe7-Trp8-Lys9-Thr10)</strong>: SSTR2 결합 포켓과 직접 접촉하는 핵심 부위</li>
+<li>문제: 혈중 반감기가 짧고(~3분), 비선택적이며(SSTR1/3/4/5도 결합), 방사성 킬레이터 부착 위치 최적화 필요</li>
+</ul>
+<h3 id="%EC%99%9C-ai%EC%9D%B8%EA%B0%80">왜 AI인가?</h3>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th>탐색 공간</th>
+<th>비용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>수작업 합성·실험</td>
+<td>수십 개/년</td>
+<td>매우 높음</td>
+</tr>
+<tr>
+<td>컴퓨터 시뮬레이션(AI 없이)</td>
+<td>수백 개</td>
+<td>높음</td>
+</tr>
+<tr>
+<td><strong>AI Co-Scientist 파이프라인</strong></td>
+<td><strong>22,000개+/주</strong></td>
+<td><strong>낮음</strong></td>
+</tr>
+</tbody>
+</table>
+<p>SST-14의 변이 가능한 위치(14개 중 12개)에 20종 아미노산을 조합하면 이론상 20¹² ≈ 4조 가지 후보가 존재한다. AI 파이프라인은 이 중 유망한 후보를 자동으로 탐색하고, 합성에 앞서 순위를 매긴다.</p>
+<hr>
+<h2 id="2-%EC%A0%84%EC%B2%B4-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%ED%9D%90%EB%A6%84">2. 전체 파이프라인 흐름</h2>
+<p>파이프라인은 <strong>Silo A</strong>와 <strong>Silo B</strong> 두 갈래로 구성된다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Silo A (3-Arm NIM)</th>
+<th>Silo B (PyRosetta)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>설계 방식</td>
+<td>딥러닝으로 완전히 새로운 서열 생성</td>
+<td>SST-14를 조금씩 변이시켜 탐색</td>
+</tr>
+<tr>
+<td>도킹 엔진</td>
+<td>DiffPepDock (딥러닝 기반)</td>
+<td>FlexPepDock (물리·에너지 기반)</td>
+</tr>
+<tr>
+<td>현황</td>
+<td>로컬 모델 설치 진행 중</td>
+<td><strong>현재 주 운영 파이프라인</strong></td>
+</tr>
+</tbody>
+</table>
+<p>현재는 <strong>Silo B</strong>가 메인이며, 아래 흐름 설명도 Silo B 기준이다.</p>
+<hr>
+<h3 id="%EB%8B%A8%EA%B3%84%EB%B3%84-%ED%9D%90%EB%A6%84-%EB%B9%84%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9A%A9">단계별 흐름 (비개발자용)</h3>
+<pre class="hljs"><code><div>[시작]
+  SST-14 원래 서열을 컴퓨터 도킹으로 기준값 측정 (기준선 확립)
+
+[반복: 1라운드 ~ N라운드]
+
+  Step 1. AI가 실험 가설 수립
+          → &quot;5번 위치를 바꾸면 결합력이 올라갈 것 같다&quot; 식의 제안
+
+  Step 2. 새 후보 서열 생성 (라운드당 8개)
+          → FWKT(7~10번) 보존 확인 → 미통과 시 최대 3회 재생성
+
+  Step 3. 컴퓨터 도킹 (FlexPepDock)
+          → SSTR2 구조에 각 후보를 결합시켜 결합 에너지(ddG) 계산
+          → 4개 프로세스 병렬 실행
+
+  Step 4. 품질 기준 (QC 게이트) 통과 여부 판정
+          → ddG ≤ −5.0 kcal/mol AND 원자 충돌 ≤ 10개
+          → 실패 시 탈락 및 이유 기록
+
+  Step 5. 추가 스코어링 (선택적)
+          → GNINA CNN 재스코어링 (딥러닝 보정)
+          → ECR 합산 (여러 지표 통합)
+          → Pareto 순위 (다목적 최적화: 결합력·안정성·독성 동시 고려)
+          → Bayesian Optimization (다음 탐색 위치 예측)
+
+  Step 6. Critic AI가 결과 분석 → 다음 라운드 가설 갱신
+
+  Step 7. 수렴 판정 (통계적 유의성 검사)
+          → ddG 분포가 더 이상 개선되지 않으면 종료
+
+[종료]
+  → 후보 A~E 클러스터 분류
+  → 물리화학 지표 15종 계산 (Section 3)
+  → 최종 보고서 저장
+</div></code></pre>
+<hr>
+<h3 id="%EA%B0%81-%EB%8B%A8%EA%B3%84%EC%99%80-%EC%95%A1%EC%85%98-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%97%B0%EA%B4%80">각 단계와 액션 아이템 연관</h3>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>설명</th>
+<th>연관 액션</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step 3 (도킹)</td>
+<td>FlexPepDock 결합 에너지 계산</td>
+<td>기본 인프라</td>
+</tr>
+<tr>
+<td>Step 4 (QC)</td>
+<td>ddG, clash_score 기준 필터링</td>
+<td>기본 인프라</td>
+</tr>
+<tr>
+<td>Step 5 (재스코어링)</td>
+<td>GNINA + Pareto + BO</td>
+<td>🔵A-05⚠️</td>
+</tr>
+<tr>
+<td><strong>Step 8: 혈청 안정성</strong></td>
+<td>단백질 분해 저항성, 반감기 예측</td>
+<td>🔴A-01✅</td>
+</tr>
+<tr>
+<td><strong>Step 9: ADMET</strong></td>
+<td>흡수·분포·대사·배설·독성 프로파일</td>
+<td>🟠A-02⚠️</td>
+</tr>
+<tr>
+<td><strong>Step 10: 선택성</strong></td>
+<td>SSTR1~5 교차 도킹 선택성 계산</td>
+<td>🟡A-03⏸️</td>
+</tr>
+<tr>
+<td><strong>Step 11: 분류</strong></td>
+<td>A~E 클러스터 자동 배정</td>
+<td>🟢A-04✅</td>
+</tr>
+<tr>
+<td><strong>Step 12: 3종 신규 지표</strong></td>
+<td>방사선 분해·킬레이터·선택성 지수 추가</td>
+<td>🔵A-08✅</td>
+</tr>
+<tr>
+<td><strong>Step 13: pepADMET 통합</strong></td>
+<td>JCIM 2026 모델 독성 예측</td>
+<td>⭐A-09⚠️</td>
+</tr>
+<tr>
+<td><strong>Step 14: 방사선 안정성</strong></td>
+<td>방사선 분해 취약 잔기 예측</td>
+<td>💜A-10✅</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-%EC%95%BD%EB%A6%AC%ED%95%99%EC%A0%81-%ED%8F%89%EA%B0%80-%EC%B2%B4%EA%B3%84">3. 약리학적 평가 체계</h2>
+<h3 id="31-15%EA%B0%80%EC%A7%80-%EB%AC%BC%EB%A6%AC%ED%99%94%ED%95%99-%EC%A7%80%ED%91%9C">3.1 15가지 물리화학 지표</h3>
+<p>모든 지표는 <strong>논문에서 검증된 공식</strong>으로 계산되며, 주관적 가중치 없이 <strong>순수 수치</strong>만 출력된다.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>지표명</th>
+<th>무슨 의미인가</th>
+<th>좋은 방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>GRAVY</strong></td>
+<td>소수성 평균값. 양수일수록 물을 싫어하고 막에 가까이 있으려 함</td>
+<td>−1.0 ~ +0.5 (적당한 소수성)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Boman Index</strong></td>
+<td>단백질과의 상호작용 능력. 양수일수록 세포 침투보다 수용체 결합에 유리</td>
+<td>낮을수록 비특이적 결합 리스크 낮음</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Instability Index</strong></td>
+<td>혈청 내 분해 속도 예측. 40 이상이면 &quot;불안정 단백질&quot;</td>
+<td>&lt; 40 (안정), &lt; 30 (매우 안정)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Aliphatic Index</strong></td>
+<td>소수성 지방족 사슬 함량. 열 안정성과 관련</td>
+<td>높을수록 안정</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>등전점 (pI)</strong></td>
+<td>전하가 0이 되는 pH. 이 pH에서 용해도 최저</td>
+<td>표지 pH와 동떨어질수록 안정적</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>소광 계수</strong></td>
+<td>280 nm 자외선 흡광 강도. Trp·Tyr·SS 결합 함량에 의존</td>
+<td>정량 분석에 활용</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>N-말단 규칙 반감기</strong></td>
+<td>N-말단 아미노산 종류에 따른 세포내 분해 속도</td>
+<td>긴 반감기(30h) 아미노산 선호</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>소수성 모멘트</strong></td>
+<td>펩타이드 나선 구조가 얼마나 한쪽 면이 소수성인지. 막 삽입 경향 예측</td>
+<td>낮을수록 막 삽입 가능성 적음</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Wimley-White 에너지</strong></td>
+<td>물에서 인지질 막 계면으로 이동하는 에너지 비용</td>
+<td>양수(이동 비용 높음)이면 막 비침투성</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>순 전하 (pH 7.4)</strong></td>
+<td>생리적 pH에서의 전체 전하량</td>
+<td>양전하가 클수록 신장 재흡수 리스크</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>분자량</strong></td>
+<td>이황화 결합 보정 포함 분자량 (Da)</td>
+<td>방사성의약품은 보통 1,000~3,000 Da</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>프로테아제 절단 부위 수</strong></td>
+<td>혈청 프로테아제가 자를 수 있는 위치 개수</td>
+<td>적을수록 혈청 안정성 ↑</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>BLOSUM62 점수</strong></td>
+<td>SST-14 원래 서열 대비 진화적 보존성 점수</td>
+<td>높을수록 자연 유사 서열</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>금속 배위 잔기 수</strong></td>
+<td>His, Cys, Asp, Glu 등 킬레이터와 경쟁할 잔기 수</td>
+<td>킬레이터 부착 위치 선정에 활용</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>방사선 분해 취약성</strong></td>
+<td>방사선에 의해 손상받기 쉬운 잔기(Trp, Met, Cys 등) 점수</td>
+<td>낮을수록 방사선 안정성 ↑</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>왜 가중치가 없는가?</strong> 각 지표는 독립된 물리화학적 특성을 측정한다. 인위적 가중치를 부여하면 연구자의 편향이 결과에 개입된다. 대신 <strong>Pareto 최적화</strong>를 통해 여러 지표를 동시에 고려한 후보군을 선별한다.</p>
+</blockquote>
+<hr>
+<h3 id="32-5%EA%B0%80%EC%A7%80-%EA%B5%AC%EC%A1%B0-%EA%B7%9C%EC%B9%99-passfail">3.2 5가지 구조 규칙 (PASS/FAIL)</h3>
+<p>물리화학 지표와 별개로, 다음 5가지는 통과/불통 이진 판정이다.</p>
+<table>
+<thead>
+<tr>
+<th>규칙</th>
+<th>조건</th>
+<th>왜 중요한가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FWKT 약물단 보존</strong></td>
+<td>7~10번 위치 F-W-K-T 유지</td>
+<td>SSTR2 결합 포켓의 핵심 접촉 부위</td>
+</tr>
+<tr>
+<td><strong>K9-D122 염다리</strong></td>
+<td>Lys9가 SSTR2의 Asp122와 이온쌍 형성 가능</td>
+<td>결합 포즈 안정화에 필수</td>
+</tr>
+<tr>
+<td><strong>Cys3-Cys14 이황화 결합</strong></td>
+<td>두 Cys 잔기 보존</td>
+<td>고리형 구조 유지</td>
+</tr>
+<tr>
+<td><strong>Phe6-Phe11 π-스태킹</strong></td>
+<td>방향족 잔기 위치 보존</td>
+<td>소수성 포켓 채움</td>
+</tr>
+<tr>
+<td><strong>N-말단 킬레이터 자리</strong></td>
+<td>N-말단 자유 아민 존재</td>
+<td>⁶⁸Ga/¹⁷⁷Lu DOTA 부착 위치</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-ae-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EB%B6%84%EB%A5%98">4. A~E 클러스터 분류</h2>
+<p>최종 후보들은 아래 기준에 따라 자동으로 5개 그룹으로 분류된다. 우선순위: <strong>A &gt; B &gt; C &gt; D &gt; E</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>클러스터</th>
+<th>이름</th>
+<th>주요 기준</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong> 결합 엘리트</td>
+<td>High Affinity Core</td>
+<td>ddG ≤ −8.0 kcal/mol + 원자충돌 ≤ 5 + pLDDT ≥ 75 + FWKT 유지</td>
+<td>즉시 합성 후보. ⁶⁸Ga/¹⁷⁷Lu 표지 후 실험</td>
+</tr>
+<tr>
+<td><strong>B</strong> 선택성 특화</td>
+<td>Selectivity-Optimised</td>
+<td>SSTR2 결합 확인 + 선택성 마진 ≥ 3.0 kcal/mol</td>
+<td>다른 SSTR 서브타입보다 SSTR2를 크게 선호</td>
+</tr>
+<tr>
+<td><strong>C</strong> 안정성 강화</td>
+<td>Stability-Enhanced</td>
+<td>Instability Index &lt; 30 + BLOSUM62 양수 + 프로테아제 부위 ≤ 8개</td>
+<td>혈청 반감기가 긴 후보. 장기 치료용(¹⁷⁷Lu) 유리</td>
+</tr>
+<tr>
+<td><strong>D</strong> 방사화학 최적</td>
+<td>Radiochemistry-Optimal</td>
+<td>GRAVY −1.0~+0.5 + 순전하 ≤ ±1 + 킬레이터 부위 1개 이상</td>
+<td>표지 수율·방사화학 순도 높을 것으로 예상</td>
+</tr>
+<tr>
+<td><strong>E</strong> 탐색 후보</td>
+<td>Exploratory Candidates</td>
+<td>A~D 미충족</td>
+<td>비보존 치환 포함. MD 추가 검증 필요</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>참고</strong>: pLDDT(ESMFold 예측 신뢰도)가 계산되지 않은 경우, Cluster A 기준에서 pLDDT 조건은 자동으로 통과 처리된다(나머지 3개 기준은 유효).</p>
+</blockquote>
+<hr>
+<h2 id="5-%ED%98%84%EC%9E%AC-%EC%95%A1%EC%85%98-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%83%81%ED%83%9C-%EC%9A%94%EC%95%BD">5. 현재 액션 아이템 상태 요약</h2>
+<table>
+<thead>
+<tr>
+<th>액션</th>
+<th>내용</th>
+<th>담당</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴A-01</td>
+<td>혈청 반감기·프로테아제 안정성 예측 (pharma_properties 15종 메서드)</td>
+<td>AI팀</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>🟠A-02</td>
+<td>ADMET 프로파일 생성 (ADMETlab 3.0 → pepADMET 전환)</td>
+<td>AI팀</td>
+<td>⚠️ 전환 진행중</td>
+</tr>
+<tr>
+<td>🟡A-03</td>
+<td>SSTR1/3/4/5 AlphaFold 도킹 + 선택성 스크리닝</td>
+<td>AI팀</td>
+<td>⏸️ 대기</td>
+</tr>
+<tr>
+<td>🟢A-04</td>
+<td>A~E 클러스터 자동 분류 (ClusterReport 기능)</td>
+<td>AI팀</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>🔵A-05</td>
+<td>3-Tier 후보 생성 구조 재설계 (BLOSUM62/물리화학/비제한)</td>
+<td>AI팀</td>
+<td>⚠️ 진행중</td>
+</tr>
+<tr>
+<td>⚪A-06</td>
+<td>DOTA-펩타이드 합성 견적 문의 (Peptron, HLB PEP, Anygen)</td>
+<td>RI팀</td>
+<td>⏸️ 대기</td>
+</tr>
+<tr>
+<td>🟤A-07</td>
+<td>SST-14 상위 3개 후보 C18 지방산 부착 변형체 설계</td>
+<td>RI팀</td>
+<td>⏸️ 대기</td>
+</tr>
+<tr>
+<td>⭐A-08</td>
+<td>3종 신규 메트릭 추가 (선택성·방사선분해·킬레이터 호환성)</td>
+<td>AI팀</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>💜A-09</td>
+<td>pepADMET(JCIM 2026) 방법론 검토 및 파이프라인 통합</td>
+<td>AI팀+RI팀</td>
+<td>⚠️ 진행중</td>
+</tr>
+<tr>
+<td>🟣A-10</td>
+<td>방사선 분해 안정성 예측 모듈 구현</td>
+<td>AI팀</td>
+<td>✅ 완료</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="appendix-a-a-01-%EC%83%81%EC%84%B8">Appendix A: A-01 상세</h2>
+<h3 id="pepcalcpeptidecutter-%E2%86%92-pharmapropertiespy">PepCalc·PeptideCutter → pharma_properties.py</h3>
+<p><strong>배경</strong>: 회의에서 &quot;혈청 t₁/₂ 예측값을 AI 파이프라인 Step 8에 통합&quot;이 요청되었다. ExPASy의 PepCalc·PeptideCutter와 동등한 기능을 <strong>파이프라인 내장 모듈</strong>로 구현함으로써 외부 웹 서비스 의존 없이 자동화되었다.</p>
+<p><strong>무엇을 계산하는가</strong>:</p>
+<ul>
+<li><strong>프로테아제 절단 부위 수</strong>: MEROPS 데이터베이스 규칙 기반. 트립신(R/K 뒤), 키모트립신(F/W/Y 뒤), 엘라스타제, 써모라이신 등 주요 프로테아제 패턴을 탐색. SST-14 원래 서열은 9개 부위 → 후보 서열이 8개 이하이면 &quot;안정성 강화&quot; 클러스터 C 자격</li>
+<li><strong>N-말단 규칙 반감기</strong>: N-말단 아미노산 종류만으로 포유류 세포내 단백질 분해 속도를 예측 (Varshavsky 1996). Ala/Ser/Val/Gly로 시작하면 반감기 30h(안정), Phe/Asp로 시작하면 1.1h(매우 불안정)</li>
+<li><strong>Instability Index</strong>: 인접 아미노산 2개 쌍(DIWV 테이블)의 불안정성 기여도 합산. &lt; 40이면 안정 단백질로 분류</li>
+</ul>
+<p><strong>현황</strong>: ✅ 완료. <code>AG_src/pipeline/pharma_properties.py</code>의 <code>PharmaProperties</code> 클래스로 구현됨.</p>
+<hr>
+<h2 id="appendix-b-a-02-%EC%83%81%EC%84%B8">Appendix B: A-02 상세</h2>
+<h3 id="admetlab-30-%E2%86%92-pepadmet-%EC%A0%84%ED%99%98">ADMETlab 3.0 → pepADMET 전환</h3>
+<p><strong>배경</strong>: 상위 21개 후보의 ADMET(흡수·분포·대사·배설·독성) 프로파일이 필요했다. 초기에는 ADMETlab 3.0 웹 API를 사용했으나, 펩타이드에 특화된 <strong>pepADMET</strong> 모델로 전환 중이다.</p>
+<p><strong>ADMET이란?</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>의미</th>
+<th>방사성의약품 관련성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A (흡수)</td>
+<td>경구/주사 후 체내 흡수율</td>
+<td>정맥 주사가 주 경로이므로 상대적으로 덜 중요</td>
+</tr>
+<tr>
+<td>D (분포)</td>
+<td>혈액·조직 간 분포</td>
+<td>종양 집적 vs. 신장·간 축적 비율에 영향</td>
+</tr>
+<tr>
+<td>M (대사)</td>
+<td>간 효소에 의한 변환</td>
+<td>방사성 표지 전에 분해되면 표지 실패</td>
+</tr>
+<tr>
+<td>E (배설)</td>
+<td>신장·담즙 배출 경로</td>
+<td>⁶⁸Ga는 신장 배설 → 신독성 고려</td>
+</tr>
+<tr>
+<td>T (독성)</td>
+<td>세포독성, hERG 채널 억제 등</td>
+<td>비방사성 독성 배제 필수</td>
+</tr>
+</tbody>
+</table>
+<p><strong>전환 이유</strong>: ADMETlab은 소분자 약물 최적화 모델이다. pepADMET(JCIM 2026)는 펩타이드 전용 데이터셋으로 훈련되어 예측 정확도가 더 높다.</p>
+<p><strong>현황</strong>: ⚠️ 진행중. SMILES 변환 래퍼 및 독성 추론 스크립트 구현 완료, 파이프라인 연동 중.</p>
+<hr>
+<h2 id="appendix-c-a-03-%EC%83%81%EC%84%B8">Appendix C: A-03 상세</h2>
+<h3 id="sstr-%EC%84%A0%ED%83%9D%EC%84%B1-%EC%8A%A4%ED%81%AC%EB%A6%AC%EB%8B%9D">SSTR 선택성 스크리닝</h3>
+<p><strong>배경</strong>: SSTR2 높은 친화성만으로는 불충분하다. SSTR3/5도 결합하면 부작용(인슐린 분비 억제 등)이 발생할 수 있다.</p>
+<p><strong>목표</strong>: SSTR2 결합력 대비 SSTR1/3/4/5 결합력의 차이(선택성 마진) ≥ 3.0 kcal/mol 이상.</p>
+<p><strong>진행 방식</strong>:</p>
+<ol>
+<li>AlphaFold2로 SSTR1, SSTR3, SSTR4, SSTR5 구조 다운로드</li>
+<li>AutoDock Vina(배치 모드)로 각 서브타입에 도킹</li>
+<li>선택성 마진 = SSTR2 ddG − min(SSTR1/3/4/5 ddG)</li>
+<li>마진 ≥ 3.0인 후보를 클러스터 B로 분류</li>
+</ol>
+<p><strong>현황</strong>: ⏸️ 대기. SSTR 구조 준비 및 도킹 프로토콜 구성 단계 예정.</p>
+<hr>
+<h2 id="appendix-d-a-04-%EC%83%81%EC%84%B8">Appendix D: A-04 상세</h2>
+<h3 id="ae-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EC%9E%90%EB%8F%99-%EB%B6%84%EB%A5%98-clusterreport">A~E 클러스터 자동 분류 (ClusterReport)</h3>
+<p><strong>배경</strong>: 수천 개 후보를 사람이 일일이 분류하는 것은 불가능하다. 회의에서 &quot;Critic Agent에 ClusterReport 기능 추가&quot;가 요청되었다.</p>
+<p><strong>분류 로직 요약</strong> (<code>pyrosetta_flow/cluster_report.py</code>):</p>
+<pre class="hljs"><code><div>후보 1개 입력
+    ↓
+Cluster A 기준 모두 충족? → YES → &quot;결합 엘리트&quot; 배정
+    ↓ NO
+Cluster B 기준 모두 충족? → YES → &quot;선택성 특화&quot; 배정
+    ↓ NO
+Cluster C 기준 모두 충족? → YES → &quot;안정성 강화&quot; 배정
+    ↓ NO
+Cluster D 기준 모두 충족? → YES → &quot;방사화학 최적&quot; 배정
+    ↓ NO
+Cluster E → &quot;탐색 후보&quot;
+</div></code></pre>
+<p><strong>우선순위 원칙</strong>: 여러 클러스터 기준을 동시에 충족해도 가장 높은 우선순위(A)에만 배정.</p>
+<p><strong>일괄 분류 결과 예시</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>클러스터</th>
+<th>후보 수</th>
+<th>비율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>12</td>
+<td>5.5%</td>
+</tr>
+<tr>
+<td>B</td>
+<td>31</td>
+<td>14.1%</td>
+</tr>
+<tr>
+<td>C</td>
+<td>58</td>
+<td>26.4%</td>
+</tr>
+<tr>
+<td>D</td>
+<td>44</td>
+<td>20.0%</td>
+</tr>
+<tr>
+<td>E</td>
+<td>75</td>
+<td>34.1%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>현황</strong>: ✅ 완료. <code>batch_classify()</code> 함수로 전체 후보군 일괄 처리 가능.</p>
+<hr>
+<h2 id="appendix-e-a-08-%EC%83%81%EC%84%B8">Appendix E: A-08 상세</h2>
+<h3 id="3%EC%A2%85-%EC%8B%A0%EA%B7%9C-%EB%A9%94%ED%8A%B8%EB%A6%AD">3종 신규 메트릭</h3>
+<p><strong>배경</strong>: 기존 13개 메트릭 패널에 방사성의약품 특화 3종 추가가 요청되었다.</p>
+<h4 id="1-selectivity-margin-index-%EC%84%A0%ED%83%9D%EC%84%B1-%EB%A7%88%EC%A7%84-%EC%A7%80%EC%88%98">1. Selectivity Margin Index (선택성 마진 지수)</h4>
+<p>SSTR2 ddG와 다른 서브타입 중 가장 낮은 ddG의 차이:</p>
+<pre class="hljs"><code><div>선택성 마진 = SSTR2 ddG − min(SSTR1/3/4/5 ddG)
+</div></code></pre>
+<ul>
+<li>양수일수록 SSTR2 선호도 높음</li>
+<li>≥ 3.0 kcal/mol이면 100× 이상 선택성 기대</li>
+</ul>
+<h4 id="2-radiolysis-susceptibility-%EB%B0%A9%EC%82%AC%EC%84%A0-%EB%B6%84%ED%95%B4-%EC%B7%A8%EC%95%BD%EC%84%B1">2. Radiolysis Susceptibility (방사선 분해 취약성)</h4>
+<p>방사선에 의해 손상받기 쉬운 잔기에 가중치를 부여한 취약성 지수:</p>
+<ul>
+<li>고위험: <strong>Trp(W)</strong>, Met(M), Cys(C), Tyr(Y), Phe(F)</li>
+<li>중위험: His(H), Pro(P)</li>
+<li>저위험: 나머지 아미노산</li>
+<li>지수가 낮을수록 방사선 조사 후에도 구조 유지 가능성 높음</li>
+</ul>
+<h4 id="3-chelator-binding-compatibility-%ED%82%AC%EB%A0%88%EC%9D%B4%ED%84%B0-%EA%B2%B0%ED%95%A9-%ED%98%B8%ED%99%98%EC%84%B1">3. Chelator Binding Compatibility (킬레이터 결합 호환성)</h4>
+<p>DOTA/NOTA 킬레이터와 잘 결합할 수 있는 N-말단 환경 점수:</p>
+<ul>
+<li>강한 배위: His, Cys, Asp, Glu (n_strong 카운트)</li>
+<li>N-말단 자유 아민 존재 여부</li>
+<li>경쟁 잔기가 킬레이터 부착을 방해하는지 분석</li>
+</ul>
+<p><strong>현황</strong>: ✅ 완료. <code>pharma_properties.py</code>의 <code>calculate_radiolysis_susceptibility()</code>, <code>analyze_metal_coordination()</code> 메서드에 구현됨.</p>
+<hr>
+<h2 id="appendix-f-a-09-%EC%83%81%EC%84%B8">Appendix F: A-09 상세</h2>
+<h3 id="pepadmet-%EB%85%BC%EB%AC%B8-%EA%B2%80%ED%86%A0-jcim-2026">pepADMET 논문 검토 (JCIM 2026)</h3>
+<p><strong>논문</strong>: 아주대 김민규 교수팀, Journal of Chemical Information and Modeling (2026) — 펩타이드 전용 ADMET 예측 딥러닝 모델.</p>
+<p><strong>기존 ADMETlab 대비 차이점</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>ADMETlab 3.0</th>
+<th>pepADMET (JCIM 2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>훈련 데이터</td>
+<td>주로 소분자 약물</td>
+<td>펩타이드 전용 데이터셋</td>
+</tr>
+<tr>
+<td>입력 형식</td>
+<td>SMILES</td>
+<td>아미노산 서열 + SMILES</td>
+</tr>
+<tr>
+<td>막 투과성</td>
+<td>Caco-2 등 소분자 기반</td>
+<td>펩타이드 막 투과성 모델</td>
+</tr>
+<tr>
+<td>단백질 안정성</td>
+<td>미포함</td>
+<td>혈청 안정성 직접 예측</td>
+</tr>
+</tbody>
+</table>
+<p><strong>파이프라인 통합 계획</strong>:</p>
+<ul>
+<li>SMILES 변환: <code>pyrosetta_flow/pepadmet_runner.py</code> (구현 완료)</li>
+<li>독성 추론: 9종 독성 엔드포인트 배치 예측</li>
+<li>결과 연동: PharmaProperties 출력과 함께 후보 카드에 표시</li>
+</ul>
+<p><strong>현황</strong>: ⚠️ 진행중. 스크립트 구현 완료, 파이프라인 연동 및 검증 중.</p>
+<hr>
+<h2 id="appendix-g-a-10-%EC%83%81%EC%84%B8">Appendix G: A-10 상세</h2>
+<h3 id="%EB%B0%A9%EC%82%AC%EC%84%A0-%EB%B6%84%ED%95%B4-%EC%95%88%EC%A0%95%EC%84%B1-radiolysis-risk-%EC%98%88%EC%B8%A1">방사선 분해 안정성 (Radiolysis Risk 예측)</h3>
+<p><strong>배경</strong>: ¹⁷⁷Lu(베타 방사선)와 ²²⁵Ac(알파 방사선) 표지 펩타이드는 방사선에 의해 자기 자신을 손상시킬 수 있다. 특히 방사선감수성 잔기(Trp, Met, Cys 등)가 많으면 방사화학적 순도(RCP)가 빠르게 감소한다.</p>
+<p><strong>예측 방법</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>잔기</th>
+<th>위험도</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trp (W)</td>
+<td>고위험</td>
+<td>인돌 고리가 방사선 산화에 가장 취약</td>
+</tr>
+<tr>
+<td>Met (M)</td>
+<td>고위험</td>
+<td>황 원자가 산화되어 설폭시드/설폰 형성</td>
+</tr>
+<tr>
+<td>Cys (C)</td>
+<td>중-고위험</td>
+<td>이황화 결합 파괴 → 구조 붕괴</td>
+</tr>
+<tr>
+<td>Tyr (Y), Phe (F)</td>
+<td>중위험</td>
+<td>방향족 고리 수산화</td>
+</tr>
+<tr>
+<td>His (H), Pro (P)</td>
+<td>저위험</td>
+<td>부분적 취약</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SST-14 native 분석</strong>: AGCKNFFWKTFTSC</p>
+<ul>
+<li>W8(Trp8)이 핵심 약물단에 위치 → 방사선 분해 리스크 내재</li>
+<li>변이 설계 시 Trp를 보존하면서도 주변 보호 잔기 배치 전략 고려 필요</li>
+</ul>
+<p><strong>방사성핵종별 위험도</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>핵종</th>
+<th>방사선 종류</th>
+<th>조직 침투</th>
+<th>RCP 저하 위험</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⁶⁸Ga</td>
+<td>β⁺ (양전자)</td>
+<td>낮음</td>
+<td>낮음 (반감기 68분)</td>
+</tr>
+<tr>
+<td>¹⁷⁷Lu</td>
+<td>β⁻ (베타)</td>
+<td>중간</td>
+<td>중간 (반감기 6.6일)</td>
+</tr>
+<tr>
+<td>²²⁵Ac</td>
+<td>α (알파)</td>
+<td>높음</td>
+<td>높음 (α 입자 고에너지)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>현황</strong>: ✅ 완료. <code>calculate_radiolysis_susceptibility()</code> 메서드로 구현, 클러스터 D 기준에 반영됨.</p>
+<hr>
+<p><em>이 문서는 코드 변경 시 업데이트가 필요합니다. 최신 수치 기준은 <code>AG_src/pipeline/pharma_properties.py</code> 및 <code>pyrosetta_flow/cluster_report.py</code>를 참조하세요.</em></p>
+
+</body>
+</html>

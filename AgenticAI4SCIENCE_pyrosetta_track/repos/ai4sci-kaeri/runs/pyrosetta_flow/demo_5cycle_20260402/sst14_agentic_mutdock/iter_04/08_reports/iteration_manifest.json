@@ -1,0 +1,75 @@
+{
+  "type": "iteration_manifest",
+  "iteration": 4,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:23:47.994277+00:00",
+  "receptor_pdb": "runs/pos5_6_11_optimization/p5F_p6D_p11S_AGCKFDFWKTSTSC/refined.pdb",
+  "baseline_pdb": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/baseline_refined.pdb",
+  "candidates": [
+    {
+      "candidate_id": "iter04_cand004",
+      "sequence": "AGCKNYFWKTLTSE",
+      "ddg": -44.424,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/cand_004.pdb"
+    },
+    {
+      "candidate_id": "iter04_cand003",
+      "sequence": "AGCKFFFWKTLTSC",
+      "ddg": -42.9521,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/cand_003.pdb"
+    },
+    {
+      "candidate_id": "iter04_cand005",
+      "sequence": "AGCKNEFWKTFTSC",
+      "ddg": -34.4346,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/cand_005.pdb"
+    },
+    {
+      "candidate_id": "iter04_cand001",
+      "sequence": "AGCKWFFWKTITSC",
+      "ddg": -24.4321,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/cand_001.pdb"
+    },
+    {
+      "candidate_id": "iter04_cand007",
+      "sequence": "AGCPNGFWKTFTSC",
+      "ddg": -18.6184,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/cand_007.pdb"
+    },
+    {
+      "candidate_id": "iter04_cand006",
+      "sequence": "AGCKNYFWKTFTSC",
+      "ddg": -7.8835,
+      "clash_count": 2,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/cand_006.pdb"
+    }
+  ],
+  "rcsb_match_summary": {
+    "checked": 5,
+    "matched": 0,
+    "identity_cutoff": 0.4
+  },
+  "report_paths": {
+    "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/08_reports/summary.md",
+    "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/08_reports/rank_table.csv"
+  },
+  "planner_report": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/08_reports/planner_report.json",
+  "critic_report": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_04/08_reports/critic_report.json"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "planner",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_9999",
+  "timestamp": "2026-04-02T11:16:48.105539+00:00",
+  "hypothesis": "Mutating positions 5, 6, and 11 to introduce aromatic/hydrophobic residues will improve binding affinity to SSTR2 by optimizing π-stacking and hydrophobic interactions in the binding pocket.",
+  "strategy": "ddg_only",
+  "critic_feedback_used": null,
+  "previous_best_ddg": null
+}

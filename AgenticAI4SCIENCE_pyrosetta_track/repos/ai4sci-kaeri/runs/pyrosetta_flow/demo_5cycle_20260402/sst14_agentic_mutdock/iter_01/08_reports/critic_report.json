@@ -1,0 +1,40 @@
+{
+  "type": "critic",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:13:46.566654+00:00",
+  "hypothesis": "Structural validity requires stricter ddG and clash thresholds to balance affinity with molecular packing quality",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -5.0,
+      "new_value": -7.0,
+      "rationale": "Top candidates show significantly lower ddG than threshold, suggesting current threshold is too lenient for structural validation"
+    },
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Zero pLDDT and dock scores indicate poor structural packing, likely due to excessive clashes"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 8,
+    "objective_mode": "ddg_only",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_004.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_005.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_006.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_007.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_008.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_009.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle_20260402/sst14_agentic_mutdock/iter_01/cand_010.pdb"
+  ],
+  "receptor_pdb": "runs/pos5_6_11_optimization/p5F_p6D_p11S_AGCKFDFWKTSTSC/refined.pdb"
+}

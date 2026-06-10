@@ -1,0 +1,6 @@
+id: M2
+name: "Qwen3.5-27B"
+hf_id: "Qwen/Qwen3.5-27B"
+size_b: 27
+vram_gb: 52
+key_strength: "JSON-native, current default"

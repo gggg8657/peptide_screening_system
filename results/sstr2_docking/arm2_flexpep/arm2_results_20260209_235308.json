@@ -1,0 +1,123 @@
+{
+  "pipeline": "Arm 2: Peptide Variant FlexPepDock",
+  "complex_pdb": "/mnt/g/repos/bio/data/fold_test1/fold_test1_model_0.pdb",
+  "wildtype": "AGCKNFFWKTFTSC",
+  "pyrosetta_available": false,
+  "num_variants": 13,
+  "results": [
+    {
+      "name": "wildtype",
+      "sequence": "AGCKNFFWKTFTSC",
+      "length": 14,
+      "mutations": [],
+      "status": "analysis_only"
+    },
+    {
+      "name": "F6A",
+      "sequence": "AGCKNAFWKTFTSC",
+      "length": 14,
+      "mutations": [
+        "F6A"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "F7A",
+      "sequence": "AGCKNFAWKTFTSC",
+      "length": 14,
+      "mutations": [
+        "F7A"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "W8A",
+      "sequence": "AGCKNFFAKTFTSC",
+      "length": 14,
+      "mutations": [
+        "W8A"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "K9A",
+      "sequence": "AGCKNFFWATFTSC",
+      "length": 14,
+      "mutations": [
+        "K9A"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "T10A",
+      "sequence": "AGCKNFFWKAFTSC",
+      "length": 14,
+      "mutations": [
+        "T10A"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "F11A",
+      "sequence": "AGCKNFFWKTATSC",
+      "length": 14,
+      "mutations": [
+        "F11A"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "octreotide_core",
+      "sequence": "FCFWKTCT",
+      "length": 8,
+      "mutations": [],
+      "status": "analysis_only"
+    },
+    {
+      "name": "enhanced_1",
+      "sequence": "SGCKNFFWKTFTSC",
+      "length": 14,
+      "mutations": [
+        "A1S"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "enhanced_2",
+      "sequence": "AGCRNFFWKTFTSC",
+      "length": 14,
+      "mutations": [
+        "K4R"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "enhanced_3",
+      "sequence": "AGCKNYFWKTFTSC",
+      "length": 14,
+      "mutations": [
+        "F6Y"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "enhanced_4",
+      "sequence": "AGCKNFFWRTFTSC",
+      "length": 14,
+      "mutations": [
+        "K9R"
+      ],
+      "status": "analysis_only"
+    },
+    {
+      "name": "enhanced_5",
+      "sequence": "AGCKNFFWKTYTSC",
+      "length": 14,
+      "mutations": [
+        "F11Y"
+      ],
+      "status": "analysis_only"
+    }
+  ],
+  "timestamp": "2026-02-09T23:53:08.414429"
+}

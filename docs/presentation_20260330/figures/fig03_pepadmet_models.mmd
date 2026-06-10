@@ -1,0 +1,105 @@
+---
+title: "pepADMET — 17개 예측 모델 구조 (JCIM 2026, 66, 936-946)"
+---
+flowchart TB
+    %% ── 입력 ────────────────────────────────────────────────
+    INPUT(["펩타이드 입력\n서열(SEQUENCE) + SMILES\nSST-14 유사체 (8-30 aa)"])
+
+    FEAT["Feature 계산 파이프라인\n2,133차원 descriptor\n(PyBioMed 1,245 + modlAMP 10 + RDKit 878)"]
+    INPUT --> FEAT
+
+    %% ── 그룹별 모델 ─────────────────────────────────────────
+    FEAT --> G_TOX
+    FEAT --> G_PERM
+    FEAT --> G_HL
+    FEAT --> G_DIST
+    FEAT --> G_ABS
+
+    %% ── 그룹 1: Toxicity (4 모델) ───────────────────────────
+    subgraph G_TOX ["🧪 Toxicity — 4 모델 (MLR-GAT)"]
+        direction LR
+        T_ARCH["아키텍처\nRGCN + MLP + Attention\n(MLR-GAT)\nbatch=128, epochs=300\npyTorch 1.13 + DGL 0.4.3"]
+        T1["① Binary 독성\n(AUC 0.885)\n14,660 샘플"]
+        T2["② 6-class 독성\n(AUC 0.949)\nDBAAP + Hemolytik"]
+        T3["③ 4-class 독성\n(AUC 논문 기준)"]
+        T4["④ HC50 회귀\n(용혈 농도 IC50)\nR² 논문 기준"]
+        T_ARCH --> T1 & T2 & T3 & T4
+    end
+
+    %% ── 그룹 2: Permeability (5 모델) ──────────────────────
+    subgraph G_PERM ["🔬 Permeability — 5 모델 (GNN + LightGBM)"]
+        direction LR
+        P_ARCH["아키텍처\nDual-path\nGNN (분자 그래프)\n+ LightGBM (descriptor)\nCycPeptMPDB 기반"]
+        P1["⑤ RRCK 투과도\n(R² ~0.570)\n181 샘플"]
+        P2["⑥ PAMPA 투과도\n(R² 0.657)\n6,698 샘플"]
+        P3["⑦ Caco-2 A→B\n(apical→basolateral)"]
+        P4["⑧ Caco-2 C→A\n(efflux ratio)"]
+        P5["⑨ Caco-2 L→B\n(lumenal→basal)"]
+        P_ARCH --> P1 & P2 & P3 & P4 & P5
+    end
+
+    %% ── 그룹 3: Half-life (5 모델) ─────────────────────────
+    subgraph G_HL ["⏱️ Half-life — 5 모델 (Transfer Learning)"]
+        direction TB
+        HL_PRE["Pre-train\nRT DB 350K (ProteomeTools)\nembedding 사전학습\n(PXD004732)"]
+        HL_ARCH["Fine-tune 전략\nEmbedding 공유 →\n5종 별도 fine-tune\n(970 + 350K RT)"]
+        HL_PRE --> HL_ARCH
+        HL1["⑩ HBN\n인간 혈액 정상\n(R² 0.840)\n182 샘플"]
+        HL2["⑪ HBM\n인간 혈액 변형\n(R²)\n117 샘플"]
+        HL3["⑫ MBN\n마우스 혈액 정상\n(R² 0.984)\n106 샘플"]
+        HL4["⑬ MBM\n마우스 혈액 변형\n187 샘플"]
+        HL5["⑭ MIM\n마우스 장내 막\n378 샘플"]
+        HL_ARCH --> HL1 & HL2 & HL3 & HL4 & HL5
+    end
+
+    %% ── 그룹 4: Distribution (2 모델) ──────────────────────
+    subgraph G_DIST ["🧬 Distribution — 2 모델 (RF/GBT)"]
+        direction LR
+        D_ARCH["아키텍처\nRF / XGBoost / SVM\n(Feature selection: RFE-RF)"]
+        D1["⑮ BBB 투과\n(AUC 0.889)\nB3Pdb 850 샘플"]
+        D2["⑯ LogD 회귀\n(R² 0.818)\n분배계수 257 샘플"]
+        D_ARCH --> D1 & D2
+    end
+
+    %% ── 그룹 5: Absorption (1 모델) ────────────────────────
+    subgraph G_ABS ["💊 Absorption — 1 모델 (RF/XGBoost)"]
+        A_ARCH["아키텍처\nRF / XGBoost / SVM"]
+        A1["⑰ 경구 생체이용률 F\n(AUC 0.900)\n305 샘플"]
+        A_ARCH --> A1
+    end
+
+    %% ── 출력 통합 ───────────────────────────────────────────
+    T1 & T2 & T3 & T4 --> OUT
+    P1 & P2 & P3 & P4 & P5 --> OUT
+    HL1 & HL2 & HL3 & HL4 & HL5 --> OUT
+    D1 & D2 --> OUT
+    A1 --> OUT
+
+    OUT["통합 ADMET 프로파일\n17개 모델 예측값 벡터\n(SST-14 유사체 22K 후보 일괄)"]
+
+    OUT --> SST["SST-14 22K 후보\npepADMET 프로파일링\n→ Cluster D (방사화학 최적) 교차 검증"]
+
+    %% ── 재현 난이도 레전드 ──────────────────────────────────
+    subgraph REPRO ["🔄 독립 재현 난이도"]
+        direction LR
+        R1["🟢 낮음\nToxicity / BBB / LogD / F\n(코드+모델 공개)"]
+        R2["🟡 중간\nPermeability GNN\n(CycPeptMPDB 수집 필요)"]
+        R3["🔴 높음\nHalf-life TL\n(RT DB 350K 수집 병목)"]
+    end
+
+    %% ── 스타일 ──────────────────────────────────────────────
+    classDef tox fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    classDef perm fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    classDef hl fill:#fef9c3,stroke:#ca8a04,color:#713f12
+    classDef dist fill:#d1fae5,stroke:#059669,color:#064e3b
+    classDef abs fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+    classDef io fill:#f0f9ff,stroke:#0ea5e9,color:#0c4a6e
+    classDef repro fill:#f8fafc,stroke:#94a3b8,color:#334155
+
+    class T1,T2,T3,T4,T_ARCH tox
+    class P1,P2,P3,P4,P5,P_ARCH perm
+    class HL1,HL2,HL3,HL4,HL5,HL_PRE,HL_ARCH hl
+    class D1,D2,D_ARCH dist
+    class A1,A_ARCH abs
+    class INPUT,FEAT,OUT,SST io
+    class REPRO,R1,R2,R3 repro

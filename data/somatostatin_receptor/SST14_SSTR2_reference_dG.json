@@ -1,0 +1,28 @@
+{
+  "sequence": "AGCKNFFWKTFTSC",
+  "receptor": "SSTR2_7XNA",
+  "n_runs": 10,
+  "mean_dG_kcal_mol": 553.8565,
+  "std_dG_kcal_mol": 4.0239,
+  "min_dG": 550.5648,
+  "max_dG": 564.4916,
+  "median_dG": 552.3955,
+  "ci_95": [550.9782, 556.7348],
+  "all_dG_values": [551.4111, 552.3648, 552.2748, 550.5648, 555.3159, 564.4916, 551.7447, 552.4262, 555.0833, 552.8879],
+  "elapsed_total_sec": 7190.6,
+  "stub": false,
+  "engine": "pyrosetta-flexpep",
+  "nstruct_per_run": 5,
+  "cycles": 5,
+  "flex_pep_freedom": "med",
+  "protocol": "FlexPepDock InterfaceAnalyzerMover (pyrosetta)",
+  "date": "2026-05-19",
+  "branch": "feat/a05-sst14-reference-dg",
+  "note": "PyRosetta FlexPepDock InterfaceAnalyzerMover ddG. Fallback 모드 (SSTR2_7XNA_complex.pdb reference complex 부재 — 확장 conformation 초기화). 양수 = 기준선 에너지 불리. 상대적 비교 기준: candidate < 553.857 REU이면 SST14보다 유리한 결합 해석. A-04 composite_scorer.ddg_score 정규화 기준.",
+  "kpi_check": {
+    "n_gte_10": true,
+    "std_lt_5": true,
+    "std_value": 4.0239,
+    "comment": "sigma=4.024 < 5.0 — A-05 KPI (재현성) 충족"
+  }
+}

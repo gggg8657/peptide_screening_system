@@ -1,0 +1,16 @@
+# peptools conda env requirements
+# env: peptools (Python 3.11)
+# purpose: PlifePred2 로컬 반감기 예측 + RDKit SMILES 변환
+# created: 2026-05-19 engineer-infra
+#
+# 설치:
+#   conda create -n peptools python=3.11 -y
+#   conda run -n peptools pip install -r requirements_peptools.txt
+#
+# 주의: bio-tools(scikit-learn 1.8.0)와 충돌 — 반드시 별도 env 사용
+
+biopython==1.87
+plifepred2==1.0
+rdkit==2026.3.2
+requests==2.34.2
+scikit-learn==1.4.2

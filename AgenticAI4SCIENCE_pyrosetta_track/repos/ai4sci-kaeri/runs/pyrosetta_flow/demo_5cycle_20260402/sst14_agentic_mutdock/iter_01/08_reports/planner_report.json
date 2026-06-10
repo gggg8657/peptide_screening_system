@@ -1,0 +1,10 @@
+{
+  "type": "planner",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:10:39.873580+00:00",
+  "hypothesis": "Aromatic residue enrichment at positions 5, 6, and 11 will improve hydrophobic interactions and binding affinity to SSTR2",
+  "strategy": "ddg_only",
+  "critic_feedback_used": null,
+  "previous_best_ddg": null
+}

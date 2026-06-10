@@ -1,0 +1,36 @@
+{
+  "type": "critic",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_4002",
+  "timestamp": "2026-04-02T06:55:01.235309+00:00",
+  "hypothesis": "Structural validity requires balancing binding affinity with proper backbone sampling",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 15,
+      "rationale": "Low pLDDT and docking scores suggest excessive steric clashes during design"
+    },
+    {
+      "parameter_name": "n_candidates",
+      "old_value": 6,
+      "new_value": 12,
+      "rationale": "Low diversity in top candidates may indicate insufficient sampling"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 6,
+    "objective_mode": "ddg_only",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/cand_004.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/cand_005.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/cand_006.pdb"
+  ],
+  "receptor_pdb": "runs/pos5_6_11_optimization/p5F_p6D_p11S_AGCKFDFWKTSTSC/refined.pdb"
+}

@@ -1,0 +1,43 @@
+/**
+ * main.tsx 스니펫 — ai4sci-kaeri/frontend/src/main.tsx 에 추가
+ *
+ * Theme + React Query 초기 설정.
+ */
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter } from 'react-router-dom';
+import { useTheme } from './stores/theme';
+import App from './App';
+import './index.css';
+
+// 1. Theme 첫 로드 시 DOM 에 반영
+{
+  const { theme, accentHue, fontSans, fontMono } = useTheme.getState();
+  const r = document.documentElement;
+  r.setAttribute('data-theme', theme);
+  r.style.setProperty('--accent-hue', String(accentHue));
+  r.style.setProperty('--font-sans', `"${fontSans}", system-ui, sans-serif`);
+  r.style.setProperty('--font-mono', `"${fontMono}", ui-monospace, monospace`);
+}
+
+// 2. React Query
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      staleTime: 30_000,
+    },
+  },
+});
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </React.StrictMode>,
+);

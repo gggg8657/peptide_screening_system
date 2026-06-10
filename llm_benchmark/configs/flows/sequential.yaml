@@ -1,0 +1,5 @@
+id: sequential
+name: "Sequential"
+description: "Current baseline: Planner → Builder → QCRanker → Critic → Reporter"
+llm_calls_per_iter: 3  # Planner + Critic + Reporter
+runner_class: "runners.base.SequentialFlowRunner"

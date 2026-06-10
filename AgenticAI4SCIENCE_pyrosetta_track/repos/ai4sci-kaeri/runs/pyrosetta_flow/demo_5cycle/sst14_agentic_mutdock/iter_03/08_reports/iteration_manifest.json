@@ -1,0 +1,48 @@
+{
+  "type": "iteration_manifest",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:25:12.415880+00:00",
+  "receptor_pdb": "runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
+  "baseline_pdb": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/baseline_refined.pdb",
+  "candidates": [
+    {
+      "candidate_id": "iter03_cand002",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddg": -30.7621,
+      "clash_count": 2,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/cand_002.pdb"
+    },
+    {
+      "candidate_id": "iter03_cand004",
+      "sequence": "AGCKNFFWKTKTSC",
+      "ddg": -15.5566,
+      "clash_count": 10,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/cand_004.pdb"
+    },
+    {
+      "candidate_id": "iter03_cand003",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddg": -14.4114,
+      "clash_count": 3,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/cand_003.pdb"
+    }
+  ],
+  "rcsb_match_summary": {
+    "checked": 3,
+    "matched": 0,
+    "identity_cutoff": 0.4
+  },
+  "report_paths": {
+    "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+    "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/08_reports/rank_table.csv"
+  },
+  "planner_report": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/08_reports/planner_report.json",
+  "critic_report": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_03/08_reports/critic_report.json"
+}

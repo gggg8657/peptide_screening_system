@@ -1,0 +1,435 @@
+{
+  "created_at": "2026-03-03T04:40:51.588058+00:00",
+  "run_id": "sst14_mutdock_3000",
+  "config": {
+    "template_pdb": "data/fold_test1_model_0.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 8,
+    "seed_base": 3000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 1,
+    "max_iterations": 3,
+    "top_k": 5,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "planner_mode": "pyrosetta_only",
+    "max_parallel_workers": 4,
+    "llm_model_override": null
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {},
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_3000",
+        "hypothesis": "Mutating positions 5, 6, and 11 to introduce aromatic or charged residues will improve binding affinity by optimizing interactions with the SSTR2 receptor",
+        "objective_mode": "ddg_only",
+        "n_candidates": 2,
+        "best_ddg": -34.4337,
+        "mean_ddg": -24.9115,
+        "selected_ids": [
+          "iter01_cand005",
+          "iter01_cand007"
+        ],
+        "critic_hypothesis": "",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand004",
+          "sequence": "ARCNNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: ARCNNFFWKTFTSC\n  Mutated pos 2: G -> R (ARG)\n  Mutated pos 4: K -> N (ASN)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 990.26\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_004.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence ARCNNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3)\n\nERROR: NAN occurred in H-bonding calculations!\nERROR:: Exit from: /home/benchmark/rosetta/source/src/core/scoring/hbonds/hbonds_geom.cc line: 1553\nTraceback (most recent call last):\n  File \"/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py\", line 525, in <module>\n    main()\n  File \"/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py\", line 485, in main\n    pose, disulfide_info = run_flexpep_refine_pose(pose, args.output)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py\", line 313, in run_flexpep_refine_pose\n    fpd.apply(pose)\nRuntimeError: \n\nFile: /home/benchmark/rosetta/source/src/core/scoring/hbonds/hbonds_geom.cc:1553\n[ ERROR ] UtilityExitException\nERROR: NAN occurred in H-bonding calculations! :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand003",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_003.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AGCKFFFWKTITSC",
+          "ddg": 6.2138,
+          "total_score": -291.4561,
+          "clash_score": 8.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand005",
+          "sequence": "AGCSPFFWKTFTSV",
+          "ddg": -34.4337,
+          "total_score": -473.0852,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand006",
+          "sequence": "YGCINFFWKTFTSV",
+          "ddg": 13.3639,
+          "total_score": -164.1108,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand007",
+          "sequence": "AGCKNQSWKTFTSC",
+          "ddg": -15.3892,
+          "total_score": -451.8426,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand008",
+          "sequence": "AGCKNGFWKTSTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNGFWKTSTSC\n  Mutated pos 6: F -> G (GLY)\n  Mutated pos 11: F -> S (SER)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 17.46\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_008.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNGFWKTSTSC --peptide-chain 1"
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 2,
+        "run_id": "sst14_mutdock_3000",
+        "hypothesis": "Mutating positions 5, 6, and 11 to introduce aromatic residues and optimize charge distribution will further decrease ddG by enhancing hydrophobic interactions and electrostatic complementarity with the SSTR2 binding pocket.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 1,
+        "best_ddg": -34.5934,
+        "mean_ddg": -34.5934,
+        "selected_ids": [
+          "iter02_cand003"
+        ],
+        "critic_hypothesis": "Structural integrity requires simultaneous optimization of energy, clash avoidance, and docking compatibility",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand002",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_002.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand004",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_004.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand001",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand003",
+          "sequence": "AGCKNEFWKTLTSC",
+          "ddg": -34.5934,
+          "total_score": -467.6507,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand006",
+          "sequence": "AGCKNFFWKTRTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTRTSC\n  Mutated pos 11: F -> R (ARG)\nApplied 1 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 64.25\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_006.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTRTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand008",
+          "sequence": "AGCKNFFWKTFMST",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFMST\n  Mutated pos 12: T -> M (MET)\n  Mutated pos 14: C -> T (THR)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 1229.56 :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_008.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFMST --peptide-chain 1"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand005",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3)\n\nERROR: Pose::residue( Size const seqpos ): variable seqpos is out of range!\nERROR:: Exit from: /home/benchmark/rosetta/source/src/core/pose/Pose.cc line: 957\nTraceback (most recent call last):\n  File \"/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py\", line 525, in <module>\n    main()\n  File \"/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py\", line 485, in main\n    pose, disulfide_info = run_flexpep_refine_pose(pose, args.output)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py\", line 313, in run_flexpep_refine_pose\n    fpd.apply(pose)\nRuntimeError: \n\nFile: /home/benchmark/rosetta/source/src/core/pose/Pose.cc:957\n[ ERROR ] UtilityExitException\nERROR: Pose::residue( Size const seqpos ): variable seqpos is out of range! :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_005.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand007",
+          "sequence": "AGCKNFEWKTKWSC",
+          "ddg": 8.3208,
+          "total_score": -370.5673,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 3,
+        "run_id": "sst14_mutdock_3000",
+        "hypothesis": "Introducing aromatic residues at positions 5 and 11, along with charged residues at position 6, will enhance binding affinity by improving hydrophobic interactions and electrostatic complementarity.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 1,
+        "best_ddg": -50.5792,
+        "mean_ddg": -50.5792,
+        "selected_ids": [
+          "iter03_cand006"
+        ],
+        "critic_hypothesis": "Binding affinity optimization requires balancing energetic stability with conformational flexibility for proper ligand interaction",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand002",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_002.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand004",
+          "sequence": "AGCKFEFWKTLTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKFEFWKTLTSC\n  Mutated pos 5: N -> F (PHE)\n  Mutated pos 6: F -> E (GLU)\n  Mutated pos 11: F -> L (LEU)\nApplied 3 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 77.28\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_004.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKFEFWKTLTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand005",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_005.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand003",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_003.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand008",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_008.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand001",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand007",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFTSC\nApplied 0 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.00\n  [disulfide] Added SG-SG constraint: res 372 <-> res 383 (harmonic 2.05 A, sd=0.3) :: cmd=/home/helloworld/miniforge3/envs/bio-tools/bin/python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand006",
+          "sequence": "AGCKNFFWKTFTSC",
+          "ddg": -50.5792,
+          "total_score": -475.3179,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    }
+  ],
+  "final_candidates": [
+    {
+      "iteration": 3,
+      "candidate_id": "iter03_cand006",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddg": -50.5792,
+      "total_score": -475.3179,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    }
+  ],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 3,
+    "best_final_ddg": -50.5792,
+    "run_status": "completed_with_warnings",
+    "failure_stage": "baseline_prepare",
+    "error_summary": "7 candidate refine failures (latest iteration=3)"
+  }
+}

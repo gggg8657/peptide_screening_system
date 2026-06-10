@@ -1,0 +1,13 @@
+{
+  "type": "planner",
+  "iteration": 5,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-05-13T08:44:07.869497+00:00",
+  "hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+    "proposed_changes": []
+  },
+  "previous_best_ddg": -33.7587
+}

@@ -1,0 +1,10 @@
+{
+  "type": "planner",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:16:13.641217+00:00",
+  "hypothesis": "Aromatic and hydrophobic residue substitutions at positions 5, 6, and 11 will enhance SSTR2 binding affinity through increased π-π stacking and hydrophobic interactions",
+  "strategy": "ddg_only",
+  "critic_feedback_used": null,
+  "previous_best_ddg": null
+}

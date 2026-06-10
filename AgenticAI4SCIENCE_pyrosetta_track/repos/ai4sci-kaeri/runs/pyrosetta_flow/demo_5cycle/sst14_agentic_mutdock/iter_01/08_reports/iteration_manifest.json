@@ -1,0 +1,30 @@
+{
+  "type": "iteration_manifest",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:18:57.055872+00:00",
+  "receptor_pdb": "runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
+  "baseline_pdb": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/baseline_refined.pdb",
+  "candidates": [
+    {
+      "candidate_id": "iter01_cand001",
+      "sequence": "AGCKWDFWKTFTSC",
+      "ddg": -37.2393,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/cand_001.pdb"
+    }
+  ],
+  "rcsb_match_summary": {
+    "checked": 1,
+    "matched": 0,
+    "identity_cutoff": 0.4
+  },
+  "report_paths": {
+    "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+    "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+  },
+  "planner_report": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/08_reports/planner_report.json",
+  "critic_report": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_01/08_reports/critic_report.json"
+}

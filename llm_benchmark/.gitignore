@@ -1,0 +1,6 @@
+outputs/phase1/
+outputs/phase2a/
+outputs/phase2b/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:14:12.370703+00:00",
+  "hypothesis": "Optimizing aromatic interactions at position 5 and charge complementarity at position 6 will enhance binding affinity, as evidenced by the previous best ddG.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural validity requires stricter ddG and clash thresholds to balance affinity with molecular packing quality",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -7.0,
+        "rationale": "Top candidates show significantly lower ddG than threshold, suggesting current threshold is too lenient for structural validation"
+      },
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Zero pLDDT and dock scores indicate poor structural packing, likely due to excessive clashes"
+      }
+    ]
+  },
+  "previous_best_ddg": -42.2858
+}

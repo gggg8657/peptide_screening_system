@@ -1,0 +1,27 @@
+# Base FlowConfig — shared across all experiments
+# Individual model/flow configs override specific fields
+
+template_pdb: "data/fold_test1_model_0.pdb"
+original_sequence: "AGCKNFFWKTFTSC"
+design_positions: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14]
+peptide_chain: 1
+conda_env: "bio-tools"
+planner_mode: "pyrosetta_only"
+objective_mode: "auto"
+
+# Gate thresholds
+rosetta_ddg_max: -5.0
+rosetta_clash_max: 10
+
+# LLM settings (overridden per model config)
+llm_provider: "vllm"
+llm_base_url: "http://localhost:8002"
+llm_temperature: 0.3
+
+# Baseline reference
+baseline_ddg: -48.438
+
+# vLLM server
+vllm_port: 8002
+vllm_gpu_util: 0.9
+vllm_max_model_len: 4096

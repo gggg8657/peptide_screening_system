@@ -1,0 +1,310 @@
+{
+  "created_at": "2026-02-25T06:18:30.011331+00:00",
+  "run_id": "sst14_mutdock_1000",
+  "config": {
+    "template_pdb": "data/fold_test1_model_0.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 8,
+    "seed_base": 1000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 2,
+    "max_iterations": 2,
+    "top_k": 5,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "planner_mode": "pyrosetta_only"
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": -44.9386,
+    "total_score": -462.6389,
+    "pre_score": 48.9961,
+    "score_delta": -511.635,
+    "clash_score": 2.0,
+    "constraint_violations": 0
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "Mutating residues in the SSTR2 receptor will improve docking scores (ddG) while reducing structural clashes, as measured by QC metrics.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 4,
+        "best_ddg": -40.6559,
+        "mean_ddg": -24.2308,
+        "selected_ids": [
+          "iter01_cand001",
+          "iter01_cand002",
+          "iter01_cand004",
+          "iter01_cand008"
+        ],
+        "critic_hypothesis": "Optimal designs may require a more stringent ddG threshold (-6.0) and increased candidate diversity to balance stability with structural feasibility",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AECKNFFWTTFTSC",
+          "ddg": -40.6559,
+          "total_score": -461.1936,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AYCKNFFVKTFTSC",
+          "ddg": -18.3876,
+          "total_score": -395.6666,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand003",
+          "sequence": "AGCKNEFNKTFTSC",
+          "ddg": 89.017,
+          "total_score": -253.1815,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand004",
+          "sequence": "AVCKNFFWKTFTSC",
+          "ddg": -5.1758,
+          "total_score": -444.8562,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand005",
+          "sequence": "AGCKWFFWKTFTSC",
+          "ddg": 18.3576,
+          "total_score": -374.3884,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand006",
+          "sequence": "ADCKNFFEGTFTSC",
+          "ddg": 40.2154,
+          "total_score": -390.0034,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand007",
+          "sequence": "AGCKNFFWKTFSSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nWARNING: Requested chain 2 length=369 mismatches target_len=14. Auto-switched to chain 1 length=14.\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFWKTFSSC\n  Mutated pos 12: T -> S (SER)\nApplied 1 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 48.87\n/tmp/tmp05at35xs: line 3:  4483 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFSSC --peptide-chain 2\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFSSC --peptide-chain 2` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFWKTFSSC --peptide-chain 2"
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand008",
+          "sequence": "AGCKNMFWKRFYSC",
+          "ddg": -32.7038,
+          "total_score": -454.7304,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 2,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "Mutating residues at hotspot positions will improve docking stability (lower ddG) and reduce structural clashes compared to the reference peptide.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 0,
+        "best_ddg": 0.0,
+        "mean_ddg": 0.0,
+        "selected_ids": [],
+        "critic_hypothesis": "The current objective function prioritizes ddG over docking score, requiring rebalancing to optimize binding affinity while maintaining structural stability.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand001",
+          "sequence": "AGCKVFFWKTFHSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nWARNING: Requested chain 2 length=369 mismatches target_len=14. Auto-switched to chain 1 length=14.\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKVFFWKTFHSC\n  Mutated pos 5: N -> V (VAL)\n  Mutated pos 12: T -> H (HIS)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 484.10\n/tmp/tmpqhxqc16k: line 3:  4645 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKVFFWKTFHSC --peptide-chain 2\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKVFFWKTFHSC --peptide-chain 2` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKVFFWKTFHSC --peptide-chain 2"
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand002",
+          "sequence": "AGCSNFFWKTQVSC",
+          "ddg": -33.471,
+          "total_score": -473.988,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand003",
+          "sequence": "AGCKMFFWKTFTSH",
+          "ddg": -28.1148,
+          "total_score": -479.8307,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand004",
+          "sequence": "AGCKNFFQITKTSC",
+          "ddg": -39.4113,
+          "total_score": -460.6695,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand005",
+          "sequence": "AGCKNFFWKHFTSM",
+          "ddg": -34.4489,
+          "total_score": -444.6647,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand006",
+          "sequence": "AGCKNFFWKWFTSC",
+          "ddg": 8.7505,
+          "total_score": -403.1394,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand007",
+          "sequence": "AGCKNFVWKTFTSC",
+          "ddg": 274.4909,
+          "total_score": -109.0481,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand008",
+          "sequence": "AGCKNFFDKLFTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nWARNING: Requested chain 2 length=369 mismatches target_len=14. Auto-switched to chain 1 length=14.\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKNFFDKLFTSC\n  Mutated pos 8: W -> D (ASP)\n  Mutated pos 10: T -> L (LEU)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 67.01\n/tmp/tmpercyzhp5: line 3:  5055 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_008.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFDKLFTSC --peptide-chain 2\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_008.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFDKLFTSC --peptide-chain 2` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_008.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKNFFDKLFTSC --peptide-chain 2"
+        }
+      ]
+    }
+  ],
+  "final_candidates": [],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 2,
+    "best_final_ddg": 0.0,
+    "run_status": "completed_with_warnings",
+    "failure_stage": "iteration_1_rosetta_partial",
+    "error_summary": "2 candidate refine failures (latest iteration=2)"
+  }
+}

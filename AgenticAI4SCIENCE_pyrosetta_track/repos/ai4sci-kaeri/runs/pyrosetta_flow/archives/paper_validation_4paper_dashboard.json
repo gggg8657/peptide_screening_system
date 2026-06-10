@@ -1,0 +1,181 @@
+{
+  "run_id": "paper_validation_4paper",
+  "label": "(4paper)",
+  "started_at": "2026-03-03T09:00:00+00:00",
+  "updated_at": "2026-03-03T12:00:00+00:00",
+  "iteration": 1,
+  "total_iterations": 1,
+  "llm_model": "PyRosetta FlexPepDock (filtered best-of-10)",
+  "target": "SSTR2",
+  "reference": "SST-14 native + literature analogs (paper candidates)",
+  "steps": [
+    {
+      "id": "step06",
+      "label": "FlexPepDock",
+      "shortLabel": "Dock",
+      "status": "completed"
+    }
+  ],
+  "agents": [],
+  "rosetta_substeps": [],
+  "timeline": [],
+  "historical_candidates": [],
+  "qc_gates": [],
+  "convergence": [],
+  "live_apis": {
+    "esmfold": "not_used",
+    "molmim": "not_used"
+  },
+  "molecules": [],
+  "visualization_images": [],
+  "baseline": {
+    "sequence": "AGCKNFFWKTFTSC"
+  },
+  "candidates": [
+    {
+      "id": "NOV-01_YSCKNFFWKTFTSN",
+      "sequence": "YSCKNFFWKTFTSN",
+      "ddG": -43.92,
+      "totalScore": -473.1411,
+      "clashScore": 0.0,
+      "finalScore": 43.92,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/NOV-01_YSCKNFFWKTFTSN.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 1
+    },
+    {
+      "id": "LIT-01_AGCKNFFWKTFTSC",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": -43.78,
+      "totalScore": -482.7171,
+      "clashScore": 0.0,
+      "finalScore": 43.78,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_10trial/LIT-01_AGCKNFFWKTFTSC.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 2
+    },
+    {
+      "id": "LIT-02_FCCKNFFWKTCTSC",
+      "sequence": "FCCKNFFWKTCTSC",
+      "ddG": -42.11,
+      "totalScore": -357.8918,
+      "clashScore": 6.0,
+      "finalScore": 42.11,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/LIT-02_FCCKNFFWKTCTSC.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 3
+    },
+    {
+      "id": "NOV-02_AGCKNDFWKTFGSE",
+      "sequence": "AGCKNDFWKTFGSE",
+      "ddG": -41.47,
+      "totalScore": -474.6363,
+      "clashScore": 0.0,
+      "finalScore": 41.47,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/NOV-02_AGCKNDFWKTFGSE.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 4
+    },
+    {
+      "id": "SAN-02_AGCKNFFWATFTSC",
+      "sequence": "AGCKNFFWATFTSC",
+      "ddG": -39.53,
+      "totalScore": -466.2268,
+      "clashScore": 0.0,
+      "finalScore": 39.53,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/SAN-02_AGCKNFFWATFTSC.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 5
+    },
+    {
+      "id": "SAN-01_AGCKNFFAKTFTSC",
+      "sequence": "AGCKNFFAKTFTSC",
+      "ddG": -38.22,
+      "totalScore": -478.2747,
+      "clashScore": 0.0,
+      "finalScore": 38.22,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/SAN-01_AGCKNFFAKTFTSC.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 6
+    },
+    {
+      "id": "LIT-03_APCKNFFWKTFSSC",
+      "sequence": "APCKNFFWKTFSSC",
+      "ddG": -37.3,
+      "totalScore": -473.0897,
+      "clashScore": 0.0,
+      "finalScore": 37.3,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/LIT-03_APCKNFFWKTFSSC.pdb",
+      "protocol": {
+        "method": "top-3 mean of 10 independent FlexPepDock trials",
+        "n_total_trials": 10,
+        "metric": "top3_mean"
+      },
+      "rank": 7
+    }
+  ],
+  "best_candidate": {
+    "id": "NOV-01_YSCKNFFWKTFTSN",
+    "sequence": "YSCKNFFWKTFTSN",
+    "ddG": -43.5218,
+    "totalScore": -472.9252,
+    "clashScore": 0.0,
+    "finalScore": 43.5218,
+    "result": "PASS",
+    "failReason": "",
+    "pdb_path": "pyrosetta_flow/archives/paper_validation_4paper/NOV-01_YSCKNFFWKTFTSN.pdb",
+    "protocol": {
+      "method": "filtered-best-of-6 (|ddG| ≤ 60, ddG < 0)",
+      "n_total_trials": 6,
+      "n_clean_trials": 5,
+      "all_clean_ddG": [
+        -43.52,
+        -40.94,
+        -39.4,
+        -38.23,
+        -30.6
+      ],
+      "best_source": "v2"
+    },
+    "rank": 1
+  },
+  "completed": true
+}

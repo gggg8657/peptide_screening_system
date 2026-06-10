@@ -1,0 +1,119 @@
+{
+  "capacity": 50,
+  "best_delta_margin": 0.077,
+  "n_unique": 9,
+  "n_screened_unique": 9,
+  "n_ingested_total": 10,
+  "entries": [
+    {
+      "sequence": "LGCKFFFWKTFMSC",
+      "ddg": -27.53315,
+      "margin": 13.447,
+      "delta_margin": 0.077,
+      "hc50": -56.58,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKYFFWKTVTSC",
+      "ddg": -45.1943,
+      "margin": 13.2748,
+      "delta_margin": -0.0952,
+      "hc50": -48.1355,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCLNFFWKTVDSC",
+      "ddg": -28.987766666666666,
+      "margin": 10.8546,
+      "delta_margin": -2.5154,
+      "hc50": -43.9502,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddg": -31.3349,
+      "margin": 10.1817,
+      "delta_margin": -3.1883,
+      "hc50": -52.8026,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKWFFWKTITSC",
+      "ddg": -32.6986,
+      "margin": 9.1158,
+      "delta_margin": -4.2542,
+      "hc50": -51.3063,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKFFFWKTLTSC",
+      "ddg": -30.0031,
+      "margin": 5.2515,
+      "delta_margin": -8.1185,
+      "hc50": -48.2025,
+      "hc50_vs_native": 7.479,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_2000",
+      "ts": ""
+    },
+    {
+      "sequence": "EGCKGFFWKTFESC",
+      "ddg": -31.3721,
+      "margin": -0.088,
+      "delta_margin": -13.458,
+      "hc50": -51.9346,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCPNFFWKTIDSC",
+      "ddg": -15.338433333333333,
+      "margin": -2.6425,
+      "delta_margin": -16.0125,
+      "hc50": -44.1454,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddg": -33.8599,
+      "margin": -3.397,
+      "delta_margin": -16.767,
+      "hc50": -44.9455,
+      "hc50_vs_native": null,
+      "more_toxic_than_native": null,
+      "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    }
+  ],
+  "screened_seqs": [
+    "AGCKFFFWKTLTSC",
+    "AGCKNFFWKTLTSC",
+    "AGCKWFFWKTITSC",
+    "AGCKYFFWKTFTSC",
+    "AGCKYFFWKTVTSC",
+    "AGCLNFFWKTVDSC",
+    "AGCPNFFWKTIDSC",
+    "EGCKGFFWKTFESC",
+    "LGCKFFFWKTFMSC"
+  ]
+}

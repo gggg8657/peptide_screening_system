@@ -1,0 +1,38 @@
+{
+  "type": "critic",
+  "iteration": 1,
+  "run_id": "sst14_mutdock_9999",
+  "timestamp": "2026-04-02T11:19:26.991198+00:00",
+  "hypothesis": "Structural sampling issues dominate over ddG optimization in current parameter space",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Current clash threshold allows excessive steric clashes"
+    },
+    {
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "Insufficient sampling leads to poor model diversity"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 8,
+    "objective_mode": "ddg_only",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_004.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_005.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_006.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_007.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_01/cand_008.pdb"
+  ],
+  "receptor_pdb": "runs/pos5_6_11_optimization/p5F_p6D_p11S_AGCKFDFWKTSTSC/refined.pdb"
+}

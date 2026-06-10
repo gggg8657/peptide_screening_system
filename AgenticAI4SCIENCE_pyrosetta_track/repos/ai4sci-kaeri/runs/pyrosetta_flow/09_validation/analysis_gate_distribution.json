@@ -1,0 +1,472 @@
+{
+  "total_candidates": 430,
+  "by_status": {
+    "success": 387,
+    "failed": 43
+  },
+  "data_quality": {
+    "n_plausible": 374,
+    "n_outliers_removed": 13,
+    "n_positive_ddg": 81,
+    "n_extreme_ddg": 13,
+    "plausibility_bounds": {
+      "min": -60.0,
+      "max": 200.0
+    }
+  },
+  "by_gate": {
+    "ddg_gate": {
+      "passed": 296,
+      "failed": 78,
+      "threshold": -5.0
+    },
+    "clash_gate": {
+      "passed": 369,
+      "failed": 5,
+      "threshold": 10.0
+    },
+    "combined_gate": {
+      "passed": 296,
+      "failed": 78
+    }
+  },
+  "by_run": {
+    "sst14_mutdock_1000": {
+      "total": 160,
+      "success": 139,
+      "failed": 21,
+      "ddg_passed": 109,
+      "outliers": 3
+    },
+    "sst14_mutdock_3000": {
+      "total": 40,
+      "success": 22,
+      "failed": 18,
+      "ddg_passed": 14,
+      "outliers": 2
+    },
+    "sst14_mutdock_4000": {
+      "total": 16,
+      "success": 16,
+      "failed": 0,
+      "ddg_passed": 11,
+      "outliers": 0
+    },
+    "sst14_mutdock_5000": {
+      "total": 52,
+      "success": 52,
+      "failed": 0,
+      "ddg_passed": 39,
+      "outliers": 2
+    },
+    "sst14_mutdock_6000": {
+      "total": 80,
+      "success": 77,
+      "failed": 3,
+      "ddg_passed": 60,
+      "outliers": 3
+    },
+    "sst14_mutdock_7000": {
+      "total": 80,
+      "success": 79,
+      "failed": 1,
+      "ddg_passed": 61,
+      "outliers": 3
+    },
+    "sst14_mutdock_9999": {
+      "total": 2,
+      "success": 2,
+      "failed": 0,
+      "ddg_passed": 2,
+      "outliers": 0
+    }
+  },
+  "by_iteration": [
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 1,
+      "total": 42,
+      "passed": 26,
+      "failed": 9,
+      "outliers_flagged": 0,
+      "pass_rate": 0.619
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 2,
+      "total": 28,
+      "passed": 16,
+      "failed": 9,
+      "outliers_flagged": 1,
+      "pass_rate": 0.5714
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 3,
+      "total": 16,
+      "passed": 13,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.8125
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 4,
+      "total": 16,
+      "passed": 14,
+      "failed": 1,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 5,
+      "total": 18,
+      "passed": 8,
+      "failed": 2,
+      "outliers_flagged": 1,
+      "pass_rate": 0.4444
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 6,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 7,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 8,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 9,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_1000",
+      "iteration": 10,
+      "total": 8,
+      "passed": 5,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_3000",
+      "iteration": 1,
+      "total": 16,
+      "passed": 7,
+      "failed": 4,
+      "outliers_flagged": 0,
+      "pass_rate": 0.4375
+    },
+    {
+      "run_id": "sst14_mutdock_3000",
+      "iteration": 2,
+      "total": 16,
+      "passed": 6,
+      "failed": 7,
+      "outliers_flagged": 2,
+      "pass_rate": 0.375
+    },
+    {
+      "run_id": "sst14_mutdock_3000",
+      "iteration": 3,
+      "total": 8,
+      "passed": 1,
+      "failed": 7,
+      "outliers_flagged": 0,
+      "pass_rate": 0.125
+    },
+    {
+      "run_id": "sst14_mutdock_4000",
+      "iteration": 1,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_4000",
+      "iteration": 2,
+      "total": 8,
+      "passed": 4,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.5
+    },
+    {
+      "run_id": "sst14_mutdock_5000",
+      "iteration": 1,
+      "total": 12,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.5833
+    },
+    {
+      "run_id": "sst14_mutdock_5000",
+      "iteration": 2,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_5000",
+      "iteration": 3,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_5000",
+      "iteration": 4,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_5000",
+      "iteration": 5,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_5000",
+      "iteration": 6,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 1,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 2,
+      "total": 8,
+      "passed": 5,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 3,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 4,
+      "total": 8,
+      "passed": 5,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 5,
+      "total": 8,
+      "passed": 6,
+      "failed": 1,
+      "outliers_flagged": 1,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 6,
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 1.0
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 7,
+      "total": 8,
+      "passed": 6,
+      "failed": 1,
+      "outliers_flagged": 0,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 8,
+      "total": 8,
+      "passed": 5,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 9,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_6000",
+      "iteration": 10,
+      "total": 8,
+      "passed": 5,
+      "failed": 1,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 1,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 2,
+      "total": 8,
+      "passed": 5,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 3,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 4,
+      "total": 8,
+      "passed": 6,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.75
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 5,
+      "total": 8,
+      "passed": 5,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 6,
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 1.0
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 7,
+      "total": 8,
+      "passed": 7,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 0.875
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 8,
+      "total": 8,
+      "passed": 4,
+      "failed": 0,
+      "outliers_flagged": 1,
+      "pass_rate": 0.5
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 9,
+      "total": 8,
+      "passed": 5,
+      "failed": 1,
+      "outliers_flagged": 0,
+      "pass_rate": 0.625
+    },
+    {
+      "run_id": "sst14_mutdock_7000",
+      "iteration": 10,
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 1.0
+    },
+    {
+      "run_id": "sst14_mutdock_9999",
+      "iteration": 1,
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "outliers_flagged": 0,
+      "pass_rate": 1.0
+    }
+  ],
+  "failure_modes": {
+    "rosetta_segfault": 12,
+    "script_failure_total": 43,
+    "high_ddg": 78,
+    "high_clash": 5,
+    "both_ddg_and_clash": 5,
+    "extreme_ddg_artifacts": 13
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "lddt_scores": {
+    "refined_var_090": 0.0,
+    "refined_var_111": 0.0,
+    "refined_var_102": 0.0,
+    "refined_var_082": 0.0,
+    "refined_var_115": 0.0
+  },
+  "html_report": "",
+  "success": false,
+  "error": "Unrecognized parameter \"--output-format\". Did you mean \"--input-format\" (Input format)?\n\nERROR conda.cli.main_run:execute(125): `conda run foldmason easy-msa /var/folders/_y/r4j12_w9179fqkbq16ktnm0c0000gn/T/tmp2waecudp.txt /Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/07_viz/fm_aln /Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/07_viz/fm_tmp --output-format html --alignment-type 3Di+AA` failed. (See above for error)\n"
+}

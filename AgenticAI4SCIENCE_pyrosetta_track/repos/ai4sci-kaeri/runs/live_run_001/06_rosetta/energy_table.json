@@ -1,0 +1,55 @@
+{
+  "total": 5,
+  "results": [
+    {
+      "seq_id": "var_090",
+      "ddg": 0.0708,
+      "total_score": -374.1829,
+      "clash_score": 5.0,
+      "constraint_violations": 0,
+      "refined_pdb": "/Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/06_rosetta/refined_var_090.pdb",
+      "pre_score": 462.4085,
+      "score_delta": -836.5914
+    },
+    {
+      "seq_id": "var_111",
+      "ddg": -38.4208,
+      "total_score": -429.876,
+      "clash_score": 2.0,
+      "constraint_violations": 0,
+      "refined_pdb": "/Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/06_rosetta/refined_var_111.pdb",
+      "pre_score": 306.531,
+      "score_delta": -736.407
+    },
+    {
+      "seq_id": "var_102",
+      "ddg": -9.7198,
+      "total_score": 67.7079,
+      "clash_score": 9.0,
+      "constraint_violations": 0,
+      "refined_pdb": "/Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/06_rosetta/refined_var_102.pdb",
+      "pre_score": 77.6742,
+      "score_delta": -9.9663
+    },
+    {
+      "seq_id": "var_082",
+      "ddg": 15.9359,
+      "total_score": -379.8549,
+      "clash_score": 1.0,
+      "constraint_violations": 0,
+      "refined_pdb": "/Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/06_rosetta/refined_var_082.pdb",
+      "pre_score": 98.5639,
+      "score_delta": -478.4188
+    },
+    {
+      "seq_id": "var_115",
+      "ddg": -4.4854,
+      "total_score": -397.9163,
+      "clash_score": 3.0,
+      "constraint_violations": 0,
+      "refined_pdb": "/Users/kimsoyeon/ai4sci_kaeri/runs/live_run_001/06_rosetta/refined_var_115.pdb",
+      "pre_score": 109.7241,
+      "score_delta": -507.6405
+    }
+  ]
+}

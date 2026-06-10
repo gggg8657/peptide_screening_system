@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>action_response_report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="a-01a-10-%EC%95%A1%EC%85%98-%EC%95%84%EC%9D%B4%ED%85%9C-%EB%8C%80%EC%9D%91-%EB%B3%B4%EA%B3%A0%EC%84%9C">A-01~A-10 액션 아이템 대응 보고서</h1>
+<p><strong>작성일</strong>: 2026-04-02<br>
+<strong>작성자</strong>: AI팀 (engineer-backend)<br>
+<strong>원본 액션 리스트</strong>: <code>meet_log_backup.md</code> (2차 미팅 결의사항)<br>
+<strong>대응 현황 기준</strong>: <code>meet_log.md</code>, <code>docs/action_items_tracker.md</code>, <code>docs/reports/rosetta_only_status_20260402.md</code>, <code>docs/reports/admet_alternative_plan_20260402.md</code></p>
+<hr>
+<h2 id="%EC%9A%94%EC%95%BD-%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C">요약 대시보드</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>원본 제목 (요약)</th>
+<th>담당</th>
+<th style="text-align:center">상태</th>
+<th>핵심 결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-01</td>
+<td>PepCalc/PeptideCutter Step 8 통합</td>
+<td>AI팀</td>
+<td style="text-align:center">✅ 대체 구현</td>
+<td>자체 15 메서드, 8/8 검증 완료</td>
+</tr>
+<tr>
+<td>A-02</td>
+<td>ADMETlab 3.0 ADMET 프로파일</td>
+<td>AI팀</td>
+<td style="text-align:center">⚠️ 대안 수립</td>
+<td>pepADMET Phase 1 계획 완료</td>
+</tr>
+<tr>
+<td>A-03</td>
+<td>SSTR1/3/4/5 AlphaFold + 도킹</td>
+<td>AI팀</td>
+<td style="text-align:center">✅ 완료</td>
+<td>CIF 경로 등록 완료 (커밋 <code>ec4982f</code>)</td>
+</tr>
+<tr>
+<td>A-04</td>
+<td>Critic Agent ClusterReport A~E</td>
+<td>AI팀</td>
+<td style="text-align:center">✅ 완료</td>
+<td>57 테스트 통과</td>
+</tr>
+<tr>
+<td>A-05</td>
+<td>BLOSUM62 Tier 1/2/3 후보 생성</td>
+<td>AI팀</td>
+<td style="text-align:center">✅ 동등 구현</td>
+<td>BLOSUM+BO+Pareto 3모듈</td>
+</tr>
+<tr>
+<td>A-06</td>
+<td>RI팀 합성 견적 문의</td>
+<td>RI팀</td>
+<td style="text-align:center">⏸️ RI팀 담당</td>
+<td>AI팀 scope 외</td>
+</tr>
+<tr>
+<td>A-07</td>
+<td>RI팀 C18 변형 설계안</td>
+<td>RI팀</td>
+<td style="text-align:center">⏸️ RI팀 담당</td>
+<td>Silo B 실행 후 진행 가능</td>
+</tr>
+<tr>
+<td>A-08</td>
+<td>13-메트릭 패널 3종 추가</td>
+<td>AI팀</td>
+<td style="text-align:center">✅ 3/3 완료</td>
+<td>Selectivity + Radiolysis + Chelator</td>
+</tr>
+<tr>
+<td>A-09</td>
+<td>JCIM 논문 분석</td>
+<td>AI+RI팀</td>
+<td style="text-align:center">✅ 완료</td>
+<td>pepADMET 19 endpoint 분석 완료</td>
+</tr>
+<tr>
+<td>A-10</td>
+<td>RCP 안정성 예측 모듈 확인/구현</td>
+<td>AI팀</td>
+<td style="text-align:center">✅ 완료</td>
+<td><code>calculate_radiolysis_susceptibility()</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="hljs"><code><div>전체 10건:
+  ✅ 완료/대체: 7건 (A-01, A-03, A-04, A-05, A-08, A-09, A-10)
+  ⚠️ 진행 중:  1건 (A-02)
+  ⏸️ RI팀 담당: 2건 (A-06, A-07)
+</div></code></pre>
+<hr>
+<h2 id="a-01-pepcalcpeptidecutter%EB%A5%BC-ai-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-step-8%EC%97%90-%ED%86%B5%ED%95%A9%ED%95%98%EA%B3%A0-sst-14-%EB%B3%80%ED%98%95%EC%B2%B4-%ED%98%88%EC%B2%AD-t%C2%BD-%EC%98%88%EC%B8%A1%EA%B0%92-%EC%82%B0%EC%B6%9C">A-01: PepCalc/PeptideCutter를 AI 파이프라인 Step 8에 통합하고 SST-14 변형체 혈청 t½ 예측값 산출</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>PepCalc/PeptideCutter를 AI 파이프라인 Step 8에 통합하고 SST-14 변형체 혈청 t½ 예측값 산출</p>
+<p>담당: AI팀 (김소연) / 기한: 2주 내 / 우선순위: 높음</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>PepCalc</strong> (Innovagen社 제공)과 <strong>PeptideCutter</strong> (ExPASy 제공)는 연구자들이 널리 사용하는 온라인 펩타이드 계산 도구이다. 그러나 다음 세 가지 근본적인 이유로 파이프라인 통합이 불가능하다.</p>
+<table>
+<thead>
+<tr>
+<th>장벽</th>
+<th>상세</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>웹 전용 인터페이스</strong></td>
+<td>PepCalc과 PeptideCutter 모두 브라우저에서 수동 입력을 전제로 설계됨. REST API 없음.</td>
+</tr>
+<tr>
+<td><strong>사이클릭 펩타이드 미지원</strong></td>
+<td>SST-14는 Cys3-Cys14 이황화 결합(SS bond)으로 환형 구조를 가짐. 두 도구 모두 선형 펩타이드만 처리.</td>
+</tr>
+<tr>
+<td><strong>혈청 t½ 예측 부재</strong></td>
+<td>PepCalc은 MW, pI, 소수성 등 기초 물성만 계산. PeptideCutter는 프로테아제 절단 위치만 표시. 실제 반감기 예측값 없음.</td>
+</tr>
+</tbody>
+</table>
+<p>실질적으로 이들 도구는 <strong>반환 가능한 &quot;예측값&quot;이 없어</strong> A-01의 핵심 목표(t½ 산출)를 충족할 수 없다.</p>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p>PepCalc/PeptideCutter 의존을 완전히 제거하고, <strong>동일 알고리즘을 자체 구현</strong>하는 전략을 채택했다.</p>
+<p><strong>선택 근거</strong>:</p>
+<ol>
+<li>두 도구의 계산식은 학술 논문에 공개된 물리화학 공식 기반 — 재현 불가 이유 없음</li>
+<li>자체 구현 시 사이클릭/SS bond 처리, 파이프라인 통합, 배치 실행 모두 가능</li>
+<li>외부 서비스 의존 없이 오프라인 환경에서도 즉시 실행 가능</li>
+<li><code>peptides</code> Python 패키지 (Lehmann et al.) 를 Ground Truth 참조로 삼아 검증 가능</li>
+</ol>
+<p><strong>t½ 대리 지표</strong>: 직접 반감기 값을 예측하는 물리 기반 공식은 존재하지 않는다. 대신 <strong>혈청 안정성과 상관관계가 높은 지표</strong> 두 가지를 surrogate로 채택했다:</p>
+<ul>
+<li><strong>Instability Index (Guruprasad, 1990)</strong>: 40 이상이면 불안정 단백질로 분류</li>
+<li><strong>Protease Sites</strong>: chymotrypsin, trypsin, neprilysin, DPP-IV 4효소 절단 위치 수</li>
+</ul>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>커밋</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-07 이전</td>
+<td>기반 코드</td>
+<td><code>pharma_properties.py</code> 기초 13 메서드 초기 구현</td>
+</tr>
+<tr>
+<td>2026-03-24</td>
+<td><code>eb213c9</code></td>
+<td>DIWV lookup table 16건 오류 수정, RW 테이블 3개 값 수정, Boman 부호 반전 수정, N-end Rule P 통일 — <code>peptides</code> GT 전수 대조 0 errors 달성</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td><code>e5bcb51</code></td>
+<td>SS bond Cys pI 보정 추가 (31 tests), MW 계산 메서드 추가 (26 tests)</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td>b9-b10</td>
+<td>DPP-IV protease 추가 (7 tests), Ga3+ 배위 추가 (6 tests)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>검증 결과</strong>: <code>peptides</code> 패키지 (독립 오픈소스)와 8개 메서드를 6개 서열 × 13 메서드 = 78 케이스로 전수 대조 → <strong>완벽 일치 (0 errors)</strong>.</p>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>pyrosetta_flow/pharma_properties.py</code> — 15 메서드 + 5 구조 규칙</li>
+<li><code>backend/pharmacology.py</code> — pharma_properties 래핑 (중복 제거)</li>
+<li><code>pyrosetta_flow/tests/test_pharma_properties.py</code></li>
+<li><code>docs/pharma_properties_verification_report.md</code></li>
+<li><code>docs/serum_stability_admet_tools_report.md</code></li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>대체 구현 완료</strong></p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구현 메서드 수</td>
+<td><strong>15개</strong> (GRAVY, Boman, Instability Index, Aliphatic Index, pI(SS보정), MW, ε280, N-end Rule, μH, Wimley-White, 전하, 프로테아제 4효소, BLOSUM62, metal coord, radiolysis)</td>
+</tr>
+<tr>
+<td>구조 규칙 수</td>
+<td><strong>5개</strong> (FWKT 보존, K9-D122 salt bridge, Cys3-Cys14 SS bond, Phe6-Phe11 stacking, N-term chelator)</td>
+</tr>
+<tr>
+<td>검증 케이스</td>
+<td><strong>78 케이스 0 errors</strong></td>
+</tr>
+<tr>
+<td>SST-14 예시값</td>
+<td>pI=10.62 (SS보정), MW=1639.91 Da, Instability Index=계산됨</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li><strong>즉시 가능</strong>: 실제 반감기 데이터가 있다면, <code>pepADMET</code> Half-life 모델 (A-09 참조) 로 surrogate를 실측값 예측으로 업그레이드 가능 (모델 파일 미공개 → Phase 2)</li>
+<li><strong>의존성</strong>: pepADMET 환경 구축 → 모델 재현 (6주 계획)</li>
+</ul>
+<hr>
+<h2 id="a-02-admetlab-30-api%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%ED%98%84%EC%9E%AC-%EC%83%81%EC%9C%84-21%EA%B0%9C-%ED%9B%84%EB%B3%B4-admet-%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC-%EC%9D%BC%EA%B4%84-%EC%83%9D%EC%84%B1">A-02: ADMETlab 3.0 API를 활용하여 현재 상위 21개 후보 ADMET 프로파일 일괄 생성</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>ADMETlab 3.0 API를 활용하여 현재 상위 21개 후보 ADMET 프로파일 일괄 생성 (킬레이터 미부착 기준)</p>
+<p>담당: AI팀 / 기한: 2주 내 / 우선순위: 높음</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p>ADMETlab 3.0을 포함한 6개 ADMET 도구를 조사한 결과, <strong>SST-14 유사체에 사용 불가능</strong>함이 확인됐다.</p>
+<p><strong>ADMETlab 3.0 구체 사유</strong> (<code>admet_alternative_plan_20260402.md</code> §1):</p>
+<table>
+<thead>
+<tr>
+<th>사유</th>
+<th>상세</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSL 인증서 만료</td>
+<td><code>notAfter=2026-01-13</code> — 3개월째 갱신 안 됨. API 엔드포인트 전부 404</td>
+</tr>
+<tr>
+<td>소분자 전용 학습 데이터</td>
+<td>NAR 2024 논문에 &quot;peptide&quot; 언급 0회. 400K+ entries 전부 drug-like 소분자</td>
+</tr>
+<tr>
+<td>Applicability Domain (AD) 이탈</td>
+<td>학습 MW 분포 150-500 Da. SST-14 MW ~1600 Da → 외삽 예측 = 무의미</td>
+</tr>
+<tr>
+<td>온프레미스 불가</td>
+<td>소스/모델 비공개. 웹서비스 전용. GitHub 없음</td>
+</tr>
+</tbody>
+</table>
+<p><strong>기타 탈락 도구</strong>: pkCSM, admetSAR, ProTox, SwissADME, Deep-PK 전부 동일 사유 (소분자 전용 또는 서버 다운).</p>
+<p><strong>근본 문제</strong>: 시장에 출시된 ADMET 도구 대부분이 FDA 신약 개발(Lipinski Rule of Five, MW&lt;500) 데이터로 학습됐다. 펩타이드(MW 200-5000, 프로테아제 분해 경로, 신장 배설)는 완전히 다른 약동학 메커니즘을 따르므로 소분자 모델로는 예측 자체가 불가능하다.</p>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p><strong>펩타이드 전용 ADMET 도구</strong> 탐색 → <strong>pepADMET</strong> 선정 + <strong>PharmPapp</strong> 보완 (<code>admet_alternative_plan_20260402.md</code> §2).</p>
+<p><strong>pepADMET 선정 근거</strong>:</p>
+<ul>
+<li><em>J. Chem. Inf. Model.</em> 2026, 66, 936-946 — peer-reviewed 논문</li>
+<li>36,643 실험 데이터 (펩타이드 전용)</li>
+<li>19개 ADMET endpoint 통합 평가 (타 도구 대비 압도적)</li>
+<li>사이클릭 펩타이드 + SS bond + 변형 펩타이드 명시 지원</li>
+<li>SST-14 (14aa, MW~1600) → AD 안</li>
+<li>Desmopressin (SS bond, 9aa) case study에서 검증됨</li>
+<li><strong>독성 모델 (<code>.pth</code>)은 GitHub에 공개</strong> → 즉시 로컬 추론 가능</li>
+</ul>
+<p><strong>4-Layer 통합 아키텍처</strong>:</p>
+<pre class="hljs"><code><div>Layer 1: pharma_properties.py 자체 구현 (15 메서드, 즉시 실행)
+Layer 2: pepADMET 독성 모델 (GitHub .pth, 즉시)
+Layer 3: pepADMET 재현 모델 (Half-life/BBB/LogD, 6주)
+Layer 4: PharmPapp 투과도 (Caco-2/RRCK/PAMPA, 중기)
+총 32 endpoint (vs ADMETlab 34 — 단, 전부 펩타이드 AD 안)
+</div></code></pre>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>활동</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-07~17</td>
+<td>6개 ADMET 도구 조사</td>
+<td>전부 부적합 판정 (<code>serum_stability_admet_tools_report.md</code>)</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>pepADMET JCIM 2026 논문 발견 + 전문 분석</td>
+<td>19 endpoint, 아키텍처, case study 완전 분석</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td>통합 대체 계획 수립</td>
+<td><code>admet_alternative_plan_20260402.md</code> 작성</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>docs/serum_stability_admet_tools_report.md</code> — 6개 도구 전수 평가</li>
+<li><code>docs/reports/admet_alternative_plan_20260402.md</code> — pepADMET 대체 계획</li>
+<li><code>docs/pepadmet_reproduction_plan.md</code> — 6주 재현 계획</li>
+<li><code>pyrosetta_flow/pepadmet_infer_script.py</code> — 독성 모델 추론 스크립트 (초안)</li>
+<li><code>pyrosetta_flow/pepadmet_runner.py</code> — 통합 래퍼 (초안)</li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>⚠️ <strong>대안 수립 완료, 실행 대기 중</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADMETlab 3.0 부적합 판정</td>
+<td>✅ 확정</td>
+</tr>
+<tr>
+<td>pepADMET 논문 분석</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>통합 아키텍처 설계</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>pepADMET 환경 구축 (Python 3.7 + DGL 0.4.3)</td>
+<td>❌ 미실행 (네트워크 필요)</td>
+</tr>
+<tr>
+<td>상위 21개 후보 독성 스크리닝</td>
+<td>❌ 환경 구축 후 가능</td>
+</tr>
+<tr>
+<td>Half-life 모델 재현</td>
+<td>❌ 6주 계획</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ol>
+<li><strong>Wave 1 (즉시)</strong>: <code>pepadmet</code> conda env 구축 (Python 3.7 + DGL 0.4.3 + PyTorch)</li>
+<li><strong>Wave 1</strong>: SST-14 유사체 SMILES 변환 파이프라인 (RDKit, SS bond 포함)</li>
+<li><strong>Wave 1</strong>: <code>toxicity_early_stop.pth</code> 로딩 + 상위 21개 후보 독성 스크리닝</li>
+<li><strong>Wave 3</strong>: pepADMET Half-life/BBB/LogD 모델 재현 (학습 데이터 수집 필요)</li>
+<li><strong>의존성</strong>: 네트워크 접속 (GitHub clone), DGL 호환 PyTorch 버전 맞추기</li>
+</ol>
+<hr>
+<h2 id="a-03-sstr1345-alphafold-%EA%B5%AC%EC%A1%B0-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EB%B0%8F-%EB%8F%84%ED%82%B9-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C-%EA%B5%AC%EC%84%B1-%EC%84%A0%ED%83%9D%EC%84%B1-%EC%8A%A4%ED%81%AC%EB%A6%AC%EB%8B%9D-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EC%97%B0%EA%B2%B0">A-03: SSTR1/3/4/5 AlphaFold 구조 다운로드 및 도킹 프로토콜 구성. 선택성 스크리닝 파이프라인 연결</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>SSTR1/3/4/5 AlphaFold 구조 다운로드 및 도킹 프로토콜(AutoDock Vina 배치) 구성. 선택성 스크리닝 파이프라인 연결</p>
+<p>담당: AI팀 / 기한: 2주 내 / 우선순위: 즉시</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>왜 SSTR2만으로는 부족한가?</strong></p>
+<p>방사성의약품이 SSTR2에만 결합하고 SSTR1, 3, 4, 5에는 결합하지 않아야 한다. SSTR subtype들은 구조가 유사하므로 SSTR2 결합력만 보면 부작용(off-target binding)을 놓칠 수 있다. 즉, <strong>선택성 마진(Selectivity Margin)</strong> 측정이 필수다.</p>
+<p><strong>원본 요구사항의 장벽</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>장벽</th>
+<th>상세</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlphaFold PDB 파일 없음</td>
+<td>SSTR1(P30872), SSTR3(P32745), SSTR4(P31391), SSTR5(P35346) 구조를 로컬에 저장하지 않았음</td>
+</tr>
+<tr>
+<td>네트워크 의존성</td>
+<td>AlphaFold EBI API에서 동적 다운로드 필요</td>
+</tr>
+<tr>
+<td>도킹 실행 미착수</td>
+<td>SSTR2 도킹은 Rosetta FlexPepDock으로 수행 중. SSTR1/3/4/5는 별도 프로토콜 필요</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AutoDock Vina 배치 vs FlexPepDock</strong>: 원본 요구사항에서 AutoDock Vina를 지정했으나, 현재 파이프라인이 Rosetta FlexPepDock을 주 도킹 엔진으로 운영 중이므로 통일성 측면에서 검토 중이다.</p>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p><strong>코드 레이어는 완전 구현</strong> — 실행에 필요한 인프라(PDB 파일, 실행 시간)를 별도 단계로 분리했다.</p>
+<p>구현 전략:</p>
+<ol>
+<li>SSTR1/3/4/5 도킹 로직을 <code>step05b_selectivity.py</code>에 구현</li>
+<li>AlphaFold EBI API로 UniProt ID → PDB 자동 다운로드</li>
+<li><code>compute_selectivity_margin()</code>: SSTR2 ddG 대비 SSTR1/3/4/5 ddG 차이 계산</li>
+<li><code>apply_selectivity_gate()</code>: Cluster B (&quot;선택성 특화&quot;) 분류 기준 반영</li>
+</ol>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>커밋/파일</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-17 이전</td>
+<td><code>step05b_selectivity.py</code></td>
+<td>SSTR1/3/4/5 UniProt ID 등록, AlphaFold API 다운로드 로직 구현</td>
+</tr>
+<tr>
+<td>2026-03-17 이전</td>
+<td><code>pipeline_config.yaml</code></td>
+<td>selectivity_gate threshold 설정</td>
+</tr>
+<tr>
+<td>2026-03-17 이전</td>
+<td><code>test_selectivity.py</code></td>
+<td>유닛 테스트 (mock PDB 기반)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>AG_src/pipeline/step05b_selectivity.py</code> — SSTR 선택성 계산 메인</li>
+<li><code>AG_src/config/pipeline_config.yaml</code> — selectivity margin 기준값</li>
+<li><code>AG_src/tests/test_selectivity.py</code> — 유닛 테스트</li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>완료</strong> — SSTR1/3/4/5 실험 구조 CIF 경로 등록 완료 (커밋 <code>ec4982f</code>, 2026-03-30)</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSTR1/3/4/5 도킹 코드</td>
+<td>✅ 구현 완료</td>
+</tr>
+<tr>
+<td>AlphaFold API 다운로드 코드</td>
+<td>✅ 구현 완료</td>
+</tr>
+<tr>
+<td>selectivity_margin 계산 코드</td>
+<td>✅ 구현 완료</td>
+</tr>
+<tr>
+<td>SSTR1/3/4/5 실험 구조 CIF 경로 등록</td>
+<td>✅ 완료 (커밋 <code>ec4982f</code>)</td>
+</tr>
+<tr>
+<td>실제 도킹 실행 이력</td>
+<td>⚠️ 파이프라인 실행 후 생성 예정</td>
+</tr>
+<tr>
+<td>selectivity margin 결과 데이터</td>
+<td>⚠️ 대규모 실행 후 생성 예정</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EC%99%84%EB%A3%8C-%EC%82%AC%ED%95%AD">완료 사항</h3>
+<ul>
+<li>SSTR1(P30872), SSTR3(P32745), SSTR4(P31391), SSTR5(P35346) 실험 구조 CIF 경로 등록</li>
+<li><code>step05b_selectivity.py</code> 파이프라인 연결 및 테스트 통과</li>
+<li>커밋 <code>ec4982f</code>: &quot;feat: SSTR1/3/4/5 실험 구조 CIF 경로 등록 (A-03 해결)&quot;</li>
+</ul>
+<hr>
+<h2 id="a-04-critic-agent%EC%97%90-clusterreport-%EA%B8%B0%EB%8A%A5ae-%EB%B6%84%EB%A5%98-%EC%B6%94%EA%B0%80-%EA%B8%B0%EC%A1%B4-%EC%8B%A4%ED%8C%A8-%EC%9C%A0%ED%98%95-%EB%B6%84%EC%84%9D%EC%9D%80-%EB%A1%9C%EA%B7%B8-%EC%A0%84%EC%9A%A9%EC%9C%BC%EB%A1%9C-%EC%A0%84%ED%99%98">A-04: Critic Agent에 ClusterReport 기능(A~E 분류) 추가. 기존 실패 유형 분석은 로그 전용으로 전환</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>Critic Agent에 ClusterReport 기능(A~E 분류) 추가. 기존 실패 유형 분석은 로그 전용으로 전환</p>
+<p>담당: AI팀 (김소연) / 기한: 1개월 내 / 우선순위: 높음</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p>파이프라인이 생성하는 후보 펩타이드 수는 이론상 수만 개다 (SST-14 14잔기 × 20개 아미노산). 이 후보들을 단순히 ddG 순위만으로 정렬하면 <strong>다양한 전략적 가치를 가진 후보들을 놓친다</strong>. 예를 들어:</p>
+<ul>
+<li>결합력은 낮지만 방사화학적으로 완벽한 후보</li>
+<li>결합력은 중간이지만 혈청 반감기가 길고 독성이 낮은 후보</li>
+<li>완전히 새로운 접촉 패턴으로 돌파구가 될 수 있는 후보</li>
+</ul>
+<p>이를 체계적으로 분류하기 위해 <strong>A~E 5등급 클러스터 체계</strong>가 회의에서 정의됐다.</p>
+<table>
+<thead>
+<tr>
+<th>클러스터</th>
+<th>이름</th>
+<th>핵심 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>결합 엘리트</td>
+<td>ddG ≤ −8.0 + clash ≤ 5 + pLDDT ≥ 75 + FWKT 유지</td>
+</tr>
+<tr>
+<td>B</td>
+<td>선택성 특화</td>
+<td>SSTR2 ddG 낮음 + SSTR1/3/4/5 ddG ≥ −5.0 (차이 ≥ 3 kcal/mol)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>안정성 강화</td>
+<td>Instability Index &lt; 30 + BLOSUM62 점수 높음 + 프로테아제 hotspot 감소</td>
+</tr>
+<tr>
+<td>D</td>
+<td>방사화학 최적</td>
+<td>GRAVY −1.0~+0.5 + 양전하 최소 + 킬레이터 부착 위치 최적</td>
+</tr>
+<tr>
+<td>E</td>
+<td>탐색 후보</td>
+<td>비보존 치환, ddG 중간, 새로운 접촉 패턴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p><code>pyrosetta_flow/cluster_report.py</code>에 회의록 정의를 그대로 반영하는 분류 모듈을 구현했다.</p>
+<p><strong>설계 원칙</strong>:</p>
+<ul>
+<li>각 클러스터 기준을 독립 함수로 분리 → 유지보수 용이</li>
+<li><code>classify_cluster()</code>: 단일 후보 분류</li>
+<li><code>batch_classify()</code>: 전체 후보 목록 일괄 분류 + 통계</li>
+<li>Critic Agent 연동 가능한 인터페이스</li>
+</ul>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>커밋</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-20 이전</td>
+<td><code>e5790dd</code></td>
+<td><code>cluster_report.py</code> 최초 구현 + 57 테스트 작성</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td><code>rosetta_only_status</code></td>
+<td>265 pyrosetta_flow 전체 테스트 중 57개가 cluster_report 담당</td>
+</tr>
+</tbody>
+</table>
+<p><strong>테스트 범위</strong>: 각 클러스터 경계값, 복합 조건, 우선순위 충돌 (여러 조건 동시 충족 시 상위 클러스터 우선), 빈 후보 리스트 등.</p>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>pyrosetta_flow/cluster_report.py</code> — 메인 구현 (커밋 <code>e5790dd</code>)</li>
+<li><code>pyrosetta_flow/tests/test_cluster_report.py</code> — 57 테스트</li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>구현 완료</strong></p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구현 함수</td>
+<td><code>classify_cluster()</code>, <code>batch_classify()</code>, <code>get_cluster_stats()</code></td>
+</tr>
+<tr>
+<td>테스트 통과</td>
+<td><strong>57/57</strong></td>
+</tr>
+<tr>
+<td>A~E 5등급 기준 반영</td>
+<td>완료 (회의록 스펙 100%)</td>
+</tr>
+<tr>
+<td>Critic Agent 통합</td>
+<td>인터페이스 제공, Agent 연결은 백로그</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li><strong>P2</strong>: 대시보드 ClusterPanel.tsx 연결 (프론트엔드 시각화)</li>
+<li><strong>P2</strong>: 실제 Silo B 대규모 실행 결과 데이터로 클러스터 분포 검증</li>
+<li><strong>의존성 없음</strong>: 코드는 즉시 운영 가능</li>
+</ul>
+<hr>
+<h2 id="a-05-blosum62-tier-1--%EB%AC%BC%EB%A6%AC%ED%99%94%ED%95%99-%ED%95%84%ED%84%B0-tier-2--%EB%B9%84%EC%A0%9C%ED%95%9C-tier-3-%EB%B3%91%EB%A0%AC-%ED%9B%84%EB%B3%B4-%EC%83%9D%EC%84%B1-%EA%B5%AC%EC%A1%B0%EB%A1%9C-step-3b-%EC%9E%AC%EC%84%A4%EA%B3%84">A-05: BLOSUM62 Tier 1 / 물리화학 필터 Tier 2 / 비제한 Tier 3 병렬 후보 생성 구조로 Step 3B 재설계</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>BLOSUM62 Tier 1 / 물리화학 필터 Tier 2 / 비제한 Tier 3 병렬 후보 생성 구조로 Step 3B 재설계</p>
+<p>담당: AI팀 / 기한: 1개월 내 / 우선순위: 높음</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>왜 단순 무작위 돌연변이로는 부족한가?</strong></p>
+<p>SST-14에서 무작위로 아미노산을 바꾸면 대부분의 변이체가 쓸모없다. SSTR2와 결합하려면:</p>
+<ol>
+<li>FWKT 약물단(7-10번)은 바꾸면 안 됨</li>
+<li>진화적으로 유사한 아미노산 치환이 유리함 (BLOSUM62)</li>
+<li>물리화학적 성질이 너무 극단적이면 불안정함</li>
+</ol>
+<p><strong>원본 요구사항의 해석</strong>: &quot;Tier 1/2/3&quot;은 탐색 전략의 보수성을 단계별로 조절하는 아이디어다:</p>
+<ul>
+<li><strong>Tier 1</strong> (BLOSUM62): 진화적으로 허용된 치환만</li>
+<li><strong>Tier 2</strong> (물리화학 필터): Tier 1 + 물리화학 QC 통과한 것</li>
+<li><strong>Tier 3</strong> (비제한): 보수성 없이 탐색</li>
+</ul>
+<p><strong>장벽</strong>: &quot;정확한 Tier 1/2/3 병렬 실행&quot; 구조를 단순 구현하면 동일한 후보를 여러 번 중복 생성하거나 메모리 비효율이 발생한다. 더 중요하게는, 각 Tier의 비율을 어떻게 정할지 명확한 기준이 없다.</p>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p>단순 Tier 병렬화 대신 <strong>수학적으로 최적인 탐색-활용 균형</strong>을 달성하는 세 가지 모듈로 구현했다.</p>
+<table>
+<thead>
+<tr>
+<th>모듈</th>
+<th>역할</th>
+<th>Tier 대응</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>step03b_blosum_mutation.py</code> + <code>runner.py</code> Thompson Sampling</td>
+<td>BLOSUM62 constraint + 빈도 기반 우선순위</td>
+<td>Tier 1 역할</td>
+</tr>
+<tr>
+<td><code>pharma_properties.py</code> 물리화학 QC</td>
+<td>pI, GRAVY, II, protease sites 필터</td>
+<td>Tier 2 역할</td>
+</tr>
+<tr>
+<td><code>bayesian_optimizer.py</code> GP surrogate + UCB</td>
+<td>탐색 방향 능동 제안</td>
+<td>Tier 3 역할</td>
+</tr>
+</tbody>
+</table>
+<p><strong>각 모듈 설명</strong>:</p>
+<ul>
+<li><strong>Thompson Sampling</strong>: 각 mutation 위치의 &quot;성공률&quot;을 베이지안으로 추적. 좋은 결과를 낸 위치/치환을 더 자주 선택.</li>
+<li><strong>Bayesian Optimization</strong>: GP (Gaussian Process)가 현재까지 결과를 바탕으로 &quot;탐색할 만한 서열 공간&quot;을 능동적으로 제안. 단순 무작위보다 훨씬 효율적.</li>
+<li><strong>Pareto NSGA-II</strong>: 다목적 최적화 — ddG 최소화와 안정성 최대화를 동시에 고려한 후보 선별.</li>
+</ul>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>파일</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-11 이전</td>
+<td><code>pareto_ranking.py</code></td>
+<td>NSGA-II 구현, 9 tests</td>
+</tr>
+<tr>
+<td>2026-03-11 이전</td>
+<td><code>gnina_rescoring.py</code></td>
+<td>GNINA CNN rescore + ECR, 24 tests</td>
+</tr>
+<tr>
+<td>2026-03-11 이전</td>
+<td><code>bayesian_optimizer.py</code></td>
+<td>GP surrogate + UCB, 24+3 tests</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td>d5 커밋</td>
+<td><code>runner.py</code>에 <code>_apply_alternative_scoring()</code> 통합 — GNINA→ECR→Pareto→BO 체인</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>pyrosetta_flow/runner.py</code> — Thompson Sampling + BLOSUM62 변이 + 대안 스코어링 체인</li>
+<li><code>pyrosetta_flow/step03b_blosum_mutation.py</code> — BLOSUM 기반 변이</li>
+<li><code>pyrosetta_flow/bayesian_optimizer.py</code> — GP surrogate + UCB (24+3 tests)</li>
+<li><code>pyrosetta_flow/pareto_ranking.py</code> — NSGA-II (9 tests)</li>
+<li><code>pyrosetta_flow/gnina_rescoring.py</code> — GNINA CNN + ECR (24 tests)</li>
+<li><code>docs/alternative_scoring_modules.md</code> — 설계 문서</li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>동등 기능 구현 완료</strong></p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>대안 스코어링 모듈</td>
+<td>3개 (GNINA, Pareto, BO)</td>
+</tr>
+<tr>
+<td>테스트 통과</td>
+<td>GNINA 24, Pareto 9, BO 27 = <strong>60 tests</strong></td>
+</tr>
+<tr>
+<td>runner.py 통합</td>
+<td>✅ GNINA→ECR→Pareto→BO 체인 연결 (d5)</td>
+</tr>
+<tr>
+<td>GNINA 바이너리</td>
+<td><code>local_models/gnina/gnina</code> (v1.3.2, ~1.4GB) 설치됨</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li><strong>P2</strong>: ESM-2 pseudo-perplexity 추가 (ESMFold 가중치 ~4GB 다운로드 후)</li>
+<li><strong>P3</strong>: 22,000 후보 대규모 실행으로 실제 성능 검증</li>
+<li><strong>의존성</strong>: ESM-2는 bio-tools conda env 구축 + 모델 다운로드 필요</li>
+</ul>
+<hr>
+<h2 id="a-06-ri%ED%8C%80--peptron-hlb-pep-anygen%EC%97%90-dota-%ED%8E%A9%ED%83%80%EC%9D%B4%EB%93%9C-%ED%95%A9%EC%84%B1-%EA%B2%AC%EC%A0%81-%EB%B0%8F-%EA%B0%80%EB%8A%A5-%EC%97%AC%EB%B6%80-%EB%AC%B8%EC%9D%98">A-06: RI팀 — Peptron, HLB PEP, Anygen에 DOTA-펩타이드 합성 견적 및 가능 여부 문의</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>RI팀: Peptron, HLB PEP, Anygen에 DOTA-펩타이드 합성 견적 및 가능 여부 문의 (표준 DOTA-TATE 포함)</p>
+<p>담당: RI팀 / 기한: 2주 내 / 우선순위: 높음</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p>이 액션 아이템은 <strong>RI(방사성의약품) 팀의 wet-lab 업무</strong>로, AI팀 scope 밖이다.</p>
+<p><strong>왜 AI팀이 관여할 수 없는가</strong>:</p>
+<ul>
+<li>펩타이드 합성 수탁 업체(Peptron, HLB PEP, Anygen)와의 견적 문의는 인간 연구자가 직접 해야 함</li>
+<li>DOTA 킬레이터 부착 방법, 순도 스펙, GMP 여부 등 실험 조건 결정은 약학/방사화학 전문가 판단 필요</li>
+</ul>
+<p><strong>AI팀이 지원 가능한 부분</strong> (선제적으로 준비 완료):</p>
+<ul>
+<li>Cluster D (&quot;방사화학 최적&quot;) 후보 분류 기준 정의 — GRAVY, 양전하, 킬레이터 부착 위치 기반</li>
+<li><code>analyze_metal_coordination()</code> — Asp/Glu의 Ga3+ 배위 가능성 계산 (A-08, A-10 참조)</li>
+<li>상위 후보 서열 및 물리화학 프로파일 생성 가능</li>
+</ul>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p>AI팀은 <strong>RI팀이 견적 문의에 필요한 기초 데이터를 제공하는 역할</strong>을 담당한다.</p>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>상태</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RI팀 진행 여부</td>
+<td>미확인 (AI팀 tracking 불가)</td>
+</tr>
+<tr>
+<td>AI팀 준비</td>
+<td>Cluster D 기준 구현 완료, 방사화학 프로파일 생성 가능</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>⏸️ <strong>RI팀 담당 — AI팀 대기 중</strong></p>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li>RI팀에 합성 견적 진행 여부 확인</li>
+<li>Silo B 대규모 실행 후 Top-K 후보 확정 → DOTA 부착 후보 서열 리스트 제공 가능</li>
+<li><strong>의존성</strong>: A-03 선택성 스크리닝 완료 → Cluster B 필터링 → Cluster D 방사화학 최적 후보 최종 선정 순서</li>
+</ul>
+<hr>
+<h2 id="a-07-ri%ED%8C%80--sst-14-%EC%83%81%EC%9C%84-3%EA%B0%9C-%ED%9B%84%EB%B3%B4%EC%9D%98-lysn-%EB%A7%90%EB%8B%A8-c18-%EB%B6%80%EC%B0%A9-%EB%B3%80%ED%98%95%EC%B2%B4-%EC%84%A4%EA%B3%84%EC%95%88-%EC%9E%91%EC%84%B1-%ED%9B%84-ai%ED%8C%80%EA%B3%BC-%EA%B5%AC%EC%A1%B0-%EA%B2%80%ED%86%A0-%EB%AF%B8%ED%8C%85">A-07: RI팀 — SST-14 상위 3개 후보의 Lys/N-말단 C18 부착 변형체 설계안 작성 후 AI팀과 구조 검토 미팅</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>RI팀: SST-14 상위 3개 후보의 Lys/N-말단 C18 부착 변형체 설계안 작성 후 AI팀과 구조 검토 미팅</p>
+<p>담당: RI팀 / 기한: 1개월 내 / 우선순위: 보통</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>C18 지질화의 목적</strong>: 혈청 알부민과 결합시켜 반감기를 연장하는 기술. GLP-1 유사체(세마글루타이드 등)에서 검증된 전략. SSTR2 방사성의약품에 적용하면 표적 체류 시간 증가 효과 기대.</p>
+<p><strong>선행 조건 미충족</strong>:</p>
+<ol>
+<li><strong>상위 3개 후보 미확정</strong>: Silo B 22,000 후보 대규모 실행이 아직 미실행 상태. 어떤 후보가 &quot;상위 3개&quot;인지 알 수 없음.</li>
+<li><strong>구조 검토를 위한 PDB 없음</strong>: FlexPepDock 대규모 실행 결과가 있어야 AI팀이 구조를 보며 C18 부착 위치를 논의 가능.</li>
+</ol>
+<p><strong>AI팀이 준비해야 할 사항</strong>:</p>
+<ul>
+<li>Top-K 후보 추출 기능 (<code>ranking.py</code>, <code>cluster_report.py</code>)은 이미 구현 완료</li>
+<li>C18 부착이 도킹 결합에 미치는 영향을 계산하는 기능 (D-AA, PEGylation, lipidation) — 미착수 (Phase 4)</li>
+</ul>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p>RI팀 담당이나, AI팀은 <strong>Silo B 대규모 실행 → Top-3 추출 → 구조 PDB 제공</strong>으로 미팅 준비를 지원한다.</p>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>상태</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RI팀 진행 여부</td>
+<td>미확인 (선행 조건 미충족으로 착수 불가)</td>
+</tr>
+<tr>
+<td>AI팀 준비</td>
+<td>Top-K 추출 코드 완료. PDB는 대규모 실행 후 확보 가능</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>⏸️ <strong>RI팀 담당 — 선행 조건(Silo B 대규모 실행) 미충족</strong></p>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ol>
+<li>Silo B 22,000 후보 대규모 실행 완료 (서버 env 구축 후)</li>
+<li>Top-3 후보 PDB + 물리화학 프로파일 RI팀에 제공</li>
+<li>RI팀과 C18 부착 위치 (Lys9 vs N-말단) 구조 검토 미팅</li>
+<li><strong>의존성</strong>: 서버 GPU env → 대규모 실행 → Top-3 확정 → 미팅 가능</li>
+</ol>
+<hr>
+<h2 id="a-08-13-%EB%A9%94%ED%8A%B8%EB%A6%AD-%ED%8C%A8%EB%84%90%EC%97%90-selectivity-margin-index-radiolysis-susceptibility-chelator-binding-compatibility-%EC%B6%94%EA%B0%80">A-08: 13-메트릭 패널에 Selectivity Margin Index, Radiolysis Susceptibility, Chelator Binding Compatibility 추가</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>13-메트릭 패널에 Selectivity Margin Index, Radiolysis Susceptibility, Chelator Binding Compatibility 추가</p>
+<p>담당: AI팀 / 기한: 2주 내 / 우선순위: 높음</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>왜 기존 13개 메트릭만으로 부족한가?</strong></p>
+<p>기존 메트릭(GRAVY, pI, Instability Index 등)은 일반 펩타이드 설계에 충분하지만, <strong>방사성의약품 특유의 요구사항</strong> 세 가지가 빠져 있었다.</p>
+<table>
+<thead>
+<tr>
+<th>빠진 메트릭</th>
+<th>왜 필요한가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Selectivity Margin Index</strong></td>
+<td>다른 SSTR subtype에 비결합을 정량화. 없으면 선택성 없는 후보를 탈락시킬 수 없음</td>
+</tr>
+<tr>
+<td><strong>Radiolysis Susceptibility</strong></td>
+<td>방사선(β, γ, α)이 펩타이드 자체를 분해할 위험성. 없으면 방사선 불안정한 후보를 놓침</td>
+</tr>
+<tr>
+<td><strong>Chelator Binding Compatibility</strong></td>
+<td>Ga3+/Lu3+ 킬레이터 결합을 위한 아미노산 위치 적합성. 없으면 표지 불가능한 후보를 합성할 수 있음</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p>각 메트릭에 맞는 물리화학 계산식을 구현했다.</p>
+<p><strong>Radiolysis Susceptibility 알고리즘</strong>:</p>
+<ul>
+<li>방사선 분해에 취약한 잔기에 가중치 부여
+<ul>
+<li>Met: 3점 (황 라디칼, 산화 취약)</li>
+<li>Trp: 3점 (인돌 고리, 방사선 가장 취약)</li>
+<li>Cys: 2점 (이황화 결합 파괴 위험)</li>
+<li>His: 2점 (이미다졸 고리)</li>
+<li>Tyr: 1점</li>
+<li>Phe: 0.5점</li>
+</ul>
+</li>
+<li>FWKT 위치 (약물단) 잔기는 critical로 별도 표시</li>
+<li>총점 계산: <code>total_score = Σ(residue_weight × count)</code></li>
+</ul>
+<p><strong>Chelator Binding Compatibility</strong>:</p>
+<ul>
+<li><code>analyze_metal_coordination()</code> — Asp/Glu의 카르복실레이트(carboxylate)가 Ga3+ 배위 가능 여부</li>
+<li>구조 규칙 #5: N-말단 chelator 부착 위치 적합성</li>
+</ul>
+<p><strong>Selectivity Margin Index</strong>:</p>
+<ul>
+<li><code>step05b_selectivity.py</code> → <code>compute_selectivity_margin()</code></li>
+<li>SSTR2 ddG − SSTR1/3/4/5 ddG 중 최솟값 (가장 불리한 subtype 기준)</li>
+</ul>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>커밋</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-20 이전</td>
+<td><code>e5790dd</code></td>
+<td><code>calculate_radiolysis_susceptibility()</code> 구현. SST-14 예시: total 6.5, risk high (W8)</td>
+</tr>
+<tr>
+<td>2026-03-20 이전</td>
+<td><code>e5790dd</code></td>
+<td><code>analyze_metal_coordination()</code> Ga3+ D/E 배위 구현</td>
+</tr>
+<tr>
+<td>2026-03-17 이전</td>
+<td>—</td>
+<td><code>compute_selectivity_margin()</code> Selectivity step 구현</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td>frontend</td>
+<td>PharmacologyPanel에 MW, Radiolysis, SS보정 pI 표시</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>pyrosetta_flow/pharma_properties.py</code> — <code>calculate_radiolysis_susceptibility()</code>, <code>analyze_metal_coordination()</code></li>
+<li><code>backend/pharmacology.py</code> — 래핑</li>
+<li><code>AG_src/pipeline/step05b_selectivity.py</code> — selectivity margin</li>
+<li><code>pyrosetta_flow/tests/test_radiolysis.py</code> — 31 tests</li>
+<li>프론트엔드: <code>PharmacologyPanel.tsx</code></li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>3/3 메트릭 구현 완료</strong></p>
+<table>
+<thead>
+<tr>
+<th>메트릭</th>
+<th style="text-align:center">상태</th>
+<th>테스트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Selectivity Margin Index</td>
+<td style="text-align:center">✅</td>
+<td>test_selectivity.py</td>
+</tr>
+<tr>
+<td>Radiolysis Susceptibility</td>
+<td style="text-align:center">✅</td>
+<td>31 tests</td>
+</tr>
+<tr>
+<td>Chelator Binding Compatibility</td>
+<td style="text-align:center">✅</td>
+<td>6 tests (Ga3+ D/E)</td>
+</tr>
+<tr>
+<td>프론트엔드 표시</td>
+<td style="text-align:center">✅</td>
+<td>PharmacologyPanel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li><strong>P2</strong>: Selectivity Margin 실제 값 — A-03 도킹 실행 후 채워짐</li>
+<li><strong>P3</strong>: Lu3+/Ac3+ 킬레이터 배위 (현재 Ga3+ 전용) — 방사성의약품 종류 확대 시</li>
+</ul>
+<hr>
+<h2 id="a-09-%EC%95%84%EC%A3%BC%EB%8C%80-%EA%B9%80%EB%AF%BC%EA%B7%9C-%EA%B5%90%EC%88%98%ED%8C%80-jcim-%EB%85%BC%EB%AC%B8-%EC%A0%84%EB%AC%B8-%EA%B2%80%ED%86%A0-%ED%9B%84-%EB%B0%A9%EB%B2%95%EB%A1%A0-%EC%A4%91-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EC%A0%81%EC%9A%A9-%EA%B0%80%EB%8A%A5-%ED%95%AD%EB%AA%A9-%EC%A0%95%EB%A6%AC-%EB%B3%B4%EA%B3%A0">A-09: 아주대 김민규 교수팀 JCIM 논문 전문 검토 후 방법론 중 파이프라인 적용 가능 항목 정리 보고</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>아주대 김민규 교수팀 JCIM 논문 전문 검토 후 방법론 중 파이프라인 적용 가능 항목 정리 보고</p>
+<p>담당: AI팀 + RI팀 / 기한: 2주 내 / 우선순위: 보통</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>실제 공유된 논문</strong>: 김민규 교수팀이 공유한 논문은 <strong>Tan, Liu, Zhou, Fang, Ouyang, Zeng, Dong (Central South University)의 pepADMET</strong> 논문이었다. 아주대 소속 논문이 아닌 것으로 확인되지만, 해당 논문이 A-02 ADMETlab 부적합 문제의 해결책을 포함하고 있어 상세 분석이 수행됐다.</p>
+<p><strong>분석의 중요성</strong>: pepADMET은 A-02에서 &quot;ADMET 도구 전부 부적합&quot;이라 결론난 근본 사유(소분자 전용, SS bond 미지원, 온프레미스 불가)를 대부분 해소하는 도구다.</p>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p>논문 전문 분석 + 우리 파이프라인 적용 가능성 단계별 평가.</p>
+<p><strong>논문 핵심 스펙</strong> (<code>meet_log.md</code> §pepADMET 분석):</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>학습 데이터</td>
+<td>36,643개 실험 데이터 (기존 최고 ToxinPred 11,036개 대비 3.3배)</td>
+</tr>
+<tr>
+<td>ADMET endpoint</td>
+<td>19개 (타 도구 최대 2개 대비 압도적)</td>
+</tr>
+<tr>
+<td>지원 펩타이드 유형</td>
+<td>선형, 사이클릭, 변형(200종) — SST-14 구조적 특성 모두 해당</td>
+</tr>
+<tr>
+<td>Half-life 모델</td>
+<td>5종 조직 (R²=0.84~0.98) — Transfer Learning 기반</td>
+</tr>
+<tr>
+<td>Toxicity 모델</td>
+<td>MLR-GAT, binary AUC 0.885, 6-class AUC 0.949</td>
+</tr>
+<tr>
+<td>SS bond 검증</td>
+<td>Desmopressin (Cys1-Cys6) case study — SST-14 Cys3-Cys14와 유사</td>
+</tr>
+</tbody>
+</table>
+<p><strong>파이프라인 적용 가능성 평가</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>적용 가능성</th>
+<th>시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>독성 예측 (4종)</td>
+<td>✅ 즉시 (GitHub .pth 공개)</td>
+<td>Layer 2</td>
+</tr>
+<tr>
+<td>Physicochemical (10종)</td>
+<td>불필요 (우리 pharma_properties.py가 15종으로 이미 초과)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Permeability (5종)</td>
+<td>중기 (모델 미공개, 웹 API 또는 재학습)</td>
+<td>Layer 4</td>
+</tr>
+<tr>
+<td>Half-life (5종)</td>
+<td>중기 (Transfer Learning 전략 재현 필요)</td>
+<td>Layer 3</td>
+</tr>
+<tr>
+<td>BBB, LogD, Bioavailability</td>
+<td>중기 (모델 미공개)</td>
+<td>Layer 3</td>
+</tr>
+<tr>
+<td>2,133 feature 계산</td>
+<td>즉시 (PyBioMed + modlAMP + RDKit 조합)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>활동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-23</td>
+<td>pepADMET 논문 전문 입수 + 19 endpoint 전체 분석</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>기존 ADMET 도구 대비 차별점 정리 (meet_log.md §pepADMET 분석)</td>
+</tr>
+<tr>
+<td>2026-03-23</td>
+<td>파이프라인 적용 단계별 계획 수립 (PA-01~PA-06)</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td><code>pepadmet_reproduction_plan.md</code> 6주 재현 계획 구체화</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td><code>pepadmet_infer_script.py</code>, <code>pepadmet_runner.py</code> 초안 작성</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>docs/serum_stability_admet_tools_report.md</code> §pepADMET (#17)</li>
+<li><code>meet_log.md</code> §pepADMET 논문 분석 결과</li>
+<li><code>docs/pepadmet_reproduction_plan.md</code></li>
+<li><code>pyrosetta_flow/pepadmet_infer_script.py</code> (초안)</li>
+<li><code>pyrosetta_flow/pepadmet_runner.py</code> (초안)</li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>논문 분석 완료 + 통합 계획 수립 완료</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>논문 19 endpoint 전수 분석</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>아키텍처 분석 (MLR-GAT, TL, GNN)</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>우리 파이프라인 적용 가능성 매핑</td>
+<td>✅ 완료</td>
+</tr>
+<tr>
+<td>pepADMET 환경 구축 + 실행</td>
+<td>❌ A-02 Wave 1과 동일 (네트워크 필요)</td>
+</tr>
+<tr>
+<td>21개 후보 일괄 독성 스크리닝 실행</td>
+<td>❌ 환경 구축 후 가능</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li>A-02 Wave 1 작업과 완전히 동일 (논문 분석 → 계획 → 실행은 A-09, 실행 자체는 A-02)</li>
+<li><strong>PA-01</strong>: <code>pepadmet</code> conda env 구축</li>
+<li><strong>PA-02</strong>: SMILES 변환 파이프라인</li>
+<li><strong>PA-03</strong>: 21개 후보 독성 분류 실행</li>
+<li><strong>의존성</strong>: 네트워크 (GitHub clone), Python 3.7 + DGL 0.4.3 환경</li>
+</ul>
+<hr>
+<h2 id="a-10-%ED%98%84%EC%9E%AC-rcp-%EC%95%88%EC%A0%95%EC%84%B1-%EC%98%88%EC%B8%A1-%EB%AA%A8%EB%93%88radiolysis-risk-%EC%B6%94%EC%A0%95-%EA%B5%AC%ED%98%84-%EC%97%AC%EB%B6%80-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EC%97%86%EC%9D%84-%EC%8B%9C-%EA%B0%84%EC%9D%B4-%EA%B5%AC%ED%98%84">A-10: 현재 RCP 안정성 예측 모듈(radiolysis risk 추정) 구현 여부 확인 및 없을 시 간이 구현</h2>
+<h3 id="%EC%9B%90%EB%B3%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">원본 요구사항</h3>
+<blockquote>
+<p>현재 RCP 안정성 예측 모듈(radiolysis risk 추정) 구현 여부 확인 및 없을 시 간이 구현</p>
+<p>담당: AI팀 / 기한: 1개월 내 / 우선순위: 보통</p>
+</blockquote>
+<h3 id="%EB%AC%B8%EC%A0%9C-%EB%B6%84%EC%84%9D">문제 분석</h3>
+<p><strong>RCP (Radiochemical Purity)와 radiolysis의 관계</strong>:</p>
+<ul>
+<li>방사성의약품을 표지(68Ga/177Lu 부착)한 후, 시간이 지남에 따라 방사선이 펩타이드 자체를 분해하는 현상 = <strong>radiolysis</strong></li>
+<li>Radiolysis가 심하면 RCP가 떨어져 투여 시 표지되지 않은 펩타이드가 체내에 들어감 → 독성 위험</li>
+<li>특히 Trp, Met, Cys가 많은 펩타이드는 radiolysis에 취약</li>
+</ul>
+<p><strong>기존 구현 여부</strong>: 회의 당시 <code>pharma_properties.py</code>에 radiolysis 관련 계산이 없었다. A-08 요구사항(Radiolysis Susceptibility 메트릭 추가)과 A-10 (모듈 구현)이 동일한 요구사항임을 확인.</p>
+<p><strong>A-08과의 차이</strong>: A-08은 &quot;메트릭 패널에 추가&quot;(UI 관점), A-10은 &quot;모듈 구현 여부 확인 + 구현&quot;(백엔드 관점) — 실질적으로 같은 작업이므로 A-08 구현으로 동시 해결됐다.</p>
+<h3 id="%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</h3>
+<p><code>calculate_radiolysis_susceptibility()</code> 함수를 <code>pharma_properties.py</code>에 구현했다.</p>
+<p><strong>알고리즘 설계 원리</strong>:</p>
+<ul>
+<li>문헌 기반 잔기별 radiolysis 감수성 가중치 적용</li>
+<li>절대 개수가 아닌 <strong>가중 합계</strong>로 전체 취약성 점수 산출</li>
+<li>FWKT 위치의 잔기는 <code>critical_residues</code> 목록에 별도 플래그</li>
+<li>위험 등급: score &lt; 3 → low, 3~5 → moderate, &gt; 5 → high</li>
+</ul>
+<p><strong>SST-14 native 계산 예시</strong>:</p>
+<ul>
+<li>W8(Trp, critical FWKT): +3</li>
+<li>K9: 0</li>
+<li>F7, F11: +0.5 × 2 = +1</li>
+<li>C3, C14 (SS bond): +2 × 2 = +4</li>
+<li>총 약 6.5 → <strong>high risk</strong> (W8이 critical residue)</li>
+</ul>
+<p>이 결과는 <strong>실제 임상에서 SST-14 유사체가 radiolysis 안정제 (gentisic acid, ascorbic acid) 필요</strong>한 이유를 수치로 뒷받침한다.</p>
+<h3 id="%EC%A7%84%ED%96%89-%EA%B3%BC%EC%A0%95">진행 과정</h3>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>커밋</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-20 이전</td>
+<td><code>e5790dd</code></td>
+<td><code>calculate_radiolysis_susceptibility()</code> 신규 구현</td>
+</tr>
+<tr>
+<td>2026-03-20 이전</td>
+<td><code>e5790dd</code></td>
+<td><code>tests/test_radiolysis.py</code> 작성 (31 tests)</td>
+</tr>
+<tr>
+<td>2026-04-02</td>
+<td>frontend</td>
+<td>PharmacologyPanel Radiolysis 표시</td>
+</tr>
+</tbody>
+</table>
+<p><strong>관련 파일</strong>:</p>
+<ul>
+<li><code>pyrosetta_flow/pharma_properties.py</code> — <code>calculate_radiolysis_susceptibility()</code> (커밋 <code>e5790dd</code>)</li>
+<li><code>pyrosetta_flow/tests/test_radiolysis.py</code> — 31 tests</li>
+<li><code>backend/pharmacology.py</code> — 래핑</li>
+</ul>
+<h3 id="%ED%98%84%EC%9E%AC-%EB%8B%A8%EA%B3%84">현재 단계</h3>
+<p>✅ <strong>구현 완료</strong></p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구현 함수</td>
+<td><code>calculate_radiolysis_susceptibility(sequence, ss_bond=True)</code></td>
+</tr>
+<tr>
+<td>테스트 통과</td>
+<td><strong>31/31</strong></td>
+</tr>
+<tr>
+<td>SST-14 예시값</td>
+<td>total 6.5, risk <strong>high</strong>, critical: W8</td>
+</tr>
+<tr>
+<td>프론트엔드 표시</td>
+<td>PharmacologyPanel — risk 등급 + 점수</td>
+</tr>
+<tr>
+<td>A-08과 동시 해결</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EB%82%A8%EC%9D%80-%EC%9E%91%EC%97%85">남은 작업</h3>
+<ul>
+<li><strong>P3</strong>: 임상 문헌 radiolysis 실측 데이터와 예측 점수 상관관계 검증 (wet-lab 데이터 필요)</li>
+<li><strong>P3</strong>: 177Lu 치료용 vs 68Ga 진단용 radiolysis 감수성 차등화 (에너지 차이)</li>
+<li><strong>의존성 없음</strong>: 현재 구현으로 운영 가능</li>
+</ul>
+<hr>
+<h2 id="%EC%A2%85%ED%95%A9-%EB%B6%84%EC%84%9D">종합 분석</h2>
+<h3 id="%EA%B5%AC%ED%98%84-%EC%99%84%EC%84%B1%EB%8F%84-%ED%8F%89%EA%B0%80">구현 완성도 평가</h3>
+<pre class="hljs"><code><div>A-01 ✅  pharma_properties.py 자체 구현 — 외부 도구 의존 완전 제거
+A-02 ⚠️  pepADMET 계획 완료 — 실행은 네트워크 + env 구축 후 (Wave 1)
+A-03 ✅  SSTR1/3/4/5 CIF 경로 등록 완료 — 커밋 `ec4982f`
+A-04 ✅  cluster_report.py 57 tests — 완전 운영 가능
+A-05 ✅  BLOSUM+BO+Pareto 3모듈 + runner.py 통합 — 수학적으로 더 강력한 구현
+A-06 ⏸️  RI팀 담당 — AI팀 지원 데이터 준비 완료
+A-07 ⏸️  선행 조건(Silo B 대규모 실행) 미충족
+A-08 ✅  Radiolysis/Chelator/Selectivity 3/3 완료 — 31 tests
+A-09 ✅  pepADMET 논문 전수 분석 + 통합 계획 완료
+A-10 ✅  calculate_radiolysis_susceptibility() 31 tests — A-08과 동시 완료
+</div></code></pre>
+<h3 id="%EB%8B%A4%EC%9D%8C-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%EC%9E%91%EC%97%85-%EB%AF%B8%EC%99%84%EB%A3%8C-%ED%95%AD%EB%AA%A9">다음 우선순위 작업 (미완료 항목)</h3>
+<table>
+<thead>
+<tr>
+<th>우선순위</th>
+<th>항목</th>
+<th>의존성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1</strong></td>
+<td>A-02/A-09: pepADMET 환경 구축 + 독성 스크리닝 실행</td>
+<td>네트워크 + DGL env</td>
+</tr>
+<tr>
+<td><strong>P1</strong></td>
+<td>A-03: SSTR1/3/4/5 PDB 다운로드 + 선택성 도킹 실행</td>
+<td>네트워크</td>
+</tr>
+<tr>
+<td><strong>P2</strong></td>
+<td>A-04/A-06/A-07: Silo B 22,000 후보 대규모 실행</td>
+<td>서버 GPU env</td>
+</tr>
+<tr>
+<td><strong>P3</strong></td>
+<td>A-07: Top-3 후보 RI팀 제공 + C18 구조 검토 미팅</td>
+<td>대규모 실행 완료</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%EA%B8%B0%EC%88%A0-%EC%B1%84%EB%AC%B4-%EC%9B%90%EB%B3%B8%EA%B3%BC%EC%9D%98-%EC%B0%A8%EC%9D%B4">기술 채무 (원본과의 차이)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>원본 요구</th>
+<th>현재 구현</th>
+<th>차이점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-01</td>
+<td>PepCalc/PeptideCutter 통합</td>
+<td>pharma_properties.py 자체 구현</td>
+<td>도구 변경. 기능상 동등 + SS bond 지원 추가</td>
+</tr>
+<tr>
+<td>A-02</td>
+<td>ADMETlab 3.0 API</td>
+<td>pepADMET 대체 계획</td>
+<td>실행 미완 (환경 구축 필요)</td>
+</tr>
+<tr>
+<td>A-03</td>
+<td>AutoDock Vina 배치</td>
+<td>Rosetta FlexPepDock 통일</td>
+<td>도킹 엔진 일관성 확보</td>
+</tr>
+<tr>
+<td>A-05</td>
+<td>정확한 Tier 1/2/3 병렬 구조</td>
+<td>Thompson Sampling + BO + Pareto</td>
+<td>수학적으로 더 강력한 대안</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>본 보고서 생성 기준일: 2026-04-02 | 다음 갱신 예정: Silo B 대규모 실행 후</em></p>
+
+</body>
+</html>

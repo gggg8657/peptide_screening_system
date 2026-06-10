@@ -1,0 +1,3 @@
+[submodule "tools/harness-adaptation/reference/harness"]
+	path = tools/harness-adaptation/reference/harness
+	url = https://github.com/revfactory/harness.git

@@ -1,0 +1,118 @@
+{
+  "created_at": "2026-02-24T12:02:17.894612+00:00",
+  "run_id": "sst14_mutdock_1000",
+  "config": {
+    "template_pdb": "data/fold_test1_model_0.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 1,
+    "seed_base": 1000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 2,
+    "max_iterations": 5,
+    "top_k": 1,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": -13.7073,
+    "total_score": -383.8718,
+    "pre_score": 48.9961,
+    "score_delta": -432.8679,
+    "clash_score": 5.0,
+    "constraint_violations": 0
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "초기 탐색: SSTR2 포켓에 대해 다양한 길이(10-30 aa)의 펩타이드 백본을 생성하고 표준 파라미터로 기준선(baseline)을 확립한다.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 1,
+        "best_ddg": -31.1226,
+        "mean_ddg": -31.1226,
+        "selected_ids": [
+          "iter01_cand001"
+        ],
+        "critic_hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AECKNFFWTTFTSC",
+          "ddg": -31.1226,
+          "total_score": -314.227,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only"
+        }
+      ]
+    }
+  ],
+  "final_candidates": [
+    {
+      "iteration": 1,
+      "candidate_id": "iter01_cand001",
+      "sequence": "AECKNFFWTTFTSC",
+      "ddg": -31.1226,
+      "total_score": -314.227,
+      "clash_score": 6.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_only"
+    }
+  ],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 5,
+    "best_final_ddg": -31.1226,
+    "run_status": "failed",
+    "failure_stage": "iteration_2_rosetta",
+    "error_summary": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nWARNING: Requested chain 2 length=369 mismatches target_len=14. Auto-switched to chain 1 length=14.\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKVFFWKTFHSC\n  Mutated pos 5: N -> V (VAL)\n  Mutated pos 12: T -> H (HIS)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 484.10\n/tmp/tmp_ml_3c3t: line 3: 31335 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKVFFWKTFHSC --peptide-chain 2\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKVFFWKTFHSC --peptide-chain 2` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKVFFWKTFHSC --peptide-chain 2"
+  }
+}

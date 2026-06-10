@@ -1,0 +1,101 @@
+{
+  "receptor": "SSTR2_7XNA",
+  "chain": "A",
+  "residues": [
+    205,
+    208,
+    209,
+    212,
+    272,
+    273,
+    276,
+    279
+  ],
+  "residue_details": [
+    {
+      "resnum": 205,
+      "resname": "TYR",
+      "chain": "A",
+      "x": -9.728,
+      "y": -27.221,
+      "z": 58.378
+    },
+    {
+      "resnum": 208,
+      "resname": "PHE",
+      "chain": "A",
+      "x": -11.795,
+      "y": -26.757,
+      "z": 53.798
+    },
+    {
+      "resnum": 209,
+      "resname": "ILE",
+      "chain": "A",
+      "x": -8.655,
+      "y": -28.278,
+      "z": 52.298
+    },
+    {
+      "resnum": 212,
+      "resname": "THR",
+      "chain": "A",
+      "x": -10.024,
+      "y": -26.616,
+      "z": 47.839
+    },
+    {
+      "resnum": 272,
+      "resname": "PHE",
+      "chain": "A",
+      "x": 1.2,
+      "y": -27.79,
+      "z": 48.003
+    },
+    {
+      "resnum": 273,
+      "resname": "TYR",
+      "chain": "A",
+      "x": -1.952,
+      "y": -29.877,
+      "z": 47.656
+    },
+    {
+      "resnum": 276,
+      "resname": "ASN",
+      "chain": "A",
+      "x": -2.117,
+      "y": -29.973,
+      "z": 52.614
+    },
+    {
+      "resnum": 279,
+      "resname": "SER",
+      "chain": "A",
+      "x": -1.685,
+      "y": -32.498,
+      "z": 57.097
+    }
+  ],
+  "binding_pocket_center_residues": [
+    208,
+    209,
+    272,
+    273,
+    276
+  ],
+  "center_x": -4.9562,
+  "center_y": -27.489,
+  "center_z": 50.2767,
+  "radius": 8.5123,
+  "box_size": 30.0,
+  "gnina_config": {
+    "center_x": -4.9562,
+    "center_y": -27.489,
+    "center_z": 50.2767,
+    "size_x": 30.0,
+    "size_y": 30.0,
+    "size_z": 30.0
+  },
+  "notes": "TM5/TM6 참고 잔기: 205(TYR), 208(PHE), 209(ILE), 212(THR), 272(PHE), 273(TYR), 276(ASN), 279(SER). A-01 결합 포켓 중심은 TM5(208/209) + TM6(272/273/276)의 heavy atom centroid 기준. GNINA box는 최소 30 Å."
+}

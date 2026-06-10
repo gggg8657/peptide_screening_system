@@ -1,0 +1,306 @@
+{
+  "run_id": "20260219_0739_iter01_8bc7",
+  "started_at": "2026-02-19T16:39:04.745832",
+  "updated_at": "2026-02-19T16:39:23.828637",
+  "iteration": 3,
+  "total_iterations": 3,
+  "llm_model": "Qwen 2.5 7B (NoneProvider — rule-based)",
+  "target": "SSTR2 (Somatostatin Receptor Type 2)",
+  "reference": "DOTATATE (AGCKNFFWKTFTSC, 14-aa)",
+  "steps": [
+    {
+      "id": "step01",
+      "label": "OpenFold3",
+      "shortLabel": "Step01",
+      "status": "completed",
+      "duration": "1s"
+    },
+    {
+      "id": "step02",
+      "label": "RFdiffusion",
+      "shortLabel": "Step02",
+      "status": "completed",
+      "duration": "1s"
+    },
+    {
+      "id": "step03",
+      "label": "ProteinMPNN",
+      "shortLabel": "Step03",
+      "status": "completed",
+      "duration": "1s"
+    },
+    {
+      "id": "step04",
+      "label": "ESMFold",
+      "shortLabel": "Step04",
+      "status": "completed",
+      "duration": "2s"
+    },
+    {
+      "id": "step05",
+      "label": "DiffDock",
+      "shortLabel": "Step05",
+      "status": "completed",
+      "duration": "1s"
+    },
+    {
+      "id": "step05b",
+      "label": "Selectivity",
+      "shortLabel": "Step05b",
+      "status": "completed",
+      "duration": "1s"
+    },
+    {
+      "id": "step06",
+      "label": "PyRosetta",
+      "shortLabel": "Step06",
+      "status": "completed",
+      "duration": "1s"
+    },
+    {
+      "id": "step07",
+      "label": "Analysis",
+      "shortLabel": "Step07",
+      "status": "completed",
+      "duration": "0s"
+    }
+  ],
+  "agents": [
+    {
+      "id": "planner",
+      "name": "Planner",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Iter 3 plan: 20260219_0739_iter03_f942",
+      "taskCount": 3
+    },
+    {
+      "id": "qc-ranker",
+      "name": "QC & Ranker",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "Iter 3: 0% pass rate",
+      "taskCount": 6
+    },
+    {
+      "id": "diversity-mgr",
+      "name": "DiversityMgr",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "Iter 3: 1 clusters",
+      "taskCount": 9
+    },
+    {
+      "id": "critic",
+      "name": "Critic",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Iter 3: 0 changes proposed",
+      "taskCount": 12
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Iter 3 report generated",
+      "taskCount": 15
+    }
+  ],
+  "candidates": [
+    {
+      "rank": 2,
+      "id": "bb00_seq02",
+      "sequence": "AGCKNFFWKTFIS",
+      "pLDDT": 70.7,
+      "dockScore": -8.64,
+      "ddG": -8.2,
+      "lDDT": 0.555,
+      "selectivity": -1.79,
+      "finalScore": 0.687,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 1,
+      "id": "bb00_seq06",
+      "sequence": "AGCKFFFWKTFTS",
+      "pLDDT": 71.6,
+      "dockScore": -8.26,
+      "ddG": -6.4,
+      "lDDT": 0.839,
+      "selectivity": -2.08,
+      "finalScore": 0.644,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 4,
+      "id": "bb00_seq00",
+      "sequence": "AGCKNFFWKNFTS",
+      "pLDDT": 66.8,
+      "dockScore": -8.2,
+      "ddG": -8.2,
+      "lDDT": 0.626,
+      "selectivity": -0.53,
+      "finalScore": 0.626,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 3,
+      "id": "bb00_seq05",
+      "sequence": "AGCKNFFWKTFTA",
+      "pLDDT": 69.5,
+      "dockScore": -8.77,
+      "ddG": -5.2,
+      "lDDT": 0.556,
+      "selectivity": -1.71,
+      "finalScore": 0.609,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 5,
+      "id": "bb00_seq01",
+      "sequence": "AGCKNFSWKTFTS",
+      "pLDDT": 66.2,
+      "dockScore": -7.4,
+      "ddG": -6.9,
+      "lDDT": 0.554,
+      "selectivity": -1.64,
+      "finalScore": 0.605,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 6,
+      "id": "DOTATATE_ref",
+      "sequence": "AGCKNFFWKTFTSC",
+      "pLDDT": 63.0,
+      "dockScore": -7.13,
+      "ddG": 0,
+      "lDDT": 0.606,
+      "selectivity": 0,
+      "finalScore": 0.367,
+      "result": "FAIL",
+      "failReason": "ddG 0 > -5"
+    },
+    {
+      "rank": 7,
+      "id": "bb00_seq03",
+      "sequence": "AGCKNFHWKTFTS",
+      "pLDDT": 61.2,
+      "dockScore": -6.34,
+      "ddG": 0,
+      "lDDT": 0.83,
+      "selectivity": 0,
+      "finalScore": 0.342,
+      "result": "FAIL",
+      "failReason": "ddG 0 > -5"
+    },
+    {
+      "rank": 8,
+      "id": "bb00_seq04",
+      "sequence": "AGCKNFFAKTFTS",
+      "pLDDT": 56.1,
+      "dockScore": 0,
+      "ddG": 0,
+      "lDDT": 0.506,
+      "selectivity": 0,
+      "finalScore": 0.168,
+      "result": "FAIL",
+      "failReason": "pLDDT 56.1 < 60; Dock 0 > -5; ddG 0 > -5"
+    }
+  ],
+  "qc_gates": [
+    {
+      "name": "Gate 1",
+      "criterion": "pLDDT >= 60",
+      "passed": 7,
+      "failed": 1,
+      "total": 8
+    },
+    {
+      "name": "Gate 2",
+      "criterion": "Top 50% Docking",
+      "passed": 7,
+      "failed": 0,
+      "total": 7
+    },
+    {
+      "name": "Gate 3",
+      "criterion": "ddG <= -5.0",
+      "passed": 4,
+      "failed": 1,
+      "total": 5
+    },
+    {
+      "name": "Gate 4",
+      "criterion": "Selectivity >= -2.0",
+      "passed": 0,
+      "failed": 5,
+      "total": 5
+    }
+  ],
+  "convergence": [
+    {
+      "iteration": 1,
+      "bestDdG": -6.8,
+      "topCandidates": 8,
+      "converged": false
+    },
+    {
+      "iteration": 2,
+      "bestDdG": -10.3,
+      "topCandidates": 7,
+      "converged": false
+    },
+    {
+      "iteration": 3,
+      "bestDdG": -8.2,
+      "topCandidates": 7,
+      "converged": false
+    }
+  ],
+  "live_apis": {
+    "esmfold": "simulated",
+    "molmim": "simulated"
+  },
+  "best_candidate": {
+    "id": "DOTATATE_ref",
+    "sequence": "AGCKNFFWKTFTSC",
+    "plddt": 80.6,
+    "dockScore": -8.77,
+    "iteration": 2
+  },
+  "molecules": [
+    {
+      "id": "mol_0",
+      "smiles": "CC(=O)NC(CS)C(=O)NC(CCCCN)C(=OC(=O)NCC(=O)NC",
+      "qed": 0.579
+    },
+    {
+      "id": "mol_1",
+      "smiles": "CC(=O)NC(CS)C(=O)NC(CCCCN)C(=OC(=O)NNC(=O)NN",
+      "qed": 0.632
+    },
+    {
+      "id": "mol_2",
+      "smiles": "CC(=O)NC(CS)C(=O)NC(CCCCN)C(=OC(=O)NNC(=O)NNC(=O)NN",
+      "qed": 0.668
+    },
+    {
+      "id": "mol_3",
+      "smiles": "CC(=O)NC(CS)C(=O)NC(CCCCN)C(=OC(=O)NNC(=O)NN",
+      "qed": 0.676
+    },
+    {
+      "id": "mol_4",
+      "smiles": "CC(=O)NC(CS)C(=O)NC(CCCCN)C(=OC(=O)NOC(=O)NOC(=O)NO",
+      "qed": 0.602
+    }
+  ],
+  "completed": true,
+  "completed_at": "2026-02-19T16:39:23.828634"
+}

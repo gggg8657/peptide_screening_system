@@ -1,0 +1,15 @@
+{
+  "sequence": "AGCKYDFWKTMTSC",
+  "mutations": [
+    "N5Y",
+    "F6D",
+    "F11M"
+  ],
+  "ddg": -13.953,
+  "bound_score": -93.35,
+  "unbound_score": -79.398,
+  "interface_hbonds": 5,
+  "n_salt_bridges": 2,
+  "elapsed_sec": 4.5,
+  "complete": true
+}

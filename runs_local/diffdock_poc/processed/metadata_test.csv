@@ -1,0 +1,2 @@
+pdb_name,num_chains,seq_len,modeled_seq_len,peptide_id,peptide_seq,processed_path
+SSTR2receptor,2,38,38,SST14,AGCKNFFWKTFTSC,/home/dongjukim/Documents/workspace/repos/SST14-M_scr/runs_local/diffdock_poc/processed/SSTR2receptor_SST14.pkl

@@ -1,0 +1,60 @@
+%%{ init: { 'theme': 'base', 'themeVariables': { 'fontSize': '13px' } } }%%
+flowchart LR
+    CONFIG["Config\n(YAML)"] --> BASELINE
+
+    subgraph INIT["Initialization"]
+        BASELINE["Baseline Refinement\n(Best-of-N FlexPepDock)"]
+    end
+
+    BASELINE --> LOOP
+
+    subgraph LOOP["Iteration Loop"]
+        direction TB
+        PLAN["Planner\n(Hypothesis Generation)"]
+        MUTATE["Mutate\n(Guided / Random)"]
+        DOCK["FlexPepDock\n(Parallel Workers)"]
+        QC{"QC Gate\nddG <= -5?"}
+        RANK["Ranking\n(ddG + Pharmacology)"]
+        CONV{"Convergence?\nMann-Whitney U"}
+        CRITIC["Critic\n(Parameter Adjustment)"]
+        REPORT["Reporter\n(Markdown + PyMOL)"]
+
+        PLAN --> MUTATE --> DOCK --> QC
+        QC -->|"PASS"| RANK
+        QC -->|"FAIL: discard"| MUTATE
+        RANK --> CONV
+        CONV -->|"Not converged"| CRITIC
+        CRITIC -->|"adjustments"| PLAN
+        CONV -->|"Converged"| REPORT
+    end
+
+    BANDIT(["Thompson Sampling\nBandit"])
+    BANDIT -.->|"position weights\n& strategy selection"| MUTATE
+
+    REPORT --> ARCHIVE[("Archive\n(Top-K Candidates)")]
+
+    EMIT["StatusEmitter"]
+    DOCK -.->|"progress"| EMIT
+    RANK -.->|"scores"| EMIT
+    REPORT -.->|"final results"| EMIT
+    EMIT --> DASH["React Dashboard"]
+
+    %% Styles
+    style CONFIG fill:#f5f5f5,stroke:#616161,color:#212121
+    style INIT fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style BASELINE fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+    style LOOP fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+
+    style PLAN fill:#fff3e0,stroke:#e65100,color:#bf360c
+    style MUTATE fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+    style DOCK fill:#c8e6c9,stroke:#2e7d32,color:#1b5e20
+    style QC fill:#ffecb3,stroke:#f57f17,color:#e65100
+    style RANK fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style CONV fill:#ffecb3,stroke:#f57f17,color:#e65100
+    style CRITIC fill:#fff3e0,stroke:#e65100,color:#bf360c
+    style REPORT fill:#fff3e0,stroke:#e65100,color:#bf360c
+
+    style BANDIT fill:#f3e5f5,stroke:#7b1fa2,color:#4a148c
+    style ARCHIVE fill:#e0e0e0,stroke:#616161,color:#212121
+    style EMIT fill:#eeeeee,stroke:#9e9e9e,color:#424242
+    style DASH fill:#e3f2fd,stroke:#1565c0,color:#0d47a1

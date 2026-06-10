@@ -1,0 +1,102 @@
+{
+  "run_id": "sst14_analogs_sim",
+  "started_at": "2026-02-27T10:00:00+00:00",
+  "updated_at": "2026-02-27T12:00:00+00:00",
+  "iteration": 1,
+  "total_iterations": 1,
+  "llm_model": "PyRosetta FlexPepDock (direct)",
+  "target": "SSTR2",
+  "reference": "SST-14 native (AGCKNFFWKTFTSC)",
+  "steps": [],
+  "agents": [],
+  "rosetta_substeps": [],
+  "timeline": [],
+  "historical_candidates": [],
+  "qc_gates": [],
+  "convergence": [],
+  "live_apis": {},
+  "molecules": [],
+  "visualization_images": [],
+  "baseline": {
+    "sequence": "AGCKNFFWKTFTSC"
+  },
+  "candidates": [
+    {
+      "rank": 1,
+      "id": "analog2_AGCKFDFWKTITSC",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddG": -14.855,
+      "totalScore": 0.0,
+      "clashScore": 535.6,
+      "finalScore": 14.855,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 2,
+      "id": "analog1_AGCKYEFWKTVTSC",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -13.682,
+      "totalScore": 0.0,
+      "clashScore": 544.3,
+      "finalScore": 13.682,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_analogs_sim/analog1_AGCKYEFWKTVTSC.pdb"
+    },
+    {
+      "rank": 3,
+      "id": "native_AGCKNFFWKTFTSC",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": -6.173,
+      "totalScore": 0.0,
+      "clashScore": 565.3,
+      "finalScore": 6.173,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_analogs_sim/native_AGCKNFFWKTFTSC.pdb"
+    },
+    {
+      "rank": 4,
+      "id": "analog4_AGCKHFFWHTFTSC",
+      "sequence": "AGCKHFFWHTFTSC",
+      "ddG": -4.955,
+      "totalScore": 0.0,
+      "clashScore": 564.0,
+      "finalScore": 4.955,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_analogs_sim/analog4_AGCKHFFWHTFTSC.pdb"
+    },
+    {
+      "rank": 5,
+      "id": "analog5_YGCKNFFWKTFTST",
+      "sequence": "YGCKNFFWKTFTST",
+      "ddG": -2.589,
+      "totalScore": 0.0,
+      "clashScore": 665.0,
+      "finalScore": 2.589,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_analogs_sim/analog5_YGCKNFFWKTFTST.pdb"
+    },
+    {
+      "rank": 6,
+      "id": "analog3_AGCFIFFWKTFTSC",
+      "sequence": "AGCFIFFWKTFTSC",
+      "ddG": 17.04,
+      "totalScore": 0.0,
+      "clashScore": 606.5,
+      "finalScore": -17.04,
+      "result": "FAIL",
+      "failReason": ""
+    }
+  ],
+  "best_candidate": {
+    "id": "analog2_AGCKFDFWKTITSC",
+    "sequence": "AGCKFDFWKTITSC",
+    "ddG": -14.855,
+    "totalScore": 0.0
+  },
+  "completed": true
+}

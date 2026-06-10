@@ -1,0 +1,246 @@
+# =============================================================================
+# pipeline_config_local.yaml
+# SSTR2 Peptide Binder Design Pipeline — LOCAL MODE Configuration
+# =============================================================================
+# 원본: AG_src/config/pipeline_config.yaml
+# 변경:
+#   - NIM API 참조 제거
+#   - mode: local
+#   - LLM: Ollama (로컬), 기본 모델 qwen3:8b
+#   - OLLAMA_HOST: 127.0.0.1:11435 (포트 11434가 기본이지만 충돌 방지)
+#   - 게이트 임계값, 출력 경로, 에이전트 설정 유지
+# =============================================================================
+
+# --- 실행 모드 ---
+mode: local
+# NIM API 키 불필요
+
+# --- 실행 식별자 포맷 ---
+run_id_format: "local_YYYYMMDD_HHMM_iterXX"
+run_id_example: "local_20260326_1430_iter01"
+
+# --- 반복 파라미터 ---
+iteration:
+  n_backbone: 10
+  k_seq_per_backbone: 8
+  top_m_rosetta: 10
+  max_iterations: 5            # 로컬 리소스 고려: 기본 5회 (원본 10회)
+  adaptive_enabled: true
+  convergence_min_candidates: 3
+  convergence_ddg_threshold: -30.0
+  no_improvement_patience: 2
+  min_iterations: 2
+  mutation_rate_increase: 0.5
+  diversity_top_n: 20
+
+# --- 수렴 판단 파라미터 ---
+convergence_ddg_delta: 0.5
+convergence_patience: 2
+
+# --- 수용체 설정 (SSTR2) ---
+receptor:
+  name: "SSTR2"
+  full_name: "Somatostatin Receptor Type 2"
+  chain: "B"
+  # CIF→PDB 변환이 chain ID를 깨뜨리므로, 원본 복합체 PDB 사용.
+  # existing_structure는 CIF 전용 분석/시각화에만 활용.
+  # existing_structure: "data/somatostatin_receptor/SSTR2_7XNA.cif"
+  existing_pdb: "/home/dongjukim/Documents/workspace/repos/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/data/fold_test1_model_0.pdb"
+  pocket_residues:
+    - 119   # TM2 helix
+    - 120
+    - 122   # hotspot
+    - 123
+    - 124
+    - 127   # hotspot
+    - 180
+    - 181
+    - 184   # hotspot
+    - 185
+    - 193
+    - 197   # hotspot
+    - 200
+    - 201
+    - 205   # hotspot
+    - 268
+    - 269
+    - 272   # hotspot
+    - 290
+    - 294   # hotspot
+    - 295
+    - 298
+
+# --- 참조 펩타이드 (DOTATATE) ---
+reference_peptide:
+  name: "DOTATATE"
+  full_name: "DOTA-[Tyr3]-octreotate"
+  # SST-14 (somatostatin-14) reference sequence
+  sequence: "AGCKNFFWKTFTSC"
+  length: 14
+  cys_positions: [3, 14]
+  frozen_residues: ["C3", "C14", "F7", "W8", "K9", "T10"]
+  notes: >
+    Cyclic somatostatin analogue targeting SSTR2.
+    Cys3-Cys14 disulfide essential for bioactivity.
+    Positions 7-10 (FWKT) are binding hotspot core.
+
+# --- 서열 제약 ---
+sequence_constraints:
+  enabled: true
+  fixed_positions:
+    3: "C"    # Cys3 - 이황화 결합
+    14: "C"   # Cys14 - 이황화 결합
+    7: "F"    # Phe7 - 결합 핫스팟
+    8: "W"    # Trp8 - 결합 핫스팟
+    9: "K"    # Lys9 - 결합 핫스팟
+    10: "T"   # Thr10 - 결합 핫스팟
+  disulfide_pairs:
+    - [3, 14]
+
+# --- RFdiffusion 컨티그 ---
+contigs: "B1-369/0 10-30"
+
+# --- 핫스팟 잔기 ---
+hotspot_res:
+  - "B122"
+  - "B127"
+  - "B184"
+  - "B197"
+  - "B205"
+  - "B272"
+  - "B294"
+
+# --- Off-Target 수용체 (선택성 스크리닝) ---
+# structure_path: CIF 파일 경로 (data/somatostatin_receptor/ 디렉토리)
+# pdb_path 대신 structure_path 키 사용 — CIF/PDB 모두 허용
+off_target_receptors:
+  - name: "SSTR1"
+    full_name: "Somatostatin Receptor Type 1"
+    structure_path: "data/somatostatin_receptor/SSTR1_9IK8.cif"
+    pdb_source: "experimental"
+    uniprot_id: "P30872"
+    chain: "A"
+  - name: "SSTR3"
+    full_name: "Somatostatin Receptor Type 3"
+    structure_path: "data/somatostatin_receptor/SSTR3_8XIR.cif"
+    pdb_source: "experimental"
+    uniprot_id: "P32745"
+    chain: "A"
+  - name: "SSTR4"
+    full_name: "Somatostatin Receptor Type 4"
+    structure_path: "data/somatostatin_receptor/SSTR4_7XMT.cif"
+    pdb_source: "experimental"
+    uniprot_id: "P31391"
+    chain: "A"
+  - name: "SSTR5"
+    full_name: "Somatostatin Receptor Type 5"
+    structure_path: "data/somatostatin_receptor/SSTR5_8ZBJ.cif"
+    pdb_source: "experimental"
+    uniprot_id: "P35346"
+    chain: "A"
+
+# --- 선택성 스크리닝 파라미터 ---
+selectivity:
+  enabled: true
+  engine: "pyrosetta"          # 로컬 PyRosetta 사용
+  top_k_for_selectivity: 20
+  parallel_offtargets: false   # 로컬 GPU 메모리 고려: 순차 실행
+  offtarget_timeout_sec: 300
+
+# --- 출력 디렉토리 ---
+output_base_dir: "runs_local/"
+
+# --- 듀얼 사일로 모드 (Silo A + Silo B 동시 실행) ---
+# dual_silo.enabled=true 시 Approach A + B 모두 실행, 후보 병합
+dual_silo:
+  enabled: false             # 기본값: false (--dual CLI 플래그로 활성화)
+  silo_a:
+    gpu_device: 0            # CUDA_VISIBLE_DEVICES=2,3 → cuda:0 = 물리 GPU 2
+    n_backbone: 10           # iteration.n_backbone 덮어쓰기 (선택)
+    k_seq_per_backbone: 8    # iteration.k_seq_per_backbone 덮어쓰기 (선택)
+  silo_b:
+    gpu_device: 1            # cuda:1 = 물리 GPU 3
+    n_mutations: 128         # approach_b.max_variants 덮어쓰기 (선택)
+
+# --- Approach B: BLOSUM62 텍스트 수준 돌연변이 ---
+approach_b:
+  enabled: true               # 로컬 모드 기본값: Approach B (RFdiffusion 불필요)
+  seed_sequence: "AGCKNFFWKTFTSC"
+  fixed_positions:
+    3: "C"
+    7: "F"
+    8: "W"
+    9: "K"
+    10: "T"
+    14: "C"
+  mutable_positions: [1, 2, 4, 5, 6, 11, 12, 13]
+  min_blosum_score: 0
+  max_mutations_per_variant: 3
+  max_variants: 32
+  strategy: "dual_b1_b2"  # BLOSUM은 평가만 — 약품 합성 펩타이드 탐색용 (2026-05-19)
+  hydrophobicity_max_delta: 2.0
+  stability_prescreen: true
+  stability_prescreen_min_hours: 0.6
+
+# --- Rosetta 설정 ---
+rosetta:
+  enabled: true
+  conda_env: "bio-tools"       # PyRosetta가 설치된 conda 환경
+  protocol: "flexpep_refine"
+  timeout_per_candidate_sec: 1800
+  total_timeout_sec: 7200
+  fallback_to_simulation: true
+  top_m_rosetta: 5
+  fast_relax_before_dock: false
+  fast_design_enabled: false
+  fast_design_n_candidates: 20
+  fast_design_seed_base: 1000
+
+# --- LLM 설정 (로컬 Ollama) ---
+# NIM API 불필요 — Ollama로 로컬 실행
+llm:
+  provider: "vllm"
+  model: "Qwen/Qwen3.5-27B"  # vLLM GPU 3 (port 8002), 88GB
+  base_url: "http://localhost:8002"
+  api_key: null
+  timeout: 120
+  temperature: 0.3
+  max_tokens: 4096
+  # LLM 사용 에이전트: planner, critic, reporter
+  # 코드 기반 에이전트: qc_ranker, diversity_manager, builder (LLM 불필요)
+
+# --- 로컬 모델 경로 설정 ---
+# ESMFold, ProteinMPNN, RFdiffusion weights 위치 (필요 시 지정)
+local_models:
+  esmfold:
+    enabled: true
+    # weights_path: "/path/to/esmfold_weights"  # 필요 시 설정
+  proteinmpnn:
+    enabled: true
+    # weights_path: "/path/to/proteinmpnn_weights"
+  rfdiffusion:
+    enabled: false             # Approach B 사용 시 불필요
+    # weights_path: "/path/to/rfdiffusion_weights"
+
+# --- 폴더 구조 ---
+folder_structure:
+  "00_config":
+    description: "Pipeline config and threshold files"
+  "01_receptor":
+    description: "Receptor PDB and pocket residue JSON"
+  "02_backbone":
+    description: "RFdiffusion backbone PDB files"
+  "03_sequence":
+    description: "ProteinMPNN designed FASTA files"
+  "04_qc":
+    description: "ESMFold structure prediction and QC report"
+  "05_docking":
+    description: "DiffDock/Boltz2 docking results"
+  "05b_selectivity":
+    description: "Off-target docking and selectivity screening"
+  "06_rosetta":
+    description: "PyRosetta FlexPepDock refinement and ddG scores"
+  "07_viz":
+    description: "FoldMason comparison, PyMOL renders, rank table"
+  "08_reports":
+    description: "Lab notebook, decision log, next iteration plan"

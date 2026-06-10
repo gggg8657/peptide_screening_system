@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>SST-14 Selectivity Demo — 2026-05-11</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", sans-serif; background:#0d1117; color:#c9d1d9; margin:0; padding:24px; }
+  h1 { color:#58a6ff; border-bottom:2px solid #30363d; padding-bottom:8px; }
+  h2 { color:#79c0ff; margin-top:32px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin:16px 0; }
+  .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:16px; }
+  .card.ok    { border-left:4px solid #3fb950; }
+  .card.fail  { border-left:4px solid #f85149; }
+  .card.best  { border-left:4px solid #d29922; }
+  .card h3 { margin:0 0 8px; font-size:16px; display:flex; justify-content:space-between; }
+  .badge { font-size:11px; padding:2px 8px; border-radius:10px; }
+  .badge.ok   { background:#0d3320; color:#3fb950; }
+  .badge.fail { background:#3d1015; color:#f85149; }
+  .ddg { font-size:28px; font-weight:bold; margin:8px 0; }
+  .ddg.neg { color:#3fb950; }
+  .ddg.zero { color:#f85149; }
+  .meta { color:#8b949e; font-size:13px; line-height:1.5; }
+  .scores { font-family:monospace; font-size:11px; color:#6e7681; word-break:break-all; }
+  .summary { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:24px; margin:24px 0; }
+  .kpi { display:inline-block; margin-right:32px; }
+  .kpi-label { color:#8b949e; font-size:12px; text-transform:uppercase; }
+  .kpi-value { color:#58a6ff; font-size:24px; font-weight:bold; }
+  table { width:100%; border-collapse:collapse; margin-top:16px; }
+  th, td { padding:8px 12px; border-bottom:1px solid #30363d; text-align:left; }
+  th { color:#79c0ff; font-size:12px; text-transform:uppercase; }
+  .root-cause { background:#3d1015; border-left:4px solid #f85149; padding:12px 16px; border-radius:4px; margin-top:16px; }
+  ul { line-height:1.8; }
+</style>
+</head>
+<body>
+<h1>SST-14 Selectivity Demo — 2026-05-11</h1>
+<div class="meta">Sequence: <strong>AGCKNFFWKTFTSC</strong> (wild-type) · Patch: offset 30Å→8Å · nstruct=5 · bio-tools 환경</div>
+
+<div class="summary">
+  <div class="kpi"><div class="kpi-label">시뮬레이션</div><div class="kpi-value">5 / 5</div></div>
+  <div class="kpi"><div class="kpi-label">정상 도킹</div><div class="kpi-value" style="color:#3fb950">2</div></div>
+  <div class="kpi"><div class="kpi-label">실패 (clash)</div><div class="kpi-value" style="color:#f85149">3</div></div>
+  <div class="kpi"><div class="kpi-label">최저 ddG</div><div class="kpi-value">-130.05</div></div>
+</div>
+
+<h2>수용체별 도킹 결과</h2>
+<div class="grid">
+  <div class="card fail">
+    <h3>SSTR2 <span class="badge fail">기준 FAIL</span></h3>
+    <div class="ddg zero">0.00</div>
+    <div class="meta">on-target (SSTR2) — 기준이어야 하나 0.0</div>
+    <div class="scores">scores: [3676, 16482, 8916, 12248, 12383]</div>
+    <div class="meta" style="margin-top:6px">→ ligand center 배치 시 기존 리간드와 clash 폭주</div>
+  </div>
+
+  <div class="card ok">
+    <h3>SSTR1 <span class="badge ok">OK</span></h3>
+    <div class="ddg neg">-33.99</div>
+    <div class="meta">off-target — 정상 도킹</div>
+    <div class="scores">scores: [-33.84, -33.99, -33.84, -33.87, -33.99]</div>
+  </div>
+
+  <div class="card best">
+    <h3>SSTR3 <span class="badge ok">OK (BEST)</span></h3>
+    <div class="ddg neg">-130.05</div>
+    <div class="meta">off-target — sanitized PDB로 surface center fallback</div>
+    <div class="scores">scores: [-129.77, -130.05, -129.95, -130.05, -130.05]</div>
+    <div class="meta" style="margin-top:6px">★ HETATM 제거가 의도치 않게 최고 결과 산출 → ligand center 배치 정책 자체가 문제 시사</div>
+  </div>
+
+  <div class="card fail">
+    <h3>SSTR4 <span class="badge fail">FAIL</span></h3>
+    <div class="ddg zero">0.00</div>
+    <div class="meta">clash 폭주 (raw 13K~27K)</div>
+    <div class="scores">scores: [27071, 16036, 21292, 17697, 13482]</div>
+  </div>
+
+  <div class="card fail">
+    <h3>SSTR5 <span class="badge fail">FAIL</span></h3>
+    <div class="ddg zero">0.00</div>
+    <div class="meta">근접 clash (raw 221~306)</div>
+    <div class="scores">scores: [221.75, 306.81, 292.32, 222.21, 221.93]</div>
+  </div>
+</div>
+
+<h2>Selectivity 분석</h2>
+<table>
+  <tr><th>항목</th><th>값</th><th>해석</th></tr>
+  <tr><td>SSTR2 score (기준)</td><td>0.0</td><td>❌ clash로 측정 실패</td></tr>
+  <tr><td>off-target 최저</td><td>-130.05 (SSTR3)</td><td>SSTR3에 가장 강한 친화 → selectivity 역행</td></tr>
+  <tr><td>마진 (SSTR2 - off_min)</td><td>+130.05</td><td>비교 불능 (기준 무효)</td></tr>
+</table>
+
+<div class="root-cause">
+  <strong>핵심 진단</strong>: 5개 결정 구조 모두 <strong>리간드 결합 상태(holo)</strong>의 PDB.
+  <code>_load_receptor_and_ligand_center</code>가 NCAA 체인을 제거한 후 그 위치에 펩타이드를 배치 →
+  남은 receptor 구조의 binding pocket과 펩타이드가 clash. SSTR3만 sanitize로 ligand 정보가 사라져
+  surface center fallback이 작동하여 우연히 정상 도킹.
+</div>
+
+<h2>제안 — production 모드 개선안</h2>
+<ul>
+  <li><strong>Option A</strong>: <code>_load_receptor_and_ligand_center</code>가 항상 <code>ligand_center=None</code> 반환 → surface center 강제 사용 (SSTR3 패턴 일반화)</li>
+  <li><strong>Option B</strong>: ligand center 반대편 (orthogonal axis) 배치 + 20Å offset</li>
+  <li><strong>Option C</strong>: ligand 제거된 apo 구조로 별도 준비 (수동 정제 비용)</li>
+  <li><strong>Option D</strong>: FlexPepDock 대신 RosettaScripts의 PeptiDock + relax 사용 (random orientation, 1000 trial)</li>
+</ul>
+</body>
+</html>

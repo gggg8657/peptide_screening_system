@@ -1,0 +1,40 @@
+{
+  "timestamp": "20260303T061600",
+  "results": [
+    {
+      "id": "NOV-01_YSCKNFFWKTFTSN",
+      "validation": "not_found",
+      "checks": []
+    },
+    {
+      "id": "LIT-01_AGCKNFFWKTFTSC",
+      "validation": "not_found",
+      "checks": []
+    },
+    {
+      "id": "LIT-02_FCCKNFFWKTCTSC",
+      "validation": "not_found",
+      "checks": []
+    },
+    {
+      "id": "NOV-02_AGCKNDFWKTFGSE",
+      "validation": "not_found",
+      "checks": []
+    },
+    {
+      "id": "SAN-02_AGCKNFFWATFTSC",
+      "validation": "not_found",
+      "checks": []
+    },
+    {
+      "id": "SAN-01_AGCKNFFAKTFTSC",
+      "validation": "not_found",
+      "checks": []
+    },
+    {
+      "id": "LIT-03_APCKNFFWKTFSSC",
+      "validation": "not_found",
+      "checks": []
+    }
+  ]
+}

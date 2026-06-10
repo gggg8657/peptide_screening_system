@@ -1,0 +1,58 @@
+{
+  "type": "planner",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-06-10T07:18:04.711927+00:00",
+  "hypothesis": "Introducing aromatic substitutions at position 5 and hydrophobic substitutions at position 11 will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, improving selectivity margin over off-target subtypes.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The hypothesis is updated to prioritize mutations at non-pharmacophore positions to disrupt conserved off-target interactions in SSTR3/SSTR5, while maintaining the pharmacophore for SSTR2 binding.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions in SSTR3/SSTR5. Focusing on these positions allows for targeted mutation to disrupt conserved pocket contacts."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "N",
+            "Q"
+          ],
+          "5": [
+            "L",
+            "I"
+          ],
+          "6": [
+            "A",
+            "V"
+          ],
+          "11": [
+            "T",
+            "S"
+          ],
+          "12": [
+            "K",
+            "R"
+          ]
+        },
+        "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while maintaining overall peptide stability and pharmacophore integrity."
+      }
+    ]
+  },
+  "previous_best_ddg": -32.6986
+}

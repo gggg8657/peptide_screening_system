@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_4002",
+  "timestamp": "2026-04-02T06:58:15.326875+00:00",
+  "hypothesis": "Optimizing aromaticity at position 5 and charge balance at position 6 will improve binding affinity while maintaining hydrophobic interactions at position 11",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Scoring artifacts dominate over structural failures; docking protocol calibration is critical for candidate discrimination",
+    "proposed_changes": [
+      {
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_plus_constraints",
+        "new_value": "docking_plus_ddg",
+        "rationale": "Prioritize docking score weighting to address flat docking score distribution"
+      },
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -10.0,
+        "rationale": "Allow more stringent ddG selection to complement docking prioritization"
+      }
+    ]
+  },
+  "previous_best_ddg": -47.6596
+}

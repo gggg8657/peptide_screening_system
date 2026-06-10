@@ -1,0 +1,468 @@
+{
+  "created_at": "2026-06-09T09:22:49.046771+00:00",
+  "run_id": "sst14_mutdock_1000",
+  "config": {
+    "template_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 4,
+    "seed_base": 1000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 1,
+    "max_iterations": 2,
+    "top_k": 5,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "gate_mode": "static",
+    "planner_mode": "pyrosetta_only",
+    "max_parallel_workers": 8,
+    "llm_model_override": null,
+    "llm_provider": null,
+    "llm_base_url": null,
+    "script_timeout": 600,
+    "n_baseline_trials": 3,
+    "convergence_window_size": 3,
+    "convergence_significance": 0.05,
+    "bandit_n_focus": 3,
+    "max_dedup_trials": 50,
+    "max_random_mutations": 3,
+    "validation_n_trials": 3,
+    "validation_max_workers": 4,
+    "validation_early_stop_cv": 0.15
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": -25.6266,
+    "total_score": 22.5499,
+    "pre_score": 3364.8046,
+    "score_delta": -3342.2547,
+    "clash_score": 0.0,
+    "constraint_violations": 0,
+    "disulfide_intact": true,
+    "sg_sg_distance": 2.0548
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance binding affinity through improved π-π stacking and hydrophobic interactions with the SSTR2 binding pocket.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 3,
+        "best_ddg": -44.7594,
+        "mean_ddg": -26.514,
+        "selected_ids": [
+          "iter01_cand004",
+          "iter01_cand002",
+          "iter01_cand001"
+        ],
+        "critic_hypothesis": "The current designs are not achieving sufficient structural quality or docking performance, so tighter structural constraints and increased sampling are needed.",
+        "report_paths": {
+          "summary_md": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand003",
+          "sequence": "AGCENFFWKTFNSC",
+          "ddg": 72.6853,
+          "total_score": 103.5611,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 20.53,
+            "stability_norm": 0.6416,
+            "gravy": -0.1429,
+            "boman_index": 1.0736,
+            "instability_index": 30.65,
+            "aliphatic_index": 7.1429,
+            "pi": 6.94,
+            "admet_score": 0.7959,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.704282
+          }
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand004",
+          "sequence": "AVCKNFFWKTFTSC",
+          "ddg": -25.8725,
+          "total_score": -23.4759,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 16.61,
+            "stability_norm": 0.5191,
+            "gravy": 0.3571,
+            "boman_index": 0.4714,
+            "instability_index": 30.65,
+            "aliphatic_index": 27.8571,
+            "pi": 10.62,
+            "admet_score": 0.537,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.426123
+          }
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AGCKYFFWKTVTSC",
+          "ddg": -44.7594,
+          "total_score": 12.5579,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 16.63,
+            "stability_norm": 0.5197,
+            "gravy": 0.2857,
+            "boman_index": 0.1529,
+            "instability_index": 26.5071,
+            "aliphatic_index": 27.8571,
+            "pi": 10.21,
+            "admet_score": 0.5402,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.1959
+          }
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AGCKWFFWKTITSC",
+          "ddg": -8.9102,
+          "total_score": -29.8487,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 16.64,
+            "stability_norm": 0.52,
+            "gravy": 0.3357,
+            "boman_index": -0.0864,
+            "instability_index": 32.5714,
+            "aliphatic_index": 35.0,
+            "pi": 10.62,
+            "admet_score": 0.5048,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 1.576005
+          }
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 2,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "Enhancing hydrophobic interactions in the SSTR2 binding pocket by mutating positions 5 and 6 will improve binding affinity (as measured by ddG).",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 3,
+        "best_ddg": -30.0419,
+        "mean_ddg": -17.9025,
+        "selected_ids": [
+          "iter02_cand002",
+          "iter02_cand001",
+          "iter02_cand003"
+        ],
+        "critic_hypothesis": "The current hypothesis remains valid, but the design process may be overly focused on minimizing ddG at the expense of overall stability. A more balanced approach is needed.",
+        "report_paths": {
+          "summary_md": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+          "rank_csv": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand004",
+          "sequence": "AGCKWDFWKTVTSC",
+          "ddg": 2.173,
+          "total_score": 26.5952,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 17.28,
+            "stability_norm": 0.54,
+            "gravy": -0.1357,
+            "boman_index": 0.8121,
+            "instability_index": 21.1214,
+            "aliphatic_index": 27.8571,
+            "pi": 9.9,
+            "admet_score": 0.6653,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.704282
+          }
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand002",
+          "sequence": "AGCKFDFWKTITSC",
+          "ddg": -16.9274,
+          "total_score": -39.0863,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 17.24,
+            "stability_norm": 0.5387,
+            "gravy": 0.15,
+            "boman_index": 0.7029,
+            "instability_index": 36.0,
+            "aliphatic_index": 35.0,
+            "pi": 9.9,
+            "admet_score": 0.6142,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.426123
+          }
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand001",
+          "sequence": "AGCKYFFWKTLTSC",
+          "ddg": -6.7383,
+          "total_score": 13.8202,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 16.59,
+            "stability_norm": 0.5184,
+            "gravy": 0.2571,
+            "boman_index": 0.09,
+            "instability_index": 32.5714,
+            "aliphatic_index": 35.0,
+            "pi": 10.21,
+            "admet_score": 0.5398,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 1.889466
+          }
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand003",
+          "sequence": "AGCKWFFWKTFTSC",
+          "ddg": -30.0419,
+          "total_score": -39.7918,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "half_life_h": 16.03,
+            "stability_norm": 0.5009,
+            "gravy": 0.2143,
+            "boman_index": 0.0521,
+            "instability_index": 41.3857,
+            "aliphatic_index": 7.1429,
+            "pi": 10.62,
+            "admet_score": 0.5148,
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 1.882439
+          }
+        }
+      ]
+    }
+  ],
+  "final_candidates": [
+    {
+      "iteration": 2,
+      "candidate_id": "iter02_cand002",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddg": -19.7475,
+      "total_score": -39.0863,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": "",
+      "extra_scores": {
+        "half_life_h": 17.24,
+        "stability_norm": 0.5387,
+        "gravy": 0.15,
+        "boman_index": 0.7029,
+        "instability_index": 36.0,
+        "aliphatic_index": 35.0,
+        "pi": 9.9,
+        "admet_score": 0.6142,
+        "gnina_cnn_score": 0.0,
+        "gnina_cnn_affinity": 0.0,
+        "gnina_vina_score": 0.0,
+        "gnina_dry_run": 1.0,
+        "ecr_score": 2.426123
+      }
+    },
+    {
+      "iteration": 2,
+      "candidate_id": "iter02_cand001",
+      "sequence": "AGCKYFFWKTLTSC",
+      "ddg": -20.423866666666665,
+      "total_score": 13.8202,
+      "clash_score": 1.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": "",
+      "extra_scores": {
+        "half_life_h": 16.59,
+        "stability_norm": 0.5184,
+        "gravy": 0.2571,
+        "boman_index": 0.09,
+        "instability_index": 32.5714,
+        "aliphatic_index": 35.0,
+        "pi": 10.21,
+        "admet_score": 0.5398,
+        "gnina_cnn_score": 0.0,
+        "gnina_cnn_affinity": 0.0,
+        "gnina_vina_score": 0.0,
+        "gnina_dry_run": 1.0,
+        "ecr_score": 1.889466
+      }
+    },
+    {
+      "iteration": 2,
+      "candidate_id": "iter02_cand003",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddg": -34.855666666666664,
+      "total_score": -39.7918,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": "",
+      "extra_scores": {
+        "half_life_h": 16.03,
+        "stability_norm": 0.5009,
+        "gravy": 0.2143,
+        "boman_index": 0.0521,
+        "instability_index": 41.3857,
+        "aliphatic_index": 7.1429,
+        "pi": 10.62,
+        "admet_score": 0.5148,
+        "gnina_cnn_score": 0.0,
+        "gnina_cnn_affinity": 0.0,
+        "gnina_vina_score": 0.0,
+        "gnina_dry_run": 1.0,
+        "ecr_score": 1.882439
+      }
+    }
+  ],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 2,
+    "best_final_ddg": -34.855666666666664,
+    "run_status": "success",
+    "failure_stage": "",
+    "error_summary": "",
+    "validation_stats": {
+      "iter02_cand002": {
+        "n_trials": 3,
+        "n_sane": 3,
+        "top3_mean": -19.7475,
+        "median": -16.9274,
+        "mean": -19.7475,
+        "stdev": 16.1303,
+        "best": -37.1019,
+        "early_stopped": false
+      },
+      "iter02_cand001": {
+        "n_trials": 3,
+        "n_sane": 3,
+        "top3_mean": -20.4239,
+        "median": -27.0337,
+        "mean": -20.4239,
+        "stdev": 11.8543,
+        "best": -27.4996,
+        "early_stopped": false
+      },
+      "iter02_cand003": {
+        "n_trials": 3,
+        "n_sane": 3,
+        "top3_mean": -34.8557,
+        "median": -31.5113,
+        "mean": -34.8557,
+        "stdev": 7.1032,
+        "best": -43.0138,
+        "early_stopped": false
+      }
+    }
+  }
+}

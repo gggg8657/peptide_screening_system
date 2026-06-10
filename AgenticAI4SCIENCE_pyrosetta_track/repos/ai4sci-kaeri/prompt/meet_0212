@@ -1,0 +1,230 @@
+20260126 1차 미팅
+
+MD Agent(Drug Target Screening Agent)
+○ 목표: SSTR2에만 특이적으로 결합하는 DOTATATE 유도체 후보물질을 AI 기반으로 설계·스크리닝하고, 일정 수준 이상의 안정성(혈액 내 6~10일)을 갖도록 최적화
+   - DOTATATE 아미노산 서열
+   - SSTR2 아미노산 서열
+○ 순서
+  - 아미노산 서열 변형 및 후보 설계 
+  - 결합 특이성 예측 (SSTR2 vs. SSTR1/3/4/5) 
+  - 안정성 예측 및 최적화
+○ 토의내용: AI-Scientist의 Agent는 총 3개로 개발한다. 그중 첫 번째 것에 대한 토의가 이루어 졌습니다.
+(1) Drug Target Screening: 이 부분이 오늘 협의한 가장 중요한 부분이고 어려운 부분입니다. 먼저 이 Agent는 MD(Molecular Docking) Agent라고 이름을 지었습니다. 
+○ [배경내용] 오늘 토의한 내용에 추가로 저의 의견을 반영하여 우리가 원하는 방안을 제시한 내용으로 작성하였습니다.
+- MD Agent을 BioNEMO와 같은 Drug interaction을 분석하는 AI 프로그램과 연결하여 우리가 찾는 타겟의 Drug 혹은 펩타이드를 스크리닝하는 방법입니다. 
+- 첫번째 쉬운 전략으로 테스트하기 위하여 SSTR2을 타겟으로 하는 DOTATATE의 14개 아미노산을 기반으로 아미노산의 시퀀스를 바꾸거나, 늘리거나, 혹은 Modification하여 더 높은 Specificity을 가지는 DOTATATE 유도체를 만들어내는 것입니다. 이때 SSTR1, 3, 4, 5에는 결합하지 않지만, SSTR2에만 결합하도록 스크리닝 해야 합니다. 
+- 그리고 다음 단계는 DOTATATE의 유도체가 선별하게 되면 이 유도체의 Stability을 최대한 높일 수 있는 2번째 Modifiction을 예측하는 방법을 시도하고자 합니다. 최대 6-10일까지 혈액에서 Stability을 유지할 수 있는 것을 원합니다. 이를 위하여 최근 개발되고 있는 GLP-1 유도체의 기술을 접목하고 싶습니다. 
+- 결국, 이 신규 유도체가 SSTR2에 specific하게 결합을 해야 합니다. 이를 위한 Agent을 개발하고 싶습니다. 어떻게 할지 제안 부탁드리고, 어떤 MCP을 API와 연결해야할지도 제안 부탁드립니다. 먼저 이 Agent에 대한 의견부터 부탁드립니다.
+○ [연구방향] 오늘 토의한 내용을 중심으로 추가적인 GPT deep research을 의견을 반영하여 작성하였습니다.
+- (오늘 토의 의견) 가장 먼저 DOTATATE의 유도체를 개발하여 SSTR2와의 결합이 높은 것을 찾고 싶습니다. 그러기 위해서는 먼저 유도체를 만들어서 SSTR2의 결합을 정량적으로 측정하여야 합니다.
+① BIONEMO 접근: API을 통하여 BIONEMO에 접근하여 사용할 수 있는지 확인하여야 합니다. AI+계산화학 방식의 통합을 통하여 AlphaFold2로 얻은 SSTR1~5의 구조, Docking 엔진 전량평가, GLP-1 유사체의 안정화 기법 지식을 모두 통합하고 싶습니다.
+② 수동적 접근: 만일 BIONEMO 접근이 어렵다면, 
+   (1) DOTATATE와 SSTR2의 결합을 그리고, SSTR1, SSTR3, SSTR4, SSTR5의 구조를 예측하여 PDB 파일로 확보 
+   (2) SSTR2에 결합이 가능한 DOTATATE 구조 라이브러리를 확보. Deep research를 활용하였을 때 ProtGPT2, PeptideGPT, HELM-GPT, RFDiffusion 등을 제안하고 있습니다. 그렇지만 이 프로그램들은 Docking을 예측하는 것이 아니라, 구조를 변환하여 수용성 등의 특성을 변경시키는 것입니다.
+   (3) Molecular Docking을 통하여 선별한 펩타이드 변형체를 연동하여 자동으로 MD 프로그램에 입력하여 Docking의 강도를 측정하는 것입니다. 이때 SSTR2에 강하고, SSTR1, 3, 4, 5에는 약하게 결합하는 것을 찾는 것을 자동으로 프로그램하면 좋을 것 같습니다.
+③ Rosetta 기반 설계 (Rosetta Scripts/pyRosetta): DeepResearc가 제안한 방법입니다. Rosetta는 단백질 및 펩타이드 설계에 널리 쓰이는 플랫폼으로, 펩타이드 서열 치환 설계와 도킹 모두에 활용 가능합니다. 예를 들어 Rosetta FlexPepDock 프로토콜은 펩타이드-단백질 복합체의 구조를 정교하게 재배치하고 점수를 평가할 수 있어, 기존 DOTATATE와 SSTR2 결합 모드를 기반으로 부분 아미노산 치환 효과를 평가하기 좋습니다. 
+   - 장점: 원자단위 에너지 함수로 결합 친화도의 상대적 변화를 정밀하게 평가할 수 있고, 다양한 돌연변이 탐색이나 설계 필터(예: 접촉면 극성, 매몰 면적 등)를 적용할 수 있습니다. 또한 pyRosetta를 통해 Python으로 로제타 함수를 직접 호출하여 자동화할 수 있으므로 시스템 통합에 유리합니다. 
+   - 단점: 학습 곡선이 가파르고 계산 비용이 높을 수 있으며, D-아미노산이나 비전형 아미노산 처리는 별도 파라미터 세팅이 필요합니다. 
+   - 사용법: Rosetta 소프트웨어 설치 후 로제타스크립트(XML 정의)나 pyRosetta로 프로토콜을 작성해 실행합니다. 무료 여부: 학술용으로 무료(상업적 이용 시 별도 라이선스 필요)이며, 방대한 문서와 커뮤니티 리소스가 지원됩니다.
+20260212 2차 미팅
+○ 주제: SSTR2 특이적 DOTATATE 유도체 설계를 위한 MD Agent 아키텍처 고도화
+○ 기반 자료: MD Agent 진행상황 보고, PyMOL & FoldMason 활용방안
+
+1. 구조 예측 단계 아키텍처 논의
+o AlphaFold3의 일일 실행 제한 문제로 Rosetta 기반 구조 예측 전환 가능성 논의
+o Rosetta는 오픈소스 기반으로 대량 스크리닝에 유리
+o Rosetta 기반 구조 예측 대체 가능성 기술 검토 필요
+  → 김유종 단장님 측에서 검토 예정
+(ChatGPT) Rosetta가 AlphaFold3를 완전히 대체하기는 어렵습니다. 이유는 GPCR (SSTR2)는 막단백질, Rosetta 단독 de novo 예측 정확도는 AF3보다 낮음, 복합체 예측 정확도 차이 존재
+(대안) Hybrid 전략이 가장 좋습니다. SSTR2 구조는 고정 (기존 high-c onfidence structure 사용), 펩타이드 구조만 Rosetta/FlexPepDock으로 탐색, SSTR2 전체를 매번 다시 예측하지 않음
+
+2. PyRosetta FastRelax 필요성 검토
+o FastRelax 역할: 원자 충돌 제거, 구조 안정화, 에너지 극소화
+o 대량 스크리닝 시 계산 병목 가능성 존재
+o 1차 대량 스크리닝에서는 생략 가능성 검토
+o 상위 후보군에 대해 2차 적용하는 전략 제안
+(ChatGPT) 1차 스크리닝에서는 필요 없음.
+(대안) FastRelax는 상위 1% 이하에서만 수행하는 것이 합리적입니다.
+
+3. 후보 서열 설계 전략
+  o 14-mer 기반 설계
+    - C-C 결합 형성 부위 제외
+    - FWKT 결합 핵심 모티프 고정
+    - 8개 잔기 랜덤 변이 적용
+  o 경우의 수 폭증 문제 및 GPU 부담 이슈 논의
+(ChatGPT) 이 프로젝트의 성패는 사실 여기에 달려 있습니다. Docking은 이미 많이 하는 접근입니다. 하지만 “혈중 6–10일 안정성”을 AI로 설계하는 것은 매우 차별화됩니다.
+(대안) 단순 protease cleavage 예측은 부족합니다. 6–10일 안정성을 원한다면:
+① Protease resistance
+② Plasma protein binding
+③ Renal filtration avoidance
+④ Aggregation tendency
+⑤ Conformational rigidity
+     를 함께 고려해야 합니다.
+(대안) Stability Agent를 별도로 두는 것이 좋습니다.
+① Agent 1: Stability Agent
+        - Protease resistance score
+        - Half-life prediction
+        - Structural rigidity score
+        - PEG/lipid modification 효과 예측
+② Agent 2: Docking Agent
+        - SSTR2 specificity
+        - ΔG ranking
+        - SSTR1/3/4/5 negative selection
+③ Agent 3: Optimization Agent
+        - D-AA insertion
+        - Backbone modification
+        - PEGylation 시뮬레이션
+
+4. 최적화된 스크리닝 전략 제안
+o Random Mutation → Serum Stability → DOTATATE 유사도 비교 → Molecular Docking → Modification 최적화
+o Stability 기반 1차 필터링 후 Docking 진행
+o 상위 0.1% 후보만 Docking 수행하여 연산 부담 감소
+(ChatGPT) Random mutation → Stability → Docking 구조는 옳은가?
+네, 방향은 맞습니다. 그러나 저는 다음을 추가하고 싶습니다.
+(대안) Evolutionary-guided mutation (완전 랜덤이 아니라 "물리적으로 plausible 한 랜덤“)
+  - Alanine scanning으로 hotspot 보호
+  - FoldMason clustering으로 구조적 일관성 유지
+  - BLOSUM 기반 substitution 제한
+  - Hydrophobicity constraint 유지
+
+5. Serum Stability 예측 도구 검토
+o ML 기반 반감기 예측 모델 활용 가능성
+o Protease cleavage 예측 도구 병행 사용 제안
+o 정확도와 GPU 부담을 동시에 고려한 도구 선정 필요
+
+6. 확장 설계 전략 (고도화 단계)
+o D-아미노산 치환
+o Backbone 변형 (γ, β-peptide)
+o PEGylation, Lipidation, Acetylation
+o 1차 설계는 canonical AA 중심, 상위 후보에 대해 modification 적용
+(대안) Modification 단계 (D-AA, PEG, lipidation)은 Docking 이후에 넣는 것이 좋습니다. 처음부터 PEG 포함하면 docking 왜곡됨. peptide core affinity 먼저 확보해야 함
+  - GLP-1 유사체 전략 차용은 매우 좋음
+  - Albumin-binding lipid tail은 현실적
+  - PEG는 half-life는 늘리지만 receptor affinity 저하 위험
+
+7. Peptide ADME 예측 가능성
+o Protease susceptibility, plasma stability 예측 가능
+o ADMETlab, pkCSM-peptide 등 활용 검토
+(ChatGPT) Peptide ADME는 small molecule보다 훨씬 불확실합니다. 가능은 하지만 정확도 낮고 GPCR peptide ligand는 데이터셋 부족함
+(대안) ADME를 예측하기보다,Clearance surrogate score, Molecular weight threshold, Net charge range, Hydrophobic moment 유지와 같은 물리적 constraint 기반 필터가 더 현실적입니다.
+
+8. 최종 제안 파이프라인
+Step 1. Random Mutation
+Step 2. Serum Stability Screening
+Step 3. DOTATATE baseline similarity filtering
+Step 4. Structure prediction (Rosetta/ColabFold)
+Step 5. Docking (FlexPepDock)
+Step 6. ΔG Ranking
+Step 7. Top candidates modification 및 재평가
+(ChatGPT) 3-Agent 구조로 재배치 제안
+Agent 1: Stability AI
+    ↓
+Agent 2: Structural & Specificity AI
+    ↓
+Agent 3: Chemical Optimization AI
+    ↓
+Human Review Layer (Explainable AI)
+* FoldMason은 Structural QC Layer로 유지 (???)
+(대안) 지금 이 프로젝트는 단순 Docking 자동화가 아니라, “Peptide Half-life Engineering Platform”으로 브랜딩할 수 있습니다. 그리고 방사엉의약품에 한정할 경우 “Radiopharmaceutical Peptide AI Design Engine”으로 명명하게 됩니다.
+
+9. 추가 검토 필요 사항
+o Rosetta 기반 구조 예측 완전 대체 가능 여부
+o FastRelax 적용 시점 결정
+o Serum stability predictor 최종 선정
+o ADME 단계 포함 여부
+o GPU 클러스터 분배 전략
+
+10. 핵심 전략 요약
+o Docking을 1차 필터로 사용하지 않음
+o Stability → Docking 순으로 병목 제거
+o Motif(FWKT) 고정 전략 유지
+o Explainable AI 기반 구조적 판단 유지
+
+11. 1차 Agent을 제안하는 것을 문의한 결과
+① Protease resistance ② Plasma protein binding ③ Renal filtration avoidance ④ Aggregation tendency ⑤ Conformational rigidity 을 예측할 수 있는 오픈소스 제안
+(답변) 아래는 요청하신 5가지 항목을 (가급적) 오픈소스/로컬 실행 가능하게 예측할 수 있는 도구들을 “바로 MCP로 감쌀 수 있는 형태(CLI/Python 패키지/깃헙 코드)” 위주로 정리한 목록입니다.
+※ 단, PPB(Plasma protein binding), Renal filtration/clearance는 “펩타이드 전용 공개 모델”이 상대적으로 부족해서, (1) cyclic peptide 전용 오픈소스 + (2) 범용 PK 오픈소스 + (3) 물리기반/규칙 기반 surrogate를 함께 제안드립니다.
+① Protease resistance (protease cleavage/분해 저항성)
+  A. CleaveNet (MS Research, 오픈소스)
+     - 목적: protease activity/cleavage 예측용 딥러닝 툴킷
+     - 형태: GitHub 코드 기반(로컬 실행/파이프라인화 용이)
+     - MCP 적합도: 매우 높음 (Python 실행)
+  B. Rapid Peptides Generator (RPG): protease-induced cleavage site 예측
+     - 목적: 여러 protease 조건에서 서열 기반 cleavage site 예측/시뮬레이션
+     - 형태: Python tool(FASTA 입력, enzyme 동시/순차 digestion 지원)
+     - MCP 적합도: 높음 (CLI 또는 Python 호출)
+  C. (참고) pepsickle – proteasomal cleavage 예측 (면역프로테아좀/프로테아좀)
+     - 엄밀히 “혈장 protease”라기보다 proteasome cleavage에 강점
+     - 백신 epitope/세포내 분해 쪽에 더 맞지만, “cleavage 예측 파이프라인” 템플릿으로 좋음
+② Plasma protein binding (PPB; 혈장단백 결합)
+  A. CycPeptPPB (cyclic peptide PPB 예측, 오픈소스 구현 제공)
+     - cyclic peptide에 특화된 PPB(%) 예측 모델
+     - 형태: GitHub에 공식 구현(코드) 공개
+     - DOTATATE/옥트레오타이드 계열처럼 “고리/제약 구조”가 있는 펩타이드에 특히 적합
+     - MCP 적합도: 매우 높음 (Python 실행)
+  B. MolGrad PPB (소분자 중심이지만 오픈소스/모델 형태로 활용 가능)
+     - 주로 small molecule PPB 예측이지만, “PPB predictor를 MCP로 연결하는 방법”의 레퍼런스로 유용
+     - 결론: DOTATATE 계열이면 CycPeptPPB를 1순위로 추천드립니다(오픈소스 + cyclic peptide 특화).
+③ Renal filtration avoidance (신장 여과 회피; 사실상 clearance/renal elimination): 여기는 “펩타이드 전용” 오픈소스가 제한적이라, 아래처럼 2트랙이 가장 현실적입니다. 
+트랙 1) 오픈소스 PK/CL 예측(범용)로 surrogate score 만들기
+   A. PKSmart (CL, Vd, fup 등 PK property 예측 – 오픈소스): clearance(CL), fraction unbound(fup) 등 PK 파라미터를 예측하는 오픈소스 코드/모델
+     - 펩타이드에 100% 맞진 않지만, “대량 후보군에서 renal risk를 거르는 surrogate”로 유용
+     - MCP 적합도: 높음 (Python/화학정보 기반)
+  B. Computational-ADME (ML ADME 모델 구축/검증 코드 리소스)
+     - “직접 우리 데이터(펩타이드 half-life/CL)”를 쌓아 로컬 모델 재학습하기에 좋은 오픈소스 베이스
+     - MCP 적합도: 높음 (학습/추론 파이프라인화)
+트랙 2) 물리/규칙 기반 renal filtration “회피 스코어”
+     - 펩타이드는 (분자량, 순전하, 소수성, PPB, 지질화/알부민 결합 유도)가 여과에 매우 큰 영향. 따라서 MCP에서 아래 값들을 계산해 Renal Avoidance Score로 합성하는 게 실용적입니다:
+     - MW(분자량) / net charge / cLogP surrogate / PPB(CycPeptPPB) / aggregation risk
+     - (이 트랙은 “오픈소스 툴”이라기보다, 오픈소스 계산 + 규칙으로 스코어를 만드는 접근)
+④ Aggregation tendency (응집 성향)
+  A. AGGRESCAN3D (A3D) – 구조 기반 aggregation propensity
+     - 구조(PDB) 기반으로 aggregation-prone region/propensity 평가
+     - 논문/도구로 널리 쓰이고, 구조 기반 필터링에 강점
+     - MCP 적합도: 중간~높음 (로컬 실행/라이브러리화는 구성 필요, 또는 서버 호출)
+B. Protein aggregation propensity ML 코드(오픈소스 예시들)
+     - aggregation 예측을 위한 ML 코드 레포들이 존재 (서열 기반/그래프 기반 등)
+     - MCP 적합도: 높음 (Python inference)
+C. (주의) TANGO
+     - aggregation 예측으로 유명하지만, 라이선스가 “오픈소스”라 보기 어려운 형태(학술/상업 라이선스 안내)라서 요청 조건에 완벽 부합하진 않습니다.
+⑤ Conformational rigidity (구조 강직성/유연성)
+  A. OpenMM (오픈소스 MD 엔진) + 짧은 MD로 RMSF/dihedral 변동성 지표화
+     - 펩타이드 강직성은 “예측 모델”보다 짧은 MD(예: 1–10 ns)로 RMSF, radius of gyration, dihedral entropy를 뽑는 게 가장 재현성이 좋습니다.
+     - OpenMM은 오픈소스, GPU 가속, 라이브러리로 호출 가능
+     - MCP 적합도: 매우 높음 (Python API)
+  B. (보조) Rosetta 에너지/relax 기반의 “rigidity surrogate”
+     - FastRelax 이후 에너지 landscape 변화량, constraint 유지율 등으로 “강직성” surrogate 가능
+     - 다만 이것은 “MD 기반 강직성”과 다르므로, 최종 Top 후보에서 OpenMM로 confirm하는 것을 추천합니다.
+     - MCP 연결 관점에서의 “추천 조합” (현실적으로 가장 깔끔)
+
+[최종조합 추천 조합]
+1) CycPeptPPB MCP (1순위)
+  - CycPeptPPB
+  - 출력: %PPB 또는 fraction_bound
+2) Protease resistance MCP (Protease resistance에 가장 실용적)
+  - RPG(cleavage map) + (가능하면) CleaveNet(DL cleavage)
+  - 출력: cleavage_count, max_cleavage_probability, protease_panel_score
+3) Renal avoidance MCP: ‘PPB+물리특성 스코어’로 surrogate를 먼저 만들고, 데이터 쌓이면 PKSmart/자체학습으로 고도화
+  - 입력: peptide sequence(+가능하면 predicted PPB)
+  - 도구: (a) PPB 결과 + (b) MW/charge 계산 + (c) (옵션) PKSmart surrogate
+  - 출력: renal_avoidance_score (0–1), flags(low MW/high charge 등)
+4) Aggregation MCP
+  - 1차: 서열 기반 ML aggregation repo(빠름)
+  - 2차: 구조 기반이면 AGGRESCAN3D
+  - 출력: agg_propensity, agg_hotspots
+5) Rigidity MCP
+  - OpenMM로 짧은 MD 후 RMSF/Rg/dihedral fluctuation 산출
+  - 출력: mean_RMSF, Rg_variance, dihedral_entropy_proxy, rigidity_score
+
+12. 1차 Agent에 적용하는 경우의 수
+o 8개 아미노산 치환: 20^8개 = 256억개
+o Deletion을 추가할 경우: 21^8 = 378억개
+o Allowed Amino acid의 수를 줄이면 경우의 수가 크게 줄 수 있음. 
+  - 제안하는 방식은 아래와 같습니다.
+o Evolutionary-guided mutation (완전 랜덤이 아니라 "물리적으로 plausible 한 랜덤“)
+    - Alanine scanning으로 hotspot 보호
+    - FoldMason clustering으로 구조적 일관성 유지
+    - BLOSUM 기반 substitution 제한
+    - Hydrophobicity constraint 유지
+
+

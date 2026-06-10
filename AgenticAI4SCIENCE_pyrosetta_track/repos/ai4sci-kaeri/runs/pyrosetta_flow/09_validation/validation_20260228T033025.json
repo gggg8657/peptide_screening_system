@@ -1,0 +1,110 @@
+{
+  "timestamp": "20260228T033025",
+  "results": [
+    {
+      "id": "iter05_cand007",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 38.395,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 6.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -363.103,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter07_cand007",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 57.472,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 9.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -341.671,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "iter06_cand005",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 79.678,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 10.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -273.738,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "iter02_cand007",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 999.0,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 999.0,
+          "passed": false
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": 999.0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "iter02_cand008",
+      "validation": "fail",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": 999.0,
+          "passed": false
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 999.0,
+          "passed": false
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": 999.0,
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

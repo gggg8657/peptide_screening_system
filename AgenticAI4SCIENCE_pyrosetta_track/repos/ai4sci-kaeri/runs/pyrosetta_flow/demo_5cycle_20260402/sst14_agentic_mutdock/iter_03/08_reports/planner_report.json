@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_2026",
+  "timestamp": "2026-04-02T06:17:33.552039+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and charged residues at position 6 will enhance binding affinity by optimizing electrostatic interactions and hydrophobic packing in the SSTR2 binding pocket.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural abnormalities in top candidates suggest the current energy function may not adequately penalize poor geometry, requiring stricter stability constraints and increased sampling.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -8.0,
+        "rationale": "The current ddG threshold may be too lenient, allowing candidates with insufficient stability to pass. Lowering the threshold will prioritize more energetically favorable designs."
+      },
+      {
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 12,
+        "rationale": "The small candidate pool may not adequately sample the sequence space. Increasing the number of candidates will improve chances of finding structurally valid designs."
+      }
+    ]
+  },
+  "previous_best_ddg": -40.9046
+}

@@ -1,0 +1,90 @@
+multi-receptor selectivity는 한마디로, SSTR2에 “잘 붙는” 후보를 찾는 데서 끝나는 게 아니라, SSTR1/3/4/5에는 “덜 붙는(=오프타깃이 낮은)” 후보를 함께 선별하는 기능이야.
+SSTR 계열은 구조/포켓이 유사해서 SSTR2만 타겟팅하면 다른 서브타입에도 붙을 위험(부작용/표적 특이성 저하)이 생길 수 있어서, “약물 타깃 스크리닝” 관점에서 자주 요구돼.
+
+이 기능이 파이프라인에서 실제로 하는 일
+
+현재 너 파이프라인은 대략:
+
+후보 생성(RFdiffusion/MPNN) → QC(ESMFold/FoldMason) → SSTR2 도킹/정제(DiffDock/Boltz-2, Rosetta) → 랭킹
+
+multi-receptor selectivity가 추가되면:
+
+후보마다 **SSTR2 뿐 아니라 SSTR1/3/4/5에도 동일하게 도킹(또는 빠른 스코어링)**을 돌리고,
+
+“SSTR2에는 강하게, 나머지에는 약하게”를 정량 지표로 점수화해서 최종 랭킹에 반영해.
+
+예시 지표:
+
+Selectivity_margin = Affinity(SSTR2) - max(Affinity(SSTR1,3,4,5))
+
+(score 방향은 툴마다 달라서 “큰 게 좋은지/작은 게 좋은지”는 맞춰야 함)
+
+또는 ΔddG = ddG(SSTR2) - min(ddG(offtargets))
+
+구현해야 해? (결론: 목표가 “SSTR2 표적 특이성”이면 하는 게 좋고, 초기 PoC면 선택)
+
+구현을 권장하는 경우
+
+“Drug target screening”/“binder 설계”로 외부에 보여줄 프로젝트
+
+리드 후보를 실제로 좁혀야 하는 단계
+
+SSTR 서브타입 간 오프타깃을 문제로 보는 요구사항(보통 그렇다)
+
+지금 당장 필수는 아닌 경우
+
+파이프라인 PoC(“SSTR2에 붙는 후보를 생성/검증할 수 있다”)가 1차 목표
+
+비용/시간이 빡세서 off-target 도킹을 대량으로 못 돌리는 상황
+→ 이 경우엔 “GAP으로 문서화”만 해도 합리적이야(지금 테스트가 그렇게 처리한 듯).
+
+최소 구현(MVP)로 넣는 방법
+
+“풀 Rosetta”까지 다 돌리면 비용이 커지니까 2단계로 가는 게 현실적이야.
+
+MVP-1 (가장 가벼움): 도킹 기반 선택성 게이트
+
+SSTR2에 대해 기존대로 도킹
+
+상위 Top-K만 off-target(SSTR1/3/4/5)에도 도킹
+
+게이트:
+
+SSTR2_score가 좋고
+
+offtarget_best_score는 나쁘며
+
+selectivity_margin이 임계값 이상인 것만 통과
+
+➡️ 구현 포인트는 단순히 receptor 리스트를 늘리고, 랭킹 계산에 “margin” 컬럼 추가하는 정도.
+
+MVP-2 (정밀): Top-N만 Rosetta ddG로 “SSTR2 vs 오프타깃” 비교
+
+도킹으로 1차 거르고,
+
+아주 소수(Top-N)만 SSTR2와 오프타깃에 대해 FlexPepDock/ddG 계산
+
+최종은 ddG 기준 선택성으로 결정
+
+에이전트 파이프라인 관점에서 “어디에 붙일지”
+
+QC & Ranker가 핵심 담당
+
+입력: 후보 모델 + receptor set(SSTR2 + off-targets)
+
+출력: rank_table.csv에 selectivity_margin, offtarget_max_binding, pass_selectivity_gate 추가
+
+Critic은 실패-액션 매핑 업데이트
+
+“SSTR2는 잘 붙는데 SSTR3에도 잘 붙음” → 포켓 hotspot/constraint 강화, 펩타이드 길이/구조 bias 조정 등
+
+한 줄 정리
+
+multi-receptor selectivity = “SSTR2에 대한 결합 성능” + “SSTR1/3/4/5 오프타깃 억제”를 함께 최적화하는 기능
+
+프로덕트/논문/스크리닝 목표면 구현 추천, PoC 단계면 GAP로 남겨도 OK
+
+최소 구현은 off-target 도킹 추가 + 선택성 margin 기반 게이트/랭킹 컬럼 추가로 끝
+
+원하면 네 현재 pipeline_config.yaml 구조(수용체 등록 방식) 기준으로,
+SSTR1/3/4/5 receptor 엔트리 추가 템플릿이랑 selectivity_margin 계산 규칙(도킹 점수 방향까지 포함)을 바로 넣을 수 있게 프롬프트/스키마 형태로 만들어줄게.

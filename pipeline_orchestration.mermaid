@@ -1,0 +1,19 @@
+flowchart TD
+  A["Input PDB set (candidates/poses/conditions)"] --> B["MCP: Normalize PDB (chain/altloc/cleanup)"]
+  B --> C["Existing Software: Compute ΔG per candidate"]
+  B --> D["FoldMason: Structure-based MSA + Guide Tree + lDDT"]
+
+  C --> E["Evidence Builder: Join ΔG + FoldMason QC"]
+  D --> E
+
+  E --> F["LLM (AI-Scientist) Decision + Rationale"]
+  F --> G{Action}
+  G -->|Keep| H["Shortlist candidates + supporting evidence"]
+  G -->|Recompute| I["Queue recalculation or rerun with fixed inputs"]
+  G -->|Discard/Deprioritize| J["Exclude or lower priority"]
+  G -->|Explore diversity| K["Pick reps across clusters"]
+
+  H --> L["Evidence Package (ΔG table + QC report + LLM summary)"]
+  I --> L
+  J --> L
+  K --> L

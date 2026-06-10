@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 5,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:28:25.859649+00:00",
+  "hypothesis": "Aromatic interactions at positions 5-6 and hydrophobic packing at position 11 will improve binding affinity through enhanced π-stacking and reduced desolvation penalties",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural quality is constrained by clash filters and limited candidate diversity, requiring balanced energy terms and expanded search space",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 15,
+        "rationale": "Top candidate failed clash check but has favorable ddG, suggesting overly strict clash filter"
+      },
+      {
+        "parameter_name": "n_candidates",
+        "old_value": 4,
+        "new_value": 8,
+        "rationale": "Low diversity in candidate pool may miss structural variants that balance stability and quality"
+      }
+    ]
+  },
+  "previous_best_ddg": -14.6578
+}

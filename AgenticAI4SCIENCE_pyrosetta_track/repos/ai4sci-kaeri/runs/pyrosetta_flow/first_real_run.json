@@ -1,0 +1,283 @@
+{
+  "created_at": "2026-06-09T08:57:54.691265+00:00",
+  "run_id": "sst14_mutdock_1000",
+  "config": {
+    "template_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 4,
+    "seed_base": 1000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 1,
+    "max_iterations": 2,
+    "top_k": 5,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "gate_mode": "static",
+    "planner_mode": "pyrosetta_only",
+    "max_parallel_workers": 8,
+    "llm_model_override": null,
+    "llm_provider": null,
+    "llm_base_url": null,
+    "script_timeout": 600,
+    "n_baseline_trials": 3,
+    "convergence_window_size": 3,
+    "convergence_significance": 0.05,
+    "bandit_n_focus": 3,
+    "max_dedup_trials": 50,
+    "max_random_mutations": 3,
+    "validation_n_trials": 3,
+    "validation_max_workers": 4,
+    "validation_early_stop_cv": 0.15
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": -19.7741,
+    "total_score": 128.839,
+    "pre_score": 3364.8046,
+    "score_delta": -3235.9656,
+    "clash_score": 51.0,
+    "constraint_violations": 0,
+    "disulfide_intact": true,
+    "sg_sg_distance": 2.0288
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "Enhancing aromatic interactions and electrostatic complementarity in the SSTR2 binding pocket will improve peptide binding affinity.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 0,
+        "best_ddg": 0.0,
+        "mean_ddg": 0.0,
+        "selected_ids": [],
+        "critic_hypothesis": "The current design parameters are insufficient to generate structurally and thermodynamically viable SSTR2 binders. Tighter structural and stability constraints are needed.",
+        "report_paths": {
+          "summary_md": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand003",
+          "sequence": "AGCKNDFWKTLTSC",
+          "ddg": 26.8698,
+          "total_score": 60.6876,
+          "clash_score": 39.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.808769
+          }
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AGCKWDFWKTFTSC",
+          "ddg": -17.207,
+          "total_score": 488.3837,
+          "clash_score": 50.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.598393
+          }
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand004",
+          "sequence": "AVCKNFFWKTFTSC",
+          "ddg": -15.0207,
+          "total_score": 27.9703,
+          "clash_score": 44.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.02363
+          }
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AGCKYDFWKTFTSC",
+          "ddg": 46.1556,
+          "total_score": 78.4993,
+          "clash_score": 46.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 1.471518
+          }
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 2,
+        "run_id": "sst14_mutdock_1000",
+        "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance binding affinity by improving hydrophobic interactions and hydrogen bonding with the SSTR2 binding pocket.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 0,
+        "best_ddg": 0.0,
+        "mean_ddg": 0.0,
+        "selected_ids": [],
+        "critic_hypothesis": "The current design protocol is generating candidates with poor structural quality and insufficient binding stability. Tightening structural and stability constraints may improve the quality of the designs.",
+        "report_paths": {
+          "summary_md": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+          "rank_csv": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand003",
+          "sequence": "AGCKWFFWKTFTSC",
+          "ddg": 12.1522,
+          "total_score": 68.9455,
+          "clash_score": 45.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.808769
+          }
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand002",
+          "sequence": "AGCKYDFWKTITSC",
+          "ddg": 56.0733,
+          "total_score": 117.2956,
+          "clash_score": 48.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.187471
+          }
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand004",
+          "sequence": "AGCKRFFWKTKTSY",
+          "ddg": -11.8319,
+          "total_score": -30.6455,
+          "clash_score": 42.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 2.02363
+          }
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand001",
+          "sequence": "AGCKFFFWKTLTSC",
+          "ddg": -48.0633,
+          "total_score": 48.4601,
+          "clash_score": 46.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "",
+          "extra_scores": {
+            "gnina_cnn_score": 0.0,
+            "gnina_cnn_affinity": 0.0,
+            "gnina_vina_score": 0.0,
+            "gnina_dry_run": 1.0,
+            "ecr_score": 1.882439
+          }
+        }
+      ]
+    }
+  ],
+  "final_candidates": [],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 2,
+    "best_final_ddg": 0.0,
+    "run_status": "success",
+    "failure_stage": "",
+    "error_summary": "",
+    "validation_stats": null
+  }
+}

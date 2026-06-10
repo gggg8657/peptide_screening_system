@@ -1,0 +1,37 @@
+{
+  "type": "critic",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_9999",
+  "timestamp": "2026-04-02T11:22:48.564232+00:00",
+  "hypothesis": "Structural refinement must be explicitly prioritized alongside energy optimization to achieve both favorable binding affinity and model quality",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -5.0,
+      "new_value": -10.0,
+      "rationale": "Current ddG threshold is too lenient, filtering out candidates with more favorable binding energies"
+    },
+    {
+      "parameter_name": "objective_mode",
+      "old_value": "ddg_plus_constraints",
+      "new_value": "ddg_plus_refinement",
+      "rationale": "Prioritize structural refinement alongside energy optimization to address low pLDDT/dock scores"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 8,
+    "objective_mode": "ddg_plus_constraints",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_004.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_005.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_007.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/test_full_pipeline_20260402/sst14_agentic_mutdock/iter_02/cand_008.pdb"
+  ],
+  "receptor_pdb": "runs/pos5_6_11_optimization/p5F_p6D_p11S_AGCKFDFWKTSTSC/refined.pdb"
+}

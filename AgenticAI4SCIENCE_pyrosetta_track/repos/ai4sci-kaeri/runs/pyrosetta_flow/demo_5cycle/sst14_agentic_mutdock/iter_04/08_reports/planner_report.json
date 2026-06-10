@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 4,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:25:19.805447+00:00",
+  "hypothesis": "Aromatic/charged residues at positions 5-6 and 11-12 will enhance hydrophobic interactions and electrostatic complementarity with SSTR2's binding pocket",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural validity requires tighter balance between stability and clash avoidance parameters",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Reduce clash tolerance to prioritize structural validity over minor energetic improvements"
+      },
+      {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -5.0,
+        "new_value": -7.0,
+        "rationale": "Stricter stability threshold will filter out less stable candidates while retaining high-quality designs"
+      }
+    ]
+  },
+  "previous_best_ddg": -30.7621
+}

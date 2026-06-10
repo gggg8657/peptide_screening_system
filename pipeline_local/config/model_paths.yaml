@@ -1,0 +1,92 @@
+# =============================================================================
+# model_paths.yaml — 로컬 모델 경로 및 실행 환경 설정
+# 각 모델의 conda 환경, 스크립트 경로, 모델 디렉토리, GPU 장치, 타임아웃을 정의
+# =============================================================================
+
+# 공통 기본값 (각 모델에서 오버라이드 가능)
+defaults:
+  gpu_device: 0          # CUDA remapping 후 첫 번째 가시 GPU (cuda:0)
+  timeout: 300           # 서브프로세스 타임아웃 (초)
+
+models:
+
+  # ---------------------------------------------------------------------------
+  # RFdiffusion — 단백질 골격 확산 생성 모델
+  # ---------------------------------------------------------------------------
+  rfdiffusion:
+    conda_env: rfdiffusion
+    script: null          # 호출 시 명시적으로 전달 (run_inference.py 등)
+    model_dir: /home/dongjukim/Documents/workspace/repos/SST14-M_scr/local_models/RFdiffusion
+    gpu_device: 0
+    timeout: 600          # 구조 생성은 시간이 오래 걸림
+
+  # ---------------------------------------------------------------------------
+  # ESMFold — 단일 서열 구조 예측 모델
+  # ---------------------------------------------------------------------------
+  esmfold:
+    conda_env: esmfold
+    script: null
+    model_dir: null       # Hugging Face 캐시에서 자동 로드
+    gpu_device: 0
+    timeout: 300
+
+  # ---------------------------------------------------------------------------
+  # ProteinMPNN / LigandMPNN — 역설계 시퀀스 디자인
+  # esmfold 환경에 LigandMPNN이 함께 설치되어 있음
+  # ---------------------------------------------------------------------------
+  proteinmpnn:
+    conda_env: proteinmpnn  # 전용 env (LigandMPNN + torch 2.2 + Python 3.11)
+    script: null
+    model_dir: null
+    gpu_device: 0
+    timeout: 300
+
+  # ---------------------------------------------------------------------------
+  # Boltz — 단백질-리간드 도킹 / 구조 예측
+  # ---------------------------------------------------------------------------
+  boltz:
+    conda_env: boltz
+    script: null
+    model_dir: null
+    gpu_device: 0
+    timeout: 600
+
+  # ---------------------------------------------------------------------------
+  # OpenFold3 — AlphaFold3 오픈소스 구현
+  # ---------------------------------------------------------------------------
+  openfold3:
+    conda_env: openfold3
+    script: null
+    model_dir: null
+    gpu_device: 0
+    timeout: 900          # 대형 복합체 예측은 시간이 더 소요됨
+
+  # ---------------------------------------------------------------------------
+  # DiffPepBuilder — 펩타이드 구조 확산 생성 모델
+  # ---------------------------------------------------------------------------
+  diffpepbuilder:
+    conda_env: diffpepbuilder
+    script: null
+    model_dir: /home/dongjukim/Documents/workspace/repos/SST14-M_scr/local_models/DiffPepBuilder
+    gpu_device: 0
+    timeout: 600
+
+  # ---------------------------------------------------------------------------
+  # ESM-2 — 단백질 언어 모델 (임베딩, 변이 효과 예측 등)
+  # ---------------------------------------------------------------------------
+  esm2:
+    conda_env: esmfold
+    script: null
+    model_dir: null       # Hugging Face 캐시에서 자동 로드
+    gpu_device: 0
+    timeout: 300
+
+  # ---------------------------------------------------------------------------
+  # GenMol — 분자 생성 모델
+  # ---------------------------------------------------------------------------
+  genmol:
+    conda_env: genmol
+    script: null
+    model_dir: /home/dongjukim/Documents/workspace/repos/SST14-M_scr/local_models/genmol-repo
+    gpu_device: 0
+    timeout: 300

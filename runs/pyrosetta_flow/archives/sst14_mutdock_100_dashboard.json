@@ -1,0 +1,5263 @@
+{
+  "run_id": "sst14_mutdock_100",
+  "started_at": "2026-04-02T11:06:24.693217+00:00",
+  "updated_at": "2026-04-02T12:14:49.557286+00:00",
+  "iteration": 1,
+  "total_iterations": 1,
+  "llm_model": "OllamaProvider(model='Qwen/Qwen3.5-27B')",
+  "target": "SSTR2",
+  "reference": "DOTATATE (AGCKNFFWKTFTSC, 14-aa)",
+  "steps": [
+    {
+      "id": "step01",
+      "label": "OpenFold3",
+      "shortLabel": "Step01",
+      "status": "pending"
+    },
+    {
+      "id": "step02",
+      "label": "RFdiffusion",
+      "shortLabel": "Step02",
+      "status": "pending"
+    },
+    {
+      "id": "step03",
+      "label": "ProteinMPNN",
+      "shortLabel": "Step03",
+      "status": "pending"
+    },
+    {
+      "id": "step03b",
+      "label": "BLOSUM Mutation",
+      "shortLabel": "Step03b",
+      "status": "pending"
+    },
+    {
+      "id": "step03b_qc",
+      "label": "Stability Pre-screen",
+      "shortLabel": "Step03b-QC",
+      "status": "pending"
+    },
+    {
+      "id": "step04",
+      "label": "ESMFold QC",
+      "shortLabel": "Step04",
+      "status": "pending"
+    },
+    {
+      "id": "step05",
+      "label": "DiffDock",
+      "shortLabel": "Step05",
+      "status": "pending"
+    },
+    {
+      "id": "step06",
+      "label": "PyRosetta",
+      "shortLabel": "Step06",
+      "status": "completed",
+      "duration": "55.0m"
+    },
+    {
+      "id": "step05b",
+      "label": "Selectivity",
+      "shortLabel": "Step05b",
+      "status": "pending"
+    },
+    {
+      "id": "step07",
+      "label": "Analysis",
+      "shortLabel": "Step07",
+      "status": "pending"
+    },
+    {
+      "id": "step08",
+      "label": "Stability",
+      "shortLabel": "Step08",
+      "status": "pending"
+    },
+    {
+      "id": "step09",
+      "label": "MolMIM",
+      "shortLabel": "Step09",
+      "status": "pending"
+    }
+  ],
+  "agents": [
+    {
+      "id": "planner",
+      "name": "Planner",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "초기 탐색: mutate -> dock -> QC -> critic -> reporter 경로로 PyRosetta 기반 기준선(baseline)",
+      "taskCount": 1,
+      "last_active_ts": "2026-04-02T11:11:16.325986+00:00",
+      "is_runtime_active": true,
+      "report": {
+        "type": "plan",
+        "iteration": 1,
+        "run_id": "sst14_mutdock_100",
+        "hypothesis": "초기 탐색: mutate -> dock -> QC -> critic -> reporter 경로로 PyRosetta 기반 기준선(baseline)을 확립한다.",
+        "strategy": "ddg_only"
+      }
+    },
+    {
+      "id": "qc-ranker",
+      "name": "QC & Ranker",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "Ranking done",
+      "taskCount": 1,
+      "last_active_ts": "2026-04-02T12:05:43.251506+00:00",
+      "is_runtime_active": true
+    },
+    {
+      "id": "diversity-mgr",
+      "name": "DiversityMgr",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "",
+      "taskCount": 0,
+      "last_active_ts": null,
+      "is_runtime_active": false
+    },
+    {
+      "id": "critic",
+      "name": "Critic",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+      "taskCount": 1,
+      "last_active_ts": "2026-04-02T12:05:43.284862+00:00",
+      "is_runtime_active": true,
+      "report": {
+        "type": "critic",
+        "iteration": 1,
+        "hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+        "proposed_changes": []
+      }
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Reports saved",
+      "taskCount": 1,
+      "last_active_ts": "2026-04-02T12:05:43.316576+00:00",
+      "is_runtime_active": true,
+      "report": {
+        "type": "reporter",
+        "iteration": 1,
+        "summary": "/home/dongjukim/Documents/workspace/repos/SST14-M_scr/runs_local/dual_final_03/local_20260402_1055_iter01/silo_b/sst14_agentic_mutdock/iter_01/08_reports/summary.md"
+      }
+    }
+  ],
+  "rosetta_substeps": [
+    {
+      "id": "step06_prepare",
+      "label": "Prepare",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_mutate",
+      "label": "Mutate",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_refine",
+      "label": "Refine",
+      "status": "completed",
+      "duration": "54.4m"
+    },
+    {
+      "id": "step06_score",
+      "label": "Score",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_qc",
+      "label": "QC Gate",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_critic",
+      "label": "Critic",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_reporter",
+      "label": "Reporter",
+      "status": "completed",
+      "duration": "35s"
+    }
+  ],
+  "timeline": [
+    {
+      "iteration": 0,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Preparing baseline (3 trials, best-of)",
+      "ts": "2026-04-02T11:06:24.694164+00:00"
+    },
+    {
+      "iteration": 0,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Baseline ready (best of 3: ddG=-48.4)",
+      "ts": "2026-04-02T11:11:16.317669+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-04-02T11:11:16.324751+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "planner",
+      "status": "completed",
+      "message": "초기 탐색: mutate -> dock -> QC -> critic -> reporter 경로로 PyRosetta 기반 기준선(baseline)을 확립한다.",
+      "ts": "2026-04-02T11:11:16.332249+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-04-02T11:11:16.333535+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-04-02T11:11:16.334298+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-04-02T11:11:16.335331+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-04-02T11:11:16.339899+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (128 candidates, 4 parallel workers)",
+      "ts": "2026-04-02T11:11:16.340736+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand001",
+      "status": "running",
+      "message": "iter01_cand001: KGCKNFFWKTETSC",
+      "ts": "2026-04-02T11:11:16.341118+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "running",
+      "message": "iter01_cand002: AGCKAAFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.341522+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "running",
+      "message": "iter01_cand003: AGCKNFFWKTQTSC",
+      "ts": "2026-04-02T11:11:16.342002+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand004",
+      "status": "running",
+      "message": "iter01_cand004: SGCKNFFWKTFNSC",
+      "ts": "2026-04-02T11:11:16.342447+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "running",
+      "message": "iter01_cand005: AGCKNFFWKTYTSC",
+      "ts": "2026-04-02T11:11:16.342826+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "running",
+      "message": "iter01_cand006: AGCRGFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.343214+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand007",
+      "status": "running",
+      "message": "iter01_cand007: PQCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.343615+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand008",
+      "status": "running",
+      "message": "iter01_cand008: AGCKNFFWKTHTSC",
+      "ts": "2026-04-02T11:11:16.344011+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand009",
+      "status": "running",
+      "message": "iter01_cand009: VGCKNFFWKTFLSC",
+      "ts": "2026-04-02T11:11:16.344452+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand010",
+      "status": "running",
+      "message": "iter01_cand010: FGCKNFFWKTFTSS",
+      "ts": "2026-04-02T11:11:16.344860+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand011",
+      "status": "running",
+      "message": "iter01_cand011: ARCKNFFWKTFYSC",
+      "ts": "2026-04-02T11:11:16.345281+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand012",
+      "status": "running",
+      "message": "iter01_cand012: AGCENFFWKTFNSC",
+      "ts": "2026-04-02T11:11:16.345690+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand013",
+      "status": "running",
+      "message": "iter01_cand013: AVCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.346114+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand014",
+      "status": "running",
+      "message": "iter01_cand014: AGCKWFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.346547+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand015",
+      "status": "running",
+      "message": "iter01_cand015: HGCKNFFWKTDTSR",
+      "ts": "2026-04-02T11:11:16.346972+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand016",
+      "status": "running",
+      "message": "iter01_cand016: AGCKNFFWKTFTSH",
+      "ts": "2026-04-02T11:11:16.347411+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand017",
+      "status": "running",
+      "message": "iter01_cand017: AGCKPMFWKTFTSK",
+      "ts": "2026-04-02T11:11:16.347848+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand018",
+      "status": "running",
+      "message": "iter01_cand018: AVCKNRFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.348349+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand019",
+      "status": "running",
+      "message": "iter01_cand019: HGCMNFFWKTFTSM",
+      "ts": "2026-04-02T11:11:16.348790+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand020",
+      "status": "running",
+      "message": "iter01_cand020: AHCKVFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.349261+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand021",
+      "status": "running",
+      "message": "iter01_cand021: AGCSKFFWKTFTSA",
+      "ts": "2026-04-02T11:11:16.350511+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand022",
+      "status": "running",
+      "message": "iter01_cand022: AGCKHFFWKTFMSC",
+      "ts": "2026-04-02T11:11:16.352138+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand023",
+      "status": "running",
+      "message": "iter01_cand023: AGCKRFFWKTKTSY",
+      "ts": "2026-04-02T11:11:16.352968+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand024",
+      "status": "running",
+      "message": "iter01_cand024: AGCNNFFWKTFKSC",
+      "ts": "2026-04-02T11:11:16.353487+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand025",
+      "status": "running",
+      "message": "iter01_cand025: AGCKKFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.354119+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand026",
+      "status": "running",
+      "message": "iter01_cand026: AGCKNFFWKTVTSC",
+      "ts": "2026-04-02T11:11:16.354628+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand027",
+      "status": "running",
+      "message": "iter01_cand027: AGCKNFFWKTFLSD",
+      "ts": "2026-04-02T11:11:16.355127+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand028",
+      "status": "running",
+      "message": "iter01_cand028: AGCKNHFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.355635+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand029",
+      "status": "running",
+      "message": "iter01_cand029: AGCKWFFWKTFKSC",
+      "ts": "2026-04-02T11:11:16.356148+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand030",
+      "status": "running",
+      "message": "iter01_cand030: AGCKNHFWKTFYSM",
+      "ts": "2026-04-02T11:11:16.356667+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand031",
+      "status": "running",
+      "message": "iter01_cand031: TGCKYFFWKTFTSK",
+      "ts": "2026-04-02T11:11:16.357211+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand032",
+      "status": "running",
+      "message": "iter01_cand032: YGCYNFFWKTFTSE",
+      "ts": "2026-04-02T11:11:16.357764+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand033",
+      "status": "running",
+      "message": "iter01_cand033: AGCKHFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.358313+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand034",
+      "status": "running",
+      "message": "iter01_cand034: AQCVNFFWKTFTSE",
+      "ts": "2026-04-02T11:11:16.358853+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand035",
+      "status": "running",
+      "message": "iter01_cand035: AGCKNYFWKTHDSC",
+      "ts": "2026-04-02T11:11:16.359403+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand036",
+      "status": "running",
+      "message": "iter01_cand036: AGCKNRFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.359939+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand037",
+      "status": "running",
+      "message": "iter01_cand037: AACMNFFWKTFTSN",
+      "ts": "2026-04-02T11:11:16.360497+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand038",
+      "status": "running",
+      "message": "iter01_cand038: AGCKNRFWKTYTSC",
+      "ts": "2026-04-02T11:11:16.361046+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand039",
+      "status": "running",
+      "message": "iter01_cand039: AGCKNFFWKTRTSC",
+      "ts": "2026-04-02T11:11:16.361616+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand040",
+      "status": "running",
+      "message": "iter01_cand040: AGCDLFFWKTFTSM",
+      "ts": "2026-04-02T11:11:16.362178+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand041",
+      "status": "running",
+      "message": "iter01_cand041: DWCKNFFWKTFTSR",
+      "ts": "2026-04-02T11:11:16.362802+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand042",
+      "status": "running",
+      "message": "iter01_cand042: AGCKNWFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.363378+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand043",
+      "status": "running",
+      "message": "iter01_cand043: ASCKEFFWKTFKSC",
+      "ts": "2026-04-02T11:11:16.363961+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand044",
+      "status": "running",
+      "message": "iter01_cand044: AGCDNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.364566+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand045",
+      "status": "running",
+      "message": "iter01_cand045: WGCKNWFWKTFTSN",
+      "ts": "2026-04-02T11:11:16.365168+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand046",
+      "status": "running",
+      "message": "iter01_cand046: AGCMEFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.365815+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand047",
+      "status": "running",
+      "message": "iter01_cand047: AGCKNFFWKTFKSC",
+      "ts": "2026-04-02T11:11:16.366444+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand048",
+      "status": "running",
+      "message": "iter01_cand048: AGCKLFFWKTFTSM",
+      "ts": "2026-04-02T11:11:16.367157+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand049",
+      "status": "running",
+      "message": "iter01_cand049: AGCKNIFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.367786+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand050",
+      "status": "running",
+      "message": "iter01_cand050: AGCFNFFWKTFPSC",
+      "ts": "2026-04-02T11:11:16.368417+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand051",
+      "status": "running",
+      "message": "iter01_cand051: EGCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.369049+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand052",
+      "status": "running",
+      "message": "iter01_cand052: YLCKDFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.369683+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand053",
+      "status": "running",
+      "message": "iter01_cand053: AFCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.370321+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand054",
+      "status": "running",
+      "message": "iter01_cand054: ARCKNFFWKTFSSC",
+      "ts": "2026-04-02T11:11:16.370974+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand055",
+      "status": "running",
+      "message": "iter01_cand055: AGCKNFFWKTINSC",
+      "ts": "2026-04-02T11:11:16.371640+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand056",
+      "status": "running",
+      "message": "iter01_cand056: NNCKNFFWKTRTSC",
+      "ts": "2026-04-02T11:11:16.372313+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand057",
+      "status": "running",
+      "message": "iter01_cand057: AGCKNFFWKTFHSC",
+      "ts": "2026-04-02T11:11:16.372969+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand058",
+      "status": "running",
+      "message": "iter01_cand058: AGCKFKFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.373645+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand059",
+      "status": "running",
+      "message": "iter01_cand059: LGCSNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.374352+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand060",
+      "status": "running",
+      "message": "iter01_cand060: NGCKNFFWKTFTSS",
+      "ts": "2026-04-02T11:11:16.375036+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand061",
+      "status": "running",
+      "message": "iter01_cand061: AGCKNFFWKTGQSC",
+      "ts": "2026-04-02T11:11:16.375740+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand062",
+      "status": "running",
+      "message": "iter01_cand062: AGCEYFFWKTFHSC",
+      "ts": "2026-04-02T11:11:16.376440+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand063",
+      "status": "running",
+      "message": "iter01_cand063: AGCINFFWKTKTSS",
+      "ts": "2026-04-02T11:11:16.377122+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand064",
+      "status": "running",
+      "message": "iter01_cand064: AGCPNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.377859+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand065",
+      "status": "running",
+      "message": "iter01_cand065: AGCKDFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.378611+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand066",
+      "status": "running",
+      "message": "iter01_cand066: AKCFNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.379321+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand067",
+      "status": "running",
+      "message": "iter01_cand067: AGCKNFFWKTFVSC",
+      "ts": "2026-04-02T11:11:16.380040+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand068",
+      "status": "running",
+      "message": "iter01_cand068: AQCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.380778+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand069",
+      "status": "running",
+      "message": "iter01_cand069: FGCKNQFWKTPTSC",
+      "ts": "2026-04-02T11:11:16.381507+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand070",
+      "status": "running",
+      "message": "iter01_cand070: AGCKNFFWKTFNSR",
+      "ts": "2026-04-02T11:11:16.382292+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand071",
+      "status": "running",
+      "message": "iter01_cand071: AGCKNFFWKTFGSC",
+      "ts": "2026-04-02T11:11:16.383150+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand072",
+      "status": "running",
+      "message": "iter01_cand072: AICKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.383916+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand073",
+      "status": "running",
+      "message": "iter01_cand073: HRCKNFFWKTKTSC",
+      "ts": "2026-04-02T11:11:16.384696+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand074",
+      "status": "running",
+      "message": "iter01_cand074: SFCKNFFWKTYTSC",
+      "ts": "2026-04-02T11:11:16.385467+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand075",
+      "status": "running",
+      "message": "iter01_cand075: AGCKNFFWKTGTSC",
+      "ts": "2026-04-02T11:11:16.386247+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand076",
+      "status": "running",
+      "message": "iter01_cand076: AGCKNFFWKTFTSI",
+      "ts": "2026-04-02T11:11:16.387019+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand077",
+      "status": "running",
+      "message": "iter01_cand077: KMCHNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.387790+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand078",
+      "status": "running",
+      "message": "iter01_cand078: APCKNFFWKTFPSC",
+      "ts": "2026-04-02T11:11:16.388610+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand079",
+      "status": "running",
+      "message": "iter01_cand079: AGCKNYFWKTDTSC",
+      "ts": "2026-04-02T11:11:16.389411+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand080",
+      "status": "running",
+      "message": "iter01_cand080: AGCKNKFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.390224+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand081",
+      "status": "running",
+      "message": "iter01_cand081: EECKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.391021+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand082",
+      "status": "running",
+      "message": "iter01_cand082: ASCKNFFWKTFSSC",
+      "ts": "2026-04-02T11:11:16.391827+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand083",
+      "status": "running",
+      "message": "iter01_cand083: AGCKNFFWKTDTSC",
+      "ts": "2026-04-02T11:11:16.392650+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand084",
+      "status": "running",
+      "message": "iter01_cand084: SVCKNDFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.393468+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand085",
+      "status": "running",
+      "message": "iter01_cand085: AGCWNTFWKTFTST",
+      "ts": "2026-04-02T11:11:16.394337+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand086",
+      "status": "running",
+      "message": "iter01_cand086: AACKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.395175+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand087",
+      "status": "running",
+      "message": "iter01_cand087: AGCENFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.396053+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand088",
+      "status": "running",
+      "message": "iter01_cand088: AGCYNFFWKTRNSC",
+      "ts": "2026-04-02T11:11:16.396915+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand089",
+      "status": "running",
+      "message": "iter01_cand089: DGCKNGFWKTATSC",
+      "ts": "2026-04-02T11:11:16.397774+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand090",
+      "status": "running",
+      "message": "iter01_cand090: AQCKYDFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.398628+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand091",
+      "status": "running",
+      "message": "iter01_cand091: AGCVNFFWKTFTSH",
+      "ts": "2026-04-02T11:11:16.399519+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand092",
+      "status": "running",
+      "message": "iter01_cand092: DGCINFFWKTFTST",
+      "ts": "2026-04-02T11:11:16.400370+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand093",
+      "status": "running",
+      "message": "iter01_cand093: ATCDAFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.401224+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand094",
+      "status": "running",
+      "message": "iter01_cand094: DTCINFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.402262+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand095",
+      "status": "running",
+      "message": "iter01_cand095: AGCKNFFWKTEISC",
+      "ts": "2026-04-02T11:11:16.403146+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand096",
+      "status": "running",
+      "message": "iter01_cand096: AGCYNFFWKTFTSY",
+      "ts": "2026-04-02T11:11:16.404020+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand097",
+      "status": "running",
+      "message": "iter01_cand097: AGCANSFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.404908+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand098",
+      "status": "running",
+      "message": "iter01_cand098: AGCKNFFWKTFTSS",
+      "ts": "2026-04-02T11:11:16.405813+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand099",
+      "status": "running",
+      "message": "iter01_cand099: AGCKNFFWKTFYSC",
+      "ts": "2026-04-02T11:11:16.406710+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand100",
+      "status": "running",
+      "message": "iter01_cand100: RGCTNFFWKTFWSC",
+      "ts": "2026-04-02T11:11:16.407616+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand101",
+      "status": "running",
+      "message": "iter01_cand101: ARCKPFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.408541+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand102",
+      "status": "running",
+      "message": "iter01_cand102: WFCKLFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.409463+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand103",
+      "status": "running",
+      "message": "iter01_cand103: AGCMNIFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.410453+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand104",
+      "status": "running",
+      "message": "iter01_cand104: APCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.411406+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand105",
+      "status": "running",
+      "message": "iter01_cand105: AGCWNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.412346+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand106",
+      "status": "running",
+      "message": "iter01_cand106: LPCKNFFWKTETSC",
+      "ts": "2026-04-02T11:11:16.413272+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand107",
+      "status": "running",
+      "message": "iter01_cand107: AGCKNGFWKTFKSC",
+      "ts": "2026-04-02T11:11:16.414215+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand108",
+      "status": "running",
+      "message": "iter01_cand108: IKCINFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.415169+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand109",
+      "status": "running",
+      "message": "iter01_cand109: AGCKTFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.416138+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand110",
+      "status": "running",
+      "message": "iter01_cand110: FGCKNQFWKTFTST",
+      "ts": "2026-04-02T11:11:16.417109+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand111",
+      "status": "running",
+      "message": "iter01_cand111: IGCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.418092+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand112",
+      "status": "running",
+      "message": "iter01_cand112: AHCKNFFWKTASSC",
+      "ts": "2026-04-02T11:11:16.419077+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand113",
+      "status": "running",
+      "message": "iter01_cand113: AWCKLFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.420035+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand114",
+      "status": "running",
+      "message": "iter01_cand114: AGCKNFFWKTFTSK",
+      "ts": "2026-04-02T11:11:16.421012+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand115",
+      "status": "running",
+      "message": "iter01_cand115: QGCSNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.422019+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand116",
+      "status": "running",
+      "message": "iter01_cand116: KGCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.423033+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand117",
+      "status": "running",
+      "message": "iter01_cand117: AGCHNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.424141+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand118",
+      "status": "running",
+      "message": "iter01_cand118: AGCKWFFWKTFFSC",
+      "ts": "2026-04-02T11:11:16.425171+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand119",
+      "status": "running",
+      "message": "iter01_cand119: AECKNFFWKTFQSG",
+      "ts": "2026-04-02T11:11:16.426212+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand120",
+      "status": "running",
+      "message": "iter01_cand120: ANCINLFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.427243+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand121",
+      "status": "running",
+      "message": "iter01_cand121: AGCTNFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.428270+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand122",
+      "status": "running",
+      "message": "iter01_cand122: AGCKEFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.429293+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand123",
+      "status": "running",
+      "message": "iter01_cand123: AGCKNFFWKTHASW",
+      "ts": "2026-04-02T11:11:16.430321+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand124",
+      "status": "running",
+      "message": "iter01_cand124: YGCKQFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.431369+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand125",
+      "status": "running",
+      "message": "iter01_cand125: AGCKQFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.432428+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand126",
+      "status": "running",
+      "message": "iter01_cand126: GGCKLFFWKTFTSC",
+      "ts": "2026-04-02T11:11:16.433458+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand127",
+      "status": "running",
+      "message": "iter01_cand127: AGCTNYFWKTFTSP",
+      "ts": "2026-04-02T11:11:16.434531+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand128",
+      "status": "running",
+      "message": "iter01_cand128: AGCKNKFWKTFDSC",
+      "ts": "2026-04-02T11:11:16.435604+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "completed",
+      "message": "iter01_cand002: ddG=-39.94 seq=AGCKAAFWKTFTSC",
+      "ts": "2026-04-02T11:12:47.207649+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand001",
+      "status": "completed",
+      "message": "iter01_cand001: ddG=-34.12 seq=KGCKNFFWKTETSC",
+      "ts": "2026-04-02T11:12:52.539149+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "completed",
+      "message": "iter01_cand003: ddG=-19.21 seq=AGCKNFFWKTQTSC",
+      "ts": "2026-04-02T11:12:52.644452+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand004",
+      "status": "completed",
+      "message": "iter01_cand004: ddG=-41.00 seq=SGCKNFFWKTFNSC",
+      "ts": "2026-04-02T11:13:06.159022+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "completed",
+      "message": "iter01_cand005: ddG=-36.15 seq=AGCKNFFWKTYTSC",
+      "ts": "2026-04-02T11:14:21.885107+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand007",
+      "status": "completed",
+      "message": "iter01_cand007: ddG=-0.32 seq=PQCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:14:31.397472+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "completed",
+      "message": "iter01_cand006: ddG=-21.64 seq=AGCRGFFWKTFTSC",
+      "ts": "2026-04-02T11:14:36.293846+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand008",
+      "status": "completed",
+      "message": "iter01_cand008: ddG=-40.81 seq=AGCKNFFWKTHTSC",
+      "ts": "2026-04-02T11:14:55.126500+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand009",
+      "status": "completed",
+      "message": "iter01_cand009: ddG=-13.40 seq=VGCKNFFWKTFLSC",
+      "ts": "2026-04-02T11:16:02.988372+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand010",
+      "status": "completed",
+      "message": "iter01_cand010: ddG=-45.41 seq=FGCKNFFWKTFTSS",
+      "ts": "2026-04-02T11:16:06.841552+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand011",
+      "status": "completed",
+      "message": "iter01_cand011: ddG=-37.10 seq=ARCKNFFWKTFYSC",
+      "ts": "2026-04-02T11:16:16.194665+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand012",
+      "status": "completed",
+      "message": "iter01_cand012: ddG=-35.21 seq=AGCENFFWKTFNSC",
+      "ts": "2026-04-02T11:16:29.966011+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand013",
+      "status": "completed",
+      "message": "iter01_cand013: ddG=-30.26 seq=AVCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:17:37.632232+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand014",
+      "status": "completed",
+      "message": "iter01_cand014: ddG=-38.60 seq=AGCKWFFWKTFTSC",
+      "ts": "2026-04-02T11:17:37.929937+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand015",
+      "status": "completed",
+      "message": "iter01_cand015: ddG=10.65 seq=HGCKNFFWKTDTSR",
+      "ts": "2026-04-02T11:17:49.074160+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand016",
+      "status": "completed",
+      "message": "iter01_cand016: ddG=-40.84 seq=AGCKNFFWKTFTSH",
+      "ts": "2026-04-02T11:18:24.191017+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand017",
+      "status": "completed",
+      "message": "iter01_cand017: ddG=-32.79 seq=AGCKPMFWKTFTSK",
+      "ts": "2026-04-02T11:19:03.790045+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand018",
+      "status": "completed",
+      "message": "iter01_cand018: ddG=-34.52 seq=AVCKNRFWKTFTSC",
+      "ts": "2026-04-02T11:19:27.181295+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand019",
+      "status": "completed",
+      "message": "iter01_cand019: ddG=-18.19 seq=HGCMNFFWKTFTSM",
+      "ts": "2026-04-02T11:19:40.120540+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand020",
+      "status": "completed",
+      "message": "iter01_cand020: ddG=-31.84 seq=AHCKVFFWKTFTSC",
+      "ts": "2026-04-02T11:20:06.451386+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand021",
+      "status": "completed",
+      "message": "iter01_cand021: ddG=-30.67 seq=AGCSKFFWKTFTSA",
+      "ts": "2026-04-02T11:20:52.284269+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand022",
+      "status": "completed",
+      "message": "iter01_cand022: ddG=19.51 seq=AGCKHFFWKTFMSC",
+      "ts": "2026-04-02T11:20:56.096356+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand023",
+      "status": "completed",
+      "message": "iter01_cand023: ddG=5.74 seq=AGCKRFFWKTKTSY",
+      "ts": "2026-04-02T11:21:28.777728+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand024",
+      "status": "completed",
+      "message": "iter01_cand024: ddG=-29.06 seq=AGCNNFFWKTFKSC",
+      "ts": "2026-04-02T11:21:51.409584+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand025",
+      "status": "completed",
+      "message": "iter01_cand025: ddG=-40.56 seq=AGCKKFFWKTFTSC",
+      "ts": "2026-04-02T11:22:30.046836+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand026",
+      "status": "completed",
+      "message": "iter01_cand026: ddG=-42.45 seq=AGCKNFFWKTVTSC",
+      "ts": "2026-04-02T11:22:32.076327+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand027",
+      "status": "completed",
+      "message": "iter01_cand027: ddG=-32.21 seq=AGCKNFFWKTFLSD",
+      "ts": "2026-04-02T11:23:21.303929+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand028",
+      "status": "completed",
+      "message": "iter01_cand028: ddG=-34.75 seq=AGCKNHFWKTFTSC",
+      "ts": "2026-04-02T11:23:29.188626+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand029",
+      "status": "completed",
+      "message": "iter01_cand029: ddG=-33.86 seq=AGCKWFFWKTFKSC",
+      "ts": "2026-04-02T11:24:11.332757+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand030",
+      "status": "completed",
+      "message": "iter01_cand030: ddG=-18.56 seq=AGCKNHFWKTFYSM",
+      "ts": "2026-04-02T11:24:29.816915+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand032",
+      "status": "completed",
+      "message": "iter01_cand032: ddG=-37.91 seq=YGCYNFFWKTFTSE",
+      "ts": "2026-04-02T11:24:59.950326+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand031",
+      "status": "completed",
+      "message": "iter01_cand031: ddG=-41.00 seq=TGCKYFFWKTFTSK",
+      "ts": "2026-04-02T11:25:16.508873+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand033",
+      "status": "completed",
+      "message": "iter01_cand033: ddG=426.64 seq=AGCKHFFWKTFTSC",
+      "ts": "2026-04-02T11:25:33.785822+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand034",
+      "status": "completed",
+      "message": "iter01_cand034: ddG=-46.33 seq=AQCVNFFWKTFTSE",
+      "ts": "2026-04-02T11:26:01.055770+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand035",
+      "status": "completed",
+      "message": "iter01_cand035: ddG=-35.71 seq=AGCKNYFWKTHDSC",
+      "ts": "2026-04-02T11:26:29.662136+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand036",
+      "status": "completed",
+      "message": "iter01_cand036: ddG=-22.99 seq=AGCKNRFWKTFTSC",
+      "ts": "2026-04-02T11:26:56.292885+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand037",
+      "status": "completed",
+      "message": "iter01_cand037: ddG=-28.52 seq=AACMNFFWKTFTSN",
+      "ts": "2026-04-02T11:27:07.106632+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand038",
+      "status": "completed",
+      "message": "iter01_cand038: ddG=-34.95 seq=AGCKNRFWKTYTSC",
+      "ts": "2026-04-02T11:27:38.361392+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand039",
+      "status": "completed",
+      "message": "iter01_cand039: ddG=-22.91 seq=AGCKNFFWKTRTSC",
+      "ts": "2026-04-02T11:28:17.395513+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand040",
+      "status": "completed",
+      "message": "iter01_cand040: ddG=-36.14 seq=AGCDLFFWKTFTSM",
+      "ts": "2026-04-02T11:28:24.760844+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand041",
+      "status": "completed",
+      "message": "iter01_cand041: ddG=-43.90 seq=DWCKNFFWKTFTSR",
+      "ts": "2026-04-02T11:28:56.953316+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand042",
+      "status": "completed",
+      "message": "iter01_cand042: ddG=-12.98 seq=AGCKNWFWKTFTSC",
+      "ts": "2026-04-02T11:29:21.021576+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand043",
+      "status": "completed",
+      "message": "iter01_cand043: ddG=-28.44 seq=ASCKEFFWKTFKSC",
+      "ts": "2026-04-02T11:29:49.214109+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand044",
+      "status": "completed",
+      "message": "iter01_cand044: ddG=-29.66 seq=AGCDNFFWKTFTSC",
+      "ts": "2026-04-02T11:30:03.474530+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand045",
+      "status": "completed",
+      "message": "iter01_cand045: ddG=-4.33 seq=WGCKNWFWKTFTSN",
+      "ts": "2026-04-02T11:30:36.986354+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand046",
+      "status": "completed",
+      "message": "iter01_cand046: ddG=-24.50 seq=AGCMEFFWKTFTSC",
+      "ts": "2026-04-02T11:30:54.537132+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand047",
+      "status": "completed",
+      "message": "iter01_cand047: ddG=-38.59 seq=AGCKNFFWKTFKSC",
+      "ts": "2026-04-02T11:31:34.637859+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand048",
+      "status": "completed",
+      "message": "iter01_cand048: ddG=-41.92 seq=AGCKLFFWKTFTSM",
+      "ts": "2026-04-02T11:31:45.599115+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand049",
+      "status": "completed",
+      "message": "iter01_cand049: ddG=-40.09 seq=AGCKNIFWKTFTSC",
+      "ts": "2026-04-02T11:32:16.554606+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand050",
+      "status": "completed",
+      "message": "iter01_cand050: ddG=-10.00 seq=AGCFNFFWKTFPSC",
+      "ts": "2026-04-02T11:32:24.362258+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand051",
+      "status": "completed",
+      "message": "iter01_cand051: ddG=-16.16 seq=EGCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:33:07.442667+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand052",
+      "status": "completed",
+      "message": "iter01_cand052: ddG=-29.41 seq=YLCKDFFWKTFTSC",
+      "ts": "2026-04-02T11:33:27.963090+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand053",
+      "status": "completed",
+      "message": "iter01_cand053: ddG=-37.08 seq=AFCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:33:57.123680+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand054",
+      "status": "completed",
+      "message": "iter01_cand054: ddG=-24.20 seq=ARCKNFFWKTFSSC",
+      "ts": "2026-04-02T11:34:10.121143+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand055",
+      "status": "completed",
+      "message": "iter01_cand055: ddG=-36.11 seq=AGCKNFFWKTINSC",
+      "ts": "2026-04-02T11:34:46.550869+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand056",
+      "status": "completed",
+      "message": "iter01_cand056: ddG=-30.70 seq=NNCKNFFWKTRTSC",
+      "ts": "2026-04-02T11:35:17.050011+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand057",
+      "status": "completed",
+      "message": "iter01_cand057: ddG=-29.21 seq=AGCKNFFWKTFHSC",
+      "ts": "2026-04-02T11:35:44.250395+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand058",
+      "status": "completed",
+      "message": "iter01_cand058: ddG=-37.18 seq=AGCKFKFWKTFTSC",
+      "ts": "2026-04-02T11:35:57.004699+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand059",
+      "status": "completed",
+      "message": "iter01_cand059: ddG=-25.87 seq=LGCSNFFWKTFTSC",
+      "ts": "2026-04-02T11:36:27.272250+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand060",
+      "status": "completed",
+      "message": "iter01_cand060: ddG=-40.23 seq=NGCKNFFWKTFTSS",
+      "ts": "2026-04-02T11:37:13.161387+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand061",
+      "status": "completed",
+      "message": "iter01_cand061: ddG=17.11 seq=AGCKNFFWKTGQSC",
+      "ts": "2026-04-02T11:37:20.901542+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand062",
+      "status": "completed",
+      "message": "iter01_cand062: ddG=-6.56 seq=AGCEYFFWKTFHSC",
+      "ts": "2026-04-02T11:37:25.951498+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand063",
+      "status": "completed",
+      "message": "iter01_cand063: ddG=-34.18 seq=AGCINFFWKTKTSS",
+      "ts": "2026-04-02T11:38:06.794951+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand066",
+      "status": "completed",
+      "message": "iter01_cand066: ddG=357.40 seq=AKCFNFFWKTFTSC",
+      "ts": "2026-04-02T11:38:54.031751+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand064",
+      "status": "completed",
+      "message": "iter01_cand064: ddG=-18.78 seq=AGCPNFFWKTFTSC",
+      "ts": "2026-04-02T11:38:54.878536+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand065",
+      "status": "completed",
+      "message": "iter01_cand065: ddG=-37.20 seq=AGCKDFFWKTFTSC",
+      "ts": "2026-04-02T11:39:05.343941+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand067",
+      "status": "completed",
+      "message": "iter01_cand067: ddG=-38.10 seq=AGCKNFFWKTFVSC",
+      "ts": "2026-04-02T11:39:53.497264+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand069",
+      "status": "completed",
+      "message": "iter01_cand069: ddG=-41.85 seq=FGCKNQFWKTPTSC",
+      "ts": "2026-04-02T11:40:29.220963+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand068",
+      "status": "completed",
+      "message": "iter01_cand068: ddG=-31.35 seq=AQCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:40:45.154046+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand070",
+      "status": "completed",
+      "message": "iter01_cand070: ddG=-27.99 seq=AGCKNFFWKTFNSR",
+      "ts": "2026-04-02T11:40:55.466427+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand071",
+      "status": "completed",
+      "message": "iter01_cand071: ddG=-35.26 seq=AGCKNFFWKTFGSC",
+      "ts": "2026-04-02T11:41:30.656953+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand072",
+      "status": "completed",
+      "message": "iter01_cand072: ddG=-44.11 seq=AICKNFFWKTFTSC",
+      "ts": "2026-04-02T11:42:06.516528+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand074",
+      "status": "completed",
+      "message": "iter01_cand074: ddG=-14.66 seq=SFCKNFFWKTYTSC",
+      "ts": "2026-04-02T11:42:43.477711+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand073",
+      "status": "completed",
+      "message": "iter01_cand073: ddG=-22.22 seq=HRCKNFFWKTKTSC",
+      "ts": "2026-04-02T11:42:48.560969+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand075",
+      "status": "completed",
+      "message": "iter01_cand075: ddG=13.05 seq=AGCKNFFWKTGTSC",
+      "ts": "2026-04-02T11:43:14.203415+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand076",
+      "status": "completed",
+      "message": "iter01_cand076: ddG=-14.67 seq=AGCKNFFWKTFTSI",
+      "ts": "2026-04-02T11:43:41.744902+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand077",
+      "status": "completed",
+      "message": "iter01_cand077: ddG=19.23 seq=KMCHNFFWKTFTSC",
+      "ts": "2026-04-02T11:44:16.717095+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand078",
+      "status": "completed",
+      "message": "iter01_cand078: ddG=-20.88 seq=APCKNFFWKTFPSC",
+      "ts": "2026-04-02T11:44:21.396384+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand079",
+      "status": "completed",
+      "message": "iter01_cand079: ddG=142.09 seq=AGCKNYFWKTDTSC",
+      "ts": "2026-04-02T11:44:59.404441+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand080",
+      "status": "completed",
+      "message": "iter01_cand080: ddG=-15.25 seq=AGCKNKFWKTFTSC",
+      "ts": "2026-04-02T11:45:14.682367+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand082",
+      "status": "completed",
+      "message": "iter01_cand082: ddG=-43.03 seq=ASCKNFFWKTFSSC",
+      "ts": "2026-04-02T11:45:57.108455+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand081",
+      "status": "completed",
+      "message": "iter01_cand081: ddG=-34.73 seq=EECKNFFWKTFTSC",
+      "ts": "2026-04-02T11:46:05.207760+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand083",
+      "status": "completed",
+      "message": "iter01_cand083: ddG=-42.76 seq=AGCKNFFWKTDTSC",
+      "ts": "2026-04-02T11:46:48.910894+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand084",
+      "status": "completed",
+      "message": "iter01_cand084: ddG=-27.27 seq=SVCKNDFWKTFTSC",
+      "ts": "2026-04-02T11:46:54.783425+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand085",
+      "status": "completed",
+      "message": "iter01_cand085: ddG=-29.69 seq=AGCWNTFWKTFTST",
+      "ts": "2026-04-02T11:47:36.981906+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand086",
+      "status": "completed",
+      "message": "iter01_cand086: ddG=-18.80 seq=AACKNFFWKTFTSC",
+      "ts": "2026-04-02T11:47:40.607372+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand087",
+      "status": "completed",
+      "message": "iter01_cand087: ddG=-39.17 seq=AGCENFFWKTFTSC",
+      "ts": "2026-04-02T11:48:22.236761+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand088",
+      "status": "completed",
+      "message": "iter01_cand088: ddG=-24.70 seq=AGCYNFFWKTRNSC",
+      "ts": "2026-04-02T11:48:52.266138+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand090",
+      "status": "completed",
+      "message": "iter01_cand090: ddG=-34.52 seq=AQCKYDFWKTFTSC",
+      "ts": "2026-04-02T11:49:09.403025+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand089",
+      "status": "completed",
+      "message": "iter01_cand089: ddG=-27.52 seq=DGCKNGFWKTATSC",
+      "ts": "2026-04-02T11:49:13.579882+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand091",
+      "status": "completed",
+      "message": "iter01_cand091: ddG=-12.43 seq=AGCVNFFWKTFTSH",
+      "ts": "2026-04-02T11:50:05.346507+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand092",
+      "status": "completed",
+      "message": "iter01_cand092: ddG=-32.49 seq=DGCINFFWKTFTST",
+      "ts": "2026-04-02T11:50:42.552531+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand094",
+      "status": "completed",
+      "message": "iter01_cand094: ddG=114.39 seq=DTCINFFWKTFTSC",
+      "ts": "2026-04-02T11:50:43.063983+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand093",
+      "status": "completed",
+      "message": "iter01_cand093: ddG=-40.83 seq=ATCDAFFWKTFTSC",
+      "ts": "2026-04-02T11:50:53.072586+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand095",
+      "status": "completed",
+      "message": "iter01_cand095: ddG=-18.04 seq=AGCKNFFWKTEISC",
+      "ts": "2026-04-02T11:51:44.269727+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand097",
+      "status": "completed",
+      "message": "iter01_cand097: ddG=-7.28 seq=AGCANSFWKTFTSC",
+      "ts": "2026-04-02T11:52:17.410532+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand096",
+      "status": "completed",
+      "message": "iter01_cand096: ddG=-17.74 seq=AGCYNFFWKTFTSY",
+      "ts": "2026-04-02T11:52:19.275054+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand098",
+      "status": "completed",
+      "message": "iter01_cand098: ddG=-19.61 seq=AGCKNFFWKTFTSS",
+      "ts": "2026-04-02T11:52:33.619427+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand099",
+      "status": "completed",
+      "message": "iter01_cand099: ddG=263.85 seq=AGCKNFFWKTFYSC",
+      "ts": "2026-04-02T11:53:40.143661+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand101",
+      "status": "completed",
+      "message": "iter01_cand101: ddG=-44.44 seq=ARCKPFFWKTFTSC",
+      "ts": "2026-04-02T11:54:01.545590+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand100",
+      "status": "completed",
+      "message": "iter01_cand100: ddG=-16.14 seq=RGCTNFFWKTFWSC",
+      "ts": "2026-04-02T11:54:07.076891+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand102",
+      "status": "completed",
+      "message": "iter01_cand102: ddG=26.95 seq=WFCKLFFWKTFTSC",
+      "ts": "2026-04-02T11:54:20.694665+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand103",
+      "status": "completed",
+      "message": "iter01_cand103: ddG=-40.11 seq=AGCMNIFWKTFTSC",
+      "ts": "2026-04-02T11:55:14.884406+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand104",
+      "status": "completed",
+      "message": "iter01_cand104: ddG=-36.52 seq=APCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:55:40.524026+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand105",
+      "status": "completed",
+      "message": "iter01_cand105: ddG=-8.79 seq=AGCWNFFWKTFTSC",
+      "ts": "2026-04-02T11:55:44.708758+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand106",
+      "status": "completed",
+      "message": "iter01_cand106: ddG=-2.17 seq=LPCKNFFWKTETSC",
+      "ts": "2026-04-02T11:56:01.314966+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand107",
+      "status": "completed",
+      "message": "iter01_cand107: ddG=-6.83 seq=AGCKNGFWKTFKSC",
+      "ts": "2026-04-02T11:57:00.495808+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand108",
+      "status": "completed",
+      "message": "iter01_cand108: ddG=-48.14 seq=IKCINFFWKTFTSC",
+      "ts": "2026-04-02T11:57:23.984236+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand109",
+      "status": "completed",
+      "message": "iter01_cand109: ddG=-38.32 seq=AGCKTFFWKTFTSC",
+      "ts": "2026-04-02T11:57:31.903298+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand110",
+      "status": "completed",
+      "message": "iter01_cand110: ddG=-37.01 seq=FGCKNQFWKTFTST",
+      "ts": "2026-04-02T11:57:40.982748+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand111",
+      "status": "completed",
+      "message": "iter01_cand111: ddG=589.36 seq=IGCKNFFWKTFTSC",
+      "ts": "2026-04-02T11:58:45.040292+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand112",
+      "status": "completed",
+      "message": "iter01_cand112: ddG=-40.80 seq=AHCKNFFWKTASSC",
+      "ts": "2026-04-02T11:59:02.279036+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand113",
+      "status": "completed",
+      "message": "iter01_cand113: ddG=-31.19 seq=AWCKLFFWKTFTSC",
+      "ts": "2026-04-02T11:59:13.992699+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand114",
+      "status": "completed",
+      "message": "iter01_cand114: ddG=-34.51 seq=AGCKNFFWKTFTSK",
+      "ts": "2026-04-02T11:59:26.781632+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand115",
+      "status": "completed",
+      "message": "iter01_cand115: ddG=-40.44 seq=QGCSNFFWKTFTSC",
+      "ts": "2026-04-02T12:00:32.361921+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand116",
+      "status": "completed",
+      "message": "iter01_cand116: ddG=3.23 seq=KGCKNFFWKTFTSC",
+      "ts": "2026-04-02T12:00:44.204852+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand117",
+      "status": "completed",
+      "message": "iter01_cand117: ddG=-31.60 seq=AGCHNFFWKTFTSC",
+      "ts": "2026-04-02T12:00:53.325209+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand118",
+      "status": "completed",
+      "message": "iter01_cand118: ddG=-33.38 seq=AGCKWFFWKTFFSC",
+      "ts": "2026-04-02T12:01:12.115164+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand120",
+      "status": "completed",
+      "message": "iter01_cand120: ddG=-29.16 seq=ANCINLFWKTFTSC",
+      "ts": "2026-04-02T12:02:05.889094+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand119",
+      "status": "completed",
+      "message": "iter01_cand119: ddG=-40.00 seq=AECKNFFWKTFQSG",
+      "ts": "2026-04-02T12:02:11.603298+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand121",
+      "status": "completed",
+      "message": "iter01_cand121: ddG=-34.70 seq=AGCTNFFWKTFTSC",
+      "ts": "2026-04-02T12:02:35.240274+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand122",
+      "status": "completed",
+      "message": "iter01_cand122: ddG=-35.89 seq=AGCKEFFWKTFTSC",
+      "ts": "2026-04-02T12:02:47.494008+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand123",
+      "status": "completed",
+      "message": "iter01_cand123: ddG=-46.26 seq=AGCKNFFWKTHASW",
+      "ts": "2026-04-02T12:03:51.570842+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand124",
+      "status": "completed",
+      "message": "iter01_cand124: ddG=-10.76 seq=YGCKQFFWKTFTSC",
+      "ts": "2026-04-02T12:04:01.856010+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand126",
+      "status": "completed",
+      "message": "iter01_cand126: ddG=-15.50 seq=GGCKLFFWKTFTSC",
+      "ts": "2026-04-02T12:04:14.084928+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand125",
+      "status": "completed",
+      "message": "iter01_cand125: ddG=-46.30 seq=AGCKQFFWKTFTSC",
+      "ts": "2026-04-02T12:04:16.292777+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand127",
+      "status": "completed",
+      "message": "iter01_cand127: ddG=-44.86 seq=AGCTNYFWKTFTSP",
+      "ts": "2026-04-02T12:05:28.607357+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand128",
+      "status": "completed",
+      "message": "iter01_cand128: ddG=-39.12 seq=AGCKNKFWKTFDSC",
+      "ts": "2026-04-02T12:05:43.210102+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-04-02T12:05:43.227002+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-04-02T12:05:43.233846+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-04-02T12:05:43.241081+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-04-02T12:05:43.248102+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-04-02T12:05:43.262686+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-04-02T12:05:43.281424+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "critic",
+      "status": "completed",
+      "message": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+      "ts": "2026-04-02T12:05:43.304467+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-04-02T12:05:43.313100+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/dongjukim/Documents/workspace/repos/SST14-M_scr/runs_local/dual_final_03/local_20260402_1055_iter01/silo_b/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+      "ts": "2026-04-02T12:06:18.538760+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "validation",
+      "status": "running",
+      "message": "Running 3-trial validation for 5 candidates",
+      "ts": "2026-04-02T12:06:18.548888+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "validation",
+      "status": "completed",
+      "message": "Validation complete: 5 candidates validated",
+      "ts": "2026-04-02T12:14:48.019953+00:00"
+    }
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "id": "baseline_SST14",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": -48.438,
+      "totalScore": -475.442,
+      "clashScore": 0.0,
+      "finalScore": 48.438,
+      "result": "REF",
+      "failReason": ""
+    },
+    {
+      "rank": 2,
+      "id": "iter01_cand108",
+      "sequence": "IKCINFFWKTFTSC",
+      "ddG": -48.145,
+      "totalScore": -475.911,
+      "clashScore": 0.0,
+      "finalScore": 48.145,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_108.pdb"
+    },
+    {
+      "rank": 3,
+      "id": "iter01_cand034",
+      "sequence": "AQCVNFFWKTFTSE",
+      "ddG": -46.333,
+      "totalScore": -365.989,
+      "clashScore": 6.0,
+      "finalScore": 46.333,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_034.pdb"
+    },
+    {
+      "rank": 4,
+      "id": "iter01_cand125",
+      "sequence": "AGCKQFFWKTFTSC",
+      "ddG": -46.3,
+      "totalScore": -484.617,
+      "clashScore": 0.0,
+      "finalScore": 46.3,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_125.pdb"
+    },
+    {
+      "rank": 5,
+      "id": "iter01_cand123",
+      "sequence": "AGCKNFFWKTHASW",
+      "ddG": -46.255,
+      "totalScore": -439.136,
+      "clashScore": 2.0,
+      "finalScore": 46.255,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_123.pdb"
+    },
+    {
+      "rank": 6,
+      "id": "iter01_cand010",
+      "sequence": "FGCKNFFWKTFTSS",
+      "ddG": -45.413,
+      "totalScore": -474.473,
+      "clashScore": 0.0,
+      "finalScore": 45.413,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_010.pdb"
+    },
+    {
+      "rank": 7,
+      "id": "iter01_cand127",
+      "sequence": "AGCTNYFWKTFTSP",
+      "ddG": -44.86,
+      "totalScore": -473.983,
+      "clashScore": 0.0,
+      "finalScore": 44.86,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_127.pdb"
+    },
+    {
+      "rank": 8,
+      "id": "iter01_cand101",
+      "sequence": "ARCKPFFWKTFTSC",
+      "ddG": -44.437,
+      "totalScore": -466.138,
+      "clashScore": 0.0,
+      "finalScore": 44.437,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_101.pdb"
+    },
+    {
+      "rank": 9,
+      "id": "iter01_cand072",
+      "sequence": "AICKNFFWKTFTSC",
+      "ddG": -44.113,
+      "totalScore": -463.409,
+      "clashScore": 0.0,
+      "finalScore": 44.113,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_072.pdb"
+    },
+    {
+      "rank": 10,
+      "id": "iter01_cand041",
+      "sequence": "DWCKNFFWKTFTSR",
+      "ddG": -43.899,
+      "totalScore": -481.527,
+      "clashScore": 1.0,
+      "finalScore": 43.899,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_041.pdb"
+    },
+    {
+      "rank": 11,
+      "id": "iter01_cand082",
+      "sequence": "ASCKNFFWKTFSSC",
+      "ddG": -43.033,
+      "totalScore": -476.538,
+      "clashScore": 0.0,
+      "finalScore": 43.033,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_082.pdb"
+    },
+    {
+      "rank": 12,
+      "id": "iter01_cand083",
+      "sequence": "AGCKNFFWKTDTSC",
+      "ddG": -42.758,
+      "totalScore": -447.21,
+      "clashScore": 1.0,
+      "finalScore": 42.758,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_083.pdb"
+    },
+    {
+      "rank": 13,
+      "id": "iter01_cand026",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -42.451,
+      "totalScore": -178.687,
+      "clashScore": 5.0,
+      "finalScore": 42.451,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_026.pdb"
+    },
+    {
+      "rank": 14,
+      "id": "iter01_cand048",
+      "sequence": "AGCKLFFWKTFTSM",
+      "ddG": -41.921,
+      "totalScore": -477.372,
+      "clashScore": 0.0,
+      "finalScore": 41.921,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_048.pdb"
+    },
+    {
+      "rank": 15,
+      "id": "iter01_cand069",
+      "sequence": "FGCKNQFWKTPTSC",
+      "ddG": -41.846,
+      "totalScore": -445.214,
+      "clashScore": 1.0,
+      "finalScore": 41.846,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_069.pdb"
+    },
+    {
+      "rank": 16,
+      "id": "iter01_cand031",
+      "sequence": "TGCKYFFWKTFTSK",
+      "ddG": -41.004,
+      "totalScore": -446.739,
+      "clashScore": 1.0,
+      "finalScore": 41.004,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_031.pdb"
+    },
+    {
+      "rank": 17,
+      "id": "iter01_cand004",
+      "sequence": "SGCKNFFWKTFNSC",
+      "ddG": -40.997,
+      "totalScore": -491.331,
+      "clashScore": 0.0,
+      "finalScore": 40.997,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_004.pdb"
+    },
+    {
+      "rank": 18,
+      "id": "iter01_cand016",
+      "sequence": "AGCKNFFWKTFTSH",
+      "ddG": -40.842,
+      "totalScore": -480.813,
+      "clashScore": 0.0,
+      "finalScore": 40.842,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_016.pdb"
+    },
+    {
+      "rank": 19,
+      "id": "iter01_cand093",
+      "sequence": "ATCDAFFWKTFTSC",
+      "ddG": -40.828,
+      "totalScore": -475.11,
+      "clashScore": 0.0,
+      "finalScore": 40.828,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_093.pdb"
+    },
+    {
+      "rank": 20,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNFFWKTHTSC",
+      "ddG": -40.807,
+      "totalScore": -471.532,
+      "clashScore": 0.0,
+      "finalScore": 40.807,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_008.pdb"
+    },
+    {
+      "rank": 21,
+      "id": "iter01_cand112",
+      "sequence": "AHCKNFFWKTASSC",
+      "ddG": -40.798,
+      "totalScore": -468.349,
+      "clashScore": 0.0,
+      "finalScore": 40.798,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_112.pdb"
+    },
+    {
+      "rank": 22,
+      "id": "iter01_cand025",
+      "sequence": "AGCKKFFWKTFTSC",
+      "ddG": -40.564,
+      "totalScore": -475.965,
+      "clashScore": 0.0,
+      "finalScore": 40.564,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_025.pdb"
+    },
+    {
+      "rank": 23,
+      "id": "iter01_cand115",
+      "sequence": "QGCSNFFWKTFTSC",
+      "ddG": -40.445,
+      "totalScore": -470.754,
+      "clashScore": 0.0,
+      "finalScore": 40.445,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_115.pdb"
+    },
+    {
+      "rank": 24,
+      "id": "iter01_cand060",
+      "sequence": "NGCKNFFWKTFTSS",
+      "ddG": -40.235,
+      "totalScore": -443.999,
+      "clashScore": 2.0,
+      "finalScore": 40.235,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_060.pdb"
+    },
+    {
+      "rank": 25,
+      "id": "iter01_cand103",
+      "sequence": "AGCMNIFWKTFTSC",
+      "ddG": -40.114,
+      "totalScore": -448.516,
+      "clashScore": 2.0,
+      "finalScore": 40.114,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_103.pdb"
+    },
+    {
+      "rank": 26,
+      "id": "iter01_cand049",
+      "sequence": "AGCKNIFWKTFTSC",
+      "ddG": -40.087,
+      "totalScore": -471.983,
+      "clashScore": 0.0,
+      "finalScore": 40.087,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_049.pdb"
+    },
+    {
+      "rank": 27,
+      "id": "iter01_cand119",
+      "sequence": "AECKNFFWKTFQSG",
+      "ddG": -39.996,
+      "totalScore": -482.219,
+      "clashScore": 0.0,
+      "finalScore": 39.996,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_119.pdb"
+    },
+    {
+      "rank": 28,
+      "id": "iter01_cand002",
+      "sequence": "AGCKAAFWKTFTSC",
+      "ddG": -39.94,
+      "totalScore": -472.921,
+      "clashScore": 0.0,
+      "finalScore": 39.94,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_002.pdb"
+    },
+    {
+      "rank": 29,
+      "id": "iter01_cand087",
+      "sequence": "AGCENFFWKTFTSC",
+      "ddG": -39.17,
+      "totalScore": -471.934,
+      "clashScore": 0.0,
+      "finalScore": 39.17,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_087.pdb"
+    },
+    {
+      "rank": 30,
+      "id": "iter01_cand128",
+      "sequence": "AGCKNKFWKTFDSC",
+      "ddG": -39.116,
+      "totalScore": -467.289,
+      "clashScore": 0.0,
+      "finalScore": 39.116,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_128.pdb"
+    },
+    {
+      "rank": 31,
+      "id": "iter01_cand014",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddG": -38.595,
+      "totalScore": -386.348,
+      "clashScore": 3.0,
+      "finalScore": 38.595,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_014.pdb"
+    },
+    {
+      "rank": 32,
+      "id": "iter01_cand047",
+      "sequence": "AGCKNFFWKTFKSC",
+      "ddG": -38.59,
+      "totalScore": -474.45,
+      "clashScore": 0.0,
+      "finalScore": 38.59,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_047.pdb"
+    },
+    {
+      "rank": 33,
+      "id": "iter01_cand109",
+      "sequence": "AGCKTFFWKTFTSC",
+      "ddG": -38.318,
+      "totalScore": -462.489,
+      "clashScore": 0.0,
+      "finalScore": 38.318,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_109.pdb"
+    },
+    {
+      "rank": 34,
+      "id": "iter01_cand067",
+      "sequence": "AGCKNFFWKTFVSC",
+      "ddG": -38.101,
+      "totalScore": -459.693,
+      "clashScore": 2.0,
+      "finalScore": 38.101,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_067.pdb"
+    },
+    {
+      "rank": 35,
+      "id": "iter01_cand032",
+      "sequence": "YGCYNFFWKTFTSE",
+      "ddG": -37.907,
+      "totalScore": -466.825,
+      "clashScore": 0.0,
+      "finalScore": 37.907,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_032.pdb"
+    },
+    {
+      "rank": 36,
+      "id": "iter01_cand065",
+      "sequence": "AGCKDFFWKTFTSC",
+      "ddG": -37.197,
+      "totalScore": -402.992,
+      "clashScore": 4.0,
+      "finalScore": 37.197,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_065.pdb"
+    },
+    {
+      "rank": 37,
+      "id": "iter01_cand058",
+      "sequence": "AGCKFKFWKTFTSC",
+      "ddG": -37.184,
+      "totalScore": -469.211,
+      "clashScore": 0.0,
+      "finalScore": 37.184,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_058.pdb"
+    },
+    {
+      "rank": 38,
+      "id": "iter01_cand011",
+      "sequence": "ARCKNFFWKTFYSC",
+      "ddG": -37.103,
+      "totalScore": -469.118,
+      "clashScore": 0.0,
+      "finalScore": 37.103,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_011.pdb"
+    },
+    {
+      "rank": 39,
+      "id": "iter01_cand053",
+      "sequence": "AFCKNFFWKTFTSC",
+      "ddG": -37.075,
+      "totalScore": -463.69,
+      "clashScore": 0.0,
+      "finalScore": 37.075,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_053.pdb"
+    },
+    {
+      "rank": 40,
+      "id": "iter01_cand110",
+      "sequence": "FGCKNQFWKTFTST",
+      "ddG": -37.013,
+      "totalScore": -422.067,
+      "clashScore": 3.0,
+      "finalScore": 37.013,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_110.pdb"
+    },
+    {
+      "rank": 41,
+      "id": "iter01_cand104",
+      "sequence": "APCKNFFWKTFTSC",
+      "ddG": -36.524,
+      "totalScore": -483.644,
+      "clashScore": 0.0,
+      "finalScore": 36.524,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_104.pdb"
+    },
+    {
+      "rank": 42,
+      "id": "iter01_cand005",
+      "sequence": "AGCKNFFWKTYTSC",
+      "ddG": -36.154,
+      "totalScore": -438.977,
+      "clashScore": 0.0,
+      "finalScore": 36.154,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_005.pdb"
+    },
+    {
+      "rank": 43,
+      "id": "iter01_cand040",
+      "sequence": "AGCDLFFWKTFTSM",
+      "ddG": -36.14,
+      "totalScore": -479.429,
+      "clashScore": 0.0,
+      "finalScore": 36.14,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_040.pdb"
+    },
+    {
+      "rank": 44,
+      "id": "iter01_cand055",
+      "sequence": "AGCKNFFWKTINSC",
+      "ddG": -36.113,
+      "totalScore": -349.626,
+      "clashScore": 5.0,
+      "finalScore": 36.113,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_055.pdb"
+    },
+    {
+      "rank": 45,
+      "id": "iter01_cand122",
+      "sequence": "AGCKEFFWKTFTSC",
+      "ddG": -35.889,
+      "totalScore": -9.005,
+      "clashScore": 9.0,
+      "finalScore": 35.889,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_122.pdb"
+    },
+    {
+      "rank": 46,
+      "id": "iter01_cand035",
+      "sequence": "AGCKNYFWKTHDSC",
+      "ddG": -35.706,
+      "totalScore": -471.136,
+      "clashScore": 0.0,
+      "finalScore": 35.706,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_035.pdb"
+    },
+    {
+      "rank": 47,
+      "id": "iter01_cand071",
+      "sequence": "AGCKNFFWKTFGSC",
+      "ddG": -35.262,
+      "totalScore": -465.071,
+      "clashScore": 0.0,
+      "finalScore": 35.262,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_071.pdb"
+    },
+    {
+      "rank": 48,
+      "id": "iter01_cand012",
+      "sequence": "AGCENFFWKTFNSC",
+      "ddG": -35.214,
+      "totalScore": -476.132,
+      "clashScore": 0.0,
+      "finalScore": 35.214,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_012.pdb"
+    },
+    {
+      "rank": 49,
+      "id": "iter01_cand038",
+      "sequence": "AGCKNRFWKTYTSC",
+      "ddG": -34.954,
+      "totalScore": -341.441,
+      "clashScore": 5.0,
+      "finalScore": 34.954,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_038.pdb"
+    },
+    {
+      "rank": 50,
+      "id": "iter01_cand028",
+      "sequence": "AGCKNHFWKTFTSC",
+      "ddG": -34.751,
+      "totalScore": -450.494,
+      "clashScore": 0.0,
+      "finalScore": 34.751,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_028.pdb"
+    },
+    {
+      "rank": 51,
+      "id": "iter01_cand081",
+      "sequence": "EECKNFFWKTFTSC",
+      "ddG": -34.727,
+      "totalScore": -457.561,
+      "clashScore": 0.0,
+      "finalScore": 34.727,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_081.pdb"
+    },
+    {
+      "rank": 52,
+      "id": "iter01_cand121",
+      "sequence": "AGCTNFFWKTFTSC",
+      "ddG": -34.698,
+      "totalScore": -421.697,
+      "clashScore": 2.0,
+      "finalScore": 34.698,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_121.pdb"
+    },
+    {
+      "rank": 53,
+      "id": "iter01_cand018",
+      "sequence": "AVCKNRFWKTFTSC",
+      "ddG": -34.52,
+      "totalScore": -469.062,
+      "clashScore": 0.0,
+      "finalScore": 34.52,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_018.pdb"
+    },
+    {
+      "rank": 54,
+      "id": "iter01_cand090",
+      "sequence": "AQCKYDFWKTFTSC",
+      "ddG": -34.518,
+      "totalScore": -451.744,
+      "clashScore": 0.0,
+      "finalScore": 34.518,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_090.pdb"
+    },
+    {
+      "rank": 55,
+      "id": "iter01_cand114",
+      "sequence": "AGCKNFFWKTFTSK",
+      "ddG": -34.508,
+      "totalScore": -434.69,
+      "clashScore": 2.0,
+      "finalScore": 34.508,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_114.pdb"
+    },
+    {
+      "rank": 56,
+      "id": "iter01_cand063",
+      "sequence": "AGCINFFWKTKTSS",
+      "ddG": -34.179,
+      "totalScore": -471.798,
+      "clashScore": 0.0,
+      "finalScore": 34.179,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_063.pdb"
+    },
+    {
+      "rank": 57,
+      "id": "iter01_cand001",
+      "sequence": "KGCKNFFWKTETSC",
+      "ddG": -34.118,
+      "totalScore": -353.187,
+      "clashScore": 5.0,
+      "finalScore": 34.118,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_001.pdb"
+    },
+    {
+      "rank": 58,
+      "id": "iter01_cand029",
+      "sequence": "AGCKWFFWKTFKSC",
+      "ddG": -33.858,
+      "totalScore": -423.744,
+      "clashScore": 2.0,
+      "finalScore": 33.858,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_029.pdb"
+    },
+    {
+      "rank": 59,
+      "id": "iter01_cand118",
+      "sequence": "AGCKWFFWKTFFSC",
+      "ddG": -33.384,
+      "totalScore": -438.878,
+      "clashScore": 2.0,
+      "finalScore": 33.384,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_118.pdb"
+    },
+    {
+      "rank": 60,
+      "id": "iter01_cand017",
+      "sequence": "AGCKPMFWKTFTSK",
+      "ddG": -32.794,
+      "totalScore": 57.072,
+      "clashScore": 8.0,
+      "finalScore": 32.794,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_017.pdb"
+    },
+    {
+      "rank": 61,
+      "id": "iter01_cand092",
+      "sequence": "DGCINFFWKTFTST",
+      "ddG": -32.488,
+      "totalScore": -472.268,
+      "clashScore": 0.0,
+      "finalScore": 32.488,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_092.pdb"
+    },
+    {
+      "rank": 62,
+      "id": "iter01_cand027",
+      "sequence": "AGCKNFFWKTFLSD",
+      "ddG": -32.214,
+      "totalScore": -456.38,
+      "clashScore": 0.0,
+      "finalScore": 32.214,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_027.pdb"
+    },
+    {
+      "rank": 63,
+      "id": "iter01_cand020",
+      "sequence": "AHCKVFFWKTFTSC",
+      "ddG": -31.841,
+      "totalScore": -460.354,
+      "clashScore": 0.0,
+      "finalScore": 31.841,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_020.pdb"
+    },
+    {
+      "rank": 64,
+      "id": "iter01_cand117",
+      "sequence": "AGCHNFFWKTFTSC",
+      "ddG": -31.601,
+      "totalScore": -470.389,
+      "clashScore": 0.0,
+      "finalScore": 31.601,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_117.pdb"
+    },
+    {
+      "rank": 65,
+      "id": "iter01_cand068",
+      "sequence": "AQCKNFFWKTFTSC",
+      "ddG": -31.346,
+      "totalScore": -465.129,
+      "clashScore": 0.0,
+      "finalScore": 31.346,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_068.pdb"
+    },
+    {
+      "rank": 66,
+      "id": "iter01_cand113",
+      "sequence": "AWCKLFFWKTFTSC",
+      "ddG": -31.192,
+      "totalScore": -416.382,
+      "clashScore": 4.0,
+      "finalScore": 31.192,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_113.pdb"
+    },
+    {
+      "rank": 67,
+      "id": "iter01_cand056",
+      "sequence": "NNCKNFFWKTRTSC",
+      "ddG": -30.703,
+      "totalScore": -433.918,
+      "clashScore": 0.0,
+      "finalScore": 30.703,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_056.pdb"
+    },
+    {
+      "rank": 68,
+      "id": "iter01_cand021",
+      "sequence": "AGCSKFFWKTFTSA",
+      "ddG": -30.666,
+      "totalScore": -432.029,
+      "clashScore": 1.0,
+      "finalScore": 30.666,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_021.pdb"
+    },
+    {
+      "rank": 69,
+      "id": "iter01_cand013",
+      "sequence": "AVCKNFFWKTFTSC",
+      "ddG": -30.263,
+      "totalScore": -425.628,
+      "clashScore": 2.0,
+      "finalScore": 30.263,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_013.pdb"
+    },
+    {
+      "rank": 70,
+      "id": "iter01_cand085",
+      "sequence": "AGCWNTFWKTFTST",
+      "ddG": -29.685,
+      "totalScore": -424.318,
+      "clashScore": 2.0,
+      "finalScore": 29.685,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_085.pdb"
+    },
+    {
+      "rank": 71,
+      "id": "iter01_cand044",
+      "sequence": "AGCDNFFWKTFTSC",
+      "ddG": -29.656,
+      "totalScore": -426.696,
+      "clashScore": 2.0,
+      "finalScore": 29.656,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_044.pdb"
+    },
+    {
+      "rank": 72,
+      "id": "iter01_cand052",
+      "sequence": "YLCKDFFWKTFTSC",
+      "ddG": -29.414,
+      "totalScore": -361.441,
+      "clashScore": 3.0,
+      "finalScore": 29.414,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_052.pdb"
+    },
+    {
+      "rank": 73,
+      "id": "iter01_cand057",
+      "sequence": "AGCKNFFWKTFHSC",
+      "ddG": -29.206,
+      "totalScore": -164.182,
+      "clashScore": 5.0,
+      "finalScore": 29.206,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_057.pdb"
+    },
+    {
+      "rank": 74,
+      "id": "iter01_cand120",
+      "sequence": "ANCINLFWKTFTSC",
+      "ddG": -29.156,
+      "totalScore": -17.614,
+      "clashScore": 8.0,
+      "finalScore": 29.156,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_120.pdb"
+    },
+    {
+      "rank": 75,
+      "id": "iter01_cand024",
+      "sequence": "AGCNNFFWKTFKSC",
+      "ddG": -29.063,
+      "totalScore": -459.542,
+      "clashScore": 0.0,
+      "finalScore": 29.063,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_024.pdb"
+    },
+    {
+      "rank": 76,
+      "id": "iter01_cand037",
+      "sequence": "AACMNFFWKTFTSN",
+      "ddG": -28.516,
+      "totalScore": -416.391,
+      "clashScore": 2.0,
+      "finalScore": 28.516,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_037.pdb"
+    },
+    {
+      "rank": 77,
+      "id": "iter01_cand043",
+      "sequence": "ASCKEFFWKTFKSC",
+      "ddG": -28.435,
+      "totalScore": -409.116,
+      "clashScore": 4.0,
+      "finalScore": 28.435,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_043.pdb"
+    },
+    {
+      "rank": 78,
+      "id": "iter01_cand070",
+      "sequence": "AGCKNFFWKTFNSR",
+      "ddG": -27.988,
+      "totalScore": -441.022,
+      "clashScore": 1.0,
+      "finalScore": 27.988,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_070.pdb"
+    },
+    {
+      "rank": 79,
+      "id": "iter01_cand089",
+      "sequence": "DGCKNGFWKTATSC",
+      "ddG": -27.524,
+      "totalScore": -458.63,
+      "clashScore": 0.0,
+      "finalScore": 27.524,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_089.pdb"
+    },
+    {
+      "rank": 80,
+      "id": "iter01_cand084",
+      "sequence": "SVCKNDFWKTFTSC",
+      "ddG": -27.271,
+      "totalScore": -465.28,
+      "clashScore": 0.0,
+      "finalScore": 27.271,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_084.pdb"
+    },
+    {
+      "rank": 81,
+      "id": "iter01_cand059",
+      "sequence": "LGCSNFFWKTFTSC",
+      "ddG": -25.868,
+      "totalScore": -417.535,
+      "clashScore": 2.0,
+      "finalScore": 25.868,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_059.pdb"
+    },
+    {
+      "rank": 82,
+      "id": "iter01_cand088",
+      "sequence": "AGCYNFFWKTRNSC",
+      "ddG": -24.702,
+      "totalScore": -431.303,
+      "clashScore": 1.0,
+      "finalScore": 24.702,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_088.pdb"
+    },
+    {
+      "rank": 83,
+      "id": "iter01_cand046",
+      "sequence": "AGCMEFFWKTFTSC",
+      "ddG": -24.498,
+      "totalScore": -381.454,
+      "clashScore": 4.0,
+      "finalScore": 24.498,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_046.pdb"
+    },
+    {
+      "rank": 84,
+      "id": "iter01_cand054",
+      "sequence": "ARCKNFFWKTFSSC",
+      "ddG": -24.203,
+      "totalScore": -449.727,
+      "clashScore": 0.0,
+      "finalScore": 24.203,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_054.pdb"
+    },
+    {
+      "rank": 85,
+      "id": "iter01_cand036",
+      "sequence": "AGCKNRFWKTFTSC",
+      "ddG": -22.988,
+      "totalScore": -445.957,
+      "clashScore": 1.0,
+      "finalScore": 22.988,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_036.pdb"
+    },
+    {
+      "rank": 86,
+      "id": "iter01_cand039",
+      "sequence": "AGCKNFFWKTRTSC",
+      "ddG": -22.913,
+      "totalScore": -384.495,
+      "clashScore": 6.0,
+      "finalScore": 22.913,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_039.pdb"
+    },
+    {
+      "rank": 87,
+      "id": "iter01_cand073",
+      "sequence": "HRCKNFFWKTKTSC",
+      "ddG": -22.225,
+      "totalScore": -439.308,
+      "clashScore": 0.0,
+      "finalScore": 22.225,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_073.pdb"
+    },
+    {
+      "rank": 88,
+      "id": "iter01_cand006",
+      "sequence": "AGCRGFFWKTFTSC",
+      "ddG": -21.638,
+      "totalScore": -361.39,
+      "clashScore": 3.0,
+      "finalScore": 21.638,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_006.pdb"
+    },
+    {
+      "rank": 89,
+      "id": "iter01_cand078",
+      "sequence": "APCKNFFWKTFPSC",
+      "ddG": -20.883,
+      "totalScore": -393.213,
+      "clashScore": 2.0,
+      "finalScore": 20.883,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_078.pdb"
+    },
+    {
+      "rank": 90,
+      "id": "iter01_cand098",
+      "sequence": "AGCKNFFWKTFTSS",
+      "ddG": -19.606,
+      "totalScore": -411.188,
+      "clashScore": 2.0,
+      "finalScore": 19.606,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_098.pdb"
+    },
+    {
+      "rank": 91,
+      "id": "iter01_cand003",
+      "sequence": "AGCKNFFWKTQTSC",
+      "ddG": -19.21,
+      "totalScore": -430.595,
+      "clashScore": 2.0,
+      "finalScore": 19.21,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_003.pdb"
+    },
+    {
+      "rank": 92,
+      "id": "iter01_cand086",
+      "sequence": "AACKNFFWKTFTSC",
+      "ddG": -18.799,
+      "totalScore": -402.33,
+      "clashScore": 2.0,
+      "finalScore": 18.799,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_086.pdb"
+    },
+    {
+      "rank": 93,
+      "id": "iter01_cand064",
+      "sequence": "AGCPNFFWKTFTSC",
+      "ddG": -18.785,
+      "totalScore": -453.382,
+      "clashScore": 0.0,
+      "finalScore": 18.785,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_064.pdb"
+    },
+    {
+      "rank": 94,
+      "id": "iter01_cand030",
+      "sequence": "AGCKNHFWKTFYSM",
+      "ddG": -18.56,
+      "totalScore": -438.832,
+      "clashScore": 1.0,
+      "finalScore": 18.56,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_030.pdb"
+    },
+    {
+      "rank": 95,
+      "id": "iter01_cand019",
+      "sequence": "HGCMNFFWKTFTSM",
+      "ddG": -18.194,
+      "totalScore": -438.55,
+      "clashScore": 1.0,
+      "finalScore": 18.194,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_019.pdb"
+    },
+    {
+      "rank": 96,
+      "id": "iter01_cand095",
+      "sequence": "AGCKNFFWKTEISC",
+      "ddG": -18.044,
+      "totalScore": -461.695,
+      "clashScore": 0.0,
+      "finalScore": 18.044,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_095.pdb"
+    },
+    {
+      "rank": 97,
+      "id": "iter01_cand096",
+      "sequence": "AGCYNFFWKTFTSY",
+      "ddG": -17.742,
+      "totalScore": -380.569,
+      "clashScore": 5.0,
+      "finalScore": 17.742,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_096.pdb"
+    },
+    {
+      "rank": 98,
+      "id": "iter01_cand051",
+      "sequence": "EGCKNFFWKTFTSC",
+      "ddG": -16.156,
+      "totalScore": -429.699,
+      "clashScore": 2.0,
+      "finalScore": 16.156,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_051.pdb"
+    },
+    {
+      "rank": 99,
+      "id": "iter01_cand100",
+      "sequence": "RGCTNFFWKTFWSC",
+      "ddG": -16.14,
+      "totalScore": -404.475,
+      "clashScore": 3.0,
+      "finalScore": 16.14,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_100.pdb"
+    },
+    {
+      "rank": 100,
+      "id": "iter01_cand126",
+      "sequence": "GGCKLFFWKTFTSC",
+      "ddG": -15.501,
+      "totalScore": -421.749,
+      "clashScore": 1.0,
+      "finalScore": 15.501,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_126.pdb"
+    },
+    {
+      "rank": 101,
+      "id": "iter01_cand080",
+      "sequence": "AGCKNKFWKTFTSC",
+      "ddG": -15.248,
+      "totalScore": -444.13,
+      "clashScore": 0.0,
+      "finalScore": 15.248,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_080.pdb"
+    },
+    {
+      "rank": 102,
+      "id": "iter01_cand076",
+      "sequence": "AGCKNFFWKTFTSI",
+      "ddG": -14.669,
+      "totalScore": -437.868,
+      "clashScore": 0.0,
+      "finalScore": 14.669,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_076.pdb"
+    },
+    {
+      "rank": 103,
+      "id": "iter01_cand074",
+      "sequence": "SFCKNFFWKTYTSC",
+      "ddG": -14.66,
+      "totalScore": -441.01,
+      "clashScore": 0.0,
+      "finalScore": 14.66,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_074.pdb"
+    },
+    {
+      "rank": 104,
+      "id": "iter01_cand009",
+      "sequence": "VGCKNFFWKTFLSC",
+      "ddG": -13.405,
+      "totalScore": -448.018,
+      "clashScore": 0.0,
+      "finalScore": 13.405,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_009.pdb"
+    },
+    {
+      "rank": 105,
+      "id": "iter01_cand042",
+      "sequence": "AGCKNWFWKTFTSC",
+      "ddG": -12.984,
+      "totalScore": -408.97,
+      "clashScore": 4.0,
+      "finalScore": 12.984,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_042.pdb"
+    },
+    {
+      "rank": 106,
+      "id": "iter01_cand091",
+      "sequence": "AGCVNFFWKTFTSH",
+      "ddG": -12.425,
+      "totalScore": -389.67,
+      "clashScore": 2.0,
+      "finalScore": 12.425,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_091.pdb"
+    },
+    {
+      "rank": 107,
+      "id": "iter01_cand124",
+      "sequence": "YGCKQFFWKTFTSC",
+      "ddG": -10.761,
+      "totalScore": -437.46,
+      "clashScore": 2.0,
+      "finalScore": 10.761,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_124.pdb"
+    },
+    {
+      "rank": 108,
+      "id": "iter01_cand050",
+      "sequence": "AGCFNFFWKTFPSC",
+      "ddG": -9.999,
+      "totalScore": -424.178,
+      "clashScore": 2.0,
+      "finalScore": 9.999,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_050.pdb"
+    },
+    {
+      "rank": 109,
+      "id": "iter01_cand105",
+      "sequence": "AGCWNFFWKTFTSC",
+      "ddG": -8.795,
+      "totalScore": -21.908,
+      "clashScore": 6.0,
+      "finalScore": 8.795,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_105.pdb"
+    },
+    {
+      "rank": 110,
+      "id": "iter01_cand097",
+      "sequence": "AGCANSFWKTFTSC",
+      "ddG": -7.281,
+      "totalScore": -372.517,
+      "clashScore": 5.0,
+      "finalScore": 7.281,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_097.pdb"
+    },
+    {
+      "rank": 111,
+      "id": "iter01_cand107",
+      "sequence": "AGCKNGFWKTFKSC",
+      "ddG": -6.835,
+      "totalScore": -421.224,
+      "clashScore": 1.0,
+      "finalScore": 6.835,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_107.pdb"
+    },
+    {
+      "rank": 112,
+      "id": "iter01_cand062",
+      "sequence": "AGCEYFFWKTFHSC",
+      "ddG": -6.556,
+      "totalScore": -447.931,
+      "clashScore": 0.0,
+      "finalScore": 6.556,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_062.pdb"
+    },
+    {
+      "rank": 113,
+      "id": "iter01_cand045",
+      "sequence": "WGCKNWFWKTFTSN",
+      "ddG": -4.335,
+      "totalScore": 38.747,
+      "clashScore": 8.0,
+      "finalScore": 4.335,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_045.pdb"
+    },
+    {
+      "rank": 114,
+      "id": "iter01_cand106",
+      "sequence": "LPCKNFFWKTETSC",
+      "ddG": -2.168,
+      "totalScore": 25.895,
+      "clashScore": 9.0,
+      "finalScore": 2.168,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_106.pdb"
+    },
+    {
+      "rank": 115,
+      "id": "iter01_cand007",
+      "sequence": "PQCKNFFWKTFTSC",
+      "ddG": -0.316,
+      "totalScore": -361.771,
+      "clashScore": 6.0,
+      "finalScore": 0.316,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_007.pdb"
+    },
+    {
+      "rank": 116,
+      "id": "iter01_cand116",
+      "sequence": "KGCKNFFWKTFTSC",
+      "ddG": 3.231,
+      "totalScore": -416.412,
+      "clashScore": 2.0,
+      "finalScore": -3.231,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_116.pdb"
+    },
+    {
+      "rank": 117,
+      "id": "iter01_cand023",
+      "sequence": "AGCKRFFWKTKTSY",
+      "ddG": 5.74,
+      "totalScore": -415.493,
+      "clashScore": 0.0,
+      "finalScore": -5.74,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_023.pdb"
+    },
+    {
+      "rank": 118,
+      "id": "iter01_cand015",
+      "sequence": "HGCKNFFWKTDTSR",
+      "ddG": 10.654,
+      "totalScore": -385.445,
+      "clashScore": 0.0,
+      "finalScore": -10.654,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_015.pdb"
+    },
+    {
+      "rank": 119,
+      "id": "iter01_cand075",
+      "sequence": "AGCKNFFWKTGTSC",
+      "ddG": 13.048,
+      "totalScore": -343.486,
+      "clashScore": 6.0,
+      "finalScore": -13.048,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_075.pdb"
+    },
+    {
+      "rank": 120,
+      "id": "iter01_cand061",
+      "sequence": "AGCKNFFWKTGQSC",
+      "ddG": 17.108,
+      "totalScore": -389.803,
+      "clashScore": 3.0,
+      "finalScore": -17.108,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_061.pdb"
+    },
+    {
+      "rank": 121,
+      "id": "iter01_cand077",
+      "sequence": "KMCHNFFWKTFTSC",
+      "ddG": 19.233,
+      "totalScore": -175.878,
+      "clashScore": 5.0,
+      "finalScore": -19.233,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_077.pdb"
+    },
+    {
+      "rank": 122,
+      "id": "iter01_cand022",
+      "sequence": "AGCKHFFWKTFMSC",
+      "ddG": 19.506,
+      "totalScore": -360.76,
+      "clashScore": 1.0,
+      "finalScore": -19.506,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_022.pdb"
+    },
+    {
+      "rank": 123,
+      "id": "iter01_cand102",
+      "sequence": "WFCKLFFWKTFTSC",
+      "ddG": 26.951,
+      "totalScore": -403.889,
+      "clashScore": 3.0,
+      "finalScore": -26.951,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_102.pdb"
+    },
+    {
+      "rank": 124,
+      "id": "iter01_cand094",
+      "sequence": "DTCINFFWKTFTSC",
+      "ddG": 114.389,
+      "totalScore": -93.911,
+      "clashScore": 11.0,
+      "finalScore": -114.389,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_094.pdb"
+    },
+    {
+      "rank": 125,
+      "id": "iter01_cand079",
+      "sequence": "AGCKNYFWKTDTSC",
+      "ddG": 142.087,
+      "totalScore": -373.507,
+      "clashScore": 4.0,
+      "finalScore": -142.087,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_079.pdb"
+    },
+    {
+      "rank": 126,
+      "id": "iter01_cand099",
+      "sequence": "AGCKNFFWKTFYSC",
+      "ddG": 263.853,
+      "totalScore": -151.175,
+      "clashScore": 5.0,
+      "finalScore": -263.853,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_099.pdb"
+    },
+    {
+      "rank": 127,
+      "id": "iter01_cand066",
+      "sequence": "AKCFNFFWKTFTSC",
+      "ddG": 357.399,
+      "totalScore": 1637.406,
+      "clashScore": 15.0,
+      "finalScore": -357.399,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_066.pdb"
+    },
+    {
+      "rank": 128,
+      "id": "iter01_cand033",
+      "sequence": "AGCKHFFWKTFTSC",
+      "ddG": 426.64,
+      "totalScore": 237.622,
+      "clashScore": 14.0,
+      "finalScore": -426.64,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_033.pdb"
+    },
+    {
+      "rank": 129,
+      "id": "iter01_cand111",
+      "sequence": "IGCKNFFWKTFTSC",
+      "ddG": 589.359,
+      "totalScore": -310.395,
+      "clashScore": 9.0,
+      "finalScore": -589.359,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_100/iter_01/cand_111.pdb"
+    }
+  ],
+  "historical_candidates": [
+    {
+      "rank": 1,
+      "id": "iter01_cand108",
+      "sequence": "IKCINFFWKTFTSC",
+      "ddG": -48.1447,
+      "totalScore": -475.9113,
+      "clashScore": 0.0,
+      "finalScore": 48.145,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 2,
+      "id": "iter01_cand034",
+      "sequence": "AQCVNFFWKTFTSE",
+      "ddG": -46.3325,
+      "totalScore": -365.9894,
+      "clashScore": 0.0,
+      "finalScore": 46.333,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 3,
+      "id": "iter01_cand125",
+      "sequence": "AGCKQFFWKTFTSC",
+      "ddG": -46.3003,
+      "totalScore": -484.6173,
+      "clashScore": 0.0,
+      "finalScore": 46.3,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 4,
+      "id": "iter01_cand123",
+      "sequence": "AGCKNFFWKTHASW",
+      "ddG": -46.2555,
+      "totalScore": -439.1357,
+      "clashScore": 0.0,
+      "finalScore": 46.255,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 5,
+      "id": "iter01_cand010",
+      "sequence": "FGCKNFFWKTFTSS",
+      "ddG": -45.4129,
+      "totalScore": -474.473,
+      "clashScore": 0.0,
+      "finalScore": 45.413,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 6,
+      "id": "iter01_cand127",
+      "sequence": "AGCTNYFWKTFTSP",
+      "ddG": -44.8602,
+      "totalScore": -473.9832,
+      "clashScore": 0.0,
+      "finalScore": 44.86,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 7,
+      "id": "iter01_cand101",
+      "sequence": "ARCKPFFWKTFTSC",
+      "ddG": -44.4368,
+      "totalScore": -466.1382,
+      "clashScore": 0.0,
+      "finalScore": 44.437,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 8,
+      "id": "iter01_cand072",
+      "sequence": "AICKNFFWKTFTSC",
+      "ddG": -44.1129,
+      "totalScore": -463.4085,
+      "clashScore": 0.0,
+      "finalScore": 44.113,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 9,
+      "id": "iter01_cand041",
+      "sequence": "DWCKNFFWKTFTSR",
+      "ddG": -43.8993,
+      "totalScore": -481.5269,
+      "clashScore": 0.0,
+      "finalScore": 43.899,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 10,
+      "id": "iter01_cand082",
+      "sequence": "ASCKNFFWKTFSSC",
+      "ddG": -43.0331,
+      "totalScore": -476.5385,
+      "clashScore": 0.0,
+      "finalScore": 43.033,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 11,
+      "id": "iter01_cand083",
+      "sequence": "AGCKNFFWKTDTSC",
+      "ddG": -42.7583,
+      "totalScore": -447.2101,
+      "clashScore": 0.0,
+      "finalScore": 42.758,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 12,
+      "id": "iter01_cand026",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -42.4512,
+      "totalScore": -178.6871,
+      "clashScore": 0.0,
+      "finalScore": 42.451,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 13,
+      "id": "iter01_cand048",
+      "sequence": "AGCKLFFWKTFTSM",
+      "ddG": -41.9207,
+      "totalScore": -477.3715,
+      "clashScore": 0.0,
+      "finalScore": 41.921,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 14,
+      "id": "iter01_cand069",
+      "sequence": "FGCKNQFWKTPTSC",
+      "ddG": -41.8462,
+      "totalScore": -445.2135,
+      "clashScore": 0.0,
+      "finalScore": 41.846,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 15,
+      "id": "iter01_cand031",
+      "sequence": "TGCKYFFWKTFTSK",
+      "ddG": -41.0038,
+      "totalScore": -446.7391,
+      "clashScore": 0.0,
+      "finalScore": 41.004,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 16,
+      "id": "iter01_cand004",
+      "sequence": "SGCKNFFWKTFNSC",
+      "ddG": -40.9971,
+      "totalScore": -491.331,
+      "clashScore": 0.0,
+      "finalScore": 40.997,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 17,
+      "id": "iter01_cand016",
+      "sequence": "AGCKNFFWKTFTSH",
+      "ddG": -40.8418,
+      "totalScore": -480.8126,
+      "clashScore": 0.0,
+      "finalScore": 40.842,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 18,
+      "id": "iter01_cand093",
+      "sequence": "ATCDAFFWKTFTSC",
+      "ddG": -40.8283,
+      "totalScore": -475.1097,
+      "clashScore": 0.0,
+      "finalScore": 40.828,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 19,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNFFWKTHTSC",
+      "ddG": -40.8071,
+      "totalScore": -471.5317,
+      "clashScore": 0.0,
+      "finalScore": 40.807,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 20,
+      "id": "iter01_cand112",
+      "sequence": "AHCKNFFWKTASSC",
+      "ddG": -40.7978,
+      "totalScore": -468.3486,
+      "clashScore": 0.0,
+      "finalScore": 40.798,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 21,
+      "id": "iter01_cand025",
+      "sequence": "AGCKKFFWKTFTSC",
+      "ddG": -40.5637,
+      "totalScore": -475.9649,
+      "clashScore": 0.0,
+      "finalScore": 40.564,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 22,
+      "id": "iter01_cand115",
+      "sequence": "QGCSNFFWKTFTSC",
+      "ddG": -40.4446,
+      "totalScore": -470.7539,
+      "clashScore": 0.0,
+      "finalScore": 40.445,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 23,
+      "id": "iter01_cand060",
+      "sequence": "NGCKNFFWKTFTSS",
+      "ddG": -40.2347,
+      "totalScore": -443.9991,
+      "clashScore": 0.0,
+      "finalScore": 40.235,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 24,
+      "id": "iter01_cand103",
+      "sequence": "AGCMNIFWKTFTSC",
+      "ddG": -40.1142,
+      "totalScore": -448.5158,
+      "clashScore": 0.0,
+      "finalScore": 40.114,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 25,
+      "id": "iter01_cand049",
+      "sequence": "AGCKNIFWKTFTSC",
+      "ddG": -40.0875,
+      "totalScore": -471.9832,
+      "clashScore": 0.0,
+      "finalScore": 40.087,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 26,
+      "id": "iter01_cand119",
+      "sequence": "AECKNFFWKTFQSG",
+      "ddG": -39.9963,
+      "totalScore": -482.2191,
+      "clashScore": 0.0,
+      "finalScore": 39.996,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 27,
+      "id": "iter01_cand002",
+      "sequence": "AGCKAAFWKTFTSC",
+      "ddG": -39.9397,
+      "totalScore": -472.9208,
+      "clashScore": 0.0,
+      "finalScore": 39.94,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 28,
+      "id": "iter01_cand087",
+      "sequence": "AGCENFFWKTFTSC",
+      "ddG": -39.1703,
+      "totalScore": -471.934,
+      "clashScore": 0.0,
+      "finalScore": 39.17,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 29,
+      "id": "iter01_cand128",
+      "sequence": "AGCKNKFWKTFDSC",
+      "ddG": -39.116,
+      "totalScore": -467.2889,
+      "clashScore": 0.0,
+      "finalScore": 39.116,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 30,
+      "id": "iter01_cand014",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddG": -38.5952,
+      "totalScore": -386.3483,
+      "clashScore": 0.0,
+      "finalScore": 38.595,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 31,
+      "id": "iter01_cand047",
+      "sequence": "AGCKNFFWKTFKSC",
+      "ddG": -38.5899,
+      "totalScore": -474.4501,
+      "clashScore": 0.0,
+      "finalScore": 38.59,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 32,
+      "id": "iter01_cand109",
+      "sequence": "AGCKTFFWKTFTSC",
+      "ddG": -38.3183,
+      "totalScore": -462.4889,
+      "clashScore": 0.0,
+      "finalScore": 38.318,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 33,
+      "id": "iter01_cand067",
+      "sequence": "AGCKNFFWKTFVSC",
+      "ddG": -38.101,
+      "totalScore": -459.6929,
+      "clashScore": 0.0,
+      "finalScore": 38.101,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 34,
+      "id": "iter01_cand032",
+      "sequence": "YGCYNFFWKTFTSE",
+      "ddG": -37.9071,
+      "totalScore": -466.8254,
+      "clashScore": 0.0,
+      "finalScore": 37.907,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 35,
+      "id": "iter01_cand065",
+      "sequence": "AGCKDFFWKTFTSC",
+      "ddG": -37.197,
+      "totalScore": -402.9924,
+      "clashScore": 0.0,
+      "finalScore": 37.197,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 36,
+      "id": "iter01_cand058",
+      "sequence": "AGCKFKFWKTFTSC",
+      "ddG": -37.1835,
+      "totalScore": -469.2105,
+      "clashScore": 0.0,
+      "finalScore": 37.184,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 37,
+      "id": "iter01_cand011",
+      "sequence": "ARCKNFFWKTFYSC",
+      "ddG": -37.1027,
+      "totalScore": -469.1185,
+      "clashScore": 0.0,
+      "finalScore": 37.103,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 38,
+      "id": "iter01_cand053",
+      "sequence": "AFCKNFFWKTFTSC",
+      "ddG": -37.0753,
+      "totalScore": -463.6895,
+      "clashScore": 0.0,
+      "finalScore": 37.075,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 39,
+      "id": "iter01_cand110",
+      "sequence": "FGCKNQFWKTFTST",
+      "ddG": -37.0134,
+      "totalScore": -422.0671,
+      "clashScore": 0.0,
+      "finalScore": 37.013,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 40,
+      "id": "iter01_cand104",
+      "sequence": "APCKNFFWKTFTSC",
+      "ddG": -36.524,
+      "totalScore": -483.6442,
+      "clashScore": 0.0,
+      "finalScore": 36.524,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 41,
+      "id": "iter01_cand005",
+      "sequence": "AGCKNFFWKTYTSC",
+      "ddG": -36.1539,
+      "totalScore": -438.9767,
+      "clashScore": 0.0,
+      "finalScore": 36.154,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 42,
+      "id": "iter01_cand040",
+      "sequence": "AGCDLFFWKTFTSM",
+      "ddG": -36.1396,
+      "totalScore": -479.4289,
+      "clashScore": 0.0,
+      "finalScore": 36.14,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 43,
+      "id": "iter01_cand055",
+      "sequence": "AGCKNFFWKTINSC",
+      "ddG": -36.1128,
+      "totalScore": -349.6256,
+      "clashScore": 0.0,
+      "finalScore": 36.113,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 44,
+      "id": "iter01_cand122",
+      "sequence": "AGCKEFFWKTFTSC",
+      "ddG": -35.8894,
+      "totalScore": -9.0055,
+      "clashScore": 0.0,
+      "finalScore": 35.889,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 45,
+      "id": "iter01_cand035",
+      "sequence": "AGCKNYFWKTHDSC",
+      "ddG": -35.7062,
+      "totalScore": -471.1364,
+      "clashScore": 0.0,
+      "finalScore": 35.706,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 46,
+      "id": "iter01_cand071",
+      "sequence": "AGCKNFFWKTFGSC",
+      "ddG": -35.2622,
+      "totalScore": -465.0707,
+      "clashScore": 0.0,
+      "finalScore": 35.262,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 47,
+      "id": "iter01_cand012",
+      "sequence": "AGCENFFWKTFNSC",
+      "ddG": -35.2142,
+      "totalScore": -476.1317,
+      "clashScore": 0.0,
+      "finalScore": 35.214,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 48,
+      "id": "iter01_cand038",
+      "sequence": "AGCKNRFWKTYTSC",
+      "ddG": -34.9538,
+      "totalScore": -341.441,
+      "clashScore": 0.0,
+      "finalScore": 34.954,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 49,
+      "id": "iter01_cand028",
+      "sequence": "AGCKNHFWKTFTSC",
+      "ddG": -34.7508,
+      "totalScore": -450.4939,
+      "clashScore": 0.0,
+      "finalScore": 34.751,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 50,
+      "id": "iter01_cand081",
+      "sequence": "EECKNFFWKTFTSC",
+      "ddG": -34.7272,
+      "totalScore": -457.5614,
+      "clashScore": 0.0,
+      "finalScore": 34.727,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 51,
+      "id": "iter01_cand121",
+      "sequence": "AGCTNFFWKTFTSC",
+      "ddG": -34.6979,
+      "totalScore": -421.6966,
+      "clashScore": 0.0,
+      "finalScore": 34.698,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 52,
+      "id": "iter01_cand018",
+      "sequence": "AVCKNRFWKTFTSC",
+      "ddG": -34.5202,
+      "totalScore": -469.0618,
+      "clashScore": 0.0,
+      "finalScore": 34.52,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 53,
+      "id": "iter01_cand090",
+      "sequence": "AQCKYDFWKTFTSC",
+      "ddG": -34.5178,
+      "totalScore": -451.744,
+      "clashScore": 0.0,
+      "finalScore": 34.518,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 54,
+      "id": "iter01_cand114",
+      "sequence": "AGCKNFFWKTFTSK",
+      "ddG": -34.5085,
+      "totalScore": -434.69,
+      "clashScore": 0.0,
+      "finalScore": 34.508,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 55,
+      "id": "iter01_cand063",
+      "sequence": "AGCINFFWKTKTSS",
+      "ddG": -34.1786,
+      "totalScore": -471.7985,
+      "clashScore": 0.0,
+      "finalScore": 34.179,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 56,
+      "id": "iter01_cand001",
+      "sequence": "KGCKNFFWKTETSC",
+      "ddG": -34.1179,
+      "totalScore": -353.1874,
+      "clashScore": 0.0,
+      "finalScore": 34.118,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 57,
+      "id": "iter01_cand029",
+      "sequence": "AGCKWFFWKTFKSC",
+      "ddG": -33.8576,
+      "totalScore": -423.7444,
+      "clashScore": 0.0,
+      "finalScore": 33.858,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 58,
+      "id": "iter01_cand118",
+      "sequence": "AGCKWFFWKTFFSC",
+      "ddG": -33.3841,
+      "totalScore": -438.8778,
+      "clashScore": 0.0,
+      "finalScore": 33.384,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 59,
+      "id": "iter01_cand017",
+      "sequence": "AGCKPMFWKTFTSK",
+      "ddG": -32.7938,
+      "totalScore": 57.072,
+      "clashScore": 0.0,
+      "finalScore": 32.794,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 60,
+      "id": "iter01_cand092",
+      "sequence": "DGCINFFWKTFTST",
+      "ddG": -32.488,
+      "totalScore": -472.268,
+      "clashScore": 0.0,
+      "finalScore": 32.488,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 61,
+      "id": "iter01_cand027",
+      "sequence": "AGCKNFFWKTFLSD",
+      "ddG": -32.2139,
+      "totalScore": -456.3803,
+      "clashScore": 0.0,
+      "finalScore": 32.214,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 62,
+      "id": "iter01_cand020",
+      "sequence": "AHCKVFFWKTFTSC",
+      "ddG": -31.8407,
+      "totalScore": -460.3543,
+      "clashScore": 0.0,
+      "finalScore": 31.841,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 63,
+      "id": "iter01_cand117",
+      "sequence": "AGCHNFFWKTFTSC",
+      "ddG": -31.6005,
+      "totalScore": -470.3891,
+      "clashScore": 0.0,
+      "finalScore": 31.601,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 64,
+      "id": "iter01_cand068",
+      "sequence": "AQCKNFFWKTFTSC",
+      "ddG": -31.3462,
+      "totalScore": -465.1292,
+      "clashScore": 0.0,
+      "finalScore": 31.346,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 65,
+      "id": "iter01_cand113",
+      "sequence": "AWCKLFFWKTFTSC",
+      "ddG": -31.1916,
+      "totalScore": -416.3824,
+      "clashScore": 0.0,
+      "finalScore": 31.192,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 66,
+      "id": "iter01_cand056",
+      "sequence": "NNCKNFFWKTRTSC",
+      "ddG": -30.7029,
+      "totalScore": -433.9182,
+      "clashScore": 0.0,
+      "finalScore": 30.703,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 67,
+      "id": "iter01_cand021",
+      "sequence": "AGCSKFFWKTFTSA",
+      "ddG": -30.6657,
+      "totalScore": -432.0294,
+      "clashScore": 0.0,
+      "finalScore": 30.666,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 68,
+      "id": "iter01_cand013",
+      "sequence": "AVCKNFFWKTFTSC",
+      "ddG": -30.2629,
+      "totalScore": -425.6281,
+      "clashScore": 0.0,
+      "finalScore": 30.263,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 69,
+      "id": "iter01_cand085",
+      "sequence": "AGCWNTFWKTFTST",
+      "ddG": -29.6854,
+      "totalScore": -424.3179,
+      "clashScore": 0.0,
+      "finalScore": 29.685,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 70,
+      "id": "iter01_cand044",
+      "sequence": "AGCDNFFWKTFTSC",
+      "ddG": -29.6564,
+      "totalScore": -426.6958,
+      "clashScore": 0.0,
+      "finalScore": 29.656,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 71,
+      "id": "iter01_cand052",
+      "sequence": "YLCKDFFWKTFTSC",
+      "ddG": -29.4143,
+      "totalScore": -361.4407,
+      "clashScore": 0.0,
+      "finalScore": 29.414,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 72,
+      "id": "iter01_cand057",
+      "sequence": "AGCKNFFWKTFHSC",
+      "ddG": -29.2055,
+      "totalScore": -164.1817,
+      "clashScore": 0.0,
+      "finalScore": 29.206,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 73,
+      "id": "iter01_cand120",
+      "sequence": "ANCINLFWKTFTSC",
+      "ddG": -29.156,
+      "totalScore": -17.6144,
+      "clashScore": 0.0,
+      "finalScore": 29.156,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 74,
+      "id": "iter01_cand024",
+      "sequence": "AGCNNFFWKTFKSC",
+      "ddG": -29.0632,
+      "totalScore": -459.5424,
+      "clashScore": 0.0,
+      "finalScore": 29.063,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 75,
+      "id": "iter01_cand037",
+      "sequence": "AACMNFFWKTFTSN",
+      "ddG": -28.5158,
+      "totalScore": -416.3911,
+      "clashScore": 0.0,
+      "finalScore": 28.516,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 76,
+      "id": "iter01_cand043",
+      "sequence": "ASCKEFFWKTFKSC",
+      "ddG": -28.4353,
+      "totalScore": -409.1164,
+      "clashScore": 0.0,
+      "finalScore": 28.435,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 77,
+      "id": "iter01_cand070",
+      "sequence": "AGCKNFFWKTFNSR",
+      "ddG": -27.9876,
+      "totalScore": -441.0222,
+      "clashScore": 0.0,
+      "finalScore": 27.988,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 78,
+      "id": "iter01_cand089",
+      "sequence": "DGCKNGFWKTATSC",
+      "ddG": -27.5239,
+      "totalScore": -458.6303,
+      "clashScore": 0.0,
+      "finalScore": 27.524,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 79,
+      "id": "iter01_cand084",
+      "sequence": "SVCKNDFWKTFTSC",
+      "ddG": -27.2713,
+      "totalScore": -465.2797,
+      "clashScore": 0.0,
+      "finalScore": 27.271,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 80,
+      "id": "iter01_cand059",
+      "sequence": "LGCSNFFWKTFTSC",
+      "ddG": -25.868,
+      "totalScore": -417.5352,
+      "clashScore": 0.0,
+      "finalScore": 25.868,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 81,
+      "id": "iter01_cand088",
+      "sequence": "AGCYNFFWKTRNSC",
+      "ddG": -24.7019,
+      "totalScore": -431.3026,
+      "clashScore": 0.0,
+      "finalScore": 24.702,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 82,
+      "id": "iter01_cand046",
+      "sequence": "AGCMEFFWKTFTSC",
+      "ddG": -24.4985,
+      "totalScore": -381.4544,
+      "clashScore": 0.0,
+      "finalScore": 24.498,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 83,
+      "id": "iter01_cand054",
+      "sequence": "ARCKNFFWKTFSSC",
+      "ddG": -24.2025,
+      "totalScore": -449.7272,
+      "clashScore": 0.0,
+      "finalScore": 24.203,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 84,
+      "id": "iter01_cand036",
+      "sequence": "AGCKNRFWKTFTSC",
+      "ddG": -22.9876,
+      "totalScore": -445.957,
+      "clashScore": 0.0,
+      "finalScore": 22.988,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 85,
+      "id": "iter01_cand039",
+      "sequence": "AGCKNFFWKTRTSC",
+      "ddG": -22.9125,
+      "totalScore": -384.4945,
+      "clashScore": 0.0,
+      "finalScore": 22.913,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 86,
+      "id": "iter01_cand073",
+      "sequence": "HRCKNFFWKTKTSC",
+      "ddG": -22.2249,
+      "totalScore": -439.3081,
+      "clashScore": 0.0,
+      "finalScore": 22.225,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 87,
+      "id": "iter01_cand006",
+      "sequence": "AGCRGFFWKTFTSC",
+      "ddG": -21.6381,
+      "totalScore": -361.3897,
+      "clashScore": 0.0,
+      "finalScore": 21.638,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 88,
+      "id": "iter01_cand078",
+      "sequence": "APCKNFFWKTFPSC",
+      "ddG": -20.8831,
+      "totalScore": -393.2133,
+      "clashScore": 0.0,
+      "finalScore": 20.883,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 89,
+      "id": "iter01_cand098",
+      "sequence": "AGCKNFFWKTFTSS",
+      "ddG": -19.6058,
+      "totalScore": -411.188,
+      "clashScore": 0.0,
+      "finalScore": 19.606,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 90,
+      "id": "iter01_cand003",
+      "sequence": "AGCKNFFWKTQTSC",
+      "ddG": -19.2105,
+      "totalScore": -430.5948,
+      "clashScore": 0.0,
+      "finalScore": 19.21,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 91,
+      "id": "iter01_cand086",
+      "sequence": "AACKNFFWKTFTSC",
+      "ddG": -18.7995,
+      "totalScore": -402.3299,
+      "clashScore": 0.0,
+      "finalScore": 18.799,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 92,
+      "id": "iter01_cand064",
+      "sequence": "AGCPNFFWKTFTSC",
+      "ddG": -18.7847,
+      "totalScore": -453.3815,
+      "clashScore": 0.0,
+      "finalScore": 18.785,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 93,
+      "id": "iter01_cand030",
+      "sequence": "AGCKNHFWKTFYSM",
+      "ddG": -18.5602,
+      "totalScore": -438.8318,
+      "clashScore": 0.0,
+      "finalScore": 18.56,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 94,
+      "id": "iter01_cand019",
+      "sequence": "HGCMNFFWKTFTSM",
+      "ddG": -18.1942,
+      "totalScore": -438.5504,
+      "clashScore": 0.0,
+      "finalScore": 18.194,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 95,
+      "id": "iter01_cand095",
+      "sequence": "AGCKNFFWKTEISC",
+      "ddG": -18.0442,
+      "totalScore": -461.6955,
+      "clashScore": 0.0,
+      "finalScore": 18.044,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 96,
+      "id": "iter01_cand096",
+      "sequence": "AGCYNFFWKTFTSY",
+      "ddG": -17.7419,
+      "totalScore": -380.5686,
+      "clashScore": 0.0,
+      "finalScore": 17.742,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 97,
+      "id": "iter01_cand051",
+      "sequence": "EGCKNFFWKTFTSC",
+      "ddG": -16.1561,
+      "totalScore": -429.6987,
+      "clashScore": 0.0,
+      "finalScore": 16.156,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 98,
+      "id": "iter01_cand100",
+      "sequence": "RGCTNFFWKTFWSC",
+      "ddG": -16.1401,
+      "totalScore": -404.4746,
+      "clashScore": 0.0,
+      "finalScore": 16.14,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 99,
+      "id": "iter01_cand126",
+      "sequence": "GGCKLFFWKTFTSC",
+      "ddG": -15.5014,
+      "totalScore": -421.7492,
+      "clashScore": 0.0,
+      "finalScore": 15.501,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 100,
+      "id": "iter01_cand080",
+      "sequence": "AGCKNKFWKTFTSC",
+      "ddG": -15.2477,
+      "totalScore": -444.1301,
+      "clashScore": 0.0,
+      "finalScore": 15.248,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 101,
+      "id": "iter01_cand076",
+      "sequence": "AGCKNFFWKTFTSI",
+      "ddG": -14.6689,
+      "totalScore": -437.8681,
+      "clashScore": 0.0,
+      "finalScore": 14.669,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 102,
+      "id": "iter01_cand074",
+      "sequence": "SFCKNFFWKTYTSC",
+      "ddG": -14.6599,
+      "totalScore": -441.0105,
+      "clashScore": 0.0,
+      "finalScore": 14.66,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 103,
+      "id": "iter01_cand009",
+      "sequence": "VGCKNFFWKTFLSC",
+      "ddG": -13.4049,
+      "totalScore": -448.0179,
+      "clashScore": 0.0,
+      "finalScore": 13.405,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 104,
+      "id": "iter01_cand042",
+      "sequence": "AGCKNWFWKTFTSC",
+      "ddG": -12.984,
+      "totalScore": -408.9704,
+      "clashScore": 0.0,
+      "finalScore": 12.984,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 105,
+      "id": "iter01_cand091",
+      "sequence": "AGCVNFFWKTFTSH",
+      "ddG": -12.4254,
+      "totalScore": -389.6695,
+      "clashScore": 0.0,
+      "finalScore": 12.425,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 106,
+      "id": "iter01_cand124",
+      "sequence": "YGCKQFFWKTFTSC",
+      "ddG": -10.7605,
+      "totalScore": -437.4598,
+      "clashScore": 0.0,
+      "finalScore": 10.761,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 107,
+      "id": "iter01_cand050",
+      "sequence": "AGCFNFFWKTFPSC",
+      "ddG": -9.9992,
+      "totalScore": -424.1785,
+      "clashScore": 0.0,
+      "finalScore": 9.999,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 108,
+      "id": "iter01_cand105",
+      "sequence": "AGCWNFFWKTFTSC",
+      "ddG": -8.7946,
+      "totalScore": -21.908,
+      "clashScore": 0.0,
+      "finalScore": 8.795,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 109,
+      "id": "iter01_cand097",
+      "sequence": "AGCANSFWKTFTSC",
+      "ddG": -7.2814,
+      "totalScore": -372.5173,
+      "clashScore": 0.0,
+      "finalScore": 7.281,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 110,
+      "id": "iter01_cand107",
+      "sequence": "AGCKNGFWKTFKSC",
+      "ddG": -6.835,
+      "totalScore": -421.2235,
+      "clashScore": 0.0,
+      "finalScore": 6.835,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 111,
+      "id": "iter01_cand062",
+      "sequence": "AGCEYFFWKTFHSC",
+      "ddG": -6.5564,
+      "totalScore": -447.9312,
+      "clashScore": 0.0,
+      "finalScore": 6.556,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 112,
+      "id": "iter01_cand045",
+      "sequence": "WGCKNWFWKTFTSN",
+      "ddG": -4.3347,
+      "totalScore": 38.7473,
+      "clashScore": 0.0,
+      "finalScore": 4.335,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 113,
+      "id": "iter01_cand106",
+      "sequence": "LPCKNFFWKTETSC",
+      "ddG": -2.1685,
+      "totalScore": 25.8945,
+      "clashScore": 0.0,
+      "finalScore": 2.168,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 114,
+      "id": "iter01_cand007",
+      "sequence": "PQCKNFFWKTFTSC",
+      "ddG": -0.3164,
+      "totalScore": -361.7712,
+      "clashScore": 0.0,
+      "finalScore": 0.316,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 115,
+      "id": "iter01_cand116",
+      "sequence": "KGCKNFFWKTFTSC",
+      "ddG": 3.2309,
+      "totalScore": -416.4123,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 116,
+      "id": "iter01_cand023",
+      "sequence": "AGCKRFFWKTKTSY",
+      "ddG": 5.7396,
+      "totalScore": -415.4933,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 117,
+      "id": "iter01_cand015",
+      "sequence": "HGCKNFFWKTDTSR",
+      "ddG": 10.6539,
+      "totalScore": -385.4449,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 118,
+      "id": "iter01_cand075",
+      "sequence": "AGCKNFFWKTGTSC",
+      "ddG": 13.0476,
+      "totalScore": -343.4858,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 119,
+      "id": "iter01_cand061",
+      "sequence": "AGCKNFFWKTGQSC",
+      "ddG": 17.1078,
+      "totalScore": -389.8025,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 120,
+      "id": "iter01_cand077",
+      "sequence": "KMCHNFFWKTFTSC",
+      "ddG": 19.2335,
+      "totalScore": -175.8781,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 121,
+      "id": "iter01_cand022",
+      "sequence": "AGCKHFFWKTFMSC",
+      "ddG": 19.5059,
+      "totalScore": -360.7602,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 122,
+      "id": "iter01_cand102",
+      "sequence": "WFCKLFFWKTFTSC",
+      "ddG": 26.9507,
+      "totalScore": -403.8893,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 123,
+      "id": "iter01_cand094",
+      "sequence": "DTCINFFWKTFTSC",
+      "ddG": 114.3887,
+      "totalScore": -93.9114,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 124,
+      "id": "iter01_cand079",
+      "sequence": "AGCKNYFWKTDTSC",
+      "ddG": 142.0873,
+      "totalScore": -373.5068,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 125,
+      "id": "iter01_cand099",
+      "sequence": "AGCKNFFWKTFYSC",
+      "ddG": 263.8525,
+      "totalScore": -151.1746,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 126,
+      "id": "iter01_cand066",
+      "sequence": "AKCFNFFWKTFTSC",
+      "ddG": 357.3986,
+      "totalScore": 1637.4056,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 127,
+      "id": "iter01_cand033",
+      "sequence": "AGCKHFFWKTFTSC",
+      "ddG": 426.6402,
+      "totalScore": 237.6223,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    },
+    {
+      "rank": 128,
+      "id": "iter01_cand111",
+      "sequence": "IGCKNFFWKTFTSC",
+      "ddG": 589.3585,
+      "totalScore": -310.3951,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_100"
+    }
+  ],
+  "qc_gates": [
+    {
+      "name": "RosettaGate",
+      "criterion": "ddG <= -1.0",
+      "passed": 5,
+      "failed": 123,
+      "total": 128
+    }
+  ],
+  "convergence": [
+    {
+      "iteration": 1,
+      "bestDdG": -48.1447,
+      "topCandidates": 5,
+      "converged": false
+    }
+  ],
+  "live_apis": {
+    "esmfold": "pending",
+    "molmim": "pending"
+  },
+  "best_candidate": {
+    "id": "iter01_cand010",
+    "sequence": "FGCKNFFWKTFTSS",
+    "ddG": -45.99,
+    "totalScore": -474.473
+  },
+  "molecules": [],
+  "visualization_images": [],
+  "baseline": {
+    "sequence": "AGCKNFFWKTFTSC",
+    "pdb": "/home/dongjukim/Documents/workspace/repos/SST14-M_scr/runs_local/dual_final_03/local_20260402_1055_iter01/silo_b/sst14_agentic_mutdock/baseline_refined.pdb",
+    "ddg": -48.4385,
+    "total_score": -475.4419,
+    "clash_score": 0.0
+  },
+  "completed": true,
+  "convergence_status": {
+    "converged": false,
+    "p_value": null,
+    "cv": null,
+    "recommendation": "Need at least 6 iterations (have 1); keep running."
+  }
+}

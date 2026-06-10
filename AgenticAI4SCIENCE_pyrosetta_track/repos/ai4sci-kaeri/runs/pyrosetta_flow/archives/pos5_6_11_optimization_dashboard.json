@@ -1,0 +1,252 @@
+{
+  "run_id": "pos5_6_11_optimization",
+  "started_at": "2026-02-27T14:00:00+00:00",
+  "updated_at": "2026-02-27T16:00:00+00:00",
+  "iteration": 1,
+  "total_iterations": 1,
+  "llm_model": "PyRosetta FlexPepDock (combinatorial)",
+  "target": "SSTR2",
+  "reference": "analog2 (AGCKFDFWKTITSC) baseline",
+  "steps": [],
+  "agents": [],
+  "rosetta_substeps": [],
+  "timeline": [],
+  "historical_candidates": [],
+  "qc_gates": [],
+  "convergence": [],
+  "live_apis": {},
+  "molecules": [],
+  "visualization_images": [],
+  "baseline": {
+    "sequence": "AGCKFDFWKTITSC"
+  },
+  "candidates": [
+    {
+      "rank": 1,
+      "id": "p5V_p6D_p11S_AGCKVDFWKTSTSC",
+      "sequence": "AGCKVDFWKTSTSC",
+      "ddG": -27.191,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 27.191,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 2,
+      "id": "p5V_p6D_p11T_AGCKVDFWKTTTSC",
+      "sequence": "AGCKVDFWKTTTSC",
+      "ddG": -23.415,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 23.415,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 3,
+      "id": "p5Y_p6N_p11S_AGCKYNFWKTSTSC",
+      "sequence": "AGCKYNFWKTSTSC",
+      "ddG": -19.224,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 19.224,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 4,
+      "id": "p5Y_p6D_p11S_AGCKYDFWKTSTSC",
+      "sequence": "AGCKYDFWKTSTSC",
+      "ddG": -17.47,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 17.47,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 5,
+      "id": "p5Y_p6E_p11S_AGCKYEFWKTSTSC",
+      "sequence": "AGCKYEFWKTSTSC",
+      "ddG": -17.023,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 17.023,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 6,
+      "id": "p5Y_p6N_p11T_AGCKYNFWKTTTSC",
+      "sequence": "AGCKYNFWKTTTSC",
+      "ddG": -16.936,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 16.936,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 7,
+      "id": "p5Y_p6E_p11T_AGCKYEFWKTTTSC",
+      "sequence": "AGCKYEFWKTTTSC",
+      "ddG": -16.464,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 16.464,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 8,
+      "id": "p5Y_p6D_p11T_AGCKYDFWKTTTSC",
+      "sequence": "AGCKYDFWKTTTSC",
+      "ddG": -14.726,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 14.726,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 9,
+      "id": "p5Y_p6D_p11A_AGCKYDFWKTATSC",
+      "sequence": "AGCKYDFWKTATSC",
+      "ddG": -14.051,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 14.051,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 10,
+      "id": "p5Y_p6D_p11M_AGCKYDFWKTMTSC",
+      "sequence": "AGCKYDFWKTMTSC",
+      "ddG": -13.953,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 13.953,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 11,
+      "id": "p5Y_p6Q_p11T_AGCKYQFWKTTTSC",
+      "sequence": "AGCKYQFWKTTTSC",
+      "ddG": -13.378,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 13.378,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 12,
+      "id": "p5Y_p6Q_p11S_AGCKYQFWKTSTSC",
+      "sequence": "AGCKYQFWKTSTSC",
+      "ddG": -12.042,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 12.042,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 13,
+      "id": "p5F_p6D_p11S_AGCKFDFWKTSTSC",
+      "sequence": "AGCKFDFWKTSTSC",
+      "ddG": -11.844,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 11.844,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 14,
+      "id": "p5M_p6N_p11T_AGCKMNFWKTTTSC",
+      "sequence": "AGCKMNFWKTTTSC",
+      "ddG": -10.69,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 10.69,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 15,
+      "id": "p5F_p6D_p11T_AGCKFDFWKTTTSC",
+      "sequence": "AGCKFDFWKTTTSC",
+      "ddG": -7.972,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 7.972,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 16,
+      "id": "p5W_p6D_p11S_AGCKWDFWKTSTSC",
+      "sequence": "AGCKWDFWKTSTSC",
+      "ddG": 32.357,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": -32.357,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 17,
+      "id": "p5W_p6N_p11T_AGCKWNFWKTTTSC",
+      "sequence": "AGCKWNFWKTTTSC",
+      "ddG": 33.517,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": -33.517,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 18,
+      "id": "p5W_p6E_p11T_AGCKWEFWKTTTSC",
+      "sequence": "AGCKWEFWKTTTSC",
+      "ddG": 35.526,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": -35.526,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 19,
+      "id": "p5W_p6D_p11T_AGCKWDFWKTTTSC",
+      "sequence": "AGCKWDFWKTTTSC",
+      "ddG": 36.031,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": -36.031,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 20,
+      "id": "p5W_p6E_p11S_AGCKWEFWKTSTSC",
+      "sequence": "AGCKWEFWKTSTSC",
+      "ddG": 36.647,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": -36.647,
+      "result": "FAIL",
+      "failReason": ""
+    }
+  ],
+  "best_candidate": {
+    "id": "p5V_p6D_p11S_AGCKVDFWKTSTSC",
+    "sequence": "AGCKVDFWKTSTSC",
+    "ddG": -27.191,
+    "totalScore": 0.0
+  },
+  "completed": true
+}

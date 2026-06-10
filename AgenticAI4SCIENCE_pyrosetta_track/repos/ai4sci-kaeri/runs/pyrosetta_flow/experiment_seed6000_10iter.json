@@ -1,0 +1,1347 @@
+{
+  "created_at": "2026-02-25T09:40:25.366062+00:00",
+  "run_id": "sst14_mutdock_6000",
+  "config": {
+    "template_pdb": "data/fold_test1_model_0.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 8,
+    "seed_base": 6000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 1,
+    "max_iterations": 10,
+    "top_k": 5,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "planner_mode": "pyrosetta_only",
+    "max_parallel_workers": 10
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": 278.8559,
+    "total_score": -72.0495,
+    "pre_score": 48.9961,
+    "score_delta": -121.0456,
+    "clash_score": 12.0,
+    "constraint_violations": 0
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Modifying positions 5, 6, and 11 to introduce hydrophobic/aromatic residues will enhance binding affinity to SSTR2 by optimizing hydrophobic interactions and aromatic stacking.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 5,
+        "best_ddg": -44.9576,
+        "mean_ddg": -35.1582,
+        "selected_ids": [
+          "iter01_cand002",
+          "iter01_cand008",
+          "iter01_cand005",
+          "iter01_cand007",
+          "iter01_cand006"
+        ],
+        "critic_hypothesis": "Structural quality is critically dependent on clash tolerance and combined scoring metrics, requiring balanced optimization of binding affinity and model confidence.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AGCKNDFWKTVTSC",
+          "ddg": -27.7264,
+          "total_score": -11.292,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand004",
+          "sequence": "AGCTHKFWKTFTSC",
+          "ddg": -6.0445,
+          "total_score": -374.3167,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand008",
+          "sequence": "AGCKNFFWKTFTSQ",
+          "ddg": -42.4102,
+          "total_score": -461.0716,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand005",
+          "sequence": "AGCKNFFWKTFTSY",
+          "ddg": -21.7516,
+          "total_score": -461.5919,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand007",
+          "sequence": "AGCFIFFWKTFTSC",
+          "ddg": -38.9451,
+          "total_score": -474.4507,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand003",
+          "sequence": "AGCKWEFWKTLTSC",
+          "ddg": 6.0579,
+          "total_score": -418.071,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AGCKFFFWKTLTSC",
+          "ddg": 294.7317,
+          "total_score": -71.2907,
+          "clash_score": 8.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand006",
+          "sequence": "AGCKDFFWKTFTSC",
+          "ddg": -44.9576,
+          "total_score": -449.9963,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 2,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Optimizing charge distribution at position 5 and aromatic/hydrophobic interactions at positions 6/11 will improve binding affinity by aligning with SSTR2's binding pocket electrostatics and hydrophobicity.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -46.0899,
+        "mean_ddg": -34.4638,
+        "selected_ids": [
+          "iter02_cand006",
+          "iter02_cand003",
+          "iter02_cand001",
+          "iter02_cand002",
+          "iter02_cand005"
+        ],
+        "critic_hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand008",
+          "sequence": "AMCKNFIWKAFTSC",
+          "ddg": 54.9215,
+          "total_score": -149.7951,
+          "clash_score": 11.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand007",
+          "sequence": "AGCKNFFWITFTSC",
+          "ddg": 56.4211,
+          "total_score": -344.8853,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand006",
+          "sequence": "AGCKNFGWKTFTSC",
+          "ddg": -32.8187,
+          "total_score": -466.9897,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand003",
+          "sequence": "AGCKNFFWKTLTSC",
+          "ddg": -31.6345,
+          "total_score": -462.133,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand004",
+          "sequence": "AHCKNFFGKTFTSI",
+          "ddg": 0.8575,
+          "total_score": -369.4602,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand001",
+          "sequence": "AGCKNYFWKTITSC",
+          "ddg": -35.1792,
+          "total_score": -317.6547,
+          "clash_score": 7.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand002",
+          "sequence": "AGCKNFFWKTITSC",
+          "ddg": -26.5969,
+          "total_score": -464.4358,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand005",
+          "sequence": "YSCKNFFWKTFTSN",
+          "ddg": -46.0899,
+          "total_score": -483.6918,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 3,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Mutating positions 5, 6, and 11 to enhance hydrophobic interactions and aromatic stacking will improve binding affinity.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -42.9948,
+        "mean_ddg": -37.4032,
+        "selected_ids": [
+          "iter03_cand007",
+          "iter03_cand008",
+          "iter03_cand003",
+          "iter03_cand001",
+          "iter03_cand002"
+        ],
+        "critic_hypothesis": "The current ddG threshold may be overly conservative; a higher threshold could balance binding affinity with structural validity.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand006",
+          "sequence": "AGCKNWFWVSFTSC",
+          "ddg": -17.3911,
+          "total_score": -430.5196,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand007",
+          "sequence": "AACKNFFWKTFTSC",
+          "ddg": -35.7268,
+          "total_score": -471.5489,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand008",
+          "sequence": "AGCENFFWKTFTSC",
+          "ddg": -32.2036,
+          "total_score": -201.4788,
+          "clash_score": 8.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand003",
+          "sequence": "AGCKFDFWKTFTSC",
+          "ddg": -38.6159,
+          "total_score": -487.9061,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand001",
+          "sequence": "AGCKWDFWKTVTSC",
+          "ddg": -37.4749,
+          "total_score": -464.9769,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand002",
+          "sequence": "AGCKWFFWKTLTSC",
+          "ddg": -42.9948,
+          "total_score": -443.6084,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand005",
+          "sequence": "AGCKNDFWKTFGSE",
+          "ddg": -29.7221,
+          "total_score": -453.7203,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand004",
+          "sequence": "AGCKNFFWHTFTSQ",
+          "ddg": 294.9338,
+          "total_score": -70.0465,
+          "clash_score": 9.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 4,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Aromatic/hydrophobic interactions at positions 5-11 can further optimize binding affinity through residue substitution",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -39.4446,
+        "mean_ddg": -29.7661,
+        "selected_ids": [
+          "iter04_cand004",
+          "iter04_cand001",
+          "iter04_cand005",
+          "iter04_cand003",
+          "iter04_cand006"
+        ],
+        "critic_hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand004",
+          "sequence": "AGCKFEFWKTITSC",
+          "ddg": -18.678,
+          "total_score": -437.8166,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand001",
+          "sequence": "AGCKFEFWKTVTSC",
+          "ddg": -33.6922,
+          "total_score": -456.0726,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand007",
+          "sequence": "AGCKNFFWKTMTSC",
+          "ddg": -3.3047,
+          "total_score": -425.4574,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand005",
+          "sequence": "AGCKWDFWKTITSC",
+          "ddg": -37.1232,
+          "total_score": -441.3017,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand003",
+          "sequence": "AGCKFFFWKTFTSC",
+          "ddg": -39.4446,
+          "total_score": -474.2509,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand006",
+          "sequence": "AGCKNFFEKTFTSI",
+          "ddg": -19.8923,
+          "total_score": -449.1312,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand008",
+          "sequence": "AGCANFFWKRFTSC",
+          "ddg": 30.6433,
+          "total_score": -394.6564,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand002",
+          "sequence": "AGCKFEFWKTFTSC",
+          "ddg": 12.1757,
+          "total_score": -390.5257,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 5,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Aromatic and hydrophobic residues at positions 5, 6, and 11 enhance binding affinity to SSTR2 by optimizing π-π stacking and hydrophobic interactions in the binding pocket.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -86.4426,
+        "mean_ddg": -36.4989,
+        "selected_ids": [
+          "iter05_cand004",
+          "iter05_cand006",
+          "iter05_cand002",
+          "iter05_cand007",
+          "iter05_cand003"
+        ],
+        "critic_hypothesis": "Structural integrity requires tighter clash constraints while maintaining favorable binding affinity through adjusted ddG thresholds",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand001",
+          "sequence": "AGCKYDFWKTITSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKYDFWKTITSC\n  Mutated pos 5: N -> Y (TYR)\n  Mutated pos 6: F -> D (ASP)\n  Mutated pos 11: F -> I (ILE)\nApplied 3 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 63.24\n/tmp/tmp652p7pn3: line 3: 22061 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYDFWKTITSC --peptide-chain 1\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYDFWKTITSC --peptide-chain 1` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYDFWKTITSC --peptide-chain 1"
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand004",
+          "sequence": "AGCKNEFWKTVTSC",
+          "ddg": -33.6745,
+          "total_score": -459.0541,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand006",
+          "sequence": "AGCWNFFWKTFTSC",
+          "ddg": -20.0555,
+          "total_score": -444.1772,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand002",
+          "sequence": "AGCKYFFWKTFTSC",
+          "ddg": -86.4426,
+          "total_score": -354.577,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand005",
+          "sequence": "AGCKWEFWKTVTSC",
+          "ddg": -10.6755,
+          "total_score": -363.3021,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand007",
+          "sequence": "LGCKPFEWKTFTSC",
+          "ddg": -23.7904,
+          "total_score": -460.3193,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand008",
+          "sequence": "AGCKNFFKKFFTSC",
+          "ddg": -18.3937,
+          "total_score": -441.865,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand003",
+          "sequence": "AGCKNFFWKTVTSC",
+          "ddg": -18.5315,
+          "total_score": -441.6288,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 6,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Aromatic residue enrichment at position 5 and charge optimization at position 6 will improve binding affinity while maintaining structural compatibility with the SSTR2 binding pocket.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -47.0529,
+        "mean_ddg": -39.3495,
+        "selected_ids": [
+          "iter06_cand005",
+          "iter06_cand004",
+          "iter06_cand002",
+          "iter06_cand008",
+          "iter06_cand007"
+        ],
+        "critic_hypothesis": "Optimal SSTR2 binders require balance between binding affinity (ddG) and structural validity (pLDDT), rather than extreme optimization of single metrics",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_06/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_06/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand003",
+          "sequence": "AGCKNDFWKTITSC",
+          "ddg": -25.1447,
+          "total_score": -470.7104,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand001",
+          "sequence": "AGCKFDFWKTLTSC",
+          "ddg": -23.6268,
+          "total_score": -433.3667,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand005",
+          "sequence": "AGCKNFFWLTFTSC",
+          "ddg": -32.8678,
+          "total_score": -442.7611,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand006",
+          "sequence": "AGCKNFFWKEFTSH",
+          "ddg": -10.7867,
+          "total_score": -373.8045,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand004",
+          "sequence": "AWCKNFFLKTFTSC",
+          "ddg": -32.1987,
+          "total_score": -420.7412,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand002",
+          "sequence": "AGCKWFFWKTFTSC",
+          "ddg": -47.0529,
+          "total_score": -198.8108,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand008",
+          "sequence": "AGCHNFFWKTFTSC",
+          "ddg": -46.3002,
+          "total_score": -483.4341,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand007",
+          "sequence": "KGCKNFFWKTFTSC",
+          "ddg": -38.3277,
+          "total_score": -470.0152,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 7,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Introducing aromatic residues at position 5 will enhance binding affinity to SSTR2, as evidenced by the previous best candidate's mutation (N→W) achieving the lowest ddG.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -40.3973,
+        "mean_ddg": -36.9485,
+        "selected_ids": [
+          "iter07_cand003",
+          "iter07_cand008",
+          "iter07_cand002",
+          "iter07_cand006",
+          "iter07_cand001"
+        ],
+        "critic_hypothesis": "Structural quality is inversely correlated with ddG in this design space; balancing stability with geometric constraints is critical for successful SSTR2 design",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_07/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_07/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand007",
+          "sequence": "GGCKNFFWKTFSSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: GGCKNFFWKTFSSC\n  Mutated pos 1: A -> G (GLY)\n  Mutated pos 12: T -> S (SER)\nApplied 2 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 49.14\n/tmp/tmpz8yzyvxu: line 3: 22719 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_07/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence GGCKNFFWKTFSSC --peptide-chain 1\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_07/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence GGCKNFFWKTFSSC --peptide-chain 1` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_07/cand_007.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence GGCKNFFWKTFSSC --peptide-chain 1"
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand003",
+          "sequence": "AGCKYEFWKTFTSC",
+          "ddg": -36.6286,
+          "total_score": -468.9754,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand008",
+          "sequence": "AGCKNYFWKTQTSS",
+          "ddg": -32.3352,
+          "total_score": -454.1616,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand005",
+          "sequence": "YGCKNFFWKTFTST",
+          "ddg": -14.8231,
+          "total_score": -457.2219,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand004",
+          "sequence": "FGCKNFFGKTFYSC",
+          "ddg": 66.8604,
+          "total_score": -429.8384,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand002",
+          "sequence": "AGCKNEFWKTFTSC",
+          "ddg": -40.3973,
+          "total_score": -481.5514,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand006",
+          "sequence": "AGCKQFFWKTFTSC",
+          "ddg": -35.4104,
+          "total_score": -444.9068,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 7,
+          "candidate_id": "iter07_cand001",
+          "sequence": "AGCKYFFWKTLTSC",
+          "ddg": -39.9711,
+          "total_score": -477.8187,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 8,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Introducing aromatic residues at positions 5 and 6 will enhance hydrophobic interactions and improve binding affinity compared to the original sequence.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -41.0335,
+        "mean_ddg": -36.4188,
+        "selected_ids": [
+          "iter08_cand007",
+          "iter08_cand004",
+          "iter08_cand006",
+          "iter08_cand008",
+          "iter08_cand005"
+        ],
+        "critic_hypothesis": "Structural quality is inversely correlated with docking reliability; need to optimize both energy and sampling parameters simultaneously",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_08/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_08/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand007",
+          "sequence": "AGCKNFFNKTFTSC",
+          "ddg": -32.2372,
+          "total_score": -434.0091,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand003",
+          "sequence": "AGCKWDFWKTFTSC",
+          "ddg": 84.9846,
+          "total_score": -145.6529,
+          "clash_score": 7.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand004",
+          "sequence": "AGCKYFFWKTVTSC",
+          "ddg": -40.2055,
+          "total_score": -426.9778,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand006",
+          "sequence": "AGCRNFFWKTADSC",
+          "ddg": -41.0335,
+          "total_score": -478.4253,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand008",
+          "sequence": "AGCKNQQWKTFQSC",
+          "ddg": -31.645,
+          "total_score": -459.2506,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand001",
+          "sequence": "AGCKWDFWKTLTSC",
+          "ddg": 0.1507,
+          "total_score": -388.0541,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand005",
+          "sequence": "AGCKWEFWKTITSC",
+          "ddg": -36.973,
+          "total_score": -469.6286,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 8,
+          "candidate_id": "iter08_cand002",
+          "sequence": "AGCKYFFWKTITSC",
+          "ddg": 67.6378,
+          "total_score": -330.3033,
+          "clash_score": 7.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 9,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Optimizing aromatic interactions at position 5 and charge distribution at position 6 will improve binding affinity while maintaining structural integrity",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -42.4942,
+        "mean_ddg": -35.7666,
+        "selected_ids": [
+          "iter09_cand003",
+          "iter09_cand001",
+          "iter09_cand002",
+          "iter09_cand005",
+          "iter09_cand008"
+        ],
+        "critic_hypothesis": "Structural quality is constrained by sampling parameters rather than energy landscape complexity",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand003",
+          "sequence": "AGCKNDFWKTFTSC",
+          "ddg": -34.8812,
+          "total_score": -400.4704,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand001",
+          "sequence": "AGCKNEFWKTITSC",
+          "ddg": -29.2719,
+          "total_score": -120.4716,
+          "clash_score": 8.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand006",
+          "sequence": "WGCKNFFAKTFTSC",
+          "ddg": -18.4878,
+          "total_score": -18.2848,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand002",
+          "sequence": "AGCKFDFWKTITSC",
+          "ddg": -42.4942,
+          "total_score": -463.2569,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand005",
+          "sequence": "AGCKWEFWKTFTSC",
+          "ddg": -40.7193,
+          "total_score": -390.7971,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand007",
+          "sequence": "NGCKNFFWKTVTSC",
+          "ddg": -15.806,
+          "total_score": -278.9474,
+          "clash_score": 7.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand004",
+          "sequence": "AGCKFDFWKTVTSC",
+          "ddg": 7.6469,
+          "total_score": -391.7999,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 9,
+          "candidate_id": "iter09_cand008",
+          "sequence": "AGCKNFFWKTFTSS",
+          "ddg": -31.4666,
+          "total_score": -453.9625,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 10,
+        "run_id": "sst14_mutdock_6000",
+        "hypothesis": "Optimizing aromatic/charged residues at positions 5-6 and hydrophobic residues at position 11 will further lower ddG by enhancing binding pocket complementarity",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -43.298,
+        "mean_ddg": -36.5716,
+        "selected_ids": [
+          "iter10_cand001",
+          "iter10_cand006",
+          "iter10_cand002",
+          "iter10_cand007",
+          "iter10_cand004"
+        ],
+        "critic_hypothesis": "Structural confidence and docking accuracy require more extensive sampling of conformational space with relaxed stability constraints",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand003",
+          "sequence": "AGCKYDFWKTVTSC",
+          "ddg": 999.0,
+          "total_score": 999.0,
+          "clash_score": 999.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKYDFWKTVTSC\n  Mutated pos 5: N -> Y (TYR)\n  Mutated pos 6: F -> D (ASP)\n  Mutated pos 11: F -> V (VAL)\nApplied 3 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 57.34\n/tmp/tmp3uae2310: line 3: 23724 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/cand_003.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYDFWKTVTSC --peptide-chain 1\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/cand_003.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYDFWKTVTSC --peptide-chain 1` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/cand_003.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYDFWKTVTSC --peptide-chain 1"
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand008",
+          "sequence": "AGCKNFFWKTLTST",
+          "ddg": 24.0599,
+          "total_score": -377.7061,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand001",
+          "sequence": "AGCKYEFWKTITSC",
+          "ddg": -43.298,
+          "total_score": -472.886,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand006",
+          "sequence": "AGCKNFFWDTSTSC",
+          "ddg": -29.2566,
+          "total_score": -470.5882,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand005",
+          "sequence": "AGCKNFFWKTFWSC",
+          "ddg": 105.9889,
+          "total_score": -354.0707,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand002",
+          "sequence": "AGCKNDFWKTLTSC",
+          "ddg": -36.3101,
+          "total_score": -446.6507,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand007",
+          "sequence": "AFCKEFFWKTFTSC",
+          "ddg": -34.8045,
+          "total_score": -438.2325,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 10,
+          "candidate_id": "iter10_cand004",
+          "sequence": "ALCKYFFWKTFTSC",
+          "ddg": -39.1886,
+          "total_score": -475.833,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    }
+  ],
+  "final_candidates": [
+    {
+      "iteration": 10,
+      "candidate_id": "iter10_cand001",
+      "sequence": "AGCKYEFWKTITSC",
+      "ddg": -43.298,
+      "total_score": -472.886,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 10,
+      "candidate_id": "iter10_cand006",
+      "sequence": "AGCKNFFWDTSTSC",
+      "ddg": -29.2566,
+      "total_score": -470.5882,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 10,
+      "candidate_id": "iter10_cand002",
+      "sequence": "AGCKNDFWKTLTSC",
+      "ddg": -36.3101,
+      "total_score": -446.6507,
+      "clash_score": 2.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 10,
+      "candidate_id": "iter10_cand007",
+      "sequence": "AFCKEFFWKTFTSC",
+      "ddg": -34.8045,
+      "total_score": -438.2325,
+      "clash_score": 1.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 10,
+      "candidate_id": "iter10_cand004",
+      "sequence": "ALCKYFFWKTFTSC",
+      "ddg": -39.1886,
+      "total_score": -475.833,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    }
+  ],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 10,
+    "best_final_ddg": -43.298,
+    "run_status": "completed_with_warnings",
+    "failure_stage": "iteration_5_rosetta_partial",
+    "error_summary": "1 candidate refine failures (latest iteration=10)"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "timestamp": "20260228T032548",
+  "results": [
+    {
+      "id": "iter08_cand002",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -44.989,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -482.427,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

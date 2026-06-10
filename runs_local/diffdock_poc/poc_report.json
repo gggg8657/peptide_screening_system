@@ -1,0 +1,130 @@
+{
+  "poc_info": {
+    "title": "A-06 DiffPepDock PoC — SSTR2+SST14",
+    "date": "2026-05-19",
+    "model": "DiffPepDock (DiffPepBuilder v1)",
+    "checkpoint": "diffpepdock_v1.pth (1.2 GB)",
+    "conda_env": "diffpepbuilder",
+    "gpu": "NVIDIA H100 NVL (95830 MiB)",
+    "cuda_device": "CUDA_VISIBLE_DEVICES=2"
+  },
+  "input": {
+    "receptor": "SSTR2_7XNA.pdb (chain A, 472 residues)",
+    "peptide_seq": "AGCKNFFWKTFTSC",
+    "peptide_len": 14,
+    "hotspots": "A122(D122), A126(Q126), A196(N196), A197(W197), A276(N276), A291(K291), A295(D295)",
+    "num_poses_requested": 10
+  },
+  "diffpepdock_results": {
+    "num_poses_generated": 10,
+    "elapsed_sec": 77.9,
+    "elapsed_min": 1.3,
+    "gpu_vram_peak_estimated_mb": "N/A (peak not captured; GPU idle before/after)",
+    "checkpoint_size_gb": 1.2,
+    "postprocess": "skipped (openmm GLIBCXX_3.4.30 incompatibility)",
+    "openmm_issue": "libstdc++.so.6 GLIBCXX_3.4.30 not found — amber/rosetta relaxation unavailable"
+  },
+  "inter_pose_rmsd": {
+    "description": "Aligned Cα RMSD (pose_001~009 vs pose_000 as reference)",
+    "rmsd_values_angstrom": [
+      0.5609,
+      0.5231,
+      0.6146,
+      0.3567,
+      0.5751,
+      0.6475,
+      0.5858,
+      0.645,
+      2.2626
+    ],
+    "rmsd_min": 0.3567,
+    "rmsd_max": 2.2626,
+    "rmsd_mean": 0.7524,
+    "rmsd_threshold_angstrom": 2.0,
+    "n_success": 8,
+    "n_total": 9,
+    "rmsd_success_rate": 0.8889,
+    "note": "No crystal complex available for SSTR2+SST14 (14aa linear form). Inter-pose RMSD measures pose diversity only, NOT accuracy vs. ground truth."
+  },
+  "comparison_table": {
+    "engines": [
+      {
+        "engine": "FlexPepDock (PyRosetta)",
+        "paradigm": "physics-based Rosetta force field",
+        "runtime_10poses": "~6-13 sec (nstruct=5-50, CPU+Rosetta)",
+        "gpu_required": false,
+        "output_score": "Rosetta ddG (kcal/mol)",
+        "ss_bond_support": "yes (DisulfideBondMover)",
+        "multi_pose": "yes (nstruct)",
+        "cyclic_peptide": "partial (needs constraints XML)",
+        "reference": "flexpepdock_jobs/eta_history.json"
+      },
+      {
+        "engine": "Boltz (diffusion, AF3-class)",
+        "paradigm": "SE(3) diffusion, all-atom",
+        "runtime_10poses": "~60-90 sec per single pred (GPU H100)",
+        "gpu_required": true,
+        "output_score": "ipTM confidence (0~1, higher=better)",
+        "ss_bond_support": "yes (CCD ligand constraints)",
+        "multi_pose": "limited (samples)",
+        "cyclic_peptide": "yes (via CCD SSTatom)",
+        "reference": "silo_b_demo: ipTM 0.825~0.906 for SSTR2"
+      },
+      {
+        "engine": "DiffPepDock (this PoC)",
+        "paradigm": "SE(3) diffusion, peptide-specific",
+        "runtime_10poses": "77.9 sec (GPU H100, 10 poses)",
+        "gpu_required": true,
+        "output_score": "pose coordinates only (no confidence score in v1)",
+        "ss_bond_support": "no (linear sequence input only)",
+        "multi_pose": "yes (num_repeat_per_eval_sample)",
+        "cyclic_peptide": "no (linear AA sequence only)",
+        "reference": "this PoC"
+      }
+    ]
+  },
+  "pros_cons": {
+    "diffpepdock_pros": [
+      "Peptide-specific diffusion model (trained on PepPC-F dataset)",
+      "Multi-pose generation in single inference pass",
+      "Faster than Boltz for pure peptide docking (no MSA required)",
+      "Lightweight: no MSA, no template"
+    ],
+    "diffpepdock_cons": [
+      "No SS bond (disulfide) support — SST14 Cys3-Cys14 ring NOT modeled",
+      "No confidence/affinity score output (v1) — cannot rank poses by binding strength",
+      "openmm GLIBCXX incompatibility blocks Amber/Rosetta relaxation postprocessing",
+      "Trained primarily on linear peptides; cyclic/constrained peptides out-of-distribution",
+      "No receptor flexibility during inference",
+      "Requires separate RMSD scoring vs. crystal reference for validation"
+    ],
+    "sstr2_specific_concern": "SST14 is a cyclic peptide via Cys3-Cys14 disulfide bond. DiffPepDock v1 accepts linear amino acid sequences only. The disulfide constraint is structurally critical for FWKT pharmacophore presentation. Running DiffPepDock on linearized SST14 generates geometrically inconsistent poses."
+  },
+  "recommendation": {
+    "verdict": "NOT_RECOMMENDED_FOR_PRODUCTION",
+    "reason": [
+      "Critical: SS bond (Cys3-Cys14) not supported — produces wrong ring conformation",
+      "No affinity/confidence score → cannot rank candidates → useless as a scoring engine",
+      "openmm GLIBCXX issue blocks postprocessing (env-level fix required)",
+      "Inter-pose RMSD 0.36~2.26 Å shows reasonable pose diversity but without ground truth cannot assess accuracy"
+    ],
+    "alternative": [
+      "Boltz: already integrated, supports SS bond via CCD, ipTM score available",
+      "FlexPepDock: supports DisulfideBondMover, ddG score available, already integrated",
+      "DiffPepDock future work: v2 with cyclic peptide support or SMILES input could enable re-evaluation"
+    ],
+    "poc_only": true,
+    "gate_criteria_met": false,
+    "gate_criteria": "RMSD ≤ 2.0 Å success rate ≥ 80% vs. crystal reference (N/A: no SSTR2+SST14-14aa crystal structure available)"
+  },
+  "nvidia_smi_snapshot": {
+    "timestamp": "2026-05-19 09:16:24",
+    "gpu2": {
+      "name": "NVIDIA H100 NVL",
+      "mem_used_mib": 14,
+      "mem_total_mib": 95830,
+      "temp_c": 39
+    },
+    "note": "Peak VRAM during inference not captured (run completed before snapshot). Estimated ~2-4 GB based on 1.2 GB checkpoint + activations."
+  }
+}

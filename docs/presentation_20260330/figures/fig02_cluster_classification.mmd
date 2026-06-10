@@ -1,0 +1,56 @@
+---
+title: "PRST_N_FM — A~E 클러스터 분류 기준"
+---
+flowchart TD
+    START(["후보 펩타이드 입력\nSSTR2 도킹 완료"])
+
+    %% ── Cluster A 판정 ─────────────────────────────────────
+    START --> QA{"Cluster A 조건\n모두 충족?"}
+    QA -->|"ddG ≤ −8.0 kcal/mol\nclash ≤ 5\npLDDT ≥ 75\nFWKT 접촉 확인"| CA["🏆 Cluster A\n결합 엘리트\n(High Affinity Core)\n\n→ 1차 우선순위 후보\n→ 방사성 표지 즉시 진행"]
+    QA -->|미충족| QB
+
+    %% ── Cluster B 판정 ─────────────────────────────────────
+    QB{"Cluster B 조건\n충족?"}
+    QB -->|"SSTR2 ddG 낮음 (≤ −6.0)\nselectivity_margin ≥ 3.0\n(vs SSTR1/3/4/5)"| CB["🎯 Cluster B\n선택성 특화\n(Subtype Selective)\n\n→ SSTR2-only 후보\n→ off-target 독성 회피"]
+    QB -->|미충족| QC
+
+    %% ── Cluster C 판정 ─────────────────────────────────────
+    QC{"Cluster C 조건\n충족?"}
+    QC -->|"Instability Index < 30\nBLOSUM62 보존도 높음\nProtease hotspot 감소"| CC["🛡️ Cluster C\n안정성 강화\n(Stability-First)\n\n→ 혈청 반감기 우수 예상\n→ 비경구 투여 후보"]
+    QC -->|미충족| QD
+
+    %% ── Cluster D 판정 ─────────────────────────────────────
+    QD{"Cluster D 조건\n충족?"}
+    QD -->|"GRAVY ∈ [−1.0, +0.5]\n양전하 최소화\n킬레이터 호환 (DOTA/NOTA)"| CD["☢️ Cluster D\n방사화학 최적\n(Radiochem Friendly)\n\n→ 68Ga / 177Lu / 225Ac 킬레이션\n→ N-말단 변형 허용"]
+    QD -->|미충족| CE
+
+    %% ── Cluster E (나머지) ──────────────────────────────────
+    CE["🔬 Cluster E\n탐색 후보\n(Novel Scaffold)\n\n→ 비보존 치환 포함\n→ 새로운 접촉 패턴\n→ 장기 탐색 대상"]
+
+    %% ── 공통 지표 범례 ──────────────────────────────────────
+    subgraph LEGEND ["📐 공통 판정 지표"]
+        direction LR
+        L1["ddG: FlexPepDock ΔΔG\n(kcal/mol)"]
+        L2["pLDDT: ESMFold\n구조 신뢰도 (0~100)"]
+        L3["Instability Index\nGuruprasad 1990\n(< 40 = 안정)"]
+        L4["GRAVY\nKyte-Doolittle 소수성\n1982"]
+        L5["selectivity_margin\nSSTR2 ddG − min(others)\n(kcal/mol)"]
+        L6["BLOSUM62 보존도\nHenikoff 1992\n아미노산 치환 보존"]
+    end
+
+    %% ── 스타일 ──────────────────────────────────────────────
+    classDef clusterA fill:#fef3c7,stroke:#d97706,color:#78350f,font-weight:bold
+    classDef clusterB fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,font-weight:bold
+    classDef clusterC fill:#d1fae5,stroke:#059669,color:#064e3b,font-weight:bold
+    classDef clusterD fill:#ede9fe,stroke:#7c3aed,color:#3b0764,font-weight:bold
+    classDef clusterE fill:#f3f4f6,stroke:#6b7280,color:#111827,font-weight:bold
+    classDef decision fill:#fff7ed,stroke:#ea580c,color:#431407
+    classDef legend fill:#f8fafc,stroke:#94a3b8,color:#334155
+
+    class CA clusterA
+    class CB clusterB
+    class CC clusterC
+    class CD clusterD
+    class CE clusterE
+    class QA,QB,QC,QD decision
+    class LEGEND,L1,L2,L3,L4,L5,L6 legend

@@ -1,0 +1,200 @@
+approach_b:
+  enabled: true
+  fixed_positions:
+    3: C
+    7: F
+    8: W
+    9: K
+    10: T
+    14: C
+  hydrophobicity_max_delta: 2.0
+  max_mutations_per_variant: 3
+  max_variants: 200
+  min_blosum_score: 0
+  mutable_positions:
+  - 1
+  - 2
+  - 4
+  - 5
+  - 6
+  - 11
+  - 12
+  - 13
+  seed_sequence: AGCKNFFWKTFTSC
+  stability_prescreen: true
+  stability_prescreen_min_hours: 0.6
+  strategy: dual_b1_b2
+contigs: B1-369/0 10-30
+convergence_ddg_delta: 0.5
+convergence_patience: 2
+dual_silo:
+  enabled: false
+  silo_a:
+    gpu_device: 0
+    k_seq_per_backbone: 8
+    n_backbone: 10
+  silo_b:
+    gpu_device: 1
+    n_mutations: 128
+folder_structure:
+  00_config:
+    description: Pipeline config and threshold files
+  01_receptor:
+    description: Receptor PDB and pocket residue JSON
+  02_backbone:
+    description: RFdiffusion backbone PDB files
+  03_sequence:
+    description: ProteinMPNN designed FASTA files
+  04_qc:
+    description: ESMFold structure prediction and QC report
+  05_docking:
+    description: DiffDock/Boltz2 docking results
+  05b_selectivity:
+    description: Off-target docking and selectivity screening
+  06_rosetta:
+    description: PyRosetta FlexPepDock refinement and ddG scores
+  07_viz:
+    description: FoldMason comparison, PyMOL renders, rank table
+  08_reports:
+    description: Lab notebook, decision log, next iteration plan
+hotspot_res:
+- B122
+- B127
+- B184
+- B197
+- B205
+- B272
+- B294
+iteration:
+  adaptive_enabled: true
+  convergence_ddg_threshold: -30.0
+  convergence_min_candidates: 3
+  diversity_top_n: 20
+  k_seq_per_backbone: 8
+  max_iterations: 1
+  min_iterations: 2
+  mutation_rate_increase: 0.5
+  n_backbone: 10
+  no_improvement_patience: 2
+  top_m_rosetta: 10
+llm:
+  api_key: null
+  base_url: http://localhost:8002
+  max_tokens: 4096
+  model: Qwen/Qwen3.5-27B
+  provider: vllm
+  temperature: 0.3
+  timeout: 120
+local_models:
+  esmfold:
+    enabled: true
+  proteinmpnn:
+    enabled: true
+  rfdiffusion:
+    enabled: false
+mode: local
+off_target_receptors:
+- chain: A
+  full_name: Somatostatin Receptor Type 1
+  name: SSTR1
+  pdb_source: experimental
+  structure_path: data/somatostatin_receptor/SSTR1_9IK8.cif
+  uniprot_id: P30872
+- chain: A
+  full_name: Somatostatin Receptor Type 3
+  name: SSTR3
+  pdb_source: experimental
+  structure_path: data/somatostatin_receptor/SSTR3_8XIR.cif
+  uniprot_id: P32745
+- chain: A
+  full_name: Somatostatin Receptor Type 4
+  name: SSTR4
+  pdb_source: experimental
+  structure_path: data/somatostatin_receptor/SSTR4_7XMT.cif
+  uniprot_id: P31391
+- chain: A
+  full_name: Somatostatin Receptor Type 5
+  name: SSTR5
+  pdb_source: experimental
+  structure_path: data/somatostatin_receptor/SSTR5_8ZBJ.cif
+  uniprot_id: P35346
+output_base_dir: runs_local/phase2_smoke_20260527_083233
+receptor:
+  chain: B
+  existing_pdb: /home/dongjukim/Documents/workspace/repos/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/data/fold_test1_model_0.pdb
+  full_name: Somatostatin Receptor Type 2
+  name: SSTR2
+  pocket_residues:
+  - 119
+  - 120
+  - 122
+  - 123
+  - 124
+  - 127
+  - 180
+  - 181
+  - 184
+  - 185
+  - 193
+  - 197
+  - 200
+  - 201
+  - 205
+  - 268
+  - 269
+  - 272
+  - 290
+  - 294
+  - 295
+  - 298
+reference_peptide:
+  cys_positions:
+  - 3
+  - 14
+  frozen_residues:
+  - C3
+  - C14
+  - F7
+  - W8
+  - K9
+  - T10
+  full_name: DOTA-[Tyr3]-octreotate
+  length: 14
+  name: DOTATATE
+  notes: 'Cyclic somatostatin analogue targeting SSTR2. Cys3-Cys14 disulfide essential
+    for bioactivity. Positions 7-10 (FWKT) are binding hotspot core.
+
+    '
+  sequence: AGCKNFFWKTFTSC
+rosetta:
+  conda_env: bio-tools
+  enabled: true
+  fallback_to_simulation: true
+  fast_design_enabled: false
+  fast_design_n_candidates: 20
+  fast_design_seed_base: 1000
+  fast_relax_before_dock: false
+  protocol: flexpep_refine
+  timeout_per_candidate_sec: 1800
+  top_m_rosetta: 5
+  total_timeout_sec: 7200
+run_id_example: local_20260326_1430_iter01
+run_id_format: local_YYYYMMDD_HHMM_iterXX
+selectivity:
+  enabled: true
+  engine: pyrosetta
+  offtarget_timeout_sec: 300
+  parallel_offtargets: false
+  top_k_for_selectivity: 20
+sequence_constraints:
+  disulfide_pairs:
+  - - 3
+    - 14
+  enabled: true
+  fixed_positions:
+    3: C
+    7: F
+    8: W
+    9: K
+    10: T
+    14: C

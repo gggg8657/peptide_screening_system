@@ -1,0 +1,5908 @@
+{
+  "run_id": "sst14_mutdock_7000",
+  "started_at": "2026-02-25T09:43:47.411165+00:00",
+  "updated_at": "2026-02-25T10:10:28.059144+00:00",
+  "iteration": 10,
+  "total_iterations": 10,
+  "llm_model": "OllamaProvider(model='qwen3:8b')",
+  "target": "SSTR2",
+  "reference": "DOTATATE (AGCKNFFWKTFTSC, 14-aa)",
+  "steps": [
+    {
+      "id": "step01",
+      "label": "OpenFold3",
+      "shortLabel": "Step01",
+      "status": "pending"
+    },
+    {
+      "id": "step02",
+      "label": "RFdiffusion",
+      "shortLabel": "Step02",
+      "status": "pending"
+    },
+    {
+      "id": "step03",
+      "label": "ProteinMPNN",
+      "shortLabel": "Step03",
+      "status": "pending"
+    },
+    {
+      "id": "step03b",
+      "label": "BLOSUM Mutation",
+      "shortLabel": "Step03b",
+      "status": "pending"
+    },
+    {
+      "id": "step03b_qc",
+      "label": "Stability Pre-screen",
+      "shortLabel": "Step03b-QC",
+      "status": "pending"
+    },
+    {
+      "id": "step04",
+      "label": "ESMFold QC",
+      "shortLabel": "Step04",
+      "status": "pending"
+    },
+    {
+      "id": "step05",
+      "label": "DiffDock",
+      "shortLabel": "Step05",
+      "status": "pending"
+    },
+    {
+      "id": "step06",
+      "label": "PyRosetta",
+      "shortLabel": "Step06",
+      "status": "completed",
+      "duration": "1.5m"
+    },
+    {
+      "id": "step05b",
+      "label": "Selectivity",
+      "shortLabel": "Step05b",
+      "status": "pending"
+    },
+    {
+      "id": "step07",
+      "label": "Analysis",
+      "shortLabel": "Step07",
+      "status": "pending"
+    },
+    {
+      "id": "step08",
+      "label": "Stability",
+      "shortLabel": "Step08",
+      "status": "pending"
+    },
+    {
+      "id": "step09",
+      "label": "MolMIM",
+      "shortLabel": "Step09",
+      "status": "pending"
+    }
+  ],
+  "agents": [
+    {
+      "id": "planner",
+      "name": "Planner",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Mutating positions 5, 6, and 11 to hydrophobic/aromatic residues will further de",
+      "taskCount": 10,
+      "report": {
+        "type": "plan",
+        "iteration": 10,
+        "run_id": "sst14_mutdock_7000",
+        "hypothesis": "Mutating positions 5, 6, and 11 to hydrophobic/aromatic residues will further decrease ddG, improving binding affinity through enhanced hydrophobic interactions and aromatic stacking in the SSTR2 pocket.",
+        "strategy": "ddg_plus_constraints"
+      }
+    },
+    {
+      "id": "qc-ranker",
+      "name": "QC & Ranker",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "Ranking done",
+      "taskCount": 10
+    },
+    {
+      "id": "diversity-mgr",
+      "name": "DiversityMgr",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "",
+      "taskCount": 0
+    },
+    {
+      "id": "critic",
+      "name": "Critic",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Optimal SSTR2 binders require balance between energetic favorability and structu",
+      "taskCount": 10,
+      "report": {
+        "type": "critic",
+        "iteration": 10,
+        "hypothesis": "Optimal SSTR2 binders require balance between energetic favorability and structural validity, not extreme ddG values",
+        "proposed_changes": [
+          {
+            "parameter": "rosetta_ddg_max",
+            "old": "-5.0",
+            "new": "-3.0",
+            "rationale": "Current ddG threshold is too restrictive, forcing overly negative energies that correlate with poor structural quality metrics"
+          },
+          {
+            "parameter": "rosetta_clash_max",
+            "old": "10",
+            "new": "5",
+            "rationale": "Excessive clash tolerance may allow poorly packed structures that depress pLDDT and docking scores"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Reports saved",
+      "taskCount": 10,
+      "report": {
+        "type": "reporter",
+        "iteration": 10,
+        "summary": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/08_reports/summary.md"
+      }
+    }
+  ],
+  "rosetta_substeps": [
+    {
+      "id": "step06_prepare",
+      "label": "Prepare",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_mutate",
+      "label": "Mutate",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_refine",
+      "label": "Refine",
+      "status": "completed",
+      "duration": "1.5m"
+    },
+    {
+      "id": "step06_score",
+      "label": "Score",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_qc",
+      "label": "QC",
+      "status": "completed",
+      "duration": "0s"
+    }
+  ],
+  "timeline": [
+    {
+      "iteration": 0,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Preparing baseline (3 trials, best-of)",
+      "ts": "2026-02-25T09:43:47.414578+00:00"
+    },
+    {
+      "iteration": 0,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Baseline ready (best of 3: ddG=-41.2)",
+      "ts": "2026-02-25T09:47:41.850570+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T09:47:41.855863+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Mutating positions 5, 6, and 11 will improve binding affinity by optimizing aromatic interactions and charge distributio",
+      "ts": "2026-02-25T09:47:49.076422+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T09:47:49.078089+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T09:47:49.079671+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T09:47:49.082018+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T09:47:49.083703+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T09:47:49.085386+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand001",
+      "status": "running",
+      "message": "iter01_cand001: AGCKNDFWKTITSC",
+      "ts": "2026-02-25T09:47:49.086212+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "running",
+      "message": "iter01_cand002: AGCKNFFWKTITSC",
+      "ts": "2026-02-25T09:47:49.087013+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "running",
+      "message": "iter01_cand003: AGCKWFFWKTFTSC",
+      "ts": "2026-02-25T09:47:49.087822+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand004",
+      "status": "running",
+      "message": "iter01_cand004: AHCKNFFGKTFTSI",
+      "ts": "2026-02-25T09:47:49.088652+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "running",
+      "message": "iter01_cand005: YSCKNFFWKTFTSN",
+      "ts": "2026-02-25T09:47:49.089454+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "running",
+      "message": "iter01_cand006: AGCKNFGWKTFTSC",
+      "ts": "2026-02-25T09:47:49.090266+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand007",
+      "status": "running",
+      "message": "iter01_cand007: AGCKNFFWITFTSC",
+      "ts": "2026-02-25T09:47:49.091055+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand008",
+      "status": "running",
+      "message": "iter01_cand008: AMCKNFIWKAFTSC",
+      "ts": "2026-02-25T09:47:49.091857+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand007",
+      "status": "completed",
+      "message": "iter01_cand007: ddG=33.76 seq=AGCKNFFWITFTSC",
+      "ts": "2026-02-25T09:48:51.616609+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand001",
+      "status": "completed",
+      "message": "iter01_cand001: ddG=-8.49 seq=AGCKNDFWKTITSC",
+      "ts": "2026-02-25T09:49:04.655013+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "completed",
+      "message": "iter01_cand005: ddG=-40.18 seq=YSCKNFFWKTFTSN",
+      "ts": "2026-02-25T09:49:15.211032+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand004",
+      "status": "completed",
+      "message": "iter01_cand004: ddG=-25.56 seq=AHCKNFFGKTFTSI",
+      "ts": "2026-02-25T09:49:15.562535+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "completed",
+      "message": "iter01_cand002: ddG=-33.02 seq=AGCKNFFWKTITSC",
+      "ts": "2026-02-25T09:49:16.046920+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "completed",
+      "message": "iter01_cand006: ddG=-9.37 seq=AGCKNFGWKTFTSC",
+      "ts": "2026-02-25T09:49:16.300511+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand008",
+      "status": "completed",
+      "message": "iter01_cand008: ddG=-27.68 seq=AMCKNFIWKAFTSC",
+      "ts": "2026-02-25T09:49:19.133232+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "completed",
+      "message": "iter01_cand003: ddG=289.73 seq=AGCKWFFWKTFTSC",
+      "ts": "2026-02-25T09:49:25.887438+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T09:49:25.890678+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T09:49:25.892516+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T09:49:25.894322+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T09:49:25.896935+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T09:49:25.900644+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T09:49:25.903481+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural sampling quality is the primary limiting factor, requiring stricter geometric constraints and increased sampl",
+      "ts": "2026-02-25T09:49:49.720371+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T09:49:49.721284+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+      "ts": "2026-02-25T09:50:00.643705+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T09:50:00.647361+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Optimizing hydrophobic interactions at positions 5, 6, and 11 through aromatic/charged residue substitutions will improv",
+      "ts": "2026-02-25T09:50:10.712942+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T09:50:10.715620+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T09:50:10.717520+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T09:50:10.720150+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T09:50:10.722075+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T09:50:10.723902+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand001",
+      "status": "running",
+      "message": "iter02_cand001: AGCKWDFWKTVTSC",
+      "ts": "2026-02-25T09:50:10.724789+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand002",
+      "status": "running",
+      "message": "iter02_cand002: AGCKWFFWKTLTSC",
+      "ts": "2026-02-25T09:50:10.725690+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand003",
+      "status": "running",
+      "message": "iter02_cand003: AGCKFDFWKTFTSC",
+      "ts": "2026-02-25T09:50:10.726577+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand004",
+      "status": "running",
+      "message": "iter02_cand004: AGCKNFFWKTFTSY",
+      "ts": "2026-02-25T09:50:10.727488+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand005",
+      "status": "running",
+      "message": "iter02_cand005: AGCKNDFWKTFGSE",
+      "ts": "2026-02-25T09:50:10.728400+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand006",
+      "status": "running",
+      "message": "iter02_cand006: AGCKNWFWVSFTSC",
+      "ts": "2026-02-25T09:50:10.729304+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand007",
+      "status": "running",
+      "message": "iter02_cand007: AACKNFFWKTFTSC",
+      "ts": "2026-02-25T09:50:10.730211+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand008",
+      "status": "running",
+      "message": "iter02_cand008: AGCENFFWKTFTSC",
+      "ts": "2026-02-25T09:50:10.731126+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand008",
+      "status": "completed",
+      "message": "iter02_cand008: ddG=-23.61 seq=AGCENFFWKTFTSC",
+      "ts": "2026-02-25T09:51:24.113951+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand007",
+      "status": "completed",
+      "message": "iter02_cand007: ddG=9.78 seq=AACKNFFWKTFTSC",
+      "ts": "2026-02-25T09:51:26.756958+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand003",
+      "status": "completed",
+      "message": "iter02_cand003: ddG=36.41 seq=AGCKFDFWKTFTSC",
+      "ts": "2026-02-25T09:51:31.084322+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand001",
+      "status": "completed",
+      "message": "iter02_cand001: ddG=-33.47 seq=AGCKWDFWKTVTSC",
+      "ts": "2026-02-25T09:51:32.360474+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand005",
+      "status": "completed",
+      "message": "iter02_cand005: ddG=-38.99 seq=AGCKNDFWKTFGSE",
+      "ts": "2026-02-25T09:51:33.863278+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand002",
+      "status": "completed",
+      "message": "iter02_cand002: ddG=-35.25 seq=AGCKWFFWKTLTSC",
+      "ts": "2026-02-25T09:51:34.801512+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand006",
+      "status": "completed",
+      "message": "iter02_cand006: ddG=-34.12 seq=AGCKNWFWVSFTSC",
+      "ts": "2026-02-25T09:51:35.632816+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand004",
+      "status": "completed",
+      "message": "iter02_cand004: ddG=513.49 seq=AGCKNFFWKTFTSY",
+      "ts": "2026-02-25T09:51:36.058301+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T09:51:36.062076+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T09:51:36.064013+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T09:51:36.065932+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T09:51:36.107510+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T09:51:36.111759+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T09:51:36.114689+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural quality is inversely correlated with ddG in this design space; stricter ddG thresholds combined with relaxed ",
+      "ts": "2026-02-25T09:52:04.001404+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T09:52:04.002989+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+      "ts": "2026-02-25T09:52:16.163367+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T09:52:16.167416+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Introducing charged residues at position 6 and aromatic/hydrophobic residues at positions 5 and 11 will improve binding ",
+      "ts": "2026-02-25T09:52:39.461686+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T09:52:39.464706+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T09:52:39.466707+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T09:52:39.469760+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T09:52:39.471925+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T09:52:39.473956+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand001",
+      "status": "running",
+      "message": "iter03_cand001: AGCKFEFWKTVTSC",
+      "ts": "2026-02-25T09:52:39.474977+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand002",
+      "status": "running",
+      "message": "iter03_cand002: AGCKFEFWKTFTSC",
+      "ts": "2026-02-25T09:52:39.475989+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand003",
+      "status": "running",
+      "message": "iter03_cand003: AGCKFFFWKTFTSC",
+      "ts": "2026-02-25T09:52:39.477002+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand004",
+      "status": "running",
+      "message": "iter03_cand004: AGCKFEFWKTITSC",
+      "ts": "2026-02-25T09:52:39.478019+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand005",
+      "status": "running",
+      "message": "iter03_cand005: AGCKWDFWKTITSC",
+      "ts": "2026-02-25T09:52:39.479013+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand006",
+      "status": "running",
+      "message": "iter03_cand006: AGCKNFFEKTFTSI",
+      "ts": "2026-02-25T09:52:39.480017+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand007",
+      "status": "running",
+      "message": "iter03_cand007: AGCKNFFWKTMTSC",
+      "ts": "2026-02-25T09:52:39.481019+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand008",
+      "status": "running",
+      "message": "iter03_cand008: AGCANFFWKRFTSC",
+      "ts": "2026-02-25T09:52:39.481998+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand007",
+      "status": "completed",
+      "message": "iter03_cand007: ddG=-34.33 seq=AGCKNFFWKTMTSC",
+      "ts": "2026-02-25T09:53:53.147786+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand002",
+      "status": "completed",
+      "message": "iter03_cand002: ddG=18.95 seq=AGCKFEFWKTFTSC",
+      "ts": "2026-02-25T09:53:58.200238+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand005",
+      "status": "completed",
+      "message": "iter03_cand005: ddG=-21.18 seq=AGCKWDFWKTITSC",
+      "ts": "2026-02-25T09:53:58.879020+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand001",
+      "status": "completed",
+      "message": "iter03_cand001: ddG=-38.80 seq=AGCKFEFWKTVTSC",
+      "ts": "2026-02-25T09:53:59.956778+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand006",
+      "status": "completed",
+      "message": "iter03_cand006: ddG=-32.34 seq=AGCKNFFEKTFTSI",
+      "ts": "2026-02-25T09:54:00.490454+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand004",
+      "status": "completed",
+      "message": "iter03_cand004: ddG=-33.74 seq=AGCKFEFWKTITSC",
+      "ts": "2026-02-25T09:54:01.124703+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand008",
+      "status": "completed",
+      "message": "iter03_cand008: ddG=-43.38 seq=AGCANFFWKRFTSC",
+      "ts": "2026-02-25T09:54:06.405998+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand003",
+      "status": "completed",
+      "message": "iter03_cand003: ddG=-40.46 seq=AGCKFFFWKTFTSC",
+      "ts": "2026-02-25T09:54:09.655228+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T09:54:09.658866+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T09:54:09.660957+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T09:54:09.663109+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T09:54:09.666281+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T09:54:09.671644+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T09:54:09.676215+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Optimal SSTR2 binders require stringent ddG filtering combined with structural flexibility to achieve both high affinity",
+      "ts": "2026-02-25T09:54:34.542474+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T09:54:34.543572+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+      "ts": "2026-02-25T09:54:44.720459+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T09:54:44.756588+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Aromatic and hydrophobic residue substitutions at positions 5, 6, and 11 will further optimize binding affinity through ",
+      "ts": "2026-02-25T09:54:56.940354+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T09:54:56.942816+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T09:54:56.945218+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T09:54:56.948752+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T09:54:56.951328+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T09:54:56.953738+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand001",
+      "status": "running",
+      "message": "iter04_cand001: AGCKYDFWKTITSC",
+      "ts": "2026-02-25T09:54:56.954943+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand002",
+      "status": "running",
+      "message": "iter04_cand002: AGCKNDFWKTVTSC",
+      "ts": "2026-02-25T09:54:56.956138+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand003",
+      "status": "running",
+      "message": "iter04_cand003: AGCKNFFWKTVTSC",
+      "ts": "2026-02-25T09:54:56.957327+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand004",
+      "status": "running",
+      "message": "iter04_cand004: AGCKNIMWKTFTSC",
+      "ts": "2026-02-25T09:54:56.958531+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand005",
+      "status": "running",
+      "message": "iter04_cand005: APCKNFFWKTFTSC",
+      "ts": "2026-02-25T09:54:56.959724+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand006",
+      "status": "running",
+      "message": "iter04_cand006: AGCWNFFWKTFTSC",
+      "ts": "2026-02-25T09:54:56.960940+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand007",
+      "status": "running",
+      "message": "iter04_cand007: LGCKPFEWKTFTSC",
+      "ts": "2026-02-25T09:54:56.962158+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand008",
+      "status": "running",
+      "message": "iter04_cand008: AGCKNFFKKFFTSC",
+      "ts": "2026-02-25T09:54:56.963369+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand003",
+      "status": "completed",
+      "message": "iter04_cand003: ddG=-47.17 seq=AGCKNFFWKTVTSC",
+      "ts": "2026-02-25T09:56:12.953085+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand008",
+      "status": "completed",
+      "message": "iter04_cand008: ddG=7.60 seq=AGCKNFFKKFFTSC",
+      "ts": "2026-02-25T09:56:13.368030+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand006",
+      "status": "completed",
+      "message": "iter04_cand006: ddG=-38.32 seq=AGCWNFFWKTFTSC",
+      "ts": "2026-02-25T09:56:13.449174+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand001",
+      "status": "completed",
+      "message": "iter04_cand001: ddG=-16.91 seq=AGCKYDFWKTITSC",
+      "ts": "2026-02-25T09:56:18.868314+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand005",
+      "status": "completed",
+      "message": "iter04_cand005: ddG=-42.26 seq=APCKNFFWKTFTSC",
+      "ts": "2026-02-25T09:56:22.927771+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand002",
+      "status": "completed",
+      "message": "iter04_cand002: ddG=8.26 seq=AGCKNDFWKTVTSC",
+      "ts": "2026-02-25T09:56:23.214794+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand004",
+      "status": "completed",
+      "message": "iter04_cand004: ddG=-32.43 seq=AGCKNIMWKTFTSC",
+      "ts": "2026-02-25T09:56:23.339830+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand007",
+      "status": "completed",
+      "message": "iter04_cand007: ddG=-16.86 seq=LGCKPFEWKTFTSC",
+      "ts": "2026-02-25T09:56:28.959623+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T09:56:28.964067+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T09:56:28.966617+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T09:56:28.969199+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T09:56:28.973004+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T09:56:28.978197+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T09:56:28.982189+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural sampling is constrained by clash thresholds and overly strict ddG targets, requiring balanced flexibility in ",
+      "ts": "2026-02-25T09:56:42.071625+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T09:56:42.072973+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/summary.md",
+      "ts": "2026-02-25T09:56:52.374693+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T09:56:52.379997+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Introducing aromatic residues at positions 5 and 6, along with hydrophobic residues at position 11, will enhance binding",
+      "ts": "2026-02-25T09:57:01.370597+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T09:57:01.373045+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T09:57:01.375571+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T09:57:01.379100+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T09:57:01.381648+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T09:57:01.383995+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand001",
+      "status": "running",
+      "message": "iter05_cand001: AGCKFDFWKTLTSC",
+      "ts": "2026-02-25T09:57:01.385136+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand002",
+      "status": "running",
+      "message": "iter05_cand002: AGCKNEFWKTITSC",
+      "ts": "2026-02-25T09:57:01.386295+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand003",
+      "status": "running",
+      "message": "iter05_cand003: AGCKYFFWKTITSC",
+      "ts": "2026-02-25T09:57:01.387454+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand004",
+      "status": "running",
+      "message": "iter05_cand004: AWCKNFFLKTFTSC",
+      "ts": "2026-02-25T09:57:01.388634+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand005",
+      "status": "running",
+      "message": "iter05_cand005: AGCKNFFWLTFTSC",
+      "ts": "2026-02-25T09:57:01.389781+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand006",
+      "status": "running",
+      "message": "iter05_cand006: AGCKNFFWKEFTSH",
+      "ts": "2026-02-25T09:57:01.390939+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand007",
+      "status": "running",
+      "message": "iter05_cand007: KGCKNFFWKTFTSC",
+      "ts": "2026-02-25T09:57:01.392124+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand008",
+      "status": "running",
+      "message": "iter05_cand008: AGCHNFFWKTFTSC",
+      "ts": "2026-02-25T09:57:01.393283+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand004",
+      "status": "completed",
+      "message": "iter05_cand004: ddG=-23.09 seq=AWCKNFFLKTFTSC",
+      "ts": "2026-02-25T09:58:20.672502+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand007",
+      "status": "completed",
+      "message": "iter05_cand007: ddG=-42.22 seq=KGCKNFFWKTFTSC",
+      "ts": "2026-02-25T09:58:25.756993+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand005",
+      "status": "completed",
+      "message": "iter05_cand005: ddG=9.76 seq=AGCKNFFWLTFTSC",
+      "ts": "2026-02-25T09:58:25.988536+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand001",
+      "status": "completed",
+      "message": "iter05_cand001: ddG=24.47 seq=AGCKFDFWKTLTSC",
+      "ts": "2026-02-25T09:58:28.374027+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand002",
+      "status": "completed",
+      "message": "iter05_cand002: ddG=-13.80 seq=AGCKNEFWKTITSC",
+      "ts": "2026-02-25T09:58:29.054402+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand003",
+      "status": "completed",
+      "message": "iter05_cand003: ddG=-41.53 seq=AGCKYFFWKTITSC",
+      "ts": "2026-02-25T09:58:33.192388+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand008",
+      "status": "completed",
+      "message": "iter05_cand008: ddG=4.05 seq=AGCHNFFWKTFTSC",
+      "ts": "2026-02-25T09:58:33.886667+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine.iter05_cand006",
+      "status": "completed",
+      "message": "iter05_cand006: ddG=-48.21 seq=AGCKNFFWKEFTSH",
+      "ts": "2026-02-25T09:58:35.353164+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T09:58:35.357643+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T09:58:35.360128+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T09:58:35.362626+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T09:58:35.366330+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T09:58:35.371522+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T09:58:35.375473+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural failures are primarily due to inadequate sampling and clash tolerance, requiring tighter constraints and incr",
+      "ts": "2026-02-25T09:58:59.028852+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T09:58:59.055665+00:00"
+    },
+    {
+      "iteration": 5,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/08_reports/summary.md",
+      "ts": "2026-02-25T09:59:09.077209+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T09:59:09.082329+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Aromatic residue enrichment at positions 5-6 and hydrophobic optimization at position 11 will further lower ddG by enhan",
+      "ts": "2026-02-25T09:59:31.607113+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T09:59:31.610000+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T09:59:31.613191+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T09:59:31.620310+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T09:59:31.624839+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T09:59:31.628104+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand001",
+      "status": "running",
+      "message": "iter06_cand001: AGCKYFFWKTLTSC",
+      "ts": "2026-02-25T09:59:31.629536+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand002",
+      "status": "running",
+      "message": "iter06_cand002: AGCKNEFWKTFTSC",
+      "ts": "2026-02-25T09:59:31.630921+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand003",
+      "status": "running",
+      "message": "iter06_cand003: AGCKYFFWKTFTSC",
+      "ts": "2026-02-25T09:59:31.632310+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand004",
+      "status": "running",
+      "message": "iter06_cand004: FGCKNFFGKTFYSC",
+      "ts": "2026-02-25T09:59:31.633705+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand005",
+      "status": "running",
+      "message": "iter06_cand005: YGCKNFFWKTFTST",
+      "ts": "2026-02-25T09:59:31.635088+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand006",
+      "status": "running",
+      "message": "iter06_cand006: AGCKQFFWKTFTSC",
+      "ts": "2026-02-25T09:59:31.636497+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand007",
+      "status": "running",
+      "message": "iter06_cand007: GGCKNFFWKTFSSC",
+      "ts": "2026-02-25T09:59:31.637889+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand008",
+      "status": "running",
+      "message": "iter06_cand008: AGCKNYFWKTQTSS",
+      "ts": "2026-02-25T09:59:31.639263+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand007",
+      "status": "completed",
+      "message": "iter06_cand007: ddG=-43.37 seq=GGCKNFFWKTFSSC",
+      "ts": "2026-02-25T10:00:49.849674+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand003",
+      "status": "completed",
+      "message": "iter06_cand003: ddG=-26.31 seq=AGCKYFFWKTFTSC",
+      "ts": "2026-02-25T10:00:51.444406+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand004",
+      "status": "completed",
+      "message": "iter06_cand004: ddG=-25.26 seq=FGCKNFFGKTFYSC",
+      "ts": "2026-02-25T10:00:52.922951+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand005",
+      "status": "completed",
+      "message": "iter06_cand005: ddG=-44.95 seq=YGCKNFFWKTFTST",
+      "ts": "2026-02-25T10:00:53.747402+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand002",
+      "status": "completed",
+      "message": "iter06_cand002: ddG=-34.16 seq=AGCKNEFWKTFTSC",
+      "ts": "2026-02-25T10:00:54.158409+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand001",
+      "status": "completed",
+      "message": "iter06_cand001: ddG=-39.69 seq=AGCKYFFWKTLTSC",
+      "ts": "2026-02-25T10:00:57.242986+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand006",
+      "status": "completed",
+      "message": "iter06_cand006: ddG=-32.63 seq=AGCKQFFWKTFTSC",
+      "ts": "2026-02-25T10:00:59.694256+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine.iter06_cand008",
+      "status": "completed",
+      "message": "iter06_cand008: ddG=-39.96 seq=AGCKNYFWKTQTSS",
+      "ts": "2026-02-25T10:00:59.807915+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T10:00:59.812855+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T10:00:59.815726+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T10:00:59.818645+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T10:00:59.823151+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T10:00:59.829012+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T10:00:59.833301+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Current parameters prioritize binding energy over structural quality; stricter ddG and clash constraints are needed to p",
+      "ts": "2026-02-25T10:01:07.218179+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T10:01:07.249124+00:00"
+    },
+    {
+      "iteration": 6,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_06/08_reports/summary.md",
+      "ts": "2026-02-25T10:01:20.244668+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T10:01:20.250767+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Introducing aromatic residues at position 5 and charged residues at position 6 will improve the ddG score by enhancing h",
+      "ts": "2026-02-25T10:01:27.015283+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T10:01:27.018160+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T10:01:27.020900+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T10:01:27.024901+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T10:01:27.027684+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T10:01:27.030393+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand001",
+      "status": "running",
+      "message": "iter07_cand001: AGCKWDFWKTLTSC",
+      "ts": "2026-02-25T10:01:27.031738+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand002",
+      "status": "running",
+      "message": "iter07_cand002: AGCKWFFWKTVTSC",
+      "ts": "2026-02-25T10:01:27.033072+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand003",
+      "status": "running",
+      "message": "iter07_cand003: AGCKWDFWKTFTSC",
+      "ts": "2026-02-25T10:01:27.034416+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand004",
+      "status": "running",
+      "message": "iter07_cand004: AGCKNFFWKTFRSC",
+      "ts": "2026-02-25T10:01:27.035850+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand005",
+      "status": "running",
+      "message": "iter07_cand005: AGCKNFFWKTFDSK",
+      "ts": "2026-02-25T10:01:27.037241+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand006",
+      "status": "running",
+      "message": "iter07_cand006: AGCRNFFWKTADSC",
+      "ts": "2026-02-25T10:01:27.038601+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand007",
+      "status": "running",
+      "message": "iter07_cand007: AGCKNFFNKTFTSC",
+      "ts": "2026-02-25T10:01:27.039987+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand008",
+      "status": "running",
+      "message": "iter07_cand008: AGCKNQQWKTFQSC",
+      "ts": "2026-02-25T10:01:27.041372+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand007",
+      "status": "completed",
+      "message": "iter07_cand007: ddG=-26.12 seq=AGCKNFFNKTFTSC",
+      "ts": "2026-02-25T10:02:33.730972+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand006",
+      "status": "completed",
+      "message": "iter07_cand006: ddG=16.90 seq=AGCRNFFWKTADSC",
+      "ts": "2026-02-25T10:02:40.036665+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand003",
+      "status": "completed",
+      "message": "iter07_cand003: ddG=-34.40 seq=AGCKWDFWKTFTSC",
+      "ts": "2026-02-25T10:02:48.939860+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand001",
+      "status": "completed",
+      "message": "iter07_cand001: ddG=-9.48 seq=AGCKWDFWKTLTSC",
+      "ts": "2026-02-25T10:02:50.274090+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand005",
+      "status": "completed",
+      "message": "iter07_cand005: ddG=-12.66 seq=AGCKNFFWKTFDSK",
+      "ts": "2026-02-25T10:02:50.560590+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand004",
+      "status": "completed",
+      "message": "iter07_cand004: ddG=-40.30 seq=AGCKNFFWKTFRSC",
+      "ts": "2026-02-25T10:02:51.906764+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand008",
+      "status": "completed",
+      "message": "iter07_cand008: ddG=-27.12 seq=AGCKNQQWKTFQSC",
+      "ts": "2026-02-25T10:02:52.028234+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine.iter07_cand002",
+      "status": "completed",
+      "message": "iter07_cand002: ddG=-39.14 seq=AGCKWFFWKTVTSC",
+      "ts": "2026-02-25T10:02:59.630062+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T10:02:59.635986+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T10:02:59.640311+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T10:02:59.643228+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T10:02:59.647593+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T10:02:59.653465+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T10:02:59.657748+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural validity requires balancing clash tolerance and conformational sampling",
+      "ts": "2026-02-25T10:03:16.551184+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T10:03:16.553436+00:00"
+    },
+    {
+      "iteration": 7,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_07/08_reports/summary.md",
+      "ts": "2026-02-25T10:03:30.050612+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T10:03:30.056547+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Optimizing aromatic-charge complementarity at positions 5-6 and hydrophobic packing at position 11 will enhance binding ",
+      "ts": "2026-02-25T10:03:43.255539+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T10:03:43.258637+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T10:03:43.261640+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T10:03:43.266012+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T10:03:43.269153+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T10:03:43.272066+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand001",
+      "status": "running",
+      "message": "iter08_cand001: AGCKNWFWKTITSC",
+      "ts": "2026-02-25T10:03:43.273556+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand002",
+      "status": "running",
+      "message": "iter08_cand002: AGCKDYFWKTITSC",
+      "ts": "2026-02-25T10:03:43.275010+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand003",
+      "status": "running",
+      "message": "iter08_cand003: AGCKEFFWKTFTSC",
+      "ts": "2026-02-25T10:03:43.276470+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand004",
+      "status": "running",
+      "message": "iter08_cand004: AGCKNFFWFGFVSC",
+      "ts": "2026-02-25T10:03:43.277927+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand005",
+      "status": "running",
+      "message": "iter08_cand005: AGCKHFFWHTFTSC",
+      "ts": "2026-02-25T10:03:43.279377+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand006",
+      "status": "running",
+      "message": "iter08_cand006: WGCKNFFAKTFTSC",
+      "ts": "2026-02-25T10:03:43.280850+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand007",
+      "status": "running",
+      "message": "iter08_cand007: NGCKNFFWKTVTSC",
+      "ts": "2026-02-25T10:03:43.282359+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand008",
+      "status": "running",
+      "message": "iter08_cand008: AGCKNFFWKTFTSS",
+      "ts": "2026-02-25T10:03:43.283837+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand004",
+      "status": "completed",
+      "message": "iter08_cand004: ddG=4.84 seq=AGCKNFFWFGFVSC",
+      "ts": "2026-02-25T10:04:58.240766+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand007",
+      "status": "completed",
+      "message": "iter08_cand007: ddG=9.30 seq=NGCKNFFWKTVTSC",
+      "ts": "2026-02-25T10:05:01.399385+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand006",
+      "status": "completed",
+      "message": "iter08_cand006: ddG=-31.05 seq=WGCKNFFAKTFTSC",
+      "ts": "2026-02-25T10:05:05.486282+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand008",
+      "status": "completed",
+      "message": "iter08_cand008: ddG=-25.60 seq=AGCKNFFWKTFTSS",
+      "ts": "2026-02-25T10:05:07.685611+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand001",
+      "status": "completed",
+      "message": "iter08_cand001: ddG=-0.69 seq=AGCKNWFWKTITSC",
+      "ts": "2026-02-25T10:05:08.808080+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand003",
+      "status": "completed",
+      "message": "iter08_cand003: ddG=-34.88 seq=AGCKEFFWKTFTSC",
+      "ts": "2026-02-25T10:05:14.593844+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand005",
+      "status": "completed",
+      "message": "iter08_cand005: ddG=-51.24 seq=AGCKHFFWHTFTSC",
+      "ts": "2026-02-25T10:05:15.762258+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine.iter08_cand002",
+      "status": "completed",
+      "message": "iter08_cand002: ddG=294.69 seq=AGCKDYFWKTITSC",
+      "ts": "2026-02-25T10:05:18.432967+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T10:05:18.438062+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T10:05:18.441074+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T10:05:18.444088+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T10:05:18.448656+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T10:05:18.454994+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T10:05:18.459483+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Poor structural quality stems from insufficient sampling diversity and lenient clash constraints",
+      "ts": "2026-02-25T10:05:41.214404+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T10:05:41.215999+00:00"
+    },
+    {
+      "iteration": 8,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_08/08_reports/summary.md",
+      "ts": "2026-02-25T10:05:52.614876+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T10:05:52.621187+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Mutating positions 5, 6, and 11 to aromatic, charged, or hydrophobic residues will further decrease ddG by optimizing in",
+      "ts": "2026-02-25T10:06:14.855625+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T10:06:14.861957+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T10:06:14.865135+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T10:06:14.869670+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T10:06:14.872860+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T10:06:14.875915+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand001",
+      "status": "running",
+      "message": "iter09_cand001: AGCKYEFWKTITSC",
+      "ts": "2026-02-25T10:06:14.877452+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand002",
+      "status": "running",
+      "message": "iter09_cand002: AGCKNFFWKTLTSC",
+      "ts": "2026-02-25T10:06:14.879263+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand003",
+      "status": "running",
+      "message": "iter09_cand003: AGCKYDFWKTVTSC",
+      "ts": "2026-02-25T10:06:14.880816+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand004",
+      "status": "running",
+      "message": "iter09_cand004: AGCKYFFWKTVTSC",
+      "ts": "2026-02-25T10:06:14.882392+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand005",
+      "status": "running",
+      "message": "iter09_cand005: AGCKFFFWKTVTSC",
+      "ts": "2026-02-25T10:06:14.884119+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand006",
+      "status": "running",
+      "message": "iter09_cand006: AGCKYDFWKTFTSC",
+      "ts": "2026-02-25T10:06:14.885687+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand007",
+      "status": "running",
+      "message": "iter09_cand007: AGCKNDFWKTFTSC",
+      "ts": "2026-02-25T10:06:14.887284+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand008",
+      "status": "running",
+      "message": "iter09_cand008: AGCKNDFWKTLTSC",
+      "ts": "2026-02-25T10:06:14.888844+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand001",
+      "status": "failed",
+      "message": "iter09_cand001: FAILED (Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC)",
+      "ts": "2026-02-25T10:07:04.321882+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand007",
+      "status": "completed",
+      "message": "iter09_cand007: ddG=-28.56 seq=AGCKNDFWKTFTSC",
+      "ts": "2026-02-25T10:07:31.633416+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand005",
+      "status": "completed",
+      "message": "iter09_cand005: ddG=-43.02 seq=AGCKFFFWKTVTSC",
+      "ts": "2026-02-25T10:07:38.094483+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand006",
+      "status": "completed",
+      "message": "iter09_cand006: ddG=-38.66 seq=AGCKYDFWKTFTSC",
+      "ts": "2026-02-25T10:07:39.597981+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand003",
+      "status": "completed",
+      "message": "iter09_cand003: ddG=-24.11 seq=AGCKYDFWKTVTSC",
+      "ts": "2026-02-25T10:07:41.370381+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand002",
+      "status": "completed",
+      "message": "iter09_cand002: ddG=-25.55 seq=AGCKNFFWKTLTSC",
+      "ts": "2026-02-25T10:07:42.029746+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand004",
+      "status": "completed",
+      "message": "iter09_cand004: ddG=-3.45 seq=AGCKYFFWKTVTSC",
+      "ts": "2026-02-25T10:07:44.671920+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine.iter09_cand008",
+      "status": "completed",
+      "message": "iter09_cand008: ddG=53.83 seq=AGCKNDFWKTLTSC",
+      "ts": "2026-02-25T10:07:47.809726+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed with 1 failures",
+      "ts": "2026-02-25T10:07:47.815924+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "continue_to_next_iteration",
+      "status": "running",
+      "message": "Partial failures recorded; continuing to next iteration",
+      "ts": "2026-02-25T10:07:47.817695+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T10:07:47.821316+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T10:07:47.825020+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T10:07:47.830429+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T10:07:47.837789+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T10:07:47.843284+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural quality is inversely correlated with docking scores despite favorable binding energies, requiring dual optimi",
+      "ts": "2026-02-25T10:08:11.942689+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T10:08:11.945615+00:00"
+    },
+    {
+      "iteration": 9,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/08_reports/summary.md",
+      "ts": "2026-02-25T10:08:22.232643+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-02-25T10:08:22.240360+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Mutating positions 5, 6, and 11 to hydrophobic/aromatic residues will further decrease ddG, improving binding affinity t",
+      "ts": "2026-02-25T10:08:35.979232+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-02-25T10:08:35.983051+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-02-25T10:08:35.986743+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-02-25T10:08:35.992241+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-02-25T10:08:35.996051+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-02-25T10:08:35.999746+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand001",
+      "status": "running",
+      "message": "iter10_cand001: AGCKYEFWKTVTSC",
+      "ts": "2026-02-25T10:08:36.001587+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand002",
+      "status": "running",
+      "message": "iter10_cand002: AGCKWFFWKTITSC",
+      "ts": "2026-02-25T10:08:36.003413+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand003",
+      "status": "running",
+      "message": "iter10_cand003: AGCKYEFWKTLTSC",
+      "ts": "2026-02-25T10:08:36.005264+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand004",
+      "status": "running",
+      "message": "iter10_cand004: AHCKNFEWKMFTSC",
+      "ts": "2026-02-25T10:08:36.007128+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand005",
+      "status": "running",
+      "message": "iter10_cand005: EGCKNFFWKTFTSQ",
+      "ts": "2026-02-25T10:08:36.008987+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand006",
+      "status": "running",
+      "message": "iter10_cand006: AGCDNLFWLTFTSC",
+      "ts": "2026-02-25T10:08:36.010904+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand007",
+      "status": "running",
+      "message": "iter10_cand007: AGCKRFDWKTFYSC",
+      "ts": "2026-02-25T10:08:36.012750+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand008",
+      "status": "running",
+      "message": "iter10_cand008: AGCVNFFWKTMTSC",
+      "ts": "2026-02-25T10:08:36.014612+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand001",
+      "status": "completed",
+      "message": "iter10_cand001: ddG=-30.94 seq=AGCKYEFWKTVTSC",
+      "ts": "2026-02-25T10:09:40.434431+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand008",
+      "status": "completed",
+      "message": "iter10_cand008: ddG=-41.06 seq=AGCVNFFWKTMTSC",
+      "ts": "2026-02-25T10:09:49.368528+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand002",
+      "status": "completed",
+      "message": "iter10_cand002: ddG=-42.46 seq=AGCKWFFWKTITSC",
+      "ts": "2026-02-25T10:09:53.920084+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand006",
+      "status": "completed",
+      "message": "iter10_cand006: ddG=-13.56 seq=AGCDNLFWLTFTSC",
+      "ts": "2026-02-25T10:09:57.842777+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand007",
+      "status": "completed",
+      "message": "iter10_cand007: ddG=-30.06 seq=AGCKRFDWKTFYSC",
+      "ts": "2026-02-25T10:09:58.058618+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand003",
+      "status": "completed",
+      "message": "iter10_cand003: ddG=-39.15 seq=AGCKYEFWKTLTSC",
+      "ts": "2026-02-25T10:10:00.982865+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand005",
+      "status": "completed",
+      "message": "iter10_cand005: ddG=-35.95 seq=EGCKNFFWKTFTSQ",
+      "ts": "2026-02-25T10:10:04.957170+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine.iter10_cand004",
+      "status": "completed",
+      "message": "iter10_cand004: ddG=-28.29 seq=AHCKNFEWKMFTSC",
+      "ts": "2026-02-25T10:10:06.499287+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-02-25T10:10:06.505750+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-02-25T10:10:06.509572+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-02-25T10:10:06.513433+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-02-25T10:10:06.519174+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-02-25T10:10:06.527085+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-02-25T10:10:06.532832+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Optimal SSTR2 binders require balance between energetic favorability and structural validity, not extreme ddG values",
+      "ts": "2026-02-25T10:10:11.668781+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-02-25T10:10:11.670789+00:00"
+    },
+    {
+      "iteration": 10,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_10/08_reports/summary.md",
+      "ts": "2026-02-25T10:10:28.050023+00:00"
+    }
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "id": "iter08_cand005",
+      "sequence": "AGCKHFFWHTFTSC",
+      "ddG": -51.244,
+      "totalScore": -487.363,
+      "clashScore": 0.0,
+      "finalScore": 51.244,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand005.pdb"
+    },
+    {
+      "rank": 2,
+      "id": "iter05_cand006",
+      "sequence": "AGCKNFFWKEFTSH",
+      "ddG": -48.205,
+      "totalScore": -471.69,
+      "clashScore": 0.0,
+      "finalScore": 48.205,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand006.pdb"
+    },
+    {
+      "rank": 3,
+      "id": "iter04_cand003",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -47.17,
+      "totalScore": -464.22,
+      "clashScore": 0.0,
+      "finalScore": 47.17,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand003.pdb"
+    },
+    {
+      "rank": 4,
+      "id": "iter06_cand005",
+      "sequence": "YGCKNFFWKTFTST",
+      "ddG": -44.945,
+      "totalScore": -480.767,
+      "clashScore": 0.0,
+      "finalScore": 44.945,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand005.pdb"
+    },
+    {
+      "rank": 5,
+      "id": "iter03_cand008",
+      "sequence": "AGCANFFWKRFTSC",
+      "ddG": -43.385,
+      "totalScore": -463.379,
+      "clashScore": 0.0,
+      "finalScore": 43.385,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand008.pdb"
+    },
+    {
+      "rank": 6,
+      "id": "iter06_cand007",
+      "sequence": "GGCKNFFWKTFSSC",
+      "ddG": -43.373,
+      "totalScore": -473.479,
+      "clashScore": 0.0,
+      "finalScore": 43.373,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand007.pdb"
+    },
+    {
+      "rank": 7,
+      "id": "iter09_cand005",
+      "sequence": "AGCKFFFWKTVTSC",
+      "ddG": -43.017,
+      "totalScore": -488.361,
+      "clashScore": 0.0,
+      "finalScore": 43.017,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand005.pdb"
+    },
+    {
+      "rank": 8,
+      "id": "iter10_cand002",
+      "sequence": "AGCKWFFWKTITSC",
+      "ddG": -42.464,
+      "totalScore": -454.578,
+      "clashScore": 0.0,
+      "finalScore": 42.464,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand002.pdb"
+    },
+    {
+      "rank": 9,
+      "id": "iter04_cand005",
+      "sequence": "APCKNFFWKTFTSC",
+      "ddG": -42.263,
+      "totalScore": -468.598,
+      "clashScore": 0.0,
+      "finalScore": 42.263,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand005.pdb"
+    },
+    {
+      "rank": 10,
+      "id": "iter05_cand007",
+      "sequence": "KGCKNFFWKTFTSC",
+      "ddG": -42.222,
+      "totalScore": -452.853,
+      "clashScore": 2.0,
+      "finalScore": 42.222,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand007.pdb"
+    },
+    {
+      "rank": 11,
+      "id": "iter05_cand003",
+      "sequence": "AGCKYFFWKTITSC",
+      "ddG": -41.531,
+      "totalScore": -57.512,
+      "clashScore": 6.0,
+      "finalScore": 41.531,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand003.pdb"
+    },
+    {
+      "rank": 12,
+      "id": "baseline_SST14",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": -41.169,
+      "totalScore": -446.972,
+      "clashScore": 2.0,
+      "finalScore": 41.169,
+      "result": "REF",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/baseline_SST14.pdb"
+    },
+    {
+      "rank": 13,
+      "id": "iter10_cand008",
+      "sequence": "AGCVNFFWKTMTSC",
+      "ddG": -41.065,
+      "totalScore": -439.209,
+      "clashScore": 2.0,
+      "finalScore": 41.065,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand008.pdb"
+    },
+    {
+      "rank": 14,
+      "id": "iter03_cand003",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -40.464,
+      "totalScore": -412.226,
+      "clashScore": 4.0,
+      "finalScore": 40.464,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand003.pdb"
+    },
+    {
+      "rank": 15,
+      "id": "iter07_cand004",
+      "sequence": "AGCKNFFWKTFRSC",
+      "ddG": -40.303,
+      "totalScore": -475.004,
+      "clashScore": 0.0,
+      "finalScore": 40.303,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand004.pdb"
+    },
+    {
+      "rank": 16,
+      "id": "iter01_cand005",
+      "sequence": "YSCKNFFWKTFTSN",
+      "ddG": -40.178,
+      "totalScore": -475.066,
+      "clashScore": 0.0,
+      "finalScore": 40.178,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 17,
+      "id": "iter06_cand008",
+      "sequence": "AGCKNYFWKTQTSS",
+      "ddG": -39.956,
+      "totalScore": -438.178,
+      "clashScore": 3.0,
+      "finalScore": 39.956,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand008.pdb"
+    },
+    {
+      "rank": 18,
+      "id": "iter06_cand001",
+      "sequence": "AGCKYFFWKTLTSC",
+      "ddG": -39.688,
+      "totalScore": -471.805,
+      "clashScore": 0.0,
+      "finalScore": 39.688,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand001.pdb"
+    },
+    {
+      "rank": 19,
+      "id": "iter10_cand003",
+      "sequence": "AGCKYEFWKTLTSC",
+      "ddG": -39.153,
+      "totalScore": -463.142,
+      "clashScore": 0.0,
+      "finalScore": 39.153,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand003.pdb"
+    },
+    {
+      "rank": 20,
+      "id": "iter07_cand002",
+      "sequence": "AGCKWFFWKTVTSC",
+      "ddG": -39.136,
+      "totalScore": -480.553,
+      "clashScore": 0.0,
+      "finalScore": 39.136,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand002.pdb"
+    },
+    {
+      "rank": 21,
+      "id": "iter02_cand005",
+      "sequence": "AGCKNDFWKTFGSE",
+      "ddG": -38.992,
+      "totalScore": -474.698,
+      "clashScore": 0.0,
+      "finalScore": 38.992,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter02_cand005.pdb"
+    },
+    {
+      "rank": 22,
+      "id": "iter03_cand001",
+      "sequence": "AGCKFEFWKTVTSC",
+      "ddG": -38.798,
+      "totalScore": -397.679,
+      "clashScore": 4.0,
+      "finalScore": 38.798,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand001.pdb"
+    },
+    {
+      "rank": 23,
+      "id": "iter09_cand006",
+      "sequence": "AGCKYDFWKTFTSC",
+      "ddG": -38.663,
+      "totalScore": -471.21,
+      "clashScore": 0.0,
+      "finalScore": 38.663,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand006.pdb"
+    },
+    {
+      "rank": 24,
+      "id": "iter04_cand006",
+      "sequence": "AGCWNFFWKTFTSC",
+      "ddG": -38.318,
+      "totalScore": -42.151,
+      "clashScore": 6.0,
+      "finalScore": 38.318,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand006.pdb"
+    },
+    {
+      "rank": 25,
+      "id": "iter10_cand005",
+      "sequence": "EGCKNFFWKTFTSQ",
+      "ddG": -35.955,
+      "totalScore": -468.902,
+      "clashScore": 0.0,
+      "finalScore": 35.955,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand005.pdb"
+    },
+    {
+      "rank": 26,
+      "id": "iter02_cand002",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddG": -35.25,
+      "totalScore": -449.989,
+      "clashScore": 0.0,
+      "finalScore": 35.25,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 27,
+      "id": "iter08_cand003",
+      "sequence": "AGCKEFFWKTFTSC",
+      "ddG": -34.885,
+      "totalScore": -462.166,
+      "clashScore": 0.0,
+      "finalScore": 34.885,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand003.pdb"
+    },
+    {
+      "rank": 28,
+      "id": "iter07_cand003",
+      "sequence": "AGCKWDFWKTFTSC",
+      "ddG": -34.404,
+      "totalScore": -475.409,
+      "clashScore": 0.0,
+      "finalScore": 34.404,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand003.pdb"
+    },
+    {
+      "rank": 29,
+      "id": "iter03_cand007",
+      "sequence": "AGCKNFFWKTMTSC",
+      "ddG": -34.325,
+      "totalScore": -456.958,
+      "clashScore": 0.0,
+      "finalScore": 34.325,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand007.pdb"
+    },
+    {
+      "rank": 30,
+      "id": "iter06_cand002",
+      "sequence": "AGCKNEFWKTFTSC",
+      "ddG": -34.159,
+      "totalScore": -438.573,
+      "clashScore": 2.0,
+      "finalScore": 34.159,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand002.pdb"
+    },
+    {
+      "rank": 31,
+      "id": "iter02_cand006",
+      "sequence": "AGCKNWFWVSFTSC",
+      "ddG": -34.116,
+      "totalScore": -455.239,
+      "clashScore": 3.0,
+      "finalScore": 34.116,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter02_cand006.pdb"
+    },
+    {
+      "rank": 32,
+      "id": "iter03_cand004",
+      "sequence": "AGCKFEFWKTITSC",
+      "ddG": -33.737,
+      "totalScore": -450.65,
+      "clashScore": 0.0,
+      "finalScore": 33.737,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand004.pdb"
+    },
+    {
+      "rank": 33,
+      "id": "iter02_cand001",
+      "sequence": "AGCKWDFWKTVTSC",
+      "ddG": -33.468,
+      "totalScore": -367.761,
+      "clashScore": 5.0,
+      "finalScore": 33.468,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 34,
+      "id": "iter01_cand002",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -33.021,
+      "totalScore": -464.429,
+      "clashScore": 0.0,
+      "finalScore": 33.021,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 35,
+      "id": "iter06_cand006",
+      "sequence": "AGCKQFFWKTFTSC",
+      "ddG": -32.629,
+      "totalScore": -467.313,
+      "clashScore": 0.0,
+      "finalScore": 32.629,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand006.pdb"
+    },
+    {
+      "rank": 36,
+      "id": "iter04_cand004",
+      "sequence": "AGCKNIMWKTFTSC",
+      "ddG": -32.43,
+      "totalScore": -468.791,
+      "clashScore": 0.0,
+      "finalScore": 32.43,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand004.pdb"
+    },
+    {
+      "rank": 37,
+      "id": "iter03_cand006",
+      "sequence": "AGCKNFFEKTFTSI",
+      "ddG": -32.342,
+      "totalScore": -481.949,
+      "clashScore": 0.0,
+      "finalScore": 32.342,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 38,
+      "id": "iter08_cand006",
+      "sequence": "WGCKNFFAKTFTSC",
+      "ddG": -31.051,
+      "totalScore": -443.441,
+      "clashScore": 0.0,
+      "finalScore": 31.051,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand006.pdb"
+    },
+    {
+      "rank": 39,
+      "id": "iter10_cand001",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -30.938,
+      "totalScore": -401.444,
+      "clashScore": 4.0,
+      "finalScore": 30.938,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand001.pdb"
+    },
+    {
+      "rank": 40,
+      "id": "iter10_cand007",
+      "sequence": "AGCKRFDWKTFYSC",
+      "ddG": -30.064,
+      "totalScore": -440.475,
+      "clashScore": 2.0,
+      "finalScore": 30.064,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand007.pdb"
+    },
+    {
+      "rank": 41,
+      "id": "iter09_cand007",
+      "sequence": "AGCKNDFWKTFTSC",
+      "ddG": -28.56,
+      "totalScore": -463.906,
+      "clashScore": 0.0,
+      "finalScore": 28.56,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand007.pdb"
+    },
+    {
+      "rank": 42,
+      "id": "iter10_cand004",
+      "sequence": "AHCKNFEWKMFTSC",
+      "ddG": -28.293,
+      "totalScore": -438.419,
+      "clashScore": 2.0,
+      "finalScore": 28.293,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand004.pdb"
+    },
+    {
+      "rank": 43,
+      "id": "iter01_cand008",
+      "sequence": "AMCKNFIWKAFTSC",
+      "ddG": -27.682,
+      "totalScore": -458.241,
+      "clashScore": 0.0,
+      "finalScore": 27.682,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter01_cand008.pdb"
+    },
+    {
+      "rank": 44,
+      "id": "iter07_cand008",
+      "sequence": "AGCKNQQWKTFQSC",
+      "ddG": -27.118,
+      "totalScore": -471.501,
+      "clashScore": 0.0,
+      "finalScore": 27.118,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand008.pdb"
+    },
+    {
+      "rank": 45,
+      "id": "iter06_cand003",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -26.309,
+      "totalScore": -433.095,
+      "clashScore": 0.0,
+      "finalScore": 26.309,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand003.pdb"
+    },
+    {
+      "rank": 46,
+      "id": "iter07_cand007",
+      "sequence": "AGCKNFFNKTFTSC",
+      "ddG": -26.121,
+      "totalScore": -424.377,
+      "clashScore": 1.0,
+      "finalScore": 26.121,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand007.pdb"
+    },
+    {
+      "rank": 47,
+      "id": "iter08_cand008",
+      "sequence": "AGCKNFFWKTFTSS",
+      "ddG": -25.597,
+      "totalScore": -445.774,
+      "clashScore": 0.0,
+      "finalScore": 25.597,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand008.pdb"
+    },
+    {
+      "rank": 48,
+      "id": "iter01_cand004",
+      "sequence": "AHCKNFFGKTFTSI",
+      "ddG": -25.561,
+      "totalScore": -481.383,
+      "clashScore": 0.0,
+      "finalScore": 25.561,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 49,
+      "id": "iter09_cand002",
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddG": -25.552,
+      "totalScore": -416.478,
+      "clashScore": 2.0,
+      "finalScore": 25.552,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand002.pdb"
+    },
+    {
+      "rank": 50,
+      "id": "iter06_cand004",
+      "sequence": "FGCKNFFGKTFYSC",
+      "ddG": -25.255,
+      "totalScore": -52.192,
+      "clashScore": 6.0,
+      "finalScore": 25.255,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter06_cand004.pdb"
+    },
+    {
+      "rank": 51,
+      "id": "iter09_cand003",
+      "sequence": "AGCKYDFWKTVTSC",
+      "ddG": -24.105,
+      "totalScore": -384.443,
+      "clashScore": 3.0,
+      "finalScore": 24.105,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand003.pdb"
+    },
+    {
+      "rank": 52,
+      "id": "iter02_cand008",
+      "sequence": "AGCENFFWKTFTSC",
+      "ddG": -23.605,
+      "totalScore": -426.199,
+      "clashScore": 0.0,
+      "finalScore": 23.605,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter02_cand008.pdb"
+    },
+    {
+      "rank": 53,
+      "id": "iter05_cand004",
+      "sequence": "AWCKNFFLKTFTSC",
+      "ddG": -23.09,
+      "totalScore": -403.16,
+      "clashScore": 3.0,
+      "finalScore": 23.09,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand004.pdb"
+    },
+    {
+      "rank": 54,
+      "id": "iter03_cand005",
+      "sequence": "AGCKWDFWKTITSC",
+      "ddG": -21.182,
+      "totalScore": -450.072,
+      "clashScore": 0.0,
+      "finalScore": 21.182,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand005.pdb"
+    },
+    {
+      "rank": 55,
+      "id": "iter04_cand001",
+      "sequence": "AGCKYDFWKTITSC",
+      "ddG": -16.911,
+      "totalScore": -452.162,
+      "clashScore": 2.0,
+      "finalScore": 16.911,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand001.pdb"
+    },
+    {
+      "rank": 56,
+      "id": "iter04_cand007",
+      "sequence": "LGCKPFEWKTFTSC",
+      "ddG": -16.857,
+      "totalScore": -430.279,
+      "clashScore": 0.0,
+      "finalScore": 16.857,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand007.pdb"
+    },
+    {
+      "rank": 57,
+      "id": "iter05_cand002",
+      "sequence": "AGCKNEFWKTITSC",
+      "ddG": -13.799,
+      "totalScore": -448.39,
+      "clashScore": 0.0,
+      "finalScore": 13.799,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand002.pdb"
+    },
+    {
+      "rank": 58,
+      "id": "iter10_cand006",
+      "sequence": "AGCDNLFWLTFTSC",
+      "ddG": -13.562,
+      "totalScore": -433.167,
+      "clashScore": 2.0,
+      "finalScore": 13.562,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter10_cand006.pdb"
+    },
+    {
+      "rank": 59,
+      "id": "iter07_cand005",
+      "sequence": "AGCKNFFWKTFDSK",
+      "ddG": -12.662,
+      "totalScore": -409.101,
+      "clashScore": 5.0,
+      "finalScore": 12.662,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand005.pdb"
+    },
+    {
+      "rank": 60,
+      "id": "iter07_cand001",
+      "sequence": "AGCKWDFWKTLTSC",
+      "ddG": -9.483,
+      "totalScore": -409.138,
+      "clashScore": 2.0,
+      "finalScore": 9.483,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand001.pdb"
+    },
+    {
+      "rank": 61,
+      "id": "iter01_cand006",
+      "sequence": "AGCKNFGWKTFTSC",
+      "ddG": -9.373,
+      "totalScore": -271.086,
+      "clashScore": 10.0,
+      "finalScore": 9.373,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 62,
+      "id": "iter01_cand001",
+      "sequence": "AGCKNDFWKTITSC",
+      "ddG": -8.489,
+      "totalScore": -379.937,
+      "clashScore": 2.0,
+      "finalScore": 8.489,
+      "result": "PASS",
+      "failReason": ""
+    },
+    {
+      "rank": 63,
+      "id": "iter09_cand004",
+      "sequence": "AGCKYFFWKTVTSC",
+      "ddG": -3.451,
+      "totalScore": -392.435,
+      "clashScore": 5.0,
+      "finalScore": 3.451,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand004.pdb"
+    },
+    {
+      "rank": 64,
+      "id": "iter08_cand001",
+      "sequence": "AGCKNWFWKTITSC",
+      "ddG": -0.687,
+      "totalScore": -424.645,
+      "clashScore": 1.0,
+      "finalScore": 0.687,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand001.pdb"
+    },
+    {
+      "rank": 65,
+      "id": "iter05_cand008",
+      "sequence": "AGCHNFFWKTFTSC",
+      "ddG": 4.046,
+      "totalScore": -399.733,
+      "clashScore": 2.0,
+      "finalScore": -4.046,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand008.pdb"
+    },
+    {
+      "rank": 66,
+      "id": "iter08_cand004",
+      "sequence": "AGCKNFFWFGFVSC",
+      "ddG": 4.839,
+      "totalScore": -331.643,
+      "clashScore": 6.0,
+      "finalScore": -4.839,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand004.pdb"
+    },
+    {
+      "rank": 67,
+      "id": "iter04_cand008",
+      "sequence": "AGCKNFFKKFFTSC",
+      "ddG": 7.605,
+      "totalScore": -385.929,
+      "clashScore": 3.0,
+      "finalScore": -7.605,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand008.pdb"
+    },
+    {
+      "rank": 68,
+      "id": "iter04_cand002",
+      "sequence": "AGCKNDFWKTVTSC",
+      "ddG": 8.258,
+      "totalScore": -385.16,
+      "clashScore": 2.0,
+      "finalScore": -8.258,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter04_cand002.pdb"
+    },
+    {
+      "rank": 69,
+      "id": "iter08_cand007",
+      "sequence": "NGCKNFFWKTVTSC",
+      "ddG": 9.304,
+      "totalScore": -371.487,
+      "clashScore": 2.0,
+      "finalScore": -9.304,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand007.pdb"
+    },
+    {
+      "rank": 70,
+      "id": "iter05_cand005",
+      "sequence": "AGCKNFFWLTFTSC",
+      "ddG": 9.762,
+      "totalScore": -403.026,
+      "clashScore": 6.0,
+      "finalScore": -9.762,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand005.pdb"
+    },
+    {
+      "rank": 71,
+      "id": "iter02_cand007",
+      "sequence": "AACKNFFWKTFTSC",
+      "ddG": 9.776,
+      "totalScore": -374.287,
+      "clashScore": 7.0,
+      "finalScore": -9.776,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 72,
+      "id": "iter07_cand006",
+      "sequence": "AGCRNFFWKTADSC",
+      "ddG": 16.904,
+      "totalScore": -389.938,
+      "clashScore": 4.0,
+      "finalScore": -16.904,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter07_cand006.pdb"
+    },
+    {
+      "rank": 73,
+      "id": "iter03_cand002",
+      "sequence": "AGCKFEFWKTFTSC",
+      "ddG": 18.952,
+      "totalScore": -408.032,
+      "clashScore": 4.0,
+      "finalScore": -18.952,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter03_cand002.pdb"
+    },
+    {
+      "rank": 74,
+      "id": "iter05_cand001",
+      "sequence": "AGCKFDFWKTLTSC",
+      "ddG": 24.471,
+      "totalScore": -350.304,
+      "clashScore": 3.0,
+      "finalScore": -24.471,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter05_cand001.pdb"
+    },
+    {
+      "rank": 75,
+      "id": "iter01_cand007",
+      "sequence": "AGCKNFFWITFTSC",
+      "ddG": 33.757,
+      "totalScore": 18.162,
+      "clashScore": 7.0,
+      "finalScore": -33.757,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 76,
+      "id": "iter02_cand003",
+      "sequence": "AGCKFDFWKTFTSC",
+      "ddG": 36.406,
+      "totalScore": -385.389,
+      "clashScore": 4.0,
+      "finalScore": -36.406,
+      "result": "FAIL",
+      "failReason": ""
+    },
+    {
+      "rank": 77,
+      "id": "iter09_cand008",
+      "sequence": "AGCKNDFWKTLTSC",
+      "ddG": 53.826,
+      "totalScore": -353.521,
+      "clashScore": 3.0,
+      "finalScore": -53.826,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter09_cand008.pdb"
+    },
+    {
+      "rank": 78,
+      "id": "iter01_cand003",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddG": 289.731,
+      "totalScore": -121.849,
+      "clashScore": 5.0,
+      "finalScore": -289.731,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter01_cand003.pdb"
+    },
+    {
+      "rank": 79,
+      "id": "iter08_cand002",
+      "sequence": "AGCKDYFWKTITSC",
+      "ddG": 294.687,
+      "totalScore": -78.757,
+      "clashScore": 11.0,
+      "finalScore": -294.687,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter08_cand002.pdb"
+    },
+    {
+      "rank": 80,
+      "id": "iter02_cand004",
+      "sequence": "AGCKNFFWKTFTSY",
+      "ddG": 513.493,
+      "totalScore": 204.226,
+      "clashScore": 23.0,
+      "finalScore": -513.493,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "pyrosetta_flow/archives/sst14_mutdock_7000/iter02_cand004.pdb"
+    },
+    {
+      "rank": 81,
+      "id": "iter09_cand001",
+      "sequence": "AGCKYEFWKTITSC",
+      "ddG": 999.0,
+      "totalScore": 999.0,
+      "clashScore": 999.0,
+      "finalScore": -999.0,
+      "result": "FAIL",
+      "failReason": "Script failed: flexpep_dock.py :: Mode: MutateResidue from reference complex\nReference peptide (chain 1): AGCKNFFWKTFTSC (14 residues)\nTarget sequence: AGCKYEFWKTITSC\n  Mutated pos 5: N -> Y (TYR)\n  Mutated pos 6: F -> E (GLU)\n  Mutated pos 11: F -> I (ILE)\nApplied 3 mutations\n  Reordering: peptide chain 1 → last (chain 2)\n  Reordered: 2 chains, 383 residues (chain order: B → A)\nPre-refinement total_score: 70.41\n/tmp/tmp6ffe2wyd: line 3: 27163 Segmentation fault      (core dumped) python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYEFWKTITSC --peptide-chain 1\n\nERROR conda.cli.main_run:execute(127): `conda run python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYEFWKTITSC --peptide-chain 1` failed. (See above for error) :: cmd=conda run -n bio-tools python /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/AG_src/scripts/flexpep_dock.py --input data/fold_test1_model_0.pdb --output /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_001.pdb --protocol flexpep_refine --reference-complex data/fold_test1_model_0.pdb --target-sequence AGCKYEFWKTITSC --peptide-chain 1"
+    }
+  ],
+  "historical_candidates": [
+    {
+      "rank": 1,
+      "id": "iter06_cand003",
+      "sequence": "AGCKYEFWKTFTSC",
+      "ddG": -144.1028,
+      "totalScore": 142.0244,
+      "clashScore": 0.0,
+      "finalScore": 144.103,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 2,
+      "id": "iter03_cand002",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -96.3277,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 96.328,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 3,
+      "id": "iter05_cand002",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -86.4426,
+      "totalScore": -354.577,
+      "clashScore": 0.0,
+      "finalScore": 86.443,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 4,
+      "id": "iter08_cand005",
+      "sequence": "AGCKHFFWHTFTSC",
+      "ddG": -51.2441,
+      "totalScore": -487.3629,
+      "clashScore": 0.0,
+      "finalScore": 51.244,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 5,
+      "id": "iter06_cand005",
+      "sequence": "APCKNFFWKTFTSC",
+      "ddG": -49.7079,
+      "totalScore": -486.6233,
+      "clashScore": 0.0,
+      "finalScore": 49.708,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 6,
+      "id": "iter05_cand006",
+      "sequence": "AGCKNFFWKEFTSH",
+      "ddG": -48.2052,
+      "totalScore": -471.6897,
+      "clashScore": 0.0,
+      "finalScore": 48.205,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 7,
+      "id": "iter03_cand008",
+      "sequence": "AMCKNFIWKAFTSC",
+      "ddG": -47.1815,
+      "totalScore": -354.4377,
+      "clashScore": 0.0,
+      "finalScore": 47.181,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 8,
+      "id": "iter04_cand003",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -47.1705,
+      "totalScore": -464.2201,
+      "clashScore": 0.0,
+      "finalScore": 47.17,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 9,
+      "id": "iter06_cand002",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddG": -47.0529,
+      "totalScore": -198.8108,
+      "clashScore": 0.0,
+      "finalScore": 47.053,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 10,
+      "id": "iter05_cand004",
+      "sequence": "ATCKNFFWANFTSC",
+      "ddG": -46.4923,
+      "totalScore": -480.0301,
+      "clashScore": 0.0,
+      "finalScore": 46.492,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 11,
+      "id": "iter06_cand008",
+      "sequence": "AGCHNFFWKTFTSC",
+      "ddG": -46.3002,
+      "totalScore": -483.4341,
+      "clashScore": 0.0,
+      "finalScore": 46.3,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 12,
+      "id": "iter02_cand005",
+      "sequence": "YSCKNFFWKTFTSN",
+      "ddG": -46.0899,
+      "totalScore": -483.6918,
+      "clashScore": 0.0,
+      "finalScore": 46.09,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 13,
+      "id": "iter04_cand006",
+      "sequence": "AGCKNWFWVSFTSC",
+      "ddG": -45.3897,
+      "totalScore": -474.9781,
+      "clashScore": 0.0,
+      "finalScore": 45.39,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 14,
+      "id": "iter01_cand006",
+      "sequence": "AGCKDFFWKTFTSC",
+      "ddG": -44.9576,
+      "totalScore": -449.9963,
+      "clashScore": 0.0,
+      "finalScore": 44.958,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 15,
+      "id": "iter06_cand005",
+      "sequence": "YGCKNFFWKTFTST",
+      "ddG": -44.945,
+      "totalScore": -480.7673,
+      "clashScore": 0.0,
+      "finalScore": 44.945,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 16,
+      "id": "iter01_cand001",
+      "sequence": "AGCKYDFWKTLTSC",
+      "ddG": -43.9181,
+      "totalScore": -443.7243,
+      "clashScore": 0.0,
+      "finalScore": 43.918,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 17,
+      "id": "iter03_cand008",
+      "sequence": "AGCANFFWKRFTSC",
+      "ddG": -43.3845,
+      "totalScore": -463.3788,
+      "clashScore": 0.0,
+      "finalScore": 43.385,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 18,
+      "id": "iter06_cand007",
+      "sequence": "GGCKNFFWKTFSSC",
+      "ddG": -43.3729,
+      "totalScore": -473.4795,
+      "clashScore": 0.0,
+      "finalScore": 43.373,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 19,
+      "id": "iter10_cand001",
+      "sequence": "AGCKYEFWKTITSC",
+      "ddG": -43.298,
+      "totalScore": -472.886,
+      "clashScore": 0.0,
+      "finalScore": 43.298,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 20,
+      "id": "iter04_cand006",
+      "sequence": "WGCKNFFWPTWTSC",
+      "ddG": -43.1092,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 43.109,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 21,
+      "id": "iter09_cand005",
+      "sequence": "AGCKFFFWKTVTSC",
+      "ddG": -43.0173,
+      "totalScore": -488.3605,
+      "clashScore": 0.0,
+      "finalScore": 43.017,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 22,
+      "id": "iter03_cand002",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddG": -42.9948,
+      "totalScore": -443.6084,
+      "clashScore": 0.0,
+      "finalScore": 42.995,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 23,
+      "id": "iter02_cand005",
+      "sequence": "AGCKKVFWKTFTSC",
+      "ddG": -42.9461,
+      "totalScore": -477.2361,
+      "clashScore": 0.0,
+      "finalScore": 42.946,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 24,
+      "id": "iter04_cand007",
+      "sequence": "AACKNFFWKTFTSC",
+      "ddG": -42.9284,
+      "totalScore": -478.3521,
+      "clashScore": 0.0,
+      "finalScore": 42.928,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 25,
+      "id": "iter09_cand002",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddG": -42.4942,
+      "totalScore": -463.2569,
+      "clashScore": 0.0,
+      "finalScore": 42.494,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 26,
+      "id": "iter10_cand002",
+      "sequence": "AGCKWFFWKTITSC",
+      "ddG": -42.4637,
+      "totalScore": -454.5776,
+      "clashScore": 0.0,
+      "finalScore": 42.464,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 27,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNFFWKTFTSQ",
+      "ddG": -42.4102,
+      "totalScore": -461.0716,
+      "clashScore": 0.0,
+      "finalScore": 42.41,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 28,
+      "id": "iter04_cand005",
+      "sequence": "APCKNFFWKTFTSC",
+      "ddG": -42.2626,
+      "totalScore": -468.598,
+      "clashScore": 0.0,
+      "finalScore": 42.263,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 29,
+      "id": "iter05_cand007",
+      "sequence": "KGCKNFFWKTFTSC",
+      "ddG": -42.2221,
+      "totalScore": -452.8526,
+      "clashScore": 0.0,
+      "finalScore": 42.222,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 30,
+      "id": "iter01_cand003",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddG": -42.1404,
+      "totalScore": -477.2389,
+      "clashScore": 0.0,
+      "finalScore": 42.14,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 31,
+      "id": "iter05_cand003",
+      "sequence": "AGCKYFFWKTITSC",
+      "ddG": -41.5311,
+      "totalScore": -57.5116,
+      "clashScore": 0.0,
+      "finalScore": 41.531,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 32,
+      "id": "iter02_cand007",
+      "sequence": "AGCFIFFWKTFTSC",
+      "ddG": -41.1005,
+      "totalScore": -446.8762,
+      "clashScore": 0.0,
+      "finalScore": 41.1,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 33,
+      "id": "iter10_cand008",
+      "sequence": "AGCVNFFWKTMTSC",
+      "ddG": -41.065,
+      "totalScore": -439.2093,
+      "clashScore": 0.0,
+      "finalScore": 41.065,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 34,
+      "id": "iter08_cand006",
+      "sequence": "AGCRNFFWKTADSC",
+      "ddG": -41.0335,
+      "totalScore": -478.4253,
+      "clashScore": 0.0,
+      "finalScore": 41.033,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 35,
+      "id": "iter01_cand006",
+      "sequence": "AGCKNDFWKDFTSG",
+      "ddG": -41.002,
+      "totalScore": -487.9156,
+      "clashScore": 0.0,
+      "finalScore": 41.002,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 36,
+      "id": "iter09_cand005",
+      "sequence": "AGCKWEFWKTFTSC",
+      "ddG": -40.7193,
+      "totalScore": -390.7971,
+      "clashScore": 0.0,
+      "finalScore": 40.719,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 37,
+      "id": "iter01_cand001",
+      "sequence": "AECKNFFWTTFTSC",
+      "ddG": -40.6559,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 40.656,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 38,
+      "id": "iter01_cand002",
+      "sequence": "AGCKYDFWKTFTSC",
+      "ddG": -40.5871,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 40.587,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 39,
+      "id": "iter03_cand001",
+      "sequence": "AGCKYDFWKTLTSC",
+      "ddG": -40.5123,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 40.512,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 40,
+      "id": "iter03_cand003",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -40.4635,
+      "totalScore": -412.2264,
+      "clashScore": 0.0,
+      "finalScore": 40.464,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 41,
+      "id": "iter07_cand002",
+      "sequence": "AGCKNEFWKTFTSC",
+      "ddG": -40.3973,
+      "totalScore": -481.5514,
+      "clashScore": 0.0,
+      "finalScore": 40.397,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 42,
+      "id": "iter07_cand004",
+      "sequence": "AGCKNFFWKTFRSC",
+      "ddG": -40.303,
+      "totalScore": -475.0044,
+      "clashScore": 0.0,
+      "finalScore": 40.303,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 43,
+      "id": "iter08_cand004",
+      "sequence": "AGCKYFFWKTVTSC",
+      "ddG": -40.2055,
+      "totalScore": -426.9778,
+      "clashScore": 0.0,
+      "finalScore": 40.206,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 44,
+      "id": "iter01_cand005",
+      "sequence": "YSCKNFFWKTFTSN",
+      "ddG": -40.1785,
+      "totalScore": -475.0663,
+      "clashScore": 0.0,
+      "finalScore": 40.178,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 45,
+      "id": "iter01_cand007",
+      "sequence": "AGCKEFMWKTFTSC",
+      "ddG": -40.1607,
+      "totalScore": -463.5366,
+      "clashScore": 0.0,
+      "finalScore": 40.161,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 46,
+      "id": "iter02_cand002",
+      "sequence": "AGCKYDFWKTITSC",
+      "ddG": -40.1111,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 40.111,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 47,
+      "id": "iter01_cand006",
+      "sequence": "WGCKNFFWPTWTSC",
+      "ddG": -40.0908,
+      "totalScore": -456.7214,
+      "clashScore": 0.0,
+      "finalScore": 40.091,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 48,
+      "id": "iter07_cand001",
+      "sequence": "AGCKYFFWKTLTSC",
+      "ddG": -39.9711,
+      "totalScore": -477.8187,
+      "clashScore": 0.0,
+      "finalScore": 39.971,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 49,
+      "id": "iter06_cand008",
+      "sequence": "AGCKNYFWKTQTSS",
+      "ddG": -39.9557,
+      "totalScore": -438.1782,
+      "clashScore": 0.0,
+      "finalScore": 39.956,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 50,
+      "id": "iter06_cand001",
+      "sequence": "AGCKYFFWKTLTSC",
+      "ddG": -39.6879,
+      "totalScore": -471.8051,
+      "clashScore": 0.0,
+      "finalScore": 39.688,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 51,
+      "id": "iter01_cand002",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -39.4864,
+      "totalScore": -478.8853,
+      "clashScore": 0.0,
+      "finalScore": 39.486,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 52,
+      "id": "iter04_cand003",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -39.4446,
+      "totalScore": -474.2509,
+      "clashScore": 0.0,
+      "finalScore": 39.445,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 53,
+      "id": "iter04_cand004",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -39.4178,
+      "totalScore": -461.4177,
+      "clashScore": 0.0,
+      "finalScore": 39.418,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 54,
+      "id": "iter02_cand004",
+      "sequence": "AGCKNFFQITKTSC",
+      "ddG": -39.4113,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 39.411,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 55,
+      "id": "iter10_cand004",
+      "sequence": "ALCKYFFWKTFTSC",
+      "ddG": -39.1886,
+      "totalScore": -475.833,
+      "clashScore": 0.0,
+      "finalScore": 39.189,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 56,
+      "id": "iter10_cand003",
+      "sequence": "AGCKYEFWKTLTSC",
+      "ddG": -39.1528,
+      "totalScore": -463.1424,
+      "clashScore": 0.0,
+      "finalScore": 39.153,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 57,
+      "id": "iter07_cand002",
+      "sequence": "AGCKWFFWKTVTSC",
+      "ddG": -39.1364,
+      "totalScore": -480.5525,
+      "clashScore": 0.0,
+      "finalScore": 39.136,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 58,
+      "id": "iter02_cand005",
+      "sequence": "AGCKNDFWKTFGSE",
+      "ddG": -38.992,
+      "totalScore": -474.6984,
+      "clashScore": 0.0,
+      "finalScore": 38.992,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 59,
+      "id": "iter01_cand007",
+      "sequence": "AGCFIFFWKTFTSC",
+      "ddG": -38.9451,
+      "totalScore": -474.4507,
+      "clashScore": 0.0,
+      "finalScore": 38.945,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 60,
+      "id": "iter01_cand004",
+      "sequence": "AGCKNFFWKTKTSC",
+      "ddG": -38.8555,
+      "totalScore": -460.5982,
+      "clashScore": 0.0,
+      "finalScore": 38.855,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 61,
+      "id": "iter03_cand001",
+      "sequence": "AGCKFEFWKTVTSC",
+      "ddG": -38.7983,
+      "totalScore": -397.679,
+      "clashScore": 0.0,
+      "finalScore": 38.798,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 62,
+      "id": "iter09_cand006",
+      "sequence": "AGCKYDFWKTFTSC",
+      "ddG": -38.6632,
+      "totalScore": -471.2096,
+      "clashScore": 0.0,
+      "finalScore": 38.663,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 63,
+      "id": "iter03_cand003",
+      "sequence": "AGCKFDFWKTFTSC",
+      "ddG": -38.6159,
+      "totalScore": -487.9061,
+      "clashScore": 0.0,
+      "finalScore": 38.616,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 64,
+      "id": "iter02_cand001",
+      "sequence": "AGCKYDFWKTFTSC",
+      "ddG": -38.5584,
+      "totalScore": -470.6948,
+      "clashScore": 0.0,
+      "finalScore": 38.558,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 65,
+      "id": "iter02_cand003",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -38.3528,
+      "totalScore": -472.8163,
+      "clashScore": 0.0,
+      "finalScore": 38.353,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 66,
+      "id": "iter06_cand007",
+      "sequence": "KGCKNFFWKTFTSC",
+      "ddG": -38.3277,
+      "totalScore": -470.0152,
+      "clashScore": 0.0,
+      "finalScore": 38.328,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 67,
+      "id": "iter04_cand006",
+      "sequence": "AGCWNFFWKTFTSC",
+      "ddG": -38.3183,
+      "totalScore": -42.1511,
+      "clashScore": 0.0,
+      "finalScore": 38.318,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 68,
+      "id": "iter01_cand001",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddG": -38.0159,
+      "totalScore": -449.541,
+      "clashScore": 0.0,
+      "finalScore": 38.016,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 69,
+      "id": "iter05_cand007",
+      "sequence": "AGCKNFFWKTMTSC",
+      "ddG": -37.7955,
+      "totalScore": -428.8556,
+      "clashScore": 0.0,
+      "finalScore": 37.795,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 70,
+      "id": "iter04_cand003",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -37.539,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 37.539,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 71,
+      "id": "iter01_cand003",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -37.4764,
+      "totalScore": -462.5129,
+      "clashScore": 0.0,
+      "finalScore": 37.476,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 72,
+      "id": "iter03_cand001",
+      "sequence": "AGCKWDFWKTVTSC",
+      "ddG": -37.4749,
+      "totalScore": -464.9769,
+      "clashScore": 0.0,
+      "finalScore": 37.475,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 73,
+      "id": "iter04_cand005",
+      "sequence": "AGCKWDFWKTITSC",
+      "ddG": -37.1232,
+      "totalScore": -441.3017,
+      "clashScore": 0.0,
+      "finalScore": 37.123,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 74,
+      "id": "iter08_cand005",
+      "sequence": "AGCKWEFWKTITSC",
+      "ddG": -36.973,
+      "totalScore": -469.6286,
+      "clashScore": 0.0,
+      "finalScore": 36.973,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 75,
+      "id": "iter01_cand004",
+      "sequence": "AFCKNFFWKTFTSC",
+      "ddG": -36.9319,
+      "totalScore": -464.1003,
+      "clashScore": 0.0,
+      "finalScore": 36.932,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 76,
+      "id": "iter01_cand003",
+      "sequence": "AGCKNDFWKTLTSC",
+      "ddG": -36.6409,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 36.641,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 77,
+      "id": "iter07_cand003",
+      "sequence": "AGCKYEFWKTFTSC",
+      "ddG": -36.6286,
+      "totalScore": -468.9754,
+      "clashScore": 0.0,
+      "finalScore": 36.629,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 78,
+      "id": "iter04_cand002",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddG": -36.5072,
+      "totalScore": -464.4664,
+      "clashScore": 0.0,
+      "finalScore": 36.507,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 79,
+      "id": "iter02_cand006",
+      "sequence": "WGCKNFFWPTWTSC",
+      "ddG": -36.5047,
+      "totalScore": -173.3848,
+      "clashScore": 0.0,
+      "finalScore": 36.505,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 80,
+      "id": "iter02_cand008",
+      "sequence": "AGCKNFFWKTFTSQ",
+      "ddG": -36.4678,
+      "totalScore": -186.5161,
+      "clashScore": 0.0,
+      "finalScore": 36.468,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 81,
+      "id": "iter10_cand002",
+      "sequence": "AGCKNDFWKTLTSC",
+      "ddG": -36.3101,
+      "totalScore": -446.6507,
+      "clashScore": 0.0,
+      "finalScore": 36.31,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 82,
+      "id": "iter06_cand002",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -36.2189,
+      "totalScore": -465.1474,
+      "clashScore": 0.0,
+      "finalScore": 36.219,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 83,
+      "id": "iter10_cand005",
+      "sequence": "EGCKNFFWKTFTSQ",
+      "ddG": -35.9546,
+      "totalScore": -468.9023,
+      "clashScore": 0.0,
+      "finalScore": 35.955,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 84,
+      "id": "iter03_cand007",
+      "sequence": "AACKNFFWKTFTSC",
+      "ddG": -35.7268,
+      "totalScore": -471.5489,
+      "clashScore": 0.0,
+      "finalScore": 35.727,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 85,
+      "id": "iter01_cand006",
+      "sequence": "ADCKNFFEGTFTSC",
+      "ddG": -35.4544,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 35.454,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 86,
+      "id": "iter02_cand006",
+      "sequence": "AGCKNFFWKWFTSC",
+      "ddG": -35.4392,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 35.439,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 87,
+      "id": "iter07_cand006",
+      "sequence": "AGCKQFFWKTFTSC",
+      "ddG": -35.4104,
+      "totalScore": -444.9068,
+      "clashScore": 0.0,
+      "finalScore": 35.41,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 88,
+      "id": "iter02_cand002",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddG": -35.2503,
+      "totalScore": -449.9894,
+      "clashScore": 0.0,
+      "finalScore": 35.25,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 89,
+      "id": "iter02_cand001",
+      "sequence": "AGCKNYFWKTITSC",
+      "ddG": -35.1792,
+      "totalScore": -317.6547,
+      "clashScore": 0.0,
+      "finalScore": 35.179,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 90,
+      "id": "iter03_cand006",
+      "sequence": "AGCKNFGWKTFTSC",
+      "ddG": -35.0406,
+      "totalScore": -403.0043,
+      "clashScore": 0.0,
+      "finalScore": 35.041,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 91,
+      "id": "iter08_cand003",
+      "sequence": "AGCKEFFWKTFTSC",
+      "ddG": -34.8849,
+      "totalScore": -462.1665,
+      "clashScore": 0.0,
+      "finalScore": 34.885,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 92,
+      "id": "iter09_cand003",
+      "sequence": "AGCKNDFWKTFTSC",
+      "ddG": -34.8812,
+      "totalScore": -400.4704,
+      "clashScore": 0.0,
+      "finalScore": 34.881,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 93,
+      "id": "iter10_cand007",
+      "sequence": "AFCKEFFWKTFTSC",
+      "ddG": -34.8045,
+      "totalScore": -438.2325,
+      "clashScore": 0.0,
+      "finalScore": 34.804,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 94,
+      "id": "iter05_cand001",
+      "sequence": "AGCKFEFWKTVTSC",
+      "ddG": -34.5004,
+      "totalScore": -442.9475,
+      "clashScore": 0.0,
+      "finalScore": 34.5,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 95,
+      "id": "iter03_cand007",
+      "sequence": "AGCKNFFWITFTSC",
+      "ddG": -34.4656,
+      "totalScore": -432.0922,
+      "clashScore": 0.0,
+      "finalScore": 34.466,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 96,
+      "id": "iter02_cand005",
+      "sequence": "AGCKNFFWKHFTSM",
+      "ddG": -34.4489,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 34.449,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 97,
+      "id": "iter07_cand003",
+      "sequence": "AGCKWDFWKTFTSC",
+      "ddG": -34.4036,
+      "totalScore": -475.4092,
+      "clashScore": 0.0,
+      "finalScore": 34.404,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 98,
+      "id": "iter03_cand007",
+      "sequence": "AGCKNFFWKTMTSC",
+      "ddG": -34.3251,
+      "totalScore": -456.9579,
+      "clashScore": 0.0,
+      "finalScore": 34.325,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 99,
+      "id": "iter02_cand006",
+      "sequence": "AGCKNFPWKHFTSC",
+      "ddG": -34.2381,
+      "totalScore": -399.4608,
+      "clashScore": 0.0,
+      "finalScore": 34.238,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 100,
+      "id": "iter05_cand006",
+      "sequence": "AGCKNFPWKHFTSC",
+      "ddG": -34.1857,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 34.186,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 101,
+      "id": "iter06_cand002",
+      "sequence": "AGCKNEFWKTFTSC",
+      "ddG": -34.1594,
+      "totalScore": -438.5733,
+      "clashScore": 0.0,
+      "finalScore": 34.159,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 102,
+      "id": "iter02_cand006",
+      "sequence": "AGCKNWFWVSFTSC",
+      "ddG": -34.1164,
+      "totalScore": -455.2391,
+      "clashScore": 0.0,
+      "finalScore": 34.116,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 103,
+      "id": "iter05_cand002",
+      "sequence": "AGCKFEFWKTFTSC",
+      "ddG": -33.8697,
+      "totalScore": -474.8799,
+      "clashScore": 0.0,
+      "finalScore": 33.87,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 104,
+      "id": "iter03_cand004",
+      "sequence": "AGCKFEFWKTITSC",
+      "ddG": -33.7367,
+      "totalScore": -450.6502,
+      "clashScore": 0.0,
+      "finalScore": 33.737,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 105,
+      "id": "iter04_cand001",
+      "sequence": "AGCKFEFWKTVTSC",
+      "ddG": -33.6922,
+      "totalScore": -456.0726,
+      "clashScore": 0.0,
+      "finalScore": 33.692,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 106,
+      "id": "iter05_cand004",
+      "sequence": "AGCKNEFWKTVTSC",
+      "ddG": -33.6745,
+      "totalScore": -459.0541,
+      "clashScore": 0.0,
+      "finalScore": 33.675,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 107,
+      "id": "iter05_cand003",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -33.6452,
+      "totalScore": -376.361,
+      "clashScore": 0.0,
+      "finalScore": 33.645,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 108,
+      "id": "iter02_cand002",
+      "sequence": "AGCSNFFWKTQVSC",
+      "ddG": -33.471,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 33.471,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 109,
+      "id": "iter02_cand001",
+      "sequence": "AGCKWDFWKTVTSC",
+      "ddG": -33.4677,
+      "totalScore": -367.7614,
+      "clashScore": 0.0,
+      "finalScore": 33.468,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 110,
+      "id": "iter01_cand002",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -33.0208,
+      "totalScore": -464.4291,
+      "clashScore": 0.0,
+      "finalScore": 33.021,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 111,
+      "id": "iter06_cand005",
+      "sequence": "AGCKNFFWLTFTSC",
+      "ddG": -32.8678,
+      "totalScore": -442.7611,
+      "clashScore": 0.0,
+      "finalScore": 32.868,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 112,
+      "id": "iter02_cand006",
+      "sequence": "AGCKNFGWKTFTSC",
+      "ddG": -32.8187,
+      "totalScore": -466.9897,
+      "clashScore": 0.0,
+      "finalScore": 32.819,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 113,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNMFWKRFYSC",
+      "ddG": -32.7038,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 32.704,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 114,
+      "id": "iter05_cand006",
+      "sequence": "AGCKNFFEKTFTSI",
+      "ddG": -32.7038,
+      "totalScore": -481.3686,
+      "clashScore": 0.0,
+      "finalScore": 32.704,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 115,
+      "id": "iter06_cand006",
+      "sequence": "AGCKQFFWKTFTSC",
+      "ddG": -32.6287,
+      "totalScore": -467.3129,
+      "clashScore": 0.0,
+      "finalScore": 32.629,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 116,
+      "id": "iter04_cand004",
+      "sequence": "AGCKNIMWKTFTSC",
+      "ddG": -32.4302,
+      "totalScore": -468.7905,
+      "clashScore": 0.0,
+      "finalScore": 32.43,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 117,
+      "id": "iter03_cand006",
+      "sequence": "AGCKNFFEKTFTSI",
+      "ddG": -32.3423,
+      "totalScore": -481.9485,
+      "clashScore": 0.0,
+      "finalScore": 32.342,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 118,
+      "id": "iter07_cand008",
+      "sequence": "AGCKNYFWKTQTSS",
+      "ddG": -32.3352,
+      "totalScore": -454.1616,
+      "clashScore": 0.0,
+      "finalScore": 32.335,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 119,
+      "id": "iter08_cand007",
+      "sequence": "AGCKNFFNKTFTSC",
+      "ddG": -32.2372,
+      "totalScore": -434.0091,
+      "clashScore": 0.0,
+      "finalScore": 32.237,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 120,
+      "id": "iter03_cand008",
+      "sequence": "AGCENFFWKTFTSC",
+      "ddG": -32.2036,
+      "totalScore": -201.4788,
+      "clashScore": 0.0,
+      "finalScore": 32.204,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 121,
+      "id": "iter06_cand004",
+      "sequence": "AWCKNFFLKTFTSC",
+      "ddG": -32.1987,
+      "totalScore": -420.7412,
+      "clashScore": 0.0,
+      "finalScore": 32.199,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 122,
+      "id": "iter03_cand005",
+      "sequence": "AGCKQFVWETFTSC",
+      "ddG": -32.0999,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 32.1,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 123,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNFFHKTFTSC",
+      "ddG": -32.0215,
+      "totalScore": -457.1188,
+      "clashScore": 0.0,
+      "finalScore": 32.022,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 124,
+      "id": "iter03_cand001",
+      "sequence": "AGCKNDFWKTITSC",
+      "ddG": -31.9369,
+      "totalScore": -458.5429,
+      "clashScore": 0.0,
+      "finalScore": 31.937,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 125,
+      "id": "iter08_cand008",
+      "sequence": "AGCKNQQWKTFQSC",
+      "ddG": -31.645,
+      "totalScore": -459.2506,
+      "clashScore": 0.0,
+      "finalScore": 31.645,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 126,
+      "id": "iter02_cand003",
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddG": -31.6345,
+      "totalScore": -462.133,
+      "clashScore": 0.0,
+      "finalScore": 31.634,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 127,
+      "id": "iter09_cand008",
+      "sequence": "AGCKNFFWKTFTSS",
+      "ddG": -31.4666,
+      "totalScore": -453.9625,
+      "clashScore": 0.0,
+      "finalScore": 31.467,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 128,
+      "id": "iter01_cand001",
+      "sequence": "AECKNFFWTTFTSC",
+      "ddG": -31.1226,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 31.123,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 129,
+      "id": "iter01_cand007",
+      "sequence": "AGCKNFFWKTFSSC",
+      "ddG": -31.0541,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 31.054,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 130,
+      "id": "iter08_cand006",
+      "sequence": "WGCKNFFAKTFTSC",
+      "ddG": -31.0511,
+      "totalScore": -443.4412,
+      "clashScore": 0.0,
+      "finalScore": 31.051,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 131,
+      "id": "iter10_cand001",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -30.9375,
+      "totalScore": -401.4441,
+      "clashScore": 0.0,
+      "finalScore": 30.938,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 132,
+      "id": "iter04_cand005",
+      "sequence": "AGCKNDFWKTFTSC",
+      "ddG": -30.8587,
+      "totalScore": -431.5347,
+      "clashScore": 0.0,
+      "finalScore": 30.859,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 133,
+      "id": "iter02_cand001",
+      "sequence": "AGCKFFFWKTLTSC",
+      "ddG": -30.5993,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 30.599,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 134,
+      "id": "iter01_cand005",
+      "sequence": "AGCKNFFWKTHTSC",
+      "ddG": -30.2834,
+      "totalScore": -466.2727,
+      "clashScore": 0.0,
+      "finalScore": 30.283,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 135,
+      "id": "iter03_cand008",
+      "sequence": "AGCKAFMWPTFTSC",
+      "ddG": -30.2207,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 30.221,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 136,
+      "id": "iter10_cand007",
+      "sequence": "AGCKRFDWKTFYSC",
+      "ddG": -30.0645,
+      "totalScore": -440.4747,
+      "clashScore": 0.0,
+      "finalScore": 30.064,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 137,
+      "id": "iter05_cand005",
+      "sequence": "ATCKNFFVKTFTSC",
+      "ddG": -29.9207,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 29.921,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 138,
+      "id": "iter03_cand005",
+      "sequence": "AGCKNDFWKTFGSE",
+      "ddG": -29.7221,
+      "totalScore": -453.7203,
+      "clashScore": 0.0,
+      "finalScore": 29.722,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 139,
+      "id": "iter09_cand001",
+      "sequence": "AGCKNEFWKTITSC",
+      "ddG": -29.2719,
+      "totalScore": -120.4716,
+      "clashScore": 0.0,
+      "finalScore": 29.272,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 140,
+      "id": "iter10_cand006",
+      "sequence": "AGCKNFFWDTSTSC",
+      "ddG": -29.2566,
+      "totalScore": -470.5882,
+      "clashScore": 0.0,
+      "finalScore": 29.257,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 141,
+      "id": "iter09_cand007",
+      "sequence": "AGCKNDFWKTFTSC",
+      "ddG": -28.5596,
+      "totalScore": -463.9063,
+      "clashScore": 0.0,
+      "finalScore": 28.56,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 142,
+      "id": "iter02_cand002",
+      "sequence": "AGCKNDFWKTVTSC",
+      "ddG": -28.4564,
+      "totalScore": -333.3208,
+      "clashScore": 0.0,
+      "finalScore": 28.456,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 143,
+      "id": "iter10_cand004",
+      "sequence": "AHCKNFEWKMFTSC",
+      "ddG": -28.2925,
+      "totalScore": -438.4191,
+      "clashScore": 0.0,
+      "finalScore": 28.293,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 144,
+      "id": "iter02_cand003",
+      "sequence": "AGCKMFFWKTFTSH",
+      "ddG": -28.1148,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 28.115,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 145,
+      "id": "iter03_cand002",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -28.0342,
+      "totalScore": -446.3505,
+      "clashScore": 0.0,
+      "finalScore": 28.034,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 146,
+      "id": "iter04_cand008",
+      "sequence": "AGCKNFFKKTFTSC",
+      "ddG": -28.0245,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 28.024,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 147,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNMFWKRFYSC",
+      "ddG": -27.8873,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 27.887,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 148,
+      "id": "iter01_cand002",
+      "sequence": "AGCKNDFWKTVTSC",
+      "ddG": -27.7264,
+      "totalScore": -11.292,
+      "clashScore": 0.0,
+      "finalScore": 27.726,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 149,
+      "id": "iter01_cand008",
+      "sequence": "AMCKNFIWKAFTSC",
+      "ddG": -27.6821,
+      "totalScore": -458.2407,
+      "clashScore": 0.0,
+      "finalScore": 27.682,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 150,
+      "id": "iter02_cand004",
+      "sequence": "AGCKNFFQITKTSC",
+      "ddG": -27.3619,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 27.362,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 151,
+      "id": "iter07_cand008",
+      "sequence": "AGCKNQQWKTFQSC",
+      "ddG": -27.1176,
+      "totalScore": -471.5007,
+      "clashScore": 0.0,
+      "finalScore": 27.118,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 152,
+      "id": "iter02_cand002",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": -26.5969,
+      "totalScore": -464.4358,
+      "clashScore": 0.0,
+      "finalScore": 26.597,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 153,
+      "id": "iter02_cand008",
+      "sequence": "AGCKNFFHKTFTSC",
+      "ddG": -26.4181,
+      "totalScore": -476.2759,
+      "clashScore": 0.0,
+      "finalScore": 26.418,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 154,
+      "id": "iter06_cand003",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -26.3091,
+      "totalScore": -433.0946,
+      "clashScore": 0.0,
+      "finalScore": 26.309,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 155,
+      "id": "iter07_cand007",
+      "sequence": "AGCKNFFNKTFTSC",
+      "ddG": -26.121,
+      "totalScore": -424.3768,
+      "clashScore": 0.0,
+      "finalScore": 26.121,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 156,
+      "id": "iter08_cand008",
+      "sequence": "AGCKNFFWKTFTSS",
+      "ddG": -25.5969,
+      "totalScore": -445.7739,
+      "clashScore": 0.0,
+      "finalScore": 25.597,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 157,
+      "id": "iter01_cand004",
+      "sequence": "AHCKNFFGKTFTSI",
+      "ddG": -25.5608,
+      "totalScore": -481.3832,
+      "clashScore": 0.0,
+      "finalScore": 25.561,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 158,
+      "id": "iter09_cand002",
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddG": -25.5519,
+      "totalScore": -416.4775,
+      "clashScore": 0.0,
+      "finalScore": 25.552,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 159,
+      "id": "iter04_cand007",
+      "sequence": "AGCKEFMWKTFTSC",
+      "ddG": -25.4012,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 25.401,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 160,
+      "id": "iter06_cand004",
+      "sequence": "FGCKNFFGKTFYSC",
+      "ddG": -25.2554,
+      "totalScore": -52.1922,
+      "clashScore": 0.0,
+      "finalScore": 25.255,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 161,
+      "id": "iter06_cand003",
+      "sequence": "AGCKNDFWKTITSC",
+      "ddG": -25.1447,
+      "totalScore": -470.7104,
+      "clashScore": 0.0,
+      "finalScore": 25.145,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 162,
+      "id": "iter04_cand001",
+      "sequence": "AGCKWDFWKTVTSC",
+      "ddG": -24.6646,
+      "totalScore": -457.5825,
+      "clashScore": 0.0,
+      "finalScore": 24.665,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 163,
+      "id": "iter09_cand003",
+      "sequence": "AGCKYDFWKTVTSC",
+      "ddG": -24.105,
+      "totalScore": -384.4429,
+      "clashScore": 0.0,
+      "finalScore": 24.105,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 164,
+      "id": "iter02_cand002",
+      "sequence": "AGCKEFFWKTFTSC",
+      "ddG": -24.0468,
+      "totalScore": -415.4139,
+      "clashScore": 0.0,
+      "finalScore": 24.047,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4000"
+    },
+    {
+      "rank": 165,
+      "id": "iter02_cand003",
+      "sequence": "AGCKWEFWKTLTSC",
+      "ddG": -23.9718,
+      "totalScore": -443.361,
+      "clashScore": 0.0,
+      "finalScore": 23.972,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 166,
+      "id": "iter05_cand007",
+      "sequence": "LGCKPFEWKTFTSC",
+      "ddG": -23.7904,
+      "totalScore": -460.3193,
+      "clashScore": 0.0,
+      "finalScore": 23.79,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 167,
+      "id": "iter06_cand001",
+      "sequence": "AGCKFDFWKTLTSC",
+      "ddG": -23.6268,
+      "totalScore": -433.3667,
+      "clashScore": 0.0,
+      "finalScore": 23.627,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 168,
+      "id": "iter02_cand008",
+      "sequence": "AGCENFFWKTFTSC",
+      "ddG": -23.6055,
+      "totalScore": -426.1986,
+      "clashScore": 0.0,
+      "finalScore": 23.605,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 169,
+      "id": "iter05_cand004",
+      "sequence": "AWCKNFFLKTFTSC",
+      "ddG": -23.0901,
+      "totalScore": -403.1596,
+      "clashScore": 0.0,
+      "finalScore": 23.09,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 170,
+      "id": "iter06_cand001",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddG": -22.6252,
+      "totalScore": -277.0082,
+      "clashScore": 0.0,
+      "finalScore": 22.625,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 171,
+      "id": "iter02_cand002",
+      "sequence": "AGCKWDFWKTLTSC",
+      "ddG": -22.1667,
+      "totalScore": -377.3942,
+      "clashScore": 0.0,
+      "finalScore": 22.167,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 172,
+      "id": "iter04_cand005",
+      "sequence": "AGCKNFFWKTHTSC",
+      "ddG": -22.0674,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 22.067,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 173,
+      "id": "iter03_cand006",
+      "sequence": "AGCKNDFWKDFTSG",
+      "ddG": -21.7653,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 21.765,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 174,
+      "id": "iter01_cand005",
+      "sequence": "AGCKNFFWKTFTSY",
+      "ddG": -21.7516,
+      "totalScore": -461.5919,
+      "clashScore": 0.0,
+      "finalScore": 21.752,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 175,
+      "id": "iter03_cand004",
+      "sequence": "AGCKWEFWKTVTSC",
+      "ddG": -21.7463,
+      "totalScore": -376.3021,
+      "clashScore": 0.0,
+      "finalScore": 21.746,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 176,
+      "id": "iter01_cand001",
+      "sequence": "AGCKWDFWKTFTSC",
+      "ddG": -21.5132,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 21.513,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 177,
+      "id": "iter02_cand004",
+      "sequence": "AGCSNFFKETFTSC",
+      "ddG": -21.4879,
+      "totalScore": -457.8491,
+      "clashScore": 0.0,
+      "finalScore": 21.488,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_3000"
+    },
+    {
+      "rank": 178,
+      "id": "iter03_cand005",
+      "sequence": "AGCKWDFWKTITSC",
+      "ddG": -21.1821,
+      "totalScore": -450.0722,
+      "clashScore": 0.0,
+      "finalScore": 21.182,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 179,
+      "id": "iter03_cand004",
+      "sequence": "AGCKNFFWKTKTSC",
+      "ddG": -21.0397,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 21.04,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 180,
+      "id": "iter05_cand006",
+      "sequence": "AGCWNFFWKTFTSC",
+      "ddG": -20.0555,
+      "totalScore": -444.1772,
+      "clashScore": 0.0,
+      "finalScore": 20.055,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 181,
+      "id": "iter02_cand005",
+      "sequence": "AGCKNFFWKTFTSY",
+      "ddG": -20.0369,
+      "totalScore": -385.668,
+      "clashScore": 0.0,
+      "finalScore": 20.037,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 182,
+      "id": "iter04_cand006",
+      "sequence": "AGCKNFFEKTFTSI",
+      "ddG": -19.8923,
+      "totalScore": -449.1312,
+      "clashScore": 0.0,
+      "finalScore": 19.892,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 183,
+      "id": "iter06_cand008",
+      "sequence": "AGCKNFFKKFFTSC",
+      "ddG": -19.3112,
+      "totalScore": -342.2216,
+      "clashScore": 0.0,
+      "finalScore": 19.311,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 184,
+      "id": "iter04_cand004",
+      "sequence": "AGCKFEFWKTITSC",
+      "ddG": -18.678,
+      "totalScore": -437.8166,
+      "clashScore": 0.0,
+      "finalScore": 18.678,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 185,
+      "id": "iter06_cand004",
+      "sequence": "AGCKNIMWKTFTSC",
+      "ddG": -18.6033,
+      "totalScore": -432.8387,
+      "clashScore": 0.0,
+      "finalScore": 18.603,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 186,
+      "id": "iter05_cand003",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -18.5315,
+      "totalScore": -441.6288,
+      "clashScore": 0.0,
+      "finalScore": 18.532,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 187,
+      "id": "iter09_cand006",
+      "sequence": "WGCKNFFAKTFTSC",
+      "ddG": -18.4878,
+      "totalScore": -18.2848,
+      "clashScore": 0.0,
+      "finalScore": 18.488,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 188,
+      "id": "iter05_cand008",
+      "sequence": "AGCKNFFKKFFTSC",
+      "ddG": -18.3937,
+      "totalScore": -441.865,
+      "clashScore": 0.0,
+      "finalScore": 18.394,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 189,
+      "id": "iter01_cand002",
+      "sequence": "AYCKNFFVKTFTSC",
+      "ddG": -18.3876,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 18.388,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 190,
+      "id": "iter03_cand006",
+      "sequence": "AGCKNWFWVSFTSC",
+      "ddG": -17.3911,
+      "totalScore": -430.5196,
+      "clashScore": 0.0,
+      "finalScore": 17.391,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 191,
+      "id": "iter04_cand001",
+      "sequence": "AGCKYDFWKTITSC",
+      "ddG": -16.9108,
+      "totalScore": -452.162,
+      "clashScore": 0.0,
+      "finalScore": 16.911,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 192,
+      "id": "iter04_cand007",
+      "sequence": "LGCKPFEWKTFTSC",
+      "ddG": -16.8565,
+      "totalScore": -430.2791,
+      "clashScore": 0.0,
+      "finalScore": 16.857,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 193,
+      "id": "iter05_cand001",
+      "sequence": "AACQNFFWKTFTSC",
+      "ddG": -16.267,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 16.267,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 194,
+      "id": "iter09_cand007",
+      "sequence": "NGCKNFFWKTVTSC",
+      "ddG": -15.806,
+      "totalScore": -278.9474,
+      "clashScore": 0.0,
+      "finalScore": 15.806,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 195,
+      "id": "iter06_cand007",
+      "sequence": "LGCKPFEWKTFTSC",
+      "ddG": -15.7631,
+      "totalScore": -380.1073,
+      "clashScore": 0.0,
+      "finalScore": 15.763,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 196,
+      "id": "iter07_cand005",
+      "sequence": "YGCKNFFWKTFTST",
+      "ddG": -14.8231,
+      "totalScore": -457.2219,
+      "clashScore": 0.0,
+      "finalScore": 14.823,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_6000"
+    },
+    {
+      "rank": 197,
+      "id": "iter02_cand004",
+      "sequence": "AGCTHKFWKTFTSC",
+      "ddG": -14.2693,
+      "totalScore": -403.6528,
+      "clashScore": 0.0,
+      "finalScore": 14.269,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_5000"
+    },
+    {
+      "rank": 198,
+      "id": "iter03_cand007",
+      "sequence": "AGCKNRFWKTFTSC",
+      "ddG": -14.0658,
+      "totalScore": 0.0,
+      "clashScore": 0.0,
+      "finalScore": 14.066,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_1000"
+    },
+    {
+      "rank": 199,
+      "id": "iter05_cand002",
+      "sequence": "AGCKNEFWKTITSC",
+      "ddG": -13.7992,
+      "totalScore": -448.3905,
+      "clashScore": 0.0,
+      "finalScore": 13.799,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    },
+    {
+      "rank": 200,
+      "id": "iter10_cand006",
+      "sequence": "AGCDNLFWLTFTSC",
+      "ddG": -13.5619,
+      "totalScore": -433.1672,
+      "clashScore": 0.0,
+      "finalScore": 13.562,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_7000"
+    }
+  ],
+  "qc_gates": [
+    {
+      "name": "RosettaGate",
+      "criterion": "ddG <= -5.0",
+      "passed": 5,
+      "failed": 3,
+      "total": 8
+    }
+  ],
+  "convergence": [
+    {
+      "iteration": 1,
+      "bestDdG": -40.1785,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 2,
+      "bestDdG": -38.992,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 3,
+      "bestDdG": -43.3845,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 4,
+      "bestDdG": -47.1705,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 5,
+      "bestDdG": -48.2052,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 6,
+      "bestDdG": -44.945,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 7,
+      "bestDdG": -40.303,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 8,
+      "bestDdG": -51.2441,
+      "topCandidates": 4,
+      "converged": false
+    },
+    {
+      "iteration": 9,
+      "bestDdG": -43.0173,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 10,
+      "bestDdG": -42.4637,
+      "topCandidates": 5,
+      "converged": false
+    }
+  ],
+  "live_apis": {
+    "esmfold": "pending",
+    "molmim": "pending"
+  },
+  "best_candidate": {
+    "id": "iter10_cand002",
+    "sequence": "AGCKWFFWKTITSC",
+    "ddG": -42.464,
+    "totalScore": -454.578
+  },
+  "molecules": [],
+  "visualization_images": [],
+  "baseline": {
+    "sequence": "AGCKNFFWKTFTSC",
+    "pdb": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
+    "ddg": -41.1693,
+    "total_score": -446.972,
+    "clash_score": 2.0
+  },
+  "completed": true
+}

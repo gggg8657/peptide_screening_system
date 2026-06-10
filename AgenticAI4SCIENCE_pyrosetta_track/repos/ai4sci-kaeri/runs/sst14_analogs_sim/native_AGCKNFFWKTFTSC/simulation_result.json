@@ -1,0 +1,71 @@
+{
+  "sequence": "AGCKNFFWKTFTSC",
+  "mutations": [],
+  "pre_dock_score": -88.042,
+  "post_dock_score": -88.042,
+  "ddg": -6.173,
+  "bound_score": -88.042,
+  "unbound_score": -81.87,
+  "clash_score": 565.338,
+  "per_residue_energy": {
+    "ALA1": 0.342,
+    "GLY2": 2.592,
+    "CYS3": 8.071,
+    "LYS4": 1.357,
+    "ASN5": -1.596,
+    "PHE6": -1.325,
+    "PHE7": 6.367,
+    "TRP8": 1.681,
+    "LYS9": 1.427,
+    "THR10": 1.547,
+    "PHE11": 10.81,
+    "THR12": 1.259,
+    "SER13": -1.222,
+    "CYS14": 4.935
+  },
+  "interface_hbonds": 5,
+  "hbond_details": [
+    {
+      "donor": "LYS4",
+      "acceptor": "SER215",
+      "energy": -0.458
+    },
+    {
+      "donor": "PHE7",
+      "acceptor": "TYR219",
+      "energy": -0.924
+    },
+    {
+      "donor": "LYS9",
+      "acceptor": "ASP136",
+      "energy": -0.339
+    },
+    {
+      "donor": "THR208",
+      "acceptor": "THR12",
+      "energy": -1.067
+    },
+    {
+      "donor": "GLN201",
+      "acceptor": "CYS14",
+      "energy": -1.965
+    }
+  ],
+  "salt_bridges": [
+    {
+      "positive": "LYS9.NZ",
+      "negative": "ASP136.OD1",
+      "distance": 2.97
+    },
+    {
+      "positive": "LYS9.NZ",
+      "negative": "ASP136.OD2",
+      "distance": 2.58
+    }
+  ],
+  "n_salt_bridges": 2,
+  "refined_pdb": "runs/sst14_analogs_sim/native_AGCKNFFWKTFTSC/refined.pdb",
+  "score_function": "ref2015",
+  "elapsed_sec": 8.1,
+  "complete": true
+}

@@ -1,0 +1,48 @@
+{
+  "SSTR1": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_clean/SSTR1_clean.pdb",
+    "n_atom": 16693,
+    "ncaa_center": [
+      155.6393606557377,
+      171.2944344262295,
+      114.9980573770492
+    ]
+  },
+  "SSTR2": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_clean/SSTR2_clean.pdb",
+    "n_atom": 3728,
+    "ncaa_center": [
+      -0.012940000000000056,
+      -21.721799999999998,
+      58.961760000000005
+    ]
+  },
+  "SSTR3": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_clean/SSTR3_clean.pdb",
+    "n_atom": 8121,
+    "ncaa_center": [
+      153.8631403508772,
+      123.94973684210527,
+      99.72357894736841
+    ]
+  },
+  "SSTR4": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_clean/SSTR4_clean.pdb",
+    "n_atom": 8104,
+    "ncaa_center": [
+      152.15618181818184,
+      118.2120606060606,
+      142.6317878787879
+    ]
+  },
+  "SSTR5": {
+    "clean_pdb": "runs_local/selectivity_demo_20260511/receptors_clean/SSTR5_clean.pdb",
+    "n_atom": 8085,
+    "ncaa_center": [
+      119.71475,
+      94.747125,
+      78.511375
+    ],
+    "center_source": "chain_A_peptide_ligand"
+  }
+}

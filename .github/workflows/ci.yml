@@ -1,0 +1,375 @@
+name: Bio Pipeline CI
+
+on:
+  push:
+    branches: [main, feature/**]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # ──────────────────────────────────────────────
+  # Job 1: Python syntax & lint
+  # ──────────────────────────────────────────────
+  lint:
+    name: Python Lint & Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install lint tools
+        run: pip install flake8
+
+      - name: Syntax check (py_compile)
+        run: |
+          echo "=== Checking Python syntax ==="
+          find . -name "*.py" -not -path "./.git/*" | while read f; do
+            python -m py_compile "$f" && echo "  OK: $f" || { echo "  FAIL: $f"; exit 1; }
+          done
+
+      - name: Flake8 lint
+        run: |
+          flake8 . \
+            --count \
+            --select=E9,F63,F7,F82 \
+            --show-source \
+            --statistics \
+            --exclude=.git,__pycache__,.venv,.worktrees,AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri,docs,local_models,_workspace
+          echo "=== Critical errors check passed ==="
+          flake8 . \
+            --count \
+            --max-complexity=15 \
+            --max-line-length=120 \
+            --statistics \
+            --exclude=.git,__pycache__,.venv,.worktrees,AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri,docs,local_models,_workspace \
+            --exit-zero
+          echo "=== Style warnings (non-blocking) ==="
+
+  # ──────────────────────────────────────────────
+  # Job 2: BioNeMo client import test
+  # ──────────────────────────────────────────────
+  import-test:
+    name: Client Import Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests python-dotenv numpy scipy scikit-learn pandas matplotlib
+
+      - name: Test bionemo client imports
+        run: |
+          echo "=== Testing BioNeMo client imports ==="
+          python -c "
+          import sys
+          modules = [
+              'bionemo.api_base',
+              'bionemo.molmim_client',
+              'bionemo.diffdock_client',
+              'bionemo.rfdiffusion_client',
+              'bionemo.proteinmpnn_client',
+              'bionemo.esmfold_client',
+          ]
+          failed = []
+          for mod in modules:
+              try:
+                  __import__(mod)
+                  print(f'  OK: {mod}')
+              except Exception as e:
+                  print(f'  FAIL: {mod} -> {e}')
+                  failed.append(mod)
+          if failed:
+              print(f'\n{len(failed)} module(s) failed to import')
+              sys.exit(1)
+          print(f'\nAll {len(modules)} modules imported successfully')
+          "
+
+      - name: Test script imports (non-API)
+        run: |
+          echo "=== Testing utility script imports ==="
+          python -c "from scripts.cif_to_pdb import convert_cif_to_pdb; print('  OK: cif_to_pdb')" || true
+          python -c "import scripts.verify_bio_tools_env; print('  OK: verify_bio_tools_env')" || true
+
+  # ──────────────────────────────────────────────
+  # Job 3: Structure file validation
+  # ──────────────────────────────────────────────
+  structure-check:
+    name: PDB/CIF Structure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Biopython
+        run: pip install biopython
+
+      - name: Validate PDB files
+        run: |
+          python -c "
+          import glob, os, sys
+          from Bio.PDB import PDBParser
+          parser = PDBParser(QUIET=True)
+          pdb_files = glob.glob('data/**/*.pdb', recursive=True) + glob.glob('results/**/*.pdb', recursive=True) + glob.glob('notebooks/**/*.pdb', recursive=True)
+          # mmCIF→PDB export 등 비표준 컬럼 정렬로 Bio.PDB가 실패하는 알려진 파일 (동일 구조는 .cif로 검증)
+          skip_pdb = {
+              'data/somatostatin_receptor/SSTR1_9IK8.pdb',
+              'data/somatostatin_receptor/SSTR3_8XIR.pdb',
+          }
+          pdb_files = [f for f in pdb_files if f not in skip_pdb]
+          for s in sorted(skip_pdb):
+              if os.path.exists(s):
+                  print(f'  SKIP (known non-PDB-standard): {s}')
+          if not pdb_files:
+              print('No PDB files found - skipping')
+              sys.exit(0)
+          failed = []
+          for f in sorted(pdb_files):
+              try:
+                  s = parser.get_structure('test', f)
+                  n_atoms = sum(1 for _ in s.get_atoms())
+                  print(f'  OK: {f} ({n_atoms} atoms)')
+              except Exception as e:
+                  print(f'  FAIL: {f} -> {e}')
+                  failed.append(f)
+          print(f'\n{len(pdb_files) - len(failed)}/{len(pdb_files)} PDB files valid')
+          if failed:
+              sys.exit(1)
+          "
+
+      - name: Validate CIF files
+        run: |
+          python -c "
+          import glob, sys
+          from Bio.PDB import MMCIFParser
+          parser = MMCIFParser(QUIET=True)
+          cif_files = glob.glob('data/**/*.cif', recursive=True)
+          if not cif_files:
+              print('No CIF files found - skipping')
+              sys.exit(0)
+          failed = []
+          for f in sorted(cif_files):
+              try:
+                  s = parser.get_structure('test', f)
+                  n_atoms = sum(1 for _ in s.get_atoms())
+                  print(f'  OK: {f} ({n_atoms} atoms)')
+              except Exception as e:
+                  print(f'  FAIL: {f} -> {e}')
+                  failed.append(f)
+          print(f'\n{len(cif_files) - len(failed)}/{len(cif_files)} CIF files valid')
+          if failed:
+              sys.exit(1)
+          "
+
+      - name: CIF to PDB conversion test
+        run: |
+          echo "=== Testing CIF->PDB conversion ==="
+          python -c "
+          import tempfile, glob, sys
+          from pathlib import Path
+          from Bio.PDB import MMCIFParser, PDBIO
+          cif_files = glob.glob('data/fold_test1/fold_test1_model_*.cif')
+          if not cif_files:
+              print('No model CIF files - skipping')
+              sys.exit(0)
+          cif = sorted(cif_files)[0]
+          parser = MMCIFParser(QUIET=True)
+          s = parser.get_structure('test', cif)
+          io = PDBIO()
+          io.set_structure(s)
+          with tempfile.NamedTemporaryFile(suffix='.pdb', delete=False) as tmp:
+              io.save(tmp.name)
+              print(f'  Converted: {cif} -> {tmp.name}')
+              from Bio.PDB import PDBParser
+              s2 = PDBParser(QUIET=True).get_structure('test', tmp.name)
+              n = sum(1 for _ in s2.get_atoms())
+              print(f'  Round-trip OK: {n} atoms')
+          "
+
+  # ──────────────────────────────────────────────
+  # Job 4: Markdown documentation check
+  # ──────────────────────────────────────────────
+  docs-check:
+    name: Documentation Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check internal file links in Markdown
+        run: |
+          python -c "
+          import glob, re, os, sys
+          md_files = glob.glob('**/*.md', recursive=True)
+          broken = []
+          total_links = 0
+          for md in sorted(md_files):
+              with open(md, 'r', encoding='utf-8', errors='ignore') as f:
+                  content = f.read()
+              # Match [text](path) but skip http/https/mailto/#
+              links = re.findall(r'\[([^\]]*)\]\(([^)]+)\)', content)
+              for text, href in links:
+                  if href.startswith(('http://', 'https://', 'mailto:', '#')):
+                      continue
+                  # Strip anchors
+                  path = href.split('#')[0]
+                  if not path:
+                      continue
+                  total_links += 1
+                  # Resolve relative to md file location
+                  base = os.path.dirname(md)
+                  full = os.path.normpath(os.path.join(base, path))
+                  if not os.path.exists(full):
+                      broken.append((md, href, full))
+                      print(f'  BROKEN: [{text}]({href}) in {md}')
+                      print(f'          -> resolved to: {full}')
+          print(f'\nChecked {total_links} internal links in {len(md_files)} Markdown files')
+          if broken:
+              print(f'{len(broken)} broken link(s) found')
+              # Non-blocking for now
+              # sys.exit(1)
+          else:
+              print('All links OK')
+          "
+
+  # ──────────────────────────────────────────────
+  # Job 5: NIM API integration (optional, needs secret)
+  # ──────────────────────────────────────────────
+  api-smoke-test:
+    name: NIM API Smoke Test
+    runs-on: ubuntu-latest
+    continue-on-error: true  # NIM → 로컬 전환 중, API 테스트는 optional
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv
+
+      - name: Check API key availability
+        id: check-key
+        run: |
+          if [ -n "${{ secrets.NVIDIA_API_KEY }}" ]; then
+            echo "has_key=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_key=false" >> $GITHUB_OUTPUT
+            echo "::warning::NVIDIA_API_KEY secret not set - skipping API smoke test"
+          fi
+
+      - name: MolMIM health check
+        if: steps.check-key.outputs.has_key == 'true'
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          python -c "
+          import os, requests
+          key = os.environ.get('NVIDIA_API_KEY', '')
+          if not key:
+              print('No API key - skip')
+              exit(0)
+          resp = requests.post(
+              'https://health.api.nvidia.com/v1/health/ready',
+              headers={'Authorization': f'Bearer {key}'},
+              timeout=10
+          )
+          print(f'Health check: {resp.status_code}')
+          "
+
+  # ──────────────────────────────────────────────
+  # Job 6: Frontend Lint, Test & Build
+  # ──────────────────────────────────────────────
+  frontend:
+    name: Frontend Lint, Test & Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+
+      - name: Build (includes tsc)
+        run: npm run build
+
+  # ──────────────────────────────────────────────
+  # Job 7: ai4sci-kaeri Python Lint
+  # ──────────────────────────────────────────────
+  ai4sci-python-lint:
+    name: ai4sci-kaeri Python Lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install lint tools
+        run: pip install flake8
+
+      - name: Syntax check (py_compile)
+        run: |
+          echo "=== Checking ai4sci-kaeri Python syntax ==="
+          find . -name "*.py" -not -path "./.git/*" -not -path "./__pycache__/*" -not -path "./.venv/*" | while read f; do
+            python -m py_compile "$f" && echo "  OK: $f" || { echo "  FAIL: $f"; exit 1; }
+          done
+
+      - name: Flake8 critical errors
+        run: |
+          flake8 . \
+            --count \
+            --select=E9,F63,F7,F82 \
+            --show-source \
+            --statistics \
+            --exclude=.git,__pycache__,.venv,AG_src/scripts
+          echo "=== Critical errors check passed ==="
+
+      - name: Flake8 style warnings (non-blocking)
+        run: |
+          flake8 . \
+            --count \
+            --max-complexity=15 \
+            --max-line-length=120 \
+            --statistics \
+            --exclude=.git,__pycache__,.venv,AG_src/scripts \
+            --exit-zero
+          echo "=== Style warnings (non-blocking) ==="

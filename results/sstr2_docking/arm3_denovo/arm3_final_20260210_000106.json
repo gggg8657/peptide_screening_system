@@ -1,0 +1,121 @@
+{
+  "pipeline": "Arm 3: De Novo Peptide Binder Design (RFdiffusion + ProteinMPNN + ESMFold)",
+  "total_backbones": 4,
+  "total_designed": 16,
+  "verified": 16,
+  "designs": [
+    {
+      "backbone_idx": 0,
+      "seq_idx": 0,
+      "binder_sequence": "MPITGGLVSLRRKAELSRRYLE",
+      "plddt": 71.06152542372881,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb00_seq0.pdb"
+    },
+    {
+      "backbone_idx": 0,
+      "seq_idx": 1,
+      "binder_sequence": "TPLTGGEAQLVRYASLARRYLE",
+      "plddt": 73.31115606936416,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb00_seq1.pdb"
+    },
+    {
+      "backbone_idx": 0,
+      "seq_idx": 2,
+      "binder_sequence": "AGLTGGLAAYREYCRLARRLLE",
+      "plddt": 76.93672514619884,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb00_seq2.pdb"
+    },
+    {
+      "backbone_idx": 0,
+      "seq_idx": 3,
+      "binder_sequence": "SGLTGGLLALRRYAELARRYLE",
+      "plddt": 80.35609195402299,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb00_seq3.pdb"
+    },
+    {
+      "backbone_idx": 1,
+      "seq_idx": 0,
+      "binder_sequence": "MAALGLLLFEYAEQ",
+      "plddt": 73.58678899082568,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb01_seq0.pdb"
+    },
+    {
+      "backbone_idx": 1,
+      "seq_idx": 1,
+      "binder_sequence": "AAALGLLLFEAAEQ",
+      "plddt": 79.88606060606061,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb01_seq1.pdb"
+    },
+    {
+      "backbone_idx": 1,
+      "seq_idx": 2,
+      "binder_sequence": "AAAFGELLFEASEQ",
+      "plddt": 59.47413461538462,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb01_seq2.pdb"
+    },
+    {
+      "backbone_idx": 1,
+      "seq_idx": 3,
+      "binder_sequence": "MEFLGLLMFEYDEQ",
+      "plddt": 58.220245901639345,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb01_seq3.pdb"
+    },
+    {
+      "backbone_idx": 2,
+      "seq_idx": 0,
+      "binder_sequence": "SALIWARGEGE",
+      "plddt": 59.76265060240964,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb02_seq0.pdb"
+    },
+    {
+      "backbone_idx": 2,
+      "seq_idx": 1,
+      "binder_sequence": "PALIWAEGRGE",
+      "plddt": 69.27190476190476,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb02_seq1.pdb"
+    },
+    {
+      "backbone_idx": 2,
+      "seq_idx": 2,
+      "binder_sequence": "SPLIWARGDGE",
+      "plddt": 65.95035714285714,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb02_seq2.pdb"
+    },
+    {
+      "backbone_idx": 2,
+      "seq_idx": 3,
+      "binder_sequence": "SGLIWARGGGR",
+      "plddt": 64.16607594936708,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb02_seq3.pdb"
+    },
+    {
+      "backbone_idx": 3,
+      "seq_idx": 0,
+      "binder_sequence": "AALARTIRADFRAQQQA",
+      "plddt": 81.15348484848485,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb03_seq0.pdb"
+    },
+    {
+      "backbone_idx": 3,
+      "seq_idx": 1,
+      "binder_sequence": "AALWQTILTRFRRQQEE",
+      "plddt": 74.66443708609272,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb03_seq1.pdb"
+    },
+    {
+      "backbone_idx": 3,
+      "seq_idx": 2,
+      "binder_sequence": "AALARTIAARFRKELEA",
+      "plddt": 81.38871212121212,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb03_seq2.pdb"
+    },
+    {
+      "backbone_idx": 3,
+      "seq_idx": 3,
+      "binder_sequence": "AALFSTARTRFRLQREE",
+      "plddt": 65.15222222222222,
+      "esmfold_pdb": "../results/sstr2_docking/arm3_denovo/esmfold_bb03_seq3.pdb"
+    }
+  ],
+  "timestamp": "2026-02-10T00:01:06.975244"
+}

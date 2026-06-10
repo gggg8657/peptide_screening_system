@@ -1,0 +1,89 @@
+best_model: qwen3_32b
+experiments:
+- debate_max_rounds: 2
+  flow: collaborative
+  gate_mode: adaptive
+  id: P2B-01
+  model: qwen3_32b
+  seed: 42
+- debate_max_rounds: 2
+  flow: collaborative
+  gate_mode: adaptive
+  id: P2B-02
+  model: qwen3_32b
+  seed: 137
+- debate_max_rounds: 2
+  flow: collaborative
+  gate_mode: adaptive
+  id: P2B-03
+  model: qwen3_32b
+  seed: 256
+- debate_max_rounds: 3
+  flow: collaborative
+  gate_mode: adaptive
+  id: P2B-04
+  model: qwen3_32b
+  seed: 42
+- debate_max_rounds: 3
+  flow: collaborative
+  gate_mode: adaptive
+  id: P2B-05
+  model: qwen3_32b
+  seed: 137
+- debate_max_rounds: 3
+  flow: collaborative
+  gate_mode: adaptive
+  id: P2B-06
+  model: qwen3_32b
+  seed: 256
+- flow: hierarchical
+  gate_mode: adaptive
+  id: P2B-07
+  model: qwen3_32b
+  orchestrator_cross_model: null
+  orchestrator_model: same
+  seed: 42
+- flow: hierarchical
+  gate_mode: adaptive
+  id: P2B-08
+  model: qwen3_32b
+  orchestrator_cross_model: null
+  orchestrator_model: same
+  seed: 137
+- flow: hierarchical
+  gate_mode: adaptive
+  id: P2B-09
+  model: qwen3_32b
+  orchestrator_cross_model: null
+  orchestrator_model: same
+  seed: 256
+- flow: hierarchical
+  gate_mode: adaptive
+  id: P2B-10
+  model: qwen3_32b
+  orchestrator_cross_model: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+  orchestrator_model: cross
+  seed: 42
+- flow: hierarchical
+  gate_mode: adaptive
+  id: P2B-11
+  model: qwen3_32b
+  orchestrator_cross_model: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+  orchestrator_model: cross
+  seed: 137
+- flow: hierarchical
+  gate_mode: adaptive
+  id: P2B-12
+  model: qwen3_32b
+  orchestrator_cross_model: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+  orchestrator_model: cross
+  seed: 256
+max_iterations: 5
+n_candidates: 8
+phase: phase2b
+seeds:
+- 42
+- 137
+- 256
+top_k: 5
+validation_n_trials: 1

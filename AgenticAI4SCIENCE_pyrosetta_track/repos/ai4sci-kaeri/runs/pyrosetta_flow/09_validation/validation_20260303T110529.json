@@ -1,0 +1,26 @@
+{
+  "timestamp": "20260303T110529",
+  "results": [
+    {
+      "id": "NOV-01_YSCKNFFWKTFTSN",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -43.922,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -473.1411,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

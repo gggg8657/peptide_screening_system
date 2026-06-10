@@ -1,0 +1,26 @@
+{
+  "type": "planner",
+  "iteration": 2,
+  "run_id": "sst14_mutdock_4002",
+  "timestamp": "2026-04-02T06:55:31.945377+00:00",
+  "hypothesis": "Aromatic amino acids at positions 5, 6, and 11 enhance binding affinity through π-π stacking interactions with the SSTR2 receptor.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "Structural validity requires balancing binding affinity with proper backbone sampling",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 15,
+        "rationale": "Low pLDDT and docking scores suggest excessive steric clashes during design"
+      },
+      {
+        "parameter_name": "n_candidates",
+        "old_value": 6,
+        "new_value": 12,
+        "rationale": "Low diversity in top candidates may indicate insufficient sampling"
+      }
+    ]
+  },
+  "previous_best_ddg": -43.5962
+}

@@ -1,0 +1,1971 @@
+{
+  "total_combinations": 343,
+  "passed": 308,
+  "failed": 35,
+  "pos5_candidates": [
+    "F",
+    "Y",
+    "W",
+    "L",
+    "I",
+    "V",
+    "M"
+  ],
+  "pos6_candidates": [
+    "D",
+    "E",
+    "N",
+    "Q",
+    "S",
+    "T",
+    "H"
+  ],
+  "pos11_candidates": [
+    "I",
+    "V",
+    "L",
+    "A",
+    "T",
+    "M",
+    "S"
+  ],
+  "filters": {
+    "gravy_max": 0.5,
+    "instability_max": 50,
+    "disulfide_required": true,
+    "fwkt_required": true,
+    "k9_required": true
+  },
+  "passed_sequences": [
+    {
+      "sequence": "AGCKFDFWKTITSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFDFWKTVTSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFDFWKTLTSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFDFWKTATSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFDFWKTTTSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFDFWKTMTSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFDFWKTSTSC",
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKFEFWKTITSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFEFWKTVTSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFEFWKTLTSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFEFWKTATSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFEFWKTTTSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFEFWKTMTSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFEFWKTSTSC",
+      "pos5": "F",
+      "pos6": "E",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKFNFWKTITSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFNFWKTVTSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFNFWKTLTSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFNFWKTATSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFNFWKTTTSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFNFWKTMTSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFNFWKTSTSC",
+      "pos5": "F",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKFQFWKTITSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFQFWKTVTSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFQFWKTLTSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFQFWKTATSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFQFWKTTTSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFQFWKTMTSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFQFWKTSTSC",
+      "pos5": "F",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKFSFWKTITSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFSFWKTVTSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFSFWKTLTSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFSFWKTATSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFSFWKTTTSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFSFWKTMTSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFSFWKTSTSC",
+      "pos5": "F",
+      "pos6": "S",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKFTFWKTITSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFTFWKTVTSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFTFWKTLTSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFTFWKTATSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFTFWKTTTSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFTFWKTMTSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFTFWKTSTSC",
+      "pos5": "F",
+      "pos6": "T",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKFHFWKTITSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKFHFWKTVTSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKFHFWKTLTSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKFHFWKTATSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKFHFWKTTTSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKFHFWKTMTSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKFHFWKTSTSC",
+      "pos5": "F",
+      "pos6": "H",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYDFWKTITSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYDFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYDFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYDFWKTATSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYDFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYDFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYDFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYEFWKTITSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYEFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYEFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYEFWKTATSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYEFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYEFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYEFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYNFWKTITSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYNFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYNFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYNFWKTATSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYNFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYNFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYNFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYQFWKTITSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYQFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYQFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYQFWKTATSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYQFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYQFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYQFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYSFWKTITSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYSFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYSFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYSFWKTATSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYSFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYSFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYSFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "S",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYTFWKTITSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYTFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYTFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYTFWKTATSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYTFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYTFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYTFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "T",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKYHFWKTITSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKYHFWKTVTSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKYHFWKTLTSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKYHFWKTATSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKYHFWKTTTSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKYHFWKTMTSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKYHFWKTSTSC",
+      "pos5": "Y",
+      "pos6": "H",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWDFWKTITSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWDFWKTVTSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWDFWKTLTSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWDFWKTATSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWDFWKTTTSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWDFWKTMTSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWDFWKTSTSC",
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWEFWKTITSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWEFWKTVTSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWEFWKTLTSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWEFWKTATSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWEFWKTTTSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWEFWKTMTSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWEFWKTSTSC",
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWNFWKTITSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWNFWKTVTSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWNFWKTLTSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWNFWKTATSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWNFWKTTTSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWNFWKTMTSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWNFWKTSTSC",
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWQFWKTITSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWQFWKTVTSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWQFWKTLTSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWQFWKTATSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWQFWKTTTSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWQFWKTMTSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWQFWKTSTSC",
+      "pos5": "W",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWSFWKTITSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWSFWKTVTSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWSFWKTLTSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWSFWKTATSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWSFWKTTTSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWSFWKTMTSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWSFWKTSTSC",
+      "pos5": "W",
+      "pos6": "S",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWTFWKTITSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWTFWKTVTSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWTFWKTLTSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWTFWKTATSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWTFWKTTTSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWTFWKTMTSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWTFWKTSTSC",
+      "pos5": "W",
+      "pos6": "T",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKWHFWKTITSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKWHFWKTVTSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKWHFWKTLTSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKWHFWKTATSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKWHFWKTTTSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKWHFWKTMTSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKWHFWKTSTSC",
+      "pos5": "W",
+      "pos6": "H",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLDFWKTITSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLDFWKTVTSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLDFWKTLTSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLDFWKTATSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLDFWKTTTSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLDFWKTMTSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLDFWKTSTSC",
+      "pos5": "L",
+      "pos6": "D",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLEFWKTITSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLEFWKTVTSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLEFWKTLTSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLEFWKTATSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLEFWKTTTSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLEFWKTMTSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLEFWKTSTSC",
+      "pos5": "L",
+      "pos6": "E",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLNFWKTITSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLNFWKTVTSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLNFWKTLTSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLNFWKTATSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLNFWKTTTSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLNFWKTMTSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLNFWKTSTSC",
+      "pos5": "L",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLQFWKTITSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLQFWKTVTSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLQFWKTLTSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLQFWKTATSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLQFWKTTTSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLQFWKTMTSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLQFWKTSTSC",
+      "pos5": "L",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLSFWKTITSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLSFWKTVTSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLSFWKTLTSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLSFWKTATSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLSFWKTTTSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLSFWKTMTSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLSFWKTSTSC",
+      "pos5": "L",
+      "pos6": "S",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLTFWKTITSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLTFWKTVTSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLTFWKTLTSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLTFWKTATSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLTFWKTTTSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLTFWKTMTSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLTFWKTSTSC",
+      "pos5": "L",
+      "pos6": "T",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKLHFWKTITSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKLHFWKTVTSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKLHFWKTLTSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKLHFWKTATSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKLHFWKTTTSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKLHFWKTMTSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKLHFWKTSTSC",
+      "pos5": "L",
+      "pos6": "H",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKIDFWKTITSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKIDFWKTVTSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKIDFWKTLTSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKIDFWKTATSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKIDFWKTTTSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKIDFWKTMTSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKIDFWKTSTSC",
+      "pos5": "I",
+      "pos6": "D",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKIEFWKTMTSC",
+      "pos5": "I",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKINFWKTITSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKINFWKTVTSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKINFWKTLTSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKINFWKTATSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKINFWKTTTSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKINFWKTMTSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKINFWKTSTSC",
+      "pos5": "I",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKIQFWKTITSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKIQFWKTVTSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKIQFWKTLTSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKIQFWKTATSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKIQFWKTTTSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKIQFWKTMTSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKIQFWKTSTSC",
+      "pos5": "I",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKISFWKTITSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKISFWKTVTSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKISFWKTLTSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKISFWKTATSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKISFWKTTTSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKISFWKTMTSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKISFWKTSTSC",
+      "pos5": "I",
+      "pos6": "S",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKITFWKTITSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKITFWKTVTSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKITFWKTLTSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKITFWKTATSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKITFWKTTTSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKITFWKTMTSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKITFWKTSTSC",
+      "pos5": "I",
+      "pos6": "T",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKIHFWKTITSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKIHFWKTVTSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKIHFWKTLTSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKIHFWKTATSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKIHFWKTTTSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKIHFWKTMTSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKIHFWKTSTSC",
+      "pos5": "I",
+      "pos6": "H",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVDFWKTITSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVDFWKTVTSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVDFWKTLTSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVDFWKTATSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVDFWKTTTSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVDFWKTMTSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVDFWKTSTSC",
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVEFWKTITSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVEFWKTVTSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVEFWKTLTSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVEFWKTATSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVEFWKTTTSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVEFWKTMTSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVEFWKTSTSC",
+      "pos5": "V",
+      "pos6": "E",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVNFWKTITSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVNFWKTVTSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVNFWKTLTSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVNFWKTATSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVNFWKTTTSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVNFWKTMTSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVNFWKTSTSC",
+      "pos5": "V",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVQFWKTITSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVQFWKTVTSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVQFWKTLTSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVQFWKTATSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVQFWKTTTSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVQFWKTMTSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVQFWKTSTSC",
+      "pos5": "V",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVSFWKTITSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVSFWKTVTSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVSFWKTLTSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVSFWKTATSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVSFWKTTTSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVSFWKTMTSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVSFWKTSTSC",
+      "pos5": "V",
+      "pos6": "S",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVTFWKTITSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVTFWKTVTSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVTFWKTLTSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVTFWKTATSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVTFWKTTTSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVTFWKTMTSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVTFWKTSTSC",
+      "pos5": "V",
+      "pos6": "T",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKVHFWKTITSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKVHFWKTVTSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKVHFWKTLTSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKVHFWKTATSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKVHFWKTTTSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKVHFWKTMTSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKVHFWKTSTSC",
+      "pos5": "V",
+      "pos6": "H",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKMDFWKTVTSC",
+      "pos5": "M",
+      "pos6": "D",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKMDFWKTMTSC",
+      "pos5": "M",
+      "pos6": "D",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKMEFWKTVTSC",
+      "pos5": "M",
+      "pos6": "E",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKMEFWKTMTSC",
+      "pos5": "M",
+      "pos6": "E",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKMNFWKTITSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKMNFWKTVTSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKMNFWKTLTSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKMNFWKTATSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKMNFWKTTTSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKMNFWKTMTSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKMNFWKTSTSC",
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKMQFWKTITSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "I"
+    },
+    {
+      "sequence": "AGCKMQFWKTVTSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKMQFWKTLTSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "L"
+    },
+    {
+      "sequence": "AGCKMQFWKTATSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "A"
+    },
+    {
+      "sequence": "AGCKMQFWKTTTSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "T"
+    },
+    {
+      "sequence": "AGCKMQFWKTMTSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "M"
+    },
+    {
+      "sequence": "AGCKMQFWKTSTSC",
+      "pos5": "M",
+      "pos6": "Q",
+      "pos11": "S"
+    },
+    {
+      "sequence": "AGCKMTFWKTVTSC",
+      "pos5": "M",
+      "pos6": "T",
+      "pos11": "V"
+    },
+    {
+      "sequence": "AGCKMTFWKTMTSC",
+      "pos5": "M",
+      "pos6": "T",
+      "pos11": "M"
+    }
+  ],
+  "failed_sequences": [
+    {
+      "sequence": "AGCKIEFWKTITSC",
+      "reason": "II 57.9 > 50"
+    },
+    {
+      "sequence": "AGCKIEFWKTVTSC",
+      "reason": "II 51.8 > 50"
+    },
+    {
+      "sequence": "AGCKIEFWKTLTSC",
+      "reason": "II 57.9 > 50"
+    },
+    {
+      "sequence": "AGCKIEFWKTATSC",
+      "reason": "II 57.9 > 50"
+    },
+    {
+      "sequence": "AGCKIEFWKTTTSC",
+      "reason": "II 57.9 > 50"
+    },
+    {
+      "sequence": "AGCKIEFWKTSTSC",
+      "reason": "II 57.9 > 50"
+    },
+    {
+      "sequence": "AGCKMDFWKTITSC",
+      "reason": "II 50.5 > 50"
+    },
+    {
+      "sequence": "AGCKMDFWKTLTSC",
+      "reason": "II 50.5 > 50"
+    },
+    {
+      "sequence": "AGCKMDFWKTATSC",
+      "reason": "II 50.5 > 50"
+    },
+    {
+      "sequence": "AGCKMDFWKTTTSC",
+      "reason": "II 50.5 > 50"
+    },
+    {
+      "sequence": "AGCKMDFWKTSTSC",
+      "reason": "II 50.5 > 50"
+    },
+    {
+      "sequence": "AGCKMEFWKTITSC",
+      "reason": "II 55.9 > 50"
+    },
+    {
+      "sequence": "AGCKMEFWKTLTSC",
+      "reason": "II 55.9 > 50"
+    },
+    {
+      "sequence": "AGCKMEFWKTATSC",
+      "reason": "II 55.9 > 50"
+    },
+    {
+      "sequence": "AGCKMEFWKTTTSC",
+      "reason": "II 55.9 > 50"
+    },
+    {
+      "sequence": "AGCKMEFWKTSTSC",
+      "reason": "II 55.9 > 50"
+    },
+    {
+      "sequence": "AGCKMSFWKTITSC",
+      "reason": "II 87.2 > 50"
+    },
+    {
+      "sequence": "AGCKMSFWKTVTSC",
+      "reason": "II 81.2 > 50"
+    },
+    {
+      "sequence": "AGCKMSFWKTLTSC",
+      "reason": "II 87.2 > 50"
+    },
+    {
+      "sequence": "AGCKMSFWKTATSC",
+      "reason": "II 87.2 > 50"
+    }
+  ]
+}

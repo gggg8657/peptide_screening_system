@@ -1,0 +1,1339 @@
+{
+  "run_id": "sst14_mutdock_4002",
+  "started_at": "2026-04-02T06:48:50.846536+00:00",
+  "updated_at": "2026-04-02T07:01:09.801441+00:00",
+  "iteration": 3,
+  "total_iterations": 3,
+  "llm_model": "OllamaProvider(model='qwen3:8b')",
+  "target": "SSTR2",
+  "reference": "DOTATATE (AGCKNFFWKTFTSC, 14-aa)",
+  "steps": [
+    {
+      "id": "step01",
+      "label": "OpenFold3",
+      "shortLabel": "Step01",
+      "status": "pending"
+    },
+    {
+      "id": "step02",
+      "label": "RFdiffusion",
+      "shortLabel": "Step02",
+      "status": "pending"
+    },
+    {
+      "id": "step03",
+      "label": "ProteinMPNN",
+      "shortLabel": "Step03",
+      "status": "pending"
+    },
+    {
+      "id": "step03b",
+      "label": "BLOSUM Mutation",
+      "shortLabel": "Step03b",
+      "status": "pending"
+    },
+    {
+      "id": "step03b_qc",
+      "label": "Stability Pre-screen",
+      "shortLabel": "Step03b-QC",
+      "status": "pending"
+    },
+    {
+      "id": "step04",
+      "label": "ESMFold QC",
+      "shortLabel": "Step04",
+      "status": "pending"
+    },
+    {
+      "id": "step05",
+      "label": "DiffDock",
+      "shortLabel": "Step05",
+      "status": "pending"
+    },
+    {
+      "id": "step06",
+      "label": "PyRosetta",
+      "shortLabel": "Step06",
+      "status": "completed",
+      "duration": "2.9m"
+    },
+    {
+      "id": "step05b",
+      "label": "Selectivity",
+      "shortLabel": "Step05b",
+      "status": "pending"
+    },
+    {
+      "id": "step07",
+      "label": "Analysis",
+      "shortLabel": "Step07",
+      "status": "pending"
+    },
+    {
+      "id": "step08",
+      "label": "Stability",
+      "shortLabel": "Step08",
+      "status": "pending"
+    },
+    {
+      "id": "step09",
+      "label": "MolMIM",
+      "shortLabel": "Step09",
+      "status": "pending"
+    }
+  ],
+  "agents": [
+    {
+      "id": "planner",
+      "name": "Planner",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Optimizing aromaticity at position 5 and charge balance at position 6 will impro",
+      "taskCount": 3,
+      "last_active_ts": "2026-04-02T06:58:09.069469+00:00",
+      "is_runtime_active": true,
+      "report": {
+        "type": "plan",
+        "iteration": 3,
+        "run_id": "sst14_mutdock_4002",
+        "hypothesis": "Optimizing aromaticity at position 5 and charge balance at position 6 will improve binding affinity while maintaining hydrophobic interactions at position 11",
+        "strategy": "ddg_plus_constraints"
+      }
+    },
+    {
+      "id": "qc-ranker",
+      "name": "QC & Ranker",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "Ranking done",
+      "taskCount": 3,
+      "last_active_ts": "2026-04-02T07:00:40.824544+00:00",
+      "is_runtime_active": true
+    },
+    {
+      "id": "diversity-mgr",
+      "name": "DiversityMgr",
+      "type": "Code",
+      "status": "idle",
+      "lastMessage": "",
+      "taskCount": 0,
+      "last_active_ts": null,
+      "is_runtime_active": false
+    },
+    {
+      "id": "critic",
+      "name": "Critic",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Structural constraints are more critical than previously thought for SSTR2 desig",
+      "taskCount": 3,
+      "last_active_ts": "2026-04-02T07:00:40.828359+00:00",
+      "is_runtime_active": true,
+      "report": {
+        "type": "critic",
+        "iteration": 3,
+        "hypothesis": "Structural constraints are more critical than previously thought for SSTR2 design, requiring explicit balancing of binding affinity and model quality",
+        "proposed_changes": [
+          {
+            "parameter": "rosetta_clash_max",
+            "old": "10",
+            "new": "15",
+            "rationale": "Current clash_max of 10 is too restrictive for complex SSTR2 interfaces, causing structural artifacts"
+          },
+          {
+            "parameter": "objective_mode",
+            "old": "ddg_plus_constraints",
+            "new": "ddg_weighted_plus_constraints",
+            "rationale": "Weighted objective function could balance ddG optimization with structural quality constraints"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "type": "LLM",
+      "status": "idle",
+      "lastMessage": "Reports saved",
+      "taskCount": 3,
+      "last_active_ts": "2026-04-02T07:00:58.940436+00:00",
+      "is_runtime_active": true,
+      "report": {
+        "type": "reporter",
+        "iteration": 3,
+        "summary": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/08_reports/summary.md"
+      }
+    }
+  ],
+  "rosetta_substeps": [
+    {
+      "id": "step06_prepare",
+      "label": "Prepare",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_mutate",
+      "label": "Mutate",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_refine",
+      "label": "Refine",
+      "status": "completed",
+      "duration": "2.4m"
+    },
+    {
+      "id": "step06_score",
+      "label": "Score",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_qc",
+      "label": "QC Gate",
+      "status": "completed",
+      "duration": "0s"
+    },
+    {
+      "id": "step06_critic",
+      "label": "Critic",
+      "status": "completed",
+      "duration": "18s"
+    },
+    {
+      "id": "step06_reporter",
+      "label": "Reporter",
+      "status": "completed",
+      "duration": "10s"
+    }
+  ],
+  "timeline": [
+    {
+      "iteration": 0,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Preparing baseline (3 trials, best-of)",
+      "ts": "2026-04-02T06:48:50.847384+00:00"
+    },
+    {
+      "iteration": 0,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Baseline ready (best of 3: ddG=-44.0)",
+      "ts": "2026-04-02T06:52:23.577543+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-04-02T06:52:23.578312+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Introducing aromatic residues at position 5 and charged residues at position 6 will improve binding affinity to SSTR2 th",
+      "ts": "2026-04-02T06:52:33.584891+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-04-02T06:52:33.585564+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-04-02T06:52:33.586040+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-04-02T06:52:33.586740+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-04-02T06:52:33.587408+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (6 candidates, 4 parallel workers)",
+      "ts": "2026-04-02T06:52:33.587920+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand001",
+      "status": "running",
+      "message": "iter01_cand001: AGCKNFFWKTLTSC",
+      "ts": "2026-04-02T06:52:33.588174+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "running",
+      "message": "iter01_cand002: AGCKYEFWKTLTSC",
+      "ts": "2026-04-02T06:52:33.588334+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "running",
+      "message": "iter01_cand003: AGCKYDFWKTVTSC",
+      "ts": "2026-04-02T06:52:33.588470+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand004",
+      "status": "running",
+      "message": "iter01_cand004: AGCFNFFWKTFTSH",
+      "ts": "2026-04-02T06:52:33.588601+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "running",
+      "message": "iter01_cand005: AGCQNFFWKTFTSC",
+      "ts": "2026-04-02T06:52:33.588732+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "running",
+      "message": "iter01_cand006: AGCPNFFWKTFTSC",
+      "ts": "2026-04-02T06:52:33.588864+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand001",
+      "status": "completed",
+      "message": "iter01_cand001: ddG=-30.01 seq=AGCKNFFWKTLTSC",
+      "ts": "2026-04-02T06:53:39.271606+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "completed",
+      "message": "iter01_cand002: ddG=-37.14 seq=AGCKYEFWKTLTSC",
+      "ts": "2026-04-02T06:53:43.667982+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "completed",
+      "message": "iter01_cand003: ddG=-33.32 seq=AGCKYDFWKTVTSC",
+      "ts": "2026-04-02T06:53:46.362463+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand004",
+      "status": "completed",
+      "message": "iter01_cand004: ddG=-43.60 seq=AGCFNFFWKTFTSH",
+      "ts": "2026-04-02T06:53:53.554768+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "completed",
+      "message": "iter01_cand005: ddG=-33.83 seq=AGCQNFFWKTFTSC",
+      "ts": "2026-04-02T06:54:41.827563+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "completed",
+      "message": "iter01_cand006: ddG=-19.36 seq=AGCPNFFWKTFTSC",
+      "ts": "2026-04-02T06:54:51.092938+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-04-02T06:54:51.094037+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-04-02T06:54:51.094412+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-04-02T06:54:51.094819+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-04-02T06:54:51.095251+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-04-02T06:54:51.096178+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-04-02T06:54:51.097189+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural validity requires balancing binding affinity with proper backbone sampling",
+      "ts": "2026-04-02T06:55:01.234737+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-04-02T06:55:01.235790+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+      "ts": "2026-04-02T06:55:14.264422+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-04-02T06:55:14.265829+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Aromatic amino acids at positions 5, 6, and 11 enhance binding affinity through π-π stacking interactions with the SSTR2",
+      "ts": "2026-04-02T06:55:31.944839+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-04-02T06:55:31.945875+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-04-02T06:55:31.946579+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-04-02T06:55:31.947300+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-04-02T06:55:31.947866+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (6 candidates, 4 parallel workers)",
+      "ts": "2026-04-02T06:55:31.948335+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand001",
+      "status": "running",
+      "message": "iter02_cand001: AGCKYEFWKTVTSC",
+      "ts": "2026-04-02T06:55:31.948564+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand002",
+      "status": "running",
+      "message": "iter02_cand002: AGCKFDFWKTVTSC",
+      "ts": "2026-04-02T06:55:31.948790+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand003",
+      "status": "running",
+      "message": "iter02_cand003: AGCKYDFWKTFTSC",
+      "ts": "2026-04-02T06:55:31.949088+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand004",
+      "status": "running",
+      "message": "iter02_cand004: AGCKFFFWKTLTSC",
+      "ts": "2026-04-02T06:55:31.949409+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand005",
+      "status": "running",
+      "message": "iter02_cand005: AGCKFFFWKTFTSC",
+      "ts": "2026-04-02T06:55:31.949676+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand006",
+      "status": "running",
+      "message": "iter02_cand006: AICKNEFWKTFTSC",
+      "ts": "2026-04-02T06:55:31.949929+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand002",
+      "status": "completed",
+      "message": "iter02_cand002: ddG=-33.25 seq=AGCKFDFWKTVTSC",
+      "ts": "2026-04-02T06:56:36.396195+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand001",
+      "status": "completed",
+      "message": "iter02_cand001: ddG=-47.66 seq=AGCKYEFWKTVTSC",
+      "ts": "2026-04-02T06:56:40.383548+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand003",
+      "status": "completed",
+      "message": "iter02_cand003: ddG=-21.78 seq=AGCKYDFWKTFTSC",
+      "ts": "2026-04-02T06:56:46.360971+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand004",
+      "status": "completed",
+      "message": "iter02_cand004: ddG=-39.77 seq=AGCKFFFWKTLTSC",
+      "ts": "2026-04-02T06:56:48.425301+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand005",
+      "status": "completed",
+      "message": "iter02_cand005: ddG=-42.36 seq=AGCKFFFWKTFTSC",
+      "ts": "2026-04-02T06:57:45.134369+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand006",
+      "status": "completed",
+      "message": "iter02_cand006: ddG=-26.63 seq=AICKNEFWKTFTSC",
+      "ts": "2026-04-02T06:57:50.893569+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-04-02T06:57:50.895066+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-04-02T06:57:50.895634+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-04-02T06:57:50.896274+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-04-02T06:57:50.896851+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-04-02T06:57:50.898328+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-04-02T06:57:50.899902+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Scoring artifacts dominate over structural failures; docking protocol calibration is critical for candidate discriminati",
+      "ts": "2026-04-02T06:57:59.958867+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-04-02T06:57:59.960098+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+      "ts": "2026-04-02T06:58:09.067127+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-04-02T06:58:09.069162+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Optimizing aromaticity at position 5 and charge balance at position 6 will improve binding affinity while maintaining hy",
+      "ts": "2026-04-02T06:58:15.309635+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-04-02T06:58:15.327319+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-04-02T06:58:15.353273+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-04-02T06:58:15.354227+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-04-02T06:58:15.354957+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (6 candidates, 4 parallel workers)",
+      "ts": "2026-04-02T06:58:15.355699+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand001",
+      "status": "running",
+      "message": "iter03_cand001: AGCKNDFWKTFTSC",
+      "ts": "2026-04-02T06:58:15.356032+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand002",
+      "status": "running",
+      "message": "iter03_cand002: AGCKWFFWKTFTSC",
+      "ts": "2026-04-02T06:58:15.356356+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand003",
+      "status": "running",
+      "message": "iter03_cand003: AGCKFEFWKTVTSC",
+      "ts": "2026-04-02T06:58:15.356674+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand004",
+      "status": "running",
+      "message": "iter03_cand004: AGCKYFFWKTFTSC",
+      "ts": "2026-04-02T06:58:15.356989+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand005",
+      "status": "running",
+      "message": "iter03_cand005: AGCHNFFWKTFTSC",
+      "ts": "2026-04-02T06:58:15.357808+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand006",
+      "status": "running",
+      "message": "iter03_cand006: AMCKAFFWKTRTSC",
+      "ts": "2026-04-02T06:58:15.358210+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand003",
+      "status": "completed",
+      "message": "iter03_cand003: ddG=16.07 seq=AGCKFEFWKTVTSC",
+      "ts": "2026-04-02T06:59:18.173886+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand001",
+      "status": "completed",
+      "message": "iter03_cand001: ddG=11.31 seq=AGCKNDFWKTFTSC",
+      "ts": "2026-04-02T06:59:23.863571+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand002",
+      "status": "completed",
+      "message": "iter03_cand002: ddG=-11.64 seq=AGCKWFFWKTFTSC",
+      "ts": "2026-04-02T06:59:25.134160+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand004",
+      "status": "completed",
+      "message": "iter03_cand004: ddG=-36.00 seq=AGCKYFFWKTFTSC",
+      "ts": "2026-04-02T06:59:31.523327+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand005",
+      "status": "completed",
+      "message": "iter03_cand005: ddG=-21.88 seq=AGCHNFFWKTFTSC",
+      "ts": "2026-04-02T07:00:35.686978+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand006",
+      "status": "completed",
+      "message": "iter03_cand006: ddG=-34.80 seq=AMCKAFFWKTRTSC",
+      "ts": "2026-04-02T07:00:40.820037+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-04-02T07:00:40.821692+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-04-02T07:00:40.822486+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-04-02T07:00:40.823359+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-04-02T07:00:40.824147+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-04-02T07:00:40.825922+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-04-02T07:00:40.827956+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "critic",
+      "status": "completed",
+      "message": "Structural constraints are more critical than previously thought for SSTR2 design, requiring explicit balancing of bindi",
+      "ts": "2026-04-02T07:00:58.939047+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-04-02T07:00:58.939981+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+      "ts": "2026-04-02T07:01:09.053798+00:00"
+    }
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "id": "iter02_cand001",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -47.66,
+      "totalScore": -534.881,
+      "clashScore": 0.0,
+      "finalScore": 47.66,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_02/cand_001.pdb"
+    },
+    {
+      "rank": 2,
+      "id": "baseline_SST14",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": -44.033,
+      "totalScore": -524.89,
+      "clashScore": 0.0,
+      "finalScore": 44.033,
+      "result": "REF",
+      "failReason": ""
+    },
+    {
+      "rank": 3,
+      "id": "iter01_cand004",
+      "sequence": "AGCFNFFWKTFTSH",
+      "ddG": -43.596,
+      "totalScore": -522.809,
+      "clashScore": 0.0,
+      "finalScore": 43.596,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_01/cand_004.pdb"
+    },
+    {
+      "rank": 4,
+      "id": "iter02_cand005",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -42.356,
+      "totalScore": -521.201,
+      "clashScore": 0.0,
+      "finalScore": 42.356,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_02/cand_005.pdb"
+    },
+    {
+      "rank": 5,
+      "id": "iter02_cand004",
+      "sequence": "AGCKFFFWKTLTSC",
+      "ddG": -39.766,
+      "totalScore": -523.668,
+      "clashScore": 0.0,
+      "finalScore": 39.766,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_02/cand_004.pdb"
+    },
+    {
+      "rank": 6,
+      "id": "iter01_cand002",
+      "sequence": "AGCKYEFWKTLTSC",
+      "ddG": -37.145,
+      "totalScore": -474.496,
+      "clashScore": 3.0,
+      "finalScore": 37.145,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_01/cand_002.pdb"
+    },
+    {
+      "rank": 7,
+      "id": "iter03_cand004",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -36.004,
+      "totalScore": -524.597,
+      "clashScore": 0.0,
+      "finalScore": 36.004,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_03/cand_004.pdb"
+    },
+    {
+      "rank": 8,
+      "id": "iter03_cand006",
+      "sequence": "AMCKAFFWKTRTSC",
+      "ddG": -34.801,
+      "totalScore": -506.402,
+      "clashScore": 0.0,
+      "finalScore": 34.801,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_03/cand_006.pdb"
+    },
+    {
+      "rank": 9,
+      "id": "iter01_cand005",
+      "sequence": "AGCQNFFWKTFTSC",
+      "ddG": -33.833,
+      "totalScore": -449.593,
+      "clashScore": 3.0,
+      "finalScore": 33.833,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_01/cand_005.pdb"
+    },
+    {
+      "rank": 10,
+      "id": "iter01_cand003",
+      "sequence": "AGCKYDFWKTVTSC",
+      "ddG": -33.316,
+      "totalScore": -517.297,
+      "clashScore": 0.0,
+      "finalScore": 33.316,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_01/cand_003.pdb"
+    },
+    {
+      "rank": 11,
+      "id": "iter02_cand002",
+      "sequence": "AGCKFDFWKTVTSC",
+      "ddG": -33.247,
+      "totalScore": -524.928,
+      "clashScore": 0.0,
+      "finalScore": 33.247,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_02/cand_002.pdb"
+    },
+    {
+      "rank": 12,
+      "id": "iter01_cand001",
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddG": -30.009,
+      "totalScore": -168.601,
+      "clashScore": 9.0,
+      "finalScore": 30.009,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_01/cand_001.pdb"
+    },
+    {
+      "rank": 13,
+      "id": "iter02_cand006",
+      "sequence": "AICKNEFWKTFTSC",
+      "ddG": -26.625,
+      "totalScore": -474.827,
+      "clashScore": 1.0,
+      "finalScore": 26.625,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_02/cand_006.pdb"
+    },
+    {
+      "rank": 14,
+      "id": "iter03_cand005",
+      "sequence": "AGCHNFFWKTFTSC",
+      "ddG": -21.884,
+      "totalScore": -504.353,
+      "clashScore": 0.0,
+      "finalScore": 21.884,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_03/cand_005.pdb"
+    },
+    {
+      "rank": 15,
+      "id": "iter02_cand003",
+      "sequence": "AGCKYDFWKTFTSC",
+      "ddG": -21.779,
+      "totalScore": -510.868,
+      "clashScore": 0.0,
+      "finalScore": 21.779,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_02/cand_003.pdb"
+    },
+    {
+      "rank": 16,
+      "id": "iter01_cand006",
+      "sequence": "AGCPNFFWKTFTSC",
+      "ddG": -19.363,
+      "totalScore": -428.567,
+      "clashScore": 1.0,
+      "finalScore": 19.363,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_01/cand_006.pdb"
+    },
+    {
+      "rank": 17,
+      "id": "iter03_cand002",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddG": -11.638,
+      "totalScore": -435.704,
+      "clashScore": 2.0,
+      "finalScore": 11.638,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_03/cand_002.pdb"
+    },
+    {
+      "rank": 18,
+      "id": "iter03_cand001",
+      "sequence": "AGCKNDFWKTFTSC",
+      "ddG": 11.315,
+      "totalScore": -457.235,
+      "clashScore": 2.0,
+      "finalScore": -11.315,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_03/cand_001.pdb"
+    },
+    {
+      "rank": 19,
+      "id": "iter03_cand003",
+      "sequence": "AGCKFEFWKTVTSC",
+      "ddG": 16.067,
+      "totalScore": -405.755,
+      "clashScore": 6.0,
+      "finalScore": -16.067,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_4002/iter_03/cand_003.pdb"
+    }
+  ],
+  "historical_candidates": [
+    {
+      "rank": 1,
+      "id": "iter02_cand001",
+      "sequence": "AGCKYEFWKTVTSC",
+      "ddG": -47.6596,
+      "totalScore": -534.8812,
+      "clashScore": 0.0,
+      "finalScore": 47.66,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 2,
+      "id": "iter01_cand004",
+      "sequence": "AGCFNFFWKTFTSH",
+      "ddG": -43.5962,
+      "totalScore": -522.8091,
+      "clashScore": 0.0,
+      "finalScore": 43.596,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 3,
+      "id": "iter02_cand005",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -42.3556,
+      "totalScore": -521.201,
+      "clashScore": 0.0,
+      "finalScore": 42.356,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 4,
+      "id": "iter02_cand004",
+      "sequence": "AGCKFFFWKTLTSC",
+      "ddG": -39.7658,
+      "totalScore": -523.6677,
+      "clashScore": 0.0,
+      "finalScore": 39.766,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 5,
+      "id": "iter01_cand002",
+      "sequence": "AGCKYEFWKTLTSC",
+      "ddG": -37.1446,
+      "totalScore": -474.496,
+      "clashScore": 0.0,
+      "finalScore": 37.145,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 6,
+      "id": "iter03_cand004",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -36.0035,
+      "totalScore": -524.597,
+      "clashScore": 0.0,
+      "finalScore": 36.004,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 7,
+      "id": "iter03_cand006",
+      "sequence": "AMCKAFFWKTRTSC",
+      "ddG": -34.8012,
+      "totalScore": -506.4016,
+      "clashScore": 0.0,
+      "finalScore": 34.801,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 8,
+      "id": "iter01_cand005",
+      "sequence": "AGCQNFFWKTFTSC",
+      "ddG": -33.8331,
+      "totalScore": -449.5928,
+      "clashScore": 0.0,
+      "finalScore": 33.833,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 9,
+      "id": "iter01_cand003",
+      "sequence": "AGCKYDFWKTVTSC",
+      "ddG": -33.3158,
+      "totalScore": -517.2969,
+      "clashScore": 0.0,
+      "finalScore": 33.316,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 10,
+      "id": "iter02_cand002",
+      "sequence": "AGCKFDFWKTVTSC",
+      "ddG": -33.2466,
+      "totalScore": -524.9282,
+      "clashScore": 0.0,
+      "finalScore": 33.247,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 11,
+      "id": "iter01_cand001",
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddG": -30.0094,
+      "totalScore": -168.6005,
+      "clashScore": 0.0,
+      "finalScore": 30.009,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 12,
+      "id": "iter02_cand006",
+      "sequence": "AICKNEFWKTFTSC",
+      "ddG": -26.6252,
+      "totalScore": -474.8267,
+      "clashScore": 0.0,
+      "finalScore": 26.625,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 13,
+      "id": "iter03_cand005",
+      "sequence": "AGCHNFFWKTFTSC",
+      "ddG": -21.8837,
+      "totalScore": -504.3531,
+      "clashScore": 0.0,
+      "finalScore": 21.884,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 14,
+      "id": "iter02_cand003",
+      "sequence": "AGCKYDFWKTFTSC",
+      "ddG": -21.779,
+      "totalScore": -510.8683,
+      "clashScore": 0.0,
+      "finalScore": 21.779,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 15,
+      "id": "iter01_cand006",
+      "sequence": "AGCPNFFWKTFTSC",
+      "ddG": -19.3628,
+      "totalScore": -428.5672,
+      "clashScore": 0.0,
+      "finalScore": 19.363,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 16,
+      "id": "iter03_cand002",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddG": -11.638,
+      "totalScore": -435.7045,
+      "clashScore": 0.0,
+      "finalScore": 11.638,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 17,
+      "id": "iter03_cand001",
+      "sequence": "AGCKNDFWKTFTSC",
+      "ddG": 11.315,
+      "totalScore": -457.2351,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    },
+    {
+      "rank": 18,
+      "id": "iter03_cand003",
+      "sequence": "AGCKFEFWKTVTSC",
+      "ddG": 16.0672,
+      "totalScore": -405.7555,
+      "clashScore": 0.0,
+      "finalScore": 0.0,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_4002"
+    }
+  ],
+  "qc_gates": [
+    {
+      "name": "RosettaGate",
+      "criterion": "ddG <= -5.0",
+      "passed": 4,
+      "failed": 2,
+      "total": 6
+    }
+  ],
+  "convergence": [
+    {
+      "iteration": 1,
+      "bestDdG": -43.5962,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 2,
+      "bestDdG": -47.6596,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 3,
+      "bestDdG": -36.0035,
+      "topCandidates": 4,
+      "converged": false
+    }
+  ],
+  "live_apis": {
+    "esmfold": "pending",
+    "molmim": "pending"
+  },
+  "best_candidate": {
+    "id": "iter03_cand004",
+    "sequence": "AGCKYFFWKTFTSC",
+    "ddG": -36.004,
+    "totalScore": -524.597
+  },
+  "molecules": [],
+  "visualization_images": [
+    {
+      "type": "overview",
+      "label": "Overview",
+      "url": "/api/images/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/renders/overview.png"
+    },
+    {
+      "type": "closeup",
+      "label": "Close-up",
+      "url": "/api/images/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/renders/closeup.png"
+    },
+    {
+      "type": "interface",
+      "label": "Interface",
+      "url": "/api/images/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/renders/interface.png"
+    },
+    {
+      "type": "electrostatics",
+      "label": "Electrostatics",
+      "url": "/api/images/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/renders/electrostatics.png"
+    }
+  ],
+  "baseline": {
+    "sequence": "AGCKNFFWKTFTSC",
+    "pdb": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/baseline_refined.pdb",
+    "ddg": -44.0334,
+    "total_score": -524.8905,
+    "clash_score": 0.0
+  },
+  "completed": true,
+  "convergence_status": {
+    "converged": false,
+    "p_value": null,
+    "cv": null,
+    "recommendation": "Need at least 6 iterations (have 3); keep running."
+  }
+}

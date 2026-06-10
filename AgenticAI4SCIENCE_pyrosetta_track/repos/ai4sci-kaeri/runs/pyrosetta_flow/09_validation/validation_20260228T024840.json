@@ -1,0 +1,26 @@
+{
+  "timestamp": "20260228T024840",
+  "results": [
+    {
+      "id": "baseline_SST14",
+      "validation": "pass",
+      "checks": [
+        {
+          "rule": "ddG <= -5.0 kcal/mol",
+          "value": -38.495,
+          "passed": true
+        },
+        {
+          "rule": "clashScore <= 10",
+          "value": 0.0,
+          "passed": true
+        },
+        {
+          "rule": "totalScore <= -300 REU",
+          "value": -469.449,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

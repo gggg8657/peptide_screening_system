@@ -1,0 +1,58 @@
+%%{ init: { 'theme': 'base', 'themeVariables': { 'fontSize': '13px' } } }%%
+sequenceDiagram
+    autonumber
+
+    participant P as Planner
+    participant M as Mutator (Adapter)
+    participant QC as QC & Ranker
+    participant C as Critic
+    participant R as Reporter
+    participant SE as StatusEmitter
+    participant D as Dashboard
+
+    Note over P,D: === Iteration Start ===
+
+    P->>SE: emit("iteration_start", round_id)
+    SE-->>D: iteration_start event
+
+    P->>M: hypothesis + focus_positions + strategy
+    Note right of P: Thompson Sampling<br/>selects mutation strategy
+
+    M->>SE: emit("mutation_batch", count)
+    SE-->>D: mutation progress
+
+    M->>QC: candidates[] (mutated sequences)
+
+    Note over QC: FlexPepDock parallel scoring<br/>+ ddG calculation
+
+    QC->>SE: emit("docking_progress", completed/total)
+    SE-->>D: docking progress bar
+
+    QC->>QC: QC Gate (ddG threshold + structural rules)
+
+    alt Candidates pass QC
+        QC->>C: ranked results + pharmacology metrics
+        QC->>R: top-K candidates + scores
+    else All candidates fail
+        QC->>P: no viable candidates (retry signal)
+    end
+
+    Note over C: Evaluate diversity,<br/>convergence (Mann-Whitney U),<br/>parameter drift
+
+    C->>P: parameter adjustments for next round
+    Note left of C: Adjust mutation rate,<br/>focus positions,<br/>temperature
+
+    C->>SE: emit("critic_feedback", adjustments)
+    SE-->>D: critic feedback display
+
+    R->>R: Generate PyMOL renders + Markdown report
+    R->>SE: emit("report_ready", report_url)
+    SE-->>D: report + visualization update
+
+    Note over P,D: === Iteration End / Loop ===
+
+    alt Converged
+        R->>D: Final report + archive summary
+    else Not converged
+        P->>M: next hypothesis (adjusted parameters)
+    end

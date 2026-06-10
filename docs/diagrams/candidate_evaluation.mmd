@@ -1,0 +1,121 @@
+%% Single Candidate Evaluation Flow Through UI Components
+%% Radiopharmaceutical-oriented assessment pipeline
+
+flowchart TB
+
+    %% ── Input ────────────────────────────────────────────
+    INPUT["Peptide Sequence Input\ne.g. AGCKNFFWKTFTSC\n(SST-14 Analog)"]
+
+    %% ── Step 1: CandidateTable ───────────────────────────
+    subgraph STEP1["Step 1: CandidateTable"]
+        direction LR
+        S1A["ddG Score\n(Binding Free Energy)"]
+        S1B["Clash Score\n(Steric Conflicts)"]
+        S1C["Total Score\n(Rosetta Energy)"]
+    end
+
+    %% ── Step 2: PharmacologyPanel ────────────────────────
+    subgraph STEP2["Step 2: PharmacologyPanel — 13 Properties"]
+        direction LR
+        S2A["Hydrophobicity\nGRAVY Index"]
+        S2B["Protein Binding\nBoman Index"]
+        S2C["Charge Profile\npI, Net Charge, MW"]
+        S2D["Stability\nInstability Index\nAliphatic Index"]
+        S2E["Membrane Interaction\nHydrophobic Moment\nWW Score\nAmphipathicity"]
+        S2F["Metabolic\nHalf-life\nExtinction Coeff.\nAromaticity"]
+    end
+
+    %% ── Step 3: ValidationPanel ──────────────────────────
+    subgraph STEP3["Step 3: ValidationPanel — 5 Structural Rules"]
+        direction LR
+        S3A["FWKT Conservation\n(Pharmacophore Integrity)"]
+        S3B["K9-D122 Salt Bridge\n(SSTR2 Binding Anchor)"]
+        S3C["Cys3-Cys14 Disulfide\n(Cyclic Stability)"]
+        S3D["Phe6-Phe11 Stacking\n(Hydrophobic Core)"]
+        S3E["N-term Chelator\nAccessibility\n(DOTA/NOTA Site)"]
+    end
+
+    %% ── Step 4: MoleculeViewer ───────────────────────────
+    subgraph STEP4["Step 4: MoleculeViewer — 3D Visualization"]
+        direction LR
+        S4A["Complex View"]
+        S4B["Cartoon\nRepresentation"]
+        S4C["Ball & Stick\n(Key Residues)"]
+        S4D["Surface View\n(Binding Interface)"]
+    end
+
+    %% ── Step 5: VisualizationPanel ───────────────────────
+    subgraph STEP5["Step 5: VisualizationPanel — PyMOL Renders"]
+        direction LR
+        S5A["Overview\n(Full Complex)"]
+        S5B["Close-up\n(Binding Pocket)"]
+        S5C["Interface\n(Contact Map)"]
+        S5D["Electrostatics\n(Charge Surface)"]
+    end
+
+    %% ── Step 6: ADMET ────────────────────────────────────
+    subgraph STEP6["Step 6: ADMET Panel"]
+        direction LR
+        S6A["Nephrotoxicity Risk\n(Renal Clearance)"]
+        S6B["Metabolic Stability\n(Peptidase Resistance)"]
+    end
+
+    %% ── Decision ─────────────────────────────────────────
+    DECISION{"Final Assessment"}
+    REC["RECOMMENDED\nProceed to Synthesis"]
+    COND["CONDITIONAL\nOptimize & Re-evaluate"]
+    REJ["REJECTED\nDiscard Candidate"]
+
+    %% ── Flow ─────────────────────────────────────────────
+    INPUT --> STEP1
+    STEP1 -->|"ddG < threshold"| STEP2
+    STEP2 --> STEP3
+    STEP3 -->|"All 5 Rules\nPASS"| STEP4
+    STEP3 -->|"1-2 Rules\nFAIL"| STEP6
+    STEP4 --> STEP5
+    STEP5 --> STEP6
+    STEP6 --> DECISION
+
+    DECISION -->|"All Clear\nHigh Affinity"| REC
+    DECISION -->|"Minor Issues\nFix Possible"| COND
+    DECISION -->|"Critical Failure\nToxicity Risk"| REJ
+
+    %% ── Radiopharmaceutical Context Annotations ──────────
+    STEP1 -.-|"Predicts receptor\nbinding strength for\nradioligand retention"| RP1((" "))
+    STEP2 -.-|"Determines in vivo\nstability, blood clearance\nfor tracer kinetics"| RP2((" "))
+    STEP3 -.-|"Validates structural\nintegrity required for\nchelator-peptide conjugate"| RP3((" "))
+    STEP4 -.-|"Confirms 3D binding pose\ncompatible with chelator\nattachment geometry"| RP4((" "))
+    STEP5 -.-|"Electrostatics verify\nno charge interference\nwith metal coordination"| RP5((" "))
+    STEP6 -.-|"Critical: renal dose is\nDLT for peptide-based\nradiopharmaceuticals"| RP6((" "))
+
+    %% ── Styles ───────────────────────────────────────────
+    classDef input fill:#0D47A1,stroke:#0D47A1,color:#FFFFFF,stroke-width:2px
+    classDef step fill:#1565C0,stroke:#0D47A1,color:#FFFFFF,stroke-width:1px
+    classDef validation fill:#2E7D32,stroke:#1B5E20,color:#FFFFFF,stroke-width:1px
+    classDef visual fill:#00838F,stroke:#006064,color:#FFFFFF,stroke-width:1px
+    classDef admet fill:#EF6C00,stroke:#E65100,color:#FFFFFF,stroke-width:1px
+    classDef decision fill:#37474F,stroke:#263238,color:#FFFFFF,stroke-width:2px
+    classDef recommended fill:#2E7D32,stroke:#1B5E20,color:#FFFFFF,stroke-width:2px
+    classDef conditional fill:#F9A825,stroke:#F57F17,color:#212121,stroke-width:2px
+    classDef rejected fill:#C62828,stroke:#B71C1C,color:#FFFFFF,stroke-width:2px
+    classDef annotation fill:none,stroke:none,color:#78909C
+
+    class INPUT input
+    class S1A,S1B,S1C step
+    class S2A,S2B,S2C,S2D,S2E,S2F step
+    class S3A,S3B,S3C,S3D,S3E validation
+    class S4A,S4B,S4C,S4D visual
+    class S5A,S5B,S5C,S5D visual
+    class S6A,S6B admet
+    class DECISION decision
+    class REC recommended
+    class COND conditional
+    class REJ rejected
+    class RP1,RP2,RP3,RP4,RP5,RP6 annotation
+
+    style STEP1 fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    style STEP2 fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    style STEP3 fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    style STEP4 fill:#E0F7FA,stroke:#00838F,stroke-width:2px,color:#006064
+    style STEP5 fill:#E0F7FA,stroke:#00838F,stroke-width:2px,color:#006064
+    style STEP6 fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#E65100

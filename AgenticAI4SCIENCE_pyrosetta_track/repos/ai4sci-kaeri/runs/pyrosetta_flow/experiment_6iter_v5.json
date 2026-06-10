@@ -1,0 +1,862 @@
+{
+  "created_at": "2026-02-25T08:51:16.071305+00:00",
+  "run_id": "sst14_mutdock_5000",
+  "config": {
+    "template_pdb": "data/fold_test1_model_0.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 8,
+    "seed_base": 5000,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 1,
+    "max_iterations": 6,
+    "top_k": 5,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "planner_mode": "pyrosetta_only",
+    "max_parallel_workers": 10
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": -38.2971,
+    "total_score": -475.5198,
+    "pre_score": 48.9961,
+    "score_delta": -524.5159,
+    "clash_score": 0.0,
+    "constraint_violations": 0
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_5000",
+        "hypothesis": "Mutating positions 5, 6, and 11 to introduce aromatic or charged residues will improve binding affinity to SSTR2 by optimizing hydrophobic interactions and electrostatic complementarity.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 4,
+        "best_ddg": -36.9319,
+        "mean_ddg": -23.5936,
+        "selected_ids": [
+          "iter01_cand008",
+          "iter01_cand003",
+          "iter01_cand004",
+          "iter01_cand006"
+        ],
+        "critic_hypothesis": "Structural packing and local fold quality are critical factors affecting docking predictions for SSTR2 design",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand008",
+          "sequence": "AGCKNFFHKTFTSC",
+          "ddg": -32.0215,
+          "total_score": -457.1188,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand005",
+          "sequence": "ATCKNFFVKTFTSC",
+          "ddg": -4.0924,
+          "total_score": -370.8666,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand003",
+          "sequence": "AGCKYEFWKTLTSC",
+          "ddg": -13.5005,
+          "total_score": -424.2147,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand004",
+          "sequence": "AFCKNFFWKTFTSC",
+          "ddg": -36.9319,
+          "total_score": -464.1003,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand007",
+          "sequence": "NRCKNNFWKTFTSC",
+          "ddg": 39.8923,
+          "total_score": -374.8701,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AGCKWFFWKTFTSC",
+          "ddg": 4.094,
+          "total_score": -399.407,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AGCKFFFWKTLTSC",
+          "ddg": 288.121,
+          "total_score": -107.0387,
+          "clash_score": 7.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand006",
+          "sequence": "AGCKNFPWKHFTSC",
+          "ddg": -11.9203,
+          "total_score": -438.7756,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 2,
+        "run_id": "sst14_mutdock_5000",
+        "hypothesis": "Introducing aromatic residues at positions 5 and 6, along with hydrophobic residues at position 11, will further lower the ddG by optimizing interactions with the SSTR2 binding pocket.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -41.1005,
+        "mean_ddg": -33.711,
+        "selected_ids": [
+          "iter02_cand008",
+          "iter02_cand002",
+          "iter02_cand007",
+          "iter02_cand001",
+          "iter02_cand003"
+        ],
+        "critic_hypothesis": "Structural modeling artifacts are causing uniform low-scoring outputs; adjusting energy thresholds and increasing candidate diversity may resolve this.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand006",
+          "sequence": "AGCKDFFWKTFTSC",
+          "ddg": 9.6712,
+          "total_score": -387.7673,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand008",
+          "sequence": "AGCKNFFWKTFTSQ",
+          "ddg": -36.4678,
+          "total_score": -186.5161,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand002",
+          "sequence": "AGCKNDFWKTVTSC",
+          "ddg": -28.4564,
+          "total_score": -333.3208,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand007",
+          "sequence": "AGCFIFFWKTFTSC",
+          "ddg": -41.1005,
+          "total_score": -446.8762,
+          "clash_score": 1.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand001",
+          "sequence": "AGCKYDFWKTFTSC",
+          "ddg": -38.5584,
+          "total_score": -470.6948,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand005",
+          "sequence": "AGCKNFFWKTFTSY",
+          "ddg": -20.0369,
+          "total_score": -385.668,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand004",
+          "sequence": "AGCTHKFWKTFTSC",
+          "ddg": -14.2693,
+          "total_score": -403.6528,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 2,
+          "candidate_id": "iter02_cand003",
+          "sequence": "AGCKWEFWKTLTSC",
+          "ddg": -23.9718,
+          "total_score": -443.361,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 3,
+        "run_id": "sst14_mutdock_5000",
+        "hypothesis": "Aromatic and charged residues at positions 5-6-11 will improve binding affinity through enhanced hydrophobic interactions and electrostatic complementarity with SSTR2's binding pocket",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -47.1815,
+        "mean_ddg": -35.3318,
+        "selected_ids": [
+          "iter03_cand007",
+          "iter03_cand001",
+          "iter03_cand008",
+          "iter03_cand006",
+          "iter03_cand002"
+        ],
+        "critic_hypothesis": "Structural quality is more critical than ddG magnitude for successful SSTR2 design, requiring balanced optimization of both energy and model reliability",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand005",
+          "sequence": "AGCKYDFWKTITSC",
+          "ddg": 0.2449,
+          "total_score": -371.8328,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand004",
+          "sequence": "AGCKWEFWKTVTSC",
+          "ddg": -21.7463,
+          "total_score": -376.3021,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand003",
+          "sequence": "AGCKNFFWKTLTSC",
+          "ddg": 107.3115,
+          "total_score": -225.462,
+          "clash_score": 13.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand007",
+          "sequence": "AGCKNFFWITFTSC",
+          "ddg": -34.4656,
+          "total_score": -432.0922,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand001",
+          "sequence": "AGCKNDFWKTITSC",
+          "ddg": -31.9369,
+          "total_score": -458.5429,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand008",
+          "sequence": "AMCKNFIWKAFTSC",
+          "ddg": -47.1815,
+          "total_score": -354.4377,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand006",
+          "sequence": "AGCKNFGWKTFTSC",
+          "ddg": -35.0406,
+          "total_score": -403.0043,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 3,
+          "candidate_id": "iter03_cand002",
+          "sequence": "AGCKNFFWKTITSC",
+          "ddg": -28.0342,
+          "total_score": -446.3505,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 4,
+        "run_id": "sst14_mutdock_5000",
+        "hypothesis": "Introducing aromatic residues at positions 5 and 6, along with charged residues at position 6, will improve binding affinity by optimizing hydrophobic and electrostatic interactions with the SSTR2 binding pocket.",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -45.3897,
+        "mean_ddg": -39.0204,
+        "selected_ids": [
+          "iter04_cand004",
+          "iter04_cand006",
+          "iter04_cand007",
+          "iter04_cand005",
+          "iter04_cand002"
+        ],
+        "critic_hypothesis": "Optimal SSTR2 designs require balancing stringent energy thresholds with sufficient candidate diversity to avoid premature convergence.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand003",
+          "sequence": "AGCKFDFWKTFTSC",
+          "ddg": -11.6672,
+          "total_score": -434.189,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand008",
+          "sequence": "AGCENFFWKTFTSC",
+          "ddg": 11.8185,
+          "total_score": -396.1962,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand004",
+          "sequence": "AGCKNFFWKTVTSC",
+          "ddg": -39.4178,
+          "total_score": -461.4177,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand006",
+          "sequence": "AGCKNWFWVSFTSC",
+          "ddg": -45.3897,
+          "total_score": -474.9781,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand001",
+          "sequence": "AGCKWDFWKTVTSC",
+          "ddg": -24.6646,
+          "total_score": -457.5825,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand007",
+          "sequence": "AACKNFFWKTFTSC",
+          "ddg": -42.9284,
+          "total_score": -478.3521,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand005",
+          "sequence": "AGCKNDFWKTFTSC",
+          "ddg": -30.8587,
+          "total_score": -431.5347,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 4,
+          "candidate_id": "iter04_cand002",
+          "sequence": "AGCKWFFWKTLTSC",
+          "ddg": -36.5072,
+          "total_score": -464.4664,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 5,
+        "run_id": "sst14_mutdock_5000",
+        "hypothesis": "Introducing aromatic residues at positions 5, 6, and 11 will enhance hydrophobic interactions and improve binding affinity (ddG).",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -46.4923,
+        "mean_ddg": -37.2606,
+        "selected_ids": [
+          "iter05_cand001",
+          "iter05_cand003",
+          "iter05_cand004",
+          "iter05_cand002",
+          "iter05_cand007"
+        ],
+        "critic_hypothesis": "Structural quality is inversely correlated with ddG optimization in current parameter space; balancing energy minimization with geometric constraints is critical for SSTR2 design.",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_05/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand001",
+          "sequence": "AGCKFEFWKTVTSC",
+          "ddg": -34.5004,
+          "total_score": -442.9475,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand006",
+          "sequence": "AGCKNFFEKTFTSI",
+          "ddg": -32.7038,
+          "total_score": -481.3686,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand003",
+          "sequence": "AGCKFFFWKTFTSC",
+          "ddg": -33.6452,
+          "total_score": -376.361,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand004",
+          "sequence": "ATCKNFFWANFTSC",
+          "ddg": -46.4923,
+          "total_score": -480.0301,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand002",
+          "sequence": "AGCKFEFWKTFTSC",
+          "ddg": -33.8697,
+          "total_score": -474.8799,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand008",
+          "sequence": "AGCANFFWKRFTSC",
+          "ddg": 75.9256,
+          "total_score": -312.9543,
+          "clash_score": 6.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand007",
+          "sequence": "AGCKNFFWKTMTSC",
+          "ddg": -37.7955,
+          "total_score": -428.8556,
+          "clash_score": 3.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 5,
+          "candidate_id": "iter05_cand005",
+          "sequence": "DGCTNFFWKTPTSC",
+          "ddg": 14.2801,
+          "total_score": -416.8733,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    },
+    {
+      "summary": {
+        "iteration": 6,
+        "run_id": "sst14_mutdock_5000",
+        "hypothesis": "Aromatic/hydrophobic residue substitutions at positions 5-6 and 11 will enhance hydrophobic packing and reduce desolvation penalties in the SSTR2 binding pocket",
+        "objective_mode": "ddg_plus_constraints",
+        "n_candidates": 5,
+        "best_ddg": -49.7079,
+        "mean_ddg": -29.2933,
+        "selected_ids": [
+          "iter06_cand008",
+          "iter06_cand004",
+          "iter06_cand001",
+          "iter06_cand005",
+          "iter06_cand002"
+        ],
+        "critic_hypothesis": "Structural quality needs explicit prioritization alongside energy minimization",
+        "report_paths": {
+          "summary_md": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_06/08_reports/summary.md",
+          "rank_csv": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_06/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand006",
+          "sequence": "AGCWNFFWKTFTSC",
+          "ddg": 12.4546,
+          "total_score": 38.4344,
+          "clash_score": 7.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand007",
+          "sequence": "LGCKPFEWKTFTSC",
+          "ddg": -15.7631,
+          "total_score": -380.1073,
+          "clash_score": 2.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand008",
+          "sequence": "AGCKNFFKKFFTSC",
+          "ddg": -19.3112,
+          "total_score": -342.2216,
+          "clash_score": 4.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand004",
+          "sequence": "AGCKNIMWKTFTSC",
+          "ddg": -18.6033,
+          "total_score": -432.8387,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand001",
+          "sequence": "AGCKFDFWKTITSC",
+          "ddg": -22.6252,
+          "total_score": -277.0082,
+          "clash_score": 9.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand005",
+          "sequence": "APCKNFFWKTFTSC",
+          "ddg": -49.7079,
+          "total_score": -486.6233,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand003",
+          "sequence": "AGCKYEFWKTFTSC",
+          "ddg": -144.1028,
+          "total_score": 142.0244,
+          "clash_score": 15.0,
+          "source": "mutate_then_dock",
+          "selected": false,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 6,
+          "candidate_id": "iter06_cand002",
+          "sequence": "AGCKYFFWKTFTSC",
+          "ddg": -36.2189,
+          "total_score": -465.1474,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_plus_constraints",
+          "fail_reason": ""
+        }
+      ]
+    }
+  ],
+  "final_candidates": [
+    {
+      "iteration": 6,
+      "candidate_id": "iter06_cand008",
+      "sequence": "AGCKNFFKKFFTSC",
+      "ddg": -19.3112,
+      "total_score": -342.2216,
+      "clash_score": 4.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 6,
+      "candidate_id": "iter06_cand004",
+      "sequence": "AGCKNIMWKTFTSC",
+      "ddg": -18.6033,
+      "total_score": -432.8387,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 6,
+      "candidate_id": "iter06_cand001",
+      "sequence": "AGCKFDFWKTITSC",
+      "ddg": -22.6252,
+      "total_score": -277.0082,
+      "clash_score": 9.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 6,
+      "candidate_id": "iter06_cand005",
+      "sequence": "APCKNFFWKTFTSC",
+      "ddg": -49.7079,
+      "total_score": -486.6233,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 6,
+      "candidate_id": "iter06_cand002",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddg": -36.2189,
+      "total_score": -465.1474,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_plus_constraints",
+      "fail_reason": ""
+    }
+  ],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 6,
+    "best_final_ddg": -49.7079,
+    "run_status": "success",
+    "failure_stage": "",
+    "error_summary": ""
+  }
+}

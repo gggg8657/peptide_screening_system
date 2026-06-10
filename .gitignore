@@ -1,0 +1,155 @@
+# Cursor (project-level MCP config with secrets)
+.cursor/
+
+# Conda
+.conda/
+*.conda
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Local virtual environments (대용량, 재생성 가능 — 절대 추적 금지)
+/.venv/
+.venv/
+venv/
+/env/
+dist/
+build/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local tools (cloned/built here, optional)
+/tools/*
+!/tools/harness-adaptation/
+
+# Multi-phase workflow workspace (harness Stage 1)
+# Max-retention: track _workspace text/docs except heavy reproducible envs (see docs/GIT_TRACKING.md)
+/_workspace/**/node_modules/
+/_workspace/**/.conda_env/
+/_workspace/**/__pycache__/
+/_workspace/**/.pytest_cache/
+/_workspace/**/.cache/
+# Vendored external git clones under _workspace (each has its own .git — never nest-commit)
+/_workspace/pepadmet_local/pepADMET/
+/_workspace/admet_ai_local/admet_ai/
+/_workspace/pepmsnd_local/PepMSND/
+/_workspace/ai4sci-kaeri-fe-ef/
+# Local Python envs / weights under _workspace
+/_workspace/**/*venv*/
+/_workspace/**/*.conda/
+/_workspace/**/model/
+/_workspace/**/models/
+
+# Temporary
+/tmp/
+*.log
+*.tmp
+.cache/
+
+# PyMOL session files
+*.pse
+*.pse.gz
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated PDB artifacts (reproducible from pipeline)
+notebooks/refined/
+notebooks/pymol_snapshots/
+notebooks/standardized_raw.pdb
+notebooks/standardized_relaxed.pdb
+notebooks/__tmp_*.pdb
+notebooks/3d_views/
+data/fold_test1/*_from_cif.pdb
+
+# Environment-specific (don't commit local prefix)
+*.local.yml
+
+# Secrets / API keys
+*.key
+.env
+bionemo/.env
+molmim.key
+ngc.key
+
+# PyRosetta: viz scratch
+AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/**/07_viz/
+AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/frontend/node_modules/
+
+# Heavy reproducible binaries — Git LFS is NOT configured, so keep these ignored.
+# (max-retention tracks text provenance: *.json/*.yaml/*.md; binaries below stay out)
+**/*.pdb
+**/*.cif
+**/*.npz
+**/*.npy
+**/*.pkl
+**/*.pt
+**/*.pth
+**/*.ckpt
+**/*.safetensors
+**/*.bin
+**/*.a3m
+**/*.gz
+# Large run logs / monitors
+**/gpu_monitor*.csv
+
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json
+
+# Paper temporary/draft files
+paper/tmp/
+
+# Node.js (root-level build tools)
+node_modules/
+package-lock.json
+/package.json
+
+# Test artifacts
+test-results/
+
+# Claude Code project config
+AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/.claude/
+
+logs/external_agents/
+
+# Local models (large binary weights, download via setup scripts)
+local_models/
+
+# runs_local/: track all local pipeline outputs (docs/GIT_TRACKING.md)
+# (removed blanket ignore — was broken by !runs_local/ negation)
+
+# Local config / codex cache (machine-specific)
+config/codex.sqlite3*
+config/cache/
+config/secret_key
+
+# Large PDFs / Obsidian (optional local)
+*.pdf
+!docs/presentation/*.pdf
+!docs/reports/SILO_B_MASTER_PRESENTATION_REPORT.pdf
+!docs/reports/ACTION_ITEMS_RESPONSE_REPORT.pdf
+!docs/reports/SILO_B_TECHNICAL_REPORT.pdf
+.obsidian/
+outputs/
+# runs/: track for audit (use LFS for large binaries under runs/)
+# Git worktrees / agent caches — never commit (duplicate full repos)
+.worktrees/
+.codex/
+.claude/scheduled_tasks.lock
+
+# Presentation build artifacts
+docs/presentation/_build/
+docs/presentation/screenshots/00_main_build/
+docs/presentation/00_main/*.html
+docs/presentation/01_appendix/*.html
+
+# 대용량 데모 동영상 (GitHub 50MB 경고 회피)
+*.mp4
+docs/presentation/_archive/

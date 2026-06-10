@@ -1,0 +1,16 @@
+{
+  "_README": "무한 발굴 엔진 실시간 조절 파일. 매 epoch 시작 시 다시 읽힘 — 재시작 불필요. 정지는 STOP 파일(touch _workspace/STOP_DISCOVERY).",
+  "n_candidates": 8,
+  "max_iterations": 4,
+  "top_k": 5,
+  "selectivity_max_per_iter": 2,
+  "rosetta_ddg_max": -15.0,
+  "objective_mode": "auto",
+
+  "patience": 3,
+  "base_mutations": 3,
+  "max_mutations_cap": 6,
+
+  "target_pass_count": 3,
+  "stop_on_target": false
+}

@@ -1,0 +1,56 @@
+{
+  "source_json": "_workspace/admet_ai_local/layer3_prst001_004_octreotide_raw.json",
+  "h06_disclaimer": "H-06 WARN: ADMET-AI is LOW-confidence extrapolation outside small-molecule training; do not treat raw scores as measurements.",
+  "scatter_absorption_proxy_endpoints": [
+    "Bioavailability_Ma",
+    "HIA_Hou"
+  ],
+  "scatter_toxicity_mean_excludes_counters": true,
+  "rows": [
+    {
+      "name": "PRST-001",
+      "molecular_weight": 1535.8580000000006,
+      "QED": 0.03085724869568075,
+      "Bioavailability_Ma": 0.009889112785458565,
+      "HIA_Hou": 9.522536129225045e-05,
+      "hERG": 0.48451337218284607,
+      "ClinTox": 0.07818007469177246
+    },
+    {
+      "name": "PRST-002",
+      "molecular_weight": 1569.8750000000007,
+      "QED": 0.026362902601607095,
+      "Bioavailability_Ma": 0.012176522985100746,
+      "HIA_Hou": 0.00024153784033842385,
+      "hERG": 0.5771079063415527,
+      "ClinTox": 0.10665116459131241
+    },
+    {
+      "name": "PRST-003",
+      "molecular_weight": 1597.8890000000006,
+      "QED": 0.015388369525673368,
+      "Bioavailability_Ma": 0.004101120866835117,
+      "HIA_Hou": 7.662029929633718e-06,
+      "hERG": 0.5186082124710083,
+      "ClinTox": 0.05550677329301834
+    },
+    {
+      "name": "PRST-004",
+      "molecular_weight": 1625.9830000000004,
+      "QED": 0.02441055396359854,
+      "Bioavailability_Ma": 0.015079177916049957,
+      "HIA_Hou": 0.0010399685706943274,
+      "hERG": 0.6726062893867493,
+      "ClinTox": 0.14845213294029236
+    },
+    {
+      "name": "Octreotide",
+      "molecular_weight": 1019.2610000000002,
+      "QED": 0.045517553484694884,
+      "Bioavailability_Ma": 0.20433831214904785,
+      "HIA_Hou": 0.34896883368492126,
+      "hERG": 0.9235355257987976,
+      "ClinTox": 0.4141853451728821
+    }
+  ]
+}

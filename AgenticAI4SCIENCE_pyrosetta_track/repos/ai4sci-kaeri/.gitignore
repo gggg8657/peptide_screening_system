@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Intermediate experiment trials (keep archives, not raw trials)
+runs/pyrosetta_flow/paper_validation_v[0-9]*/
+runs/pyrosetta_flow/paper_validation_4paper/*_t[0-9]*.pdb
+
+# Environment / secrets
+.env
+.env.*
+
+# Node
+node_modules/
+
+# Frontend build
+frontend/dist/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Virtual environments
+.venv/
+venv/
+
+# Build / egg
+*.egg-info/
+build/

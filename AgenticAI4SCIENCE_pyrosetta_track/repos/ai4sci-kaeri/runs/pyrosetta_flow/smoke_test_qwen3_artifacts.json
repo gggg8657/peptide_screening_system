@@ -1,0 +1,148 @@
+{
+  "created_at": "2026-02-27T16:11:38.964319+00:00",
+  "run_id": "sst14_mutdock_9999",
+  "config": {
+    "template_pdb": "data/fold_test1_model_0.pdb",
+    "original_sequence": "AGCKNFFWKTFTSC",
+    "design_positions": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+    ],
+    "n_candidates": 2,
+    "seed_base": 9999,
+    "conda_env": "bio-tools",
+    "output_dir": "runs/pyrosetta_flow",
+    "peptide_chain": 1,
+    "max_iterations": 1,
+    "top_k": 2,
+    "objective_mode": "auto",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10,
+    "planner_mode": "pyrosetta_only",
+    "max_parallel_workers": 4,
+    "llm_model_override": "qwen3:8b"
+  },
+  "notebook_mapping": [
+    {
+      "notebook": "SSTR2-SST14 구조 입력 준비",
+      "pipeline": "validate_template_pose"
+    },
+    {
+      "notebook": "SST14 변이 생성",
+      "pipeline": "generate_random_mutant"
+    },
+    {
+      "notebook": "mutate -> dock -> ddG 평가",
+      "pipeline": "run_mutate_then_dock_iteration"
+    },
+    {
+      "notebook": "후보 선별 + 다음 실험 가설",
+      "pipeline": "run_planner_critic_loop"
+    },
+    {
+      "notebook": "실험 요약 기록",
+      "pipeline": "run_reporter_and_emit_artifacts"
+    }
+  ],
+  "baseline": {
+    "ddg": -41.243,
+    "total_score": -477.1789,
+    "pre_score": 48.9961,
+    "score_delta": -526.175,
+    "clash_score": 0.0,
+    "constraint_violations": 0
+  },
+  "iterations": [
+    {
+      "summary": {
+        "iteration": 1,
+        "run_id": "sst14_mutdock_9999",
+        "hypothesis": "Mutating positions 5, 6, and 11 to introduce aromatic or charged residues will enhance binding affinity to SSTR2 by optimizing hydrophobic and electrostatic interactions in the binding pocket.",
+        "objective_mode": "ddg_only",
+        "n_candidates": 2,
+        "best_ddg": -40.5466,
+        "mean_ddg": -38.6882,
+        "selected_ids": [
+          "iter01_cand001",
+          "iter01_cand002"
+        ],
+        "critic_hypothesis": "Initial design space exploration requires relaxed energy thresholds and increased sampling to overcome structural prediction limitations",
+        "report_paths": {
+          "summary_md": "/Users/gimdongju/Documents/workspace/secu/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
+          "rank_csv": "/Users/gimdongju/Documents/workspace/secu/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/rank_table.csv"
+        }
+      },
+      "candidates": [
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand001",
+          "sequence": "AGCKYEFWKTITSC",
+          "ddg": -36.8298,
+          "total_score": -363.8021,
+          "clash_score": 5.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        },
+        {
+          "iteration": 1,
+          "candidate_id": "iter01_cand002",
+          "sequence": "AGCKWFFWKTFTSC",
+          "ddg": -40.5466,
+          "total_score": -482.6522,
+          "clash_score": 0.0,
+          "source": "mutate_then_dock",
+          "selected": true,
+          "objective_mode": "ddg_only",
+          "fail_reason": ""
+        }
+      ]
+    }
+  ],
+  "final_candidates": [
+    {
+      "iteration": 1,
+      "candidate_id": "iter01_cand001",
+      "sequence": "AGCKYEFWKTITSC",
+      "ddg": -36.8298,
+      "total_score": -363.8021,
+      "clash_score": 5.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_only",
+      "fail_reason": ""
+    },
+    {
+      "iteration": 1,
+      "candidate_id": "iter01_cand002",
+      "sequence": "AGCKWFFWKTFTSC",
+      "ddg": -40.5466,
+      "total_score": -482.6522,
+      "clash_score": 0.0,
+      "source": "mutate_then_dock",
+      "selected": true,
+      "objective_mode": "ddg_only",
+      "fail_reason": ""
+    }
+  ],
+  "summary": {
+    "mode": "agentic_mutate_then_dock",
+    "objective_mode_requested": "auto",
+    "iterations": 1,
+    "best_final_ddg": -40.5466,
+    "run_status": "success",
+    "failure_stage": "",
+    "error_summary": ""
+  }
+}

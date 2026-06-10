@@ -1,0 +1,532 @@
+{
+  "metadata": {
+    "total_combinations": 343,
+    "passed_filter": 308,
+    "docked": 20,
+    "successful": 20,
+    "analog2_ddg": -14.855,
+    "native_ddg": -6.173
+  },
+  "results": [
+    {
+      "sequence": "AGCKVDFWKTSTSC",
+      "mutations": [
+        "N5V",
+        "F6D",
+        "F11S"
+      ],
+      "ddg": -27.191,
+      "bound_score": -110.488,
+      "unbound_score": -83.297,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "S",
+      "label": "p5V_p6D_p11S",
+      "pharma": {
+        "gravy": -0.12857142857142856,
+        "boman_index": 1.0142857142857142,
+        "instability_index": 10.385714285714288,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 1
+    },
+    {
+      "sequence": "AGCKVDFWKTTTSC",
+      "mutations": [
+        "N5V",
+        "F6D",
+        "F11T"
+      ],
+      "ddg": -23.415,
+      "bound_score": -108.041,
+      "unbound_score": -84.626,
+      "interface_hbonds": 4,
+      "n_salt_bridges": 0,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "V",
+      "pos6": "D",
+      "pos11": "T",
+      "label": "p5V_p6D_p11T",
+      "pharma": {
+        "gravy": -0.12142857142857141,
+        "boman_index": 1.0671428571428572,
+        "instability_index": 10.385714285714288,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 2
+    },
+    {
+      "sequence": "AGCKYNFWKTSTSC",
+      "mutations": [
+        "N5Y",
+        "F6N",
+        "F11S"
+      ],
+      "ddg": -19.224,
+      "bound_score": -99.598,
+      "unbound_score": -80.374,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "S",
+      "label": "p5Y_p6N_p11S",
+      "pharma": {
+        "gravy": -0.5214285714285715,
+        "boman_index": 1.1642857142857144,
+        "instability_index": 21.835714285714285,
+        "net_charge_ph74": 1.707
+      },
+      "rank": 3
+    },
+    {
+      "sequence": "AGCKYDFWKTSTSC",
+      "mutations": [
+        "N5Y",
+        "F6D",
+        "F11S"
+      ],
+      "ddg": -17.47,
+      "bound_score": -97.09,
+      "unbound_score": -79.62,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "S",
+      "label": "p5Y_p6D_p11S",
+      "pharma": {
+        "gravy": -0.5214285714285715,
+        "boman_index": 1.3128571428571427,
+        "instability_index": 44.1,
+        "net_charge_ph74": 0.707
+      },
+      "rank": 4
+    },
+    {
+      "sequence": "AGCKYEFWKTSTSC",
+      "mutations": [
+        "N5Y",
+        "F6E",
+        "F11S"
+      ],
+      "ddg": -17.023,
+      "bound_score": -96.982,
+      "unbound_score": -79.959,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "S",
+      "label": "p5Y_p6E_p11S",
+      "pharma": {
+        "gravy": -0.5214285714285715,
+        "boman_index": 1.1764285714285714,
+        "instability_index": 27.185714285714287,
+        "net_charge_ph74": 0.707
+      },
+      "rank": 5
+    },
+    {
+      "sequence": "AGCKYNFWKTTTSC",
+      "mutations": [
+        "N5Y",
+        "F6N",
+        "F11T"
+      ],
+      "ddg": -16.936,
+      "bound_score": -98.641,
+      "unbound_score": -81.705,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "N",
+      "pos11": "T",
+      "label": "p5Y_p6N_p11T",
+      "pharma": {
+        "gravy": -0.5142857142857143,
+        "boman_index": 1.217142857142857,
+        "instability_index": 21.835714285714285,
+        "net_charge_ph74": 1.707
+      },
+      "rank": 6
+    },
+    {
+      "sequence": "AGCKYEFWKTTTSC",
+      "mutations": [
+        "N5Y",
+        "F6E",
+        "F11T"
+      ],
+      "ddg": -16.464,
+      "bound_score": -97.772,
+      "unbound_score": -81.308,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "E",
+      "pos11": "T",
+      "label": "p5Y_p6E_p11T",
+      "pharma": {
+        "gravy": -0.5142857142857143,
+        "boman_index": 1.229285714285714,
+        "instability_index": 27.185714285714287,
+        "net_charge_ph74": 0.707
+      },
+      "rank": 7
+    },
+    {
+      "sequence": "AGCKYDFWKTTTSC",
+      "mutations": [
+        "N5Y",
+        "F6D",
+        "F11T"
+      ],
+      "ddg": -14.726,
+      "bound_score": -94.289,
+      "unbound_score": -79.563,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 5.6,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "T",
+      "label": "p5Y_p6D_p11T",
+      "pharma": {
+        "gravy": -0.5142857142857143,
+        "boman_index": 1.3657142857142859,
+        "instability_index": 44.1,
+        "net_charge_ph74": 0.707
+      },
+      "rank": 8
+    },
+    {
+      "sequence": "AGCKYDFWKTATSC",
+      "mutations": [
+        "N5Y",
+        "F6D",
+        "F11A"
+      ],
+      "ddg": -14.051,
+      "bound_score": -93.027,
+      "unbound_score": -78.976,
+      "interface_hbonds": 4,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "A",
+      "label": "p5Y_p6D_p11A",
+      "pharma": {
+        "gravy": -0.33571428571428574,
+        "boman_index": 1.052857142857143,
+        "instability_index": 44.1,
+        "net_charge_ph74": 0.707
+      },
+      "rank": 9
+    },
+    {
+      "sequence": "AGCKYDFWKTMTSC",
+      "mutations": [
+        "N5Y",
+        "F6D",
+        "F11M"
+      ],
+      "ddg": -13.953,
+      "bound_score": -93.35,
+      "unbound_score": -79.398,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "D",
+      "pos11": "M",
+      "label": "p5Y_p6D_p11M",
+      "pharma": {
+        "gravy": -0.32857142857142857,
+        "boman_index": 1.0142857142857142,
+        "instability_index": 33.85714285714286,
+        "net_charge_ph74": 0.707
+      },
+      "rank": 10
+    },
+    {
+      "sequence": "AGCKYQFWKTTTSC",
+      "mutations": [
+        "N5Y",
+        "F6Q",
+        "F11T"
+      ],
+      "ddg": -13.378,
+      "bound_score": -93.706,
+      "unbound_score": -80.328,
+      "interface_hbonds": 6,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "T",
+      "label": "p5Y_p6Q_p11T",
+      "pharma": {
+        "gravy": -0.5142857142857143,
+        "boman_index": 1.1385714285714286,
+        "instability_index": 27.185714285714287,
+        "net_charge_ph74": 1.707
+      },
+      "rank": 11
+    },
+    {
+      "sequence": "AGCKYQFWKTSTSC",
+      "mutations": [
+        "N5Y",
+        "F6Q",
+        "F11S"
+      ],
+      "ddg": -12.042,
+      "bound_score": -90.495,
+      "unbound_score": -78.453,
+      "interface_hbonds": 4,
+      "n_salt_bridges": 0,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "Y",
+      "pos6": "Q",
+      "pos11": "S",
+      "label": "p5Y_p6Q_p11S",
+      "pharma": {
+        "gravy": -0.5214285714285715,
+        "boman_index": 1.0857142857142856,
+        "instability_index": 27.185714285714287,
+        "net_charge_ph74": 1.707
+      },
+      "rank": 12
+    },
+    {
+      "sequence": "AGCKFDFWKTSTSC",
+      "mutations": [
+        "N5F",
+        "F6D",
+        "F11S"
+      ],
+      "ddg": -11.844,
+      "bound_score": -87.144,
+      "unbound_score": -75.299,
+      "interface_hbonds": 3,
+      "n_salt_bridges": 0,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "S",
+      "label": "p5F_p6D_p11S",
+      "pharma": {
+        "gravy": -0.2285714285714286,
+        "boman_index": 1.09,
+        "instability_index": 36.00000000000001,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 13
+    },
+    {
+      "sequence": "AGCKMNFWKTTTSC",
+      "mutations": [
+        "N5M",
+        "F6N",
+        "F11T"
+      ],
+      "ddg": -10.69,
+      "bound_score": -94.183,
+      "unbound_score": -83.494,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.6,
+      "complete": true,
+      "pos5": "M",
+      "pos6": "N",
+      "pos11": "T",
+      "label": "p5M_p6N_p11T",
+      "pharma": {
+        "gravy": -0.2857142857142857,
+        "boman_index": 1.0392857142857141,
+        "instability_index": 45.121428571428574,
+        "net_charge_ph74": 1.709
+      },
+      "rank": 14
+    },
+    {
+      "sequence": "AGCKFDFWKTTTSC",
+      "mutations": [
+        "N5F",
+        "F6D",
+        "F11T"
+      ],
+      "ddg": -7.972,
+      "bound_score": -88.277,
+      "unbound_score": -80.305,
+      "interface_hbonds": 4,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "F",
+      "pos6": "D",
+      "pos11": "T",
+      "label": "p5F_p6D_p11T",
+      "pharma": {
+        "gravy": -0.22142857142857145,
+        "boman_index": 1.1428571428571428,
+        "instability_index": 36.00000000000001,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 15
+    },
+    {
+      "sequence": "AGCKWDFWKTSTSC",
+      "mutations": [
+        "N5W",
+        "F6D",
+        "F11S"
+      ],
+      "ddg": 32.357,
+      "bound_score": -42.787,
+      "unbound_score": -75.143,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "S",
+      "label": "p5W_p6D_p11S",
+      "pharma": {
+        "gravy": -0.4928571428571429,
+        "boman_index": 1.1535714285714285,
+        "instability_index": 27.185714285714287,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 16
+    },
+    {
+      "sequence": "AGCKWNFWKTTTSC",
+      "mutations": [
+        "N5W",
+        "F6N",
+        "F11T"
+      ],
+      "ddg": 33.517,
+      "bound_score": -48.387,
+      "unbound_score": -81.904,
+      "interface_hbonds": 4,
+      "n_salt_bridges": 0,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "W",
+      "pos6": "N",
+      "pos11": "T",
+      "label": "p5W_p6N_p11T",
+      "pharma": {
+        "gravy": -0.4857142857142857,
+        "boman_index": 1.0578571428571428,
+        "instability_index": 30.650000000000002,
+        "net_charge_ph74": 1.709
+      },
+      "rank": 17
+    },
+    {
+      "sequence": "AGCKWEFWKTTTSC",
+      "mutations": [
+        "N5W",
+        "F6E",
+        "F11T"
+      ],
+      "ddg": 35.526,
+      "bound_score": -47.725,
+      "unbound_score": -83.251,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "T",
+      "label": "p5W_p6E_p11T",
+      "pharma": {
+        "gravy": -0.4857142857142857,
+        "boman_index": 1.0699999999999998,
+        "instability_index": 32.57142857142858,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 18
+    },
+    {
+      "sequence": "AGCKWDFWKTTTSC",
+      "mutations": [
+        "N5W",
+        "F6D",
+        "F11T"
+      ],
+      "ddg": 36.031,
+      "bound_score": -43.738,
+      "unbound_score": -79.769,
+      "interface_hbonds": 5,
+      "n_salt_bridges": 2,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "W",
+      "pos6": "D",
+      "pos11": "T",
+      "label": "p5W_p6D_p11T",
+      "pharma": {
+        "gravy": -0.4857142857142857,
+        "boman_index": 1.2064285714285714,
+        "instability_index": 27.185714285714287,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 19
+    },
+    {
+      "sequence": "AGCKWEFWKTSTSC",
+      "mutations": [
+        "N5W",
+        "F6E",
+        "F11S"
+      ],
+      "ddg": 36.647,
+      "bound_score": -43.952,
+      "unbound_score": -80.599,
+      "interface_hbonds": 3,
+      "n_salt_bridges": 0,
+      "elapsed_sec": 4.5,
+      "complete": true,
+      "pos5": "W",
+      "pos6": "E",
+      "pos11": "S",
+      "label": "p5W_p6E_p11S",
+      "pharma": {
+        "gravy": -0.4928571428571429,
+        "boman_index": 1.0171428571428571,
+        "instability_index": 32.57142857142858,
+        "net_charge_ph74": 0.709
+      },
+      "rank": 20
+    }
+  ]
+}

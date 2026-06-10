@@ -1,0 +1,101 @@
+%%{ init: { 'theme': 'base', 'themeVariables': { 'fontSize': '13px' } } }%%
+flowchart TB
+    INPUT["Candidate Sequence"]
+
+    subgraph STAGE1["Stage 1: Structural Rules (PASS / FAIL)"]
+        direction LR
+        R1["FWKT Motif\nConservation\n(pos 7-10)"]
+        R2["K9-D122\nSalt Bridge"]
+        R3["Cys3-Cys14\nDisulfide Bond"]
+        R4["Phe6-Phe11\nAromatic Stacking"]
+        R5["N-term Chelator\nCompatibility"]
+    end
+
+    subgraph STAGE2["Stage 2: Pharmacological Properties (13 Metrics)"]
+        direction LR
+        P1["GRAVY\n(Kyte-Doolittle)"]
+        P2["Boman Index\n(kcal/mol)"]
+        P3["Instability Index\n(Guruprasad)"]
+        P4["Isoelectric\nPoint (pI)"]
+        P5["Extinction\nCoefficient"]
+        P6["Molecular\nWeight"]
+        P7["Net Charge\n(pH 7.4)"]
+        P8["Hydrophobic\nMoment"]
+        P9["Amphipathicity\n(Eisenberg)"]
+        P10["Wimley-White\nTransfer Energy"]
+        P11["Aliphatic\nIndex"]
+        P12["Aromaticity"]
+        P13["Half-life\nEstimate"]
+    end
+
+    subgraph STAGE3["Stage 3: Statistical Validation"]
+        direction LR
+        S1["Rank Stability\n(across N trials)"]
+        S2["Score Consistency\n(CV < threshold)"]
+        S3["No-Dominance\nCheck"]
+    end
+
+    subgraph STAGE4["Stage 4: Radiopharmaceutical Assessment"]
+        direction LR
+        RP1["Chelator Compatibility\n(DOTA/NOTA for\n68Ga, 177Lu, 225Ac)"]
+        RP2["Metabolic Stability\n(Protease Resistance)"]
+        RP3["Renal Clearance\nProfile"]
+    end
+
+    DECISION{"Unified\nScore"}
+
+    OUT_REC["RECOMMENDED\nProceed to Wet-Lab"]
+    OUT_CON["CONDITIONAL\nFurther Optimization"]
+    OUT_REJ["REJECTED\nDiscard"]
+
+    INPUT --> STAGE1
+    STAGE1 -->|"All PASS"| STAGE2
+    STAGE1 -->|"Any FAIL"| OUT_REJ
+
+    STAGE2 -->|"Numerical Values"| STAGE3
+    STAGE3 --> STAGE4
+    STAGE4 --> DECISION
+
+    DECISION -->|"High confidence"| OUT_REC
+    DECISION -->|"Marginal"| OUT_CON
+    DECISION -->|"Poor profile"| OUT_REJ
+
+    %% Styles
+    style INPUT fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1
+
+    style STAGE1 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#b71c1c
+    style R1 fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+    style R2 fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+    style R3 fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+    style R4 fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+    style R5 fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+
+    style STAGE2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1
+    style P1 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P2 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P3 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P4 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P5 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P6 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P7 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P8 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P9 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P10 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P11 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P12 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+    style P13 fill:#bbdefb,stroke:#1565c0,color:#0d47a1
+
+    style STAGE3 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#bf360c
+    style S1 fill:#ffe0b2,stroke:#e65100,color:#bf360c
+    style S2 fill:#ffe0b2,stroke:#e65100,color:#bf360c
+    style S3 fill:#ffe0b2,stroke:#e65100,color:#bf360c
+
+    style STAGE4 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
+    style RP1 fill:#e1bee7,stroke:#7b1fa2,color:#4a148c
+    style RP2 fill:#e1bee7,stroke:#7b1fa2,color:#4a148c
+    style RP3 fill:#e1bee7,stroke:#7b1fa2,color:#4a148c
+
+    style DECISION fill:#ffecb3,stroke:#f57f17,stroke-width:2px,color:#e65100
+    style OUT_REC fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    style OUT_CON fill:#fff9c4,stroke:#f9a825,stroke-width:2px,color:#f57f17
+    style OUT_REJ fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#b71c1c

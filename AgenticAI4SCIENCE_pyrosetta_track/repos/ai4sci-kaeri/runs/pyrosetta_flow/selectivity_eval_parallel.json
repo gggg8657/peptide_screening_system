@@ -1,0 +1,172 @@
+{
+  "results": [
+    {
+      "seq": "AVCKNFFWKTFTSC",
+      "ddg_loop": -45.31,
+      "sstr2_same": -55.21,
+      "worst_off": -51.7,
+      "margin": 3.51,
+      "admet": 0.537,
+      "toxic": null,
+      "hl": 0.042,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKYFFWKTVTSC",
+      "ddg_loop": -41.75,
+      "sstr2_same": -62.45,
+      "worst_off": -54.43,
+      "margin": 8.02,
+      "admet": 0.5402,
+      "toxic": null,
+      "hl": 0.043,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKNFFWKTVTSC",
+      "ddg_loop": -36.13,
+      "sstr2_same": -56.89,
+      "worst_off": -43.8,
+      "margin": 13.09,
+      "admet": 0.5822,
+      "toxic": null,
+      "hl": 0.049,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKWFFWKTITSC",
+      "ddg_loop": -31.96,
+      "sstr2_same": -63.79,
+      "worst_off": -61.47,
+      "margin": 2.33,
+      "admet": 0.5048,
+      "toxic": null,
+      "hl": 0.043,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKYFFWKTITSC",
+      "ddg_loop": -30.41,
+      "sstr2_same": -56.14,
+      "worst_off": -55.63,
+      "margin": 0.51,
+      "admet": 0.5323,
+      "toxic": null,
+      "hl": 0.042,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKNFFWKTFTSH",
+      "ddg_loop": -30.4,
+      "sstr2_same": -56.62,
+      "worst_off": -51.2,
+      "margin": 5.42,
+      "admet": 0.7179,
+      "toxic": null,
+      "hl": 0.021,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKFFFWKTFTSC",
+      "ddg_loop": -30.31,
+      "sstr2_same": -52.84,
+      "worst_off": -46.24,
+      "margin": 6.6,
+      "admet": 0.4717,
+      "toxic": null,
+      "hl": 0.037,
+      "pass3": false
+    },
+    {
+      "seq": "AGCKNFFWKTLTSC",
+      "ddg_loop": -28.79,
+      "sstr2_same": -56.8,
+      "worst_off": -44.64,
+      "margin": 12.16,
+      "admet": 0.5818,
+      "toxic": null,
+      "hl": 0.047,
+      "pass3": true
+    }
+  ],
+  "winners": [
+    {
+      "seq": "AVCKNFFWKTFTSC",
+      "ddg_loop": -45.31,
+      "sstr2_same": -55.21,
+      "worst_off": -51.7,
+      "margin": 3.51,
+      "admet": 0.537,
+      "toxic": null,
+      "hl": 0.042,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKYFFWKTVTSC",
+      "ddg_loop": -41.75,
+      "sstr2_same": -62.45,
+      "worst_off": -54.43,
+      "margin": 8.02,
+      "admet": 0.5402,
+      "toxic": null,
+      "hl": 0.043,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKNFFWKTVTSC",
+      "ddg_loop": -36.13,
+      "sstr2_same": -56.89,
+      "worst_off": -43.8,
+      "margin": 13.09,
+      "admet": 0.5822,
+      "toxic": null,
+      "hl": 0.049,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKWFFWKTITSC",
+      "ddg_loop": -31.96,
+      "sstr2_same": -63.79,
+      "worst_off": -61.47,
+      "margin": 2.33,
+      "admet": 0.5048,
+      "toxic": null,
+      "hl": 0.043,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKYFFWKTITSC",
+      "ddg_loop": -30.41,
+      "sstr2_same": -56.14,
+      "worst_off": -55.63,
+      "margin": 0.51,
+      "admet": 0.5323,
+      "toxic": null,
+      "hl": 0.042,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKNFFWKTFTSH",
+      "ddg_loop": -30.4,
+      "sstr2_same": -56.62,
+      "worst_off": -51.2,
+      "margin": 5.42,
+      "admet": 0.7179,
+      "toxic": null,
+      "hl": 0.021,
+      "pass3": true
+    },
+    {
+      "seq": "AGCKNFFWKTLTSC",
+      "ddg_loop": -28.79,
+      "sstr2_same": -56.8,
+      "worst_off": -44.64,
+      "margin": 12.16,
+      "admet": 0.5818,
+      "toxic": null,
+      "hl": 0.047,
+      "pass3": true
+    }
+  ],
+  "success": true
+}

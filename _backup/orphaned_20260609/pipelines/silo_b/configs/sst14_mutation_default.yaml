@@ -1,0 +1,315 @@
+# SST-14 HIL mutant generation default configuration (Silo B)
+# 목적: C3-C14 disulfide SST-14 (AGCKNFFWKTFTSC) variants optimized for SSTR2.
+# All fields below are expected to be valid with pipelines/silo_b/configs/schema.md.
+
+# -----------------------------
+# Meta
+# -----------------------------
+pipeline_name: silo_b_sst14_mutant_generation
+config_version: v1.0.0
+schema_version: 1
+created_utc: "2026-02-20T00:00:00Z"
+# Base random seed at pipeline-level (all runtime seeds are derived from this value)
+seed: 20260220
+
+# -----------------------------
+# 1) Sequence metadata
+# -----------------------------
+sequence_metadata:
+  # Peptide-level metadata
+  peptide:
+    name: SST-14
+    template_sequence: AGCKNFFWKTFTSC
+    length: 14
+    chain_id: A
+    n_terminal_modification: "free_amino"
+    c_terminal_modification: "free_carboxyl"
+    source: "human_somatostatin_hormone_derived"
+
+  # Receptor context
+  receptor:
+    name: SSTR2
+    organism: Homo_sapiens
+    uniprot: P30874
+    sequence_length: 369
+    binding_mode_hint: "orthosteric-like pocket"
+
+  # Disulfide and topology
+  disulfides:
+    - id: cys3_cys14
+      residues:
+        - 3
+        - 14
+      type: intrachain
+      constrained: true
+  chain_info:
+    cysteine_positions:
+      - 3
+      - 14
+    cysteine_locked: true
+
+  # Required pharmacophore anchors
+  pharmacophore:
+    motif_name: Phe7_Trp8_Lys9_Thr10
+    positions: [7, 8, 9, 10]
+    residues:
+      7: F
+      8: W
+      9: K
+      10: T
+    mode: exact
+
+# -----------------------------
+# 2) Constraints
+# -----------------------------
+constraints:
+  # Hard structural constraints
+  frozen_positions:
+    - 3
+    - 14
+
+  # Per-position allowed amino acids (1-based positions)
+  per_position_allowed_aas:
+    # Phe7/W8/K9/T10 motif is held exactly by allowed list (size 1)
+    1: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    2: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    3: [C]
+    4: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    5: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    6: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    7: [F]
+    8: [W]
+    9: [K]
+    10: [T]
+    # Thr excluded at pos 11 to avoid T-T stacking with pharmacophore Thr10
+    11: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, V, W, Y]
+    12: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    13: [A, R, N, D, E, Q, G, H, I, L, K, M, F, P, S, T, V, W, Y]
+    14: [C]
+
+  # Pairwise and co-occurrence rules
+  pairwise_rules:
+    # hard: avoid double-hydrophobic neighbors that frequently destabilize loop
+    - id: hydrophobic_adjacent_guard
+      type: hard
+      description: "Positions 5 and 6 cannot both be strongly hydrophobic"
+      positions: [5, 6]
+      mode: not_both_in_set
+      aa_set:
+        - F
+        - W
+        - Y
+        - L
+        - I
+        - V
+        - M
+
+    # soft: control global basic charge (charge explosion prevention)
+    - id: basic_count_guard
+      type: soft
+      description: "At most two (K/R/H) residues allowed across positions 1-6 and 11-13"
+      positions: [1, 2, 4, 5, 6, 11, 12, 13]
+      mode: max_count
+      aa_set:
+        - K
+        - R
+        - H
+      max_count: 2
+      penalty_weight: 1.2
+
+    # soft: keep Proline rare in adjacent loop positions
+    - id: proline_pair_guard
+      type: soft
+      description: "Avoid Proline in both 1 and 2 positions"
+      positions: [1, 2]
+      mode: not_both_equal
+      aa_value: P
+      penalty_weight: 0.8
+
+  # Global pharmacophore checks beyond per-position list
+  pharmacophore:
+    require_positions: [7, 8, 9, 10]
+    required_residues:
+      7: F
+      8: W
+      9: K
+      10: T
+    preserve_geometry: true
+    max_sidechain_shift_rmsd_ao: 1.2
+
+# -----------------------------
+# 3) Generator
+# -----------------------------
+generator:
+  strategy:
+    # enum|sampling|ga|bo|ga_bo can be selected by controller
+    primary: ga_bo
+    fallback:
+      low_space_threshold: 1200
+      low_density_threshold: 0.05
+      fallback_primary: sampling
+      fallback_secondary: enum
+
+  budget:
+    total_candidates: 22000
+    adaptive_rounds: 5
+    per_round_max: 5000
+    approach_b_allocation_ratio: 0.85
+    approach_a_allocation_ratio: 0.15
+
+  diversity_policy:
+    min_hamming_distance: 3
+    max_seq_identity: 0.88
+    ngram_diversity_weight: 0.12
+    cluster_before_docking: true
+    cluster_max_size: 4000
+
+  mutation:
+    mutation_rate: 0.30
+    mutation_mode: "position_uniform"
+    preserve_motif: true
+
+  approach_b:
+    enabled: true
+    docking_timeout_sec: 15
+    batch_size: 64
+    max_fail_retries: 2
+    api:
+      provider: BioNeMoNIM
+      endpoint_env: BIONEMO_NIM_ENDPOINT
+
+  approach_a:
+    enabled: true
+    trigger:
+      gate2_pass_top_k: 350
+      min_docking_z: -0.75
+      min_diversity_gap: 0.25
+    timeout_sec_per_candidate: 142
+    batch_size: 12
+
+# -----------------------------
+# 4) Validation
+# -----------------------------
+validation:
+  drugability_filters:
+    enabled: true
+    max_molecular_weight: 2800
+    min_logp: -2.0
+    max_logp: 5.5
+    max_positive_charge: 3
+    min_topology_stability_score: 0.62
+    max_hydrophobic_fragment_ratio: 0.66
+
+  structure:
+    require_disulfide_geometry: true
+    max_steric_clash: 0.25
+    max_backbone_rmsd_to_template: 3.8
+
+  dedupe:
+    enabled: true
+    sequence_identity_threshold: 0.85
+    keep_top_by_identity: 1
+    torsion_fingerprint_kl_threshold: 0.30
+    near_neighbour_window: 128
+
+# -----------------------------
+# 5) Scoring
+# -----------------------------
+scoring:
+  primary:
+    docking_delta_g:
+      weight: 0.45
+      goal: minimize
+      clip:
+        min: -14.0
+        max: 0.0
+    stability:
+      weight: 0.20
+      goal: maximize
+      source: "pRosetta_ddG"
+      clip:
+        min: -12.0
+        max: 8.0
+
+  auxiliary:
+    druggability:
+      weight: 0.15
+      goal: maximize
+      source: "rule_based"
+      clip:
+        min: 0.0
+        max: 1.0
+    diversity:
+      weight: 0.10
+      goal: maximize
+      source: "hamming_gap"
+      clip:
+        min: 0.0
+        max: 1.0
+    hil_confidence:
+      weight: 0.10
+      goal: maximize
+      source: "hil_model"
+      clip:
+        min: 0.0
+        max: 1.0
+
+  penalties:
+    hard_violation: 8.0
+    soft_violation_per_rule: 0.4
+    duplicate_penalty: 0.5
+
+  normalization:
+    method: minmax
+    epsilon: 1e-8
+
+# -----------------------------
+# 6) Orchestration
+# -----------------------------
+orchestration:
+  batch_size:
+    generation: 2048
+    docking: 64
+    approach_a: 12
+  adaptive_steps: 4
+  stop_criteria:
+    min_candidates_for_gate2: 250
+    min_gate2_ratio: 0.05
+    max_wallclock_hours: 24
+
+  hil_gates:
+    gate_1:
+      enabled: true
+      purpose: "static_filters"
+      required_fields:
+        - constraints_frozen_ok
+        - pairwise_ok
+        - druggability_ok
+        - dedupe_ok
+    gate_2:
+      enabled: true
+      purpose: "docking_triage"
+      docking_top_ratio: 0.18
+      min_dock_score_quantile: 0.65
+      require_diversity_margin: 0.15
+    gate_3:
+      enabled: true
+      purpose: "hil_review"
+      min_top_candidates_for_review: 40
+      review_deadline_min: 720
+      escalates_to_approach_a: true
+
+  seed_lineage:
+    base_seed: 20260220
+    stage_seeds:
+      candidate_generation: 20260221
+      pre_dock_filter: 20260222
+      approach_b_docking: 20260223
+      approach_a_refinement: 20260224
+      scoring: 20260225
+
+  output:
+    manifest_path: outputs/silo_b/run_manifest.json
+    candidates_path: outputs/silo_b/candidates
+    logs_path: outputs/silo_b/logs
+    checkpoint_interval: 300

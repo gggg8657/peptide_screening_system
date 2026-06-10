@@ -1,0 +1,35 @@
+/* pandoc HTML + Chrome print-to-PDF용 (부록·서플리멘터리) */
+@charset "UTF-8";
+html { font-size: 15px; }
+body {
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  line-height: 1.55;
+  color: #1a1a2e;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+h1 { color: #0f3460; border-bottom: 2px solid #0f3460; padding-bottom: 0.35em; font-size: 1.65rem; }
+h2 { color: #16213e; margin-top: 1.75rem; font-size: 1.2rem; }
+h3 { color: #1e293b; font-size: 1.05rem; margin-top: 1.25rem; }
+table { border-collapse: collapse; width: 100%; margin: 0.75em 0; font-size: 0.92rem; }
+th, td { border: 1px solid #cbd5e1; padding: 0.4em 0.55em; vertical-align: top; }
+th { background: #dfe7f2; color: #0f172a; }
+tbody tr:nth-child(even) { background: #f8fafc; }
+blockquote {
+  margin: 0.75em 0;
+  padding: 0.5em 0.85em;
+  border-left: 3px solid #94a3b8;
+  background: #f8fafc;
+  color: #334155;
+}
+code { font-size: 0.88em; background: #f1f5f9; padding: 0.12em 0.35em; border-radius: 4px; }
+pre { background: #f1f5f9; padding: 0.75em 1em; overflow-x: auto; border-radius: 6px; font-size: 0.85rem; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0; }
+#TOC { background: #f8fafc; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #e2e8f0; }
+#TOC ul { padding-left: 1.25rem; }
+@media print {
+  body { max-width: none; padding: 0; }
+  h2 { break-after: avoid; }
+  table { break-inside: avoid; }
+}

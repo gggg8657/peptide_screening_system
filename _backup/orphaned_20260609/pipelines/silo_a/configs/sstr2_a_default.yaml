@@ -1,0 +1,114 @@
+# Silo A — SSTR2 3-Arm Virtual Screening Default Configuration
+# Arm 1: Small molecule screening (MolMIM → DiffDock)
+# Arm 2: Peptide variant FlexPepDock (PyRosetta)
+# Arm 3: De novo binder design (RFdiffusion → ProteinMPNN → ESMFold)
+
+pipeline_name: silo_a_sstr2_virtual_screening
+config_version: v1.0.0
+seed: 20260220
+
+# ── Step 0: Pocket Analysis ──────────────────────────
+pocket:
+  complex_pdb: data/fold_test1/fold_test1_model_0.pdb
+  ligand_chain: A
+  receptor_chain: B
+  cutoff_angstrom: 5.0
+
+# ── Arm 1: Small Molecule Screening ──────────────────
+arm1:
+  enabled: true
+  seed_molecules:
+    # Paltusotine (CRN00808) — FDA-approved oral SSTR2 agonist
+    - name: Paltusotine
+      smiles: "C1CN(CCC1N)C2=C3C=C(C=CC3=NC=C2C4=CC(=CC(=C4)F)F)C5=CC=CC(=C5O)C#N"
+      source: "PubChem CID 134168328"
+
+    # L-054522 — Merck non-peptide SSTR2 agonist
+    - name: L054522
+      smiles: "CC(C1=CNC2=CC=CC=C21)C(C(=O)NC(CCCCN)C(=O)OC(C)(C)C)NC(=O)N3CCC(CC3)N4C5=CC=CC=C5NC4=O"
+      source: "PubChem CID 15965425"
+
+    # Pasireotide core — multi-SST receptor agonist
+    - name: Pasireotide
+      smiles: "C1C(CN2C1C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C2=O)CC3=CC=CC=C3)CC4=CC=C(C=C4)OCC5=CC=CC=C5)CCCCN)CC6=CNC7=CC=CC=C76)C8=CC=CC=C8)OC(=O)NCCN"
+      source: "PubChem CID 9941444"
+
+  molmim_num_molecules: 10
+  molmim_algorithm: CMA-ES
+  molmim_property: QED
+  molmim_min_similarity: 0.3
+  top_k_for_docking: 15
+  diffdock_num_poses: 5
+
+# ── Arm 2: Peptide Variant FlexPepDock ───────────────
+arm2:
+  enabled: true
+  wildtype: AGCKNFFWKTFTSC
+  use_pyrosetta: true
+  complex_pdb: data/fold_test1/fold_test1_model_0.pdb
+  peptide_chain: B
+  relax_after_dock: true
+  disulfide_positions: [3, 14]
+  pharmacophore_positions: [7, 8, 9, 10]
+  variants:
+    # Alanine scanning of pharmacophore-adjacent residues
+    - name: F6A
+      sequence: AGCKNAFWKTFTSC
+      description: "Phe6→Ala (pharmacophore neighbor)"
+    - name: F7A
+      sequence: AGCKNFAWKTFTSC
+      description: "Phe7→Ala (core pharmacophore)"
+    - name: W8A
+      sequence: AGCKNFFAKTFTSC
+      description: "Trp8→Ala (core pharmacophore)"
+    - name: K9A
+      sequence: AGCKNFFWATFTSC
+      description: "Lys9→Ala (core pharmacophore)"
+    - name: T10A
+      sequence: AGCKNFFWKAFTSC
+      description: "Thr10→Ala (core pharmacophore)"
+    - name: F11A
+      sequence: AGCKNFFWKTATSC
+      description: "Phe11→Ala"
+
+    # Conservative substitutions
+    - name: A1S
+      sequence: SGCKNFFWKTFTSC
+      description: "Ala1→Ser (hydrophilicity)"
+    - name: K4R
+      sequence: AGCRNFFWKTFTSC
+      description: "Lys4→Arg (charge-conserving)"
+    - name: F6Y
+      sequence: AGCKNYFWKTFTSC
+      description: "Phe6→Tyr (H-bond gain)"
+    - name: K9R
+      sequence: AGCKNFFWRTFTSC
+      description: "Lys9→Arg (charge-conserving)"
+    - name: F11Y
+      sequence: AGCKNFFWKTYTSC
+      description: "Phe11→Tyr (H-bond gain)"
+
+# ── Arm 3: De Novo Binder Design ────────────────────
+arm3:
+  enabled: true
+  num_designs: 5
+  seqs_per_backbone: 4
+  plddt_threshold: 70.0
+  diffusion_steps: 50
+
+# ── Unified Scoring ──────────────────────────────────
+scoring:
+  weights:
+    qed: 0.15
+    dock_confidence: 0.35
+    delta_energy: 0.25
+    plddt: 0.15
+    diversity: 0.10
+  normalization: minmax
+  epsilon: 1.0e-8
+
+# ── Output ───────────────────────────────────────────
+output:
+  root: outputs/silo_a
+  manifest_name: run_manifest.json
+  checkpoint_interval: 300

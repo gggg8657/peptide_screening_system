@@ -1,0 +1,36 @@
+{
+  "type": "critic",
+  "iteration": 3,
+  "run_id": "sst14_mutdock_4002",
+  "timestamp": "2026-04-02T07:00:58.939498+00:00",
+  "hypothesis": "Structural constraints are more critical than previously thought for SSTR2 design, requiring explicit balancing of binding affinity and model quality",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 15,
+      "rationale": "Current clash_max of 10 is too restrictive for complex SSTR2 interfaces, causing structural artifacts"
+    },
+    {
+      "parameter_name": "objective_mode",
+      "old_value": "ddg_plus_constraints",
+      "new_value": "ddg_weighted_plus_constraints",
+      "rationale": "Weighted objective function could balance ddG optimization with structural quality constraints"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 6,
+    "objective_mode": "ddg_plus_constraints",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/cand_001.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/cand_004.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/cand_005.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_pharma_cluster_20260402/sst14_agentic_mutdock/iter_03/cand_006.pdb"
+  ],
+  "receptor_pdb": "runs/pos5_6_11_optimization/p5F_p6D_p11S_AGCKFDFWKTSTSC/refined.pdb"
+}

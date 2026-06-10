@@ -1,0 +1,118 @@
+{
+  "baseline": "cand03",
+  "variants": [
+    {
+      "id": "SST14_ref",
+      "name": "SST14_ref (parent)",
+      "seq": "AGCKNFFWKTFTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 40.62,
+      "chymotrypsin_sites": 4,
+      "trypsin_sites": 2,
+      "nep_sites": 3,
+      "priority": "reference",
+      "rationale": "Parent SST14 reference sequence."
+    },
+    {
+      "id": "cand03",
+      "name": "cand03 (A1I)",
+      "seq": "AICKNFFWKTFTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 40.6,
+      "chymotrypsin_sites": 4,
+      "trypsin_sites": 2,
+      "nep_sites": 4,
+      "priority": "baseline",
+      "rationale": "A1I baseline candidate for migration dashboard."
+    },
+    {
+      "id": "T3_1",
+      "name": "T3_1",
+      "seq": "ILCKKFFWKTFTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 36.8,
+      "chymotrypsin_sites": 4,
+      "trypsin_sites": 3,
+      "nep_sites": 4,
+      "priority": "screening",
+      "rationale": "T3_1 candidate from stability_predictor.CANDIDATE_8."
+    },
+    {
+      "id": "T3_2",
+      "name": "T3_2",
+      "seq": "IGCWWFFWKTFTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 43.34,
+      "chymotrypsin_sites": 6,
+      "trypsin_sites": 1,
+      "nep_sites": 3,
+      "priority": "screening",
+      "rationale": "T3_2 candidate from stability_predictor.CANDIDATE_8."
+    },
+    {
+      "id": "T3_3",
+      "name": "T3_3",
+      "seq": "AGCKNDFWKTLTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 41.85,
+      "chymotrypsin_sites": 2,
+      "trypsin_sites": 2,
+      "nep_sites": 2,
+      "priority": "screening",
+      "rationale": "T3_3 candidate from stability_predictor.CANDIDATE_8."
+    },
+    {
+      "id": "T3_4",
+      "name": "T3_4",
+      "seq": "QTCKNFFWKTFTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 40.76,
+      "chymotrypsin_sites": 4,
+      "trypsin_sites": 2,
+      "nep_sites": 3,
+      "priority": "screening",
+      "rationale": "T3_4 candidate from stability_predictor.CANDIDATE_8."
+    },
+    {
+      "id": "T3_5",
+      "name": "T3_5",
+      "seq": "AGCKWEFWKTLTSC",
+      "modifications": [
+        "cyclization"
+      ],
+      "hl_score": 41.24,
+      "chymotrypsin_sites": 3,
+      "trypsin_sites": 2,
+      "nep_sites": 2,
+      "priority": "screening",
+      "rationale": "T3_5 candidate from stability_predictor.CANDIDATE_8."
+    },
+    {
+      "id": "var12_dThr",
+      "name": "var12_dThr (D-Thr)",
+      "seq": "AICKNFFWKTFT[dT]C",
+      "modifications": [
+        "cyclization",
+        "d_amino_acid"
+      ],
+      "hl_score": 88.6,
+      "chymotrypsin_sites": 4,
+      "trypsin_sites": 2,
+      "nep_sites": 4,
+      "priority": "ncaa",
+      "rationale": "D-Thr substitution candidate for NCAA comparison."
+    }
+  ]
+}

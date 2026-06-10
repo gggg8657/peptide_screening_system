@@ -1,0 +1,6 @@
+id: M4
+name: "DeepSeek-R1-Distill-Qwen-32B"
+hf_id: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+size_b: 32
+vram_gb: 62
+key_strength: "Chain-of-Thought reasoning"

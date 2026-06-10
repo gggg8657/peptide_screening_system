@@ -1,0 +1,33 @@
+{
+  "type": "critic",
+  "iteration": 5,
+  "run_id": "sst14_mutdock_1000",
+  "timestamp": "2026-03-23T09:30:53.498876+00:00",
+  "hypothesis": "Need to balance stability thresholds with structural validity constraints for SSTR2 design",
+  "proposed_changes": [
+    {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -5.0,
+      "new_value": -10.0,
+      "rationale": "Current threshold rejects highly stable candidates (e.g., -22.6 ddG) due to incorrect parameter interpretation"
+    },
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Higher clash tolerance may allow poorly packed structures to pass QC gates"
+    }
+  ],
+  "current_params": {
+    "n_candidates": 4,
+    "objective_mode": "ddg_plus_constraints",
+    "rosetta_ddg_max": -5.0,
+    "rosetta_clash_max": 10
+  },
+  "candidate_pdbs": [
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_05/cand_002.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_05/cand_003.pdb",
+    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/demo_5cycle/sst14_agentic_mutdock/iter_05/cand_004.pdb"
+  ],
+  "receptor_pdb": "runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb"
+}

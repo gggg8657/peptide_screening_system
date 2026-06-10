@@ -1,0 +1,86 @@
+---
+title: "PRST_N_FM — Silo A / Silo B 파이프라인 플로우"
+---
+flowchart TB
+    %% ── 공통 입력 ──────────────────────────────────────────
+    INPUT(["입력\nSST-14 AGCKNFFWKTFTSC\nSSTR2 PDB (P30874)"])
+    CONFIG(["YAML Config\n(Pydantic strict)"])
+    INPUT --> CONFIG
+    CONFIG --> SILO_A
+    CONFIG --> SILO_B
+
+    %% ── Silo A: 3-Arm Virtual Screening ────────────────────
+    subgraph SILO_A ["SILO A — 3-Arm 가상 스크리닝"]
+        direction TB
+
+        subgraph ARM1 ["Arm 1 — 소분자"]
+            A1_1["MolMIM\n분자 생성\n(Paltusotine 등 Seed)"]
+            A1_2["DiffDock\n소분자 도킹"]
+            A1_3["QED 스코어\nDock Confidence"]
+            A1_1 --> A1_2 --> A1_3
+        end
+
+        subgraph ARM2 ["Arm 2 — 펩타이드 변이"]
+            A2_1["SST-14 Variants\nAla scanning +\nConservative sub"]
+            A2_2["FlexPepDock\n(PyRosetta)"]
+            A2_3["ΔΔG\nDock Success"]
+            A2_1 --> A2_2 --> A2_3
+        end
+
+        subgraph ARM3 ["Arm 3 — De Novo 설계"]
+            A3_1["RFdiffusion\nBackbone 생성"]
+            A3_2["ProteinMPNN\n서열 예측"]
+            A3_3["ESMFold\n구조 예측\n(pLDDT ≥ 임계치)"]
+            A3_1 --> A3_2 --> A3_3
+        end
+
+        SCORER_A["UnifiedScorer\nCross-arm 정규화\nQED/Dock/ΔG/pLDDT/Diversity\n가중합 → Ranked List"]
+        A1_3 --> SCORER_A
+        A2_3 --> SCORER_A
+        A3_3 --> SCORER_A
+    end
+
+    %% ── Silo B: HIL SST-14 Mutant Generation ───────────────
+    subgraph SILO_B ["SILO B — HIL SST-14 변이체 정제"]
+        direction TB
+
+        B1["Constraint Compiler\nfrozen/pharmacophore\npairwise 제약 검증"]
+        B2["Generator\nenumerate / sampling / GA-BO\nHamming distance dedup"]
+        B3["Drugability Filter\nNG/DG deamidation\nMet 산화 / aggregation"]
+        B4["Docking\nFlexPepDock (PyRosetta)\nMockDockingRunner"]
+        B5["Stability Estimator\nKyte-Doolittle 5지표\nFastRelax ddG"]
+        B6["MultiObjectiveScorer\nNSGA-II Pareto Rank\n(ddG / Stability / Drug / Diversity)"]
+        B7{"HIL Gate 1\nStatic Filter\n(hard violations)"}
+        B8{"HIL Gate 2\nDocking Triage\n(ddG ≤ −6.0)"}
+        B9{"HIL Gate 3\nHuman Review"}
+
+        B1 --> B2 --> B3 --> B4 --> B5 --> B6
+        B6 --> B7
+        B7 -->|통과| B8
+        B7 -->|실패| REJECT_B1["❌ 제외"]
+        B8 -->|통과| B9
+        B8 -->|실패| REJECT_B2["❌ 제외"]
+        B9 -->|승인| TOP_B["✅ Top Candidates\n(Manifest JSON)"]
+        B9 -->|반려| REJECT_B3["❌ 제외"]
+    end
+
+    %% ── 공통 출력 ───────────────────────────────────────────
+    SCORER_A --> UNIFIED["통합 후보 풀\nA~E 클러스터 분류\n(ClusterReport)"]
+    TOP_B    --> UNIFIED
+
+    UNIFIED --> PHARMA["약리화학 패널\n13 메트릭 + 5 구조 규칙\n(pepADMET 17 모델)"]
+    PHARMA  --> REPORT(["최종 보고서\n방사성의약품 후보 리스트\n68Ga / 177Lu / 225Ac"])
+
+    %% ── 스타일 ──────────────────────────────────────────────
+    classDef silo fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a
+    classDef gate fill:#fef9c3,stroke:#ca8a04,color:#713f12
+    classDef reject fill:#fee2e2,stroke:#ef4444,color:#7f1d1d
+    classDef ok fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef shared fill:#f3e8ff,stroke:#9333ea,color:#3b0764
+
+    class SILO_A,ARM1,ARM2,ARM3 silo
+    class SILO_B silo
+    class B7,B8,B9 gate
+    class REJECT_B1,REJECT_B2,REJECT_B3 reject
+    class TOP_B,REPORT ok
+    class UNIFIED,PHARMA shared

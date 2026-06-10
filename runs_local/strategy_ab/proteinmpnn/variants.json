@@ -1,0 +1,895 @@
+{
+  "variants": [
+    {
+      "variant_id": "var_001",
+      "sequence": "EPCTTTFWKTTTPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6T",
+        "F11T",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_002",
+      "sequence": "EPCTPPFWKTPPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_003",
+      "sequence": "EWCTAAFWKTAAPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2W",
+        "K4T",
+        "N5A",
+        "F6A",
+        "F11A",
+        "T12A",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_004",
+      "sequence": "PCCTPPFWKTPPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2C",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_005",
+      "sequence": "EPCTKKFWKTKKPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5K",
+        "F6K",
+        "F11K",
+        "T12K",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_006",
+      "sequence": "CCCTPPFWKTPPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1C",
+        "G2C",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_007",
+      "sequence": "EPCTPPFWKTPPPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_008",
+      "sequence": "EPCTTFFWKTTFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_009",
+      "sequence": "EPCTAAFWKTAAPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5A",
+        "F6A",
+        "F11A",
+        "T12A",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_010",
+      "sequence": "EWCTSSFWKTSSPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2W",
+        "K4T",
+        "N5S",
+        "F6S",
+        "F11S",
+        "T12S",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_011",
+      "sequence": "ECCTKKFWKTKKCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2C",
+        "K4T",
+        "N5K",
+        "F6K",
+        "F11K",
+        "T12K",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_012",
+      "sequence": "EPCTTPFWKTTPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6P",
+        "F11T",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_013",
+      "sequence": "EPCTPPFWKTPPFC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13F"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_014",
+      "sequence": "SPCTTFFWKTTFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_015",
+      "sequence": "PCCTTPFWKTTPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2C",
+        "K4T",
+        "N5T",
+        "F6P",
+        "F11T",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_016",
+      "sequence": "GPCTAAFWKTAAPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1G",
+        "G2P",
+        "K4T",
+        "N5A",
+        "F6A",
+        "F11A",
+        "T12A",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_017",
+      "sequence": "ECCTTFFWKTTFCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2C",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13C"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_018",
+      "sequence": "SCCTTSFWKTTSCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S",
+        "G2C",
+        "K4T",
+        "N5T",
+        "F6S",
+        "F11T",
+        "T12S",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_019",
+      "sequence": "PCCTPPFWKTPPPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2C",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_020",
+      "sequence": "SPCTKKFWKTKKCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S",
+        "G2P",
+        "K4T",
+        "N5K",
+        "F6K",
+        "F11K",
+        "T12K",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_021",
+      "sequence": "EPCTFFFWKTFFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5F",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 6,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_022",
+      "sequence": "KPCTTFFWKTTFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1K",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_023",
+      "sequence": "EPCTTFFWKTTFSC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F"
+      ],
+      "n_mutations": 6,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_024",
+      "sequence": "EPCTSFFWKTSFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5S",
+        "F11S",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_025",
+      "sequence": "EPCTEEFWKTEEFC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5E",
+        "F6E",
+        "F11E",
+        "T12E",
+        "S13F"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_026",
+      "sequence": "EPCTTFFWKTTFCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13C"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_027",
+      "sequence": "KPCTFFFWKTFFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1K",
+        "G2P",
+        "K4T",
+        "N5F",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 6,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_028",
+      "sequence": "SWCTSSFWKTSSPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S",
+        "G2W",
+        "K4T",
+        "N5S",
+        "F6S",
+        "F11S",
+        "T12S",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_029",
+      "sequence": "PACTPPFWKTPPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2A",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_030",
+      "sequence": "APCTTAFWKTTAPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6A",
+        "F11T",
+        "T12A",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_031",
+      "sequence": "PWCTTSFWKTTSCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2W",
+        "K4T",
+        "N5T",
+        "F6S",
+        "F11T",
+        "T12S",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_032",
+      "sequence": "GWCTTFFWKTTFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1G",
+        "G2W",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_033",
+      "sequence": "CCCTTSFWKTTSCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1C",
+        "G2C",
+        "K4T",
+        "N5T",
+        "F6S",
+        "F11T",
+        "T12S",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_034",
+      "sequence": "EPCTTLFWKTTLPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6L",
+        "F11T",
+        "T12L",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_035",
+      "sequence": "EPCTTAFWKTTAPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6A",
+        "F11T",
+        "T12A",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_036",
+      "sequence": "EECTPPFWKTPPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2E",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_037",
+      "sequence": "KPCTTKFWKTTKPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1K",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6K",
+        "F11T",
+        "T12K",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_038",
+      "sequence": "EPCTTPFWKTTPFC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6P",
+        "F11T",
+        "T12P",
+        "S13F"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_039",
+      "sequence": "SPCTPPFWKTPPPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1S",
+        "G2P",
+        "K4T",
+        "N5P",
+        "F6P",
+        "F11P",
+        "T12P",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_040",
+      "sequence": "PCCTTPFWKTTPPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2C",
+        "K4T",
+        "N5T",
+        "F6P",
+        "F11T",
+        "T12P",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_041",
+      "sequence": "KPCTTPFWKTTPCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1K",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6P",
+        "F11T",
+        "T12P",
+        "S13C"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_042",
+      "sequence": "EWCTTAFWKTTAPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2W",
+        "K4T",
+        "N5T",
+        "F6A",
+        "F11T",
+        "T12A",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_043",
+      "sequence": "EPCTEFFWKTEFCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5E",
+        "F11E",
+        "T12F",
+        "S13C"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_044",
+      "sequence": "EPCTTKFWKTTKPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5T",
+        "F6K",
+        "F11T",
+        "T12K",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_045",
+      "sequence": "EPCTLPFWKTLPFC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5L",
+        "F6P",
+        "F11L",
+        "T12P",
+        "S13F"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_046",
+      "sequence": "PWCTTSFWKTTSPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2W",
+        "K4T",
+        "N5T",
+        "F6S",
+        "F11T",
+        "T12S",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_047",
+      "sequence": "PCCTFFFWKTFFCC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1P",
+        "G2C",
+        "K4T",
+        "N5F",
+        "T12F",
+        "S13C"
+      ],
+      "n_mutations": 6,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_048",
+      "sequence": "EKCTTFFWKTTFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2K",
+        "K4T",
+        "N5T",
+        "F11T",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_049",
+      "sequence": "EPCTEEFWKTEEPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5E",
+        "F6E",
+        "F11E",
+        "T12E",
+        "S13P"
+      ],
+      "n_mutations": 8,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    },
+    {
+      "variant_id": "var_050",
+      "sequence": "EPCTEFFWKTEFPC",
+      "parent_sequence": "AGCKNFFWKTFTSC",
+      "mutations": [
+        "A1E",
+        "G2P",
+        "K4T",
+        "N5E",
+        "F11E",
+        "T12F",
+        "S13P"
+      ],
+      "n_mutations": 7,
+      "blosum_total_score": 0,
+      "source": "proteinmpnn"
+    }
+  ],
+  "seed_sequence": "AGCKNFFWKTFTSC",
+  "fixed_positions": {
+    "3": "C",
+    "7": "F",
+    "8": "W",
+    "9": "K",
+    "10": "T",
+    "14": "C"
+  },
+  "total_generated": 50,
+  "strategy": "approach_b"
+}

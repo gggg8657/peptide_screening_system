@@ -1,0 +1,6 @@
+id: M3
+name: "Qwen3-32B"
+hf_id: "Qwen/Qwen3-32B"
+size_b: 32
+vram_gb: 62
+key_strength: "Latest Qwen3, generation comparison vs 2.5/3.5"

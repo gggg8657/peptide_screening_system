@@ -1,0 +1,6 @@
+id: M5
+name: "GLM-Z1-32B"
+hf_id: "THUDM/GLM-Z1-32B-0414"
+size_b: 32
+vram_gb: 61
+key_strength: "Reasoning, tool-use"
