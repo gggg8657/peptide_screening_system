@@ -1,9 +1,9 @@
 # PyMOL 4-Panel Auto-Render: iter09_cand002
-# 생성: 2026-02-25T10:08:22.230354
+# 생성: 2026-06-10T16:13:55.424874
 reinitialize
 
 # --- 구조 로드 ---
-load data/fold_test1_model_0.pdb, receptor
+load data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb, receptor
 load , peptide
 
 # 기본 스타일
@@ -37,7 +37,7 @@ set_view [\
     0.0, 0.0, -80.0, \
     0.0, 0.0, 0.0, 40.0, 200.0, -20.0]
 ray 1200, 900
-png /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_1_overview.png, dpi=150
+png /home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_1_overview.png, dpi=150
 
 # ================================================================
 # Panel 2: Closeup (결합 포켓 zoom)
@@ -52,7 +52,7 @@ show sticks, pocket_res
 color yellow, pocket_res
 zoom peptide, 8
 ray 1200, 900
-png /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_2_closeup.png, dpi=150
+png /home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_2_closeup.png, dpi=150
 
 # ================================================================
 # Panel 3: Interface contacts (H-bond, salt bridge, hydrophobic)
@@ -72,7 +72,7 @@ set dash_width, 3.0
 set label_size, 12
 zoom peptide, 10
 ray 1200, 900
-png /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_3_interface.png, dpi=150
+png /home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_3_interface.png, dpi=150
 
 # ================================================================
 # Panel 4: Electrostatics (APBS surface)
@@ -90,9 +90,9 @@ spectrum count, blue_white_red, receptor, minimum=0, maximum=10
 set transparency, 0.3, receptor
 zoom peptide, 12
 ray 1200, 900
-png /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_4_electrostatics.png, dpi=150
+png /home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002_4_electrostatics.png, dpi=150
 
 # ================================================================
 # 세션 저장
 # ================================================================
-save /home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002.pse
+save /home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/07_viz/iter09_cand002.pse

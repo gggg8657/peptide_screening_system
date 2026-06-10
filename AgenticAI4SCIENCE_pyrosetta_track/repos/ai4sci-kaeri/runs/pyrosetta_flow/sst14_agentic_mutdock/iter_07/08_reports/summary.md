@@ -1,18 +1,16 @@
-# Iteration 7 – sst14_mutdock_1000 Summary
+# Iteration 7 Summary: sst14_mutdock_5000
 
-            - **Run ID**: `sst14_mutdock_1000`
+            - **Run ID**: `sst14_mutdock_5000`
             - **Iteration**: 7
-            - **생성 시각**: 2026-03-23 11:33 UTC
+            - **생성 시각**: 2026-06-10 17:51 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            In this cycle we evaluated 11 designed sst14 variants, all of which satisfied the predefined quality control (QC) gates. The structural assessment revealed that the majority of candidates exhibit severe clashes, which is consistent with the observed high ddG penalties. The most promising designs, based on the most negative ddG values, are iter07_cand011 (−45.7 kcal mol⁻¹) and iter07_cand001 (−43.2 kcal mol⁻¹). Despite passing QC, the uniform pLDDT of 0.0 and docking scores of 0.00 indicate that the AlphaFold predictions and docking protocols are not yet discriminating between the variants. Consequently, the pipeline’s current selection criteria are insufficient to filter out structurally infeasible designs.
+            Iteration 7 evaluated four SSTR2 peptide binder candidates, all of which passed quality control (QC) gates. The designs exhibited strong binding affinity, as indicated by ddG values ranging from -21.5 to -27.3 kcal/mol. However, selectivity for SSTR2 over off-target receptors remained a significant challenge. Only one candidate (AECMNFFWKTFTSC) demonstrated selectivity with a Δmargin > 0, while the remaining candidates showed Δmargin ≤ 0, suggesting off-target interactions that compromise specificity. This highlights a critical bottleneck in the design process, with structural failures being the primary failure type. Despite the promising binding affinity, the low selectivity pass rate indicates a need for refinement in the design strategy to enhance SSTR2 specificity.
 
             ## Recommendations
 
-            - Introduce a clash‑filtering step prior to docking to reduce structural_failures.
-- Re‑evaluate the ddG threshold; consider a less stringent cutoff to allow more diverse candidates.
-- Augment the docking protocol with a higher‑resolution scoring function to better discriminate binding modes.
-- Incorporate an explicit pLDDT‑based confidence filter to avoid designs with uniformly low structural confidence.
-- Generate a larger mutation library to increase sequence diversity and potentially improve binding affinity.
+            - Refine the design strategy to prioritize SSTR2 selectivity, focusing on minimizing off-target interactions.
+- Incorporate additional constraints or scoring functions to better capture selectivity during the design phase.
+- Revisit structural failures to identify common motifs or issues that may be addressed in future iterations.

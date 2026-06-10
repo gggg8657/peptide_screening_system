@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 2,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-06-10T07:17:14.932047+00:00",
-  "hypothesis": "The hypothesis is updated to prioritize mutations at non-pharmacophore positions to disrupt conserved off-target interactions in SSTR3/SSTR5, while maintaining the pharmacophore for SSTR2 binding.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:28:12.604692+00:00",
+  "hypothesis": "The current hypothesis remains valid, but the focus must shift to improving selectivity by disrupting conserved interactions at non-pharmacophore positions. This will require targeted mutations to reduce SSTR3/SSTR5 binding.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,7 +16,7 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions in SSTR3/SSTR5. Focusing on these positions allows for targeted mutation to disrupt conserved pocket contacts."
+      "rationale": "These positions are non-pharmacophore and are likely involved in conserved-pocket interactions with SSTR3/SSTR5. Focusing mutations here can disrupt off-target binding while preserving key pharmacophore residues."
     },
     {
       "parameter_name": "suggested_mutations",
@@ -31,29 +31,29 @@
           "Q"
         ],
         "5": [
+          "A",
+          "G"
+        ],
+        "6": [
+          "S",
+          "T"
+        ],
+        "11": [
           "L",
           "I"
         ],
-        "6": [
-          "A",
-          "V"
-        ],
-        "11": [
-          "T",
-          "S"
-        ],
         "12": [
-          "K",
-          "R"
+          "V",
+          "A"
         ]
       },
-      "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while maintaining overall peptide stability and pharmacophore integrity."
+      "rationale": "Introducing polar or hydrophobic mutations at these positions can break conserved interactions with SSTR3/SSTR5 without affecting the pharmacophore core (FWKT7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {
     "n_candidates": 8,
     "objective_mode": "ddg_plus_constraints",
-    "rosetta_ddg_max": -5.0,
+    "rosetta_ddg_max": -15.0,
     "rosetta_clash_max": 10
   },
   "candidate_pdbs": [

@@ -1,21 +1,19 @@
-# Iteration 6 – sst14_mutdock_1000 Summary
+# Iteration 6 Summary: sst14_mutdock_5000
 
-            - **Run ID**: `sst14_mutdock_1000`
+            - **Run ID**: `sst14_mutdock_5000`
             - **Iteration**: 6
-            - **생성 시각**: 2026-03-23 11:27 UTC
+            - **생성 시각**: 2026-06-10 17:48 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            In this iteration, eight candidate peptides were evaluated and all passed the initial QC gates. However, structural assessment revealed that none of the designs possess a reliable predicted fold, as indicated by a pLDDT of 0.0 for every candidate. Docking calculations returned a uniform score of 0.00, while the predicted binding free energy changes (ddG) were highly negative, ranging from –43.4 to –20.1 kcal mol⁻¹. The most favorable ddG value (–43.4 kcal mol⁻¹) is well below the acceptable threshold, suggesting that the models are likely over‑optimistic and structurally implausible. Consequently, the selectivity pass rate is effectively zero, reflecting the lack of meaningful structural or energetic discrimination among the candidates.
+            Iteration 6 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all quality control (QC) gates. Despite this, the iteration failed to meet the primary objective of achieving sufficient selectivity. The candidates demonstrated strong binding affinities, as indicated by ddG values of -29.1 and -23.9 kcal/mol for iter06_cand008 and iter06_cand006, respectively. However, only one candidate (AECMNFFWKTFTSC) achieved a Δmargin > 0, highlighting a significant lack of selectivity across the cohort. This outcome suggests that the current design strategy is insufficient to balance binding affinity with the required specificity for SSTR2 over other targets.
 
-The top performers, ranked by ddG, are iter06_cand012, iter06_cand008, iter06_cand003, iter06_cand011, iter06_cand007, iter06_cand014, iter06_cand005, and iter06_cand002. All share identical pLDDT and docking scores, underscoring the need to revisit the modeling pipeline. The failure pattern points to a systemic issue in the structural prediction step rather than random noise, indicating that the current mutation‑generation and docking workflow is not producing viable peptide scaffolds for SSTR2 binding.
+The primary failure type in this iteration was structural failures, indicating that the designed peptides may not adopt the desired conformation for optimal binding. The low pass rate for selectivity (25%) underscores the need for a revised approach to enhance specificity while maintaining strong binding. The results from this iteration suggest that future efforts should focus on refining the design parameters to address structural limitations and improve selectivity metrics.
 
             ## Recommendations
 
-            - Re‑evaluate the structural prediction pipeline; consider integrating AlphaFold2 or Rosetta relax steps to generate realistic backbone conformations before docking.
-- Introduce a structural quality filter (e.g., pLDDT > 70) as an early QC gate to eliminate designs lacking a credible fold.
-- Adjust the docking protocol to include receptor flexibility or use ensemble docking to better capture induced‑fit effects.
-- Re‑define the ddG threshold to a less stringent value (e.g., > –10 kcal mol⁻¹) until structural reliability is restored.
-- Implement a multi‑objective optimization that balances predicted stability, binding affinity, and structural confidence.
-- Generate a larger mutation library with controlled diversity to increase the likelihood of obtaining viable scaffolds.
+            - Refine the design strategy to address structural failures and improve peptide conformation.
+- Enhance selectivity metrics by incorporating additional constraints or modifying the design parameters.
+- Conduct a deeper analysis of the structural and energetic factors contributing to the observed lack of selectivity.
+- Explore alternative docking and scoring methods to better predict binding and selectivity.

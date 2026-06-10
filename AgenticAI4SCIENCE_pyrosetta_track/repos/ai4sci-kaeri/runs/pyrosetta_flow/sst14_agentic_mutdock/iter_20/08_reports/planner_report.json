@@ -1,0 +1,33 @@
+{
+  "type": "planner",
+  "iteration": 20,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T17:18:16.567542+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interactions with ECL2/TM5 while reducing off-target affinity to SSTR3/5.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current designs are failing primarily due to structural clashes and insufficient selectivity. Tightening structural constraints and focusing mutagenesis on non-pharmacophore positions should improve both structural quality and selectivity.",
+    "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Structural failures are likely due to clashes in the binding pocket. Lowering the clash threshold will enforce better geometry and reduce structural failures."
+      },
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we need to disrupt off-target contacts at non-pharmacophore positions. Focusing design on these positions will allow us to introduce mutations that break interactions with SSTR3/SSTR5 while preserving the native pharmacophore."
+      }
+    ]
+  },
+  "previous_best_ddg": null
+}

@@ -1,0 +1,64 @@
+{
+  "type": "planner",
+  "iteration": 19,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T17:14:49.154641+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/TM5 pockets, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target SSTR3/SSTR5 binding by avoiding off-target-conserved hydrophilic interactions.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current designs achieve strong SSTR2 binding but fail to disrupt off-target interactions. The next iteration should prioritize mutations at non-pharmacophore positions to improve selectivity over binding strength.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are known to contribute to off-target binding (particularly SSTR3 and SSTR5) and are not part of the pharmacophore. Focusing mutations on these positions can disrupt off-target interactions while preserving the native pharmacophore (FWKT(7-10) and Cys3/Cys14)."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "A",
+            "G",
+            "T"
+          ],
+          "2": [
+            "A",
+            "G",
+            "T"
+          ],
+          "5": [
+            "A",
+            "G",
+            "T"
+          ],
+          "6": [
+            "A",
+            "G",
+            "T"
+          ],
+          "11": [
+            "A",
+            "G",
+            "T"
+          ],
+          "12": [
+            "A",
+            "G",
+            "T"
+          ]
+        },
+        "rationale": "Introducing mutations at these positions with amino acids that are less likely to form conserved off-target interactions (e.g., A, G, T) can reduce off-target binding. These mutations are expected to disrupt interactions in SSTR3 and SSTR5 without affecting the pharmacophore."
+      }
+    ]
+  },
+  "previous_best_ddg": -37.6238
+}

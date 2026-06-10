@@ -1,16 +1,16 @@
-# Iteration 3 Summary: sst14_mutdock_1000
+# Iteration 3 Summary: sst14_mutdock_5000
 
-            - **Run ID**: `sst14_mutdock_1000`
+            - **Run ID**: `sst14_mutdock_5000`
             - **Iteration**: 3
-            - **생성 시각**: 2026-06-10 07:30 UTC
+            - **생성 시각**: 2026-06-10 17:32 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 3 of the sst14_mutdock_1000 design campaign evaluated five peptide binder candidates for SSTR2 binding. All candidates passed quality control (QC) gates, indicating structural and design consistency. However, despite favorable binding affinities (ddG values ranging from -12.5 to -45.2 kcal/mol), none achieved SSTR2 selectivity, as all displayed Δmargin ≤ 0. This suggests that the current designs are not distinguishing between SSTR2 and off-target receptors such as SSTR3 and SSTR5, likely due to conserved interaction motifs in the binding pocket. The primary failure mode was structural_failures, indicating a need for improved specificity through structural modifications.
+            Iteration 3 of the SSTR2 peptide binder design campaign evaluated six candidates, all of which passed quality control (QC) gates. The designs exhibited strong binding affinities, as indicated by ddG values ranging from -17.1 to -34.5 kcal/mol, with the most favorable ddG observed for iter03_cand007. However, a critical issue remains in the form of selectivity, with several candidates showing a Δmargin ≤ 0, suggesting inadequate discrimination between SSTR2 and off-target receptors. This highlights the need for further optimization to enhance target specificity. While structural failures were not observed in this iteration, selectivity failures were the primary concern, indicating a need for more focused design strategies.
 
             ## Recommendations
 
-            - Introduce structural modifications to disrupt conserved interactions in the binding pocket, particularly those that may be shared with SSTR3 and SSTR5.
-- Incorporate selectivity screening early in the design pipeline to prioritize candidates with distinct SSTR2-specific interactions.
-- Revisit the docking and scoring protocols to better capture selectivity-related metrics in addition to binding affinity.
+            - Prioritize selectivity optimization in the next iteration, focusing on features that differentiate SSTR2 from off-target receptors.
+- Incorporate additional constraints or scoring functions that emphasize target-specific interactions.
+- Reassess the docking and ddG metrics in the context of selectivity to ensure that affinity gains do not come at the expense of specificity.

@@ -1,0 +1,20 @@
+{
+  "type": "iteration_manifest",
+  "iteration": 19,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T17:18:06.787121+00:00",
+  "receptor_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
+  "baseline_pdb": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
+  "candidates": [],
+  "rcsb_match_summary": {
+    "checked": 0,
+    "matched": 0,
+    "identity_cutoff": 0.4
+  },
+  "report_paths": {
+    "summary_md": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_19/08_reports/summary.md",
+    "rank_csv": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_19/08_reports/rank_table.csv"
+  },
+  "planner_report": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_19/08_reports/planner_report.json",
+  "critic_report": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_19/08_reports/critic_report.json"
+}

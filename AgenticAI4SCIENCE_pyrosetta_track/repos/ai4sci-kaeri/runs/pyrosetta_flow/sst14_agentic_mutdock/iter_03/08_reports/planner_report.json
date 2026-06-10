@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 3,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-06-10T07:18:04.711927+00:00",
-  "hypothesis": "Introducing aromatic substitutions at position 5 and hydrophobic substitutions at position 11 will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, improving selectivity margin over off-target subtypes.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:29:03.325289+00:00",
+  "hypothesis": "Enhancing selectivity margin by introducing aromatic residues at position 5 to better complement SSTR2-specific ECL2/TM5 interactions, and hydrophobic substitutions at position 11 to avoid off-target SSTR3/SSTR5 hydrophobic pockets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The hypothesis is updated to prioritize mutations at non-pharmacophore positions to disrupt conserved off-target interactions in SSTR3/SSTR5, while maintaining the pharmacophore for SSTR2 binding.",
+    "hypothesis": "The current hypothesis remains valid, but the focus must shift to improving selectivity by disrupting conserved interactions at non-pharmacophore positions. This will require targeted mutations to reduce SSTR3/SSTR5 binding.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,7 +19,7 @@
           11,
           12
         ],
-        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions in SSTR3/SSTR5. Focusing on these positions allows for targeted mutation to disrupt conserved pocket contacts."
+        "rationale": "These positions are non-pharmacophore and are likely involved in conserved-pocket interactions with SSTR3/SSTR5. Focusing mutations here can disrupt off-target binding while preserving key pharmacophore residues."
       },
       {
         "parameter_name": "suggested_mutations",
@@ -34,25 +34,25 @@
             "Q"
           ],
           "5": [
+            "A",
+            "G"
+          ],
+          "6": [
+            "S",
+            "T"
+          ],
+          "11": [
             "L",
             "I"
           ],
-          "6": [
-            "A",
-            "V"
-          ],
-          "11": [
-            "T",
-            "S"
-          ],
           "12": [
-            "K",
-            "R"
+            "V",
+            "A"
           ]
         },
-        "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while maintaining overall peptide stability and pharmacophore integrity."
+        "rationale": "Introducing polar or hydrophobic mutations at these positions can break conserved interactions with SSTR3/SSTR5 without affecting the pharmacophore core (FWKT7-10 and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -32.6986
+  "previous_best_ddg": -48.7274
 }

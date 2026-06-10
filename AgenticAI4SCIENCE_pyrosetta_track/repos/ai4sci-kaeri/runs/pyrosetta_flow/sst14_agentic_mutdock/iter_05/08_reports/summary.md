@@ -1,32 +1,16 @@
-# SSTR2 펩타이드 바인더 실험 요약
+# Iteration 5 Summary: sst14_mutdock_5000
 
-        - **Run ID**: `sst14_mutdock_1000`
-        - **Iteration**: 5
-        - **생성 시각**: 2026-05-13 08:51 UTC
-        - **총 통과 후보**: 6개
+            - **Run ID**: `sst14_mutdock_5000`
+            - **Iteration**: 5
+            - **생성 시각**: 2026-06-10 17:44 UTC
+            - **생성 방식**: LLM (Qwen 2.5 7B)
 
-        ## 상위 후보 랭킹 (Top 10)
+            ## Summary
 
-        | Rank | ID | pLDDT | Dock | ddG | lDDT | Score |
-|------|-----|-------|------|-----|------|-------|
-| 1 | iter05_cand005 | 0.0 | 0.00 | -48.78 | 0.000 | 0.7000 |
-| 2 | iter05_cand007 | 0.0 | 0.00 | -40.68 | 0.000 | 0.5021 |
-| 3 | iter05_cand002 | 0.0 | 0.00 | -35.98 | 0.000 | 0.3875 |
-| 4 | iter05_cand003 | 0.0 | 0.00 | -27.88 | 0.000 | 0.1898 |
-| 5 | iter05_cand008 | 0.0 | 0.00 | -24.02 | 0.000 | 0.0956 |
-| 6 | iter05_cand004 | 0.0 | 0.00 | -20.11 | 0.000 | 0.0000 |
+            Iteration 5 of the SSTR2 peptide binder design campaign evaluated six candidates, all of which passed quality control (QC) gates. Structural quality, as indicated by pLDDT values, was consistently high (pLDDT=0.0), suggesting accurate predicted structures. Stability, as measured by ddG, was also strong, with the best candidate (iter05_cand006) showing a ddG of -37.2 kcal/mol. However, selectivity remains a significant challenge, with only one candidate (AECMNFFWKTFTSC) showing a significant Δmargin (>0), while the rest performed near or below the threshold. This indicates that while the designs are structurally sound and stable, off-target binding is still a concern.
 
+            ## Recommendations
 
-        ## Scientist Critic 분석
-
-**구조적 인사이트**
-통과 후보 6개 중 최상위: iter05_cand005 (pLDDT=0.0, ddG=-48.78, dock=0.00). 전체 평균: pLDDT=0.0, ddG=-32.91. 통과율: 75.0%.
-
-**실패 유형 분포**
-- good_dock_bad_ddg: 2
-
-**다음 Iteration 파라미터 변경 제안 (최대 2개)**
-변경 없음
-
-**다음 Iteration 가설**
-> 이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.
+            - Focus on improving selectivity in the next iteration by incorporating additional constraints or filters to penalize off-target interactions.
+- Analyze the successful candidate (AECMNFFWKTFTSC) to identify key residues or motifs contributing to selectivity and use this information to guide future designs.
+- Consider optimizing the docking protocol to better capture subtle differences in selectivity between candidates.

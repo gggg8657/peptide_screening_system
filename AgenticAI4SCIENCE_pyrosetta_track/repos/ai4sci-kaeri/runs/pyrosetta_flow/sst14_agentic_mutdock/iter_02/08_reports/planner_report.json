@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 2,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-06-10T07:06:07.065307+00:00",
-  "hypothesis": "Mutations at positions 5 and 11 will enhance SSTR2-specific interactions by introducing aromatic residues at position 5 (to complement SSTR2 ECL2 residues 192/193/195/197) and hydrophobic residues at position 11 (to avoid steric clashes with SSTR3/5 TM6 residues 272/273/276/279). This should increase the selectivity margin by differentiating SSTR2 from off-targets.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:25:35.824799+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic substitutions at position 11 will enhance SSTR2-specific interactions with ECL2 and TM5 while avoiding off-target (SSTR3/SSTR5) binding through steric differentiation.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy must incorporate explicit selectivity optimization, particularly by targeting non-pharmacophore positions to disrupt off-target interactions.",
+    "hypothesis": "The hypothesis is revised to emphasize that high ddG alone is insufficient for success; selectivity (Δmargin > 0) is the primary success criterion. Design must now prioritize disrupting off-target contacts at non-pharmacophore positions.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,15 +19,15 @@
           11,
           12
         ],
-        "rationale": "Disrupt conserved-pocket contacts at non-pharmacophore positions to reduce off-target binding to SSTR3/SSTR5 while preserving the pharmacophore FWKT(7-10) and Cys3/Cys14."
+        "rationale": "To improve selectivity, we must disrupt conserved-pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely responsible for off-target binding to SSTR3/SSTR5."
       },
       {
         "parameter_name": "objective_mode",
         "old_value": "ddg_only",
         "new_value": "selectivity_weighted",
-        "rationale": "Prioritize selectivity over binding strength by incorporating Δmargin into the scoring function, ensuring candidates are evaluated for their ability to outperform native SST-14 in selectivity."
+        "rationale": "Prioritizing selectivity over ddG alone will ensure that candidates are not only strong binders but also selective for SSTR2 over other SSTR subtypes."
       }
     ]
   },
-  "previous_best_ddg": -31.3721
+  "previous_best_ddg": -46.13
 }

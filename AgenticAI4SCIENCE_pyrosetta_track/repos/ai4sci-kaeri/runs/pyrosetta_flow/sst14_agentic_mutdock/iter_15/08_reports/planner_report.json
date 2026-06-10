@@ -1,0 +1,58 @@
+{
+  "type": "planner",
+  "iteration": 15,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T16:44:00.429738+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/SSTR5) electrostatic interactions, thereby increasing the selectivity margin.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current hypothesis is that strong ddG alone is insufficient for success; selectivity must be explicitly optimized by disrupting off-target interactions at non-pharmacophore positions. The next iteration will focus on these positions to increase Δmargin.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3 and SSTR5. Focusing mutations here can disrupt conserved pocket contacts while preserving key pharmacophore residues."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "A",
+            "G"
+          ],
+          "6": [
+            "T",
+            "S"
+          ],
+          "11": [
+            "I",
+            "V"
+          ],
+          "12": [
+            "L",
+            "M"
+          ]
+        },
+        "rationale": "Introducing charged or hydrophobic residues at these positions can disrupt conserved interactions with off-target SSTRs while preserving the pharmacophore core (FWKT at 7-10) and Cys3/Cys14."
+      }
+    ]
+  },
+  "previous_best_ddg": -23.9349
+}

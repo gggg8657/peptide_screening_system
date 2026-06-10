@@ -1,0 +1,58 @@
+{
+  "type": "planner",
+  "iteration": 18,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T17:07:35.015467+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic substitutions at position 11 will enhance SSTR2-specific interactions with ECL2/TM5 while reducing off-target binding to SSTR3/SSTR5.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current designs are achieving strong binding but not sufficient selectivity. The focus must shift to explicitly disrupting off-target interactions at conserved positions while preserving the pharmacophore.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "A",
+            "G"
+          ],
+          "6": [
+            "A",
+            "G"
+          ],
+          "11": [
+            "A",
+            "G"
+          ],
+          "12": [
+            "A",
+            "G"
+          ]
+        },
+        "rationale": "Introducing charged or small hydrophobic residues at these positions can break conserved pocket interactions with SSTR3/SSTR5 without affecting the pharmacophore."
+      }
+    ]
+  },
+  "previous_best_ddg": -33.5521
+}

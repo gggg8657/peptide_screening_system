@@ -1,13 +1,58 @@
 {
   "type": "planner",
   "iteration": 5,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-05-13T08:44:07.869497+00:00",
-  "hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:36:36.625980+00:00",
+  "hypothesis": "Mutating position 5 to bulky aromatic residues (e.g., W, F, Y) will enhance SSTR2-specific TM5/ECL2 complementarity while disrupting off-target (SSTR3/5) interactions. Mutating position 11 to hydrophobic residues (e.g., L, I, V) will stabilize the peptide in the SSTR2-specific ECL3/TM6 pocket and reduce off-target binding.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "이전 iteration과 동일한 파라미터로 재현성 확인 및 후보 다양성 탐색.",
-    "proposed_changes": []
+    "hypothesis": "The campaign is not yet achieving consistent selectivity over native SST-14. Structural failures dominate, and the low pass rate suggests poor design quality. A focused mutation strategy at non-pharmacophore positions is needed to improve selectivity.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "Focus on non-pharmacophore positions to disrupt off-target contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "A",
+            "G"
+          ],
+          "6": [
+            "S",
+            "T"
+          ],
+          "11": [
+            "L",
+            "I"
+          ],
+          "12": [
+            "F",
+            "Y"
+          ]
+        },
+        "rationale": "Introduce mutations at non-pharmacophore positions to break conserved interactions with off-target SSTR3/SSTR5 while maintaining SSTR2 binding."
+      }
+    ]
   },
-  "previous_best_ddg": -33.7587
+  "previous_best_ddg": -22.7387
 }

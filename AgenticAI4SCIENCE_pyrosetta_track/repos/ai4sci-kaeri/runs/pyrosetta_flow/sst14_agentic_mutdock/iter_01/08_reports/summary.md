@@ -1,17 +1,16 @@
-# Iteration 1 Summary: sst14_mutdock_3000
+# Iteration 1 Summary: sst14_mutdock_5000
 
-            - **Run ID**: `sst14_mutdock_3000`
+            - **Run ID**: `sst14_mutdock_5000`
             - **Iteration**: 1
-            - **생성 시각**: 2026-06-10 08:58 UTC
+            - **생성 시각**: 2026-06-10 17:24 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 1 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all quality control (QC) gates. While the designs exhibited moderate binding affinity as indicated by ddG values, the overall selectivity was poor. Only one candidate achieved a Δmargin > 0, indicating limited improvement in on-target versus off-target binding. The primary failure mode was structural, suggesting that the current designs may not be optimized for the target interface. The best ddG value of -19.7 kcal/mol was observed for iter01_cand002, but the lack of selectivity remains a critical bottleneck for further development. These findings highlight the need for refinement in structural design to enhance selectivity while maintaining strong binding affinity.
+            Iteration 1 of the SSTR2 peptide binder design campaign evaluated three candidates, all of which passed the quality control (QC) gates. The candidates exhibited a wide range of binding affinities, as indicated by their ddG values, with the most favorable being iter01_cand001 (ddG = -46.1 kcal/mol). However, all candidates showed identical pLDDT and docking scores of 0.0, suggesting a lack of structural confidence or meaningful docking performance. Critically, only one candidate demonstrated selectivity over the native SST-14 ligand, with a Δmargin > 0. This indicates that the current design strategy has not yet successfully enhanced SSTR2 selectivity beyond the native ligand. The primary failure mode observed was structural failures, highlighting the need for improved structural modeling and refinement in future iterations.
 
             ## Recommendations
 
-            - Refine structural design to improve selectivity, focusing on features that reduce off-target binding.
-- Explore additional mutations or interface modifications to enhance the Δmargin for candidate binding.
-- Reassess docking and ddG metrics using updated scoring functions or alternative simulation methods.
-- Consider incorporating experimental validation for the top candidates to confirm predicted binding behavior.
+            - Refine structural modeling approaches to improve pLDDT and docking scores.
+- Focus on enhancing selectivity metrics by incorporating more SSTR2-specific features in the design.
+- Expand the candidate pool to increase the likelihood of identifying high-affinity, selective binders.

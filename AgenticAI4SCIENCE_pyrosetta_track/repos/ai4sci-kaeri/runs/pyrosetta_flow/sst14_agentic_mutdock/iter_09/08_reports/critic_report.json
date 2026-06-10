@@ -1,44 +1,76 @@
 {
   "type": "critic",
   "iteration": 9,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-03-23T11:43:57.909552+00:00",
-  "hypothesis": "The low pass rate is primarily due to overly stringent ddG and clash thresholds that filter out structurally viable designs. By relaxing these thresholds, we expect to retain more candidates that can be further evaluated for structural quality and binding affinity.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T18:06:53.086648+00:00",
+  "hypothesis": "The current design strategy is insufficient to achieve consistent SSTR2 selectivity. A more targeted approach, focusing on disrupting conserved interactions in off-targets at non-pharmacophore positions, is necessary to push Δmargin positive across more candidates.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -5.0,
-      "new_value": -30.0,
-      "rationale": "The current ddG threshold is too strict, causing most candidates with highly negative ddG values to fail. Relaxing the threshold to -30.0 will allow more candidates to pass the ddG gate while still filtering out the most unrealistic designs."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we must disrupt conserved pocket interactions in SSTR3/SSTR5 at non-pharmacophore positions. Focusing on these positions allows us to design mutations that reduce off-target binding while preserving the pharmacophore core."
     },
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 20,
-      "rationale": "Only one candidate passed the clash gate, indicating the clash threshold is too tight. Raising it to 20 will reduce false negatives from minor clashes."
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "N",
+          "Q"
+        ],
+        "5": [
+          "L",
+          "I"
+        ],
+        "6": [
+          "K",
+          "R"
+        ],
+        "11": [
+          "A",
+          "G"
+        ],
+        "12": [
+          "T",
+          "S"
+        ]
+      },
+      "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while avoiding disruption of the pharmacophore (positions 7-10) and Cys3/Cys14. For example, introducing charged residues at position 6 may disrupt electrostatic interactions in off-targets."
     }
   ],
   "current_params": {
-    "n_candidates": 14,
+    "n_candidates": 8,
     "objective_mode": "ddg_plus_constraints",
-    "rosetta_ddg_max": -5.0,
+    "rosetta_ddg_max": -15.0,
     "rosetta_clash_max": 10
   },
   "candidate_pdbs": [
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_001.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_002.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_003.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_004.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_005.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_006.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_007.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_008.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_009.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_010.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_011.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_012.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_013.pdb",
-    "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_014.pdb"
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_001.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_002.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_003.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_004.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_005.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_006.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_007.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_008.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_009.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_010.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_011.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_012.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_013.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_09/cand_014.pdb"
   ],
-  "receptor_pdb": "/home/helloworld/Documents/workspace/repos/PRST_N_FM/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/data/fold_test1_model_0.pdb"
+  "receptor_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb"
 }

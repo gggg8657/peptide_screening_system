@@ -1,26 +1,58 @@
 {
   "type": "planner",
   "iteration": 7,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-03-23T11:28:03.304764+00:00",
-  "hypothesis": "Introducing positively charged residues at positions 12 and 14 will increase binding affinity by stabilizing electrostatic interactions with negatively charged residues in the SSTR2 binding pocket, while maintaining the peptide backbone conformation.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:48:44.484087+00:00",
+  "hypothesis": "Enhancing SSTR2 selectivity by introducing aromatic residues at position 5 and hydrophobic residues at position 11 to improve complementarity with SSTR2-specific ECL2/TM5 contacts while reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "We hypothesize that relaxing the ddG and clash thresholds will enable the selection of designs with stronger predicted binding while maintaining acceptable structural integrity, thereby improving the overall success rate.",
+    "hypothesis": "The current design strategy is generating high-affinity binders but not sufficiently selective ones. A shift in focus to non-pharmacophore positions to break off-target interactions is necessary to achieve the desired SSTR2 selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_ddg_max",
-        "old_value": -5.0,
-        "new_value": -30.0,
-        "rationale": "The current ddG threshold is too strict, rejecting candidates with highly favorable binding energies (e.g., -43.4). Lowering the threshold to -30.0 will allow these promising designs to pass the ddG gate."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are non-pharmacophore and are likely involved in off-target contacts with SSTR3/SSTR5. Focusing design on these positions can disrupt off-target interactions while preserving SSTR2 pharmacophore."
       },
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 20,
-        "rationale": "A higher clash tolerance will reduce the number of candidates failing due to minor steric clashes, which currently account for 4 failures."
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "position_1": [
+            "D",
+            "E"
+          ],
+          "position_2": [
+            "K",
+            "R"
+          ],
+          "position_5": [
+            "A",
+            "G"
+          ],
+          "position_6": [
+            "S",
+            "T"
+          ],
+          "position_11": [
+            "P",
+            "A"
+          ],
+          "position_12": [
+            "Q",
+            "N"
+          ]
+        },
+        "rationale": "These mutations are expected to break conserved hydrophobic or hydrogen-bonding interactions with SSTR3/SSTR5 without affecting the pharmacophore at positions 7-10."
       }
     ]
   },
-  "previous_best_ddg": -43.4309
+  "previous_best_ddg": -29.0568
 }

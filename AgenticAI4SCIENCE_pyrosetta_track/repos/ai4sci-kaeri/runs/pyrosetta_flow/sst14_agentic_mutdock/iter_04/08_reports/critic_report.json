@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 4,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-06-10T07:33:43.760589+00:00",
-  "hypothesis": "The current design strategy prioritizes SSTR2 affinity but fails to address off-target interactions. A revised hypothesis is that disrupting conserved pocket interactions at non-pharmacophore positions will improve SSTR2 selectivity without compromising binding affinity.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:35:47.629460+00:00",
+  "hypothesis": "The campaign is not yet achieving consistent selectivity over native SST-14. Structural failures dominate, and the low pass rate suggests poor design quality. A focused mutation strategy at non-pharmacophore positions is needed to improve selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,50 +16,44 @@
         11,
         12
       ],
-      "rationale": "Disrupt conserved pocket interactions at non-pharmacophore positions to reduce off-target binding to SSTR3/SSTR5."
+      "rationale": "Focus on non-pharmacophore positions to disrupt off-target contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
     },
     {
       "parameter_name": "suggested_mutations",
       "old_value": null,
       "new_value": {
-        "position_1": [
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
           "A",
-          "G",
-          "E"
+          "G"
         ],
-        "position_2": [
-          "G",
-          "C",
-          "K"
-        ],
-        "position_5": [
-          "W",
-          "G",
-          "N"
-        ],
-        "position_6": [
-          "Y",
-          "G",
-          "K"
-        ],
-        "position_11": [
-          "T",
-          "I",
-          "L"
-        ],
-        "position_12": [
+        "6": [
           "S",
-          "C",
-          "E"
+          "T"
+        ],
+        "11": [
+          "L",
+          "I"
+        ],
+        "12": [
+          "F",
+          "Y"
         ]
       },
-      "rationale": "Introduce mutations at non-pharmacophore positions to disrupt conserved interactions with SSTR3/SSTR5 while preserving SSTR2 binding."
+      "rationale": "Introduce mutations at non-pharmacophore positions to break conserved interactions with off-target SSTR3/SSTR5 while maintaining SSTR2 binding."
     }
   ],
   "current_params": {
     "n_candidates": 8,
     "objective_mode": "ddg_plus_constraints",
-    "rosetta_ddg_max": -5.0,
+    "rosetta_ddg_max": -15.0,
     "rosetta_clash_max": 10
   },
   "candidate_pdbs": [
@@ -67,6 +61,8 @@
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_001.val1.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_001.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_002.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_002.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_002.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_003.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_003.val1.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_003.val2.pdb",

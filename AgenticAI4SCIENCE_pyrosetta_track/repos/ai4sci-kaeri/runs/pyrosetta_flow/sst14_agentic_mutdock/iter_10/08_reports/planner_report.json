@@ -1,0 +1,58 @@
+{
+  "type": "planner",
+  "iteration": 10,
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T18:07:41.211928+00:00",
+  "hypothesis": "Enhancing steric and electrostatic complementarity with SSTR2-unique ECL2/ECL3/TM5/TM6 regions by mutating positions 5 and 11 will increase selectivity margin by differentiating SSTR2 binding from off-targets.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current design strategy is insufficient to achieve consistent SSTR2 selectivity. A more targeted approach, focusing on disrupting conserved interactions in off-targets at non-pharmacophore positions, is necessary to push Δmargin positive across more candidates.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we must disrupt conserved pocket interactions in SSTR3/SSTR5 at non-pharmacophore positions. Focusing on these positions allows us to design mutations that reduce off-target binding while preserving the pharmacophore core."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "N",
+            "Q"
+          ],
+          "5": [
+            "L",
+            "I"
+          ],
+          "6": [
+            "K",
+            "R"
+          ],
+          "11": [
+            "A",
+            "G"
+          ],
+          "12": [
+            "T",
+            "S"
+          ]
+        },
+        "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while avoiding disruption of the pharmacophore (positions 7-10) and Cys3/Cys14. For example, introducing charged residues at position 6 may disrupt electrostatic interactions in off-targets."
+      }
+    ]
+  },
+  "previous_best_ddg": -30.7335
+}

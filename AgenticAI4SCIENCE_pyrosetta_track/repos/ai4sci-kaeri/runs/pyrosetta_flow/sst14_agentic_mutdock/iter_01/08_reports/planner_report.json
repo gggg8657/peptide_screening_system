@@ -1,9 +1,9 @@
 {
   "type": "planner",
   "iteration": 1,
-  "run_id": "sst14_mutdock_2000",
-  "timestamp": "2026-06-10T12:01:27.697925+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance complementarity with SSTR2-specific ECL2/TM5 contacts while avoiding off-target interactions. A negatively charged residue at position 6 may disrupt off-target electrostatic interactions while being tolerated by SSTR2.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:21:46.755645+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interactions in the ECL2/TM5 region while avoiding off-target interactions. A negative charge at position 6 may disrupt off-target electrostatic complementarity.",
   "strategy": "ddg_only",
   "critic_feedback_used": null,
   "previous_best_ddg": null

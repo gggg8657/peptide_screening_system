@@ -1,0 +1,64 @@
+{
+  "type": "planner",
+  "iteration": 17,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T16:55:55.428741+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific complementarity with ECL2/TM5 while reducing off-target affinity, increasing selectivity margin.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current designs are not sufficiently disrupting conserved off-target interactions at non-pharmacophore positions. Targeted mutations at positions 1, 2, 5, 6, 11, and 12 are needed to improve selectivity over native SST-14.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing design on these positions can help disrupt conserved-pocket contacts while preserving key pharmacophore residues."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "position_1": [
+            "A",
+            "G",
+            "T"
+          ],
+          "position_2": [
+            "A",
+            "G",
+            "T"
+          ],
+          "position_5": [
+            "N",
+            "D",
+            "E"
+          ],
+          "position_6": [
+            "N",
+            "D",
+            "E"
+          ],
+          "position_11": [
+            "I",
+            "V",
+            "L"
+          ],
+          "position_12": [
+            "I",
+            "V",
+            "L"
+          ]
+        },
+        "rationale": "Introducing polar or hydrophobic mutations at these positions can disrupt conserved interactions with SSTR3/SSTR5, particularly those involving hydrophobic or hydrogen-bonding motifs."
+      }
+    ]
+  },
+  "previous_best_ddg": -30.195
+}

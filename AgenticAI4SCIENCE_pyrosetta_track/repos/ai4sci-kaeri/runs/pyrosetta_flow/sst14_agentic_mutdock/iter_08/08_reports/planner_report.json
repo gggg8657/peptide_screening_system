@@ -1,26 +1,82 @@
 {
   "type": "planner",
   "iteration": 8,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-03-23T11:33:20.407029+00:00",
-  "hypothesis": "Adding additional aromatic residues at positions 6, 7, 11 and introducing a negatively charged residue at position 5 will increase hydrophobic and electrostatic complementarity with the SSTR2 binding pocket, resulting in a more negative ddG compared to the best candidate from iteration 7.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:52:20.986621+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W, F, Y) will enhance complementarity with SSTR2-specific ECL2 (res 192/193/195/197) and TM5 (205/208/209/212) residues, while mutating position 11 to hydrophobic residues (L, I, V) will reduce off-target interactions with SSTR3/5 by avoiding unfavorable electrostatic contacts. These changes are expected to increase the selectivity margin by improving SSTR2 affinity and reducing off-target binding.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are limited by rigid backbone sampling, leading to structural clashes. Introducing flexible backbone sampling or side‑chain rotamer optimization should reduce clashes and improve stability scores.",
+    "hypothesis": "The current design strategy is generating strong binders but insufficiently differentiating SSTR2 from off-targets. Targeted mutation of non-pharmacophore positions is necessary to improve selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 5,
-        "rationale": "The single structural failure is due to a clash exceeding the current threshold. Tightening the clash limit will reduce such failures without discarding too many candidates."
+        "parameter_name": "focus_positions",
+        "old_value": [],
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To disrupt conserved-pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions and improve SSTR2 selectivity."
       },
       {
-        "parameter_name": "n_candidates",
-        "old_value": 14,
-        "new_value": 20,
-        "rationale": "Increasing the pool size provides more diversity and a higher chance of generating candidates that satisfy all QC gates."
+        "parameter_name": "suggested_mutations",
+        "old_value": [],
+        "new_value": [
+          {
+            "position": 1,
+            "mutations": [
+              "A",
+              "G",
+              "T"
+            ]
+          },
+          {
+            "position": 2,
+            "mutations": [
+              "G",
+              "T",
+              "S"
+            ]
+          },
+          {
+            "position": 5,
+            "mutations": [
+              "N",
+              "T",
+              "S"
+            ]
+          },
+          {
+            "position": 6,
+            "mutations": [
+              "W",
+              "Y",
+              "F"
+            ]
+          },
+          {
+            "position": 11,
+            "mutations": [
+              "F",
+              "Y",
+              "T"
+            ]
+          },
+          {
+            "position": 12,
+            "mutations": [
+              "C",
+              "S",
+              "T"
+            ]
+          }
+        ],
+        "rationale": "Proposing mutations at non-pharmacophore positions to break conserved interactions in SSTR3/SSTR5 and improve selectivity."
       }
     ]
   },
-  "previous_best_ddg": -45.7107
+  "previous_best_ddg": -27.3018
 }

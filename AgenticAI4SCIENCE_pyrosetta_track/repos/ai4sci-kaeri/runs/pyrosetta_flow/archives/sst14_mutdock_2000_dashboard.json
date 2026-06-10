@@ -1,9 +1,9 @@
 {
   "run_id": "sst14_mutdock_2000",
-  "started_at": "2026-06-10T08:28:39.310403+00:00",
-  "updated_at": "2026-06-10T08:48:22.841027+00:00",
-  "iteration": 1,
-  "total_iterations": 1,
+  "started_at": "2026-06-10T11:54:41.275623+00:00",
+  "updated_at": "2026-06-10T12:40:45.867170+00:00",
+  "iteration": 4,
+  "total_iterations": 4,
   "llm_model": "VLLMProvider(model='qwen3-32b')",
   "target": "SSTR2",
   "reference": "DOTATATE (AGCKNFFWKTFTSC, 14-aa)",
@@ -55,14 +55,14 @@
       "label": "PyRosetta baseline",
       "shortLabel": "Step06-BL",
       "status": "completed",
-      "duration": "6.6m"
+      "duration": "6.7m"
     },
     {
       "id": "step06",
       "label": "PyRosetta",
       "shortLabel": "Step06",
       "status": "completed",
-      "duration": "7.8m"
+      "duration": "3.5m"
     },
     {
       "id": "step05b",
@@ -95,16 +95,16 @@
       "name": "Planner",
       "type": "LLM",
       "status": "idle",
-      "lastMessage": "Introducing aromatic residues at position 5 and hydrophobic residues at position",
-      "taskCount": 1,
-      "last_active_ts": "2026-06-10T08:35:15.740225+00:00",
+      "lastMessage": "Enhancing steric complementarity with SSTR2-unique ECL2/ECL3/TM5/TM6 regions by ",
+      "taskCount": 4,
+      "last_active_ts": "2026-06-10T12:34:36.162728+00:00",
       "is_runtime_active": true,
       "report": {
         "type": "plan",
-        "iteration": 1,
+        "iteration": 4,
         "run_id": "sst14_mutdock_2000",
-        "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interactions in the ECL2/TM5 pocket, while a negatively charged residue at position 6 will disrupt off-target (SSTR3/SSTR5) electrostatic complementarity.",
-        "strategy": "ddg_only"
+        "hypothesis": "Enhancing steric complementarity with SSTR2-unique ECL2/ECL3/TM5/TM6 regions by introducing bulky hydrophobic residues at positions 5 and 11 will increase selectivity margin (Δmargin > 0) by differentiating SSTR2 from off-targets like SSTR3/SSTR5.",
+        "strategy": "ddg_plus_constraints"
       }
     },
     {
@@ -113,8 +113,8 @@
       "type": "Code",
       "status": "idle",
       "lastMessage": "Ranking done",
-      "taskCount": 1,
-      "last_active_ts": "2026-06-10T08:37:43.305040+00:00",
+      "taskCount": 4,
+      "last_active_ts": "2026-06-10T12:37:25.412858+00:00",
       "is_runtime_active": true
     },
     {
@@ -132,26 +132,26 @@
       "name": "Critic",
       "type": "LLM",
       "status": "idle",
-      "lastMessage": "The current design strategy is insufficient to achieve robust SSTR2 selectivity.",
-      "taskCount": 1,
-      "last_active_ts": "2026-06-10T08:42:23.784907+00:00",
+      "lastMessage": "The current design strategy is insufficient to achieve strong SSTR2 selectivity.",
+      "taskCount": 4,
+      "last_active_ts": "2026-06-10T12:37:25.438673+00:00",
       "is_runtime_active": true,
       "report": {
         "type": "critic",
-        "iteration": 1,
-        "hypothesis": "The current design strategy is insufficient to achieve robust SSTR2 selectivity. A more focused mutagenesis strategy on non-pharmacophore positions and a revised objective function that prioritizes selectivity are needed to push Δmargin above 0.",
+        "iteration": 4,
+        "hypothesis": "The current design strategy is insufficient to achieve strong SSTR2 selectivity. We must explicitly target non-pharmacophore positions to disrupt off-target interactions, particularly in SSTR3 and SSTR5, while preserving the core pharmacophore.",
         "proposed_changes": [
           {
             "parameter": "focus_positions",
-            "old": "[]",
+            "old": "None",
             "new": "[1, 2, 5, 6, 11, 12]",
-            "rationale": "Target non-pharmacophore positions for mutagenesis to disrupt conserved pocket interactions in off-target SSTR3/SSTR5 while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
+            "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in off-targets SSTR3 and SSTR5. These positions are non-pharmacophore and can be mutated to reduce off-target binding while preserving the core pharmacophore (FWKT7-10 and Cys3/Cys14)."
           },
           {
-            "parameter": "objective_mode",
-            "old": "ddg_only",
-            "new": "selectivity_weighted",
-            "rationale": "Shift the optimization objective to prioritize selectivity (Δmargin) over raw ddG binding energy, ensuring that candidates with strong off-target binding are penalized."
+            "parameter": "suggested_mutations",
+            "old": "None",
+            "new": "{'position_1': ['A', 'L', 'V'], 'position_2': ['K', 'R', 'H'], 'position_5': ['A', 'G', 'S'], 'position_6': ['I', 'V', 'L'], 'position_11': ['A', 'G', 'T'], 'position_12': ['A', 'G', 'S']}",
+            "rationale": "These mutations are designed to reduce off-target interactions without compromising the pharmacophore. For example, introducing hydrophobic residues at position 6 or polar residues at position 2 can disrupt conserved interactions in SSTR3/SSTR5."
           }
         ]
       }
@@ -162,13 +162,13 @@
       "type": "LLM",
       "status": "idle",
       "lastMessage": "Reports saved",
-      "taskCount": 1,
-      "last_active_ts": "2026-06-10T08:42:33.098944+00:00",
+      "taskCount": 4,
+      "last_active_ts": "2026-06-10T12:37:37.643972+00:00",
       "is_runtime_active": true,
       "report": {
         "type": "reporter",
-        "iteration": 1,
-        "summary": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md"
+        "iteration": 4,
+        "summary": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/summary.md"
       }
     }
   ],
@@ -189,7 +189,7 @@
       "id": "step06_refine",
       "label": "Refine",
       "status": "completed",
-      "duration": "2.3m"
+      "duration": "2.6m"
     },
     {
       "id": "step06_score",
@@ -207,13 +207,13 @@
       "id": "step06_critic",
       "label": "Critic",
       "status": "completed",
-      "duration": "9s"
+      "duration": "12s"
     },
     {
       "id": "step06_reporter",
       "label": "Reporter",
       "status": "completed",
-      "duration": "36s"
+      "duration": "40s"
     }
   ],
   "timeline": [
@@ -222,221 +222,1120 @@
       "stage": "rosetta.prepare",
       "status": "running",
       "message": "Preparing baseline (3 trials, best-of)",
-      "ts": "2026-06-10T08:28:39.327444+00:00"
+      "ts": "2026-06-10T11:54:41.295091+00:00"
     },
     {
       "iteration": 0,
       "stage": "rosetta.prepare",
       "status": "completed",
-      "message": "Baseline ready (best of 3: ddG=-25.4)",
-      "ts": "2026-06-10T08:35:15.718390+00:00"
+      "message": "Baseline ready (best of 3: ddG=0.5)",
+      "ts": "2026-06-10T12:01:22.498018+00:00"
     },
     {
       "iteration": 1,
       "stage": "planner",
       "status": "running",
       "message": "Planner generating hypothesis",
-      "ts": "2026-06-10T08:35:15.737669+00:00"
+      "ts": "2026-06-10T12:01:22.515020+00:00"
     },
     {
       "iteration": 1,
       "stage": "planner",
       "status": "completed",
-      "message": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interact",
-      "ts": "2026-06-10T08:35:22.540971+00:00"
+      "message": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance complementarity with SS",
+      "ts": "2026-06-10T12:01:27.695370+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.prepare",
       "status": "running",
       "message": "Iteration directory and run context prepared",
-      "ts": "2026-06-10T08:35:22.546291+00:00"
+      "ts": "2026-06-10T12:01:27.700584+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.prepare",
       "status": "completed",
       "message": "Ready for mutation and docking",
-      "ts": "2026-06-10T08:35:22.551276+00:00"
+      "ts": "2026-06-10T12:01:27.705429+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.mutate",
       "status": "running",
       "message": "Generating peptide mutants",
-      "ts": "2026-06-10T08:35:22.558665+00:00"
+      "ts": "2026-06-10T12:01:27.712623+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.mutate",
       "status": "completed",
       "message": "Mutants generated",
-      "ts": "2026-06-10T08:35:22.564020+00:00"
+      "ts": "2026-06-10T12:01:27.717961+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine",
       "status": "running",
-      "message": "Running FlexPepDock refinement (4 candidates, 4 parallel workers)",
-      "ts": "2026-06-10T08:35:22.569105+00:00"
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-06-10T12:01:27.722871+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine.iter01_cand001",
       "status": "running",
       "message": "iter01_cand001: AGCKFFFWKTLTSC",
-      "ts": "2026-06-10T08:35:22.571584+00:00"
+      "ts": "2026-06-10T12:01:27.725994+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine.iter01_cand002",
       "status": "running",
       "message": "iter01_cand002: AGCKYDFWKTITSC",
-      "ts": "2026-06-10T08:35:22.574055+00:00"
+      "ts": "2026-06-10T12:01:27.728518+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine.iter01_cand003",
       "status": "running",
       "message": "iter01_cand003: AGCKWFFWKTFTSC",
-      "ts": "2026-06-10T08:35:22.576570+00:00"
+      "ts": "2026-06-10T12:01:27.730957+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine.iter01_cand004",
       "status": "running",
       "message": "iter01_cand004: AGCKIFFWKTRISC",
-      "ts": "2026-06-10T08:35:22.579100+00:00"
+      "ts": "2026-06-10T12:01:27.733412+00:00"
     },
     {
       "iteration": 1,
-      "stage": "rosetta.refine.iter01_cand002",
-      "status": "completed",
-      "message": "iter01_cand002: ddG=378.06 seq=AGCKYDFWKTITSC",
-      "ts": "2026-06-10T08:37:38.794852+00:00"
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "running",
+      "message": "iter01_cand005: AGCKNIFWKTFMSC",
+      "ts": "2026-06-10T12:01:27.735858+00:00"
     },
     {
       "iteration": 1,
-      "stage": "rosetta.refine.iter01_cand003",
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "running",
+      "message": "iter01_cand006: AGCKNWFWKTFTSC",
+      "ts": "2026-06-10T12:01:27.738333+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand007",
+      "status": "running",
+      "message": "iter01_cand007: AGCKNFFWKTFNSC",
+      "ts": "2026-06-10T12:01:27.740813+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand008",
+      "status": "running",
+      "message": "iter01_cand008: AGCKNMFWKTFRSC",
+      "ts": "2026-06-10T12:01:27.743328+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand008",
       "status": "completed",
-      "message": "iter01_cand003: ddG=-19.74 seq=AGCKWFFWKTFTSC",
-      "ts": "2026-06-10T08:37:39.584732+00:00"
+      "message": "iter01_cand008: ddG=51.66 seq=AGCKNMFWKTFRSC",
+      "ts": "2026-06-10T12:03:39.491051+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine.iter01_cand001",
       "status": "completed",
-      "message": "iter01_cand001: ddG=-30.00 seq=AGCKFFFWKTLTSC",
-      "ts": "2026-06-10T08:37:39.961591+00:00"
+      "message": "iter01_cand001: ddG=-31.56 seq=AGCKFFFWKTLTSC",
+      "ts": "2026-06-10T12:03:49.643965+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand002",
+      "status": "completed",
+      "message": "iter01_cand002: ddG=23.77 seq=AGCKYDFWKTITSC",
+      "ts": "2026-06-10T12:03:50.988747+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand005",
+      "status": "completed",
+      "message": "iter01_cand005: ddG=-32.62 seq=AGCKNIFWKTFMSC",
+      "ts": "2026-06-10T12:03:56.238214+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand007",
+      "status": "completed",
+      "message": "iter01_cand007: ddG=-19.57 seq=AGCKNFFWKTFNSC",
+      "ts": "2026-06-10T12:03:58.610291+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine.iter01_cand004",
       "status": "completed",
-      "message": "iter01_cand004: ddG=6.85 seq=AGCKIFFWKTRISC",
-      "ts": "2026-06-10T08:37:43.275519+00:00"
+      "message": "iter01_cand004: ddG=-17.68 seq=AGCKIFFWKTRISC",
+      "ts": "2026-06-10T12:04:04.575202+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand003",
+      "status": "completed",
+      "message": "iter01_cand003: ddG=-21.68 seq=AGCKWFFWKTFTSC",
+      "ts": "2026-06-10T12:04:04.891901+00:00"
+    },
+    {
+      "iteration": 1,
+      "stage": "rosetta.refine.iter01_cand006",
+      "status": "completed",
+      "message": "iter01_cand006: ddG=-37.59 seq=AGCKNWFWKTFTSC",
+      "ts": "2026-06-10T12:04:20.089988+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.refine",
       "status": "completed",
       "message": "Docking refinement completed",
-      "ts": "2026-06-10T08:37:43.286462+00:00"
+      "ts": "2026-06-10T12:04:20.102503+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.score",
       "status": "running",
       "message": "Aggregating ddG/score/clash metrics",
-      "ts": "2026-06-10T08:37:43.291846+00:00"
+      "ts": "2026-06-10T12:04:20.107908+00:00"
     },
     {
       "iteration": 1,
       "stage": "rosetta.score",
       "status": "completed",
       "message": "Rosetta scoring metrics ready",
-      "ts": "2026-06-10T08:37:43.297186+00:00"
+      "ts": "2026-06-10T12:04:20.113394+00:00"
     },
     {
       "iteration": 1,
       "stage": "qc",
       "status": "running",
       "message": "Applying QC gates and ranking",
-      "ts": "2026-06-10T08:37:43.302434+00:00"
+      "ts": "2026-06-10T12:04:20.118860+00:00"
     },
     {
       "iteration": 1,
       "stage": "qc",
       "status": "completed",
       "message": "QC ranking completed",
-      "ts": "2026-06-10T08:37:43.313557+00:00"
+      "ts": "2026-06-10T12:04:20.130167+00:00"
     },
     {
       "iteration": 1,
       "stage": "selectivity",
       "status": "running",
       "message": "In-loop selectivity 게이트 평가",
-      "ts": "2026-06-10T08:37:43.318972+00:00"
+      "ts": "2026-06-10T12:04:20.135728+00:00"
     },
     {
       "iteration": 1,
       "stage": "selectivity",
       "status": "completed",
-      "message": "In-loop selectivity: 1건 도킹, leaderboard best Δ=0.077",
-      "ts": "2026-06-10T08:42:23.769756+00:00"
+      "message": "In-loop selectivity: 2건 도킹, leaderboard best Δ=0.2146",
+      "ts": "2026-06-10T12:13:25.291610+00:00"
     },
     {
       "iteration": 1,
       "stage": "critic",
       "status": "running",
       "message": "Critic analyzing candidate outcomes",
-      "ts": "2026-06-10T08:42:23.782104+00:00"
+      "ts": "2026-06-10T12:13:25.304675+00:00"
     },
     {
       "iteration": 1,
       "stage": "critic",
       "status": "completed",
-      "message": "The current design strategy is insufficient to achieve robust SSTR2 selectivity. A more focused mutagenesis strategy on ",
-      "ts": "2026-06-10T08:42:33.089732+00:00"
+      "message": "The current designs are not sufficiently disrupting off-target interactions at key positions. Focusing on mutations at n",
+      "ts": "2026-06-10T12:13:35.934661+00:00"
     },
     {
       "iteration": 1,
       "stage": "reporter",
       "status": "running",
       "message": "Reporter writing iteration artifacts",
-      "ts": "2026-06-10T08:42:33.096031+00:00"
+      "ts": "2026-06-10T12:13:35.941122+00:00"
     },
     {
       "iteration": 1,
       "stage": "reporter",
       "status": "completed",
       "message": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_01/08_reports/summary.md",
-      "ts": "2026-06-10T08:43:09.542656+00:00"
+      "ts": "2026-06-10T12:14:24.388205+00:00"
     },
     {
-      "iteration": 1,
+      "iteration": 2,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-06-10T12:14:24.400323+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Enhancing SSTR2 selectivity by introducing aromatic residues at position 5 to improve complementarity with SSTR2-specifi",
+      "ts": "2026-06-10T12:14:33.035512+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-06-10T12:14:33.041997+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-06-10T12:14:33.048181+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-06-10T12:14:33.057205+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-06-10T12:14:33.063748+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-06-10T12:14:33.069858+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand001",
+      "status": "running",
+      "message": "iter02_cand001: AGCKFFFWKTVTSC",
+      "ts": "2026-06-10T12:14:33.072921+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand002",
+      "status": "running",
+      "message": "iter02_cand002: AGCKNFFWKTLTSC",
+      "ts": "2026-06-10T12:14:33.075971+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand003",
+      "status": "running",
+      "message": "iter02_cand003: AGCKWFFWKTVTSC",
+      "ts": "2026-06-10T12:14:33.079021+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand004",
+      "status": "running",
+      "message": "iter02_cand004: AGCKYFFWKTFTSC",
+      "ts": "2026-06-10T12:14:33.082048+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand005",
+      "status": "running",
+      "message": "iter02_cand005: AGCKWFFWKTLTSC",
+      "ts": "2026-06-10T12:14:33.085155+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand006",
+      "status": "running",
+      "message": "iter02_cand006: AGCKYFFWKTLTSC",
+      "ts": "2026-06-10T12:14:33.088354+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand007",
+      "status": "running",
+      "message": "iter02_cand007: AGCKNFFWKTITSC",
+      "ts": "2026-06-10T12:14:33.091439+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand008",
+      "status": "running",
+      "message": "iter02_cand008: AGCKWFFWKTITSC",
+      "ts": "2026-06-10T12:14:33.094506+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand003",
+      "status": "completed",
+      "message": "iter02_cand003: ddG=28.08 seq=AGCKWFFWKTVTSC",
+      "ts": "2026-06-10T12:16:32.164400+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand001",
+      "status": "completed",
+      "message": "iter02_cand001: ddG=19.39 seq=AGCKFFFWKTVTSC",
+      "ts": "2026-06-10T12:16:33.389759+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand008",
+      "status": "completed",
+      "message": "iter02_cand008: ddG=357.14 seq=AGCKWFFWKTITSC",
+      "ts": "2026-06-10T12:16:38.725067+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand002",
+      "status": "completed",
+      "message": "iter02_cand002: ddG=2.06 seq=AGCKNFFWKTLTSC",
+      "ts": "2026-06-10T12:16:46.283732+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand007",
+      "status": "completed",
+      "message": "iter02_cand007: ddG=8.80 seq=AGCKNFFWKTITSC",
+      "ts": "2026-06-10T12:16:48.264034+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand005",
+      "status": "completed",
+      "message": "iter02_cand005: ddG=-38.06 seq=AGCKWFFWKTLTSC",
+      "ts": "2026-06-10T12:16:53.699305+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand006",
+      "status": "completed",
+      "message": "iter02_cand006: ddG=-21.74 seq=AGCKYFFWKTLTSC",
+      "ts": "2026-06-10T12:16:56.838036+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine.iter02_cand004",
+      "status": "completed",
+      "message": "iter02_cand004: ddG=-27.15 seq=AGCKYFFWKTFTSC",
+      "ts": "2026-06-10T12:17:04.701032+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-06-10T12:17:04.711302+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-06-10T12:17:04.715035+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-06-10T12:17:04.718708+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-06-10T12:17:04.722291+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-06-10T12:17:04.729715+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "selectivity",
+      "status": "running",
+      "message": "In-loop selectivity 게이트 평가",
+      "ts": "2026-06-10T12:17:04.733369+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "selectivity",
+      "status": "completed",
+      "message": "In-loop selectivity: 1건 도킹, leaderboard best Δ=0.2146",
+      "ts": "2026-06-10T12:21:32.498109+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-06-10T12:21:32.514494+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "critic",
+      "status": "completed",
+      "message": "The current designs achieve strong SSTR2 binding but fail to disrupt conserved interactions in SSTR3/SSTR5. Targeted mut",
+      "ts": "2026-06-10T12:21:43.700770+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-06-10T12:21:43.707950+00:00"
+    },
+    {
+      "iteration": 2,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_02/08_reports/summary.md",
+      "ts": "2026-06-10T12:22:26.991855+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-06-10T12:22:27.004602+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interact",
+      "ts": "2026-06-10T12:22:37.105587+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-06-10T12:22:37.109737+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-06-10T12:22:37.113525+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-06-10T12:22:37.119165+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-06-10T12:22:37.124602+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-06-10T12:22:37.128461+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand001",
+      "status": "running",
+      "message": "iter03_cand001: AGCKYFFWKTITSC",
+      "ts": "2026-06-10T12:22:37.130340+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand002",
+      "status": "running",
+      "message": "iter03_cand002: AGCKYFFWKTVTSC",
+      "ts": "2026-06-10T12:22:37.132225+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand003",
+      "status": "running",
+      "message": "iter03_cand003: AGCKNFFWKTVTSC",
+      "ts": "2026-06-10T12:22:37.134105+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand004",
+      "status": "running",
+      "message": "iter03_cand004: AGCKFFFWKTITSC",
+      "ts": "2026-06-10T12:22:37.136018+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand005",
+      "status": "running",
+      "message": "iter03_cand005: AGCKFFFWKTFTSC",
+      "ts": "2026-06-10T12:22:37.137948+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand006",
+      "status": "running",
+      "message": "iter03_cand006: TGCTNEFWKTFTSC",
+      "ts": "2026-06-10T12:22:37.139866+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand007",
+      "status": "running",
+      "message": "iter03_cand007: LGCKFFFWKTFMSC",
+      "ts": "2026-06-10T12:22:37.141790+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand008",
+      "status": "running",
+      "message": "iter03_cand008: AQCRGFFWKTFTSC",
+      "ts": "2026-06-10T12:22:37.143710+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand002",
+      "status": "completed",
+      "message": "iter03_cand002: ddG=-11.88 seq=AGCKYFFWKTVTSC",
+      "ts": "2026-06-10T12:24:51.435728+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand007",
+      "status": "completed",
+      "message": "iter03_cand007: ddG=-13.09 seq=LGCKFFFWKTFMSC",
+      "ts": "2026-06-10T12:24:54.244580+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand005",
+      "status": "completed",
+      "message": "iter03_cand005: ddG=-27.50 seq=AGCKFFFWKTFTSC",
+      "ts": "2026-06-10T12:25:00.306960+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand001",
+      "status": "completed",
+      "message": "iter03_cand001: ddG=0.39 seq=AGCKYFFWKTITSC",
+      "ts": "2026-06-10T12:25:03.793881+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand004",
+      "status": "completed",
+      "message": "iter03_cand004: ddG=-34.24 seq=AGCKFFFWKTITSC",
+      "ts": "2026-06-10T12:25:04.235954+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand003",
+      "status": "completed",
+      "message": "iter03_cand003: ddG=-49.68 seq=AGCKNFFWKTVTSC",
+      "ts": "2026-06-10T12:25:05.550825+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand008",
+      "status": "completed",
+      "message": "iter03_cand008: ddG=-28.79 seq=AQCRGFFWKTFTSC",
+      "ts": "2026-06-10T12:25:05.578840+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine.iter03_cand006",
+      "status": "completed",
+      "message": "iter03_cand006: ddG=-15.13 seq=TGCTNEFWKTFTSC",
+      "ts": "2026-06-10T12:25:15.589446+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-06-10T12:25:15.601237+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-06-10T12:25:15.605451+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-06-10T12:25:15.609749+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-06-10T12:25:15.614015+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-06-10T12:25:15.622799+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "selectivity",
+      "status": "running",
+      "message": "In-loop selectivity 게이트 평가",
+      "ts": "2026-06-10T12:25:15.627100+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "selectivity",
+      "status": "completed",
+      "message": "In-loop selectivity: 2건 도킹, leaderboard best Δ=0.3777",
+      "ts": "2026-06-10T12:33:40.786301+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-06-10T12:33:40.804889+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "critic",
+      "status": "completed",
+      "message": "The current hypothesis is that SSTR2 selectivity can be achieved by balancing strong SSTR2 binding with reduced off-targ",
+      "ts": "2026-06-10T12:33:53.022189+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-06-10T12:33:53.030585+00:00"
+    },
+    {
+      "iteration": 3,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/08_reports/summary.md",
+      "ts": "2026-06-10T12:34:36.144500+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "planner",
+      "status": "running",
+      "message": "Planner generating hypothesis",
+      "ts": "2026-06-10T12:34:36.160248+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "planner",
+      "status": "completed",
+      "message": "Enhancing steric complementarity with SSTR2-unique ECL2/ECL3/TM5/TM6 regions by introducing bulky hydrophobic residues a",
+      "ts": "2026-06-10T12:34:46.794603+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.prepare",
+      "status": "running",
+      "message": "Iteration directory and run context prepared",
+      "ts": "2026-06-10T12:34:46.799146+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.prepare",
+      "status": "completed",
+      "message": "Ready for mutation and docking",
+      "ts": "2026-06-10T12:34:46.803454+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.mutate",
+      "status": "running",
+      "message": "Generating peptide mutants",
+      "ts": "2026-06-10T12:34:46.810055+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.mutate",
+      "status": "completed",
+      "message": "Mutants generated",
+      "ts": "2026-06-10T12:34:46.816137+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine",
+      "status": "running",
+      "message": "Running FlexPepDock refinement (8 candidates, 8 parallel workers)",
+      "ts": "2026-06-10T12:34:46.820501+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand001",
+      "status": "running",
+      "message": "iter04_cand001: AECKFTFWKTFTSC",
+      "ts": "2026-06-10T12:34:46.822640+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand002",
+      "status": "running",
+      "message": "iter04_cand002: AHCINFFWKTMTSC",
+      "ts": "2026-06-10T12:34:46.824791+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand003",
+      "status": "running",
+      "message": "iter04_cand003: YGCKNFFWKTLWSC",
+      "ts": "2026-06-10T12:34:46.826926+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand004",
+      "status": "running",
+      "message": "iter04_cand004: HGCVNFFWKTETSC",
+      "ts": "2026-06-10T12:34:46.829101+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand005",
+      "status": "running",
+      "message": "iter04_cand005: AGCHSFFWKTLTSC",
+      "ts": "2026-06-10T12:34:46.831254+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand006",
+      "status": "running",
+      "message": "iter04_cand006: WGCKLSFWKTFTSC",
+      "ts": "2026-06-10T12:34:46.833440+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand007",
+      "status": "running",
+      "message": "iter04_cand007: HGCHIFFWKTFTSC",
+      "ts": "2026-06-10T12:34:46.835615+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand008",
+      "status": "running",
+      "message": "iter04_cand008: AGCRGGFWKTFTSC",
+      "ts": "2026-06-10T12:34:46.837784+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand002",
+      "status": "completed",
+      "message": "iter04_cand002: ddG=135.18 seq=AHCINFFWKTMTSC",
+      "ts": "2026-06-10T12:36:56.485388+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand005",
+      "status": "completed",
+      "message": "iter04_cand005: ddG=-8.86 seq=AGCHSFFWKTLTSC",
+      "ts": "2026-06-10T12:37:00.846073+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand008",
+      "status": "completed",
+      "message": "iter04_cand008: ddG=2.94 seq=AGCRGGFWKTFTSC",
+      "ts": "2026-06-10T12:37:02.703894+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand007",
+      "status": "completed",
+      "message": "iter04_cand007: ddG=-26.27 seq=HGCHIFFWKTFTSC",
+      "ts": "2026-06-10T12:37:06.600471+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand004",
+      "status": "completed",
+      "message": "iter04_cand004: ddG=-5.90 seq=HGCVNFFWKTETSC",
+      "ts": "2026-06-10T12:37:08.324062+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand003",
+      "status": "completed",
+      "message": "iter04_cand003: ddG=13.03 seq=YGCKNFFWKTLWSC",
+      "ts": "2026-06-10T12:37:14.146146+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand006",
+      "status": "completed",
+      "message": "iter04_cand006: ddG=1.59 seq=WGCKLSFWKTFTSC",
+      "ts": "2026-06-10T12:37:22.800160+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine.iter04_cand001",
+      "status": "completed",
+      "message": "iter04_cand001: ddG=19.63 seq=AECKFTFWKTFTSC",
+      "ts": "2026-06-10T12:37:25.384272+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.refine",
+      "status": "completed",
+      "message": "Docking refinement completed",
+      "ts": "2026-06-10T12:37:25.396753+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.score",
+      "status": "running",
+      "message": "Aggregating ddG/score/clash metrics",
+      "ts": "2026-06-10T12:37:25.401358+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "rosetta.score",
+      "status": "completed",
+      "message": "Rosetta scoring metrics ready",
+      "ts": "2026-06-10T12:37:25.405940+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "qc",
+      "status": "running",
+      "message": "Applying QC gates and ranking",
+      "ts": "2026-06-10T12:37:25.410561+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "qc",
+      "status": "completed",
+      "message": "QC ranking completed",
+      "ts": "2026-06-10T12:37:25.420041+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "selectivity",
+      "status": "running",
+      "message": "In-loop selectivity 게이트 평가",
+      "ts": "2026-06-10T12:37:25.424832+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "selectivity",
+      "status": "completed",
+      "message": "In-loop selectivity: 0건 도킹, leaderboard best Δ=0.3777",
+      "ts": "2026-06-10T12:37:25.427227+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "critic",
+      "status": "running",
+      "message": "Critic analyzing candidate outcomes",
+      "ts": "2026-06-10T12:37:25.436403+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "critic",
+      "status": "completed",
+      "message": "The current design strategy is insufficient to achieve strong SSTR2 selectivity. We must explicitly target non-pharmacop",
+      "ts": "2026-06-10T12:37:37.636817+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "reporter",
+      "status": "running",
+      "message": "Reporter writing iteration artifacts",
+      "ts": "2026-06-10T12:37:37.641684+00:00"
+    },
+    {
+      "iteration": 4,
+      "stage": "reporter",
+      "status": "completed",
+      "message": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/08_reports/summary.md",
+      "ts": "2026-06-10T12:38:17.575538+00:00"
+    },
+    {
+      "iteration": 4,
       "stage": "validation",
       "status": "running",
-      "message": "Running 3-trial validation for 2 candidates",
-      "ts": "2026-06-10T08:43:09.554992+00:00"
+      "message": "Running 3-trial validation for 1 candidates",
+      "ts": "2026-06-10T12:38:17.587862+00:00"
     },
     {
-      "iteration": 1,
+      "iteration": 4,
       "stage": "validation",
       "status": "completed",
-      "message": "Validation complete: 2 candidates validated",
-      "ts": "2026-06-10T08:48:21.525215+00:00"
+      "message": "Validation complete: 1 candidates validated",
+      "ts": "2026-06-10T12:40:44.246463+00:00"
     }
   ],
   "candidates": [
     {
       "rank": 1,
+      "id": "iter03_cand003",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -49.678,
+      "totalScore": 96.538,
+      "clashScore": 0.0,
+      "finalScore": 49.678,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_003.pdb",
+      "mw": 1589.86,
+      "instability_index": 15.771428571428572,
+      "radiolysis_score": 6.0,
+      "cluster": "C",
+      "gravy": 0.12857142857142856,
+      "net_charge_ph74": 1.993,
+      "selectivity_margin": 9.6078,
+      "half_life_h": 0.049,
+      "admet_score": 0.5822,
+      "boman_index": 0.6171,
+      "pi": 10.62,
+      "mo_score": 0.6597,
+      "fwkt_contact": true
+    },
+    {
+      "rank": 2,
+      "id": "iter02_cand005",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddG": -38.063,
+      "totalScore": 17.411,
+      "clashScore": 0.0,
+      "finalScore": 38.063,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_005.pdb",
+      "mw": 1675.99,
+      "instability_index": 32.57142857142858,
+      "radiolysis_score": 9.0,
+      "cluster": "E",
+      "gravy": 0.28571428571428564,
+      "net_charge_ph74": 1.993,
+      "selectivity_margin": 9.7378,
+      "half_life_h": 0.042,
+      "admet_score": 0.5123,
+      "boman_index": -0.0864,
+      "pi": 10.62,
+      "mo_score": 0.5618,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 3,
+      "id": "iter01_cand006",
+      "sequence": "AGCKNWFWKTFTSC",
+      "ddG": -37.59,
+      "totalScore": -11.877,
+      "clashScore": 0.0,
+      "finalScore": 37.59,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_006.pdb",
+      "mw": 1676.94,
+      "instability_index": 33.97857142857143,
+      "radiolysis_score": 9.0,
+      "cluster": "E",
+      "gravy": -0.23571428571428577,
+      "net_charge_ph74": 1.993,
+      "selectivity_margin": 8.6183,
+      "half_life_h": 0.044,
+      "admet_score": 0.646,
+      "boman_index": 0.7393,
+      "pi": 10.62,
+      "mo_score": 0.5633,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 4,
+      "id": "iter03_cand004",
+      "sequence": "AGCKFFFWKTITSC",
+      "ddG": -34.236,
+      "totalScore": -69.312,
+      "clashScore": 0.0,
+      "finalScore": 34.236,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_004.pdb",
+      "mw": 1636.95,
+      "instability_index": 32.57142857142858,
+      "radiolysis_score": 6.5,
+      "cluster": "E",
+      "gravy": 0.5999999999999999,
+      "net_charge_ph74": 1.993,
+      "selectivity_margin": 13.7477,
+      "half_life_h": 0.042,
+      "admet_score": 0.4652,
+      "boman_index": -0.1329,
+      "pi": 10.62,
+      "mo_score": 0.5747,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 5,
+      "id": "iter01_cand005",
+      "sequence": "AGCKNIFWKTFMSC",
+      "ddG": -32.622,
+      "totalScore": 35.824,
+      "clashScore": 0.0,
+      "finalScore": 32.622,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_005.pdb",
+      "mw": 1633.97,
+      "instability_index": 104.15714285714286,
+      "radiolysis_score": 9.0,
+      "cluster": "E",
+      "gravy": 0.33571428571428574,
+      "net_charge_ph74": 1.993,
+      "selectivity_margin": 13.5846,
+      "half_life_h": 0.049,
+      "admet_score": 0.1701,
+      "boman_index": 0.2029,
+      "pi": 10.62,
+      "mo_score": 0.5151,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 6,
       "id": "iter01_cand001",
       "sequence": "AGCKFFFWKTLTSC",
-      "ddG": -30.003,
-      "totalScore": -21.654,
+      "ddG": -31.558,
+      "totalScore": -83.627,
       "clashScore": 0.0,
-      "finalScore": 30.003,
+      "finalScore": 31.558,
       "result": "PASS",
       "failReason": "",
       "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_001.pdb",
@@ -446,34 +1345,147 @@
       "cluster": "E",
       "gravy": 0.5499999999999999,
       "net_charge_ph74": 1.993,
-      "selectivity_margin": 5.2515,
       "half_life_h": 0.041,
       "admet_score": 0.4727,
       "boman_index": -0.1329,
       "pi": 10.62,
-      "mo_score": 0.4349,
+      "mo_score": 0.3817,
       "fwkt_contact": true,
       "chelator_site_available": true
     },
     {
-      "rank": 2,
-      "id": "baseline_SST14",
-      "sequence": "AGCKNFFWKTFTSC",
-      "ddG": -25.387,
-      "totalScore": 20.532,
+      "rank": 7,
+      "id": "iter03_cand008",
+      "sequence": "AQCRGFFWKTFTSC",
+      "ddG": -28.791,
+      "totalScore": 43.879,
       "clashScore": 0.0,
-      "finalScore": 25.387,
-      "result": "REF",
-      "failReason": ""
+      "finalScore": 28.791,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_008.pdb",
+      "mw": 1679.94,
+      "instability_index": 29.935714285714283,
+      "radiolysis_score": 6.5,
+      "cluster": "E",
+      "gravy": -0.014285714285714362,
+      "net_charge_ph74": 1.994,
+      "half_life_h": 0.041,
+      "admet_score": 0.6026,
+      "boman_index": 1.2836,
+      "pi": 11.54,
+      "mo_score": 0.3785,
+      "fwkt_contact": true,
+      "chelator_site_available": true
     },
     {
-      "rank": 3,
+      "rank": 8,
+      "id": "iter03_cand005",
+      "sequence": "AGCKFFFWKTFTSC",
+      "ddG": -27.503,
+      "totalScore": 57.84,
+      "clashScore": 0.0,
+      "finalScore": 27.503,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_005.pdb",
+      "mw": 1670.97,
+      "instability_index": 41.385714285714286,
+      "radiolysis_score": 7.0,
+      "cluster": "E",
+      "gravy": 0.4785714285714285,
+      "net_charge_ph74": 1.993,
+      "half_life_h": 0.037,
+      "admet_score": 0.4717,
+      "boman_index": 0.0057,
+      "pi": 10.62,
+      "mo_score": 0.3483,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 9,
+      "id": "iter02_cand004",
+      "sequence": "AGCKYFFWKTFTSC",
+      "ddG": -27.147,
+      "totalScore": 26.866,
+      "clashScore": 0.0,
+      "finalScore": 27.147,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_004.pdb",
+      "mw": 1686.97,
+      "instability_index": 41.385714285714286,
+      "radiolysis_score": 7.5,
+      "cluster": "E",
+      "gravy": 0.1857142857142857,
+      "net_charge_ph74": 1.991,
+      "half_life_h": 0.037,
+      "admet_score": 0.5488,
+      "boman_index": 0.2286,
+      "pi": 10.21,
+      "mo_score": 0.3556,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 10,
+      "id": "iter04_cand007",
+      "sequence": "HGCHIFFWKTFTSC",
+      "ddG": -26.267,
+      "totalScore": 163.251,
+      "clashScore": 1.0,
+      "finalScore": 26.267,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_007.pdb",
+      "mw": 1711.99,
+      "instability_index": 88.65,
+      "radiolysis_score": 10.5,
+      "cluster": "E",
+      "gravy": 0.29285714285714276,
+      "net_charge_ph74": 1.071,
+      "half_life_h": 0.051,
+      "admet_score": 0.2016,
+      "boman_index": 0.2657,
+      "pi": 10.11,
+      "mo_score": 0.2998,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 11,
+      "id": "iter02_cand006",
+      "sequence": "AGCKYFFWKTLTSC",
+      "ddG": -21.74,
+      "totalScore": -53.003,
+      "clashScore": 1.0,
+      "finalScore": 21.74,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_006.pdb",
+      "mw": 1652.95,
+      "instability_index": 32.57142857142858,
+      "radiolysis_score": 7.0,
+      "cluster": "E",
+      "gravy": 0.2571428571428571,
+      "net_charge_ph74": 1.991,
+      "half_life_h": 0.041,
+      "admet_score": 0.5398,
+      "boman_index": 0.09,
+      "pi": 10.21,
+      "mo_score": 0.3123,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 12,
       "id": "iter01_cand003",
       "sequence": "AGCKWFFWKTFTSC",
-      "ddG": -19.735,
-      "totalScore": 46.997,
+      "ddG": -21.678,
+      "totalScore": -39.569,
       "clashScore": 1.0,
-      "finalScore": 19.735,
+      "finalScore": 21.678,
       "result": "PASS",
       "failReason": "",
       "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_003.pdb",
@@ -487,35 +1499,308 @@
       "admet_score": 0.5148,
       "boman_index": 0.0521,
       "pi": 10.62,
-      "mo_score": 0.2928,
+      "mo_score": 0.3083,
       "fwkt_contact": true,
       "chelator_site_available": true
     },
     {
-      "rank": 4,
+      "rank": 13,
+      "id": "iter01_cand007",
+      "sequence": "AGCKNFFWKTFNSC",
+      "ddG": -19.566,
+      "totalScore": 48.012,
+      "clashScore": 1.0,
+      "finalScore": 19.566,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_007.pdb",
+      "mw": 1650.9,
+      "instability_index": 30.650000000000002,
+      "radiolysis_score": 6.5,
+      "cluster": "E",
+      "gravy": -0.17142857142857146,
+      "net_charge_ph74": 1.993,
+      "half_life_h": 0.043,
+      "admet_score": 0.6547,
+      "boman_index": 0.9836,
+      "pi": 10.62,
+      "mo_score": 0.3097,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 14,
       "id": "iter01_cand004",
       "sequence": "AGCKIFFWKTRISC",
-      "ddG": 6.852,
-      "totalScore": -3.04,
-      "clashScore": 2.0,
-      "finalScore": -6.852,
-      "result": "FAIL",
+      "ddG": -17.676,
+      "totalScore": 11.226,
+      "clashScore": 1.0,
+      "finalScore": 17.676,
+      "result": "PASS",
       "failReason": "",
       "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_004.pdb",
+      "mw": 1658.01,
+      "instability_index": 26.507142857142856,
+      "radiolysis_score": 6.0,
+      "cluster": "E",
+      "gravy": 0.4499999999999999,
+      "net_charge_ph74": 2.993,
       "half_life_h": 0.037,
       "admet_score": 0.4907,
       "boman_index": 0.6107,
       "pi": 11.69,
-      "mo_score": 0.1304
+      "mo_score": 0.2718,
+      "fwkt_contact": true,
+      "chelator_site_available": true
     },
     {
-      "rank": 5,
+      "rank": 15,
+      "id": "iter03_cand006",
+      "sequence": "TGCTNEFWKTFTSC",
+      "ddG": -15.126,
+      "totalScore": -25.61,
+      "clashScore": 0.0,
+      "finalScore": 15.126,
+      "result": "PASS",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_006.pdb",
+      "mw": 1622.8,
+      "instability_index": 47.87142857142858,
+      "radiolysis_score": 6.0,
+      "cluster": "D",
+      "gravy": -0.37142857142857144,
+      "net_charge_ph74": -0.005,
+      "half_life_h": 0.066,
+      "admet_score": 0.7717,
+      "boman_index": 1.4921,
+      "pi": 6.94,
+      "mo_score": 0.3044,
+      "fwkt_contact": true,
+      "chelator_site_available": true
+    },
+    {
+      "rank": 16,
+      "id": "iter03_cand007",
+      "sequence": "LGCKFFFWKTFMSC",
+      "ddG": -13.091,
+      "totalScore": -10.962,
+      "clashScore": 0.0,
+      "finalScore": 13.091,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_007.pdb",
+      "half_life_h": 0.034,
+      "admet_score": 0.1474,
+      "boman_index": -0.5679,
+      "pi": 10.62,
+      "mo_score": 0.1794
+    },
+    {
+      "rank": 17,
+      "id": "iter03_cand002",
+      "sequence": "AGCKYFFWKTVTSC",
+      "ddG": -11.879,
+      "totalScore": 44.971,
+      "clashScore": 1.0,
+      "finalScore": 11.879,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_002.pdb",
+      "half_life_h": 0.043,
+      "admet_score": 0.5402,
+      "boman_index": 0.1529,
+      "pi": 10.21,
+      "mo_score": 0.232
+    },
+    {
+      "rank": 18,
+      "id": "iter04_cand005",
+      "sequence": "AGCHSFFWKTLTSC",
+      "ddG": -8.857,
+      "totalScore": 448.407,
+      "clashScore": 0.0,
+      "finalScore": 8.857,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_005.pdb",
+      "half_life_h": 0.059,
+      "admet_score": 0.4049,
+      "boman_index": 0.2593,
+      "pi": 10.11,
+      "mo_score": 0.1913
+    },
+    {
+      "rank": 19,
+      "id": "iter04_cand004",
+      "sequence": "HGCVNFFWKTETSC",
+      "ddG": -5.899,
+      "totalScore": 35.708,
+      "clashScore": 0.0,
+      "finalScore": 5.899,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_004.pdb",
+      "half_life_h": 0.061,
+      "admet_score": 0.7764,
+      "boman_index": 1.1693,
+      "pi": 7.82,
+      "mo_score": 0.2271
+    },
+    {
+      "rank": 20,
+      "id": "iter03_cand001",
+      "sequence": "AGCKYFFWKTITSC",
+      "ddG": 0.392,
+      "totalScore": 68.85,
+      "clashScore": 0.0,
+      "finalScore": -0.392,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_03/cand_001.pdb",
+      "half_life_h": 0.042,
+      "admet_score": 0.5323,
+      "boman_index": 0.09,
+      "pi": 10.21,
+      "mo_score": 0.138
+    },
+    {
+      "rank": 21,
+      "id": "baseline_SST14",
+      "sequence": "AGCKNFFWKTFTSC",
+      "ddG": 0.542,
+      "totalScore": 4.344,
+      "clashScore": 0.0,
+      "finalScore": -0.542,
+      "result": "REF",
+      "failReason": ""
+    },
+    {
+      "rank": 22,
+      "id": "iter04_cand006",
+      "sequence": "WGCKLSFWKTFTSC",
+      "ddG": 1.593,
+      "totalScore": 175.937,
+      "clashScore": 2.0,
+      "finalScore": -1.593,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_006.pdb",
+      "half_life_h": 0.038,
+      "admet_score": 0.5616,
+      "boman_index": 0.2857,
+      "pi": 10.62,
+      "mo_score": 0.1403
+    },
+    {
+      "rank": 23,
+      "id": "iter02_cand002",
+      "sequence": "AGCKNFFWKTLTSC",
+      "ddG": 2.063,
+      "totalScore": 58.219,
+      "clashScore": 0.0,
+      "finalScore": -2.063,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_002.pdb",
+      "half_life_h": 0.047,
+      "admet_score": 0.5818,
+      "boman_index": 0.5543,
+      "pi": 10.62,
+      "mo_score": 0.1442
+    },
+    {
+      "rank": 24,
+      "id": "iter04_cand008",
+      "sequence": "AGCRGGFWKTFTSC",
+      "ddG": 2.943,
+      "totalScore": 67.055,
+      "clashScore": 0.0,
+      "finalScore": -2.943,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_008.pdb",
+      "half_life_h": 0.049,
+      "admet_score": 0.5579,
+      "boman_index": 0.9664,
+      "pi": 11.54,
+      "mo_score": 0.1421
+    },
+    {
+      "rank": 25,
+      "id": "iter02_cand007",
+      "sequence": "AGCKNFFWKTITSC",
+      "ddG": 8.8,
+      "totalScore": 180.365,
+      "clashScore": 1.0,
+      "finalScore": -8.8,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_007.pdb",
+      "half_life_h": 0.049,
+      "admet_score": 0.5743,
+      "boman_index": 0.5543,
+      "pi": 10.62,
+      "mo_score": 0.1442
+    },
+    {
+      "rank": 26,
+      "id": "iter04_cand003",
+      "sequence": "YGCKNFFWKTLWSC",
+      "ddG": 13.031,
+      "totalScore": 122.725,
+      "clashScore": 0.0,
+      "finalScore": -13.031,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_003.pdb",
+      "half_life_h": 0.031,
+      "admet_score": 0.6107,
+      "boman_index": 0.3436,
+      "pi": 10.21,
+      "mo_score": 0.1411
+    },
+    {
+      "rank": 27,
+      "id": "iter02_cand001",
+      "sequence": "AGCKFFFWKTVTSC",
+      "ddG": 19.392,
+      "totalScore": 82.342,
+      "clashScore": 3.0,
+      "finalScore": -19.392,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_001.pdb",
+      "half_life_h": 0.042,
+      "admet_score": 0.4684,
+      "boman_index": -0.07,
+      "pi": 10.62,
+      "mo_score": 0.1272
+    },
+    {
+      "rank": 28,
+      "id": "iter04_cand001",
+      "sequence": "AECKFTFWKTFTSC",
+      "ddG": 19.631,
+      "totalScore": 388.634,
+      "clashScore": 0.0,
+      "finalScore": -19.631,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_001.pdb",
+      "half_life_h": 0.042,
+      "admet_score": 0.3046,
+      "boman_index": 0.9557,
+      "pi": 9.9,
+      "mo_score": 0.1088
+    },
+    {
+      "rank": 29,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTITSC",
-      "ddG": 378.058,
-      "totalScore": 419.126,
-      "clashScore": 2.0,
-      "finalScore": -378.058,
+      "ddG": 23.773,
+      "totalScore": 121.336,
+      "clashScore": 1.0,
+      "finalScore": -23.773,
       "result": "FAIL",
       "failReason": "",
       "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_002.pdb",
@@ -524,6 +1809,74 @@
       "boman_index": 0.9257,
       "pi": 9.66,
       "mo_score": 0.1549
+    },
+    {
+      "rank": 30,
+      "id": "iter02_cand003",
+      "sequence": "AGCKWFFWKTVTSC",
+      "ddG": 28.081,
+      "totalScore": 129.246,
+      "clashScore": 2.0,
+      "finalScore": -28.081,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_003.pdb",
+      "half_life_h": 0.043,
+      "admet_score": 0.5081,
+      "boman_index": -0.0236,
+      "pi": 10.62,
+      "mo_score": 0.134
+    },
+    {
+      "rank": 31,
+      "id": "iter01_cand008",
+      "sequence": "AGCKNMFWKTFRSC",
+      "ddG": 51.661,
+      "totalScore": 156.715,
+      "clashScore": 3.0,
+      "finalScore": -51.661,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_01/cand_008.pdb",
+      "half_life_h": 0.038,
+      "admet_score": 0.3622,
+      "boman_index": 1.62,
+      "pi": 11.69,
+      "mo_score": 0.1062
+    },
+    {
+      "rank": 32,
+      "id": "iter04_cand002",
+      "sequence": "AHCINFFWKTMTSC",
+      "ddG": 135.185,
+      "totalScore": 182.605,
+      "clashScore": 3.0,
+      "finalScore": -135.185,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_04/cand_002.pdb",
+      "half_life_h": 0.061,
+      "admet_score": 0.5502,
+      "boman_index": 0.39,
+      "pi": 10.11,
+      "mo_score": 0.1436
+    },
+    {
+      "rank": 33,
+      "id": "iter02_cand008",
+      "sequence": "AGCKWFFWKTITSC",
+      "ddG": 357.143,
+      "totalScore": 288.54,
+      "clashScore": 4.0,
+      "finalScore": -357.143,
+      "result": "FAIL",
+      "failReason": "",
+      "pdb_path": "archives/sst14_mutdock_2000/iter_02/cand_008.pdb",
+      "half_life_h": 0.043,
+      "admet_score": 0.5048,
+      "boman_index": -0.0864,
+      "pi": 10.62,
+      "mo_score": 0.1357
     }
   ],
   "historical_candidates": [
@@ -661,6 +2014,18 @@
     },
     {
       "rank": 12,
+      "id": "iter03_cand003",
+      "sequence": "AGCKNFFWKTVTSC",
+      "ddG": -49.6775,
+      "totalScore": 96.5382,
+      "clashScore": 0.0,
+      "finalScore": 49.678,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_2000"
+    },
+    {
+      "rank": 13,
       "id": "iter02_cand007",
       "sequence": "AGCKNFFWKTVTSC",
       "ddG": -48.2354,
@@ -672,7 +2037,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "id": "iter05_cand006",
       "sequence": "AGCKNFFWKEFTSH",
       "ddG": -48.2052,
@@ -684,7 +2049,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "id": "iter02_cand001",
       "sequence": "AGCKFFFWKTLTSC",
       "ddG": -48.0633,
@@ -696,7 +2061,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "id": "iter03_cand008",
       "sequence": "AMCKNFIWKAFTSC",
       "ddG": -47.1815,
@@ -708,7 +2073,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "id": "iter04_cand003",
       "sequence": "AGCKNFFWKTVTSC",
       "ddG": -47.1705,
@@ -720,7 +2085,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "id": "iter06_cand002",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -47.0529,
@@ -732,7 +2097,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "id": "iter04_cand001",
       "sequence": "AGCKFDFWKTLTSC",
       "ddG": -46.6047,
@@ -744,7 +2109,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "id": "iter05_cand004",
       "sequence": "ATCKNFFWANFTSC",
       "ddG": -46.4923,
@@ -756,7 +2121,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "id": "iter09_cand007",
       "sequence": "AGCKNFFWKTMTSC",
       "ddG": -46.4787,
@@ -768,7 +2133,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "id": "iter06_cand008",
       "sequence": "AGCHNFFWKTFTSC",
       "ddG": -46.3002,
@@ -780,7 +2145,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "id": "iter07_cand005",
       "sequence": "YSCKNFFWKTFTSN",
       "ddG": -46.0936,
@@ -792,7 +2157,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 23,
+      "rank": 24,
       "id": "iter02_cand005",
       "sequence": "YSCKNFFWKTFTSN",
       "ddG": -46.0899,
@@ -804,7 +2169,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 24,
+      "rank": 25,
       "id": "iter02_cand005",
       "sequence": "AGCKNFFWKHFTSM",
       "ddG": -45.8238,
@@ -816,7 +2181,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 25,
+      "rank": 26,
       "id": "iter01_cand001",
       "sequence": "AGCKWDFWKTFTSC",
       "ddG": -45.7093,
@@ -828,7 +2193,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 26,
+      "rank": 27,
       "id": "iter01_cand003",
       "sequence": "AGCKNDFWKTLTSC",
       "ddG": -45.6836,
@@ -840,7 +2205,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 27,
+      "rank": 28,
       "id": "iter04_cand006",
       "sequence": "AGCKNWFWVSFTSC",
       "ddG": -45.3897,
@@ -852,7 +2217,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 28,
+      "rank": 29,
       "id": "iter01_cand004",
       "sequence": "AVCKNFFWKTFTSC",
       "ddG": -45.3135,
@@ -864,7 +2229,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 29,
+      "rank": 30,
       "id": "iter03_cand001",
       "sequence": "AGCKYFFWKTVTSC",
       "ddG": -45.1943,
@@ -876,7 +2241,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 30,
+      "rank": 31,
       "id": "iter01_cand004",
       "sequence": "AVCKNFFWKTFTSC",
       "ddG": -45.1389,
@@ -888,7 +2253,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 31,
+      "rank": 32,
       "id": "iter01_cand007",
       "sequence": "AGCKNFFWKTLTSC",
       "ddG": -45.025,
@@ -900,7 +2265,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 32,
+      "rank": 33,
       "id": "iter08_cand002",
       "sequence": "AGCKWFFWKTLTSC",
       "ddG": -44.9889,
@@ -912,7 +2277,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 33,
+      "rank": 34,
       "id": "iter01_cand006",
       "sequence": "AGCKDFFWKTFTSC",
       "ddG": -44.9576,
@@ -924,7 +2289,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 34,
+      "rank": 35,
       "id": "iter06_cand005",
       "sequence": "YGCKNFFWKTFTST",
       "ddG": -44.945,
@@ -936,7 +2301,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 35,
+      "rank": 36,
       "id": "iter01_cand002",
       "sequence": "AGCKYFFWKTVTSC",
       "ddG": -44.7594,
@@ -948,7 +2313,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 36,
+      "rank": 37,
       "id": "iter02_cand007",
       "sequence": "AGCKNFVWKTFTSC",
       "ddG": -44.1863,
@@ -960,7 +2325,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 37,
+      "rank": 38,
       "id": "iter05_cand002",
       "sequence": "AGCKFDFWKTLTSC",
       "ddG": -44.0628,
@@ -972,7 +2337,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 38,
+      "rank": 39,
       "id": "iter03_cand003",
       "sequence": "AGCKFDFWKTLTSC",
       "ddG": -44.0209,
@@ -984,7 +2349,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 39,
+      "rank": 40,
       "id": "iter07_cand001",
       "sequence": "AGCKFFFWKTFTSC",
       "ddG": -43.9797,
@@ -996,7 +2361,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 40,
+      "rank": 41,
       "id": "iter05_cand008",
       "sequence": "AGCKNFFHKTFTSC",
       "ddG": -43.9558,
@@ -1008,7 +2373,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 41,
+      "rank": 42,
       "id": "iter01_cand001",
       "sequence": "AGCKYDFWKTLTSC",
       "ddG": -43.9181,
@@ -1020,7 +2385,7 @@
       "runId": "sst14_mutdock_3000"
     },
     {
-      "rank": 42,
+      "rank": 43,
       "id": "iter03_cand002",
       "sequence": "TGCKYFFWKTFTSK",
       "ddG": -43.7949,
@@ -1032,7 +2397,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 43,
+      "rank": 44,
       "id": "iter01_cand007",
       "sequence": "AGCKNFFWKTFSSC",
       "ddG": -43.5485,
@@ -1044,7 +2409,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 44,
+      "rank": 45,
       "id": "iter03_cand002",
       "sequence": "AGCKFEFWKTVTSC",
       "ddG": -43.5074,
@@ -1056,7 +2421,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 45,
+      "rank": 46,
       "id": "iter03_cand006",
       "sequence": "AGCKNDFWKDFTSG",
       "ddG": -43.4397,
@@ -1068,7 +2433,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 46,
+      "rank": 47,
       "id": "iter03_cand008",
       "sequence": "AGCANFFWKRFTSC",
       "ddG": -43.3845,
@@ -1080,7 +2445,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 47,
+      "rank": 48,
       "id": "iter06_cand007",
       "sequence": "GGCKNFFWKTFSSC",
       "ddG": -43.3729,
@@ -1092,7 +2457,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 48,
+      "rank": 49,
       "id": "iter05_cand005",
       "sequence": "AGCKWEFWKTITSC",
       "ddG": -43.3149,
@@ -1104,7 +2469,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 49,
+      "rank": 50,
       "id": "iter10_cand001",
       "sequence": "AGCKYEFWKTITSC",
       "ddG": -43.298,
@@ -1116,7 +2481,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 50,
+      "rank": 51,
       "id": "iter02_cand002",
       "sequence": "AGCKFDFWKTVTSC",
       "ddG": -43.2446,
@@ -1128,7 +2493,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 51,
+      "rank": 52,
       "id": "iter02_cand004",
       "sequence": "AGCKFDFWKTITSC",
       "ddG": -43.2104,
@@ -1140,7 +2505,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 52,
+      "rank": 53,
       "id": "iter01_cand004",
       "sequence": "AFCKNFFWKTFTSC",
       "ddG": -43.1493,
@@ -1152,7 +2517,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 53,
+      "rank": 54,
       "id": "iter02_cand006",
       "sequence": "AGCKNFFWKWFTSC",
       "ddG": -43.1364,
@@ -1164,7 +2529,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 54,
+      "rank": 55,
       "id": "iter04_cand006",
       "sequence": "WGCKNFFWPTWTSC",
       "ddG": -43.1092,
@@ -1176,7 +2541,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 55,
+      "rank": 56,
       "id": "iter05_cand004",
       "sequence": "AFCKNFFWKTFTSC",
       "ddG": -43.0495,
@@ -1188,7 +2553,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 56,
+      "rank": 57,
       "id": "iter09_cand005",
       "sequence": "AGCKFFFWKTVTSC",
       "ddG": -43.0173,
@@ -1200,7 +2565,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 57,
+      "rank": 58,
       "id": "iter03_cand002",
       "sequence": "AGCKWFFWKTLTSC",
       "ddG": -42.9948,
@@ -1212,7 +2577,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 58,
+      "rank": 59,
       "id": "iter02_cand005",
       "sequence": "AGCKKVFWKTFTSC",
       "ddG": -42.9461,
@@ -1224,7 +2589,7 @@
       "runId": "sst14_mutdock_4000"
     },
     {
-      "rank": 59,
+      "rank": 60,
       "id": "iter03_cand008",
       "sequence": "AACMNFFWKTFTSN",
       "ddG": -42.9454,
@@ -1236,7 +2601,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 60,
+      "rank": 61,
       "id": "iter04_cand007",
       "sequence": "AACKNFFWKTFTSC",
       "ddG": -42.9284,
@@ -1248,7 +2613,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 61,
+      "rank": 62,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -42.8112,
@@ -1260,7 +2625,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 62,
+      "rank": 63,
       "id": "iter03_cand001",
       "sequence": "AGCKFEFWKTLTSC",
       "ddG": -42.6145,
@@ -1272,7 +2637,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 63,
+      "rank": 64,
       "id": "iter09_cand002",
       "sequence": "AGCKFDFWKTITSC",
       "ddG": -42.4942,
@@ -1284,7 +2649,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 64,
+      "rank": 65,
       "id": "iter10_cand002",
       "sequence": "AGCKWFFWKTITSC",
       "ddG": -42.4637,
@@ -1296,7 +2661,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 65,
+      "rank": 66,
       "id": "iter01_cand001",
       "sequence": "FGCKNFFWKTFTSS",
       "ddG": -42.4551,
@@ -1308,7 +2673,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 66,
+      "rank": 67,
       "id": "iter01_cand008",
       "sequence": "AGCKNFFWKTFTSQ",
       "ddG": -42.4102,
@@ -1320,7 +2685,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 67,
+      "rank": 68,
       "id": "iter02_cand005",
       "sequence": "AGCKWFFWKTITSC",
       "ddG": -42.3377,
@@ -1332,7 +2697,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 68,
+      "rank": 69,
       "id": "iter04_cand005",
       "sequence": "APCKNFFWKTFTSC",
       "ddG": -42.2626,
@@ -1344,7 +2709,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 69,
+      "rank": 70,
       "id": "iter05_cand007",
       "sequence": "KGCKNFFWKTFTSC",
       "ddG": -42.2221,
@@ -1356,7 +2721,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 70,
+      "rank": 71,
       "id": "iter01_cand003",
       "sequence": "AGCKFDFWKTITSC",
       "ddG": -42.1404,
@@ -1368,7 +2733,7 @@
       "runId": "sst14_mutdock_3000"
     },
     {
-      "rank": 71,
+      "rank": 72,
       "id": "iter01_cand001",
       "sequence": "AGCKWDFWKTFTSC",
       "ddG": -42.0329,
@@ -1380,7 +2745,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 72,
+      "rank": 73,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -41.9864,
@@ -1392,7 +2757,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 73,
+      "rank": 74,
       "id": "iter08_cand004",
       "sequence": "AGCKNFFWHTFTSQ",
       "ddG": -41.8828,
@@ -1404,7 +2769,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 74,
+      "rank": 75,
       "id": "iter01_cand005",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -41.7572,
@@ -1416,7 +2781,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 75,
+      "rank": 76,
       "id": "iter01_cand002",
       "sequence": "AGCKYFFWKTVTSC",
       "ddG": -41.7534,
@@ -1428,7 +2793,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 76,
+      "rank": 77,
       "id": "iter03_cand006",
       "sequence": "AGCKFDFWKTFTSC",
       "ddG": -41.6743,
@@ -1440,7 +2805,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 77,
+      "rank": 78,
       "id": "iter04_cand001",
       "sequence": "AGCKLFFWNMFTSC",
       "ddG": -41.6498,
@@ -1452,7 +2817,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 78,
+      "rank": 79,
       "id": "iter05_cand003",
       "sequence": "AGCKYFFWKTITSC",
       "ddG": -41.5311,
@@ -1464,7 +2829,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 79,
+      "rank": 80,
       "id": "iter05_cand004",
       "sequence": "AGCKNFFWKTITSC",
       "ddG": -41.3635,
@@ -1476,7 +2841,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 80,
+      "rank": 81,
       "id": "iter02_cand002",
       "sequence": "AGCKYDFWKTITSC",
       "ddG": -41.3016,
@@ -1488,7 +2853,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 81,
+      "rank": 82,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -41.2857,
@@ -1500,7 +2865,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 82,
+      "rank": 83,
       "id": "iter02_cand002",
       "sequence": "AGCKYDFWKTITSC",
       "ddG": -41.2319,
@@ -1512,7 +2877,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 83,
+      "rank": 84,
       "id": "iter01_cand005",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -41.1635,
@@ -1524,7 +2889,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 84,
+      "rank": 85,
       "id": "iter01_cand001",
       "sequence": "AGCKWDFWKTFTSC",
       "ddG": -41.1054,
@@ -1536,7 +2901,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 85,
+      "rank": 86,
       "id": "iter02_cand007",
       "sequence": "AGCFIFFWKTFTSC",
       "ddG": -41.1005,
@@ -1548,7 +2913,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 86,
+      "rank": 87,
       "id": "iter01_cand008",
       "sequence": "AGCKPMFWKTFTSK",
       "ddG": -41.0916,
@@ -1560,7 +2925,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 87,
+      "rank": 88,
       "id": "iter10_cand008",
       "sequence": "AGCVNFFWKTMTSC",
       "ddG": -41.065,
@@ -1572,7 +2937,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 88,
+      "rank": 89,
       "id": "iter05_cand005",
       "sequence": "ATCKNFFVKTFTSC",
       "ddG": -41.0376,
@@ -1584,7 +2949,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 89,
+      "rank": 90,
       "id": "iter08_cand006",
       "sequence": "AGCRNFFWKTADSC",
       "ddG": -41.0335,
@@ -1596,7 +2961,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 90,
+      "rank": 91,
       "id": "iter01_cand006",
       "sequence": "AGCKNDFWKDFTSG",
       "ddG": -41.002,
@@ -1608,7 +2973,7 @@
       "runId": "sst14_mutdock_3000"
     },
     {
-      "rank": 91,
+      "rank": 92,
       "id": "iter02_cand005",
       "sequence": "AGCKWFFWKTITSC",
       "ddG": -40.9717,
@@ -1620,7 +2985,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 92,
+      "rank": 93,
       "id": "iter04_cand003",
       "sequence": "AGCKNFFWKTITSC",
       "ddG": -40.8887,
@@ -1632,7 +2997,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 93,
+      "rank": 94,
       "id": "iter05_cand004",
       "sequence": "AFCKNFFWKTFTSC",
       "ddG": -40.7638,
@@ -1644,7 +3009,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 94,
+      "rank": 95,
       "id": "iter03_cand008",
       "sequence": "AGCKAFMWPTFTSC",
       "ddG": -40.7263,
@@ -1656,7 +3021,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 95,
+      "rank": 96,
       "id": "iter09_cand005",
       "sequence": "AGCKWEFWKTFTSC",
       "ddG": -40.7193,
@@ -1668,7 +3033,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 96,
+      "rank": 97,
       "id": "iter02_cand001",
       "sequence": "AGCKYFFWKTITSC",
       "ddG": -40.6791,
@@ -1680,7 +3045,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 97,
+      "rank": 98,
       "id": "iter01_cand001",
       "sequence": "AECKNFFWTTFTSC",
       "ddG": -40.6559,
@@ -1692,7 +3057,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 98,
+      "rank": 99,
       "id": "iter03_cand005",
       "sequence": "AGCKYEFWKTITSC",
       "ddG": -40.6468,
@@ -1704,7 +3069,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 99,
+      "rank": 100,
       "id": "iter05_cand002",
       "sequence": "EGCKNFFWKTFTSC",
       "ddG": -40.6435,
@@ -1716,7 +3081,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 100,
+      "rank": 101,
       "id": "iter08_cand006",
       "sequence": "AGCKNWFWVSFTSC",
       "ddG": -40.6413,
@@ -1728,7 +3093,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 101,
+      "rank": 102,
       "id": "iter02_cand003",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -40.6323,
@@ -1740,7 +3105,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 102,
+      "rank": 103,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -40.5871,
@@ -1752,7 +3117,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 103,
+      "rank": 104,
       "id": "iter01_cand002",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -40.5466,
@@ -1764,7 +3129,7 @@
       "runId": "sst14_mutdock_9999"
     },
     {
-      "rank": 104,
+      "rank": 105,
       "id": "iter03_cand001",
       "sequence": "AGCKYDFWKTLTSC",
       "ddG": -40.5123,
@@ -1776,7 +3141,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 105,
+      "rank": 106,
       "id": "iter03_cand003",
       "sequence": "AGCKFFFWKTFTSC",
       "ddG": -40.4635,
@@ -1788,7 +3153,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 106,
+      "rank": 107,
       "id": "iter07_cand002",
       "sequence": "AGCKNEFWKTFTSC",
       "ddG": -40.3973,
@@ -1800,7 +3165,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 107,
+      "rank": 108,
       "id": "iter03_cand004",
       "sequence": "AGCKNFFWKTKTSC",
       "ddG": -40.3248,
@@ -1812,7 +3177,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 108,
+      "rank": 109,
       "id": "iter07_cand004",
       "sequence": "AGCKNFFWKTFRSC",
       "ddG": -40.303,
@@ -1824,7 +3189,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 109,
+      "rank": 110,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -40.2847,
@@ -1836,7 +3201,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 110,
+      "rank": 111,
       "id": "iter02_cand008",
       "sequence": "AGCKNFFDKLFTSC",
       "ddG": -40.2149,
@@ -1848,7 +3213,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 111,
+      "rank": 112,
       "id": "iter08_cand004",
       "sequence": "AGCKYFFWKTVTSC",
       "ddG": -40.2055,
@@ -1860,7 +3225,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 112,
+      "rank": 113,
       "id": "iter01_cand005",
       "sequence": "YSCKNFFWKTFTSN",
       "ddG": -40.1785,
@@ -1872,7 +3237,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 113,
+      "rank": 114,
       "id": "iter05_cand002",
       "sequence": "AGCKFDFWKTVTSC",
       "ddG": -40.1617,
@@ -1884,7 +3249,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 114,
+      "rank": 115,
       "id": "iter01_cand007",
       "sequence": "AGCKEFMWKTFTSC",
       "ddG": -40.1607,
@@ -1896,7 +3261,7 @@
       "runId": "sst14_mutdock_4000"
     },
     {
-      "rank": 115,
+      "rank": 116,
       "id": "iter02_cand001",
       "sequence": "AGCKFFFWKTLTSC",
       "ddG": -40.1386,
@@ -1908,7 +3273,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 116,
+      "rank": 117,
       "id": "iter02_cand002",
       "sequence": "AGCKYDFWKTITSC",
       "ddG": -40.1111,
@@ -1920,7 +3285,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 117,
+      "rank": 118,
       "id": "iter01_cand006",
       "sequence": "WGCKNFFWPTWTSC",
       "ddG": -40.0908,
@@ -1932,7 +3297,7 @@
       "runId": "sst14_mutdock_4000"
     },
     {
-      "rank": 118,
+      "rank": 119,
       "id": "iter04_cand006",
       "sequence": "WGCKNFFWPTWTSC",
       "ddG": -40.0708,
@@ -1944,7 +3309,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 119,
+      "rank": 120,
       "id": "iter02_cand002",
       "sequence": "AGCKYDFWKTITSC",
       "ddG": -40.05,
@@ -1956,7 +3321,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 120,
+      "rank": 121,
       "id": "iter02_cand004",
       "sequence": "AGCKWDFWKTVTSC",
       "ddG": -40.0049,
@@ -1968,7 +3333,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 121,
+      "rank": 122,
       "id": "iter07_cand001",
       "sequence": "AGCKYFFWKTLTSC",
       "ddG": -39.9711,
@@ -1980,7 +3345,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 122,
+      "rank": 123,
       "id": "iter04_cand003",
       "sequence": "AGCKNFFWKTITSC",
       "ddG": -39.966,
@@ -1992,7 +3357,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 123,
+      "rank": 124,
       "id": "iter06_cand008",
       "sequence": "AGCKNYFWKTQTSS",
       "ddG": -39.9557,
@@ -2004,7 +3369,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 124,
+      "rank": 125,
       "id": "iter03_cand007",
       "sequence": "AGCKNDFWKTFTSC",
       "ddG": -39.8977,
@@ -2016,7 +3381,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 125,
+      "rank": 126,
       "id": "iter04_cand007",
       "sequence": "AGCKFNFWKTFTSC",
       "ddG": -39.7476,
@@ -2028,7 +3393,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 126,
+      "rank": 127,
       "id": "iter06_cand001",
       "sequence": "AGCKYFFWKTLTSC",
       "ddG": -39.6879,
@@ -2040,7 +3405,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 127,
+      "rank": 128,
       "id": "iter02_cand003",
       "sequence": "AGCKNFFWKTLTSC",
       "ddG": -39.6336,
@@ -2052,7 +3417,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 128,
+      "rank": 129,
       "id": "iter03_cand007",
       "sequence": "AGCKNRFWKTFTSC",
       "ddG": -39.6095,
@@ -2064,7 +3429,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 129,
+      "rank": 130,
       "id": "iter06_cand002",
       "sequence": "AGCKNDFWKTVTSC",
       "ddG": -39.4938,
@@ -2076,7 +3441,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 130,
+      "rank": 131,
       "id": "iter01_cand002",
       "sequence": "AGCKYEFWKTVTSC",
       "ddG": -39.4864,
@@ -2088,7 +3453,7 @@
       "runId": "sst14_mutdock_3000"
     },
     {
-      "rank": 131,
+      "rank": 132,
       "id": "iter04_cand003",
       "sequence": "AGCKFFFWKTFTSC",
       "ddG": -39.4446,
@@ -2100,7 +3465,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 132,
+      "rank": 133,
       "id": "iter04_cand004",
       "sequence": "AGCKNFFWKTVTSC",
       "ddG": -39.4178,
@@ -2112,7 +3477,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 133,
+      "rank": 134,
       "id": "iter02_cand003",
       "sequence": "AGCKNFFWKTLTSC",
       "ddG": -39.4135,
@@ -2124,7 +3489,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 134,
+      "rank": 135,
       "id": "iter02_cand004",
       "sequence": "AGCKNFFQITKTSC",
       "ddG": -39.4113,
@@ -2136,7 +3501,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 135,
+      "rank": 136,
       "id": "iter02_cand001",
       "sequence": "AGCKFFFWKTLTSC",
       "ddG": -39.3075,
@@ -2148,7 +3513,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 136,
+      "rank": 137,
       "id": "iter09_cand005",
       "sequence": "DGCTNFFWKTPTSC",
       "ddG": -39.2915,
@@ -2160,7 +3525,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 137,
+      "rank": 138,
       "id": "iter08_cand001",
       "sequence": "AGCKYFFWKTLTSC",
       "ddG": -39.279,
@@ -2172,7 +3537,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 138,
+      "rank": 139,
       "id": "iter01_cand001",
       "sequence": "AGCKWDFWKTFTSC",
       "ddG": -39.276,
@@ -2184,7 +3549,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 139,
+      "rank": 140,
       "id": "iter10_cand006",
       "sequence": "AGCKFEFWKTITSC",
       "ddG": -39.2714,
@@ -2196,7 +3561,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 140,
+      "rank": 141,
       "id": "iter01_cand005",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -39.246,
@@ -2208,7 +3573,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 141,
+      "rank": 142,
       "id": "iter10_cand004",
       "sequence": "ALCKYFFWKTFTSC",
       "ddG": -39.1886,
@@ -2220,7 +3585,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 142,
+      "rank": 143,
       "id": "iter10_cand003",
       "sequence": "AGCKYEFWKTLTSC",
       "ddG": -39.1528,
@@ -2232,7 +3597,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 143,
+      "rank": 144,
       "id": "iter07_cand002",
       "sequence": "AGCKWFFWKTVTSC",
       "ddG": -39.1364,
@@ -2244,7 +3609,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 144,
+      "rank": 145,
       "id": "iter04_cand005",
       "sequence": "AGCKNFFWKTHTSC",
       "ddG": -39.0636,
@@ -2256,7 +3621,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 145,
+      "rank": 146,
       "id": "iter02_cand005",
       "sequence": "AGCKNDFWKTFGSE",
       "ddG": -38.992,
@@ -2268,7 +3633,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 146,
+      "rank": 147,
       "id": "iter05_cand005",
       "sequence": "ATCKNFFVKTFTSC",
       "ddG": -38.99,
@@ -2280,7 +3645,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 147,
+      "rank": 148,
       "id": "iter01_cand007",
       "sequence": "AGCFIFFWKTFTSC",
       "ddG": -38.9451,
@@ -2292,7 +3657,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 148,
+      "rank": 149,
       "id": "iter03_cand003",
       "sequence": "YGCYNFFWKTFTSE",
       "ddG": -38.9399,
@@ -2304,7 +3669,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 149,
+      "rank": 150,
       "id": "iter02_cand003",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -38.935,
@@ -2316,7 +3681,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 150,
+      "rank": 151,
       "id": "iter04_cand001",
       "sequence": "AGCKFDFWKTLTSC",
       "ddG": -38.9085,
@@ -2328,7 +3693,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 151,
+      "rank": 152,
       "id": "iter01_cand004",
       "sequence": "AGCKNFFWKTKTSC",
       "ddG": -38.8555,
@@ -2340,7 +3705,7 @@
       "runId": "sst14_mutdock_3000"
     },
     {
-      "rank": 152,
+      "rank": 153,
       "id": "iter01_cand003",
       "sequence": "AGCENFFWKTFNSC",
       "ddG": -38.8065,
@@ -2352,7 +3717,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 153,
+      "rank": 154,
       "id": "iter03_cand001",
       "sequence": "AGCKFEFWKTVTSC",
       "ddG": -38.7983,
@@ -2364,7 +3729,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 154,
+      "rank": 155,
       "id": "iter09_cand006",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -38.6632,
@@ -2376,7 +3741,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 155,
+      "rank": 156,
       "id": "iter04_cand007",
       "sequence": "AGCKEFMWKTFTSC",
       "ddG": -38.6349,
@@ -2388,7 +3753,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 156,
+      "rank": 157,
       "id": "iter03_cand003",
       "sequence": "AGCKFDFWKTFTSC",
       "ddG": -38.6159,
@@ -2400,7 +3765,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 157,
+      "rank": 158,
       "id": "iter01_cand002",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -38.5972,
@@ -2412,7 +3777,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 158,
+      "rank": 159,
       "id": "iter02_cand001",
       "sequence": "AGCKYDFWKTFTSC",
       "ddG": -38.5584,
@@ -2424,7 +3789,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 159,
+      "rank": 160,
       "id": "iter10_cand003",
       "sequence": "AGCKYEFWKTFTSC",
       "ddG": -38.4334,
@@ -2436,7 +3801,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 160,
+      "rank": 161,
       "id": "iter03_cand005",
       "sequence": "AGCKQFVWETFTSC",
       "ddG": -38.4333,
@@ -2448,7 +3813,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 161,
+      "rank": 162,
       "id": "iter02_cand003",
       "sequence": "AGCKNFFWKTITSC",
       "ddG": -38.3528,
@@ -2460,7 +3825,7 @@
       "runId": "sst14_mutdock_3000"
     },
     {
-      "rank": 162,
+      "rank": 163,
       "id": "iter06_cand007",
       "sequence": "KGCKNFFWKTFTSC",
       "ddG": -38.3277,
@@ -2472,7 +3837,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 163,
+      "rank": 164,
       "id": "iter04_cand006",
       "sequence": "AGCWNFFWKTFTSC",
       "ddG": -38.3183,
@@ -2484,7 +3849,7 @@
       "runId": "sst14_mutdock_7000"
     },
     {
-      "rank": 164,
+      "rank": 165,
       "id": "iter06_cand003",
       "sequence": "AGCKWEFWKTLTSC",
       "ddG": -38.2115,
@@ -2496,7 +3861,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 165,
+      "rank": 166,
       "id": "iter05_cand005",
       "sequence": "ARCKNFFWKTFSSC",
       "ddG": -38.1799,
@@ -2508,7 +3873,19 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 166,
+      "rank": 167,
+      "id": "iter02_cand005",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddG": -38.0631,
+      "totalScore": 17.4112,
+      "clashScore": 0.0,
+      "finalScore": 38.063,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_2000"
+    },
+    {
+      "rank": 168,
       "id": "iter01_cand001",
       "sequence": "AGCKFDFWKTITSC",
       "ddG": -38.0159,
@@ -2520,7 +3897,7 @@
       "runId": "sst14_mutdock_4000"
     },
     {
-      "rank": 167,
+      "rank": 169,
       "id": "iter04_cand002",
       "sequence": "DGCKNFFWSTLTSC",
       "ddG": -37.9994,
@@ -2532,7 +3909,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 168,
+      "rank": 170,
       "id": "iter03_cand008",
       "sequence": "AGCKNEFWKTITSC",
       "ddG": -37.931,
@@ -2544,7 +3921,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 169,
+      "rank": 171,
       "id": "iter01_cand003",
       "sequence": "AGCKNDFWKTLTSC",
       "ddG": -37.8936,
@@ -2556,7 +3933,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 170,
+      "rank": 172,
       "id": "iter01_cand005",
       "sequence": "AGCKWFFWKTFTSC",
       "ddG": -37.8483,
@@ -2568,7 +3945,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 171,
+      "rank": 173,
       "id": "iter04_cand005",
       "sequence": "AGCKNFFWKTHTSC",
       "ddG": -37.8387,
@@ -2580,7 +3957,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 172,
+      "rank": 174,
       "id": "iter05_cand007",
       "sequence": "AGCKNFFWKTMTSC",
       "ddG": -37.7955,
@@ -2592,7 +3969,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 173,
+      "rank": 175,
       "id": "iter02_cand006",
       "sequence": "AGCKNFFWKTVTSC",
       "ddG": -37.7796,
@@ -2604,7 +3981,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 174,
+      "rank": 176,
       "id": "iter04_cand002",
       "sequence": "DWCKNFFWKTFTSR",
       "ddG": -37.7072,
@@ -2616,7 +3993,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 175,
+      "rank": 177,
       "id": "iter04_cand008",
       "sequence": "AGCKNFFKKTFTSC",
       "ddG": -37.6888,
@@ -2628,7 +4005,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 176,
+      "rank": 178,
       "id": "iter04_cand001",
       "sequence": "AGCDLFFWKTFTSM",
       "ddG": -37.6651,
@@ -2640,7 +4017,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 177,
+      "rank": 179,
       "id": "iter02_cand005",
       "sequence": "AGCNNFFWKTFKSC",
       "ddG": -37.6612,
@@ -2652,7 +4029,19 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 178,
+      "rank": 180,
+      "id": "iter01_cand006",
+      "sequence": "AGCKNWFWKTFTSC",
+      "ddG": -37.5903,
+      "totalScore": -11.8768,
+      "clashScore": 0.0,
+      "finalScore": 37.59,
+      "result": "PASS",
+      "failReason": "",
+      "runId": "sst14_mutdock_2000"
+    },
+    {
+      "rank": 181,
       "id": "iter02_cand007",
       "sequence": "AGCKNFVWKTFTSC",
       "ddG": -37.55,
@@ -2664,7 +4053,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 179,
+      "rank": 182,
       "id": "iter04_cand003",
       "sequence": "AGCKNFFWKTITSC",
       "ddG": -37.539,
@@ -2676,7 +4065,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 180,
+      "rank": 183,
       "id": "iter01_cand003",
       "sequence": "AGCKNFFWKTITSC",
       "ddG": -37.4764,
@@ -2688,7 +4077,7 @@
       "runId": "sst14_mutdock_4000"
     },
     {
-      "rank": 181,
+      "rank": 184,
       "id": "iter03_cand001",
       "sequence": "AGCKWDFWKTVTSC",
       "ddG": -37.4749,
@@ -2700,7 +4089,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 182,
+      "rank": 185,
       "id": "iter03_cand003",
       "sequence": "AGCKFDFWKTITSC",
       "ddG": -37.2191,
@@ -2712,7 +4101,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 183,
+      "rank": 186,
       "id": "iter04_cand005",
       "sequence": "AGCKWDFWKTITSC",
       "ddG": -37.1232,
@@ -2724,7 +4113,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 184,
+      "rank": 187,
       "id": "iter02_cand004",
       "sequence": "AGCKWDFWKTVTSC",
       "ddG": -37.1067,
@@ -2736,7 +4125,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 185,
+      "rank": 188,
       "id": "iter05_cand003",
       "sequence": "YLCKDFFWKTFTSC",
       "ddG": -37.0477,
@@ -2748,7 +4137,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 186,
+      "rank": 189,
       "id": "iter04_cand007",
       "sequence": "AGCKEFMWKTFTSC",
       "ddG": -37.0292,
@@ -2760,7 +4149,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 187,
+      "rank": 190,
       "id": "iter08_cand005",
       "sequence": "AGCKWEFWKTITSC",
       "ddG": -36.973,
@@ -2772,7 +4161,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 188,
+      "rank": 191,
       "id": "iter01_cand004",
       "sequence": "AFCKNFFWKTFTSC",
       "ddG": -36.9319,
@@ -2784,7 +4173,7 @@
       "runId": "sst14_mutdock_5000"
     },
     {
-      "rank": 189,
+      "rank": 192,
       "id": "iter07_cand002",
       "sequence": "AGCKFFFWKTVTSC",
       "ddG": -36.8631,
@@ -2796,7 +4185,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 190,
+      "rank": 193,
       "id": "iter01_cand001",
       "sequence": "AGCKYEFWKTITSC",
       "ddG": -36.8298,
@@ -2808,7 +4197,7 @@
       "runId": "sst14_mutdock_9999"
     },
     {
-      "rank": 191,
+      "rank": 194,
       "id": "iter01_cand006",
       "sequence": "HGCKNFFWKTDTSR",
       "ddG": -36.7107,
@@ -2820,7 +4209,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 192,
+      "rank": 195,
       "id": "iter07_cand008",
       "sequence": "AMCKNFIWKAFTSC",
       "ddG": -36.6697,
@@ -2832,7 +4221,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 193,
+      "rank": 196,
       "id": "iter01_cand003",
       "sequence": "AGCKNDFWKTLTSC",
       "ddG": -36.6409,
@@ -2844,7 +4233,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 194,
+      "rank": 197,
       "id": "iter07_cand003",
       "sequence": "AGCKYEFWKTFTSC",
       "ddG": -36.6286,
@@ -2856,7 +4245,7 @@
       "runId": "sst14_mutdock_6000"
     },
     {
-      "rank": 195,
+      "rank": 198,
       "id": "iter03_cand001",
       "sequence": "AGCKYDFWKTLTSC",
       "ddG": -36.618,
@@ -2868,7 +4257,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 196,
+      "rank": 199,
       "id": "iter05_cand006",
       "sequence": "AGCKNFFWKTINSC",
       "ddG": -36.5724,
@@ -2880,7 +4269,7 @@
       "runId": "sst14_mutdock_1000"
     },
     {
-      "rank": 197,
+      "rank": 200,
       "id": "iter01_cand001",
       "sequence": "AGCKWDFWKTFTSC",
       "ddG": -36.5386,
@@ -2890,58 +4279,40 @@
       "result": "PASS",
       "failReason": "",
       "runId": "sst14_mutdock_1000"
-    },
-    {
-      "rank": 198,
-      "id": "iter04_cand002",
-      "sequence": "AGCKWFFWKTLTSC",
-      "ddG": -36.5072,
-      "totalScore": -464.4664,
-      "clashScore": 0.0,
-      "finalScore": 36.507,
-      "result": "PASS",
-      "failReason": "",
-      "runId": "sst14_mutdock_5000"
-    },
-    {
-      "rank": 199,
-      "id": "iter02_cand006",
-      "sequence": "WGCKNFFWPTWTSC",
-      "ddG": -36.5047,
-      "totalScore": -173.3848,
-      "clashScore": 0.0,
-      "finalScore": 36.505,
-      "result": "PASS",
-      "failReason": "",
-      "runId": "sst14_mutdock_3000"
-    },
-    {
-      "rank": 200,
-      "id": "iter05_cand004",
-      "sequence": "AFCKNFFWKTFTSC",
-      "ddG": -36.5004,
-      "totalScore": -470.9896,
-      "clashScore": 0.0,
-      "finalScore": 36.5,
-      "result": "PASS",
-      "failReason": "",
-      "runId": "sst14_mutdock_1000"
     }
   ],
   "qc_gates": [
     {
       "name": "RosettaGate",
-      "criterion": "ddG <= -5.0",
-      "passed": 2,
-      "failed": 2,
-      "total": 4
+      "criterion": "ddG <= -15.0",
+      "passed": 1,
+      "failed": 7,
+      "total": 8
     }
   ],
   "convergence": [
     {
       "iteration": 1,
-      "bestDdG": -30.0031,
-      "topCandidates": 2,
+      "bestDdG": -37.5903,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 2,
+      "bestDdG": -38.0631,
+      "topCandidates": 3,
+      "converged": false
+    },
+    {
+      "iteration": 3,
+      "bestDdG": -49.6775,
+      "topCandidates": 5,
+      "converged": false
+    },
+    {
+      "iteration": 4,
+      "bestDdG": -26.2671,
+      "topCandidates": 1,
       "converged": false
     }
   ],
@@ -2950,10 +4321,10 @@
     "molmim": "pending"
   },
   "best_candidate": {
-    "id": "iter01_cand001",
-    "sequence": "AGCKFFFWKTLTSC",
-    "ddG": -23.897,
-    "totalScore": -21.654
+    "id": "iter04_cand007",
+    "sequence": "HGCHIFFWKTFTSC",
+    "ddG": -26.267,
+    "totalScore": 163.251
   },
   "molecules": [],
   "visualization_images": [
@@ -2981,8 +4352,8 @@
   "baseline": {
     "sequence": "AGCKNFFWKTFTSC",
     "pdb": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
-    "ddg": -25.3873,
-    "total_score": 20.532,
+    "ddg": 0.5416,
+    "total_score": 4.344,
     "clash_score": 0.0
   },
   "completed": true,
@@ -2990,6 +4361,6 @@
     "converged": false,
     "p_value": null,
     "cv": null,
-    "recommendation": "Need at least 6 iterations (have 1); keep running."
+    "recommendation": "Need at least 6 iterations (have 4); keep running."
   }
 }

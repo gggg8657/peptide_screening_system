@@ -1,26 +1,64 @@
 {
   "type": "planner",
   "iteration": 6,
-  "run_id": "sst14_mutdock_1000",
-  "timestamp": "2026-03-23T11:22:40.175047+00:00",
-  "hypothesis": "Introducing an aromatic residue at position 2 (Y) and a medium‑sized hydrophobic residue at position 8 (M) will increase binding affinity by enhancing π–π and hydrophobic interactions with SSTR2, while maintaining backbone stability.",
+  "run_id": "sst14_mutdock_5000",
+  "timestamp": "2026-06-10T17:45:08.030196+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific TM5 complementarity, while mutating position 11 to hydrophobic residues (L/I/V) will improve ECL2 contact specificity and reduce off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "Incorporating a pLDDT constraint and relaxing the clash threshold will reduce structural failures, improve docking geometry, and increase the proportion of candidates that meet all QC gates.",
+    "hypothesis": "The campaign is making progress in stability and structural design but is still limited by off-target interactions. The next iteration should prioritize mutations at non-pharmacophore positions to improve selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "objective_mode",
-        "old_value": "ddg_plus_constraints",
-        "new_value": "ddg_plus_pLDDT_constraints",
-        "rationale": "All top candidates have pLDDT=0.0, indicating low structural confidence. Adding a pLDDT constraint will penalize designs with poor predicted structure quality and encourage more reliable folds."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions (especially with SSTR3/SSTR5). Focusing mutations here can disrupt conserved-pocket contacts while preserving the pharmacophore (positions 7-10 and Cys3/Cys14)."
       },
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 20,
-        "rationale": "The current clash threshold is too strict, causing 4 candidates to fail the clash gate. Raising the limit will allow more designs to pass while still monitoring for excessive steric clashes."
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "A",
+            "G",
+            "S"
+          ],
+          "2": [
+            "G",
+            "A",
+            "S"
+          ],
+          "5": [
+            "N",
+            "Q",
+            "S"
+          ],
+          "6": [
+            "W",
+            "F",
+            "Y"
+          ],
+          "11": [
+            "F",
+            "Y",
+            "W"
+          ],
+          "12": [
+            "C",
+            "S",
+            "T"
+          ]
+        },
+        "rationale": "These mutations aim to reduce hydrophobic or conserved interactions at key off-target interface positions without compromising the pharmacophore. For example, introducing polar residues at position 1 or 2 can reduce SSTR3/SSTR5 binding."
       }
     ]
   },
-  "previous_best_ddg": -45.0269
+  "previous_best_ddg": -37.1939
 }

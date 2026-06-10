@@ -1,9 +1,9 @@
 # PyMOL 4-Panel Auto-Render: iter04_cand006
-# 생성: 2026-06-09T09:56:52.127188
+# 생성: 2026-06-10T15:44:54.187947
 reinitialize
 
 # --- 구조 로드 ---
-load /home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb, receptor
+load data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb, receptor
 load , peptide
 
 # 기본 스타일

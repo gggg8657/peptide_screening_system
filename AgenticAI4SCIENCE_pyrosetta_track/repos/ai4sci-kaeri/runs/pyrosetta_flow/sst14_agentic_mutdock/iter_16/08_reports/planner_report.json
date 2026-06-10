@@ -1,0 +1,58 @@
+{
+  "type": "planner",
+  "iteration": 16,
+  "run_id": "sst14_mutdock_4000",
+  "timestamp": "2026-06-10T16:47:52.091192+00:00",
+  "hypothesis": "Introducing a bulky aromatic residue at position 5 and a hydrophobic residue at position 11 will enhance SSTR2 selectivity by improving complementarity with SSTR2-unique ECL2/TM5 contacts while reducing off-target interactions.",
+  "strategy": "ddg_plus_constraints",
+  "critic_feedback_used": {
+    "hypothesis": "The current design strategy is insufficient to achieve consistent selectivity. A more targeted approach to disrupt off-target interactions at non-pharmacophore positions is necessary to improve Δmargin across the candidate pool.",
+    "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we need to disrupt conserved pocket interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "P",
+            "G"
+          ],
+          "6": [
+            "A",
+            "S"
+          ],
+          "11": [
+            "T",
+            "N"
+          ],
+          "12": [
+            "Q",
+            "H"
+          ]
+        },
+        "rationale": "Introducing mutations at these positions with residues that can disrupt conserved pocket interactions (e.g., D/E for charge repulsion, P/G for conformational change, T/N/Q/H for hydrogen bonding) will help reduce off-target binding."
+      }
+    ]
+  },
+  "previous_best_ddg": -15.4106
+}
