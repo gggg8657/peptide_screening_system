@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 14,
-  "run_id": "sst14_mutdock_10000",
-  "timestamp": "2026-06-11T04:39:48.519604+00:00",
-  "hypothesis": "The current scaffold is capable of strong SSTR2 binding, but off-target interactions at SSTR3/SSTR5 remain a bottleneck. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
+  "run_id": "sst14_mutdock_13000",
+  "timestamp": "2026-06-11T10:29:53.673823+00:00",
+  "hypothesis": "The current design strategy is generating candidates with strong SSTR2 binding but insufficient selectivity. The focus must shift to tuning non-pharmacophore positions to break off-target interactions, particularly with SSTR3/SSTR5.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -16,20 +16,44 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding in SSTR3/SSTR5. Focusing design on these positions can help disrupt conserved pocket interactions while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
+      "rationale": "To improve selectivity, we must disrupt conserved off-target interactions at non-pharmacophore positions. Focusing on these positions allows us to tune interactions with SSTR3/SSTR5 without compromising the pharmacophore core."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "T5D",
-        "T6E",
-        "N11K",
-        "T12R"
-      ],
-      "rationale": "These mutations are designed to disrupt conserved pocket interactions at SSTR3/SSTR5 while maintaining the overall peptide scaffold. Positively charged residues at positions 1, 2, 11, and 12 may repel interactions with acidic residues in off-target pockets."
+      "old_value": null,
+      "new_value": {
+        "position_1": [
+          "A",
+          "G",
+          "T"
+        ],
+        "position_2": [
+          "E",
+          "Q",
+          "K"
+        ],
+        "position_5": [
+          "A",
+          "V",
+          "I"
+        ],
+        "position_6": [
+          "T",
+          "S",
+          "N"
+        ],
+        "position_11": [
+          "N",
+          "D",
+          "E"
+        ],
+        "position_12": [
+          "T",
+          "S",
+          "A"
+        ]
+      },
+      "rationale": "These mutations are designed to break conserved hydrogen bonds and hydrophobic interactions with SSTR3/SSTR5 while maintaining flexibility and compatibility with SSTR2."
     }
   ],
   "current_params": {

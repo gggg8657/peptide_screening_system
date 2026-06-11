@@ -1,18 +1,18 @@
 {
   "type": "planner",
   "iteration": 12,
-  "run_id": "sst14_mutdock_10000",
-  "timestamp": "2026-06-11T04:21:12.964192+00:00",
-  "hypothesis": "Introducing aromatic substitutions at position 5 and hydrophobic substitutions at position 11 will enhance SSTR2-specific interactions with ECL2/ECL3 and TM5/TM6, while avoiding off-target compatibility with SSTR3/5. This will increase the selectivity margin without compromising SSTR2 binding affinity.",
+  "run_id": "sst14_mutdock_14000",
+  "timestamp": "2026-06-11T12:10:59.171646+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/SSTR5) interactions through electrostatic repulsion, thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity due to conserved off-target interactions. Targeting non-pharmacophore positions for mutagenesis and tightening the ddG threshold will improve selectivity while preserving binding affinity.",
+    "hypothesis": "The current hypothesis remains valid, but the focus should shift to improving structural quality and enforcing selectivity through targeted mutations at non-pharmacophore positions.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_ddg_max",
         "old_value": -15.0,
         "new_value": -20.0,
-        "rationale": "To filter out candidates with weaker binding (higher ddG) and retain only the most stable designs, which may improve selectivity by reducing off-target interactions."
+        "rationale": "The current ddG threshold is too lenient, allowing candidates with weak binding to pass. Tightening the ddG cutoff will ensure only high-affinity binders are considered."
       },
       {
         "parameter_name": "focus_positions",
@@ -25,9 +25,9 @@
           11,
           12
         ],
-        "rationale": "To target non-pharmacophore positions where mutations can disrupt off-target contacts (especially SSTR3/SSTR5) without affecting the conserved FWKT pharmacophore or Cys3/Cys14."
+        "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions. Focusing mutations at these positions will help break off-target interactions while preserving the pharmacophore."
       }
     ]
   },
-  "previous_best_ddg": -32.6826
+  "previous_best_ddg": -35.7357
 }

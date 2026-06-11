@@ -1,9 +1,9 @@
 {
   "type": "planner",
   "iteration": 1,
-  "run_id": "sst14_mutdock_11000",
-  "timestamp": "2026-06-11T05:35:56.148702+00:00",
-  "hypothesis": "Enhancing aromatic interactions at position 5 and 6 with SSTR2-specific ECL2/TM5 residues will improve selectivity over off-target SSTR3/SSTR5, while introducing hydrophobic substitutions at position 11 will improve steric complementarity with SSTR2 ECL3.",
+  "run_id": "sst14_mutdock_14000",
+  "timestamp": "2026-06-11T11:18:27.589032+00:00",
+  "hypothesis": "Enhancing aromatic interactions at position 5 and introducing hydrophobic substitutions at position 11 will improve SSTR2 binding while reducing off-target affinity by exploiting SSTR2-specific subpockets.",
   "strategy": "ddg_only",
   "critic_feedback_used": null,
   "previous_best_ddg": null

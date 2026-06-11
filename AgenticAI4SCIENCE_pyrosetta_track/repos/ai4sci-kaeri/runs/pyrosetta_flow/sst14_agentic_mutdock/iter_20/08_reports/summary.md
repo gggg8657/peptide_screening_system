@@ -1,18 +1,16 @@
-# Iteration 20 Summary: sst14_mutdock_10000
+# Iteration 20 Summary: sst14_mutdock_13000
 
-            - **Run ID**: `sst14_mutdock_10000`
+            - **Run ID**: `sst14_mutdock_13000`
             - **Iteration**: 20
-            - **생성 시각**: 2026-06-11 05:28 UTC
+            - **생성 시각**: 2026-06-11 11:15 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 20 evaluated three candidates, all of which passed quality control (QC) gates. Despite the structural quality metric (pLDDT) being uniformly zero across all candidates, indicating structural failures, the binding affinity (ddG) values were strong, with the best candidate (iter20_cand007) achieving a ddG of -32.7 kcal/mol. Docking scores were not informative (0.00) for all candidates, suggesting a lack of meaningful docking evaluation or data availability. Selectivity metrics showed a positive margin (Δmargin > 0), but no candidate surpassed the native SST-14 ligand in all aspects.
-
-The primary failure mode in this iteration was structural, highlighting the need for improved structural modeling or refinement strategies. The strong ddG values suggest that the binding affinity is being captured effectively, but structural accuracy remains a critical bottleneck. Future iterations should prioritize enhancing structural quality while maintaining strong binding performance.
+            Iteration 20 of the SSTR2 peptide binder design campaign evaluated a single candidate, with one passing all QC gates. The top candidate, iter20_cand003, exhibited a ddG of -31.6, indicating strong binding affinity. However, the pLDDT and docking scores were both reported as 0.0, suggesting potential issues with structural confidence or docking accuracy. The overall pass rate of 12.5% is notably low, indicating a need to refine the design strategy to avoid structural failures and improve selectivity. Despite the low yield, the best Δmargin remains robust at 9.1021, highlighting the potential of this iteration's top candidate.
 
             ## Recommendations
 
-            - Implement structural refinement strategies to address the structural failure mode observed in this iteration.
-- Investigate the reasons for the lack of informative docking scores and consider alternative evaluation methods.
-- Continue to prioritize candidates with strong ddG values while improving structural quality metrics.
+            - Refine the design space to focus on structural stability and avoid off-target interactions.
+- Investigate the structural failures observed in this iteration to identify common causes and address them in future designs.
+- Consider increasing the diversity of the design inputs to improve the yield of high-quality candidates.

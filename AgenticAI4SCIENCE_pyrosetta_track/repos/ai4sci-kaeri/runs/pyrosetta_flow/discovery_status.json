@@ -1,10 +1,10 @@
 {
   "running": true,
-  "epochs_done": 9,
-  "elapsed_seconds": 63666.7,
+  "epochs_done": 12,
+  "elapsed_seconds": 84221.9,
   "global_best_delta_margin": 9.1021,
-  "passing_count": 18,
-  "diversity_level": 0,
+  "passing_count": 20,
+  "diversity_level": 1,
   "top": [
     {
       "sequence": "ARCGKFFWKTATSC",
@@ -118,19 +118,19 @@
     }
   ],
   "last_epoch": {
-    "epoch": 9,
-    "seed_base": 10000,
-    "max_random_mutations": 3,
+    "epoch": 12,
+    "seed_base": 13000,
+    "max_random_mutations": 4,
     "ran_ok": true,
     "error": "",
     "global_best_delta": 9.1021,
     "n_unique_screened": 50,
-    "passing_count": 18,
-    "diversity_level": 0,
+    "passing_count": 20,
+    "diversity_level": 1,
     "stale_epochs": 2,
     "improved": false,
-    "next_max_mutations": 3,
-    "epoch_seconds": 7852.0
+    "next_max_mutations": 4,
+    "epoch_seconds": 7513.1
   },
   "history": [
     {
@@ -267,6 +267,51 @@
       "improved": false,
       "next_max_mutations": 3,
       "epoch_seconds": 7852.0
+    },
+    {
+      "epoch": 10,
+      "seed_base": 11000,
+      "max_random_mutations": 3,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 20,
+      "diversity_level": 1,
+      "stale_epochs": 0,
+      "improved": false,
+      "next_max_mutations": 4,
+      "epoch_seconds": 5982.2
+    },
+    {
+      "epoch": 11,
+      "seed_base": 12000,
+      "max_random_mutations": 4,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 20,
+      "diversity_level": 1,
+      "stale_epochs": 1,
+      "improved": false,
+      "next_max_mutations": 4,
+      "epoch_seconds": 7059.9
+    },
+    {
+      "epoch": 12,
+      "seed_base": 13000,
+      "max_random_mutations": 4,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 20,
+      "diversity_level": 1,
+      "stale_epochs": 2,
+      "improved": false,
+      "next_max_mutations": 4,
+      "epoch_seconds": 7513.1
     }
   ]
 }

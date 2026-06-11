@@ -1,19 +1,19 @@
-# Iteration 13 Summary: sst14_mutdock_10000
+# Iteration 13 Summary: sst14_mutdock_13000
 
-            - **Run ID**: `sst14_mutdock_10000`
+            - **Run ID**: `sst14_mutdock_13000`
             - **Iteration**: 13
-            - **생성 시각**: 2026-06-11 04:27 UTC
+            - **생성 시각**: 2026-06-11 10:26 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 13 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed the quality control (QC) gates. The designs demonstrated strong binding affinity to the target receptor, as indicated by favorable ddG values ranging from -24.6 to -42.9 kcal/mol. However, the primary objective of achieving SSTR2 selectivity over off-target receptors such as SSTR3 and SSTR5 remains unmet. The best Δmargin remains positive but not significantly higher than that of the native SST-14, indicating a lack of selectivity improvement. Structural failures were identified as the primary failure type, suggesting that further refinement of the binding interface is necessary to enhance specificity.
+            Iteration 13 of the SSTR2 peptide binder design campaign evaluated six candidate designs, all of which passed the quality control (QC) gates. The primary focus of this iteration was to assess structural stability and selectivity for the SSTR2 receptor. While the ddG values indicate strong stability, with the best candidate (iter13_cand004) achieving a ddG of -56.5 kcal/mol, selectivity remains a critical area for improvement. The docking scores and pLDDT metrics were not informative (0.0), suggesting limitations in the current modeling or scoring framework. The Critic analysis highlights that although the best Δmargin is positive, the range of selectivity values among top candidates indicates variability and the need for further refinement to ensure consistent SSTR2 selectivity across the design space.
 
-The top candidates, iter13_cand008, iter13_cand007, iter13_cand004, and iter13_cand001, exhibited the most favorable ddG values, but their lack of selectivity remains a critical limitation. The absence of meaningful pLDDT and docking scores suggests that structural modeling and docking accuracy may require further validation. The next iteration should focus on addressing off-target interactions and improving the structural stability of the top candidates to enhance SSTR2 selectivity.
+The structural failures noted in the Critic analysis suggest that some candidates may have suboptimal conformations or interactions that could be optimized in the next iteration. The overall pass rate for QC gates is promising, but the lack of meaningful pLDDT and docking scores indicates a need to reassess the modeling pipeline or scoring functions to better capture structural and binding characteristics. The next iteration should focus on improving selectivity metrics and addressing structural limitations.
 
             ## Recommendations
 
-            - Focus on improving SSTR2 selectivity by addressing off-target interactions at SSTR3/SSTR5.
-- Refine the structural modeling and docking protocols to obtain more accurate pLDDT and docking scores.
-- Incorporate additional constraints in the design process to enhance structural stability and specificity.
-- Evaluate the top candidates for potential modifications that could disrupt off-target binding without compromising affinity for SSTR2.
+            - Refine the modeling pipeline to improve the accuracy of pLDDT and docking scores.
+- Focus the next iteration on optimizing selectivity metrics to ensure consistent SSTR2 binding.
+- Investigate structural failures to identify common issues and incorporate corrections into the design process.
+- Consider incorporating additional experimental validation to complement computational metrics.

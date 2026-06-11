@@ -1,13 +1,19 @@
 {
   "type": "critic",
   "iteration": 17,
-  "run_id": "sst14_mutdock_10000",
-  "timestamp": "2026-06-11T05:02:40.740754+00:00",
-  "hypothesis": "The current designs achieve strong binding but fail to improve selectivity. The focus must shift to disrupting conserved interactions in SSTR3/SSTR5 through targeted mutations at non-pharmacophore positions.",
+  "run_id": "sst14_mutdock_13000",
+  "timestamp": "2026-06-11T10:56:07.535976+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 binding (ddG) but lack structural integrity and docking quality. To improve selectivity, we must focus on disrupting off-target contacts at non-pharmacophore positions while maintaining SSTR2 pharmacophore interactions.",
   "proposed_changes": [
     {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Low pLDDT and docking scores suggest poor structural quality. Tightening clash constraints will enforce better geometry and improve docking performance."
+    },
+    {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -16,20 +22,7 @@
         11,
         12
       ],
-      "rationale": "To disrupt conserved pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions while preserving the pharmacophore (positions 7-10 and Cys3/Cys14)."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1V",
-        "A2T",
-        "K5E",
-        "T6S",
-        "N11D",
-        "S12A"
-      ],
-      "rationale": "These mutations are predicted to break conserved interactions with SSTR3/SSTR5 while preserving the native pharmacophore and cysteine positions."
+      "rationale": "To improve selectivity, we must disrupt off-target interactions at non-pharmacophore positions (1/2/5/6/11/12) while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {

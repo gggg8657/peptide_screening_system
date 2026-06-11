@@ -1,17 +1,19 @@
-# Iteration 18 Summary: sst14_mutdock_10000
+# Iteration 18 Summary: sst14_mutdock_13000
 
-            - **Run ID**: `sst14_mutdock_10000`
+            - **Run ID**: `sst14_mutdock_13000`
             - **Iteration**: 18
-            - **생성 시각**: 2026-06-11 05:07 UTC
+            - **생성 시각**: 2026-06-11 11:04 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 18 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all quality control (QC) gates. However, the pass rate of 25% indicates a low yield, suggesting potential structural or stability issues in the design process. The top candidates, iter18_cand006 and iter18_cand007, exhibited strong ddG values of -20.1 and -18.6, respectively, indicating favorable binding affinities. However, both candidates had pLDDT and docking scores of 0.0, which may reflect incomplete or inaccurate structural modeling. While selectivity remains a strong aspect of the current designs, the low structural validity of the candidates is a concern that must be addressed in future iterations.
+            Iteration 18 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all quality control (QC) gates. Despite this, the structural quality of the designs was poor, as indicated by pLDDT values of 0.0 for both candidates. The binding affinity, as measured by ddG, was strong, with the best candidate (iter18_cand008) achieving a ddG of -37.5 kcal/mol. However, the lack of structural confidence and the low pass rate (25%) suggest that the designs are not yet suitable for experimental validation. The docking scores were not informative (0.00), and no selectivity data were provided, though the critic analysis noted that selectivity remains positive. Overall, the iteration highlights the need to improve structural prediction accuracy while maintaining favorable binding energetics.
+
+The primary failure mode in this iteration was structural failures, indicating that the current design approach may not be generating sufficiently accurate or stable structures. This is a critical barrier to advancing candidates to the next stage of the design campaign.
 
             ## Recommendations
 
-            - Investigate the structural modeling pipeline to improve pLDDT and docking score accuracy.
-- Refine the design criteria to prioritize structural stability alongside binding affinity.
-- Consider increasing the diversity of the candidate pool to improve the pass rate.
-- Perform additional validation experiments on the top candidates to assess their structural integrity and binding behavior.
+            - Prioritize improvements in structural prediction accuracy to ensure viable candidates for experimental validation.
+- Investigate the root causes of structural failures, including potential limitations in the modeling pipeline.
+- Maintain focus on optimizing binding affinity (ddG) while addressing structural quality issues.
+- Consider incorporating additional constraints or validation steps to enhance the robustness of the designs.

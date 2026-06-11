@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 15,
-  "run_id": "sst14_mutdock_10000",
-  "timestamp": "2026-06-11T04:51:06.496616+00:00",
-  "hypothesis": "The current designs are achieving strong selectivity (Δmargin > 0) but are failing structurally. The next step is to focus on improving structural validity without compromising selectivity by increasing candidate diversity and tightening clash constraints.",
+  "run_id": "sst14_mutdock_13000",
+  "timestamp": "2026-06-11T10:37:51.798449+00:00",
+  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be achieved by balancing strong on-target binding with reduced off-target interactions. Iteration 15 shows that while strong ddG is achievable, the structural quality and selectivity need refinement. The next step is to prioritize structural improvements and off-target disruption at non-pharmacophore positions.",
   "proposed_changes": [
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "Low pass rate suggests insufficient diversity in the candidate pool. Increasing the number of candidates will improve the chances of generating structurally valid designs."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that contribute to off-target binding (especially SSTR3/SSTR5)."
     },
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Structural failures may be due to steric clashes not being adequately penalized. Tightening the clash threshold will enforce better geometry and reduce invalid structures."
+      "rationale": "Structural failures suggest poor geometry in the binding interface. Tightening the clash threshold will enforce better packing and reduce structural failures."
     }
   ],
   "current_params": {

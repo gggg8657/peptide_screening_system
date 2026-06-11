@@ -1,58 +1,26 @@
 {
   "type": "planner",
   "iteration": 5,
-  "run_id": "sst14_mutdock_11000",
-  "timestamp": "2026-06-11T05:50:25.382541+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (e.g., W, F, Y) will enhance complementarity with SSTR2-specific ECL2/TM5 contacts, while mutating position 11 to hydrophobic residues (e.g., L, I, V) will reduce off-target (SSTR3/5) binding by avoiding off-target-conserved hydrophilic pockets.",
+  "run_id": "sst14_mutdock_14000",
+  "timestamp": "2026-06-11T11:37:22.858161+00:00",
+  "hypothesis": "Enhancing steric complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 residues by introducing bulky hydrophobic residues at position 11 and aromatic residues at position 5 will increase selectivity margin by differentiating SSTR2 from off-target subtypes.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis is that SSTR2 selectivity can be enhanced by disrupting conserved pocket interactions at non-pharmacophore positions while maintaining key pharmacophore residues. Iteration 4 confirms that strong ddG is achievable, but selectivity remains the limiting factor.",
+    "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity, but structural issues are limiting the pass rate. Tightening structural constraints and increasing candidate diversity will improve the overall quality of the designs.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To improve selectivity, we must disrupt conserved pocket interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Structural failures suggest excessive clashes in the top candidates. Lowering the clash threshold will enforce better geometry and reduce structural QC failures."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "K",
-            "R"
-          ],
-          "5": [
-            "Y",
-            "F"
-          ],
-          "6": [
-            "Q",
-            "N"
-          ],
-          "11": [
-            "L",
-            "I"
-          ],
-          "12": [
-            "A",
-            "V"
-          ]
-        },
-        "rationale": "These mutations are designed to break hydrogen bonds and hydrophobic interactions that are conserved in SSTR3/SSTR5 but not critical for SSTR2 binding."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 12,
+        "rationale": "The current number of candidates is too small to ensure robust sampling of the design space. Increasing the number of candidates will improve the chances of finding structurally valid, high-quality designs."
       }
     ]
   },
-  "previous_best_ddg": -31.0377
+  "previous_best_ddg": -30.8102
 }

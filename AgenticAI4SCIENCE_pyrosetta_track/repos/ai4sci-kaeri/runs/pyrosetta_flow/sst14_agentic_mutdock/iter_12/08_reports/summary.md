@@ -1,16 +1,16 @@
-# Iteration 12 Summary: sst14_mutdock_10000
+# Iteration 12 Summary: sst14_mutdock_13000
 
-            - **Run ID**: `sst14_mutdock_10000`
+            - **Run ID**: `sst14_mutdock_13000`
             - **Iteration**: 12
-            - **생성 시각**: 2026-06-11 04:24 UTC
+            - **생성 시각**: 2026-06-11 10:22 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 12 evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity while maintaining or enhancing selectivity over native SST-14. While the candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -20.4 to -25.3, there was no significant improvement in selectivity. The top candidates, iter12_cand008, iter12_cand001, and iter12_cand006, showed promising ddG scores but failed to meet selectivity thresholds, with Δmargin values above 0. The lack of structural improvements was highlighted as a primary failure mode, suggesting that structural stability and sequence diversity need to be prioritized in the next iteration to enhance overall performance.
+            Iteration 12 evaluated three candidates for their potential as SSTR2 peptide binders. All three candidates passed the quality control (QC) gates, but none met the structural quality and docking score thresholds. The primary issue identified was structural failure, as all candidates exhibited a pLDDT of 0.0 and docking scores of 0.00, indicating poor structural confidence and docking performance. Despite this, the ddG binding scores were strong, with the best candidate (iter12_cand006) showing a ddG of -26.9 kcal/mol. Selectivity remained positive, suggesting that the candidates retain favorable binding specificity for the target. However, the structural failures prevent these candidates from progressing to the next stage of development.
 
             ## Recommendations
 
-            - Prioritize structural stability and sequence diversity in the next iteration to improve selectivity.
-- Incorporate additional constraints or filters to ensure candidates meet selectivity thresholds.
-- Re-evaluate the scoring metrics to better reflect both binding affinity and selectivity.
+            - Revisit the structural modeling pipeline to improve pLDDT scores and docking performance in the next iteration.
+- Investigate the root causes of structural failures, such as sequence design or modeling parameters.
+- Maintain focus on ddG and selectivity as these metrics remain favorable, but prioritize structural quality improvements.

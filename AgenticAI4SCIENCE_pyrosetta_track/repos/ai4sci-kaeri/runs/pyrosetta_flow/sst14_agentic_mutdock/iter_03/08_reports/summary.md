@@ -1,18 +1,19 @@
-# Iteration 3 Summary: sst14_mutdock_11000
+# Iteration 3 Summary: sst14_mutdock_14000
 
-            - **Run ID**: `sst14_mutdock_11000`
+            - **Run ID**: `sst14_mutdock_14000`
             - **Iteration**: 3
-            - **생성 시각**: 2026-06-11 05:46 UTC
+            - **생성 시각**: 2026-06-11 11:33 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 3 of the SSTR2 peptide binder design campaign evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity and selectivity over the native SST-14. While the results showed strong binding affinities, as indicated by ddG values ranging from -18.2 to -45.0 kcal/mol, selectivity remains a critical challenge. The best candidate, iter03_cand003, exhibited the lowest ddG of -45.0 kcal/mol, suggesting high binding affinity. However, the selectivity margin (Δmargin) for the top candidates was not significantly higher than that of the native SST-14, indicating a need for further optimization to reduce off-target interactions.
+            Iteration 3 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all QC gates. However, the structural quality of the designs was notably poor, as indicated by pLDDT values of 0.0 for both candidates, suggesting significant structural failures. The docking scores were also suboptimal (0.00), and while the ddG values indicated favorable binding affinities (ranging from -18.4 to -44.1), the overall design quality remains a concern. The best candidate, iter03_cand007, exhibited the lowest ddG of -44.1, but its structural reliability is questionable due to the absence of meaningful pLDDT values. Selectivity (Δmargin) was positive for the top candidates, but this was not sufficient to offset the structural and docking shortcomings.
 
-Structural failures were identified as the primary failure type, suggesting that some candidates may not maintain stable conformations under experimental conditions. This highlights the importance of refining structural stability in the next iteration. The lack of pLDDT and docking score data for the candidates also limits the ability to fully assess their structural confidence and docking behavior. Future work should prioritize improving selectivity while maintaining or enhancing binding affinity.
+The low pass rate (25%) and poor structural quality highlight the need for improvements in the design pipeline, particularly in ensuring structural accuracy and stability. The current results suggest that the design process may not be effectively balancing binding affinity with structural integrity, necessitating a re-evaluation of the design parameters and constraints.
 
             ## Recommendations
 
-            - Focus on improving selectivity by optimizing interactions that distinguish the binder from the native SST-14.
-- Address structural stability issues by refining the design to reduce structural failures.
-- Incorporate additional metrics such as pLDDT and docking scores to better evaluate structural confidence and binding behavior in the next iteration.
+            - Revisit the structural modeling pipeline to improve pLDDT scores and reduce structural failures.
+- Incorporate additional constraints or scoring terms to enhance docking performance and structural accuracy.
+- Evaluate the role of sequence design in stabilizing the predicted structures.
+- Consider increasing the diversity of the design space to explore alternative binding modes with better structural quality.

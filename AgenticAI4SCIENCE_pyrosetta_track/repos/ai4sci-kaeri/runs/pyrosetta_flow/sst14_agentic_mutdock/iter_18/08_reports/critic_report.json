@@ -1,28 +1,21 @@
 {
   "type": "critic",
   "iteration": 18,
-  "run_id": "sst14_mutdock_10000",
-  "timestamp": "2026-06-11T05:07:15.801531+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity, but structural issues and stability limitations are reducing the pass rate. Tightening structural constraints and focusing mutations on non-pharmacophore positions should improve yield without compromising selectivity.",
+  "run_id": "sst14_mutdock_13000",
+  "timestamp": "2026-06-11T11:04:04.724076+00:00",
+  "hypothesis": "The current designs are energetically favorable but structurally invalid. Future iterations must prioritize structural quality alongside binding and selectivity.",
   "proposed_changes": [
+    {
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs."
+    },
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
-      "new_value": 8,
-      "rationale": "Reducing the clash tolerance will enforce better packing and reduce structural failures due to poor geometry."
-    },
-    {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "Focus optimization on non-pharmacophore positions to disrupt off-target contacts while preserving key pharmacophore residues (FWKT7-10 and Cys3/Cys14)."
+      "new_value": 5,
+      "rationale": "Tighten the clash threshold to reduce structural artifacts and improve overall geometry."
     }
   ],
   "current_params": {

@@ -1,33 +1,26 @@
 {
   "type": "planner",
   "iteration": 13,
-  "run_id": "sst14_mutdock_10000",
-  "timestamp": "2026-06-11T04:24:40.367342+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific complementarity in the ECL2/TM5 pocket, while a negatively charged residue at position 6 will disrupt off-target (SSTR3/SSTR5) electrostatic interactions without compromising SSTR2 binding.",
+  "run_id": "sst14_mutdock_13000",
+  "timestamp": "2026-06-11T10:22:57.230650+00:00",
+  "hypothesis": "Enhancing SSTR2 selectivity by introducing aromatic and hydrophobic substitutions at positions 5 and 11 will improve complementarity with SSTR2-specific ECL2/TM5/TM6 regions while reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The hypothesis remains focused on achieving SSTR2 selectivity through disruption of off-target interactions. However, the current designs are over-optimized for binding affinity, which may hinder selectivity. A balance between affinity and specificity is needed.",
+    "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved, but structural and docking quality must be improved to ensure functional candidates.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_ddg_max",
-        "old_value": -15.0,
-        "new_value": -20.0,
-        "rationale": "Current ddG values are too low, leading to overly stable designs that may not allow for the necessary mutational flexibility to improve selectivity. Raising the ddG threshold will encourage designs with moderate binding affinity, allowing for better tuning of selectivity."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 12,
+        "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs that pass the pLDDT and docking filters."
       },
       {
-        "parameter_name": "focus_positions",
-        "old_value": [],
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions. Focusing mutations at these positions will help break off-target interactions while preserving the pharmacophore (FWKT(7-10) + Cys3/Cys14)."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Tighten the clash filter to reduce structural failures due to steric clashes, which are likely contributing to the poor pLDDT and docking scores."
       }
     ]
   },
-  "previous_best_ddg": -25.2503
+  "previous_best_ddg": -26.8554
 }
