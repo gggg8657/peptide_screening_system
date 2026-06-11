@@ -1,13 +1,19 @@
 {
   "type": "critic",
   "iteration": 7,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T22:24:34.374968+00:00",
-  "hypothesis": "The current hypothesis remains valid, but the focus must shift to optimizing selectivity by targeting non-pharmacophore positions involved in off-target interactions.",
+  "run_id": "sst14_mutdock_11000",
+  "timestamp": "2026-06-11T06:05:16.987456+00:00",
+  "hypothesis": "The current design strategy is generating high-affinity binders but insufficient structural quality and docking scores are limiting success. A stricter ddG threshold and targeted mutations at non-pharmacophore positions are needed to improve selectivity and structural quality.",
   "proposed_changes": [
     {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "To filter out candidates with weaker binding affinities and retain only the most stable binders."
+    },
+    {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,38 +22,7 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3 and SSTR5. Focusing on these positions will allow us to disrupt conserved-pocket contacts while preserving the critical FWKT(7-10) and Cys3/Cys14 pharmacophore."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "A",
-          "G"
-        ],
-        "11": [
-          "A",
-          "G"
-        ],
-        "12": [
-          "A",
-          "G"
-        ]
-      },
-      "rationale": "Introducing charged or hydrophobic mutations at these positions can disrupt conserved interactions with SSTR3/SSTR5 without affecting the pharmacophore. These mutations are expected to reduce off-target binding and improve Δmargin."
+      "rationale": "To guide mutations at non-pharmacophore positions that disrupt off-target interactions in SSTR3/SSTR5 without affecting the conserved pharmacophore positions."
     }
   ],
   "current_params": {

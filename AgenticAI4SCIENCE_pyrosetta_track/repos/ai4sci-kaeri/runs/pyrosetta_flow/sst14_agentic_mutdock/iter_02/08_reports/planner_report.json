@@ -1,33 +1,26 @@
 {
   "type": "planner",
   "iteration": 2,
-  "run_id": "sst14_mutdock_8000",
-  "timestamp": "2026-06-10T23:49:41.984084+00:00",
-  "hypothesis": "Enhancing aromatic complementarity at position 5 with SSTR2 ECL2 residues (e.g., Y193) and introducing hydrophobic substitutions at position 11 will increase selectivity margin by improving SSTR2-specific interactions while reducing off-target affinity.",
+  "run_id": "sst14_mutdock_11000",
+  "timestamp": "2026-06-11T05:39:29.290401+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions in ECL2/TM5 pockets, while mutating position 6 to acidic residues (E/D) will disrupt off-target SSTR3/5 electrostatics without compromising SSTR2 binding.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is insufficient to consistently produce SSTR2-selective ligands. A more focused mutation strategy at non-pharmacophore positions and a stricter ddG threshold are necessary to improve selectivity.",
+    "hypothesis": "The current designs are achieving selectivity (Δmargin > 0), but structural quality remains a bottleneck. The next iteration should focus on improving structural plausibility while maintaining selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_ddg_max",
-        "old_value": -15.0,
-        "new_value": -20.0,
-        "rationale": "The current ddG threshold is not stringent enough to filter out candidates with weak binding or poor selectivity. Raising the ddG threshold will prioritize stronger SSTR2 binders."
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_only",
+        "new_value": "ddg_plus_plddt",
+        "rationale": "To prioritize candidates with both strong ddG and high structural quality (pLDDT > 0.7), ensuring that the designs are not only energetically favorable but also structurally plausible."
       },
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To improve selectivity, we need to disrupt conserved interactions in off-targets (SSTR3/SSTR5) at non-pharmacophore positions. Focusing mutations on these positions can reduce off-target binding while preserving key pharmacophore residues (FWKT7-10 and Cys3/Cys14)."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "To increase the diversity and quantity of candidates, improving the chances of identifying a candidate with both strong ddG and high pLDDT."
       }
     ]
   },
-  "previous_best_ddg": -19.3971
+  "previous_best_ddg": -28.1216
 }

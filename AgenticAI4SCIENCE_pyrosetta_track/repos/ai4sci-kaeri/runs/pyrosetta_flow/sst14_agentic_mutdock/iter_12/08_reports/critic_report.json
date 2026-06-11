@@ -1,13 +1,19 @@
 {
   "type": "critic",
   "iteration": 12,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:06:21.888421+00:00",
-  "hypothesis": "The current design strategy is effective for generating high-affinity binders but insufficient for achieving SSTR2 selectivity. Targeted mutations at non-pharmacophore positions are necessary to disrupt off-target interactions and improve Δmargin.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T04:23:53.230171+00:00",
+  "hypothesis": "The hypothesis remains focused on achieving SSTR2 selectivity through disruption of off-target interactions. However, the current designs are over-optimized for binding affinity, which may hinder selectivity. A balance between affinity and specificity is needed.",
   "proposed_changes": [
     {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "Current ddG values are too low, leading to overly stable designs that may not allow for the necessary mutational flexibility to improve selectivity. Raising the ddG threshold will encourage designs with moderate binding affinity, allowing for better tuning of selectivity."
+    },
+    {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,38 +22,7 @@
         11,
         12
       ],
-      "rationale": "To disrupt conserved-pocket contacts in SSTR3/SSTR5 while preserving pharmacophore positions (7-10) and Cys3/Cys14."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "N",
-          "Q"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "S",
-          "T"
-        ],
-        "11": [
-          "L",
-          "I"
-        ],
-        "12": [
-          "A",
-          "V"
-        ]
-      },
-      "rationale": "Introduce mutations at key non-pharmacophore positions to reduce off-target binding while maintaining native-like interactions at SSTR2."
+      "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions. Focusing mutations at these positions will help break off-target interactions while preserving the pharmacophore (FWKT(7-10) + Cys3/Cys14)."
     }
   ],
   "current_params": {

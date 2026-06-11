@@ -1,70 +1,26 @@
 {
   "type": "planner",
   "iteration": 16,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:22:43.656246+00:00",
-  "hypothesis": "Introducing a bulky aromatic residue at position 5 and a hydrophobic substitution at position 11 will enhance SSTR2-specific interactions in the ECL2/TM5 pocket while reducing off-target binding to SSTR3/SSTR5 by avoiding conserved off-target electrostatic interactions.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T04:52:19.939142+00:00",
+  "hypothesis": "Introducing bulky aromatic residues at position 5 and hydrophobic substitutions at position 11 will enhance SSTR2-specific complementarity with ECL2/TM5, while avoiding off-target SSTR3/5 interactions. This will increase the selectivity margin by differentiating SSTR2 from other subtypes.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is generating candidates with strong SSTR2 binding but insufficient selectivity. The focus must shift to explicitly disrupting conserved interactions in SSTR3/SSTR5 through targeted mutations at non-pharmacophore positions.",
+    "hypothesis": "The current designs are achieving strong selectivity (Δmargin > 0) but are failing structurally. The next step is to focus on improving structural validity without compromising selectivity by increasing candidate diversity and tightening clash constraints.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in SSTR3/SSTR5. Focusing on non-pharmacophore positions 1, 2, 5, 6, 11, and 12 allows us to introduce mutations that reduce off-target binding while preserving the pharmacophore at positions 7-10 and Cys3/Cys14."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "Low pass rate suggests insufficient diversity in the candidate pool. Increasing the number of candidates will improve the chances of generating structurally valid designs."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "A",
-            "G",
-            "E",
-            "C"
-          ],
-          "2": [
-            "E",
-            "C",
-            "K",
-            "N"
-          ],
-          "5": [
-            "F",
-            "Y",
-            "W",
-            "L"
-          ],
-          "6": [
-            "K",
-            "T",
-            "S",
-            "N"
-          ],
-          "11": [
-            "I",
-            "V",
-            "L",
-            "M"
-          ],
-          "12": [
-            "C",
-            "S",
-            "T",
-            "N"
-          ]
-        },
-        "rationale": "Introducing mutations at key non-pharmacophore positions with residues that disrupt off-target interactions (e.g., hydrophobic or charged residues) can reduce binding to SSTR3/SSTR5 while maintaining SSTR2 affinity."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Structural failures may be due to steric clashes not being adequately penalized. Tightening the clash threshold will enforce better geometry and reduce invalid structures."
       }
     ]
   },
-  "previous_best_ddg": -21.7293
+  "previous_best_ddg": -33.9511
 }

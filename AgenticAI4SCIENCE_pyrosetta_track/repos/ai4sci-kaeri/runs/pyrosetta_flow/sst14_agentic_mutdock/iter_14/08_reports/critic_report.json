@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 14,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:17:45.042177+00:00",
-  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be improved by targeting non-pharmacophore positions 1/2/5/6/11/12 to disrupt off-target interactions. Iteration 14 confirms that this is the primary failure mode, and the next iteration will focus on implementing these mutations to increase Δmargin.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T04:39:48.519604+00:00",
+  "hypothesis": "The current scaffold is capable of strong SSTR2 binding, but off-target interactions at SSTR3/SSTR5 remain a bottleneck. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,38 +16,20 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3/SSTR5. Focusing on these positions will allow us to design mutations that disrupt conserved pocket contacts in off-targets while preserving key pharmacophore residues."
+      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding in SSTR3/SSTR5. Focusing design on these positions can help disrupt conserved pocket interactions while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "A",
-          "G"
-        ],
-        "2": [
-          "C",
-          "T"
-        ],
-        "5": [
-          "Y",
-          "F"
-        ],
-        "6": [
-          "W",
-          "L"
-        ],
-        "11": [
-          "I",
-          "V"
-        ],
-        "12": [
-          "C",
-          "S"
-        ]
-      },
-      "rationale": "These mutations are designed to break conserved interactions with off-target SSTR3/SSTR5 while maintaining overall sequence diversity and avoiding disruption of the pharmacophore core (positions 7-10 and Cys3/Cys14)."
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "A2R",
+        "T5D",
+        "T6E",
+        "N11K",
+        "T12R"
+      ],
+      "rationale": "These mutations are designed to disrupt conserved pocket interactions at SSTR3/SSTR5 while maintaining the overall peptide scaffold. Positively charged residues at positions 1, 2, 11, and 12 may repel interactions with acidic residues in off-target pockets."
     }
   ],
   "current_params": {

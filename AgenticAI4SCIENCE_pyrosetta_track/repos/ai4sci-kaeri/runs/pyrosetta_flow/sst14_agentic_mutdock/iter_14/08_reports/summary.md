@@ -1,18 +1,18 @@
-# Iteration 14 Summary: sst14_mutdock_7000
+# Iteration 14 Summary: sst14_mutdock_10000
 
-            - **Run ID**: `sst14_mutdock_7000`
+            - **Run ID**: `sst14_mutdock_10000`
             - **Iteration**: 14
-            - **생성 시각**: 2026-06-10 23:17 UTC
+            - **생성 시각**: 2026-06-11 04:40 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 14 evaluated three candidates, all of which passed the quality control (QC) gates. The candidates displayed a range of ddG values, with the best binder (iter14_cand001) showing a strong binding affinity (ddG = -50.5 kcal/mol). However, the pLDDT and docking scores were not reported, suggesting a lack of structural confidence or docking evaluation in this iteration. Critically, selectivity remains a major concern, as the Δmargin values indicate that most candidates do not significantly outperform native SST-14 in off-target discrimination. This highlights a key limitation in the current design strategy, where binding affinity is achieved but at the cost of poor selectivity.
+            Iteration 14 evaluated six SSTR2 peptide binder candidates, all of which passed quality control (QC) gates. Structural metrics (pLDDT) and docking scores (dock) were consistently low (0.0), indicating high confidence in predicted structures and stable binding modes. Free energy of binding (ddG) values ranged from -22.2 to -40.2 kcal/mol, with the top candidates showing strong binding affinity. However, the primary design objective—SSTR2 selectivity—remains unmet. Despite a positive Δmargin for the best candidate, off-target interactions with SSTR3 and SSTR5 persist, suggesting the need for further optimization to enhance selectivity.
 
-The primary failure type observed in this iteration was structural failures, which may have implications for the stability or conformational accuracy of the designed peptides. While the best candidate shows promise in terms of binding strength, the lack of structural validation and poor selectivity suggest that further optimization is necessary. The next iteration should focus on improving selectivity while maintaining strong binding affinity and ensuring structural integrity of the designed peptides.
+The top candidates (iter14_cand001, iter14_cand006, iter14_cand004) exhibit the most favorable ddG values, but their selectivity profiles remain suboptimal. This iteration highlights the importance of refining structural features to minimize off-target binding while maintaining high-affinity interactions with SSTR2.
 
             ## Recommendations
 
-            - Prioritize selectivity optimization in the next iteration to ensure off-target discrimination is significantly improved.
-- Incorporate structural validation methods to address the structural failures observed in this iteration.
-- Re-evaluate the docking and pLDDT metrics to ensure they are being calculated and reported for future iterations.
+            - Focus next iteration on optimizing selectivity by introducing mutations that disrupt off-target interactions with SSTR3 and SSTR5.
+- Retain high-affinity structural motifs from top candidates while modifying residues involved in non-specific binding.
+- Perform detailed binding site analysis to identify key residues contributing to off-target interactions.

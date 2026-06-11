@@ -1,58 +1,26 @@
 {
   "type": "planner",
   "iteration": 17,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:26:38.252704+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2 (res 192/193/195/197) and TM5 (205/208/209/212), while mutating position 6 to acidic residues (E/D) will disrupt off-target SSTR3/5 interactions through electrostatic repulsion, thereby increasing selectivity margin.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T04:59:57.618986+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions in the ECL2/TM5 pocket, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric complementarity with SSTR2-unique TM6, thereby increasing the selectivity margin over off-targets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is insufficient to achieve SSTR2 selectivity. A focused mutation strategy at non-pharmacophore positions is necessary to disrupt conserved pocket interactions with SSTR3/SSTR5.",
+    "hypothesis": "The current designs are achieving reasonable selectivity (Δmargin > 0), but structural quality remains a limiting factor. Tightening structural constraints and increasing candidate diversity are key to generating valid, selective SSTR2 ligands.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "Increasing the number of candidates improves the chances of generating structurally valid designs that pass QC gates."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "N",
-            "Q"
-          ],
-          "5": [
-            "A",
-            "G"
-          ],
-          "6": [
-            "S",
-            "T"
-          ],
-          "11": [
-            "A",
-            "G"
-          ],
-          "12": [
-            "S",
-            "T"
-          ]
-        },
-        "rationale": "Introduce mutations at non-pharmacophore positions to reduce off-target interactions while maintaining SSTR2 binding."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Reducing the clash threshold will enforce better local geometry and reduce structural artifacts that lead to pLDDT=0.0 failures."
       }
     ]
   },
-  "previous_best_ddg": -16.2821
+  "previous_best_ddg": -41.3183
 }

@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 4,
-  "run_id": "sst14_mutdock_8000",
-  "timestamp": "2026-06-10T23:59:46.291544+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 binding but lack consistent selectivity. Future iterations should prioritize mutations at non-pharmacophore positions to disrupt off-target interactions and increase Δmargin across the candidate set.",
+  "run_id": "sst14_mutdock_11000",
+  "timestamp": "2026-06-11T05:49:34.277237+00:00",
+  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be enhanced by disrupting conserved pocket interactions at non-pharmacophore positions while maintaining key pharmacophore residues. Iteration 4 confirms that strong ddG is achievable, but selectivity remains the limiting factor.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,44 +16,38 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, focus mutations should target non-pharmacophore positions that are known to contribute to off-target interactions (particularly with SSTR3/SSTR5)."
+      "rationale": "To improve selectivity, we must disrupt conserved pocket interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
     },
     {
       "parameter_name": "suggested_mutations",
       "old_value": null,
       "new_value": {
         "1": [
-          "A",
-          "G",
-          "T"
+          "D",
+          "E"
         ],
         "2": [
-          "E",
           "K",
           "R"
         ],
         "5": [
-          "N",
-          "Q",
-          "S"
+          "Y",
+          "F"
         ],
         "6": [
-          "N",
-          "D",
-          "E"
+          "Q",
+          "N"
         ],
         "11": [
-          "I",
-          "V",
-          "L"
+          "L",
+          "I"
         ],
         "12": [
-          "C",
-          "S",
-          "T"
+          "A",
+          "V"
         ]
       },
-      "rationale": "Introduce mutations at key non-pharmacophore positions to reduce off-target binding. These mutations are chosen to disrupt conserved interactions in SSTR3/SSTR5 without affecting SSTR2 binding."
+      "rationale": "These mutations are designed to break hydrogen bonds and hydrophobic interactions that are conserved in SSTR3/SSTR5 but not critical for SSTR2 binding."
     }
   ],
   "current_params": {

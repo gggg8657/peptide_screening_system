@@ -1,10 +1,16 @@
 {
   "type": "critic",
   "iteration": 18,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:36:55.721747+00:00",
-  "hypothesis": "The current design strategy favors strong SSTR2 binding but underemphasizes selectivity. The next iteration should prioritize mutations at non-pharmacophore positions to disrupt conserved-pocket interactions in SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T05:07:15.801531+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity, but structural issues and stability limitations are reducing the pass rate. Tightening structural constraints and focusing mutations on non-pharmacophore positions should improve yield without compromising selectivity.",
   "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reducing the clash tolerance will enforce better packing and reduce structural failures due to poor geometry."
+    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -16,38 +22,7 @@
         11,
         12
       ],
-      "rationale": "Target non-pharmacophore positions known to contribute to off-target binding in SSTR3/SSTR5. Mutating these positions can disrupt conserved-pocket interactions without affecting the pharmacophore core."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "T",
-          "S"
-        ],
-        "11": [
-          "L",
-          "I"
-        ],
-        "12": [
-          "V",
-          "A"
-        ]
-      },
-      "rationale": "Propose mutations at key positions to disrupt off-target interactions. Acidic residues at position 1/2 may form unfavorable interactions in SSTR3/SSTR5, while smaller residues at 5/6/11/12 may reduce hydrophobic contacts."
+      "rationale": "Focus optimization on non-pharmacophore positions to disrupt off-target contacts while preserving key pharmacophore residues (FWKT7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {

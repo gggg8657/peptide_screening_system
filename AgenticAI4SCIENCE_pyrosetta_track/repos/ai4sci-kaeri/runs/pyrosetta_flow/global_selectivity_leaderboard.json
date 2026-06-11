@@ -1,10 +1,21 @@
 {
   "capacity": 50,
-  "best_delta_margin": 8.6866,
+  "best_delta_margin": 9.1021,
   "n_unique": 50,
-  "n_screened_unique": 83,
-  "n_ingested_total": 85,
+  "n_screened_unique": 110,
+  "n_ingested_total": 114,
   "entries": [
+    {
+      "sequence": "ARCGKFFWKTATSC",
+      "ddg": -32.1162,
+      "margin": 22.4721,
+      "delta_margin": 9.1021,
+      "hc50": -46.3261,
+      "hc50_vs_native": 9.356,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_8000",
+      "ts": ""
+    },
     {
       "sequence": "AECMNFFWKTFTSC",
       "ddg": -31.5252,
@@ -25,6 +36,28 @@
       "hc50_vs_native": 0.535,
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_4000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCENFFWKTMDSC",
+      "ddg": -31.9589,
+      "margin": 18.9836,
+      "delta_margin": 5.6136,
+      "hc50": -45.7497,
+      "hc50_vs_native": 9.932,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_9000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCINFFWKTNASC",
+      "ddg": -37.5272,
+      "margin": 17.503,
+      "delta_margin": 4.133,
+      "hc50": -42.2052,
+      "hc50_vs_native": 13.476,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_9000",
       "ts": ""
     },
     {
@@ -50,6 +83,17 @@
       "ts": ""
     },
     {
+      "sequence": "AGCKYDFWKTATSC",
+      "ddg": -37.8319,
+      "margin": 15.5285,
+      "delta_margin": 2.1585,
+      "hc50": -43.2138,
+      "hc50_vs_native": 12.468,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_10000",
+      "ts": ""
+    },
+    {
       "sequence": "AGCKWDFWKTITSC",
       "ddg": -40.1349,
       "margin": 15.4512,
@@ -58,6 +102,17 @@
       "hc50_vs_native": 7.661,
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_5000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKFDFWKTITSC",
+      "ddg": -39.3237,
+      "margin": 15.1289,
+      "delta_margin": 1.7589,
+      "hc50": -44.9251,
+      "hc50_vs_native": 10.757,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_8000",
       "ts": ""
     },
     {
@@ -80,6 +135,17 @@
       "hc50_vs_native": -3.732,
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_3000",
+      "ts": ""
+    },
+    {
+      "sequence": "AKCANFFWKTFMSC",
+      "ddg": -40.2258,
+      "margin": 14.0872,
+      "delta_margin": 0.7172,
+      "hc50": -50.9785,
+      "hc50_vs_native": 4.703,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_10000",
       "ts": ""
     },
     {
@@ -116,6 +182,17 @@
       "ts": ""
     },
     {
+      "sequence": "AGCKYEFWKTLTSC",
+      "ddg": -32.0249,
+      "margin": 13.7058,
+      "delta_margin": 0.3358,
+      "hc50": -46.7928,
+      "hc50_vs_native": 8.889,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_9000",
+      "ts": ""
+    },
+    {
       "sequence": "AGCKNIFWKTFMSC",
       "ddg": -32.6224,
       "margin": 13.5846,
@@ -146,6 +223,17 @@
       "hc50_vs_native": null,
       "more_toxic_than_native": null,
       "run_id": "sst14_mutdock_1000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCHTFFWKTARSC",
+      "ddg": -32.9942,
+      "margin": 13.0892,
+      "delta_margin": -0.2808,
+      "hc50": -46.6674,
+      "hc50_vs_native": 9.014,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_8000",
       "ts": ""
     },
     {
@@ -237,6 +325,17 @@
       "ts": ""
     },
     {
+      "sequence": "AGCFNPFWKTGTSC",
+      "ddg": -33.9511,
+      "margin": 10.9933,
+      "delta_margin": -2.3767,
+      "hc50": -40.1397,
+      "hc50_vs_native": 15.542,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_10000",
+      "ts": ""
+    },
+    {
       "sequence": "AGCKFEFWKTVTSC",
       "ddg": -41.9923,
       "margin": 10.9636,
@@ -281,6 +380,17 @@
       "ts": ""
     },
     {
+      "sequence": "ASCKNYFWKTFRSC",
+      "ddg": -53.8085,
+      "margin": 10.7698,
+      "delta_margin": -2.6002,
+      "hc50": -55.7541,
+      "hc50_vs_native": -0.072,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_9000",
+      "ts": ""
+    },
+    {
       "sequence": "NGCVKFFWKTFTSC",
       "ddg": -38.5059,
       "margin": 10.6063,
@@ -289,6 +399,17 @@
       "hc50_vs_native": 4.639,
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_6000",
+      "ts": ""
+    },
+    {
+      "sequence": "MDCLNFFWKTFTSC",
+      "ddg": -35.38,
+      "margin": 10.5111,
+      "delta_margin": -2.8589,
+      "hc50": -54.9851,
+      "hc50_vs_native": 0.697,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_9000",
       "ts": ""
     },
     {
@@ -433,156 +554,46 @@
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_6000",
       "ts": ""
-    },
-    {
-      "sequence": "FGCWNHFWKTFTSC",
-      "ddg": -30.195,
-      "margin": 8.0445,
-      "delta_margin": -5.3255,
-      "hc50": -61.3883,
-      "hc50_vs_native": -5.707,
-      "more_toxic_than_native": true,
-      "run_id": "sst14_mutdock_4000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKWNFWKTMTSC",
-      "ddg": -39.6389,
-      "margin": 7.1699,
-      "delta_margin": -6.2001,
-      "hc50": -48.1115,
-      "hc50_vs_native": 7.57,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_3000",
-      "ts": ""
-    },
-    {
-      "sequence": "AQCLAFFWKTFTSC",
-      "ddg": -31.2193,
-      "margin": 7.0453,
-      "delta_margin": -6.3247,
-      "hc50": -49.9676,
-      "hc50_vs_native": 5.714,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_3000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKNDFWKTVTSC",
-      "ddg": -36.9062,
-      "margin": 6.8942,
-      "delta_margin": -6.4758,
-      "hc50": -40.879,
-      "hc50_vs_native": 14.803,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_6000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKWEFWKTVTSC",
-      "ddg": -35.8636,
-      "margin": 6.7391,
-      "delta_margin": -6.6309,
-      "hc50": -47.9949,
-      "hc50_vs_native": 7.687,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_4000",
-      "ts": ""
-    },
-    {
-      "sequence": "KGCVQFFWKTFTSC",
-      "ddg": -35.7486,
-      "margin": 6.3104,
-      "delta_margin": -7.0596,
-      "hc50": -52.3731,
-      "hc50_vs_native": 3.309,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_3000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKFDFWKTVTSC",
-      "ddg": -30.6482,
-      "margin": 6.108,
-      "delta_margin": -7.262,
-      "hc50": -44.0401,
-      "hc50_vs_native": 11.642,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_5000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKNDFWKTITSC",
-      "ddg": -33.9796,
-      "margin": 5.3383,
-      "delta_margin": -8.0317,
-      "hc50": -41.7204,
-      "hc50_vs_native": 13.961,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_4000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCTTFFWKTITSC",
-      "ddg": -35.4641,
-      "margin": 5.3196,
-      "delta_margin": -8.0504,
-      "hc50": -42.2331,
-      "hc50_vs_native": 13.449,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_4000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKFFFWKTLTSC",
-      "ddg": -30.0031,
-      "margin": 5.2515,
-      "delta_margin": -8.1185,
-      "hc50": -48.2025,
-      "hc50_vs_native": 7.479,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_2000",
-      "ts": ""
-    },
-    {
-      "sequence": "IGCKNFFWKTYWSC",
-      "ddg": -37.1939,
-      "margin": 5.2358,
-      "delta_margin": -8.1342,
-      "hc50": -61.5424,
-      "hc50_vs_native": -5.861,
-      "more_toxic_than_native": true,
-      "run_id": "sst14_mutdock_5000",
-      "ts": ""
     }
   ],
   "screened_seqs": [
     "AECMNFFWKTFTSC",
+    "AGCENFFWKTMDSC",
     "AGCENFFWKTVTSC",
     "AGCFLNFWKTFTSC",
     "AGCFNFFWKTPGSC",
+    "AGCFNPFWKTGTSC",
     "AGCGTMFWKTFTSC",
+    "AGCHHRFWKTFTSC",
+    "AGCHTFFWKTARSC",
+    "AGCIHFFWKTFYSC",
+    "AGCINFFWKTNASC",
     "AGCKAIFWKTITSC",
     "AGCKDWFWKTFTSC",
     "AGCKFDFWKTFTSC",
+    "AGCKFDFWKTITSC",
     "AGCKFDFWKTLTSC",
     "AGCKFDFWKTVTSC",
     "AGCKFEFWKTFTSC",
     "AGCKFEFWKTITSC",
     "AGCKFEFWKTLTSC",
     "AGCKFEFWKTVTSC",
+    "AGCKFFFWKTFTSC",
     "AGCKFFFWKTITSC",
     "AGCKFFFWKTLTSC",
     "AGCKFFFWKTVTSC",
+    "AGCKFQFWKTITSC",
     "AGCKHFFWKTFTSC",
     "AGCKKFFWKTTGSC",
     "AGCKLFFWKTFTSC",
     "AGCKNDFWKTITSC",
     "AGCKNDFWKTVTSC",
     "AGCKNEFWKTFTSC",
+    "AGCKNEFWKTVMSC",
     "AGCKNFFWKTLTSC",
     "AGCKNFFWKTVTSC",
     "AGCKNIFWKTFMSC",
+    "AGCKNIFWKTFTSC",
     "AGCKNWFWKTFTSC",
     "AGCKWDFWKTFTSC",
     "AGCKWDFWKTITSC",
@@ -596,13 +607,19 @@
     "AGCKWFFWKTLTSC",
     "AGCKWFFWKTVTSC",
     "AGCKWNFWKTMTSC",
+    "AGCKWQFWKTMTSC",
+    "AGCKYDFWKTATSC",
     "AGCKYDFWKTFTSC",
     "AGCKYDFWKTITSC",
     "AGCKYDFWKTLTSC",
+    "AGCKYDFWKTVTSC",
+    "AGCKYEFWKTLTSC",
+    "AGCKYEFWKTVTSC",
     "AGCKYFFWKTFTSC",
     "AGCKYFFWKTITSC",
     "AGCKYFFWKTMTSC",
     "AGCKYFFWKTVTSC",
+    "AGCKYQFWKTVTSC",
     "AGCLNFFWKTAQSC",
     "AGCLNFFWKTVDSC",
     "AGCPNFFWKTIDSC",
@@ -615,7 +632,9 @@
     "AGCWMFFWKTFASC",
     "AHCDNMFWKTFTSC",
     "AHCKNAFWKTFISC",
+    "AKCANFFWKTFMSC",
     "ALCGNMFWKTFTSC",
+    "ALCKNKFWKTLTSC",
     "ALCKWFFWKTITSC",
     "AMCANFFWKTFDSC",
     "APCKNFFWKTPASC",
@@ -623,22 +642,30 @@
     "AQCKNEFWKTFVSC",
     "AQCLAFFWKTFTSC",
     "AQCVEFFWKTFTSC",
+    "ARCGKFFWKTATSC",
+    "ASCKNYFWKTFRSC",
+    "ATCNFFFWKTETSC",
     "AWCKNFFWKTPVSC",
+    "AWCVNFFWKTVTSC",
     "DGCLNWFWKTFTSC",
     "EGCKGFFWKTFESC",
     "EGCKTFFWKTNTSC",
     "FGCWNHFWKTFTSC",
     "GGCKNFFWKTLESC",
+    "HGCVPFFWKTFTSC",
     "IGCENFFWKTQTSC",
     "IGCKNFFWKTYWSC",
     "KGCKNFFWKTFTSC",
     "KGCVQFFWKTFTSC",
     "LGCKFFFWKTFMSC",
+    "LPCENFFWKTFTSC",
+    "MDCLNFFWKTFTSC",
     "NGCVKFFWKTFTSC",
     "TGCKWFFWKTFTSC",
     "THCKNDFWKTFTSC",
     "VGCKDTFWKTFTSC",
     "VGCKNRFWKTWTSC",
+    "VGCSNWFWKTFTSC",
     "YMCKNFFWKTKTSC"
   ]
 }

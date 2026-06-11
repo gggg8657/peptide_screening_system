@@ -1,35 +1,21 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:45:21.531993+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding but not sufficient selectivity. The next iteration should focus on disrupting conserved pocket interactions at non-pharmacophore positions to improve Δmargin and achieve true SSTR2 selectivity.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T05:28:04.770263+00:00",
+  "hypothesis": "The current hypothesis remains valid — strong ddG and positive Δmargin indicate progress toward SSTR2 selectivity. However, structural failures are a major bottleneck. Tightening structural constraints and increasing candidate diversity will help achieve both structural validity and selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "Target non-pharmacophore positions where off-target contacts with SSTR3/SSTR5 are likely to occur. Mutations at these positions can disrupt conserved pocket interactions while preserving the pharmacophore."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "F5Y",
-        "F6W",
-        "T11A",
-        "T12V"
-      ],
-      "rationale": "Introduce mutations at key non-pharmacophore positions to disrupt conserved pocket interactions with SSTR3/SSTR5. These mutations are predicted to reduce off-target binding while maintaining the core pharmacophore (FWKT7-10 + Cys3/Cys14)."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reduce the clash tolerance to enforce better geometry and avoid steric clashes that lead to poor structural quality."
     }
   ],
   "current_params": {
@@ -40,6 +26,8 @@
   },
   "candidate_pdbs": [
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_001.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_001.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_001.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_002.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_002.val1.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_002.val2.pdb",

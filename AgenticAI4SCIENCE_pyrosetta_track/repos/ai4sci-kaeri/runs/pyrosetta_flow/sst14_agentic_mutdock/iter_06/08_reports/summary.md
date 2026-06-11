@@ -1,19 +1,19 @@
-# Iteration 6 Summary: sst14_mutdock_8000
+# Iteration 6 Summary: sst14_mutdock_11000
 
-            - **Run ID**: `sst14_mutdock_8000`
+            - **Run ID**: `sst14_mutdock_11000`
             - **Iteration**: 6
-            - **생성 시각**: 2026-06-11 00:07 UTC
+            - **생성 시각**: 2026-06-11 05:57 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 6 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one passing all QC gates. The top candidate, iter06_cand004, exhibited a ddG of -21.1 kcal/mol, indicating strong binding affinity. However, the structural quality of the candidate was poor, as evidenced by a pLDDT score of 0.0, suggesting significant structural inaccuracies or failures in modeling. The docking score of 0.00 further highlights the lack of reliable interaction predictions. While selectivity showed some improvement, the Δmargin of the top candidate was insufficient to outperform the native SST-14 margin, primarily due to off-target interactions with SSTR3 and SSTR5. This highlights the need for strategies to enhance SSTR2-specific interactions and reduce cross-reactivity with other subtypes.
+            Iteration 6 evaluated four candidates for their potential as SSTR2 peptide binders. All candidates passed the quality control (QC) gates, indicating structural and design integrity. The primary focus of this iteration was to improve binding affinity and SSTR2 selectivity. While the candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -20.2 to -27.6 kcal/mol, the selectivity over the native SST-14 baseline remained suboptimal. None of the candidates achieved a significant Δmargin, highlighting selectivity as the primary limitation for this iteration. The pLDDT and docking scores were not informative, as they were uniformly reported as 0.0, suggesting a potential issue with the scoring methodology or data reporting for these metrics.
 
-The low pass rate (12.5%) in this iteration underscores the challenges in generating structurally viable candidates. The primary failure mode was structural failures, which must be addressed in future rounds. Given the current limitations, the design pipeline may benefit from incorporating additional structural constraints or refining the modeling protocol to improve pLDDT scores and overall structural reliability.
+The top-performing candidates in terms of binding affinity were iter06_cand002 (ddG=-27.6) and iter06_cand006 (ddG=-27.0). These candidates represent the most promising leads for further optimization. However, the lack of selectivity improvement suggests that the design strategy needs refinement to better target SSTR2-specific interactions. Structural failures were noted as the primary failure mode, indicating that future iterations should focus on enhancing structural compatibility and specificity.
 
             ## Recommendations
 
-            - Refine the structural modeling protocol to improve pLDDT scores and overall structural accuracy.
-- Incorporate additional constraints or filters to enhance SSTR2-specific interactions and reduce off-target binding to SSTR3/SSTR5.
-- Expand the candidate pool in the next iteration to increase the likelihood of identifying structurally and functionally viable binders.
-- Re-evaluate the docking and scoring functions to better capture the specificity and affinity landscape.
+            - Refine the design strategy to enhance SSTR2 selectivity, focusing on interactions unique to the SSTR2 receptor.
+- Investigate the structural failures to identify common issues and improve structural compatibility.
+- Re-evaluate the scoring methodology for pLDDT and docking scores to ensure accurate and informative metrics.
+- Conduct a more detailed analysis of the top candidates to identify features that may contribute to improved selectivity.

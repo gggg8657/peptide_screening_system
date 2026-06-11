@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 10,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T22:43:19.457062+00:00",
-  "hypothesis": "The current hypothesis is that disrupting off-target interactions at non-pharmacophore positions will increase SSTR2 selectivity. The next iteration should focus on these positions to improve Δmargin beyond the native SST-14.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T04:13:49.194429+00:00",
+  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be achieved by optimizing non-pharmacophore positions to disrupt off-target interactions. This iteration supports that hypothesis, but the low pass rate suggests the need for more targeted mutagenesis and tighter constraints on selectivity-driven design.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,44 +16,20 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions (especially with SSTR3 and SSTR5). Focusing design on these positions can help disrupt off-target binding while preserving key pharmacophore residues."
+      "rationale": "To improve selectivity, we must target non-pharmacophore positions that are known to contribute to off-target interactions (SSTR3/SSTR5). Focusing mutations at these positions will help disrupt conserved pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "A",
-          "G",
-          "T"
-        ],
-        "2": [
-          "C",
-          "N",
-          "S"
-        ],
-        "5": [
-          "K",
-          "R",
-          "H"
-        ],
-        "6": [
-          "T",
-          "S",
-          "N"
-        ],
-        "11": [
-          "I",
-          "V",
-          "L"
-        ],
-        "12": [
-          "C",
-          "S",
-          "T"
-        ]
-      },
-      "rationale": "These mutations are designed to reduce conserved pocket interactions with off-target SSTRs while maintaining overall binding affinity and structural integrity."
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "A2R",
+        "T5D",
+        "T6E",
+        "N11Q",
+        "S12T"
+      ],
+      "rationale": "These mutations are designed to disrupt conserved interactions in SSTR3/SSTR5 binding pockets without affecting the pharmacophore. For example, A1K and A2R introduce charged residues that may repel off-target interactions, while T5D and T6E may break hydrogen bonding patterns in SSTR3/SSTR5."
     }
   ],
   "current_params": {

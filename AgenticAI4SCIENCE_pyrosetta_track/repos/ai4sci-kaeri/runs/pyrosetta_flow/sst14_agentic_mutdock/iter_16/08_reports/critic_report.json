@@ -1,53 +1,21 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_7000",
-  "timestamp": "2026-06-10T23:25:42.041525+00:00",
-  "hypothesis": "The current design strategy is insufficient to achieve SSTR2 selectivity. A focused mutation strategy at non-pharmacophore positions is necessary to disrupt conserved pocket interactions with SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_10000",
+  "timestamp": "2026-06-11T04:59:08.941847+00:00",
+  "hypothesis": "The current designs are achieving reasonable selectivity (Δmargin > 0), but structural quality remains a limiting factor. Tightening structural constraints and increasing candidate diversity are key to generating valid, selective SSTR2 ligands.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "Increasing the number of candidates improves the chances of generating structurally valid designs that pass QC gates."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "N",
-          "Q"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "S",
-          "T"
-        ],
-        "11": [
-          "A",
-          "G"
-        ],
-        "12": [
-          "S",
-          "T"
-        ]
-      },
-      "rationale": "Introduce mutations at non-pharmacophore positions to reduce off-target interactions while maintaining SSTR2 binding."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Reducing the clash threshold will enforce better local geometry and reduce structural artifacts that lead to pLDDT=0.0 failures."
     }
   ],
   "current_params": {
