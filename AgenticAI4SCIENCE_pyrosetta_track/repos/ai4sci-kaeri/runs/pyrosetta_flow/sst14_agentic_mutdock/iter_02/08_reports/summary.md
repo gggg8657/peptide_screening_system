@@ -1,17 +1,18 @@
-# Iteration 2 Summary: sst14_mutdock_14000
+# Iteration 2 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_14000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 2
-            - **생성 시각**: 2026-06-11 11:29 UTC
+            - **생성 시각**: 2026-06-11 16:34 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 2 of the sst14_mutdock_14000 campaign yielded a single candidate that passed all quality control (QC) gates, resulting in a pass rate of 12.5%. The sole candidate, iter02_cand007, exhibited a ddG of -48.8 kcal/mol, indicating strong binding affinity. However, the pLDDT and docking scores were both reported as 0.0, suggesting potential issues with structural confidence or docking accuracy. Despite the positive Δmargin, the overall selectivity margin remains suboptimal, with the majority of candidates failing due to structural failures. This highlights the need for improved structural modeling and refinement strategies to enhance candidate quality and selectivity in future iterations.
+            Iteration 2 of the sst14_mutdock_17000 campaign evaluated four candidate peptides for their binding affinity and structural stability. All four candidates passed the quality control (QC) gates, indicating no immediate structural failures. The primary focus of this iteration was to assess improvements in stability (as measured by ddG) and selectivity over the native SST-14 ligand. While the candidates demonstrated strong stability, with ddG values ranging from -21.0 to -44.4 kcal/mol, selectivity gains were limited. Notably, the top candidates did not consistently surpass the native SST-14 selectivity threshold, suggesting that further optimization is required to achieve the desired specificity.
+
+The top-performing candidate, iter02_cand003, exhibited the most favorable ddG value of -44.4 kcal/mol, indicating high stability. However, the pLDDT and docking scores remained at baseline values (0.0), which may suggest limitations in the current design or scoring methods. The lack of improvement in these metrics highlights the need for a more refined approach to structural modeling and docking accuracy in future iterations.
 
             ## Recommendations
 
-            - Improve structural modeling protocols to increase pLDDT and reduce structural failures.
-- Refine docking procedures to obtain more accurate and reliable docking scores.
-- Enhance selectivity screening criteria to ensure robust selectivity margins.
-- Consider increasing the diversity of the candidate pool to improve pass rates.
+            - Refine the structural modeling pipeline to improve pLDDT and docking score predictions.
+- Incorporate additional selectivity metrics or experimental validation to better assess performance relative to native SST-14.
+- Focus on optimizing the binding interface to enhance both stability and specificity in the next iteration.

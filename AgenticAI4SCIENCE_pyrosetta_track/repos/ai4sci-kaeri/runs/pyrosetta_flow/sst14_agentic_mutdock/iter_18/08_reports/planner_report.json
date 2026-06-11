@@ -1,18 +1,18 @@
 {
   "type": "planner",
   "iteration": 18,
-  "run_id": "sst14_mutdock_13000",
-  "timestamp": "2026-06-11T10:57:01.437145+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will improve SSTR2 selectivity by forming specific π-π stacking or hydrophobic interactions with ECL2 (res 192/193/195/197) and TM5 (205/208/209/212), which are unique to SSTR2. Simultaneously, mutating position 11 to hydrophobic residues (L/I/V) will enhance steric complementarity with SSTR2-specific TM6 (272/273/276/279) and reduce off-target binding to SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T17:53:20.857744+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will improve SSTR2 selectivity by forming favorable interactions with SSTR2-specific ECL2 residues (192/193/195/197), while mutating position 6 to acidic residues (E/D) will introduce repulsive interactions with off-target SSTR3/SSTR5, thereby increasing the selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving strong SSTR2 binding (ddG) but lack structural integrity and docking quality. To improve selectivity, we must focus on disrupting off-target contacts at non-pharmacophore positions while maintaining SSTR2 pharmacophore interactions.",
+    "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient structural quality and selectivity. Focusing optimization on non-pharmacophore positions and tightening structural filters will improve both yield and selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Low pLDDT and docking scores suggest poor structural quality. Tightening clash constraints will enforce better geometry and improve docking performance."
+        "rationale": "Reducing the clash tolerance will enforce better packing and reduce structural failures due to steric clashes, especially in the binding pocket."
       },
       {
         "parameter_name": "focus_positions",
@@ -25,9 +25,9 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we must disrupt off-target interactions at non-pharmacophore positions (1/2/5/6/11/12) while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
+        "rationale": "Focus optimization on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5). This will help disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -35.7026
+  "previous_best_ddg": -18.3953
 }

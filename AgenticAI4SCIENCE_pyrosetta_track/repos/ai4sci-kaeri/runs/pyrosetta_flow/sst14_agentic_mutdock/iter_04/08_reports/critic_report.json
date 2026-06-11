@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 4,
-  "run_id": "sst14_mutdock_14000",
-  "timestamp": "2026-06-11T11:36:37.704933+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity, but structural issues are limiting the pass rate. Tightening structural constraints and increasing candidate diversity will improve the overall quality of the designs.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T16:41:18.605498+00:00",
+  "hypothesis": "The current hypothesis remains valid: high ddG and positive Δmargin indicate strong SSTR2 binding and selectivity. However, structural quality must be improved to ensure consistent success. Focus on refining the binding geometry and selectively disrupting off-target interactions will enhance selectivity and pass rates.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Structural failures suggest excessive clashes in the top candidates. Lowering the clash threshold will enforce better geometry and reduce structural QC failures."
+      "rationale": "Structural failures suggest excessive clashes in the binding pocket, likely due to overly permissive clash tolerances. Tightening the clash threshold will enforce better geometry and reduce false positives."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 12,
-      "rationale": "The current number of candidates is too small to ensure robust sampling of the design space. Increasing the number of candidates will improve the chances of finding structurally valid, high-quality designs."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we must disrupt conserved interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
     }
   ],
   "current_params": {

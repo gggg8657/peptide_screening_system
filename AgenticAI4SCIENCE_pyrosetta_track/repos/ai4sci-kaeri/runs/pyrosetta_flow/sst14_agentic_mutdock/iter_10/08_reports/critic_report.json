@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 10,
-  "run_id": "sst14_mutdock_14000",
-  "timestamp": "2026-06-11T12:02:11.084754+00:00",
-  "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient docking scores. Tighter clash filtering and focused mutagenesis at non-pharmacophore positions are necessary to improve selectivity and yield.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T17:11:09.367117+00:00",
+  "hypothesis": "The current designs achieve strong SSTR2 binding but fail to sufficiently disrupt off-target interactions. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,13 +16,38 @@
         11,
         12
       ],
-      "rationale": "To enhance selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding (SSTR3/SSTR5). Focusing design on these positions allows disruption of conserved pocket contacts without compromising SSTR2 binding."
     },
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 5,
-      "rationale": "Tighter clash filtering may improve docking scores by enforcing better geometry and reducing false positives due to steric clashes."
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
+          "A",
+          "G"
+        ],
+        "6": [
+          "T",
+          "S"
+        ],
+        "11": [
+          "L",
+          "I"
+        ],
+        "12": [
+          "F",
+          "W"
+        ]
+      },
+      "rationale": "Introducing charged or hydrophobic residues at these positions can disrupt conserved interactions in SSTR3/SSTR5 while preserving pharmacophore integrity."
     }
   ],
   "current_params": {

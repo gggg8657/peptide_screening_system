@@ -1,26 +1,26 @@
 {
   "type": "planner",
   "iteration": 13,
-  "run_id": "sst14_mutdock_13000",
-  "timestamp": "2026-06-11T10:22:57.230650+00:00",
-  "hypothesis": "Enhancing SSTR2 selectivity by introducing aromatic and hydrophobic substitutions at positions 5 and 11 will improve complementarity with SSTR2-specific ECL2/TM5/TM6 regions while reducing off-target affinity.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T17:23:17.976942+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target SSTR3/SSTR5 interactions, thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved, but structural and docking quality must be improved to ensure functional candidates.",
+    "hypothesis": "The current designs are achieving good selectivity (Δmargin > 0), but structural quality remains a critical failure mode. The next iteration should focus on improving structural validity while maintaining selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "n_candidates",
         "old_value": 8,
-        "new_value": 12,
-        "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs that pass the pLDDT and docking filters."
+        "new_value": 16,
+        "rationale": "Low pass rate suggests insufficient sampling. Increasing the number of candidates improves the chances of generating structurally valid designs."
       },
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
-        "new_value": 8,
-        "rationale": "Tighten the clash filter to reduce structural failures due to steric clashes, which are likely contributing to the poor pLDDT and docking scores."
+        "new_value": 5,
+        "rationale": "Structural failures likely stem from poor clash resolution. Tightening the clash threshold will enforce better geometry and improve pLDDT scores."
       }
     ]
   },
-  "previous_best_ddg": -26.8554
+  "previous_best_ddg": -37.5856
 }

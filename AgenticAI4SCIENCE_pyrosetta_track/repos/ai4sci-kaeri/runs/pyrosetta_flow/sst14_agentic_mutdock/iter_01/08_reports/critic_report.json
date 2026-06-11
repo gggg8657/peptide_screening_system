@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 1,
-  "run_id": "sst14_mutdock_14000",
-  "timestamp": "2026-06-11T11:25:32.621443+00:00",
-  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be achieved by optimizing non-pharmacophore positions to reduce off-target interactions. The next iteration will focus on these positions with targeted mutations to push Δmargin further above zero.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T16:30:33.075987+00:00",
+  "hypothesis": "The hypothesis is updated to emphasize that selectivity is not just a function of SSTR2 binding strength but also the ability to avoid conserved interactions with SSTR3/SSTR5. Targeted mutations at non-pharmacophore positions are critical to achieving this.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,7 +16,7 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding in SSTR3/SSTR5. Focusing mutations here can disrupt conserved pocket interactions while preserving key pharmacophore residues."
+      "rationale": "To improve selectivity, we must disrupt conserved contacts with SSTR3/SSTR5 at non-pharmacophore positions. These positions are known to contribute to off-target binding."
     },
     {
       "parameter_name": "suggested_mutations",
@@ -31,23 +31,23 @@
           "R"
         ],
         "position_5": [
-          "Y",
-          "F"
+          "A",
+          "G"
         ],
         "position_6": [
-          "N",
-          "Q"
+          "A",
+          "G"
         ],
         "position_11": [
-          "L",
-          "I"
+          "D",
+          "E"
         ],
         "position_12": [
-          "T",
-          "S"
+          "K",
+          "R"
         ]
       },
-      "rationale": "These mutations are designed to break hydrogen bonds and hydrophobic interactions with SSTR3/SSTR5 while maintaining flexibility and compatibility with SSTR2."
+      "rationale": "Introducing charged or hydrophilic residues at these positions can disrupt conserved hydrophobic or hydrogen-bonding interactions with SSTR3/SSTR5, reducing off-target binding."
     }
   ],
   "current_params": {

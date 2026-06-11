@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 7,
-  "run_id": "sst14_mutdock_14000",
-  "timestamp": "2026-06-11T11:47:25.440804+00:00",
-  "hypothesis": "The current design strategy is insufficient to achieve SSTR2 selectivity beyond native SST-14. A focused mutagenesis approach at non-pharmacophore positions is necessary to disrupt off-target interactions.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T16:55:40.897584+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is not sufficient; selectivity over SSTR3/SSTR5 is the limiting factor. The next step is to refine the sequence to disrupt off-target interactions at non-pharmacophore positions.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,44 +16,20 @@
         11,
         12
       ],
-      "rationale": "Target non-pharmacophore positions where off-target contacts are likely to occur (e.g., SSTR3/SSTR5 conserved pocket residues)."
+      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts in off-targets SSTR3/SSTR5. Focusing on non-pharmacophore positions 1/2/5/6/11/12 allows us to tune interactions without compromising the pharmacophore FWKT(7-10) or Cys3/Cys14."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "A",
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R",
-          "H"
-        ],
-        "5": [
-          "N",
-          "Q",
-          "S"
-        ],
-        "6": [
-          "T",
-          "S",
-          "N"
-        ],
-        "11": [
-          "A",
-          "G",
-          "S"
-        ],
-        "12": [
-          "T",
-          "N",
-          "S"
-        ]
-      },
-      "rationale": "Introduce mutations at key off-target interaction sites to reduce SSTR3/SSTR5 binding while preserving SSTR2 selectivity."
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "A2R",
+        "A5D",
+        "A6E",
+        "A11Q",
+        "A12N"
+      ],
+      "rationale": "These mutations are designed to disrupt conserved pocket interactions in SSTR3/SSTR5. Positively charged residues at positions 1 and 2 can reduce off-target binding, while polar residues at 5, 6, 11, and 12 can break hydrophobic interactions."
     }
   ],
   "current_params": {

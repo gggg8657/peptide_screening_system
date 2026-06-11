@@ -1,19 +1,13 @@
 {
   "type": "critic",
   "iteration": 19,
-  "run_id": "sst14_mutdock_13000",
-  "timestamp": "2026-06-11T11:07:57.627743+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding and selectivity can be achieved by optimizing non-pharmacophore positions. However, structural quality must be improved to ensure viable candidates.",
+  "run_id": "sst14_mutdock_16000",
+  "timestamp": "2026-06-11T16:18:40.403387+00:00",
+  "hypothesis": "The hypothesis remains focused on achieving SSTR2 selectivity through disruption of off-target interactions. However, the current design strategy must be refined to prioritize mutations at non-pharmacophore positions that specifically break conserved-pocket contacts with SSTR3/SSTR5.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Candidates are failing due to poor structural quality (pLDDT=0.0, dock=0.00), likely due to excessive clashes. Reducing the clash tolerance will enforce better geometry and improve structural quality."
-    },
-    {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -22,7 +16,56 @@
         11,
         12
       ],
-      "rationale": "To further improve selectivity, we should focus on mutating non-pharmacophore positions (1/2/5/6/11/12) to disrupt conserved-pocket contacts with SSTR3/SSTR5 while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
+      "rationale": "These positions are non-pharmacophore and often involved in conserved-pocket contacts with SSTR3/SSTR5. Focusing design on these positions can disrupt off-target interactions while preserving key pharmacophore residues."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": [],
+      "new_value": [
+        {
+          "position": 1,
+          "mutations": [
+            "D",
+            "E"
+          ]
+        },
+        {
+          "position": 2,
+          "mutations": [
+            "N",
+            "Q"
+          ]
+        },
+        {
+          "position": 5,
+          "mutations": [
+            "K",
+            "R"
+          ]
+        },
+        {
+          "position": 6,
+          "mutations": [
+            "Y",
+            "F"
+          ]
+        },
+        {
+          "position": 11,
+          "mutations": [
+            "L",
+            "I"
+          ]
+        },
+        {
+          "position": 12,
+          "mutations": [
+            "T",
+            "S"
+          ]
+        }
+      ],
+      "rationale": "These mutations are expected to disrupt conserved interactions with off-target SSTR3/SSTR5 while maintaining key interactions with SSTR2."
     }
   ],
   "current_params": {

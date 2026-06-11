@@ -1,13 +1,19 @@
 {
   "type": "planner",
   "iteration": 17,
-  "run_id": "sst14_mutdock_13000",
-  "timestamp": "2026-06-11T10:46:02.982081+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific ECL2/TM5 complementarity, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target (SSTR3/SSTR5) affinity by avoiding off-target-conserved electrostatic interactions.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T17:49:51.764048+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific TM5/ECL2 complementarity, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target SSTR3/SSTR5 binding by avoiding unfavorable interactions in conserved pockets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis is that strong ddG binding alone is insufficient for success; selectivity must be explicitly optimized by disrupting conserved off-target interactions at non-pharmacophore positions. The next iteration will focus on this strategy to increase Δmargin beyond the native SST-14 baseline.",
+    "hypothesis": "The current designs are achieving good ddG but lack structural fidelity and docking quality. Tightening structural constraints and focusing on off-target disruption will improve both selectivity and design quality.",
     "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Reducing the clash tolerance will enforce better structural quality and avoid steric clashes that lead to poor pLDDT and docking scores."
+      },
       {
         "parameter_name": "focus_positions",
         "old_value": null,
@@ -19,40 +25,9 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we need to disrupt off-target interactions at conserved positions that are not part of the pharmacophore. Focusing on these positions allows us to design mutations that reduce SSTR3/SSTR5 binding while preserving SSTR2 specificity."
-      },
-      {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "K",
-            "R"
-          ],
-          "5": [
-            "Y",
-            "F"
-          ],
-          "6": [
-            "L",
-            "I"
-          ],
-          "11": [
-            "Q",
-            "N"
-          ],
-          "12": [
-            "T",
-            "S"
-          ]
-        },
-        "rationale": "These mutations are designed to disrupt conserved interactions in SSTR3/SSTR5 without affecting the pharmacophore region (positions 7-10) or the Cys3/Cys14 disulfide bridge. The proposed residues are expected to reduce off-target binding while maintaining SSTR2 affinity."
+        "rationale": "Focusing on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will allow us to introduce mutations that disrupt off-target interactions while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -38.4384
+  "previous_best_ddg": -45.7537
 }

@@ -1,18 +1,18 @@
-# Iteration 16 Summary: sst14_mutdock_13000
+# Iteration 16 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_13000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 16
-            - **생성 시각**: 2026-06-11 10:45 UTC
+            - **생성 시각**: 2026-06-11 17:49 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 16 evaluated three candidates, all of which passed the quality control (QC) gates. The designs exhibited strong binding affinity, as indicated by favorable ddG values, with the best candidate (iter16_cand006) achieving a ddG of -38.4. However, the primary limitation of this iteration remains the selectivity (Δmargin), which, while positive for the top candidate, is not yet significantly higher than that of the native SST-14 ligand. This suggests that while binding energy is being optimized, the designs have not yet achieved the desired level of specificity over the native ligand.
+            Iteration 16 evaluated four candidate designs for SSTR2 peptide binding. All candidates passed quality control (QC) gates, but the structural and docking quality metrics were notably poor, with all candidates reporting pLDDT and docking scores of 0.00. Despite this, the ddG binding scores were strong, with the best candidate (iter16_cand006) achieving a ddG of -45.8 kcal/mol. The overall selectivity margin remained positive, but the structural failures suggest that the designs lack fidelity and may not be suitable for downstream validation or testing.
 
-Structural failures were the primary failure mode in this iteration, indicating potential issues with the stability or conformation of the designed peptides. This highlights the need to incorporate additional constraints or refine the design strategy to improve structural integrity while maintaining or enhancing selectivity. The docking scores and pLDDT values were not informative in this iteration, as they were reported as zero, suggesting a potential issue with the evaluation pipeline or data collection.
+The primary failure mode in this iteration was structural failure, indicating a need to refine the design process to improve structural accuracy and docking reliability. While the binding affinity is promising, the lack of structural confidence limits the practical utility of these candidates. The next iteration should focus on addressing these structural issues to ensure both strong binding and high-quality design fidelity.
 
             ## Recommendations
 
-            - Focus on improving selectivity (Δmargin) by incorporating additional constraints or optimizing the binding interface for specificity over the native SST-14 ligand.
-- Investigate the structural failures to identify common motifs or design features that may be contributing to instability and refine the design strategy accordingly.
-- Address the lack of informative pLDDT and docking scores by reviewing the evaluation pipeline for potential issues or inconsistencies in data collection.
+            - Refine the design protocol to improve structural accuracy and docking quality.
+- Investigate the root causes of structural failures in the current iteration.
+- Prioritize candidates with strong ddG scores while ensuring structural fidelity in the next iteration.

@@ -1,16 +1,18 @@
-# Iteration 12 Summary: sst14_mutdock_13000
+# Iteration 12 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_13000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 12
-            - **생성 시각**: 2026-06-11 10:22 UTC
+            - **생성 시각**: 2026-06-11 17:22 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 12 evaluated three candidates for their potential as SSTR2 peptide binders. All three candidates passed the quality control (QC) gates, but none met the structural quality and docking score thresholds. The primary issue identified was structural failure, as all candidates exhibited a pLDDT of 0.0 and docking scores of 0.00, indicating poor structural confidence and docking performance. Despite this, the ddG binding scores were strong, with the best candidate (iter12_cand006) showing a ddG of -26.9 kcal/mol. Selectivity remained positive, suggesting that the candidates retain favorable binding specificity for the target. However, the structural failures prevent these candidates from progressing to the next stage of development.
+            Iteration 12 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all QC gates. However, the structural quality of the designs was notably poor, as evidenced by pLDDT values of 0.0 for all candidates, indicating significant structural failures. Despite this, selectivity metrics remained favorable, with a Δmargin > 0 observed. The top candidates, iter12_cand008 and iter12_cand001, exhibited ddG values of -37.6 and -16.7 kcal/mol, respectively, suggesting strong binding affinities. However, the lack of structural confidence limits their utility for further development.
+
+The low pass rate (25%) and structural failures highlight a critical bottleneck in the campaign. While selectivity remains a strength, the inability to generate structurally viable designs indicates a need for refinement in the design protocol. The campaign is not yet converged, and further optimization is required to address the structural shortcomings.
 
             ## Recommendations
 
-            - Revisit the structural modeling pipeline to improve pLDDT scores and docking performance in the next iteration.
-- Investigate the root causes of structural failures, such as sequence design or modeling parameters.
-- Maintain focus on ddG and selectivity as these metrics remain favorable, but prioritize structural quality improvements.
+            - Investigate and refine the structural prediction protocol to improve pLDDT scores and overall structural quality.
+- Explore alternative design strategies or constraints to address the recurring structural failures.
+- Maintain focus on selectivity metrics while prioritizing improvements in structural confidence for future iterations.

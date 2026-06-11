@@ -1,4 +1,5 @@
 rank,backbone_id,seq_id,candidate_id,sequence,plddt_mean,plddt_interface,dock_score,ddg,clash_count,constraint_violations,lddt,final_score,pass_gates,fail_reasons
-1,0,5,iter16_cand006,AWCAFFFWKTATSC,0.00,0.00,0.0000,-38.4384,0,0,0.0000,0.700000,True,
-2,0,3,iter16_cand004,AGCKNFFWKTATSC,0.00,0.00,0.0000,-18.8576,0,0,0.0000,0.093155,True,
-3,0,7,iter16_cand002,AGCKYFFWKTATSC,0.00,0.00,0.0000,-15.8518,1,0,0.0000,0.000000,True,
+1,0,7,iter16_cand006,MGCKHFFWKTFMSC,0.00,0.00,0.0000,-45.7537,0,0,0.0000,0.700000,True,
+2,0,1,iter16_cand007,AGCKNFFWKTFRSC,0.00,0.00,0.0000,-34.1254,0,0,0.0000,0.260243,True,
+3,0,5,iter16_cand004,AMCKNFFWKTSASC,0.00,0.00,0.0000,-27.9953,0,0,0.0000,0.028416,True,
+4,0,8,iter16_cand008,HGCKNFFWKTGTSC,0.00,0.00,0.0000,-27.2439,0,0,0.0000,0.000000,True,

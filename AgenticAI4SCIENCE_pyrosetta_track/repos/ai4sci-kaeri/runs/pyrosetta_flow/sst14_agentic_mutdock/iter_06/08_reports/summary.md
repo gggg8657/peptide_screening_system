@@ -1,18 +1,18 @@
-# Iteration 6 Summary: sst14_mutdock_14000
+# Iteration 6 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_14000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 6
-            - **생성 시각**: 2026-06-11 11:44 UTC
+            - **생성 시각**: 2026-06-11 16:52 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 6 evaluated four peptide candidates for SSTR2 binding, with all passing quality control (QC) gates. The primary focus of this iteration was to improve binding affinity and selectivity over the native SST-14. While the candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -22.6 to -38.6 kcal/mol, no significant improvement in selectivity was observed. This highlights a persistent challenge in the design campaign: achieving SSTR2-specific interactions while avoiding off-target binding.
+            Iteration 6 evaluated three candidate peptides for their potential as SSTR2 binders. All candidates passed quality control (QC) gates, but structural quality, as indicated by pLDDT scores, was uniformly poor (pLDDT=0.0 across all candidates). Despite this limitation, the candidates demonstrated strong binding affinities, with ddG values ranging from -23.8 to -38.4 kcal/mol. The docking scores were not informative (0.00), likely due to structural uncertainties. Selectivity improvements were noted (Δmargin > 0), but the margin remains insufficient to guarantee SSTR2 specificity over off-target receptors.
 
-The top-performing candidate, iter06_cand001, exhibited the lowest ddG of -38.6 kcal/mol, suggesting a high binding affinity. However, the lack of selectivity remains a critical barrier to advancing these candidates. Structural failures were identified as the primary cause of this limitation, indicating that further refinement of the binding interface is necessary to enhance specificity. The next iteration should prioritize strategies to address these structural shortcomings.
+The top performer, iter06_cand004, exhibited the lowest ddG (-38.4 kcal/mol), suggesting strong binding potential. However, the lack of structural confidence (pLDDT=0.0) raises concerns about its feasibility for experimental validation. The primary failure mode in this iteration was structural failure, indicating a need to prioritize structural quality in future design cycles.
 
             ## Recommendations
 
-            - Focus on structural modifications to enhance SSTR2 selectivity while maintaining strong binding affinity.
-- Incorporate additional constraints or design rules to minimize off-target interactions.
-- Consider using computational tools to analyze and optimize the binding interface for specificity.
+            - Prioritize structural quality (pLDDT) in the next iteration to ensure reliable candidate designs.
+- Incorporate additional selectivity constraints to improve the margin over off-target receptors.
+- Revisit the docking protocol to ensure it is robust and informative for future iterations.

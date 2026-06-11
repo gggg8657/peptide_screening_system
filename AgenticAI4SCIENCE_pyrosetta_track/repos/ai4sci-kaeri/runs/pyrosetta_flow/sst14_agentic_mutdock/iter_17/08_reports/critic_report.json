@@ -1,15 +1,15 @@
 {
   "type": "critic",
   "iteration": 17,
-  "run_id": "sst14_mutdock_13000",
-  "timestamp": "2026-06-11T10:56:07.535976+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding (ddG) but lack structural integrity and docking quality. To improve selectivity, we must focus on disrupting off-target contacts at non-pharmacophore positions while maintaining SSTR2 pharmacophore interactions.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T17:52:31.254591+00:00",
+  "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient structural quality and selectivity. Focusing optimization on non-pharmacophore positions and tightening structural filters will improve both yield and selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Low pLDDT and docking scores suggest poor structural quality. Tightening clash constraints will enforce better geometry and improve docking performance."
+      "rationale": "Reducing the clash tolerance will enforce better packing and reduce structural failures due to steric clashes, especially in the binding pocket."
     },
     {
       "parameter_name": "focus_positions",
@@ -22,7 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt off-target interactions at non-pharmacophore positions (1/2/5/6/11/12) while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
+      "rationale": "Focus optimization on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5). This will help disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
     }
   ],
   "current_params": {

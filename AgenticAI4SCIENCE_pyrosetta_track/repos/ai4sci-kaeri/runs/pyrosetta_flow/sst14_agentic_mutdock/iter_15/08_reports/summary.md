@@ -1,18 +1,19 @@
-# Iteration 15 Summary: sst14_mutdock_13000
+# Iteration 15 Summary - sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_13000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 15
-            - **생성 시각**: 2026-06-11 10:38 UTC
+            - **생성 시각**: 2026-06-11 17:37 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 15 evaluated three candidate peptides for their potential as SSTR2 binders. All three candidates passed the quality control (QC) gates, indicating no immediate structural or stability failures. The candidates demonstrated strong binding affinities, as reflected by their ddG values, with the best candidate (iter15_cand007) achieving a ddG of -32.9 kcal/mol. However, the selectivity (Δmargin) remains a critical challenge, as the best Δmargin is only marginally better than that of native SST-14, and the overall pass rate for selectivity is low. This suggests that while the candidates are structurally viable, their specificity for SSTR2 over other targets is suboptimal.
+            Iteration 15 of the SSTR2 peptide binder design campaign (sst14_mutdock_17000) yielded no viable candidates, as all 8 evaluated designs failed to pass the quality control (QC) gates. The primary failure mode was attributed to structural issues, indicating that the proposed designs lacked the necessary structural integrity to proceed further in the pipeline. Despite this, the best candidate demonstrated a Δmargin of 9.1021, which, although positive, was insufficient to offset the structural shortcomings. This result highlights the need for a more rigorous focus on structural stability and design robustness in future iterations.
 
-The top candidates in this iteration are iter15_cand007, iter15_cand001, and iter15_cand008, which exhibit the strongest binding affinities. Despite the promising ddG values, the lack of significant improvement in selectivity highlights the need for further optimization in the next iteration. Future design efforts should focus on enhancing selectivity while maintaining or improving binding affinity.
+The lack of any candidates passing all QC gates underscores the current limitations in the design strategy. While the Δmargin suggests some degree of selectivity potential, the absence of structural and docking validation scores indicates a critical gap in the pipeline. Future efforts should prioritize improving the structural quality of designs and ensuring that candidates meet all QC criteria before advancing to downstream evaluation.
 
             ## Recommendations
 
-            - Focus on improving selectivity (Δmargin) in the next iteration by incorporating structural features that enhance SSTR2 specificity.
-- Maintain strong binding affinity (ddG) while optimizing for selectivity.
-- Consider introducing mutations that may disrupt off-target interactions without compromising SSTR2 binding.
+            - Refine the design strategy to prioritize structural stability and ensure all QC gates are met.
+- Revisit the mutagenesis approach to identify and eliminate structural liabilities.
+- Consider integrating additional structural validation tools to preemptively filter out unstable designs.
+- Reassess the scoring function to better align with structural and binding requirements.

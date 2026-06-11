@@ -1,19 +1,16 @@
-# Iteration 14 Summary: sst14_mutdock_13000
+# Iteration 14 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_13000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 14
-            - **생성 시각**: 2026-06-11 10:30 UTC
+            - **생성 시각**: 2026-06-11 17:34 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 14 (sst14_mutdock_13000) evaluated a total of 1 candidate, with only 1 passing all QC gates, resulting in a low pass rate of 100%. Despite the limited number of candidates, the single successful candidate, iter14_cand006, demonstrated a strong ddG value of -18.8, indicating favorable binding affinity. However, the absence of pLDDT and docking scores suggests potential issues with structural modeling or scoring completeness. The overall low yield of this iteration highlights inefficiencies in the current design space for generating structurally viable and selective SSTR2 peptide binders.
-
-The primary failure mode observed was structural failures, which may be attributed to suboptimal design parameters or constraints that hinder the generation of stable and accurate structures. While the best Δmargin of 9.1021 indicates some level of selectivity, the lack of additional candidates limits the ability to explore this further. These findings suggest that the design strategy requires refinement to improve structural robustness and enhance the overall yield of high-quality candidates.
+            Iteration 14 evaluated a total of 2 candidates, with both passing all QC gates. Despite the small number of candidates, the iteration demonstrated strong binding affinity as indicated by ddG values of -22.5 and -21.1 for the top candidates, iter14_cand008 and iter14_cand007, respectively. However, the structural and docking metrics were suboptimal, with both candidates reporting pLDDT and docking scores of 0.00, suggesting structural instability and poor docking performance. Selectivity metrics were maintained with a Δmargin > 0, indicating favorable selectivity profiles. The primary failure mode in this iteration was structural failures, which limits the overall potential of the candidates.
 
             ## Recommendations
 
-            - Refine the design space parameters to enhance structural stability and reduce structural failures.
-- Investigate the root causes of missing pLDDT and docking scores for the top candidate to ensure scoring completeness.
-- Expand the candidate pool in the next iteration to improve statistical confidence in design performance.
-- Consider integrating additional constraints or filters to improve selectivity and structural accuracy.
+            - Prioritize structural optimization in the next iteration to improve pLDDT and docking scores.
+- Investigate the root causes of structural failures to refine the design pipeline.
+- Maintain focus on selectivity while addressing structural and docking limitations.

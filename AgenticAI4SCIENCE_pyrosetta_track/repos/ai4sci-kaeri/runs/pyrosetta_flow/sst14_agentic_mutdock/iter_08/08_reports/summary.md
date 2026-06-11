@@ -1,16 +1,17 @@
-# Iteration 8 Summary: sst14_mutdock_14000
+# Iteration 8 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_14000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 8
-            - **생성 시각**: 2026-06-11 11:55 UTC
+            - **생성 시각**: 2026-06-11 17:03 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 8 of the SSTR2 peptide binder design campaign evaluated a single candidate, with one passing all QC gates. The sole candidate, iter08_cand006, exhibited a pLDDT of 0.0, a docking score of 0.00, and a ddG of -34.0. Despite the low number of candidates, the results indicate that the current design strategy is not effectively generating diverse or structurally robust candidates, as evidenced by the low pass rate of 12.5%. The primary failure mode was structural failures, suggesting that the designs are not meeting the required stability and folding criteria.
+            Iteration 8 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all QC gates. However, the overall pass rate was low at 25%, indicating a significant issue with structural quality. The top candidates, iter08_cand006 and iter08_cand005, exhibited pLDDT values of 0.0, suggesting poor structural confidence. While iter08_cand006 showed the most favorable ddG value of -75.0 kcal/mol, its docking score of 0.00 indicates a lack of meaningful binding interaction. iter08_cand005 had a less favorable ddG of -26.1 kcal/mol but shared the same structural and docking limitations. The primary failure mode in this iteration was structural failures, which dominated the QC gate failures despite selectivity (Δmargin) being positive for the top candidates. This highlights the need to address structural prediction accuracy in future iterations.
 
             ## Recommendations
 
-            - Implement a more focused mutation strategy to improve structural stability and reduce off-target interactions.
-- Consider increasing the diversity of the candidate pool to enhance the likelihood of identifying structurally viable designs.
-- Refine the design protocol to address the primary failure mode of structural failures, potentially by incorporating stricter structural constraints or improved sampling methods.
+            - Improve structural prediction methods to increase pLDDT values and reduce structural failures.
+- Investigate the root causes of poor docking scores and consider refining docking protocols.
+- Focus on generating candidates with higher structural confidence to improve overall pass rates.
+- Revisit selectivity metrics to ensure they align with structural and binding quality improvements.

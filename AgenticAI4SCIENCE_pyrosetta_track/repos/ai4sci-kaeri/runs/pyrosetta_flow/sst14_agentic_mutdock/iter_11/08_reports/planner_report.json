@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 11,
-  "run_id": "sst14_mutdock_14000",
-  "timestamp": "2026-06-11T12:02:59.884836+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2 (res 192/193/195/197) and TM5 (205/208/209/212), while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target (SSTR3/SSTR5) affinity by avoiding conserved polar interactions in those subtypes. This will increase the selectivity margin by improving SSTR2 complementarity and reducing off-target affinity.",
+  "run_id": "sst14_mutdock_17000",
+  "timestamp": "2026-06-11T17:12:08.753552+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 residues (e.g., 192/193/205/284), while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/5) electrostatic interactions while being tolerated in SSTR2. Position 11 (currently Q) will be mutated to hydrophobic residues (L/I/V) to better fit the SSTR2-specific TM6 pocket (residue 272/273), improving selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient docking scores. Tighter clash filtering and focused mutagenesis at non-pharmacophore positions are necessary to improve selectivity and yield.",
+    "hypothesis": "The current designs achieve strong SSTR2 binding but fail to sufficiently disrupt off-target interactions. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,15 +19,40 @@
           11,
           12
         ],
-        "rationale": "To enhance selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding (SSTR3/SSTR5). Focusing design on these positions allows disruption of conserved pocket contacts without compromising SSTR2 binding."
       },
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 5,
-        "rationale": "Tighter clash filtering may improve docking scores by enforcing better geometry and reducing false positives due to steric clashes."
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "A",
+            "G"
+          ],
+          "6": [
+            "T",
+            "S"
+          ],
+          "11": [
+            "L",
+            "I"
+          ],
+          "12": [
+            "F",
+            "W"
+          ]
+        },
+        "rationale": "Introducing charged or hydrophobic residues at these positions can disrupt conserved interactions in SSTR3/SSTR5 while preserving pharmacophore integrity."
       }
     ]
   },
-  "previous_best_ddg": -15.0375
+  "previous_best_ddg": -29.6337
 }

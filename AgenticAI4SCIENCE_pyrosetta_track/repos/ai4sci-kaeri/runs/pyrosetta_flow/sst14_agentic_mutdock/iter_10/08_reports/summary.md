@@ -1,16 +1,18 @@
-# Iteration 10 Summary: sst14_mutdock_14000
+# Iteration 10 Summary: sst14_mutdock_17000
 
-            - **Run ID**: `sst14_mutdock_14000`
+            - **Run ID**: `sst14_mutdock_17000`
             - **Iteration**: 10
-            - **생성 시각**: 2026-06-11 12:02 UTC
+            - **생성 시각**: 2026-06-11 17:11 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 10 of the SSTR2 peptide binder design campaign evaluated a total of 1 candidate, with only 1 passing all QC gates, resulting in a pass rate of 100%. The top candidate, iter10_cand007, exhibited a pLDDT of 0.0, a docking score of 0.00, and a ΔΔG of -15.0. Despite the candidate passing QC, the overall low yield of the iteration (12.5% in the broader context) indicates suboptimal optimization of selectivity and structural/docking constraints. The primary failure type observed was structural failures, suggesting that the design space may not be effectively constrained to meet structural requirements.
+            Iteration 10 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all QC gates. While the binding affinity, as measured by ddG, was strong (with the best ddG of -29.6 kcal/mol for iter10_cand005), selectivity (Δmargin) remained a concern. The overall selectivity pass rate was low, indicating that the current designs do not meet the required criteria for radiopharmaceutical selectivity. Structural failures were the primary reason for candidate rejection in earlier iterations, but this iteration did not encounter such issues, suggesting some improvement in design stability.
+
+The two candidates that passed QC, iter10_cand005 and iter10_cand006, exhibited promising binding affinities but lacked the necessary selectivity for SSTR2 over other targets. The absence of meaningful pLDDT and docking scores suggests that structural confidence and docking accuracy were not assessed in this iteration or were not available for reporting. These findings highlight the need for further optimization of selectivity while maintaining strong binding affinity.
 
             ## Recommendations
 
-            - Reassess the design parameters to improve structural constraints and enhance selectivity optimization.
-- Consider increasing the diversity of the design space to improve the yield of QC-passing candidates.
-- Perform a detailed analysis of structural failures to identify common issues and refine the design strategy accordingly.
+            - Focus on improving selectivity for SSTR2 in the next iteration, particularly optimizing the Δmargin to meet radiopharmaceutical standards.
+- Revisit structural design parameters to ensure that high-affinity candidates also maintain structural integrity and stability.
+- Incorporate additional metrics such as pLDDT and docking scores to better assess structural confidence and binding accuracy in future iterations.

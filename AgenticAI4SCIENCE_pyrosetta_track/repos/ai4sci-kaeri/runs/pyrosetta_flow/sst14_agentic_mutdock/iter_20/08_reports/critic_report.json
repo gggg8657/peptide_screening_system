@@ -1,13 +1,19 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_13000",
-  "timestamp": "2026-06-11T11:15:35.995727+00:00",
-  "hypothesis": "The current design space allows for strong SSTR2 binding but insufficient selectivity. By focusing mutations at non-pharmacophore positions and avoiding residues that promote off-target interactions, we can improve selectivity without compromising binding affinity.",
+  "run_id": "sst14_mutdock_16000",
+  "timestamp": "2026-06-11T16:22:09.355136+00:00",
+  "hypothesis": "The current designs are not achieving sufficient structural quality to pass QC, despite good selectivity. Tightening the ddG gate and introducing targeted mutations at non-pharmacophore positions should improve both structural quality and selectivity.",
   "proposed_changes": [
     {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "The current ddG threshold is too lenient. Tightening it to -20.0 will filter out weaker binders and improve the structural quality of the designs."
+    },
+    {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,44 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve SSTR2 selectivity, we must disrupt conserved interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that contribute to off-target binding (particularly with SSTR3/SSTR5)."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "A",
-          "G",
-          "T"
-        ],
-        "2": [
-          "E",
-          "K",
-          "R"
-        ],
-        "5": [
-          "N",
-          "D",
-          "Q"
-        ],
-        "6": [
-          "I",
-          "V",
-          "L"
-        ],
-        "11": [
-          "N",
-          "Q",
-          "S"
-        ],
-        "12": [
-          "T",
-          "S",
-          "N"
-        ]
-      },
-      "rationale": "These mutations are designed to disrupt conserved pocket interactions with SSTR3/SSTR5 while maintaining the overall scaffold and pharmacophore integrity."
+      "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in off-targets (SSTR3/SSTR5) at non-pharmacophore positions. Focusing mutations on these positions will help push Δmargin further positive."
     }
   ],
   "current_params": {
@@ -79,6 +48,8 @@
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_005.val1.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_005.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_006.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_006.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_006.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_007.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_007.val1.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_007.val2.pdb",

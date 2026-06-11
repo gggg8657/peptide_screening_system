@@ -1,16 +1,19 @@
-# Iteration 20 Summary: sst14_mutdock_13000
+# Iteration 20 Summary: sst14_mutdock_16000
 
-            - **Run ID**: `sst14_mutdock_13000`
+            - **Run ID**: `sst14_mutdock_16000`
             - **Iteration**: 20
-            - **생성 시각**: 2026-06-11 11:15 UTC
+            - **생성 시각**: 2026-06-11 16:22 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 20 of the SSTR2 peptide binder design campaign evaluated a single candidate, with one passing all QC gates. The top candidate, iter20_cand003, exhibited a ddG of -31.6, indicating strong binding affinity. However, the pLDDT and docking scores were both reported as 0.0, suggesting potential issues with structural confidence or docking accuracy. The overall pass rate of 12.5% is notably low, indicating a need to refine the design strategy to avoid structural failures and improve selectivity. Despite the low yield, the best Δmargin remains robust at 9.1021, highlighting the potential of this iteration's top candidate.
+            Iteration 20 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all QC gates. However, the overall pass rate was poor at 25%, as most candidates failed the ddG gate. The top candidates, iter20_cand003 and iter20_cand005, exhibited favorable selectivity (Δmargin), but their structural quality, as indicated by pLDDT values of 0.0, and docking scores of 0.00, were insufficient for robust design. The ddG values of -30.0 and -15.1 suggest some binding affinity, but the structural failures remain a critical issue for further development.
+
+The primary failure mode in this iteration was structural failures, indicating a need for improved structural modeling and refinement strategies. While the selectivity of the top candidates is promising, the lack of structural confidence limits their viability as high-quality binder designs. These results highlight the importance of addressing structural stability and energetic accuracy in future iterations to enhance the overall quality of the candidate pool.
 
             ## Recommendations
 
-            - Refine the design space to focus on structural stability and avoid off-target interactions.
-- Investigate the structural failures observed in this iteration to identify common causes and address them in future designs.
-- Consider increasing the diversity of the design inputs to improve the yield of high-quality candidates.
+            - Improve structural modeling strategies to enhance pLDDT scores and reduce structural failures.
+- Refine docking protocols to better capture binding energetics and improve dock scores.
+- Focus on optimizing ddG values to ensure stronger binding affinity while maintaining selectivity.
+- Consider implementing additional structural validation steps to ensure robust candidate designs.
