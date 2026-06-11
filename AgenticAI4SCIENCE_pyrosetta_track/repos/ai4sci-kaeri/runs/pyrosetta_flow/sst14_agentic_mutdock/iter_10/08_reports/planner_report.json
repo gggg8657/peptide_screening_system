@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 10,
-  "run_id": "sst14_mutdock_5000",
-  "timestamp": "2026-06-10T18:07:41.211928+00:00",
-  "hypothesis": "Enhancing steric and electrostatic complementarity with SSTR2-unique ECL2/ECL3/TM5/TM6 regions by mutating positions 5 and 11 will increase selectivity margin by differentiating SSTR2 binding from off-targets.",
+  "run_id": "sst14_mutdock_7000",
+  "timestamp": "2026-06-10T22:36:37.040321+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific complementarity with ECL2/TM5, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric discrimination against SSTR3/5, thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is insufficient to achieve consistent SSTR2 selectivity. A more targeted approach, focusing on disrupting conserved interactions in off-targets at non-pharmacophore positions, is necessary to push Δmargin positive across more candidates.",
+    "hypothesis": "The current design strategy is generating candidates with moderate selectivity gains, but off-target interactions remain a limiting factor. A more focused approach on non-pharmacophore positions with mutations that disrupt conserved pocket contacts is needed to push Δmargin further above 0.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,40 +19,40 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we must disrupt conserved pocket interactions in SSTR3/SSTR5 at non-pharmacophore positions. Focusing on these positions allows us to design mutations that reduce off-target binding while preserving the pharmacophore core."
+        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions with SSTR3 and SSTR5. Focusing design on these positions will allow targeted disruption of conserved pocket contacts while preserving the pharmacophore (positions 7-10 and Cys3/Cys14)."
       },
       {
         "parameter_name": "suggested_mutations",
         "old_value": null,
         "new_value": {
-          "1": [
+          "position_1": [
             "D",
             "E"
           ],
-          "2": [
-            "N",
-            "Q"
-          ],
-          "5": [
-            "L",
-            "I"
-          ],
-          "6": [
+          "position_2": [
             "K",
             "R"
           ],
-          "11": [
-            "A",
-            "G"
+          "position_5": [
+            "N",
+            "Q"
           ],
-          "12": [
-            "T",
-            "S"
+          "position_6": [
+            "E",
+            "D"
+          ],
+          "position_11": [
+            "K",
+            "R"
+          ],
+          "position_12": [
+            "N",
+            "Q"
           ]
         },
-        "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while avoiding disruption of the pharmacophore (positions 7-10) and Cys3/Cys14. For example, introducing charged residues at position 6 may disrupt electrostatic interactions in off-targets."
+        "rationale": "These mutations introduce charged or polar residues at non-pharmacophore positions to disrupt conserved interactions with SSTR3 and SSTR5. These residues are unlikely to interfere with SSTR2 binding but can reduce off-target affinity."
       }
     ]
   },
-  "previous_best_ddg": -30.7335
+  "previous_best_ddg": -36.394
 }

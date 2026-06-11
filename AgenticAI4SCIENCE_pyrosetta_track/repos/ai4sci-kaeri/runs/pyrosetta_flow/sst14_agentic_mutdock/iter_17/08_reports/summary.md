@@ -1,19 +1,19 @@
-# Iteration 17 Summary: sst14_mutdock_4000
+# Iteration 17 Summary: sst14_mutdock_7000
 
-            - **Run ID**: `sst14_mutdock_4000`
+            - **Run ID**: `sst14_mutdock_7000`
             - **Iteration**: 17
-            - **생성 시각**: 2026-06-10 17:06 UTC
+            - **생성 시각**: 2026-06-10 23:33 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 17 evaluated five candidate peptides for SSTR2 binding. All candidates passed quality control (QC) gates, indicating structural integrity and adherence to design constraints. The top candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -22.9 to -33.6 kcal/mol. However, selectivity analysis revealed mixed results, with only the best candidate showing a positive Δmargin. Several candidates exhibited Δmargin ≤ 0, suggesting a lack of selectivity over the native SST-14 ligand. This highlights a critical challenge in achieving SSTR2-specific binding while maintaining selectivity over other receptors.
+            Iteration 17 evaluated four peptide binder candidates for SSTR2, all of which passed the quality control (QC) gates. The candidates demonstrated strong stability, as indicated by favorable ddG values (ranging from -22.1 to -37.4), and high structural quality, with all pLDDT values at 0.0. However, selectivity remains a critical challenge, with only 50% of candidates achieving a positive Δmargin. This suggests that while the designs are structurally and thermodynamically robust, improvements are needed to enhance target specificity and reduce off-target interactions.
 
-Structural failures were identified as the primary failure type, indicating that while binding affinity is strong, structural features may not be optimized for selectivity. The lack of pLDDT and docking score data for the candidates suggests a need for further structural refinement and validation. The next iteration should focus on improving selectivity through targeted modifications to the peptide sequence and structure.
+The top-performing candidate, iter17_cand003, exhibited the lowest ddG of -37.4, indicating the strongest binding affinity. Despite this, the lack of consistent selectivity across the cohort highlights the need for targeted modifications to improve discrimination between SSTR2 and other receptors. The structural failures observed in half of the candidates suggest that further refinement of the binding interface may be necessary to ensure consistent performance.
 
             ## Recommendations
 
-            - Focus on structural optimization to enhance selectivity for SSTR2 over native SST-14.
-- Incorporate additional selectivity metrics and refine docking protocols to better predict receptor specificity.
-- Conduct detailed structural analysis on top candidates to identify features contributing to poor selectivity.
-- Consider introducing mutations or modifications that may improve the Δmargin for selectivity.
+            - Focus on improving selectivity through targeted mutations or modifications at the binding interface.
+- Analyze the structural failures in the non-passing candidates to identify common patterns or weaknesses.
+- Incorporate additional selectivity metrics or constraints into the design pipeline to ensure consistent performance across candidates.
+- Consider using experimental validation to assess the binding affinity and selectivity of the top candidates.

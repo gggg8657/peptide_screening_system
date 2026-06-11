@@ -1,5 +1,5 @@
 # PyMOL 4-Panel Auto-Render: iter06_cand007
-# 생성: 2026-06-10T13:23:49.925160
+# 생성: 2026-06-10T20:07:23.078816
 reinitialize
 
 # --- 구조 로드 ---

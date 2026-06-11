@@ -1,16 +1,18 @@
-# Iteration 11 Summary: sst14_mutdock_4000
+# Iteration 11 Summary: sst14_mutdock_7000
 
-            - **Run ID**: `sst14_mutdock_4000`
+            - **Run ID**: `sst14_mutdock_7000`
             - **Iteration**: 11
-            - **생성 시각**: 2026-06-10 16:28 UTC
+            - **생성 시각**: 2026-06-10 22:55 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 11 evaluated four candidate peptides for their binding affinity and selectivity toward the SSTR2 receptor. All candidates passed the quality control (QC) gates, indicating structural and design integrity. The top candidates demonstrated strong binding affinities, as indicated by ddG scores ranging from -24.2 to -29.7 kcal/mol. However, the overall selectivity over the native SST-14 ligand remains a significant challenge, with only one candidate showing a positive Δmargin, suggesting minimal or no improvement in selectivity for the other candidates. This highlights a primary failure type of structural failures, indicating that while binding affinity is strong, structural features may not be optimized for selectivity.
+            Iteration 11 of the SSTR2 peptide binder design campaign evaluated five candidates, all of which passed quality control (QC) gates. The top candidates demonstrated strong binding affinities, as indicated by favorable ddG values ranging from -21.8 to -38.4 kcal/mol. However, the selectivity for SSTR2 over off-targets remains a concern. The best Δmargin is positive, but there is a clear trend of decreasing selectivity with increasing binding affinity, suggesting a trade-off between these two critical design parameters. This highlights the need for further optimization to improve selectivity without compromising affinity.
+
+Structural failures were identified as the primary failure type, indicating that the current designs may not fully satisfy structural constraints. While the candidates show promising binding potential, the lack of selectivity data and structural robustness suggests that further refinement is necessary. The next iteration should focus on balancing affinity and selectivity while ensuring structural stability.
 
             ## Recommendations
 
-            - Focus on improving selectivity for SSTR2 by incorporating structural features that differentiate the binder from the native SST-14 ligand.
-- Perform a more detailed analysis of the structural failures to identify common motifs or interactions that hinder selectivity.
-- Consider introducing additional constraints in the design process to prioritize selectivity alongside binding affinity.
+            - Focus on improving selectivity for SSTR2 over off-targets in the next iteration.
+- Incorporate structural constraints to reduce the rate of structural failures.
+- Balance affinity and selectivity by exploring design modifications that enhance specificity without sacrificing binding strength.

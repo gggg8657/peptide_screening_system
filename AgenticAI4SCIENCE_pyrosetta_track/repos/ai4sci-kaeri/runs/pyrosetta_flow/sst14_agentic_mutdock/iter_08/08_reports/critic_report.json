@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 8,
-  "run_id": "sst14_mutdock_5000",
-  "timestamp": "2026-06-10T17:59:02.712241+00:00",
-  "hypothesis": "The current design strategy is insufficient to achieve SSTR2 selectivity. We must explicitly target and disrupt off-target interactions at non-pharmacophore positions while preserving the native pharmacophore and disulfide bridge.",
+  "run_id": "sst14_mutdock_7000",
+  "timestamp": "2026-06-10T22:31:49.496217+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved, but selectivity is compromised by conserved pocket interactions at non-pharmacophore positions. Targeted mutagenesis at these positions is necessary to improve selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,38 +16,38 @@
         11,
         12
       ],
-      "rationale": "These positions are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing on them will allow us to introduce mutations that disrupt conserved-pocket contacts while preserving pharmacophore positions 7-10 and Cys3/Cys14."
+      "rationale": "To specifically target non-pharmacophore positions where off-target interactions with SSTR3/SSTR5 are likely occurring."
     },
     {
       "parameter_name": "suggested_mutations",
       "old_value": null,
       "new_value": {
         "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
           "A",
           "G"
         ],
-        "2": [
-          "C",
-          "K"
-        ],
-        "5": [
-          "W",
-          "Y"
-        ],
         "6": [
-          "F",
-          "Y"
+          "A",
+          "G"
         ],
         "11": [
-          "D",
-          "N"
+          "A",
+          "G"
         ],
         "12": [
-          "C",
-          "S"
+          "A",
+          "G"
         ]
       },
-      "rationale": "These mutations are designed to disrupt conserved interactions with SSTR3/SSTR5 without compromising the pharmacophore core (FWKT at positions 7-10) or disulfide bridge (Cys3/Cys14)."
+      "rationale": "Introduce mutations at focus positions to disrupt off-target interactions while maintaining native-like binding to SSTR2."
     }
   ],
   "current_params": {

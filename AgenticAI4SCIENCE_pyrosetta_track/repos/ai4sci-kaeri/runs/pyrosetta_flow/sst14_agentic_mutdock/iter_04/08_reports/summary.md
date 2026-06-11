@@ -1,18 +1,16 @@
-# Iteration 4 Summary: sst14_mutdock_5000
+# Iteration 4 Summary: sst14_mutdock_8000
 
-            - **Run ID**: `sst14_mutdock_5000`
+            - **Run ID**: `sst14_mutdock_8000`
             - **Iteration**: 4
-            - **생성 시각**: 2026-06-10 17:35 UTC
+            - **생성 시각**: 2026-06-10 23:59 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 4 of the SSTR2 peptide binder design campaign evaluated a single candidate, with one passing all QC gates. Despite the high pass rate (100%), the structural quality of the top candidate, iter04_cand004, is poor, as indicated by a pLDDT score of 0.0. While the candidate demonstrates a favorable ddG of -22.7 kcal/mol, suggesting strong binding affinity, its docking score of 0.00 and lack of structural confidence raise concerns about its reliability as a viable binder. The overall selectivity of the iteration is suboptimal, with most candidates showing a Δmargin ≤ 0, indicating a lack of selectivity over the native SST-14 ligand. This is likely due to off-target interactions with conserved pockets at SSTR3 and SSTR5.
-
-The primary failure mode in this iteration is structural failures, which underscores the need for improved structural prediction and refinement strategies. The low structural confidence of the top candidate highlights the importance of prioritizing structural quality in future design cycles to ensure both affinity and selectivity are achieved.
+            Iteration 4 of the SSTR2 peptide binder design campaign evaluated five candidate designs, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity and assess selectivity. The results showed strong binding affinities, as indicated by ddG values ranging from -16.0 to -31.4 kcal/mol, with the top three candidates (iter04_cand003, iter04_cand004, and iter04_cand002) demonstrating particularly favorable binding. However, selectivity remains a significant bottleneck, as highlighted by the Critic analysis. While the best Δmargin is positive, the wide range of Δmargin values among top candidates suggests inconsistent selectivity across the design space. This indicates that while affinity is being optimized, further refinement is needed to ensure robust selectivity for SSTR2 over other targets.
 
             ## Recommendations
 
-            - Implement enhanced structural prediction and refinement protocols to improve pLDDT scores and overall structural confidence.
-- Focus on optimizing selectivity by targeting non-conserved regions to reduce off-target interactions with SSTR3 and SSTR5.
-- Increase the number of candidates in the next iteration to better explore the design space and identify structurally and selectively robust binders.
+            - Focus on improving selectivity in the next iteration by incorporating additional constraints or design rules that enhance SSTR2 specificity.
+- Perform a detailed analysis of the structural features contributing to the observed binding affinities and selectivity gaps.
+- Consider introducing diversity in the design space to explore alternative binding modes that may improve both affinity and selectivity.

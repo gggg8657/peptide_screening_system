@@ -1,19 +1,18 @@
-# Iteration 19 Summary - sst14_mutdock_4000
+# Iteration 19 Summary: sst14_mutdock_7000
 
-            - **Run ID**: `sst14_mutdock_4000`
+            - **Run ID**: `sst14_mutdock_7000`
             - **Iteration**: 19
-            - **생성 시각**: 2026-06-10 17:17 UTC
+            - **생성 시각**: 2026-06-10 23:40 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 19 of the SSTR2 peptide binder design campaign (sst14_mutdock_4000) yielded no candidates that passed all quality control (QC) gates. Out of 8 candidates evaluated, all failed to meet the structural or sequence criteria required for progression. Despite the overall failure, the best candidate demonstrated a Δmargin of 8.6866, indicating strong selectivity. However, the majority of candidates exhibited Δmargin values ≤ 0, suggesting a high likelihood of off-target binding and poor selectivity. The primary failure mode was structural failures, underscoring the need for improved structural stability in future designs.
+            Iteration 19 evaluated three candidate peptides for their binding affinity and selectivity toward the SSTR2 receptor. All three candidates passed the quality control (QC) gates, indicating structural and energetic feasibility. The top candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -16.4 to -31.4 kcal/mol. However, the selectivity of these candidates over off-target receptors was limited, with Δmargin values comparable to the native SST-14 ligand. This suggests that while the candidates exhibit favorable binding energies, they have not achieved the desired level of specificity for SSTR2, which is a critical design objective.
 
-The absence of any viable candidates highlights the challenges in achieving both structural integrity and selectivity in this iteration. While the selectivity of the best candidate is promising, the overall performance of the cohort was insufficient to warrant further development. These findings suggest that the current design strategy may require refinement to better balance structural stability with functional selectivity.
+The primary failure mode in this iteration was structural failures, indicating that further refinement of the peptide structures is necessary to improve both stability and selectivity. The lack of significant improvement in selectivity highlights the need for additional design strategies focused on optimizing interactions specific to the SSTR2 binding pocket.
 
             ## Recommendations
 
-            - Refine the design strategy to prioritize structural stability while maintaining selectivity.
-- Re-evaluate the scoring criteria to ensure that selectivity metrics are appropriately weighted.
-- Consider incorporating additional constraints or constraints optimization to improve the overall quality of candidate designs.
-- Perform a deeper analysis of the structural failures to identify common issues and address them in future iterations.
+            - Focus the next iteration on structural refinement to address the observed structural failures and improve selectivity for SSTR2.
+- Incorporate additional constraints or design rules that prioritize interactions unique to the SSTR2 binding site.
+- Re-evaluate the scoring metrics to ensure that selectivity is adequately weighted in the candidate ranking.

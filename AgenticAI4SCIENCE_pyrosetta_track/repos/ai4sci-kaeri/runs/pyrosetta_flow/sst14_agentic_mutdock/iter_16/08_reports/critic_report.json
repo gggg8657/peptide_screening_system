@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_4000",
-  "timestamp": "2026-06-10T16:55:07.602230+00:00",
-  "hypothesis": "The current designs are not sufficiently disrupting conserved off-target interactions at non-pharmacophore positions. Targeted mutations at positions 1, 2, 5, 6, 11, and 12 are needed to improve selectivity over native SST-14.",
+  "run_id": "sst14_mutdock_7000",
+  "timestamp": "2026-06-10T23:25:42.041525+00:00",
+  "hypothesis": "The current design strategy is insufficient to achieve SSTR2 selectivity. A focused mutation strategy at non-pharmacophore positions is necessary to disrupt conserved pocket interactions with SSTR3/SSTR5.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,44 +16,38 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing design on these positions can help disrupt conserved-pocket contacts while preserving key pharmacophore residues."
+      "rationale": "To target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5."
     },
     {
       "parameter_name": "suggested_mutations",
       "old_value": null,
       "new_value": {
-        "position_1": [
-          "A",
-          "G",
-          "T"
-        ],
-        "position_2": [
-          "A",
-          "G",
-          "T"
-        ],
-        "position_5": [
-          "N",
+        "1": [
           "D",
           "E"
         ],
-        "position_6": [
+        "2": [
           "N",
-          "D",
-          "E"
+          "Q"
         ],
-        "position_11": [
-          "I",
-          "V",
-          "L"
+        "5": [
+          "A",
+          "G"
         ],
-        "position_12": [
-          "I",
-          "V",
-          "L"
+        "6": [
+          "S",
+          "T"
+        ],
+        "11": [
+          "A",
+          "G"
+        ],
+        "12": [
+          "S",
+          "T"
         ]
       },
-      "rationale": "Introducing polar or hydrophobic mutations at these positions can disrupt conserved interactions with SSTR3/SSTR5, particularly those involving hydrophobic or hydrogen-bonding motifs."
+      "rationale": "Introduce mutations at non-pharmacophore positions to reduce off-target interactions while maintaining SSTR2 binding."
     }
   ],
   "current_params": {

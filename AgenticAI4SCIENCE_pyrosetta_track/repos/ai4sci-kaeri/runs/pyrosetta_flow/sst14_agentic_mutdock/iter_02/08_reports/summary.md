@@ -1,18 +1,18 @@
-# Iteration 2 Summary: sst14_mutdock_5000
+# Iteration 2 Summary: sst14_mutdock_8000
 
-            - **Run ID**: `sst14_mutdock_5000`
+            - **Run ID**: `sst14_mutdock_8000`
             - **Iteration**: 2
-            - **생성 시각**: 2026-06-10 17:28 UTC
+            - **생성 시각**: 2026-06-10 23:52 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 2 of the SSTR2 peptide binder design campaign evaluated six candidates, all of which passed quality control (QC) gates. The results demonstrated strong binding affinity, as indicated by favorable ddG values, with the best candidate (iter02_cand002) showing a ddG of -48.7 kcal/mol. However, selectivity over off-target SSTR subtypes remains a concern, as several candidates exhibited Δmargin values ≤ 0, suggesting insufficient selectivity. This highlights the need for further refinement to enhance target specificity while maintaining strong binding affinity.
+            Iteration 2 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed quality control (QC) gates. The primary focus of this iteration was to improve binding affinity while addressing selectivity challenges from the previous iteration. The results show strong binding affinities, as indicated by favorable ddG values ranging from -16.9 to -34.3 kcal/mol. However, selectivity remains a critical issue, with several candidates exhibiting off-target binding to SSTR3 and SSTR5. The best Δmargin, while positive, is not significantly higher than that of the native SST-14, suggesting that further optimization is needed to achieve a robust selectivity profile.
 
-Structural failures were identified as a primary failure type, indicating that some candidates may not adopt optimal conformations for binding. Despite this, the overall performance of the candidates was promising, with all six showing acceptable structural and energetic profiles. The next iteration should focus on improving selectivity metrics while preserving the strong binding characteristics observed in this round.
+Structural failures were identified as the primary failure type, indicating that while binding affinity is promising, structural stability or conformational issues may hinder performance. The next iteration should focus on refining the structural features of the top candidates to enhance both stability and selectivity. Additionally, incorporating more stringent selectivity filters during the design process may help reduce off-target interactions.
 
             ## Recommendations
 
-            - Focus on improving selectivity metrics for the next iteration by incorporating additional constraints or filters.
-- Investigate structural failures to understand conformational limitations and refine design strategies.
-- Retain the most promising candidates (iter02_cand002 and iter02_cand004) for further optimization in the next round.
+            - Refine the structural features of top candidates to improve stability and reduce structural failures.
+- Incorporate more stringent selectivity filters during the design process to minimize off-target interactions with SSTR3 and SSTR5.
+- Focus on enhancing the Δmargin to ensure a significant improvement over the native SST-14 for selectivity.

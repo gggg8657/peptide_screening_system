@@ -1,16 +1,16 @@
 {
   "type": "planner",
   "iteration": 8,
-  "run_id": "sst14_mutdock_5000",
-  "timestamp": "2026-06-10T17:52:20.986621+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W, F, Y) will enhance complementarity with SSTR2-specific ECL2 (res 192/193/195/197) and TM5 (205/208/209/212) residues, while mutating position 11 to hydrophobic residues (L, I, V) will reduce off-target interactions with SSTR3/5 by avoiding unfavorable electrostatic contacts. These changes are expected to increase the selectivity margin by improving SSTR2 affinity and reducing off-target binding.",
+  "run_id": "sst14_mutdock_7000",
+  "timestamp": "2026-06-10T22:25:20.969349+00:00",
+  "hypothesis": "Enhancing SSTR2 selectivity by introducing aromatic residues at position 5 to better engage SSTR2-specific ECL2/ECL3 contacts, while introducing hydrophobic substitutions at position 11 to avoid off-target SSTR3/SSTR5 interactions.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is generating strong binders but insufficiently differentiating SSTR2 from off-targets. Targeted mutation of non-pharmacophore positions is necessary to improve selectivity.",
+    "hypothesis": "The current hypothesis remains valid, but the focus must shift to optimizing selectivity by targeting non-pharmacophore positions involved in off-target interactions.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
-        "old_value": [],
+        "old_value": null,
         "new_value": [
           1,
           2,
@@ -19,64 +19,40 @@
           11,
           12
         ],
-        "rationale": "To disrupt conserved-pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions and improve SSTR2 selectivity."
+        "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3 and SSTR5. Focusing on these positions will allow us to disrupt conserved-pocket contacts while preserving the critical FWKT(7-10) and Cys3/Cys14 pharmacophore."
       },
       {
         "parameter_name": "suggested_mutations",
-        "old_value": [],
-        "new_value": [
-          {
-            "position": 1,
-            "mutations": [
-              "A",
-              "G",
-              "T"
-            ]
-          },
-          {
-            "position": 2,
-            "mutations": [
-              "G",
-              "T",
-              "S"
-            ]
-          },
-          {
-            "position": 5,
-            "mutations": [
-              "N",
-              "T",
-              "S"
-            ]
-          },
-          {
-            "position": 6,
-            "mutations": [
-              "W",
-              "Y",
-              "F"
-            ]
-          },
-          {
-            "position": 11,
-            "mutations": [
-              "F",
-              "Y",
-              "T"
-            ]
-          },
-          {
-            "position": 12,
-            "mutations": [
-              "C",
-              "S",
-              "T"
-            ]
-          }
-        ],
-        "rationale": "Proposing mutations at non-pharmacophore positions to break conserved interactions in SSTR3/SSTR5 and improve selectivity."
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "A",
+            "G"
+          ],
+          "6": [
+            "A",
+            "G"
+          ],
+          "11": [
+            "A",
+            "G"
+          ],
+          "12": [
+            "A",
+            "G"
+          ]
+        },
+        "rationale": "Introducing charged or hydrophobic mutations at these positions can disrupt conserved interactions with SSTR3/SSTR5 without affecting the pharmacophore. These mutations are expected to reduce off-target binding and improve Δmargin."
       }
     ]
   },
-  "previous_best_ddg": -27.3018
+  "previous_best_ddg": -42.8025
 }

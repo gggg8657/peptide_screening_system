@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_4000",
-  "timestamp": "2026-06-10T17:21:00.760081+00:00",
-  "hypothesis": "The current design strategy is insufficient to achieve SSTR2 selectivity. A focused mutation strategy targeting conserved off-target interaction sites is necessary to improve Δmargin and achieve the primary objective.",
+  "run_id": "sst14_mutdock_7000",
+  "timestamp": "2026-06-10T23:45:21.531993+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 binding but not sufficient selectivity. The next iteration should focus on disrupting conserved pocket interactions at non-pharmacophore positions to improve Δmargin and achieve true SSTR2 selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -16,44 +16,20 @@
         11,
         12
       ],
-      "rationale": "To disrupt conserved pocket contacts in SSTR3/SSTR5 while preserving pharmacophore positions 7-10 and Cys3/Cys14."
+      "rationale": "Target non-pharmacophore positions where off-target contacts with SSTR3/SSTR5 are likely to occur. Mutations at these positions can disrupt conserved pocket interactions while preserving the pharmacophore."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E",
-          "K"
-        ],
-        "2": [
-          "R",
-          "K",
-          "H"
-        ],
-        "5": [
-          "D",
-          "E",
-          "N"
-        ],
-        "6": [
-          "K",
-          "R",
-          "H"
-        ],
-        "11": [
-          "D",
-          "E",
-          "N"
-        ],
-        "12": [
-          "K",
-          "R",
-          "H"
-        ]
-      },
-      "rationale": "Introduce charged or polar residues at conserved off-target interaction sites to disrupt SSTR3/SSTR5 binding while maintaining SSTR2 selectivity."
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "A2R",
+        "F5Y",
+        "F6W",
+        "T11A",
+        "T12V"
+      ],
+      "rationale": "Introduce mutations at key non-pharmacophore positions to disrupt conserved pocket interactions with SSTR3/SSTR5. These mutations are predicted to reduce off-target binding while maintaining the core pharmacophore (FWKT7-10 + Cys3/Cys14)."
     }
   ],
   "current_params": {
@@ -65,14 +41,24 @@
   "candidate_pdbs": [
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_001.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_002.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_002.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_002.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_003.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_003.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_003.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_004.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_004.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_004.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_005.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_005.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_005.val2.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_006.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_007.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_007.val1.pdb",
     "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_007.val2.pdb",
-    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_008.pdb"
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_008.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_008.val1.pdb",
+    "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_20/cand_008.val2.pdb"
   ],
   "receptor_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb"
 }
