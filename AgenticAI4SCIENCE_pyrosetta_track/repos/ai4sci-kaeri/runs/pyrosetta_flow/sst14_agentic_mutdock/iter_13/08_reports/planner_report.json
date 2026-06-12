@@ -1,16 +1,22 @@
 {
   "type": "planner",
   "iteration": 13,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T05:13:27.773292+00:00",
-  "hypothesis": "Enhancing steric complementarity at position 11 and introducing aromatic residues at position 5 will improve SSTR2 selectivity by better engaging SSTR2-specific ECL2/ECL3/TM5/TM6 regions while reducing off-target interactions.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T10:45:26.710586+00:00",
+  "hypothesis": "Enhancing aromatic complementarity at position 5 and hydrophobic packing at position 11 will improve SSTR2 selectivity by strengthening interactions with SSTR2-unique ECL2/TM5 residues while avoiding off-target SSTR3/5 interactions.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is effective at generating high-affinity binders but insufficient for achieving the required level of SSTR2 selectivity. Targeted mutagenesis at non-pharmacophore positions is necessary to disrupt conserved off-target interactions.",
+    "hypothesis": "The current hypothesis remains valid, but we must refine the focus on selectivity by targeting non-pharmacophore positions for mutations to reduce off-target interactions.",
     "proposed_changes": [
       {
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -15.0,
+        "new_value": -18.0,
+        "rationale": "Tightening the ddG threshold will filter out weaker binders and focus on candidates with stronger SSTR2 binding energy."
+      },
+      {
         "parameter_name": "focus_positions",
-        "old_value": null,
+        "old_value": [],
         "new_value": [
           1,
           2,
@@ -19,40 +25,9 @@
           11,
           12
         ],
-        "rationale": "These positions are known to contribute to off-target binding in SSTR3/SSTR5. Focusing mutations here can disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
-      },
-      {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "N",
-            "Q"
-          ],
-          "5": [
-            "K",
-            "R"
-          ],
-          "6": [
-            "A",
-            "G"
-          ],
-          "11": [
-            "T",
-            "S"
-          ],
-          "12": [
-            "A",
-            "G"
-          ]
-        },
-        "rationale": "Introducing mutations at these positions with residues that disrupt off-target interactions while preserving native-like backbone geometry and pharmacophore integrity."
+        "rationale": "To improve selectivity, we need to disrupt off-target interactions at conserved positions (1, 2, 5, 6, 11, 12) that are not part of the pharmacophore while preserving FWKT(7-10) and Cys3/Cys14."
       }
     ]
   },
-  "previous_best_ddg": -36.303
+  "previous_best_ddg": -23.1038
 }

@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 7,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T04:46:47.967076+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific TM5 interactions, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric complementarity with SSTR2-unique ECL2/ECL3 and reduce off-target binding to SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_28000",
+  "timestamp": "2026-06-12T11:57:07.505505+00:00",
+  "hypothesis": "Enhancing steric complementarity with SSTR2-unique ECL2 (res 192/193/195/197) and TM5 (205/208/209/212) by introducing bulky aromatic residues at position 5 and hydrophobic residues at position 11 will improve SSTR2 selectivity (Δmargin > 0) by avoiding off-target SSTR3/5 interactions.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient selectivity. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions to improve Δmargin and achieve SSTR2 selectivity.",
+    "hypothesis": "The current designs are strong SSTR2 binders but still exhibit off-target interactions, particularly at conserved pocket residues in SSTR3 and SSTR5. The next iteration should focus on disrupting these interactions at non-pharmacophore positions to enhance selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,40 +19,46 @@
           11,
           12
         ],
-        "rationale": "Off-target binding is likely driven by conserved pocket interactions at non-pharmacophore positions. Focusing on these positions will allow us to design mutations that disrupt off-target contacts while preserving key pharmacophore residues."
+        "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions (especially with SSTR3 and SSTR5). Focusing mutations here can disrupt off-target binding while preserving key interactions at positions 7-10 (FWKT) and Cys3/Cys14."
       },
       {
         "parameter_name": "suggested_mutations",
         "old_value": null,
         "new_value": {
           "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "K",
-            "R"
-          ],
-          "5": [
             "A",
-            "G"
-          ],
-          "6": [
-            "S",
+            "G",
             "T"
           ],
+          "2": [
+            "E",
+            "Q",
+            "K"
+          ],
+          "5": [
+            "T",
+            "S",
+            "N"
+          ],
+          "6": [
+            "W",
+            "Y",
+            "F"
+          ],
           "11": [
-            "A",
-            "G"
+            "L",
+            "I",
+            "V"
           ],
           "12": [
-            "A",
-            "G"
+            "C",
+            "S",
+            "T"
           ]
         },
-        "rationale": "Introducing charged or hydrophilic residues at positions 1 and 2 can disrupt off-target interactions, while smaller hydrophobic residues at positions 5, 6, 11, and 12 can reduce off-target binding without affecting the pharmacophore."
+        "rationale": "These mutations are designed to reduce hydrophobic or hydrogen-bonding interactions at off-target interfaces while maintaining flexibility and compatibility with SSTR2 binding."
       }
     ]
   },
-  "previous_best_ddg": -31.3577
+  "previous_best_ddg": -35.9238
 }

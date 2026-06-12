@@ -1,16 +1,16 @@
-# Iteration 7 Summary - sst14_mutdock_24000
+# Iteration 7 Summary: sst14_mutdock_28000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_28000`
             - **Iteration**: 7
-            - **생성 시각**: 2026-06-12 04:49 UTC
+            - **생성 시각**: 2026-06-12 11:59 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 7 of the SSTR2 peptide binder design campaign yielded no viable candidates, as all designs failed to pass the QC gates. The primary failure mode was structural_failures, indicating unresolved issues in the design pipeline that hinder the production of stable and functional peptides. Despite the absence of successful candidates, the Critic analysis revealed that the best Δmargin remains positive, suggesting some improvement in binding affinity. However, this is insufficient to overcome the lack of selectivity over native SST-14, which remains a critical barrier to further optimization. The inability to generate even a single candidate that meets the design criteria highlights the need for a more robust structural refinement strategy.
+            Iteration 7 of the SSTR2 peptide binder design campaign evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was on binding affinity, as reflected by the ddG values, which showed strong performance. The best ddG value was -30.7 kcal/mol for iter07_cand006, indicating a highly favorable binding interaction. However, structural failures were the primary reason for the low pass rate in previous iterations, suggesting that structural stability and sequence constraints need to be prioritized in the next iteration. Selectivity remained excellent, with all candidates showing a Δmargin > 0, confirming SSTR2 selectivity over off-targets. This iteration highlights the importance of balancing binding affinity with structural integrity to ensure robust candidate designs.
 
             ## Recommendations
 
-            - Investigate the root causes of structural_failures and refine the design pipeline to ensure structural stability and functional integrity.
-- Revisit the selectivity criteria and consider alternative strategies to improve discrimination over native SST-14.
-- Reassess the scoring and filtering thresholds to ensure they align with the current design goals and QC standards.
+            - Prioritize structural stability and sequence constraints in the next iteration to reduce structural failures.
+- Maintain focus on high ddG values to ensure strong binding affinity.
+- Continue monitoring selectivity metrics to ensure SSTR2 specificity is preserved.

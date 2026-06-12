@@ -1,10 +1,16 @@
 {
   "type": "critic",
   "iteration": 1,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T04:21:31.265297+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity over SSTR3/SSTR5. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions while maintaining key SSTR2 interactions.",
+  "run_id": "sst14_mutdock_28000",
+  "timestamp": "2026-06-12T11:37:08.363076+00:00",
+  "hypothesis": "The current hypothesis remains valid: SSTR2 selectivity can be achieved by optimizing for Δmargin. However, the optimization strategy should now incorporate selectivity-weighted objectives and targeted mutagenesis at non-pharmacophore positions.",
   "proposed_changes": [
+    {
+      "parameter_name": "objective_mode",
+      "old_value": "ddg_only",
+      "new_value": "selectivity_weighted",
+      "rationale": "To prioritize selectivity over binding affinity alone, the objective function should incorporate a weighted Δmargin metric to guide the design toward SSTR2-specific interactions."
+    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -16,13 +22,7 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding (particularly with SSTR3/SSTR5). Focusing on these positions will allow us to design mutations that disrupt off-target contacts while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
-    },
-    {
-      "parameter_name": "objective_mode",
-      "old_value": "ddg_only",
-      "new_value": "selectivity_weighted",
-      "rationale": "Shifting the objective to prioritize selectivity (Δmargin) over binding affinity (ddG) will ensure that the design process actively seeks to improve SSTR2 selectivity over off-targets."
+      "rationale": "Disrupting conserved pocket contacts at these non-pharmacophore positions can reduce off-target binding to SSTR3/SSTR5 while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {

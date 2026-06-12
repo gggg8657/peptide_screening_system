@@ -1,58 +1,26 @@
 {
   "type": "planner",
   "iteration": 8,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T04:50:28.863950+00:00",
-  "hypothesis": "Mutating position 1 to a positively charged residue (e.g., K) and position 11 to a hydrophobic residue (e.g., L) will enhance SSTR2-specific interactions with ECL2/ECL3 while reducing off-target binding to SSTR3/SSTR5, thereby increasing selectivity margin.",
+  "run_id": "sst14_mutdock_28000",
+  "timestamp": "2026-06-12T12:00:41.266908+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (e.g., W, F, Y) will enhance complementarity with SSTR2-specific ECL2/TM5 residues (e.g., E193, F205), while mutating position 11 to hydrophobic residues (e.g., L, I, V) will reduce off-target SSTR3/SSTR5 binding by avoiding clashes with conserved residues in those subtypes. This will increase the selectivity margin by improving SSTR2 affinity and reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs fail to achieve sufficient selectivity due to conserved interactions at non-pharmacophore positions. Targeted mutations at positions 1, 2, 5, 6, 11, and 12 are necessary to break off-target interactions while maintaining SSTR2 binding.",
+    "hypothesis": "The current designs are achieving strong SSTR2 selectivity, but structural issues are limiting the number of viable candidates. Tightening structural constraints and increasing the candidate pool should improve the pass rate without compromising selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": [],
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To disrupt conserved pocket interactions with SSTR3/SSTR5 while preserving the pharmacophore (positions 7-10 and Cys3/Cys14)."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Structural failures suggest excessive clashes in the binding pocket or receptor-ligand interface. Tightening the clash threshold will enforce better geometry and improve structural quality."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": [],
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "N",
-            "Q"
-          ],
-          "5": [
-            "L",
-            "I"
-          ],
-          "6": [
-            "V",
-            "A"
-          ],
-          "11": [
-            "K",
-            "R"
-          ],
-          "12": [
-            "T",
-            "S"
-          ]
-        },
-        "rationale": "Introduce mutations at non-pharmacophore positions to break conserved interactions with off-target SSTRs while preserving native-like interactions at key positions."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 12,
+        "rationale": "A low number of candidates increases the risk of missing structurally valid designs. Increasing the candidate pool will improve chances of identifying high-quality structures."
       }
     ]
   },
-  "previous_best_ddg": null
+  "previous_best_ddg": -30.6632
 }

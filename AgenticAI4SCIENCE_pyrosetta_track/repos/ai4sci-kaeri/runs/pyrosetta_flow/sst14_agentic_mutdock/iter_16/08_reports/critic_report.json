@@ -1,28 +1,21 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T05:31:11.546346+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved while reducing off-target interactions. However, we must focus on disrupting conserved pocket contacts in SSTR3/SSTR5 to push Δmargin further above 0.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T11:06:29.544863+00:00",
+  "hypothesis": "The current hypothesis remains valid: the design strategy is producing highly selective SSTR2 binders, but structural modeling limitations are preventing the generation of high-quality candidates. Focusing on improving structural modeling parameters will help retain selectivity while improving model quality.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -20.0,
-      "rationale": "The current threshold allows for weak binding candidates. Raising the ddG threshold will filter out weaker binders and retain only the strongest SSTR2 binders."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid models with high pLDDT and docking scores."
     },
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To improve selectivity, we need to disrupt off-target contacts at non-pharmacophore positions. Focusing mutations at these positions will help reduce off-target binding while preserving key pharmacophore residues."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reduce the clash threshold to enforce better packing and reduce structural failures due to poor geometry."
     }
   ],
   "current_params": {

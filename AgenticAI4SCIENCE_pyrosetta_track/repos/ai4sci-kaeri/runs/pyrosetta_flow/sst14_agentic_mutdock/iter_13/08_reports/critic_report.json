@@ -1,21 +1,21 @@
 {
   "type": "critic",
   "iteration": 13,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T05:20:44.580482+00:00",
-  "hypothesis": "The current designs are achieving strong ddG binding but are structurally suboptimal. Tightening structural constraints and increasing candidate diversity are necessary to improve pass rates and maintain selectivity.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T10:48:18.700112+00:00",
+  "hypothesis": "The current designs are achieving good ddG and selectivity but are failing structurally. Tightening structural constraints and increasing candidate diversity may help generate designs that are both structurally valid and selective.",
   "proposed_changes": [
     {
       "parameter_name": "n_candidates",
       "old_value": 8,
-      "new_value": 12,
-      "rationale": "Increasing the number of candidates can improve the chances of generating structurally valid designs with better pLDDT scores."
+      "new_value": 16,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs."
     },
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Reducing the clash threshold will enforce better packing and reduce structural artifacts, which are likely contributing to low pLDDT scores."
+      "rationale": "Reduce the allowed clash score to enforce better structural quality and avoid steric clashes in the binding pocket."
     }
   ],
   "current_params": {

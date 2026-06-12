@@ -1,19 +1,16 @@
-# Iteration 20 Summary: sst14_mutdock_24000
+# Iteration 20 Summary: sst14_mutdock_27000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_27000`
             - **Iteration**: 20
-            - **생성 시각**: 2026-06-12 06:05 UTC
+            - **생성 시각**: 2026-06-12 11:25 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 20 evaluated four candidate peptides for SSTR2 binding, all of which passed the defined quality control (QC) gates. While the pass rate of 100% is encouraging, the overall structural quality metrics, including pLDDT and docking scores, remain at baseline values (0.0), indicating a lack of structural refinement. The ddG values show moderate improvements, with the best candidate (iter20_cand008) achieving a binding energy of -46.6 kcal/mol. However, the selectivity pass rate remains low, and no significant gains in off-target discrimination were observed compared to native SST-14. This suggests that while binding affinity is improving, the designs have not yet effectively addressed off-target interactions.
-
-The primary failure mode in this iteration was structural failures, which may be linked to the lack of meaningful pLDDT improvements. The Critic analysis highlights the need to focus on disrupting off-target contacts while preserving key pharmacophore residues. The next iteration should prioritize strategies to enhance structural stability and specificity, particularly by refining the peptide backbone and side-chain interactions at the SSTR2 interface.
+            Iteration 20 evaluated a total of 2 candidates, both of which passed all QC gates. Despite the small number of candidates, the iteration demonstrated strong binding affinity as indicated by favorable ddG values, with the best candidate achieving a ddG of -27.1 kcal/mol. However, the absence of pLDDT and docking scores suggests that structural quality and docking reliability remain significant challenges. The top candidates, iter20_cand008 and iter20_cand007, showed promising ddG values of -27.1 and -21.9 kcal/mol, respectively, but lacked structural validation metrics. Selectivity was strong, with a Δmargin of 9.1021, indicating potential for improved target specificity. However, the primary failure mode was structural instability, which highlights the need for enhanced structural modeling and validation in future iterations.
 
             ## Recommendations
 
-            - Focus on structural refinement to improve pLDDT and stabilize key interactions.
-- Incorporate explicit strategies to disrupt off-target contacts while maintaining SSTR2 binding.
-- Evaluate the impact of backbone modifications on selectivity and affinity.
-- Consider targeted mutagenesis of residues involved in off-target interactions.
+            - Prioritize structural modeling improvements to address instability and ensure reliable pLDDT and docking scores.
+- Incorporate additional QC checks focused on structural quality to filter out candidates with poor geometry.
+- Explore design strategies that enhance both binding affinity and structural stability simultaneously.

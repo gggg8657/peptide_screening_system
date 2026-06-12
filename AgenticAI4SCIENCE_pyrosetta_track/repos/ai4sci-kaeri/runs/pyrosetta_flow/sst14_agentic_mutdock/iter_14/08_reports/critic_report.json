@@ -1,59 +1,21 @@
 {
   "type": "critic",
   "iteration": 14,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T05:24:14.559667+00:00",
-  "hypothesis": "To achieve SSTR2 selectivity, we must focus on disrupting off-target interactions at non-pharmacophore positions 1, 2, 5, 6, 11, and 12. Strong ddG alone is insufficient if selectivity is not achieved.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T10:55:38.832021+00:00",
+  "hypothesis": "The current designs are binding strongly to SSTR2 but are failing structurally. The next step is to refine the structural constraints to ensure that high ddG candidates also have valid geometries.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "These positions are known to contribute to off-target interactions with SSTR3 and SSTR5. Focusing mutations here can disrupt conserved-pocket contacts without affecting the pharmacophore (positions 7-10 and Cys3/Cys14)."
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "To filter out candidates with weaker binding energy and improve the structural quality of the top designs."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "A",
-          "T",
-          "G"
-        ],
-        "2": [
-          "E",
-          "G",
-          "D"
-        ],
-        "5": [
-          "K",
-          "N",
-          "T"
-        ],
-        "6": [
-          "W",
-          "T",
-          "D"
-        ],
-        "11": [
-          "T",
-          "A",
-          "D"
-        ],
-        "12": [
-          "C",
-          "S",
-          "A"
-        ]
-      },
-      "rationale": "These mutations are selected to disrupt conserved interactions with SSTR3 and SSTR5 while maintaining flexibility and avoiding steric clashes."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "To increase the diversity of the candidate pool and improve the chances of generating structurally valid designs."
     }
   ],
   "current_params": {

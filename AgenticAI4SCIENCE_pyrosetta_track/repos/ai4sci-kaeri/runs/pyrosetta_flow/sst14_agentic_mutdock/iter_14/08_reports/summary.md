@@ -1,18 +1,18 @@
-# Iteration 14 Summary: sst14_mutdock_24000
+# Iteration 14 Summary: sst14_mutdock_27000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_27000`
             - **Iteration**: 14
-            - **생성 시각**: 2026-06-12 05:24 UTC
+            - **생성 시각**: 2026-06-12 10:55 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 14 evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. Despite the small number of candidates, the iteration demonstrated strong binding affinities, as indicated by favorable ddG values ranging from -18.5 to -28.2. The top-performing candidate, iter14_cand001, exhibited the lowest ddG of -28.2, suggesting high stability and potential for strong SSTR2 binding. However, the overall pass rate was low at 37.5%, primarily due to insufficient selectivity over off-target somatostatin receptors (SSTRs). This highlights a persistent challenge in the design campaign, where achieving both high affinity and selectivity remains a key objective.
+            Iteration 14 evaluated three candidates for SSTR2 peptide binder design, all of which passed the QC gates. The primary focus of this iteration was to improve binding affinity while maintaining selectivity. The results showed strong binding affinities, as indicated by ddG values ranging from -21.1 to -33.9 kcal/mol. However, the pLDDT and docking scores remained at 0.0, suggesting that structural quality remains a critical issue. The selectivity margin was positive, indicating some success in maintaining selectivity, but the overall pass rate was low due to structural failures. This highlights the need for a more focused effort on improving structural integrity in the next iteration.
 
-Structural failures were identified as the primary mode of failure, indicating that the current designs may not adequately address the structural requirements for optimal receptor interaction. While the best Δmargin of 9.1021 suggests some improvement in selectivity, the majority of candidates still fall short of the desired threshold. These findings underscore the need for further refinement in the design process, particularly in enhancing selectivity while maintaining strong binding affinity.
+The top candidates, iter14_cand007, iter14_cand003, and iter14_cand001, demonstrated the strongest binding affinities, with iter14_cand007 showing the most favorable ddG of -33.9 kcal/mol. Despite these promising results, the structural failures observed in this iteration suggest that the design process must be refined to ensure that structural quality is not compromised in pursuit of stronger binding. The next iteration should prioritize strategies to enhance structural stability while maintaining or improving selectivity.
 
             ## Recommendations
 
-            - Focus on improving selectivity by incorporating structural constraints that distinguish SSTR2 from off-target SSTR subtypes.
-- Refine the design process to address structural failures, potentially by optimizing the peptide-receptor interface for better stability and specificity.
-- Expand the candidate pool in the next iteration to increase the likelihood of identifying designs that meet both affinity and selectivity criteria.
+            - Prioritize structural quality in the next iteration to address the observed structural failures.
+- Maintain a focus on selectivity while optimizing for stronger binding affinities.
+- Refine the design process to ensure that improvements in ddG do not come at the expense of structural integrity.

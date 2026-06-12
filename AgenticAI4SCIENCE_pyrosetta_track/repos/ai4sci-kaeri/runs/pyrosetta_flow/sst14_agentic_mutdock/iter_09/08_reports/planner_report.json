@@ -1,26 +1,26 @@
 {
   "type": "planner",
   "iteration": 9,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T04:54:31.243245+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W, F, Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 11 to hydrophobic residues (L, I, V) will reduce off-target (SSTR3/SSTR5) binding by avoiding unfavorable electrostatic interactions, thereby increasing selectivity margin.",
+  "run_id": "sst14_mutdock_28000",
+  "timestamp": "2026-06-12T12:04:14.523573+00:00",
+  "hypothesis": "Mutating position 1 to a bulky hydrophobic residue (e.g., Leu or Ile) will enhance SSTR2 selectivity by improving complementarity with the SSTR2-specific ECL2 pocket while reducing off-target SSTR3/5 binding. Simultaneously, mutating position 12 to a charged residue (e.g., Lys) will improve electrostatic complementarity with SSTR2 TM6 while disrupting off-target interactions.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis remains valid: SSTR2 selectivity is achievable with strong pharmacophore preservation (FWKT7-10 and Cys3/Cys14) and disruption of conserved off-target contacts. However, structural stability must be improved to ensure viable candidates.",
+    "hypothesis": "The current designs are failing primarily due to structural issues, not selectivity. Tighter structural constraints and a larger candidate pool are needed to identify a viable SSTR2-selective binder.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
-        "new_value": 5,
-        "rationale": "Current clash threshold is too lenient, allowing unstable conformations. Tightening the clash filter will improve structural quality and reduce false positives."
+        "new_value": 8,
+        "rationale": "The current clash score threshold is too lenient, allowing candidates with poor packing and structural instability. Tightening the clash score will enforce better geometry and reduce false positives."
       },
       {
         "parameter_name": "n_candidates",
         "old_value": 8,
-        "new_value": 12,
-        "rationale": "A larger candidate pool increases the chances of generating structurally viable and selective designs, especially when structural filters are tightened."
+        "new_value": 16,
+        "rationale": "The low number of candidates increases the risk of missing high-quality designs. Expanding the candidate pool will improve diversity and increase the chances of finding a structurally valid, selective binder."
       }
     ]
   },
-  "previous_best_ddg": -28.2304
+  "previous_best_ddg": null
 }

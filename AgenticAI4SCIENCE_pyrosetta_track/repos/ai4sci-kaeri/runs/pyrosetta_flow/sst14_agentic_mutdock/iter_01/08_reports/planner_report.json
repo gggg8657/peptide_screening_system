@@ -1,9 +1,9 @@
 {
   "type": "planner",
   "iteration": 1,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T04:18:25.113364+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2 binding by improving complementarity with the SSTR2-specific ECL2/TM5 pocket, while charge-neutral substitutions at position 6 may reduce off-target interactions with SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_28000",
+  "timestamp": "2026-06-12T11:30:24.539154+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interactions in the ECL2/TM5 binding pocket while minimizing off-target affinity.",
   "strategy": "ddg_only",
   "critic_feedback_used": null,
   "previous_best_ddg": null

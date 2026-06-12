@@ -1,18 +1,16 @@
-# Iteration 11 Summary: sst14_mutdock_24000
+# Iteration 11 Summary: sst14_mutdock_27000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_27000`
             - **Iteration**: 11
-            - **생성 시각**: 2026-06-12 05:04 UTC
+            - **생성 시각**: 2026-06-12 10:41 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 11 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one (100%) passing all QC gates. The sole candidate, iter11_cand008, exhibited a ΔG of -25.2 kcal/mol, indicating strong binding potential. However, the pLDDT and docking scores were both reported as 0.0, suggesting a lack of structural confidence or computational evaluation for these metrics. Despite the strong ddG, the low pass rate (12.5%) indicates significant structural failures, which may be due to design constraints or limitations in the current modeling approach.
-
-The primary failure mode in this iteration was structural failures, which may point to issues in the design protocol or the stability of the generated structures. While the best Δmargin remains robust, the low yield of viable candidates suggests the need for further refinement of the design strategy. The results highlight the importance of improving structural modeling and ensuring that generated candidates are both energetically favorable and structurally sound.
+            Iteration 11 evaluated five candidate peptides for SSTR2 binding, all of which passed quality control (QC) gates. The primary focus of this iteration was to improve binding affinity, as reflected by the ddG values, which ranged from -19.0 to -34.3 kcal/mol. The top candidates demonstrated strong binding potential, with iter11_cand001 achieving the lowest ddG of -34.3 kcal/mol. However, the pLDDT and docking scores remained at 0.0 for all candidates, indicating that structural confidence and docking accuracy were not assessed or were not available for this iteration. Selectivity remains a key challenge, as several candidates exhibited lower Δmargin values, suggesting potential off-target binding.
 
             ## Recommendations
 
-            - Investigate the structural modeling pipeline to address the lack of pLDDT and docking score data for candidates.
-- Refine the design protocol to reduce structural failures and improve the pass rate through QC gates.
-- Conduct a detailed analysis of iter11_cand008 to determine if it can serve as a template for future designs despite the missing structural metrics.
+            - Prioritize candidates with the lowest ddG values (e.g., iter11_cand001) for further evaluation and experimental validation.
+- Address selectivity concerns by incorporating additional selectivity filters or off-target binding assessments in the next iteration.
+- Investigate the structural failures noted in the Critic analysis to improve structural confidence and docking accuracy in future designs.

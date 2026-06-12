@@ -1,53 +1,21 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T06:04:49.363242+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is necessary but insufficient. The next iteration must prioritize disrupting off-target interactions at non-pharmacophore positions to achieve improved selectivity.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T11:25:15.592224+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 selectivity, but structural instability is limiting the pass rate. Tightening structural constraints and increasing candidate diversity should improve the yield of high-quality, selective designs.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "These positions are known to mediate off-target interactions with SSTR3 and SSTR5. Focusing design on these positions allows for targeted disruption of conserved pocket contacts."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Structural failures suggest excessive clashes in the designed peptides. Lowering the clash tolerance will enforce better geometry and improve structural quality."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "Y",
-          "F"
-        ],
-        "6": [
-          "Q",
-          "N"
-        ],
-        "11": [
-          "L",
-          "I"
-        ],
-        "12": [
-          "A",
-          "V"
-        ]
-      },
-      "rationale": "Introducing mutations at these positions that are less likely to form conserved hydrogen bonds or hydrophobic interactions with SSTR3/SSTR5 will reduce off-target binding."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "The low pass rate (25%) indicates that the current number of candidates is insufficient to find high-quality designs. Increasing the number of candidates will improve the chances of identifying structurally stable and selective peptides."
     }
   ],
   "current_params": {

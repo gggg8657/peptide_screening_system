@@ -1,19 +1,19 @@
-# Iteration 10 Summary: sst14_mutdock_24000
+# Iteration 10 Summary: sst14_mutdock_27000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_27000`
             - **Iteration**: 10
-            - **생성 시각**: 2026-06-12 05:01 UTC
+            - **생성 시각**: 2026-06-12 10:37 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 10 of the SSTR2 peptide binder design campaign (sst14_mutdock_24000) yielded no candidates that passed all quality control (QC) gates. A total of 8 candidates were evaluated, but all failed to meet the required criteria for structural integrity and selectivity. Critically, none of the candidates demonstrated improved selectivity over the native SST-14 ligand, despite some showing favorable ddG values. The primary failure mode was attributed to structural issues that prevented the peptides from forming the necessary interactions for target specificity. This highlights a need for a more focused approach to mutagenesis and structural optimization to enhance both binding affinity and selectivity.
+            Iteration 10 of the SSTR2 peptide binder design campaign evaluated three candidates, all of which passed the quality control (QC) gates. The designs demonstrated strong binding affinity as indicated by favorable ddG values, with the best candidate (iter10_cand003) achieving a ddG of -36.6 kcal/mol. However, the pLDDT and docking scores were not reported (0.0), suggesting potential limitations in structural confidence or docking evaluation. Despite the promising binding affinity, selectivity remains a critical challenge, as highlighted by the critic analysis. The best Δmargin is positive, but the overall pass rate for selectivity is low, indicating a need for targeted improvements in off-target discrimination.
 
-The lack of progress in this iteration underscores the importance of refining the design strategy. Future iterations should prioritize the incorporation of structural constraints and targeted mutagenesis to disrupt off-target interactions while preserving high-affinity binding to SSTR2. Additionally, the use of more advanced docking and scoring methods may help identify candidates with better structural and energetic profiles.
+The primary failure mode observed in this iteration was structural failures, underscoring the importance of refining structural stability and ensuring robustness in the design. The low selectivity pass rate necessitates a strategic shift in the next iteration to prioritize selectivity optimization alongside binding affinity. This will likely involve incorporating additional constraints or metrics to enhance discrimination against off-target receptors.
 
             ## Recommendations
 
-            - Refine the mutagenesis strategy to focus on residues critical for SSTR2 selectivity.
-- Incorporate structural constraints to improve the stability and specificity of the designed peptides.
-- Utilize advanced docking protocols to better predict and optimize binding modes.
-- Reassess the scoring function to better prioritize candidates with high selectivity potential.
+            - Prioritize selectivity optimization in the next iteration by incorporating additional off-target screening metrics.
+- Investigate the structural failures observed and refine the design constraints to improve stability.
+- Consider integrating machine learning-based selectivity prediction models to guide the design process.
+- Revisit the docking and pLDDT evaluation protocols to ensure they are providing meaningful insights into structural confidence.

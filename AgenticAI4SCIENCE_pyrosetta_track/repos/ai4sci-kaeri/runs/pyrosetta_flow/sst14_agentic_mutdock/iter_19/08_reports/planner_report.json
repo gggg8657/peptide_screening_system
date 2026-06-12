@@ -1,40 +1,26 @@
 {
   "type": "planner",
   "iteration": 19,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T05:47:12.000960+00:00",
-  "hypothesis": "Enhancing SSTR2 selectivity by introducing aromatic residues at position 5 to better complement SSTR2-specific ECL2/TM5 interactions, and introducing charged residues at position 6 to disrupt off-target (SSTR3/5) electrostatic interactions while maintaining SSTR2 affinity.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T11:18:38.785448+00:00",
+  "hypothesis": "Introducing a bulky aromatic residue at position 5 and a hydrophobic substitution at position 11 will enhance SSTR2-specific complementarity in the ECL2/TM5 interface, increasing selectivity margin by differentiating from off-target subtypes.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is generating strong binders but insufficiently addressing selectivity. A more focused approach on disrupting off-target interactions at non-pharmacophore positions is needed to improve Δmargin beyond native SST-14.",
+    "hypothesis": "The current design protocol is generating a small number of candidates with strong SSTR2 binding but insufficient diversity to explore the full selectivity landscape. Relaxing the ddG threshold and increasing the candidate pool will improve the chances of identifying a more selective binder.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": [],
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "Target non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5 conserved-pocket contacts). Mutating these positions can disrupt off-target interactions while preserving key pharmacophore residues."
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -15.0,
+        "new_value": -10.0,
+        "rationale": "The current ddG threshold is too stringent, filtering out potentially viable candidates with strong but slightly less optimal binding. Relaxing the threshold may increase the pass rate while still maintaining a focus on strong SSTR2 binding."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": [],
-        "new_value": [
-          "A1D",
-          "A2E",
-          "F5Y",
-          "F6W",
-          "T11K",
-          "T12R"
-        ],
-        "rationale": "Introduce mutations at focus positions to disrupt conserved interactions with SSTR3/SSTR5. These mutations are predicted to reduce off-target binding without compromising SSTR2 binding or sequence constraints."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "A small candidate pool limits the chances of generating a high-quality, selective binder. Increasing the number of candidates will improve diversity and the likelihood of hitting the selectivity target."
       }
     ]
   },
-  "previous_best_ddg": -36.1281
+  "previous_best_ddg": -23.2659
 }

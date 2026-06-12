@@ -1,18 +1,16 @@
-# Iteration 15 Summary: sst14_mutdock_24000
+# Iteration 15 Summary: sst14_mutdock_27000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_27000`
             - **Iteration**: 15
-            - **생성 시각**: 2026-06-12 05:27 UTC
+            - **생성 시각**: 2026-06-12 11:03 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 15 evaluated three candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity, and the results showed strong ddG binding energies, with the best candidate (iter15_cand008) achieving a ddG of -30.5 kcal/mol. However, the assessment highlighted that selectivity remains a critical bottleneck for this iteration. Although the best Δmargin is positive, the overall pass rate for selectivity is low, indicating a need for targeted improvements in this area. The structural failures observed suggest that further refinement of the peptide structures is necessary to ensure both high affinity and selectivity.
-
-The candidates displayed consistent pLDDT and docking scores, with no significant variation observed in these metrics. This suggests that the structural features contributing to binding affinity are well-preserved across the candidates. Nevertheless, the lack of selectivity remains a limiting factor for advancing these candidates to the next stage. The next iteration should prioritize strategies to enhance selectivity without compromising the strong binding affinity observed in this iteration.
+            Iteration 15 of the SSTR2 peptide binder design campaign evaluated a single candidate, with one passing all quality control (QC) gates. The top candidate, iter15_cand008, exhibited a ddG of -32.8 kcal/mol, indicating strong binding affinity. However, the pLDDT and docking scores were both reported as 0.0, which suggests potential issues with structural prediction or docking reliability. The overall pass rate was 100% for this iteration, but the low number of candidates evaluated limits the statistical significance of this result. The Critic analysis highlights a concerning trend of decreasing Δmargin, which may indicate a decline in selectivity over recent iterations.
 
             ## Recommendations
 
-            - Prioritize selectivity improvements in the next iteration while maintaining strong binding affinity.
-- Investigate structural modifications that could enhance the Δmargin and pass rate for selectivity.
-- Conduct a detailed analysis of the structural failures to identify common issues and address them in the design process.
+            - Investigate the structural prediction and docking pipeline to address the zero pLDDT and docking scores observed for the top candidate.
+- Expand the candidate pool in the next iteration to improve statistical confidence in QC pass rates and selectivity trends.
+- Monitor the Δmargin closely in subsequent iterations to ensure selectivity is maintained and not compromised by binding affinity optimization.

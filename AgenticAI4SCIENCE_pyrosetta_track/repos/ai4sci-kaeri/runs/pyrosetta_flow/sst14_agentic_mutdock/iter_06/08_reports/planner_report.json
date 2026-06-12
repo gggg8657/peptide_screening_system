@@ -1,26 +1,26 @@
 {
   "type": "planner",
   "iteration": 6,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T04:42:31.131489+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific ECL2/TM5 complementarity, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target SSTR3/5 binding via steric differentiation.",
+  "run_id": "sst14_mutdock_28000",
+  "timestamp": "2026-06-12T11:52:55.507936+00:00",
+  "hypothesis": "Enhancing steric complementarity with SSTR2-unique ECL2/TM5 residues by introducing bulky aromatic residues at position 5 and 6 will increase selectivity margin by differentiating SSTR2 from SSTR3/SSTR5.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current protocol generates candidates with poor structural quality and invalid docking scores despite strong selectivity. The focus should shift to improving structural validity while maintaining selectivity.",
+    "hypothesis": "The current designs are achieving good selectivity but are structurally suboptimal. Tightening structural constraints and increasing candidate diversity will help maintain selectivity while improving structural quality.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
-        "new_value": 5,
-        "rationale": "High clash scores likely contribute to poor structural quality and zero docking scores. Reducing the clash threshold will enforce better geometry and improve model quality."
+        "new_value": 8,
+        "rationale": "Structural failures are likely due to steric clashes in the designed peptides. Lowering the clash threshold will enforce better geometry and reduce structural failures."
       },
       {
         "parameter_name": "n_candidates",
         "old_value": 8,
-        "new_value": 16,
-        "rationale": "The low pass rate suggests the search space is too constrained. Increasing the number of candidates will improve diversity and the likelihood of generating high-quality models."
+        "new_value": 12,
+        "rationale": "The current number of candidates is low, which may limit the diversity of designs. Increasing the number of candidates will improve the chances of generating structurally valid and selective designs."
       }
     ]
   },
-  "previous_best_ddg": -20.9551
+  "previous_best_ddg": -19.5739
 }

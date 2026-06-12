@@ -1,16 +1,16 @@
-# Iteration 2 Summary: sst14_mutdock_24000
+# Iteration 2 Summary: sst14_mutdock_28000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_28000`
             - **Iteration**: 2
-            - **생성 시각**: 2026-06-12 04:25 UTC
+            - **생성 시각**: 2026-06-12 11:40 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 2 of the SSTR2 peptide binder design campaign evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The results showed a range of ddG scores, with the most favorable being iter02_cand004 at -43.7 kcal/mol, followed by iter02_cand006 (-30.5 kcal/mol) and iter02_cand002 (-23.8 kcal/mol). Despite the acceptable ddG values, the overall pass rate remains low at 37.5%, indicating a need for refinement in the design process to improve the success rate. The best Δmargin remains positive, suggesting some level of selectivity over the native SST-14 ligand, although the margin is not significantly above the threshold, indicating limited off-target discrimination. The primary failure mode in this iteration was structural failures, highlighting the importance of addressing structural stability in future designs.
+            Iteration 2 of the SSTR2 peptide binder design campaign evaluated seven candidates, all of which passed quality control (QC) gates. Structural and energetic metrics showed strong performance, with ddG values ranging from -23.0 to -42.5 kcal/mol. The top candidates, iter02_cand007 and iter02_cand001, exhibited the most favorable binding energies, suggesting high affinity for the target. However, despite these promising energetic and structural characteristics, selectivity for SSTR2 over off-target receptors (SSTR3/SSTR5) remains suboptimal. The best Δmargin is still positive but not significantly higher than that of native SST-14, indicating that off-target interactions, likely involving conserved residues, are still a limiting factor. This highlights the need for further optimization to improve selectivity.
 
             ## Recommendations
 
-            - Focus on improving structural stability to reduce the incidence of structural failures.
-- Refine the design strategy to enhance off-target selectivity and increase the Δmargin beyond the current threshold.
-- Consider increasing the diversity of the candidate pool to improve the overall pass rate and identify more promising binders.
+            - Focus on modifying residues involved in off-target interactions to enhance SSTR2 selectivity.
+- Perform detailed comparative docking analyses against SSTR3 and SSTR5 to identify key residues contributing to cross-reactivity.
+- Incorporate selectivity as a primary optimization criterion in the next iteration's design pipeline.

@@ -1,18 +1,19 @@
-# Iteration 8 Summary: sst14_mutdock_24000
+# Iteration 8 Summary: sst14_mutdock_28000
 
-            - **Run ID**: `sst14_mutdock_24000`
+            - **Run ID**: `sst14_mutdock_28000`
             - **Iteration**: 8
-            - **생성 시각**: 2026-06-12 04:53 UTC
+            - **생성 시각**: 2026-06-12 12:03 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 8 evaluated a total of 2 candidates, with both passing all QC gates. However, the structural and docking metrics (pLDDT=0.0 and dock=0.00) suggest that these candidates likely represent structural failures, potentially due to poor backbone geometry or steric clashes. Despite this, the selectivity (Δmargin) remains strong, indicating that the binding specificity is preserved. The low pass rate (25%) highlights a need to address structural stability in the design pipeline to ensure robust and viable candidates.
+            Iteration 8 of the SSTR2 peptide binder design campaign, labeled sst14_mutdock_28000, yielded no candidates that passed all quality control (QC) gates. A total of 8 candidates were evaluated, but all failed due to structural failures, indicating a significant issue with the design robustness of this iteration. While selectivity remains a strong aspect, with the best Δmargin reaching 9.10, the absence of any candidate meeting structural and energetic criteria highlights a critical gap in the design pipeline.
 
-The top candidates, iter08_cand006 and iter08_cand001, exhibited ddG values of -28.2 and -15.5 kcal/mol, respectively. These values suggest strong binding affinity, but the lack of structural confidence limits their utility. The primary failure mode in this iteration is structural instability, which must be addressed in future rounds to improve the overall quality and reliability of the designed peptides.
+The primary failure mode was attributed to structural instabilities, suggesting that the current design strategy may not adequately address the structural requirements for functional binding. This outcome underscores the need for a reevaluation of the design parameters and potential incorporation of additional constraints or refinement strategies to improve structural integrity. The lack of progress in this iteration necessitates a focused effort to address the underlying causes of structural failure.
 
             ## Recommendations
 
-            - Improve structural modeling protocols to enhance backbone geometry and reduce steric clashes.
-- Incorporate additional structural validation steps to filter out candidates with poor pLDDT and docking scores.
-- Focus on optimizing structural stability while maintaining strong selectivity and binding affinity in the next iteration.
+            - Revisit the design parameters and incorporate additional structural constraints to enhance design robustness.
+- Investigate the root causes of structural failures through detailed analysis of failed candidates.
+- Consider integrating alternative scoring or sampling methods to improve the structural quality of designs.
+- Focus on refining the energy function to better capture the structural and energetic requirements for binding.

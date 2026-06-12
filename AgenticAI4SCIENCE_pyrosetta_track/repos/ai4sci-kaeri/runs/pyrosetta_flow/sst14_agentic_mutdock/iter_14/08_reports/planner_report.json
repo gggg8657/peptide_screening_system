@@ -1,26 +1,26 @@
 {
   "type": "planner",
   "iteration": 14,
-  "run_id": "sst14_mutdock_24000",
-  "timestamp": "2026-06-12T05:21:36.715264+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions in TM5 (residue 205/208/209/212), while mutating position 11 to hydrophobic residues (L/I/V) will improve steric complementarity with SSTR2 ECL2 (residue 192/193/195/197) and avoid off-target SSTR3/5 binding.",
+  "run_id": "sst14_mutdock_27000",
+  "timestamp": "2026-06-12T10:49:08.818148+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric discrimination against SSTR3/5, thereby increasing the selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving strong ddG binding but are structurally suboptimal. Tightening structural constraints and increasing candidate diversity are necessary to improve pass rates and maintain selectivity.",
+    "hypothesis": "The current designs are achieving good ddG and selectivity but are failing structurally. Tightening structural constraints and increasing candidate diversity may help generate designs that are both structurally valid and selective.",
     "proposed_changes": [
       {
         "parameter_name": "n_candidates",
         "old_value": 8,
-        "new_value": 12,
-        "rationale": "Increasing the number of candidates can improve the chances of generating structurally valid designs with better pLDDT scores."
+        "new_value": 16,
+        "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs."
       },
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Reducing the clash threshold will enforce better packing and reduce structural artifacts, which are likely contributing to low pLDDT scores."
+        "rationale": "Reduce the allowed clash score to enforce better structural quality and avoid steric clashes in the binding pocket."
       }
     ]
   },
-  "previous_best_ddg": -33.0073
+  "previous_best_ddg": -34.6691
 }
