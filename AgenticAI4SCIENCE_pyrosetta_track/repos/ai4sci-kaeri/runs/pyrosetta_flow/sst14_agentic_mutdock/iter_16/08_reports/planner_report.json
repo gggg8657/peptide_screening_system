@@ -1,18 +1,18 @@
 {
   "type": "planner",
   "iteration": 16,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T17:38:17.415520+00:00",
-  "hypothesis": "Mutating position 1 to a positively charged residue (e.g., K) and position 11 to a hydrophobic residue (e.g., L) will enhance SSTR2-specific interactions while disrupting off-target binding (SSTR3/5), thereby increasing the selectivity margin.",
+  "run_id": "sst14_mutdock_20000",
+  "timestamp": "2026-06-11T22:56:04.990328+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W, F, Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 11 to hydrophobic residues (L, I, V) will reduce off-target (SSTR3/5) binding by avoiding unfavorable electrostatic interactions. This combination will increase the selectivity margin (Δmargin) by differentiating SSTR2 from off-targets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current structural filtering is too lenient, allowing candidates with poor geometry to pass. Tightening structural criteria and focusing design on non-pharmacophore positions will improve both structural quality and selectivity.",
+    "hypothesis": "The current designs are structurally suboptimal and likely contain clashes or poor geometries that prevent them from passing QC. Tightening structural filters and focusing mutagenesis on non-pharmacophore positions will improve selectivity and yield.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Structural failures suggest excessive clashes in the binding pocket or backbone. Tightening the clash threshold will enforce better geometry and reduce false positives."
+        "rationale": "Tightening the clash filter will eliminate candidates with poor local geometry that may destabilize the binding interface or disrupt the pharmacophore."
       },
       {
         "parameter_name": "focus_positions",
@@ -25,9 +25,9 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions. Focusing design on these positions will allow us to optimize for SSTR2-specific interactions while preserving the pharmacophore (FWKT7-10 + Cys3/Cys14)."
+        "rationale": "Focusing design efforts on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will help disrupt conserved pocket interactions while preserving the critical FWKT(7-10) and Cys3/Cys14 pharmacophore."
       }
     ]
   },
-  "previous_best_ddg": null
+  "previous_best_ddg": -33.2689
 }

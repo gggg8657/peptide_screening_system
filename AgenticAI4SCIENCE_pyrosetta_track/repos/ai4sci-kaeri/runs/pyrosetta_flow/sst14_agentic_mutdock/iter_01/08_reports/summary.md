@@ -1,18 +1,17 @@
-# Iteration 1 Summary: sst14_mutdock_17000
+# Iteration 1 Summary: sst14_mutdock_21000
 
-            - **Run ID**: `sst14_mutdock_17000`
+            - **Run ID**: `sst14_mutdock_21000`
             - **Iteration**: 1
-            - **생성 시각**: 2026-06-11 16:30 UTC
+            - **생성 시각**: 2026-06-11 23:32 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 1 of the SSTR2 peptide binder design campaign evaluated a total of 5 candidates, all of which passed the quality control (QC) gates. The candidates demonstrated strong binding affinities to SSTR2, as indicated by favorable ddG values ranging from -17.5 to -30.1 kcal/mol. However, the primary limitation identified was the lack of sufficient selectivity, particularly against SSTR3 and SSTR5. While the best Δmargin values were positive, they remained relatively low (4.25–9.10), indicating a need for improved off-target discrimination. Structural failures were noted as the primary failure type, suggesting that further refinement of structural features is necessary to enhance both binding and selectivity.
-
-The top-performing candidates in this iteration were iter01_cand001 (ddG = -30.1), iter01_cand007 (ddG = -28.9), and iter01_cand002 (ddG = -27.8). Despite their strong binding potential, the overall selectivity profile remains suboptimal for clinical application. The next iteration should focus on optimizing structural elements to improve selectivity while maintaining strong SSTR2 binding.
+            Iteration 1 of the SSTR2 peptide binder design campaign evaluated a single candidate, which passed all QC gates. Despite this, the structural confidence of the top candidate, iter01_cand005, was extremely low (pLDDT=0.0), and the docking score (0.00) and ddG (-15.6) were suboptimal, indicating poor convergence and weak binding predictions. While the selectivity margin was positive, the overall quality of the candidate suggests that the design process is not yet effective in generating high-quality, structurally confident binders. The low pass rate and structural failures highlight the need for improvements in the design and sampling strategies.
 
             ## Recommendations
 
-            - Focus on structural modifications to enhance selectivity against SSTR3 and SSTR5.
-- Incorporate additional constraints in the design pipeline to prioritize off-target discrimination.
-- Revisit the scoring function to better reflect selectivity in candidate prioritization.
+            - Improve the sampling strategy to generate a more diverse and structurally confident set of candidates.
+- Investigate the root causes of structural failures and refine the design protocol to enhance convergence.
+- Consider incorporating additional constraints or scoring functions to improve docking accuracy and binding predictions.
+- Expand the candidate pool for the next iteration to increase the likelihood of identifying high-quality binders.

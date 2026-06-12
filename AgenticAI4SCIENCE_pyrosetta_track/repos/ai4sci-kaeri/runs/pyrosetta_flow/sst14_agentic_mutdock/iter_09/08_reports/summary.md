@@ -1,16 +1,16 @@
-# Iteration 9 Summary: sst14_mutdock_17000
+# Iteration 9 Summary: sst14_mutdock_21000
 
-            - **Run ID**: `sst14_mutdock_17000`
+            - **Run ID**: `sst14_mutdock_21000`
             - **Iteration**: 9
-            - **생성 시각**: 2026-06-11 17:07 UTC
+            - **생성 시각**: 2026-06-12 00:04 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 9 evaluated three peptide binder candidates for SSTR2, all of which passed quality control (QC) gates. The candidates exhibited strong binding affinities, as indicated by ddG values ranging from -25.6 to -40.3 kcal/mol. However, the primary limitation identified in this iteration was insufficient selectivity for SSTR2 over off-target receptors. Critic analysis revealed that the Δmargin values did not consistently exceed 0, indicating a lack of differentiation in binding specificity. This structural failure suggests that while the candidates bind strongly, they do not exhibit the necessary selectivity to be viable lead candidates.
+            Iteration 9 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all QC gates. The primary focus of this iteration was on achieving strong binding affinity, as evidenced by ddG values of -18.6 and -18.0 for the top candidates iter09_cand008 and iter09_cand005, respectively. However, structural failures were identified as the primary mode of failure in earlier iterations, and while these were mitigated in this round, improvements in structural robustness and docking performance are still necessary to ensure consistent success in future rounds. Selectivity remains favorable with a Δmargin > 0, indicating that the candidates maintain a degree of specificity for the target.
 
             ## Recommendations
 
-            - Focus the next iteration on improving selectivity for SSTR2 over off-target receptors by incorporating structural features that enhance specificity.
-- Utilize docking and ddG data to prioritize candidates with strong binding affinity while optimizing for selectivity.
-- Consider introducing mutations or modifications that stabilize interactions unique to SSTR2 to increase the Δmargin values.
+            - Focus on improving structural stability and docking performance in the next iteration to reduce the risk of structural failures.
+- Investigate the molecular basis of the strong ddG values to understand the key interactions contributing to binding affinity.
+- Maintain emphasis on selectivity while exploring strategies to enhance structural robustness through targeted design or refinement.

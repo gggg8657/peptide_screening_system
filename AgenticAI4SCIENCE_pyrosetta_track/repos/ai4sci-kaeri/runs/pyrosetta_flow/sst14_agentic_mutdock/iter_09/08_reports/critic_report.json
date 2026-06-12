@@ -1,35 +1,21 @@
 {
   "type": "critic",
   "iteration": 9,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T17:07:35.611761+00:00",
-  "hypothesis": "The current design strategy prioritizes ddG over selectivity, leading to strong binding but insufficient SSTR2 selectivity. Future iterations must focus on disrupting off-target interactions at non-pharmacophore positions to improve Δmargin.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-12T00:04:44.345111+00:00",
+  "hypothesis": "The current design strategy is effective for selectivity but needs refinement in structural and docking robustness. Tightening structural constraints and increasing candidate diversity will help achieve a higher-quality pass rate.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To disrupt conserved-pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reduce clash tolerance to enforce better structural quality and reduce false positives due to steric clashes."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1D",
-        "A2E",
-        "A5K",
-        "A6R",
-        "A11N",
-        "A12Q"
-      ],
-      "rationale": "These mutations are designed to break conserved hydrogen bonds and electrostatic interactions in off-target pockets (SSTR3/SSTR5) without affecting the native pharmacophore."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "Increase the number of candidates to improve diversity and increase the chances of generating structurally valid and docking-passing designs."
     }
   ],
   "current_params": {

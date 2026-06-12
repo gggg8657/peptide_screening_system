@@ -1,22 +1,22 @@
 {
   "type": "planner",
   "iteration": 12,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T17:15:46.754433+00:00",
-  "hypothesis": "Enhancing selectivity for SSTR2 by introducing aromatic residues at position 5 to better engage SSTR2-specific ECL2/ECL3 residues, and introducing hydrophobic substitutions at position 11 to avoid off-target SSTR3/SSTR5 interactions.",
+  "run_id": "sst14_mutdock_20000",
+  "timestamp": "2026-06-11T22:36:46.134749+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific ECL2/TM5 complementarity, while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/SSTR5) electrostatic interactions without sacrificing SSTR2 binding. This combination will increase the selectivity margin (Δmargin) by differentiating SSTR2 from off-targets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy is generating high-affinity ligands for SSTR2, but structural instability and off-target interactions are limiting selectivity. Targeted mutations at non-pharmacophore positions and tighter structural constraints are needed to improve selectivity.",
+    "hypothesis": "The current designs are achieving strong binding but are structurally suboptimal. Tightening structural constraints and introducing targeted mutations at non-pharmacophore positions will improve pass rates and further enhance selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Structural failures suggest excessive clashes in the binding interface or receptor-ligand complex. Reducing the clash threshold will enforce better geometry and improve structural quality."
+        "rationale": "Reduce the allowed clash score to improve structural quality and reduce false positives with poor geometry."
       },
       {
         "parameter_name": "focus_positions",
-        "old_value": null,
+        "old_value": [],
         "new_value": [
           1,
           2,
@@ -25,9 +25,9 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we must disrupt conserved pocket interactions with SSTR3/SSTR5 at non-pharmacophore positions. Focusing mutations at these positions will allow us to fine-tune selectivity while preserving the core pharmacophore (FWKT7-10 + Cys3/Cys14)."
+        "rationale": "Focus mutations on non-pharmacophore positions to disrupt off-target contacts while preserving SSTR2 pharmacophore (FWKT7-10 and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -34.8501
+  "previous_best_ddg": -32.5157
 }

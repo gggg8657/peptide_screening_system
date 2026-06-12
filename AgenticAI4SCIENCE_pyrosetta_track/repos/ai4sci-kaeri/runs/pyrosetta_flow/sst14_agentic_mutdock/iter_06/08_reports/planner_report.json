@@ -1,26 +1,82 @@
 {
   "type": "planner",
   "iteration": 6,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T16:45:29.827599+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2 selectivity by forming favorable π-π stacking interactions with ECL2 residues (e.g., Tyr193) unique to SSTR2, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric complementarity with the SSTR2-specific TM6 pocket (e.g., Ile276), thereby increasing the selectivity margin over SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-11T23:47:22.484689+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will improve SSTR2 selectivity by forming specific π-π stacking interactions with ECL2 residues (e.g., Y193) unique to SSTR2, while mutating position 11 to hydrophobic residues (L/I/V) will enhance TM6 complementarity and reduce off-target binding.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving strong SSTR2 selectivity but are failing structurally. The focus should remain on maintaining selectivity while improving structural validity through increased candidate diversity and quality filtering.",
+    "hypothesis": "The current designs are strong binders but lack sufficient selectivity over off-target SSTRs. The next iteration should focus on disrupting conserved pocket interactions at non-pharmacophore positions to improve selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "Low pass rate suggests insufficient diversity in candidate generation. Increasing the number of candidates will improve the chances of generating structurally valid designs."
+        "parameter_name": "focus_positions",
+        "old_value": [],
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5, particularly in the conserved pocket."
       },
       {
-        "parameter_name": "pLDDT_threshold",
-        "old_value": null,
-        "new_value": 70,
-        "rationale": "All candidates have pLDDT=0.0, indicating poor structural confidence. Adding a pLDDT threshold will filter out low-quality structures early in the pipeline."
+        "parameter_name": "suggested_mutations",
+        "old_value": [],
+        "new_value": [
+          {
+            "position": 1,
+            "mutations": [
+              "A",
+              "G",
+              "T"
+            ]
+          },
+          {
+            "position": 2,
+            "mutations": [
+              "E",
+              "N",
+              "Q"
+            ]
+          },
+          {
+            "position": 5,
+            "mutations": [
+              "G",
+              "T",
+              "S"
+            ]
+          },
+          {
+            "position": 6,
+            "mutations": [
+              "K",
+              "R",
+              "H"
+            ]
+          },
+          {
+            "position": 11,
+            "mutations": [
+              "M",
+              "T",
+              "V"
+            ]
+          },
+          {
+            "position": 12,
+            "mutations": [
+              "C",
+              "S",
+              "A"
+            ]
+          }
+        ],
+        "rationale": "Introduce mutations at key non-pharmacophore positions to reduce off-target interactions while maintaining the integrity of the pharmacophore."
       }
     ]
   },
-  "previous_best_ddg": -23.2983
+  "previous_best_ddg": -28.7362
 }

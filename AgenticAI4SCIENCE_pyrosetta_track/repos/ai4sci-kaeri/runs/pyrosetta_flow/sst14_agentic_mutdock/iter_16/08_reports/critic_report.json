@@ -1,16 +1,10 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T17:48:59.102069+00:00",
-  "hypothesis": "The current designs are achieving good ddG but lack structural fidelity and docking quality. Tightening structural constraints and focusing on off-target disruption will improve both selectivity and design quality.",
+  "run_id": "sst14_mutdock_20000",
+  "timestamp": "2026-06-11T22:58:46.821496+00:00",
+  "hypothesis": "The current hypothesis remains valid: SSTR2 selectivity can be improved by disrupting off-target interactions at non-pharmacophore positions. However, the design process needs to be more focused on these positions to achieve consistent selectivity across candidates.",
   "proposed_changes": [
-    {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 5,
-      "rationale": "Reducing the clash tolerance will enforce better structural quality and avoid steric clashes that lead to poor pLDDT and docking scores."
-    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -22,7 +16,38 @@
         11,
         12
       ],
-      "rationale": "Focusing on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will allow us to introduce mutations that disrupt off-target interactions while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
+      "rationale": "To improve SSTR2 selectivity, we need to disrupt conserved pocket interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3 and SSTR5."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
+          "A",
+          "G"
+        ],
+        "6": [
+          "T",
+          "S"
+        ],
+        "11": [
+          "A",
+          "V"
+        ],
+        "12": [
+          "G",
+          "A"
+        ]
+      },
+      "rationale": "These mutations are designed to disrupt conserved pocket interactions at key non-pharmacophore positions while maintaining the overall scaffold and pharmacophore integrity."
     }
   ],
   "current_params": {

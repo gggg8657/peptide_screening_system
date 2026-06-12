@@ -1,16 +1,18 @@
-# Iteration 14 Summary: sst14_mutdock_17000
+# Iteration 14 Summary: sst14_mutdock_20000
 
-            - **Run ID**: `sst14_mutdock_17000`
+            - **Run ID**: `sst14_mutdock_20000`
             - **Iteration**: 14
-            - **생성 시각**: 2026-06-11 17:34 UTC
+            - **생성 시각**: 2026-06-11 22:47 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 14 evaluated a total of 2 candidates, with both passing all QC gates. Despite the small number of candidates, the iteration demonstrated strong binding affinity as indicated by ddG values of -22.5 and -21.1 for the top candidates, iter14_cand008 and iter14_cand007, respectively. However, the structural and docking metrics were suboptimal, with both candidates reporting pLDDT and docking scores of 0.00, suggesting structural instability and poor docking performance. Selectivity metrics were maintained with a Δmargin > 0, indicating favorable selectivity profiles. The primary failure mode in this iteration was structural failures, which limits the overall potential of the candidates.
+            Iteration 14 of the SSTR2 peptide binder design campaign evaluated a single candidate, with one successfully passing all QC gates. The top candidate, iter14_cand004, demonstrated a ddG of -36.3 kcal/mol, indicating strong binding affinity. However, the pLDDT and docking scores for this candidate were both reported as 0.0, suggesting potential issues with structural confidence or docking accuracy. Despite the positive Δmargin of 9.10, the overall selectivity remains inconsistent, with many candidates exhibiting weak or no selectivity (Δmargin ≤ 0).
+
+The low pass rate of 12.5% highlights a significant challenge in this iteration, primarily attributed to structural failures. These failures may stem from suboptimal backbone conformations or inadequate sampling during design. To address this, the next iteration should focus on refining structural sampling and improving the robustness of design protocols to enhance the likelihood of generating high-quality candidates that pass all QC gates.
 
             ## Recommendations
 
-            - Prioritize structural optimization in the next iteration to improve pLDDT and docking scores.
-- Investigate the root causes of structural failures to refine the design pipeline.
-- Maintain focus on selectivity while addressing structural and docking limitations.
+            - Refine structural sampling protocols to reduce structural failures.
+- Investigate the root cause of the zero pLDDT and docking scores for iter14_cand004.
+- Enhance selectivity screening to ensure consistent Δmargin across all candidates.

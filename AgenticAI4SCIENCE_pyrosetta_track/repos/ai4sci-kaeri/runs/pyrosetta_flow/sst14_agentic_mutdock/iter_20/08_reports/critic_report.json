@@ -1,19 +1,13 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_16000",
-  "timestamp": "2026-06-11T16:22:09.355136+00:00",
-  "hypothesis": "The current designs are not achieving sufficient structural quality to pass QC, despite good selectivity. Tightening the ddG gate and introducing targeted mutations at non-pharmacophore positions should improve both structural quality and selectivity.",
+  "run_id": "sst14_mutdock_20000",
+  "timestamp": "2026-06-11T23:18:57.617189+00:00",
+  "hypothesis": "The current design strategy is effective for generating high-affinity binders, but off-target interactions at conserved positions are limiting selectivity. Targeted mutations at non-pharmacophore positions are necessary to achieve SSTR2-specific binding.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -20.0,
-      "rationale": "The current ddG threshold is too lenient. Tightening it to -20.0 will filter out weaker binders and improve the structural quality of the designs."
-    },
-    {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -22,7 +16,38 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in off-targets (SSTR3/SSTR5) at non-pharmacophore positions. Focusing mutations on these positions will help push Δmargin further positive."
+      "rationale": "To disrupt conserved pocket contacts with SSTR3/SSTR5 at non-pharmacophore positions and improve selectivity."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "N",
+          "Q"
+        ],
+        "5": [
+          "L",
+          "I"
+        ],
+        "6": [
+          "V",
+          "A"
+        ],
+        "11": [
+          "K",
+          "R"
+        ],
+        "12": [
+          "T",
+          "S"
+        ]
+      },
+      "rationale": "Proposing mutations at key positions to disrupt off-target interactions while maintaining native-like binding to SSTR2."
     }
   ],
   "current_params": {

@@ -1,15 +1,15 @@
 {
   "type": "critic",
   "iteration": 11,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T17:14:56.846161+00:00",
-  "hypothesis": "The current design strategy is generating high-affinity ligands for SSTR2, but structural instability and off-target interactions are limiting selectivity. Targeted mutations at non-pharmacophore positions and tighter structural constraints are needed to improve selectivity.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-12T00:12:09.918334+00:00",
+  "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient structural quality and selectivity. Tightening structural constraints and focusing mutagenesis on non-pharmacophore positions should improve both yield and selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Structural failures suggest excessive clashes in the binding interface or receptor-ligand complex. Reducing the clash threshold will enforce better geometry and improve structural quality."
+      "rationale": "Reducing the allowed clash score will enforce better structural quality and reduce steric clashes that may destabilize the binding mode or disrupt key interactions."
     },
     {
       "parameter_name": "focus_positions",
@@ -22,7 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt conserved pocket interactions with SSTR3/SSTR5 at non-pharmacophore positions. Focusing mutations at these positions will allow us to fine-tune selectivity while preserving the core pharmacophore (FWKT7-10 + Cys3/Cys14)."
+      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely responsible for off-target binding to SSTR3/SSTR5."
     }
   ],
   "current_params": {

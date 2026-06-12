@@ -1,19 +1,18 @@
-# Iteration 20 Summary: sst14_mutdock_16000
+# Iteration 20 Summary: sst14_mutdock_20000
 
-            - **Run ID**: `sst14_mutdock_16000`
+            - **Run ID**: `sst14_mutdock_20000`
             - **Iteration**: 20
-            - **생성 시각**: 2026-06-11 16:22 UTC
+            - **생성 시각**: 2026-06-11 23:19 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 20 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all QC gates. However, the overall pass rate was poor at 25%, as most candidates failed the ddG gate. The top candidates, iter20_cand003 and iter20_cand005, exhibited favorable selectivity (Δmargin), but their structural quality, as indicated by pLDDT values of 0.0, and docking scores of 0.00, were insufficient for robust design. The ddG values of -30.0 and -15.1 suggest some binding affinity, but the structural failures remain a critical issue for further development.
+            Iteration 20 evaluated four SSTR2 peptide binder candidates, all of which passed the quality control (QC) gates. The top candidates demonstrated strong binding affinities as indicated by favorable ddG values, with the best candidate (iter20_cand003) showing a ddG of -34.2 kcal/mol. However, the pLDDT and docking scores for all candidates were reported as 0.0, suggesting a lack of structural confidence or missing data in these metrics. Selectivity remains a concern, as the Critic analysis noted that while the best Δmargin is positive, most candidates still exhibit suboptimal selectivity, indicating potential off-target interactions. This highlights a need for further refinement to improve target specificity.
 
-The primary failure mode in this iteration was structural failures, indicating a need for improved structural modeling and refinement strategies. While the selectivity of the top candidates is promising, the lack of structural confidence limits their viability as high-quality binder designs. These results highlight the importance of addressing structural stability and energetic accuracy in future iterations to enhance the overall quality of the candidate pool.
+The primary failure type identified in this iteration was structural failures, underscoring the importance of enhancing structural modeling and validation in subsequent rounds. The overall results suggest that while binding affinity is strong, selectivity and structural confidence require focused attention in the next iteration to ensure the development of high-quality, specific SSTR2 binders.
 
             ## Recommendations
 
-            - Improve structural modeling strategies to enhance pLDDT scores and reduce structural failures.
-- Refine docking protocols to better capture binding energetics and improve dock scores.
-- Focus on optimizing ddG values to ensure stronger binding affinity while maintaining selectivity.
-- Consider implementing additional structural validation steps to ensure robust candidate designs.
+            - Improve structural modeling and validation to obtain reliable pLDDT and docking scores.
+- Focus on enhancing selectivity through targeted modifications to reduce off-target interactions.
+- Refine the design strategy to prioritize candidates with both strong binding affinity and high selectivity.

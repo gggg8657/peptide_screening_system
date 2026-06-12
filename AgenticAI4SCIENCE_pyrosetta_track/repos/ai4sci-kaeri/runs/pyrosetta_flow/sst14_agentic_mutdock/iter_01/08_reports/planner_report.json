@@ -1,9 +1,9 @@
 {
   "type": "planner",
   "iteration": 1,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T16:27:40.441703+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific binding by improving complementarity with ECL2/TM5 residues (e.g., Y195, W205), while charge-neutral substitutions at position 6 may reduce off-target interactions with SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-11T23:29:28.928646+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2 selectivity by forming specific interactions with SSTR2-unique ECL2 and ECL3 regions, while charge-neutral substitutions at position 6 will avoid off-target electrostatic complementarity.",
   "strategy": "ddg_only",
   "critic_feedback_used": null,
   "previous_best_ddg": null

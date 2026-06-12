@@ -1,10 +1,16 @@
 {
   "type": "critic",
   "iteration": 10,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T17:11:09.367117+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 binding but fail to sufficiently disrupt off-target interactions. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-12T00:08:35.805268+00:00",
+  "hypothesis": "The current designs are not achieving sufficient structural quality to pass QC, and while selectivity is positive, it is not robust enough to ensure off-target discrimination. Focusing mutagenesis at non-pharmacophore positions and increasing candidate diversity should improve both structural validity and selectivity.",
   "proposed_changes": [
+    {
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid and selective designs."
+    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -16,38 +22,7 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding (SSTR3/SSTR5). Focusing design on these positions allows disruption of conserved pocket contacts without compromising SSTR2 binding."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "T",
-          "S"
-        ],
-        "11": [
-          "L",
-          "I"
-        ],
-        "12": [
-          "F",
-          "W"
-        ]
-      },
-      "rationale": "Introducing charged or hydrophobic residues at these positions can disrupt conserved interactions in SSTR3/SSTR5 while preserving pharmacophore integrity."
+      "rationale": "Target mutagenesis at non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5 conserved pocket contacts)."
     }
   ],
   "current_params": {

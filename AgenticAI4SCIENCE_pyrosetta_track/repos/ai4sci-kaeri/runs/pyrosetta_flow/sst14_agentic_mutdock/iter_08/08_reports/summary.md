@@ -1,17 +1,16 @@
-# Iteration 8 Summary: sst14_mutdock_17000
+# Iteration 8 Summary: sst14_mutdock_21000
 
-            - **Run ID**: `sst14_mutdock_17000`
+            - **Run ID**: `sst14_mutdock_21000`
             - **Iteration**: 8
-            - **생성 시각**: 2026-06-11 17:03 UTC
+            - **생성 시각**: 2026-06-12 00:01 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 8 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all QC gates. However, the overall pass rate was low at 25%, indicating a significant issue with structural quality. The top candidates, iter08_cand006 and iter08_cand005, exhibited pLDDT values of 0.0, suggesting poor structural confidence. While iter08_cand006 showed the most favorable ddG value of -75.0 kcal/mol, its docking score of 0.00 indicates a lack of meaningful binding interaction. iter08_cand005 had a less favorable ddG of -26.1 kcal/mol but shared the same structural and docking limitations. The primary failure mode in this iteration was structural failures, which dominated the QC gate failures despite selectivity (Δmargin) being positive for the top candidates. This highlights the need to address structural prediction accuracy in future iterations.
+            Iteration 8 evaluated three candidates, all of which passed the quality control (QC) gates. Despite the small number of candidates, the designs exhibited strong binding affinity to the target, with ddG values ranging from -15.2 to -23.7 kcal/mol. However, the primary objective of achieving SSTR2 selectivity over native SST-14 was not significantly met, as Δmargin values remained positive but not sufficiently high. This highlights a critical area for improvement in the next iteration. The low pass rate (37.5%) indicates that structural or sequence-level constraints are limiting the design space and may require further investigation.
 
             ## Recommendations
 
-            - Improve structural prediction methods to increase pLDDT values and reduce structural failures.
-- Investigate the root causes of poor docking scores and consider refining docking protocols.
-- Focus on generating candidates with higher structural confidence to improve overall pass rates.
-- Revisit selectivity metrics to ensure they align with structural and binding quality improvements.
+            - Focus on improving SSTR2 selectivity by incorporating additional constraints or metrics into the design pipeline.
+- Investigate the structural failures observed in this iteration to identify and address underlying issues in the design process.
+- Expand the candidate pool in the next iteration to increase the likelihood of identifying high-performing, selective binders.

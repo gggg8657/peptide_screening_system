@@ -1,53 +1,21 @@
 {
   "type": "critic",
   "iteration": 1,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T16:30:33.075987+00:00",
-  "hypothesis": "The hypothesis is updated to emphasize that selectivity is not just a function of SSTR2 binding strength but also the ability to avoid conserved interactions with SSTR3/SSTR5. Targeted mutations at non-pharmacophore positions are critical to achieving this.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-11T23:32:05.659422+00:00",
+  "hypothesis": "The current hypothesis is valid — selectivity is achievable with Δmargin > 0. However, the structural quality of the designs is a critical bottleneck. The next iteration should focus on improving structural confidence while maintaining selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To improve selectivity, we must disrupt conserved contacts with SSTR3/SSTR5 at non-pharmacophore positions. These positions are known to contribute to off-target binding."
+      "parameter_name": "objective_mode",
+      "old_value": "ddg_only",
+      "new_value": "ddg_plus_plddt",
+      "rationale": "Current objective mode prioritizes ddG alone, leading to candidates with strong binding but poor structural confidence. Adding pLDDT as a secondary objective will enforce higher structural quality."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "position_1": [
-          "D",
-          "E"
-        ],
-        "position_2": [
-          "K",
-          "R"
-        ],
-        "position_5": [
-          "A",
-          "G"
-        ],
-        "position_6": [
-          "A",
-          "G"
-        ],
-        "position_11": [
-          "D",
-          "E"
-        ],
-        "position_12": [
-          "K",
-          "R"
-        ]
-      },
-      "rationale": "Introducing charged or hydrophilic residues at these positions can disrupt conserved hydrophobic or hydrogen-bonding interactions with SSTR3/SSTR5, reducing off-target binding."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "The low pass rate (12.5%) suggests the search space is too constrained. Increasing the number of candidates will diversify the designs and improve the chances of finding high-quality, high-confidence structures."
     }
   ],
   "current_params": {

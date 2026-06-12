@@ -1,16 +1,10 @@
 {
   "type": "critic",
   "iteration": 4,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T16:41:18.605498+00:00",
-  "hypothesis": "The current hypothesis remains valid: high ddG and positive Δmargin indicate strong SSTR2 binding and selectivity. However, structural quality must be improved to ensure consistent success. Focus on refining the binding geometry and selectively disrupting off-target interactions will enhance selectivity and pass rates.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-11T23:42:57.031279+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is not sufficient — selectivity over SSTR1/3/4/5 is the primary objective. However, the focus must shift to disrupting off-target interactions at non-pharmacophore positions to increase Δmargin beyond the current best.",
   "proposed_changes": [
-    {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Structural failures suggest excessive clashes in the binding pocket, likely due to overly permissive clash tolerances. Tightening the clash threshold will enforce better geometry and reduce false positives."
-    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -22,7 +16,44 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt conserved interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      "rationale": "To improve selectivity, we must focus on mutating non-pharmacophore positions that are known to contribute to off-target binding (SSTR3/SSTR5 conserved-pocket contacts)."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "A",
+          "G",
+          "S"
+        ],
+        "2": [
+          "R",
+          "K",
+          "E"
+        ],
+        "5": [
+          "N",
+          "D",
+          "Q"
+        ],
+        "6": [
+          "K",
+          "R",
+          "E"
+        ],
+        "11": [
+          "A",
+          "T",
+          "S"
+        ],
+        "12": [
+          "C",
+          "S",
+          "T"
+        ]
+      },
+      "rationale": "These mutations are designed to disrupt conserved interactions with SSTR3/SSTR5 while maintaining the overall peptide scaffold and pharmacophore integrity."
     }
   ],
   "current_params": {

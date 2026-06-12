@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 7,
-  "run_id": "sst14_mutdock_17000",
-  "timestamp": "2026-06-11T16:55:40.897584+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is not sufficient; selectivity over SSTR3/SSTR5 is the limiting factor. The next step is to refine the sequence to disrupt off-target interactions at non-pharmacophore positions.",
+  "run_id": "sst14_mutdock_21000",
+  "timestamp": "2026-06-11T23:57:53.978591+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved, but selectivity over SSTR3/SSTR5 remains a challenge. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14).",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -16,20 +16,38 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts in off-targets SSTR3/SSTR5. Focusing on non-pharmacophore positions 1/2/5/6/11/12 allows us to tune interactions without compromising the pharmacophore FWKT(7-10) or Cys3/Cys14."
+      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing design on these positions can help disrupt conserved-pocket contacts while preserving key pharmacophore residues."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "A5D",
-        "A6E",
-        "A11Q",
-        "A12N"
-      ],
-      "rationale": "These mutations are designed to disrupt conserved pocket interactions in SSTR3/SSTR5. Positively charged residues at positions 1 and 2 can reduce off-target binding, while polar residues at 5, 6, 11, and 12 can break hydrophobic interactions."
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "N",
+          "Q"
+        ],
+        "5": [
+          "K",
+          "R"
+        ],
+        "6": [
+          "N",
+          "Q"
+        ],
+        "11": [
+          "D",
+          "E"
+        ],
+        "12": [
+          "N",
+          "Q"
+        ]
+      },
+      "rationale": "Introducing charged or polar residues at these positions can disrupt hydrophobic or conserved interactions with SSTR3/SSTR5, reducing off-target binding while preserving SSTR2 selectivity."
     }
   ],
   "current_params": {

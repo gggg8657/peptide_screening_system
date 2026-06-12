@@ -1,10 +1,10 @@
 {
   "running": true,
-  "epochs_done": 15,
-  "elapsed_seconds": 102773.7,
+  "epochs_done": 19,
+  "elapsed_seconds": 128082.5,
   "global_best_delta_margin": 9.1021,
-  "passing_count": 22,
-  "diversity_level": 2,
+  "passing_count": 24,
+  "diversity_level": 4,
   "top": [
     {
       "sequence": "ARCGKFFWKTATSC",
@@ -118,19 +118,19 @@
     }
   ],
   "last_epoch": {
-    "epoch": 15,
-    "seed_base": 16000,
-    "max_random_mutations": 5,
+    "epoch": 19,
+    "seed_base": 20000,
+    "max_random_mutations": 6,
     "ran_ok": true,
     "error": "",
     "global_best_delta": 9.1021,
     "n_unique_screened": 50,
-    "passing_count": 22,
-    "diversity_level": 2,
-    "stale_epochs": 2,
+    "passing_count": 24,
+    "diversity_level": 4,
+    "stale_epochs": 0,
     "improved": false,
-    "next_max_mutations": 5,
-    "epoch_seconds": 5719.9
+    "next_max_mutations": 6,
+    "epoch_seconds": 6518.1
   },
   "history": [
     {
@@ -357,6 +357,66 @@
       "improved": false,
       "next_max_mutations": 5,
       "epoch_seconds": 5719.9
+    },
+    {
+      "epoch": 16,
+      "seed_base": 17000,
+      "max_random_mutations": 5,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 22,
+      "diversity_level": 3,
+      "stale_epochs": 0,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 7075.5
+    },
+    {
+      "epoch": 17,
+      "seed_base": 18000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 24,
+      "diversity_level": 3,
+      "stale_epochs": 1,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 5921.8
+    },
+    {
+      "epoch": 18,
+      "seed_base": 19000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 24,
+      "diversity_level": 3,
+      "stale_epochs": 2,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 5793.3
+    },
+    {
+      "epoch": 19,
+      "seed_base": 20000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 24,
+      "diversity_level": 4,
+      "stale_epochs": 0,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 6518.1
     }
   ]
 }
