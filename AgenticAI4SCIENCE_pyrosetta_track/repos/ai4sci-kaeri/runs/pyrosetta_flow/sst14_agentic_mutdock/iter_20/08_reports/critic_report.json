@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_20000",
-  "timestamp": "2026-06-11T23:18:57.617189+00:00",
-  "hypothesis": "The current design strategy is effective for generating high-affinity binders, but off-target interactions at conserved positions are limiting selectivity. Targeted mutations at non-pharmacophore positions are necessary to achieve SSTR2-specific binding.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T06:04:49.363242+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is necessary but insufficient. The next iteration must prioritize disrupting off-target interactions at non-pharmacophore positions to achieve improved selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,7 +16,7 @@
         11,
         12
       ],
-      "rationale": "To disrupt conserved pocket contacts with SSTR3/SSTR5 at non-pharmacophore positions and improve selectivity."
+      "rationale": "These positions are known to mediate off-target interactions with SSTR3 and SSTR5. Focusing design on these positions allows for targeted disruption of conserved pocket contacts."
     },
     {
       "parameter_name": "suggested_mutations",
@@ -27,27 +27,27 @@
           "E"
         ],
         "2": [
-          "N",
-          "Q"
-        ],
-        "5": [
-          "L",
-          "I"
-        ],
-        "6": [
-          "V",
-          "A"
-        ],
-        "11": [
           "K",
           "R"
         ],
+        "5": [
+          "Y",
+          "F"
+        ],
+        "6": [
+          "Q",
+          "N"
+        ],
+        "11": [
+          "L",
+          "I"
+        ],
         "12": [
-          "T",
-          "S"
+          "A",
+          "V"
         ]
       },
-      "rationale": "Proposing mutations at key positions to disrupt off-target interactions while maintaining native-like binding to SSTR2."
+      "rationale": "Introducing mutations at these positions that are less likely to form conserved hydrogen bonds or hydrophobic interactions with SSTR3/SSTR5 will reduce off-target binding."
     }
   ],
   "current_params": {

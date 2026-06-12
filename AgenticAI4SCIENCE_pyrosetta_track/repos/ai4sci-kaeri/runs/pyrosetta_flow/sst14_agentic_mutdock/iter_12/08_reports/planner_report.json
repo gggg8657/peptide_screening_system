@@ -1,22 +1,22 @@
 {
   "type": "planner",
   "iteration": 12,
-  "run_id": "sst14_mutdock_20000",
-  "timestamp": "2026-06-11T22:36:46.134749+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific ECL2/TM5 complementarity, while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/SSTR5) electrostatic interactions without sacrificing SSTR2 binding. This combination will increase the selectivity margin (Δmargin) by differentiating SSTR2 from off-targets.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T05:05:14.569265+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2 (residue 193/195) and TM5 (residue 208), while mutating position 11 to hydrophobic residues (L/I/V) will improve steric complementarity with SSTR2-unique TM6 (residue 272/273), thereby increasing the selectivity margin by differentiating SSTR2 from off-target subtypes.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving strong binding but are structurally suboptimal. Tightening structural constraints and introducing targeted mutations at non-pharmacophore positions will improve pass rates and further enhance selectivity.",
+    "hypothesis": "The current design strategy is generating candidates with strong ddG but poor structural quality and limited sequence diversity. Tightening structural constraints and explicitly targeting non-pharmacophore positions for selectivity optimization is critical to improve yield and selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Reduce the allowed clash score to improve structural quality and reduce false positives with poor geometry."
+        "rationale": "Reducing the clash tolerance will enforce better structural packing and reduce candidates with poor geometry, likely increasing the structural pass rate."
       },
       {
         "parameter_name": "focus_positions",
-        "old_value": [],
+        "old_value": null,
         "new_value": [
           1,
           2,
@@ -25,9 +25,9 @@
           11,
           12
         ],
-        "rationale": "Focus mutations on non-pharmacophore positions to disrupt off-target contacts while preserving SSTR2 pharmacophore (FWKT7-10 and Cys3/Cys14)."
+        "rationale": "Focusing on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will allow more precise mutation design to disrupt conserved pocket interactions while preserving the native pharmacophore (FWKT7-10 and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -32.5157
+  "previous_best_ddg": -25.1777
 }

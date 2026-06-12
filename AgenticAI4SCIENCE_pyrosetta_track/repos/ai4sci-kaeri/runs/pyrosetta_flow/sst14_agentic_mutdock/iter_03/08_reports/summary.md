@@ -1,16 +1,16 @@
-# Iteration 3 Summary: sst14_mutdock_21000
+# Iteration 3 Summary: sst14_mutdock_24000
 
-            - **Run ID**: `sst14_mutdock_21000`
+            - **Run ID**: `sst14_mutdock_24000`
             - **Iteration**: 3
-            - **생성 시각**: 2026-06-11 23:39 UTC
+            - **생성 시각**: 2026-06-12 04:29 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 3 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed quality control (QC) gates. The designs demonstrated strong binding affinity, as indicated by ddG values ranging from -17.0 to -38.3 kcal/mol, with the top candidate (iter03_cand006) showing the most favorable binding energy. However, the primary challenge remains in achieving robust selectivity, as the Δmargin values were not sufficiently positive to ensure minimal off-target interactions. This suggests that while the binding affinity is promising, further optimization is required to enhance target specificity and reduce potential cross-reactivity.
+            Iteration 3 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed quality control (QC) gates. The primary focus of this iteration was to improve binding stability and selectivity for SSTR2 over off-target receptors. While the candidates demonstrated strong binding stability, as indicated by favorable ddG values (ranging from -17.8 to -37.0 kcal/mol), selectivity remained a significant challenge. Only one candidate, iter03_cand003 (ARCGKFFWKTATSC), exceeded the native SST-14 selectivity threshold, while the others exhibited off-target interactions with SSTR3 and SSTR5, likely due to conserved pocket contacts.
 
             ## Recommendations
 
-            - Focus the next iteration on improving selectivity by incorporating additional constraints or filters to penalize off-target interactions.
-- Consider refining the structural design to enhance the Δmargin, ensuring robust target specificity.
-- Revisit the docking and scoring protocols to better capture the nuances of selectivity in the design space.
+            - Focus future design efforts on modifying the conserved pocket interactions to enhance SSTR2 selectivity.
+- Incorporate additional selectivity filters in the QC pipeline to prioritize candidates with minimal off-target interactions.
+- Refine the structural design of the top candidates to improve pLDDT and dock scores while maintaining stability and selectivity.

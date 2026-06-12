@@ -1,53 +1,21 @@
 {
   "type": "critic",
   "iteration": 13,
-  "run_id": "sst14_mutdock_20000",
-  "timestamp": "2026-06-11T22:43:09.146357+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is not sufficient; selectivity over SSTR3/SSTR5 is critical. The next iteration should focus on disrupting conserved interactions at non-pharmacophore positions to improve Δmargin.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T05:20:44.580482+00:00",
+  "hypothesis": "The current designs are achieving strong ddG binding but are structurally suboptimal. Tightening structural constraints and increasing candidate diversity are necessary to improve pass rates and maintain selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "These positions are known to form conserved-pocket contacts with SSTR3/SSTR5. Focusing mutations on these positions can disrupt off-target interactions while preserving the pharmacophore at positions 7-10 and Cys3/Cys14."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "Increasing the number of candidates can improve the chances of generating structurally valid designs with better pLDDT scores."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "Y",
-          "F"
-        ],
-        "6": [
-          "W",
-          "Y"
-        ],
-        "11": [
-          "A",
-          "G"
-        ],
-        "12": [
-          "T",
-          "S"
-        ]
-      },
-      "rationale": "Introducing charged or aromatic residues at positions 1/2 and hydrophobic residues at positions 5/6 can disrupt conserved interactions with SSTR3/SSTR5. Mutating positions 11/12 to smaller residues can reduce off-target footprint."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reducing the clash threshold will enforce better packing and reduce structural artifacts, which are likely contributing to low pLDDT scores."
     }
   ],
   "current_params": {

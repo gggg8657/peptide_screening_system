@@ -1,16 +1,17 @@
-# Iteration 19 Summary: sst14_mutdock_20000
+# Iteration 19 Summary: sst14_mutdock_24000
 
-            - **Run ID**: `sst14_mutdock_20000`
+            - **Run ID**: `sst14_mutdock_24000`
             - **Iteration**: 19
-            - **생성 시각**: 2026-06-11 23:14 UTC
+            - **생성 시각**: 2026-06-12 05:57 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 19 evaluated three candidate peptides for their binding affinity and structural stability toward SSTR2. All candidates passed the QC gates, but structural quality remains a significant limitation, as evidenced by uniformly low pLDDT values (0.0) and docking scores (0.00). However, the ddG values indicate strong binding affinity, with the best candidate (iter19_cand008) achieving a ddG of -28.6 kcal/mol. The overall Δmargin for selectivity is positive, suggesting that the design is progressing toward SSTR2 selectivity despite structural instability. This iteration highlights the need to address structural failures while maintaining favorable binding characteristics.
+            Iteration 19 evaluated five candidates for their potential as SSTR2 peptide binders. All candidates passed quality control (QC) gates, indicating structural integrity and adherence to design constraints. The primary focus of this iteration was on stability, as reflected by strong ddG values ranging from -19.7 to -38.7 kcal/mol. However, the Critic analysis highlighted that while stability is robust, selectivity remains a key area for improvement. The best Δmargin achieved was positive but not significantly higher than that of native SST-14, suggesting limited off-target discrimination. Structural failures were identified as the primary failure type, indicating that further refinement of the binding interface is necessary to enhance selectivity without compromising stability.
 
             ## Recommendations
 
-            - Prioritize structural refinement in the next iteration to improve pLDDT and docking scores.
-- Maintain focus on SSTR2 selectivity by leveraging the positive Δmargin observed in this iteration.
-- Consider incorporating additional constraints or templates to enhance structural stability during design.
+            - Prioritize the design of mutations that enhance selectivity while maintaining the observed stability.
+- Perform detailed binding interface analysis to identify residues that contribute to off-target interactions.
+- Incorporate additional selectivity metrics into the scoring framework for future iterations.
+- Consider structural refinement strategies to address structural failures and improve binding specificity.

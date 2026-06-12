@@ -1,15 +1,15 @@
 {
   "type": "critic",
   "iteration": 11,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-12T00:12:09.918334+00:00",
-  "hypothesis": "The current design strategy is generating candidates with strong ddG but insufficient structural quality and selectivity. Tightening structural constraints and focusing mutagenesis on non-pharmacophore positions should improve both yield and selectivity.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T05:04:28.098859+00:00",
+  "hypothesis": "The current design strategy is generating candidates with strong ddG but poor structural quality and limited sequence diversity. Tightening structural constraints and explicitly targeting non-pharmacophore positions for selectivity optimization is critical to improve yield and selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Reducing the allowed clash score will enforce better structural quality and reduce steric clashes that may destabilize the binding mode or disrupt key interactions."
+      "rationale": "Reducing the clash tolerance will enforce better structural packing and reduce candidates with poor geometry, likely increasing the structural pass rate."
     },
     {
       "parameter_name": "focus_positions",
@@ -22,7 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      "rationale": "Focusing on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will allow more precise mutation design to disrupt conserved pocket interactions while preserving the native pharmacophore (FWKT7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {

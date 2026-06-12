@@ -1,71 +1,72 @@
 {
   "type": "iteration_manifest",
   "iteration": 3,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-11T23:40:00.892325+00:00",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T04:30:01.873430+00:00",
   "receptor_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
   "baseline_pdb": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
   "candidates": [
     {
-      "candidate_id": "iter03_cand006",
-      "sequence": "AGCKWFFWKTVTSC",
-      "ddg": -38.3101,
+      "candidate_id": "iter03_cand003",
+      "sequence": "AGCKYFFWKTLTSC",
+      "ddg": -37.019,
       "clash_count": 0,
       "pass_gates": true,
       "fail_reasons": [],
-      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_006.pdb",
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_003.pdb",
       "pharma": {
-        "sequence": "AGCKWFFWKTVTSC",
+        "sequence": "AGCKYFFWKTLTSC",
         "length": 14,
-        "gravy": 0.3142857142857142,
-        "boman_index": -0.023571428571428688,
-        "instability_index": 26.507142857142856,
-        "aliphatic_index": 27.857142857142858,
-        "isoelectric_point": 10.62,
-        "extinction_coefficient": 11125,
+        "gravy": 0.2571428571428571,
+        "boman_index": 0.0899999999999999,
+        "instability_index": 32.57142857142858,
+        "aliphatic_index": 35.0,
+        "isoelectric_point": 10.21,
+        "extinction_coefficient": 7115,
         "nend_rule_halflife": {
           "n_terminal_residue": "A",
           "half_life_hours": 30.0,
           "category": "stable"
         },
-        "hydrophobic_moment_alpha": 0.17709110398750835,
-        "hydrophobic_moment_beta": 0.17684953914601256,
+        "hydrophobic_moment_alpha": 0.22426006717101457,
+        "hydrophobic_moment_beta": 0.16202675272720343,
         "wimley_white": {
-          "total_dG": -3.8,
-          "mean_dG": -0.271,
+          "total_dG": -3.52,
+          "mean_dG": -0.251,
           "per_residue": [
             0.17,
             0.01,
             -0.24,
             0.99,
-            -1.85,
+            -0.94,
             -1.13,
             -1.13,
             -1.85,
             0.99,
             0.14,
-            0.07,
+            -0.56,
             0.14,
             0.13,
             -0.24
           ]
         },
-        "net_charge_ph74": 1.993,
+        "net_charge_ph74": 1.991,
         "net_charge_ph65": 1.999,
         "molecular_weight": {
-          "mw_average": 1661.97,
-          "mw_monoisotopic": 1660.97,
+          "mw_average": 1652.95,
+          "mw_monoisotopic": 1651.96,
           "n_residues": 14,
           "n_disulfide": 1
         },
         "protease_sites": {
           "chymotrypsin": {
-            "count": 4,
+            "count": 5,
             "positions": [
               5,
               6,
               7,
-              8
+              8,
+              11
             ]
           },
           "trypsin": {
@@ -89,10 +90,10 @@
             "count": 0,
             "positions": []
           },
-          "total": 11
+          "total": 12
         },
         "blosum62": {
-          "total_score": 70,
+          "total_score": 73,
           "per_position": [
             {
               "position": 1,
@@ -125,8 +126,8 @@
             {
               "position": 5,
               "reference": "N",
-              "query": "W",
-              "score": -4,
+              "query": "Y",
+              "score": -2,
               "category": "non-conservative"
             },
             {
@@ -167,9 +168,9 @@
             {
               "position": 11,
               "reference": "F",
-              "query": "V",
-              "score": -1,
-              "category": "non-conservative"
+              "query": "L",
+              "score": 0,
+              "category": "semi-conservative"
             },
             {
               "position": 12,
@@ -228,7 +229,7 @@
             },
             "phe6_phe11_stacking": {
               "pass": false,
-              "detail": "pos6=F, pos11=V"
+              "detail": "pos6=F, pos11=L"
             },
             "nterm_chelator": {
               "pass": true,
@@ -238,7 +239,7 @@
           "all_pass": false
         },
         "radiolysis_susceptibility": {
-          "total_score": 9.0,
+          "total_score": 7.0,
           "risk_level": "high",
           "vulnerable_residues": [
             {
@@ -249,9 +250,9 @@
             },
             {
               "position": 5,
-              "residue": "W",
-              "mechanism": "indole ring oxidation to kynurenine",
-              "weight": 3.0
+              "residue": "Y",
+              "mechanism": "phenol ring oxidation / dityrosine",
+              "weight": 1.0
             },
             {
               "position": 6,
@@ -311,7 +312,7 @@
             "ddG_binding_present": false
           },
           "C": {
-            "instability_lt_30": true,
+            "instability_lt_30": false,
             "blosum62_nonnegative": true,
             "protease_sites_reduced": false
           },
@@ -325,20 +326,20 @@
       }
     },
     {
-      "candidate_id": "iter03_cand002",
-      "sequence": "AGCKFFFWKTVTSC",
-      "ddg": -35.527,
+      "candidate_id": "iter03_cand004",
+      "sequence": "AGCKFFFWKTITSC",
+      "ddg": -32.3749,
       "clash_count": 0,
       "pass_gates": true,
       "fail_reasons": [],
-      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_002.pdb",
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_004.pdb",
       "pharma": {
-        "sequence": "AGCKFFFWKTVTSC",
+        "sequence": "AGCKFFFWKTITSC",
         "length": 14,
-        "gravy": 0.5785714285714284,
-        "boman_index": -0.07000000000000002,
-        "instability_index": 26.507142857142856,
-        "aliphatic_index": 27.857142857142858,
+        "gravy": 0.5999999999999999,
+        "boman_index": -0.13285714285714292,
+        "instability_index": 32.57142857142858,
+        "aliphatic_index": 35.0,
         "isoelectric_point": 10.62,
         "extinction_coefficient": 5625,
         "nend_rule_halflife": {
@@ -346,11 +347,11 @@
           "half_life_hours": 30.0,
           "category": "stable"
         },
-        "hydrophobic_moment_alpha": 0.1442885507247756,
-        "hydrophobic_moment_beta": 0.19908346237487876,
+        "hydrophobic_moment_alpha": 0.16619283790810443,
+        "hydrophobic_moment_beta": 0.17279838405559736,
         "wimley_white": {
-          "total_dG": -3.08,
-          "mean_dG": -0.22,
+          "total_dG": -3.46,
+          "mean_dG": -0.247,
           "per_residue": [
             0.17,
             0.01,
@@ -362,7 +363,7 @@
             -1.85,
             0.99,
             0.14,
-            0.07,
+            -0.31,
             0.14,
             0.13,
             -0.24
@@ -371,8 +372,8 @@
         "net_charge_ph74": 1.993,
         "net_charge_ph65": 1.999,
         "molecular_weight": {
-          "mw_average": 1622.93,
-          "mw_monoisotopic": 1621.96,
+          "mw_average": 1636.95,
+          "mw_monoisotopic": 1635.97,
           "n_residues": 14,
           "n_disulfide": 1
         },
@@ -410,7 +411,7 @@
           "total": 11
         },
         "blosum62": {
-          "total_score": 71,
+          "total_score": 72,
           "per_position": [
             {
               "position": 1,
@@ -485,9 +486,9 @@
             {
               "position": 11,
               "reference": "F",
-              "query": "V",
-              "score": -1,
-              "category": "non-conservative"
+              "query": "I",
+              "score": 0,
+              "category": "semi-conservative"
             },
             {
               "position": 12,
@@ -546,7 +547,7 @@
             },
             "phe6_phe11_stacking": {
               "pass": false,
-              "detail": "pos6=F, pos11=V"
+              "detail": "pos6=F, pos11=I"
             },
             "nterm_chelator": {
               "pass": true,
@@ -629,7 +630,7 @@
             "ddG_binding_present": false
           },
           "C": {
-            "instability_lt_30": true,
+            "instability_lt_30": false,
             "blosum62_nonnegative": true,
             "protease_sites_reduced": false
           },
@@ -645,8 +646,8 @@
     {
       "candidate_id": "iter03_cand001",
       "sequence": "AGCKWFFWKTLTSC",
-      "ddg": -26.8338,
-      "clash_count": 1,
+      "ddg": -27.2496,
+      "clash_count": 0,
       "pass_gates": true,
       "fail_reasons": [],
       "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_001.pdb",
@@ -962,44 +963,44 @@
       }
     },
     {
-      "candidate_id": "iter03_cand005",
-      "sequence": "AGCKFFFWKTFTSC",
-      "ddg": -16.9709,
+      "candidate_id": "iter03_cand006",
+      "sequence": "AGCKWFFWKTVTSC",
+      "ddg": -17.7902,
       "clash_count": 0,
       "pass_gates": true,
       "fail_reasons": [],
-      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_005.pdb",
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_03/cand_006.pdb",
       "pharma": {
-        "sequence": "AGCKFFFWKTFTSC",
+        "sequence": "AGCKWFFWKTVTSC",
         "length": 14,
-        "gravy": 0.4785714285714285,
-        "boman_index": 0.005714285714285672,
-        "instability_index": 41.385714285714286,
-        "aliphatic_index": 7.142857142857143,
+        "gravy": 0.3142857142857142,
+        "boman_index": -0.023571428571428688,
+        "instability_index": 26.507142857142856,
+        "aliphatic_index": 27.857142857142858,
         "isoelectric_point": 10.62,
-        "extinction_coefficient": 5625,
+        "extinction_coefficient": 11125,
         "nend_rule_halflife": {
           "n_terminal_residue": "A",
           "half_life_hours": 30.0,
           "category": "stable"
         },
-        "hydrophobic_moment_alpha": 0.15211874379844326,
-        "hydrophobic_moment_beta": 0.18941317742833083,
+        "hydrophobic_moment_alpha": 0.17709110398750835,
+        "hydrophobic_moment_beta": 0.17684953914601256,
         "wimley_white": {
-          "total_dG": -4.28,
-          "mean_dG": -0.306,
+          "total_dG": -3.8,
+          "mean_dG": -0.271,
           "per_residue": [
             0.17,
             0.01,
             -0.24,
             0.99,
-            -1.13,
+            -1.85,
             -1.13,
             -1.13,
             -1.85,
             0.99,
             0.14,
-            -1.13,
+            0.07,
             0.14,
             0.13,
             -0.24
@@ -1008,20 +1009,19 @@
         "net_charge_ph74": 1.993,
         "net_charge_ph65": 1.999,
         "molecular_weight": {
-          "mw_average": 1670.97,
-          "mw_monoisotopic": 1669.97,
+          "mw_average": 1661.97,
+          "mw_monoisotopic": 1660.97,
           "n_residues": 14,
           "n_disulfide": 1
         },
         "protease_sites": {
           "chymotrypsin": {
-            "count": 5,
+            "count": 4,
             "positions": [
               5,
               6,
               7,
-              8,
-              11
+              8
             ]
           },
           "trypsin": {
@@ -1045,10 +1045,10 @@
             "count": 0,
             "positions": []
           },
-          "total": 12
+          "total": 11
         },
         "blosum62": {
-          "total_score": 78,
+          "total_score": 70,
           "per_position": [
             {
               "position": 1,
@@ -1081,8 +1081,8 @@
             {
               "position": 5,
               "reference": "N",
-              "query": "F",
-              "score": -3,
+              "query": "W",
+              "score": -4,
               "category": "non-conservative"
             },
             {
@@ -1123,9 +1123,9 @@
             {
               "position": 11,
               "reference": "F",
-              "query": "F",
-              "score": 6,
-              "category": "identical"
+              "query": "V",
+              "score": -1,
+              "category": "non-conservative"
             },
             {
               "position": 12,
@@ -1149,7 +1149,7 @@
               "category": "identical"
             }
           ],
-          "n_mutations": 1
+          "n_mutations": 2
         },
         "metal_coordination": {
           "residues": {
@@ -1183,18 +1183,18 @@
               "detail": "pos3=C, pos14=C"
             },
             "phe6_phe11_stacking": {
-              "pass": true,
-              "detail": "pos6=F, pos11=F"
+              "pass": false,
+              "detail": "pos6=F, pos11=V"
             },
             "nterm_chelator": {
               "pass": true,
               "detail": "pos1=A (preferred)"
             }
           },
-          "all_pass": true
+          "all_pass": false
         },
         "radiolysis_susceptibility": {
-          "total_score": 7.0,
+          "total_score": 9.0,
           "risk_level": "high",
           "vulnerable_residues": [
             {
@@ -1205,9 +1205,9 @@
             },
             {
               "position": 5,
-              "residue": "F",
-              "mechanism": "aromatic hydroxylation",
-              "weight": 0.5
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
             },
             {
               "position": 6,
@@ -1226,12 +1226,6 @@
               "residue": "W",
               "mechanism": "indole ring oxidation to kynurenine",
               "weight": 3.0
-            },
-            {
-              "position": 11,
-              "residue": "F",
-              "mechanism": "aromatic hydroxylation",
-              "weight": 0.5
             },
             {
               "position": 14,
@@ -1273,7 +1267,7 @@
             "ddG_binding_present": false
           },
           "C": {
-            "instability_lt_30": false,
+            "instability_lt_30": true,
             "blosum62_nonnegative": true,
             "protease_sites_reduced": false
           },

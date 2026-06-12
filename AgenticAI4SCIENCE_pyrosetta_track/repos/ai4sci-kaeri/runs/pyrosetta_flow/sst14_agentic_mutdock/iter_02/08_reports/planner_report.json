@@ -1,26 +1,33 @@
 {
   "type": "planner",
   "iteration": 2,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-11T23:32:53.691273+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will improve SSTR2 selectivity by forming favorable π-π stacking interactions with ECL2 (residue 192/193/195/197) in SSTR2, which are absent in off-target subtypes. Mutating position 6 to acidic residues (E/D) will introduce electrostatic complementarity with SSTR2-specific TM5 (residue 205/208/209/212), while disrupting off-target interactions.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T04:22:24.202639+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/TM5 contacts, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric fit and reduce off-target SSTR3/5 binding, thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis is valid — selectivity is achievable with Δmargin > 0. However, the structural quality of the designs is a critical bottleneck. The next iteration should focus on improving structural confidence while maintaining selectivity.",
+    "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity over SSTR3/SSTR5. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions while maintaining key SSTR2 interactions.",
     "proposed_changes": [
+      {
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding (particularly with SSTR3/SSTR5). Focusing on these positions will allow us to design mutations that disrupt off-target contacts while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
+      },
       {
         "parameter_name": "objective_mode",
         "old_value": "ddg_only",
-        "new_value": "ddg_plus_plddt",
-        "rationale": "Current objective mode prioritizes ddG alone, leading to candidates with strong binding but poor structural confidence. Adding pLDDT as a secondary objective will enforce higher structural quality."
-      },
-      {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "The low pass rate (12.5%) suggests the search space is too constrained. Increasing the number of candidates will diversify the designs and improve the chances of finding high-quality, high-confidence structures."
+        "new_value": "selectivity_weighted",
+        "rationale": "Shifting the objective to prioritize selectivity (Δmargin) over binding affinity (ddG) will ensure that the design process actively seeks to improve SSTR2 selectivity over off-targets."
       }
     ]
   },
-  "previous_best_ddg": -15.5674
+  "previous_best_ddg": -39.1621
 }

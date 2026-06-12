@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 9,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-12T00:04:44.345111+00:00",
-  "hypothesis": "The current design strategy is effective for selectivity but needs refinement in structural and docking robustness. Tightening structural constraints and increasing candidate diversity will help achieve a higher-quality pass rate.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T04:57:37.212432+00:00",
+  "hypothesis": "The current hypothesis remains valid — SSTR2 selectivity is achievable with strong ddG and optimized off-target interactions. However, structural quality is a limiting factor, and more precise mutagenesis at non-pharmacophore positions is needed to push Δmargin higher.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Reduce clash tolerance to enforce better structural quality and reduce false positives due to steric clashes."
+      "rationale": "Many candidates likely failed due to structural clashes or poor geometry. Lowering the clash threshold will enforce better packing and reduce structural failures."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 12,
-      "rationale": "Increase the number of candidates to improve diversity and increase the chances of generating structurally valid and docking-passing designs."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we need to disrupt conserved contacts in SSTR3/SSTR5 at non-pharmacophore positions. Focusing design on these positions will allow us to tailor interactions for SSTR2 specificity."
     }
   ],
   "current_params": {

@@ -1,77 +1,21 @@
 {
   "type": "critic",
   "iteration": 5,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-11T23:46:28.565687+00:00",
-  "hypothesis": "The current designs are strong binders but lack sufficient selectivity over off-target SSTRs. The next iteration should focus on disrupting conserved pocket interactions at non-pharmacophore positions to improve selectivity.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T04:41:47.130278+00:00",
+  "hypothesis": "The current protocol generates candidates with poor structural quality and invalid docking scores despite strong selectivity. The focus should shift to improving structural validity while maintaining selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5, particularly in the conserved pocket."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "High clash scores likely contribute to poor structural quality and zero docking scores. Reducing the clash threshold will enforce better geometry and improve model quality."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        {
-          "position": 1,
-          "mutations": [
-            "A",
-            "G",
-            "T"
-          ]
-        },
-        {
-          "position": 2,
-          "mutations": [
-            "E",
-            "N",
-            "Q"
-          ]
-        },
-        {
-          "position": 5,
-          "mutations": [
-            "G",
-            "T",
-            "S"
-          ]
-        },
-        {
-          "position": 6,
-          "mutations": [
-            "K",
-            "R",
-            "H"
-          ]
-        },
-        {
-          "position": 11,
-          "mutations": [
-            "M",
-            "T",
-            "V"
-          ]
-        },
-        {
-          "position": 12,
-          "mutations": [
-            "C",
-            "S",
-            "A"
-          ]
-        }
-      ],
-      "rationale": "Introduce mutations at key non-pharmacophore positions to reduce off-target interactions while maintaining the integrity of the pharmacophore."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "The low pass rate suggests the search space is too constrained. Increasing the number of candidates will improve diversity and the likelihood of generating high-quality models."
     }
   ],
   "current_params": {

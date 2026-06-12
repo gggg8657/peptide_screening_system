@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 1,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-11T23:32:05.659422+00:00",
-  "hypothesis": "The current hypothesis is valid — selectivity is achievable with Δmargin > 0. However, the structural quality of the designs is a critical bottleneck. The next iteration should focus on improving structural confidence while maintaining selectivity.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T04:21:31.265297+00:00",
+  "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity over SSTR3/SSTR5. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions while maintaining key SSTR2 interactions.",
   "proposed_changes": [
+    {
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target binding (particularly with SSTR3/SSTR5). Focusing on these positions will allow us to design mutations that disrupt off-target contacts while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
+    },
     {
       "parameter_name": "objective_mode",
       "old_value": "ddg_only",
-      "new_value": "ddg_plus_plddt",
-      "rationale": "Current objective mode prioritizes ddG alone, leading to candidates with strong binding but poor structural confidence. Adding pLDDT as a secondary objective will enforce higher structural quality."
-    },
-    {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "The low pass rate (12.5%) suggests the search space is too constrained. Increasing the number of candidates will diversify the designs and improve the chances of finding high-quality, high-confidence structures."
+      "new_value": "selectivity_weighted",
+      "rationale": "Shifting the objective to prioritize selectivity (Δmargin) over binding affinity (ddG) will ensure that the design process actively seeks to improve SSTR2 selectivity over off-targets."
     }
   ],
   "current_params": {

@@ -1,10 +1,16 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_20000",
-  "timestamp": "2026-06-11T22:58:46.821496+00:00",
-  "hypothesis": "The current hypothesis remains valid: SSTR2 selectivity can be improved by disrupting off-target interactions at non-pharmacophore positions. However, the design process needs to be more focused on these positions to achieve consistent selectivity across candidates.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T05:31:11.546346+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved while reducing off-target interactions. However, we must focus on disrupting conserved pocket contacts in SSTR3/SSTR5 to push Δmargin further above 0.",
   "proposed_changes": [
+    {
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "The current threshold allows for weak binding candidates. Raising the ddG threshold will filter out weaker binders and retain only the strongest SSTR2 binders."
+    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -16,38 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve SSTR2 selectivity, we need to disrupt conserved pocket interactions at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3 and SSTR5."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "T",
-          "S"
-        ],
-        "11": [
-          "A",
-          "V"
-        ],
-        "12": [
-          "G",
-          "A"
-        ]
-      },
-      "rationale": "These mutations are designed to disrupt conserved pocket interactions at key non-pharmacophore positions while maintaining the overall scaffold and pharmacophore integrity."
+      "rationale": "To improve selectivity, we need to disrupt off-target contacts at non-pharmacophore positions. Focusing mutations at these positions will help reduce off-target binding while preserving key pharmacophore residues."
     }
   ],
   "current_params": {

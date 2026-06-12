@@ -2,8 +2,8 @@
   "capacity": 50,
   "best_delta_margin": 9.1021,
   "n_unique": 50,
-  "n_screened_unique": 178,
-  "n_ingested_total": 184,
+  "n_screened_unique": 191,
+  "n_ingested_total": 198,
   "entries": [
     {
       "sequence": "ARCGKFFWKTATSC",
@@ -50,6 +50,17 @@
       "ts": ""
     },
     {
+      "sequence": "ADCDTAFWKTYASC",
+      "ddg": -31.9392,
+      "margin": 18.7974,
+      "delta_margin": 5.4274,
+      "hc50": -43.9042,
+      "hc50_vs_native": 11.777,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_22000",
+      "ts": ""
+    },
+    {
       "sequence": "AGCKWFFWKTPTSC",
       "ddg": -33.6149,
       "margin": 17.6218,
@@ -80,6 +91,17 @@
       "hc50_vs_native": 9.848,
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_6000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCYNFFWKTAASC",
+      "ddg": -36.2384,
+      "margin": 16.1186,
+      "delta_margin": 2.7486,
+      "hc50": -43.7462,
+      "hc50_vs_native": 11.935,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_23000",
       "ts": ""
     },
     {
@@ -215,6 +237,17 @@
       "ts": ""
     },
     {
+      "sequence": "AGCKHFFWKTITSC",
+      "ddg": -37.8655,
+      "margin": 13.9692,
+      "delta_margin": 0.5992,
+      "hc50": -46.8825,
+      "hc50_vs_native": 8.799,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_22000",
+      "ts": ""
+    },
+    {
       "sequence": "AMCANFFWKTFDSC",
       "ddg": -46.8953,
       "margin": 13.8495,
@@ -303,6 +336,17 @@
       "ts": ""
     },
     {
+      "sequence": "DMCWKIFWKTPTSC",
+      "ddg": -54.4783,
+      "margin": 13.1703,
+      "delta_margin": -0.1997,
+      "hc50": -54.8124,
+      "hc50_vs_native": 0.869,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_21000",
+      "ts": ""
+    },
+    {
       "sequence": "HGCKYFFWKTQLSC",
       "ddg": -32.8729,
       "margin": 13.1641,
@@ -333,6 +377,17 @@
       "hc50_vs_native": 15.553,
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_7000",
+      "ts": ""
+    },
+    {
+      "sequence": "AGCKWKFWKTITSC",
+      "ddg": -34.2718,
+      "margin": 12.9717,
+      "delta_margin": -0.3983,
+      "hc50": -49.0495,
+      "hc50_vs_native": 6.632,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_22000",
       "ts": ""
     },
     {
@@ -424,6 +479,17 @@
       "ts": ""
     },
     {
+      "sequence": "AHCHYLFWKTDNSC",
+      "ddg": -39.0274,
+      "margin": 11.6849,
+      "delta_margin": -1.6851,
+      "hc50": -54.4442,
+      "hc50_vs_native": 1.237,
+      "more_toxic_than_native": false,
+      "run_id": "sst14_mutdock_22000",
+      "ts": ""
+    },
+    {
       "sequence": "AGCKYEFWKTITSC",
       "ddg": -32.7034,
       "margin": 11.5822,
@@ -488,75 +554,10 @@
       "more_toxic_than_native": false,
       "run_id": "sst14_mutdock_7000",
       "ts": ""
-    },
-    {
-      "sequence": "AGCVEFFWKTFGSC",
-      "ddg": -31.7494,
-      "margin": 10.8961,
-      "delta_margin": -2.4739,
-      "hc50": -44.8803,
-      "hc50_vs_native": 10.801,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_4000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCLNFFWKTVDSC",
-      "ddg": -28.987766666666666,
-      "margin": 10.8546,
-      "delta_margin": -2.5154,
-      "hc50": -43.9502,
-      "hc50_vs_native": null,
-      "more_toxic_than_native": null,
-      "run_id": "sst14_mutdock_1000",
-      "ts": ""
-    },
-    {
-      "sequence": "AGCKFEFWKTFTSC",
-      "ddg": -36.0196,
-      "margin": 10.775,
-      "delta_margin": -2.595,
-      "hc50": -49.4424,
-      "hc50_vs_native": 6.239,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_7000",
-      "ts": ""
-    },
-    {
-      "sequence": "ASCKNYFWKTFRSC",
-      "ddg": -53.8085,
-      "margin": 10.7698,
-      "delta_margin": -2.6002,
-      "hc50": -55.7541,
-      "hc50_vs_native": -0.072,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_9000",
-      "ts": ""
-    },
-    {
-      "sequence": "NGCVKFFWKTFTSC",
-      "ddg": -38.5059,
-      "margin": 10.6063,
-      "delta_margin": -2.7637,
-      "hc50": -51.0429,
-      "hc50_vs_native": 4.639,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_6000",
-      "ts": ""
-    },
-    {
-      "sequence": "MDCLNFFWKTFTSC",
-      "ddg": -35.38,
-      "margin": 10.5111,
-      "delta_margin": -2.8589,
-      "hc50": -54.9851,
-      "hc50_vs_native": 0.697,
-      "more_toxic_than_native": false,
-      "run_id": "sst14_mutdock_9000",
-      "ts": ""
     }
   ],
   "screened_seqs": [
+    "ADCDTAFWKTYASC",
     "ADCLKFFWKTFTSC",
     "AECKATFWKTPTSC",
     "AECMNFFWKTFTSC",
@@ -594,6 +595,7 @@
     "AGCKFNFWKTFTSC",
     "AGCKFQFWKTITSC",
     "AGCKHFFWKTFTSC",
+    "AGCKHFFWKTITSC",
     "AGCKKFFWKTTGSC",
     "AGCKLFFWKTFTSC",
     "AGCKLFFWKTMTSC",
@@ -612,6 +614,7 @@
     "AGCKNFFWKTVTSC",
     "AGCKNIFWKTFMSC",
     "AGCKNIFWKTFTSC",
+    "AGCKNKFWKTITSC",
     "AGCKNQFWKTFTSC",
     "AGCKNWFWKTFTSC",
     "AGCKVPFWKTFISC",
@@ -627,6 +630,7 @@
     "AGCKWFFWKTLTSC",
     "AGCKWFFWKTPTSC",
     "AGCKWFFWKTVTSC",
+    "AGCKWKFWKTITSC",
     "AGCKWNFWKTMTSC",
     "AGCKWQFWKTITSC",
     "AGCKWQFWKTMTSC",
@@ -661,12 +665,15 @@
     "AGCVNFFWKTFTSC",
     "AGCWMFFWKTFASC",
     "AGCYDDFWKTFNSC",
+    "AGCYNFFWKTAASC",
     "AHCDNMFWKTFTSC",
+    "AHCHYLFWKTDNSC",
     "AHCKNAFWKTFISC",
     "AICKHFFWKTFTSC",
     "AICKHFFWKTPTSC",
     "AKCANFFWKTFMSC",
     "AKCKNHFWKTLPSC",
+    "ALCDKMFWKTLVSC",
     "ALCGNMFWKTFTSC",
     "ALCKNKFWKTLTSC",
     "ALCKWFFWKTITSC",
@@ -688,7 +695,9 @@
     "AWCAFFFWKTATSC",
     "AWCKNFFWKTPVSC",
     "AWCVNFFWKTVTSC",
+    "DGCLFQFWKTVQSC",
     "DGCLNWFWKTFTSC",
+    "DMCWKIFWKTPTSC",
     "EGCKGFFWKTFESC",
     "EGCKTFFWKTNTSC",
     "EGCVYKFWKTELSC",
@@ -699,6 +708,9 @@
     "FPCMKSFWKTETSC",
     "GGCKNFFWKTLESC",
     "GGCRWEFWKTRESC",
+    "GKCYNHFWKTNQSC",
+    "GNCKLIFWKTILSC",
+    "GVCKWQFWKTIISC",
     "GWCSNFFWKTPTSC",
     "HGCKYFFWKTQLSC",
     "HGCVPFFWKTFTSC",
@@ -712,6 +724,7 @@
     "LGCKNFFWKTFTSC",
     "LPCENFFWKTFTSC",
     "LSCDNFFWKTGTSC",
+    "LTCDRFFWKTIRSC",
     "MDCLNFFWKTFTSC",
     "MGCKHFFWKTFMSC",
     "NGCVKFFWKTFTSC",

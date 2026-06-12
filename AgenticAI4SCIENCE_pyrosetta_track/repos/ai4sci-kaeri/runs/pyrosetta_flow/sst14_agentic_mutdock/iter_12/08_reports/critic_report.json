@@ -1,13 +1,13 @@
 {
   "type": "critic",
   "iteration": 12,
-  "run_id": "sst14_mutdock_20000",
-  "timestamp": "2026-06-11T22:39:24.320063+00:00",
-  "hypothesis": "The current design strategy is effective for SSTR2 binding but insufficient for achieving selectivity over SSTR3/SSTR5. Targeted mutations at non-pharmacophore positions are necessary to disrupt off-target interactions.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T05:12:37.750619+00:00",
+  "hypothesis": "The current design strategy is effective at generating high-affinity binders but insufficient for achieving the required level of SSTR2 selectivity. Targeted mutagenesis at non-pharmacophore positions is necessary to disrupt conserved off-target interactions.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -16,20 +16,38 @@
         11,
         12
       ],
-      "rationale": "To disrupt conserved-pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions and improve selectivity."
+      "rationale": "These positions are known to contribute to off-target binding in SSTR3/SSTR5. Focusing mutations here can disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
     },
     {
       "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "F5Y",
-        "F6W",
-        "T11D",
-        "T12E"
-      ],
-      "rationale": "Introduce mutations at non-pharmacophore positions to break conserved interactions with SSTR3/SSTR5 while preserving the pharmacophore FWKT(7-10) and Cys3/Cys14."
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "N",
+          "Q"
+        ],
+        "5": [
+          "K",
+          "R"
+        ],
+        "6": [
+          "A",
+          "G"
+        ],
+        "11": [
+          "T",
+          "S"
+        ],
+        "12": [
+          "A",
+          "G"
+        ]
+      },
+      "rationale": "Introducing mutations at these positions with residues that disrupt off-target interactions while preserving native-like backbone geometry and pharmacophore integrity."
     }
   ],
   "current_params": {

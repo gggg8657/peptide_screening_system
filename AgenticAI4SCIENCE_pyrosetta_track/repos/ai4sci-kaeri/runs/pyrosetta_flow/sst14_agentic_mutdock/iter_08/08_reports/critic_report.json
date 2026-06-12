@@ -1,35 +1,21 @@
 {
   "type": "critic",
   "iteration": 8,
-  "run_id": "sst14_mutdock_21000",
-  "timestamp": "2026-06-12T00:01:20.636473+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 binding but fail to overcome the conserved interactions in SSTR3/SSTR5. Targeted mutagenesis at non-pharmacophore positions is necessary to break off-target contacts and increase selectivity.",
+  "run_id": "sst14_mutdock_24000",
+  "timestamp": "2026-06-12T04:53:38.057854+00:00",
+  "hypothesis": "The current hypothesis remains valid: SSTR2 selectivity is achievable with strong pharmacophore preservation (FWKT7-10 and Cys3/Cys14) and disruption of conserved off-target contacts. However, structural stability must be improved to ensure viable candidates.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To disrupt conserved pocket interactions in SSTR3/SSTR5 that are likely driving off-target binding while preserving pharmacophore positions (7-10) and Cys3/Cys14."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Current clash threshold is too lenient, allowing unstable conformations. Tightening the clash filter will improve structural quality and reduce false positives."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "T5D",
-        "T6E",
-        "S11P",
-        "C12A"
-      ],
-      "rationale": "These mutations are expected to break conserved hydrogen bonds and electrostatic interactions in SSTR3/SSTR5 binding pockets without compromising the native pharmacophore or disulfide bridge integrity."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "A larger candidate pool increases the chances of generating structurally viable and selective designs, especially when structural filters are tightened."
     }
   ],
   "current_params": {

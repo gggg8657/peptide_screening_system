@@ -1,19 +1,19 @@
-# Iteration 6 Summary: sst14_mutdock_21000
+# Iteration 6 Summary: sst14_mutdock_24000
 
-            - **Run ID**: `sst14_mutdock_21000`
+            - **Run ID**: `sst14_mutdock_24000`
             - **Iteration**: 6
-            - **생성 시각**: 2026-06-11 23:54 UTC
+            - **생성 시각**: 2026-06-12 04:46 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 6 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity and selectivity for SSTR2 over off-target receptors. While the candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -15.7 to -39.3 kcal/mol, selectivity remained a critical limitation. The top candidates showed Δmargin values above 0, but the overall selectivity pass rate was low, with structural failures being the primary mode of failure. This suggests that while the designs are energetically favorable, they may not effectively distinguish between SSTR2 and off-target receptors at the structural level.
+            Iteration 6 evaluated four peptide binder candidates for SSTR2 binding. All candidates passed quality control (QC) gates, indicating structural integrity and adherence to design constraints. The primary focus of this iteration was to improve SSTR2 selectivity over native SST-14. While the ddG values for binding are strong, with the best candidate (iter06_cand007) achieving a ddG of -31.4 kcal/mol, selectivity improvements remain limited. The Δmargin for the top candidates is positive but not significantly higher than that of native SST-14, suggesting that the designs have not yet achieved a substantial gain in SSTR2 selectivity.
 
-The top-performing candidate, iter06_cand006, exhibited the lowest ddG of -39.3 kcal/mol, indicating a strong binding affinity. However, the lack of pLDDT and docking score data for all candidates highlights a need for further structural validation. The results indicate that future iterations should focus on optimizing structural features to enhance selectivity while maintaining strong binding affinities.
+Structural failures were identified as the primary failure type, indicating that further refinement of the binding interface and conformational stability is required. The lack of meaningful selectivity improvements highlights the need for a more targeted approach in the next iteration, focusing on features that enhance SSTR2 specificity while maintaining strong binding affinity.
 
             ## Recommendations
 
-            - Focus on structural optimization to improve selectivity for SSTR2 over off-target receptors.
-- Incorporate additional metrics such as pLDDT and docking scores to better assess structural quality.
-- Conduct detailed molecular dynamics simulations to evaluate the stability and specificity of the top candidates.
-- Explore alternative design strategies that prioritize both binding affinity and selectivity.
+            - Refine the binding interface to enhance SSTR2 selectivity while maintaining strong ddG values.
+- Incorporate structural constraints to address the identified structural failures and improve conformational stability.
+- Focus on features that distinguish SSTR2 from other somatostatin receptor subtypes to improve selectivity.
+- Consider using a more targeted design strategy based on the binding mode of native SST-14 to guide future iterations.

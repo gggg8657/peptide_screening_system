@@ -1,16 +1,18 @@
-# Iteration 13 Summary: sst14_mutdock_20000
+# Iteration 13 Summary: sst14_mutdock_24000
 
-            - **Run ID**: `sst14_mutdock_20000`
+            - **Run ID**: `sst14_mutdock_24000`
             - **Iteration**: 13
-            - **생성 시각**: 2026-06-11 22:43 UTC
+            - **생성 시각**: 2026-06-12 05:20 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 13 evaluated three candidates for SSTR2 binding, all of which passed quality control (QC) gates. The top candidates demonstrated strong binding affinities as indicated by their ddG values, with iter13_cand006 showing the most favorable ddG of -48.9 kcal/mol. However, the selectivity metrics (Δmargin) for off-targets SSTR3 and SSTR5 remain suboptimal, with values not significantly higher than those of the native SST-14. This suggests that while the current designs exhibit strong binding to the target receptor, further optimization is necessary to enhance selectivity and reduce potential cross-reactivity. The primary failure type observed in this iteration was structural failures, indicating a need to refine structural stability and specificity in the next round of design.
+            Iteration 13 evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity, as evidenced by strong ddG values ranging from -18.0 to -33.0 kcal/mol. However, the structural quality of the designs remains a significant concern, with all candidates reporting pLDDT scores of 0.0, indicating poor confidence in their predicted structures. Selectivity metrics did not show improvement, with the best Δmargin remaining at 9.1021. The low pass rate of 37.5% suggests that the overall design space is still suboptimal for generating structurally viable SSTR2 binders.
+
+The top candidates in this iteration are iter13_cand001 (ddG=-33.0), iter13_cand007 (ddG=-26.7), and iter13_cand002 (ddG=-18.0). Despite their strong binding affinities, the lack of structural confidence limits their potential for further development. The primary failure mode is attributed to structural failures, highlighting the need for improved structural modeling in the next iteration.
 
             ## Recommendations
 
-            - Focus on improving selectivity for SSTR3 and SSTR5 in the next iteration by incorporating additional constraints or features into the design process.
-- Investigate the structural failures observed in this iteration to identify common motifs or weaknesses that can be addressed in future designs.
-- Consider using higher-resolution modeling or additional validation methods to refine the predicted structures and improve pLDDT scores.
+            - Prioritize improvements in structural modeling to increase pLDDT scores and overall structural confidence.
+- Incorporate additional constraints or filters to enhance selectivity metrics beyond the current Δmargin threshold.
+- Expand the design space to increase the pass rate and generate a larger pool of viable candidates for evaluation.
