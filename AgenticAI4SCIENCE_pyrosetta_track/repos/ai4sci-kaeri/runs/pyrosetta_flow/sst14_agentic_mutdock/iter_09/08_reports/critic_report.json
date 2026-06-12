@@ -1,13 +1,19 @@
 {
   "type": "critic",
   "iteration": 9,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T10:34:01.862636+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding but insufficient selectivity. The campaign must prioritize disrupting off-target interactions at non-pharmacophore positions to push Δmargin further above 0.",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T18:12:43.172687+00:00",
+  "hypothesis": "The current designs show promising ddG but insufficient structural quality and limited selectivity improvement over native SST-14. Tightening structural constraints and focusing mutations on non-pharmacophore positions will enhance selectivity and structural quality.",
   "proposed_changes": [
     {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Tighten clash tolerance to improve structural quality and reduce false positives in binding."
+    },
+    {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -16,20 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt conserved interactions at non-pharmacophore positions that are responsible for off-target binding (especially to SSTR3/SSTR5)."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "T5D",
-        "S6E",
-        "T11K",
-        "C12E"
-      ],
-      "rationale": "These mutations are designed to break conserved interactions with off-target SSTR3/SSTR5 receptors while preserving the native pharmacophore and cysteine disulfide bonding."
+      "rationale": "Target non-pharmacophore positions for mutations to disrupt off-target SSTR3/SSTR5 interactions while preserving pharmacophore residues (7-10) and cysteines."
     }
   ],
   "current_params": {

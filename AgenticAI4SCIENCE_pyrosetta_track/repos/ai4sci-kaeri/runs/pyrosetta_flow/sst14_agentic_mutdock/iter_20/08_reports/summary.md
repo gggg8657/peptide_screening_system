@@ -1,16 +1,17 @@
-# Iteration 20 Summary: sst14_mutdock_27000
+# Iteration 20 Summary: sst14_mutdock_31000
 
-            - **Run ID**: `sst14_mutdock_27000`
+            - **Run ID**: `sst14_mutdock_31000`
             - **Iteration**: 20
-            - **생성 시각**: 2026-06-12 11:25 UTC
+            - **생성 시각**: 2026-06-12 17:22 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 20 evaluated a total of 2 candidates, both of which passed all QC gates. Despite the small number of candidates, the iteration demonstrated strong binding affinity as indicated by favorable ddG values, with the best candidate achieving a ddG of -27.1 kcal/mol. However, the absence of pLDDT and docking scores suggests that structural quality and docking reliability remain significant challenges. The top candidates, iter20_cand008 and iter20_cand007, showed promising ddG values of -27.1 and -21.9 kcal/mol, respectively, but lacked structural validation metrics. Selectivity was strong, with a Δmargin of 9.1021, indicating potential for improved target specificity. However, the primary failure mode was structural instability, which highlights the need for enhanced structural modeling and validation in future iterations.
+            Iteration 20 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one passing all QC gates. The top candidate, iter20_cand008, exhibited a strong ddG of -24.9, indicating favorable binding affinity. However, its structural quality was poor, as evidenced by a pLDDT of 0.0 and a docking score of 0.00, which raises concerns about its reliability and potential for further optimization. Despite the strong selectivity margin (Δmargin > 0), the campaign has not yet demonstrated convergence due to the low structural quality of the candidates. The low pass rate (12.5%) highlights a critical bottleneck in the design pipeline, primarily attributed to structural failures.
 
             ## Recommendations
 
-            - Prioritize structural modeling improvements to address instability and ensure reliable pLDDT and docking scores.
-- Incorporate additional QC checks focused on structural quality to filter out candidates with poor geometry.
-- Explore design strategies that enhance both binding affinity and structural stability simultaneously.
+            - Prioritize improvements in structural modeling and docking protocols to enhance the quality of candidate designs.
+- Investigate the root causes of structural failures to refine the QC criteria and increase the pass rate.
+- Consider increasing the number of candidates generated in the next iteration to improve the chances of identifying structurally sound, high-affinity binders.
+- Maintain a focus on selectivity metrics while addressing structural deficiencies to ensure convergence of the campaign.

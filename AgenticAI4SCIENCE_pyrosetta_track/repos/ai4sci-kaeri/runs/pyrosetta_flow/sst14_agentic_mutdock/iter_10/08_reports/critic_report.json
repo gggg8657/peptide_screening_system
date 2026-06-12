@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 10,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T10:37:29.391527+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is achievable, but selectivity over SSTR3/SSTR5 is the limiting factor. The next iteration should focus on disrupting conserved off-target interactions at non-pharmacophore positions.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T16:40:56.659530+00:00",
+  "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions while maintaining the core pharmacophore. This will help increase the Δmargin and achieve the primary objective of SSTR2 selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,7 +16,7 @@
         11,
         12
       ],
-      "rationale": "These positions are known to form conserved contacts with SSTR3/SSTR5. Focusing mutations here can disrupt off-target binding while preserving pharmacophore integrity at positions 7-10 and Cys3/Cys14."
+      "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3/SSTR5. Focusing design efforts here can help disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
     },
     {
       "parameter_name": "suggested_mutations",
@@ -31,23 +31,23 @@
           "R"
         ],
         "5": [
-          "Y",
-          "F"
+          "A",
+          "G"
         ],
         "6": [
-          "L",
-          "I"
+          "A",
+          "G"
         ],
         "11": [
-          "N",
-          "Q"
+          "A",
+          "G"
         ],
         "12": [
-          "T",
-          "S"
+          "A",
+          "G"
         ]
       },
-      "rationale": "These mutations are designed to disrupt conserved hydrophobic or hydrogen-bonding interactions with SSTR3/SSTR5 while maintaining flexibility and compatibility with the SSTR2 binding pocket."
+      "rationale": "Introducing charged or small hydrophobic residues at these positions can disrupt conserved interactions with off-target SSTR3/SSTR5 while maintaining overall peptide stability and pharmacophore integrity."
     }
   ],
   "current_params": {

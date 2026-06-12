@@ -1,26 +1,33 @@
 {
   "type": "planner",
   "iteration": 8,
-  "run_id": "sst14_mutdock_28000",
-  "timestamp": "2026-06-12T12:00:41.266908+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (e.g., W, F, Y) will enhance complementarity with SSTR2-specific ECL2/TM5 residues (e.g., E193, F205), while mutating position 11 to hydrophobic residues (e.g., L, I, V) will reduce off-target SSTR3/SSTR5 binding by avoiding clashes with conserved residues in those subtypes. This will increase the selectivity margin by improving SSTR2 affinity and reducing off-target affinity.",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T17:54:10.460130+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will improve SSTR2 selectivity by enhancing hydrophobic complementarity with SSTR2-specific ECL2/TM5 pockets, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target interactions by avoiding polar contacts with SSTR3/5.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving strong SSTR2 selectivity, but structural issues are limiting the number of viable candidates. Tightening structural constraints and increasing the candidate pool should improve the pass rate without compromising selectivity.",
+    "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved while reducing off-target interactions. However, structural quality must be improved to increase pass rates and ensure that high ddG candidates are physically viable.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Structural failures suggest excessive clashes in the binding pocket or receptor-ligand interface. Tightening the clash threshold will enforce better geometry and improve structural quality."
+        "rationale": "Structural failures are likely due to poor geometry or clashes in the designed peptides. Lowering the clash threshold will enforce better structural quality and reduce false positives."
       },
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 12,
-        "rationale": "A low number of candidates increases the risk of missing structurally valid designs. Increasing the candidate pool will improve chances of identifying high-quality structures."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions. Focusing design on these positions will allow us to introduce mutations that reduce off-target binding while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -30.6632
+  "previous_best_ddg": -35.0697
 }

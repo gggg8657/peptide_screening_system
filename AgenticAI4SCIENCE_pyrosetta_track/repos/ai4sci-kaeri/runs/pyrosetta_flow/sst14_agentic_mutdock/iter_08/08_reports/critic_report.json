@@ -1,21 +1,35 @@
 {
   "type": "critic",
   "iteration": 8,
-  "run_id": "sst14_mutdock_28000",
-  "timestamp": "2026-06-12T12:03:29.247821+00:00",
-  "hypothesis": "The current designs are failing primarily due to structural issues, not selectivity. Tighter structural constraints and a larger candidate pool are needed to identify a viable SSTR2-selective binder.",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T18:00:55.751285+00:00",
+  "hypothesis": "The current design strategy is generating candidates with strong SSTR2 binding but insufficient selectivity. The focus must shift to explicitly breaking conserved interactions at non-pharmacophore positions to increase Δmargin and achieve true selectivity over native SST-14.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "The current clash score threshold is too lenient, allowing candidates with poor packing and structural instability. Tightening the clash score will enforce better geometry and reduce false positives."
+      "parameter_name": "focus_positions",
+      "old_value": [],
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To disrupt conserved pocket contacts with SSTR3/SSTR5 that may be driving off-target binding while preserving pharmacophore positions 7-10 and Cys3/Cys14."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "The low number of candidates increases the risk of missing high-quality designs. Expanding the candidate pool will improve diversity and increase the chances of finding a structurally valid, selective binder."
+      "parameter_name": "suggested_mutations",
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "T2R",
+        "L5D",
+        "V6E",
+        "I11N",
+        "L12Q"
+      ],
+      "rationale": "These mutations are designed to break conserved pocket interactions with SSTR3/SSTR5 while preserving overall binding to SSTR2."
     }
   ],
   "current_params": {

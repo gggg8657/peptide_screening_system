@@ -1,18 +1,17 @@
-# Iteration 16 Summary: sst14_mutdock_27000
+# Iteration 16 Summary: sst14_mutdock_31000
 
-            - **Run ID**: `sst14_mutdock_27000`
+            - **Run ID**: `sst14_mutdock_31000`
             - **Iteration**: 16
-            - **생성 시각**: 2026-06-12 11:06 UTC
+            - **생성 시각**: 2026-06-12 17:07 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 16 evaluated a total of three candidates, all of which passed the quality control (QC) gates. Despite the complete QC pass rate, the structural and docking quality metrics were severely compromised, with all candidates reporting pLDDT and docking scores of 0.00. This indicates a failure in structural modeling during the design process. However, the binding affinity, as measured by ddG, was strong, with the best value of -41.8 kcal/mol for iter16_cand006. Selectivity was also favorable, with a Δmargin of 9.10, suggesting that the candidates maintain good target specificity despite structural limitations.
-
-The primary failure mode in this iteration was structural modeling inaccuracies, which significantly limit the viability of the candidates for downstream experimental validation. While the binding energy and selectivity are promising, the lack of structural confidence necessitates a reevaluation of the modeling pipeline. The top candidates, iter16_cand006, iter16_cand003, and iter16_cand002, should be revisited in the next iteration with improved structural modeling approaches.
+            Iteration 16 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed the quality control (QC) gates. The designs demonstrated strong binding affinity, as indicated by ddG values ranging from -20.2 to -37.2 kcal/mol. However, the primary objective of achieving SSTR2 selectivity over off-target receptors remains unmet. Critically, the best Δmargin for selectivity was positive but not significantly above the native SST-14 baseline, indicating that the current designs lack the necessary specificity to distinguish SSTR2 from other targets. This failure is categorized under structural_failures, suggesting that the binding mode or structural features may not be optimized for selectivity.
 
             ## Recommendations
 
-            - Investigate and refine the structural modeling pipeline to address the recurring structural failure mode.
-- Reevaluate the top candidates in the next iteration using improved modeling techniques to restore confidence in pLDDT and docking scores.
-- Maintain focus on optimizing binding affinity and selectivity while addressing structural modeling limitations.
+            - Refine the structural design to enhance SSTR2 selectivity, focusing on key residues or interactions that differentiate SSTR2 from off-target receptors.
+- Incorporate selectivity metrics more explicitly into the design and scoring framework to prioritize candidates with improved specificity.
+- Conduct a detailed analysis of the binding modes of the top candidates to identify structural features that may be contributing to the lack of selectivity.
+- Consider introducing additional constraints or penalties in the design process to favor selectivity over affinity when the two conflict.

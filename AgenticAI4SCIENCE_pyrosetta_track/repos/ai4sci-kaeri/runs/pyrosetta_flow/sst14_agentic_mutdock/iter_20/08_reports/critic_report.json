@@ -1,21 +1,21 @@
 {
   "type": "critic",
   "iteration": 20,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T11:25:15.592224+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 selectivity, but structural instability is limiting the pass rate. Tightening structural constraints and increasing candidate diversity should improve the yield of high-quality, selective designs.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T17:22:34.893316+00:00",
+  "hypothesis": "The current protocol generates candidates with strong ddG but poor structural quality. Tightening structural constraints and increasing stability requirements will improve the overall quality of candidates while maintaining selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
-      "new_value": 8,
-      "rationale": "Structural failures suggest excessive clashes in the designed peptides. Lowering the clash tolerance will enforce better geometry and improve structural quality."
+      "new_value": 5,
+      "rationale": "The top candidate has pLDDT=0.0 and dock=0.00, indicating poor structural quality. Lowering the clash threshold will enforce better geometry and reduce clashes in the designed peptides."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 12,
-      "rationale": "The low pass rate (25%) indicates that the current number of candidates is insufficient to find high-quality designs. Increasing the number of candidates will improve the chances of identifying structurally stable and selective peptides."
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "The current ddG threshold is too lenient. Tightening it will ensure only the most stable candidates are selected, increasing the likelihood of high-quality designs."
     }
   ],
   "current_params": {

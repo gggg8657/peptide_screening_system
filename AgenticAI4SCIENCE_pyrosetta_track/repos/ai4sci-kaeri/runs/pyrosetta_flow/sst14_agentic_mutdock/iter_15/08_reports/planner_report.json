@@ -1,26 +1,64 @@
 {
   "type": "planner",
   "iteration": 15,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T10:56:33.128117+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will improve SSTR2 selectivity by enhancing hydrophobic complementarity with SSTR2-unique ECL2 (res 192/193/195/197) and TM5 (205/208/209/212), while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target binding by avoiding electrostatic interactions in SSTR3/5.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T17:01:13.153248+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2/ECL3, while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/SSTR5) electrostatic complementarity, thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are binding strongly to SSTR2 but are failing structurally. The next step is to refine the structural constraints to ensure that high ddG candidates also have valid geometries.",
+    "hypothesis": "The current designs are achieving strong SSTR2 binding but are not sufficiently diverse to avoid off-target interactions. Targeted mutagenesis at non-pharmacophore positions is necessary to enhance selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_ddg_max",
-        "old_value": -15.0,
-        "new_value": -20.0,
-        "rationale": "To filter out candidates with weaker binding energy and improve the structural quality of the top designs."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we must disrupt conserved pocket contacts in SSTR3/SSTR5 at non-pharmacophore positions. Focusing mutations at these positions can help reduce off-target binding."
       },
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 12,
-        "rationale": "To increase the diversity of the candidate pool and improve the chances of generating structurally valid designs."
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "A",
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R",
+            "N"
+          ],
+          "5": [
+            "G",
+            "S",
+            "T"
+          ],
+          "6": [
+            "N",
+            "Q",
+            "T"
+          ],
+          "11": [
+            "A",
+            "V",
+            "I"
+          ],
+          "12": [
+            "S",
+            "T",
+            "N"
+          ]
+        },
+        "rationale": "These mutations are designed to disrupt conserved pocket interactions in SSTR3/SSTR5 while maintaining the overall scaffold and pharmacophore integrity."
       }
     ]
   },
-  "previous_best_ddg": -33.8883
+  "previous_best_ddg": -18.4635
 }

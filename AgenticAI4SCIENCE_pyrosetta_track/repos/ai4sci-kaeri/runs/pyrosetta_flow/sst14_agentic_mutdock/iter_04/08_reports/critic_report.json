@@ -1,21 +1,59 @@
 {
   "type": "critic",
   "iteration": 4,
-  "run_id": "sst14_mutdock_28000",
-  "timestamp": "2026-06-12T11:48:09.919386+00:00",
-  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding with high selectivity over off-target SSTR1/3/4/5 is achievable by preserving the pharmacophore (FWKT7-10 and Cys3/Cys14) and disrupting off-target contacts at non-pharmacophore positions.",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T17:39:32.701136+00:00",
+  "hypothesis": "The current designs show strong binding to SSTR2 but insufficient selectivity over SSTR3/SSTR5. The next iteration should focus on disrupting conserved interactions at non-pharmacophore positions to increase Δmargin and ensure robust selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Structural failures suggest excessive clashes in the binding pocket. Reducing the clash tolerance will enforce better geometry and improve structural quality."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve SSTR2 selectivity, we must disrupt conserved pocket interactions with off-targets (SSTR3/SSTR5) at non-pharmacophore positions. Focusing mutations on these positions can reduce off-target binding while preserving the pharmacophore at positions 7-10 and Cys3/Cys14."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 12,
-      "rationale": "The current pass rate is low (25%), and increasing the number of candidates will improve the chances of identifying more structurally valid and selective designs."
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "A",
+          "G",
+          "S"
+        ],
+        "2": [
+          "R",
+          "K",
+          "E"
+        ],
+        "5": [
+          "N",
+          "D",
+          "Q"
+        ],
+        "6": [
+          "W",
+          "F",
+          "Y"
+        ],
+        "11": [
+          "T",
+          "S",
+          "A"
+        ],
+        "12": [
+          "C",
+          "S",
+          "T"
+        ]
+      },
+      "rationale": "These mutations are designed to disrupt conserved interactions with SSTR3/SSTR5 while maintaining flexibility and compatibility with SSTR2 binding. For example, introducing charged or polar residues at position 2 can reduce off-target binding."
     }
   ],
   "current_params": {

@@ -1,18 +1,17 @@
-# Iteration 14 Summary: sst14_mutdock_27000
+# Iteration 14 Summary: sst14_mutdock_31000
 
-            - **Run ID**: `sst14_mutdock_27000`
+            - **Run ID**: `sst14_mutdock_31000`
             - **Iteration**: 14
-            - **생성 시각**: 2026-06-12 10:55 UTC
+            - **생성 시각**: 2026-06-12 17:00 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 14 evaluated three candidates for SSTR2 peptide binder design, all of which passed the QC gates. The primary focus of this iteration was to improve binding affinity while maintaining selectivity. The results showed strong binding affinities, as indicated by ddG values ranging from -21.1 to -33.9 kcal/mol. However, the pLDDT and docking scores remained at 0.0, suggesting that structural quality remains a critical issue. The selectivity margin was positive, indicating some success in maintaining selectivity, but the overall pass rate was low due to structural failures. This highlights the need for a more focused effort on improving structural integrity in the next iteration.
-
-The top candidates, iter14_cand007, iter14_cand003, and iter14_cand001, demonstrated the strongest binding affinities, with iter14_cand007 showing the most favorable ddG of -33.9 kcal/mol. Despite these promising results, the structural failures observed in this iteration suggest that the design process must be refined to ensure that structural quality is not compromised in pursuit of stronger binding. The next iteration should prioritize strategies to enhance structural stability while maintaining or improving selectivity.
+            Iteration 14 of the SSTR2 peptide binder design campaign evaluated a total of 8 candidates, with only 1 candidate passing all QC gates, resulting in a low pass rate of 12.5%. The sole candidate that passed QC, iter14_cand006, demonstrated a strong ddG value of -18.5, indicating favorable binding affinity. However, the overall low yield suggests that the design space may be constrained or that off-target binding issues are prevalent among the failed candidates. The primary failure mode was structural failures, which may point to limitations in the current design strategy or sampling approach.
 
             ## Recommendations
 
-            - Prioritize structural quality in the next iteration to address the observed structural failures.
-- Maintain a focus on selectivity while optimizing for stronger binding affinities.
-- Refine the design process to ensure that improvements in ddG do not come at the expense of structural integrity.
+            - Investigate the structural failures in the failed candidates to identify common motifs or design constraints.
+- Enhance the diversity of the design space by incorporating alternative scaffold or sequence motifs.
+- Refine the docking and scoring protocols to better capture off-target interactions and improve selectivity.
+- Consider increasing the sampling depth to explore a broader range of binding conformations.

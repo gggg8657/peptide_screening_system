@@ -1,26 +1,58 @@
 {
   "type": "planner",
   "iteration": 6,
-  "run_id": "sst14_mutdock_28000",
-  "timestamp": "2026-06-12T11:52:55.507936+00:00",
-  "hypothesis": "Enhancing steric complementarity with SSTR2-unique ECL2/TM5 residues by introducing bulky aromatic residues at position 5 and 6 will increase selectivity margin by differentiating SSTR2 from SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T17:43:46.913061+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2 (res 192/193/195/197) and TM5 (205/208/209/212), while mutating position 6 to acidic residues (E/D) will disrupt off-target SSTR3/SSTR5 electrostatic interactions without compromising SSTR2 affinity, thereby increasing the selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving good selectivity but are structurally suboptimal. Tightening structural constraints and increasing candidate diversity will help maintain selectivity while improving structural quality.",
+    "hypothesis": "The current designs are achieving strong SSTR2 binding but are not sufficiently differentiating from off-target SSTR3/SSTR5. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 8,
-        "rationale": "Structural failures are likely due to steric clashes in the designed peptides. Lowering the clash threshold will enforce better geometry and reduce structural failures."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are known to contribute to conserved pocket interactions with SSTR3/SSTR5. Focusing mutations here can disrupt off-target binding while preserving pharmacophore positions."
       },
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 12,
-        "rationale": "The current number of candidates is low, which may limit the diversity of designs. Increasing the number of candidates will improve the chances of generating structurally valid and selective designs."
+        "parameter_name": "suggested_mutations",
+        "old_value": null,
+        "new_value": {
+          "1": [
+            "D",
+            "E"
+          ],
+          "2": [
+            "K",
+            "R"
+          ],
+          "5": [
+            "N",
+            "Q"
+          ],
+          "6": [
+            "T",
+            "S"
+          ],
+          "11": [
+            "P",
+            "A"
+          ],
+          "12": [
+            "V",
+            "I"
+          ]
+        },
+        "rationale": "These mutations are designed to break conserved hydrogen bonds and hydrophobic interactions in SSTR3/SSTR5 pockets while maintaining flexibility and compatibility with SSTR2 pharmacophore."
       }
     ]
   },
-  "previous_best_ddg": -19.5739
+  "previous_best_ddg": -30.0026
 }

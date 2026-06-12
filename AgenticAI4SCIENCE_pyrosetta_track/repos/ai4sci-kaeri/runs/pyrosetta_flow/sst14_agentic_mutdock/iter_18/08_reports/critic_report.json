@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 18,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T11:17:49.842947+00:00",
-  "hypothesis": "The current design protocol is generating a small number of candidates with strong SSTR2 binding but insufficient diversity to explore the full selectivity landscape. Relaxing the ddG threshold and increasing the candidate pool will improve the chances of identifying a more selective binder.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T17:15:10.580124+00:00",
+  "hypothesis": "The current designs are achieving good selectivity (Δmargin > 0), but structural quality remains a bottleneck. Tightening structural constraints and focusing mutations at non-pharmacophore positions should improve overall quality and increase the pass rate.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -10.0,
-      "rationale": "The current ddG threshold is too stringent, filtering out potentially viable candidates with strong but slightly less optimal binding. Relaxing the threshold may increase the pass rate while still maintaining a focus on strong SSTR2 binding."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Clash filtering is too lenient, allowing candidates with poor structural quality to pass. Tightening the clash threshold will improve structural fidelity."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "A small candidate pool limits the chances of generating a high-quality, selective binder. Increasing the number of candidates will improve diversity and the likelihood of hitting the selectivity target."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we need to disrupt conserved-pocket contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
     }
   ],
   "current_params": {

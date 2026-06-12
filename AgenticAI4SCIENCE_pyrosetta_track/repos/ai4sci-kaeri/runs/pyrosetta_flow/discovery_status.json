@@ -1,10 +1,10 @@
 {
   "running": true,
-  "epochs_done": 26,
-  "elapsed_seconds": 171338.8,
+  "epochs_done": 30,
+  "elapsed_seconds": 192663.3,
   "global_best_delta_margin": 9.1021,
   "passing_count": 31,
-  "diversity_level": 6,
+  "diversity_level": 7,
   "top": [
     {
       "sequence": "ARCGKFFWKTATSC",
@@ -118,19 +118,19 @@
     }
   ],
   "last_epoch": {
-    "epoch": 26,
-    "seed_base": 27000,
+    "epoch": 30,
+    "seed_base": 31000,
     "max_random_mutations": 6,
     "ran_ok": true,
     "error": "",
     "global_best_delta": 9.1021,
     "n_unique_screened": 50,
     "passing_count": 31,
-    "diversity_level": 6,
-    "stale_epochs": 1,
+    "diversity_level": 7,
+    "stale_epochs": 2,
     "improved": false,
     "next_max_mutations": 6,
-    "epoch_seconds": 6464.1
+    "epoch_seconds": 5437.3
   },
   "history": [
     {
@@ -522,6 +522,66 @@
       "improved": false,
       "next_max_mutations": 6,
       "epoch_seconds": 6464.1
+    },
+    {
+      "epoch": 27,
+      "seed_base": 28000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 31,
+      "diversity_level": 6,
+      "stale_epochs": 2,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 5423.3
+    },
+    {
+      "epoch": 28,
+      "seed_base": 29000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 31,
+      "diversity_level": 7,
+      "stale_epochs": 0,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 5032.1
+    },
+    {
+      "epoch": 29,
+      "seed_base": 30000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 31,
+      "diversity_level": 7,
+      "stale_epochs": 1,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 5431.8
+    },
+    {
+      "epoch": 30,
+      "seed_base": 31000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 31,
+      "diversity_level": 7,
+      "stale_epochs": 2,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 5437.3
     }
   ]
 }

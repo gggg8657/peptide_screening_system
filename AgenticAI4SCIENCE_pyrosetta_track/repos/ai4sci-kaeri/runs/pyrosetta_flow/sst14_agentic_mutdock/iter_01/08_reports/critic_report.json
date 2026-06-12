@@ -1,15 +1,15 @@
 {
   "type": "critic",
   "iteration": 1,
-  "run_id": "sst14_mutdock_28000",
-  "timestamp": "2026-06-12T11:37:08.363076+00:00",
-  "hypothesis": "The current hypothesis remains valid: SSTR2 selectivity can be achieved by optimizing for Δmargin. However, the optimization strategy should now incorporate selectivity-weighted objectives and targeted mutagenesis at non-pharmacophore positions.",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T17:28:47.028488+00:00",
+  "hypothesis": "The current hypothesis is valid: strong SSTR2 binding can be achieved. However, the next step is to refine the design to enhance selectivity by disrupting off-target interactions at non-pharmacophore positions.",
   "proposed_changes": [
     {
       "parameter_name": "objective_mode",
       "old_value": "ddg_only",
       "new_value": "selectivity_weighted",
-      "rationale": "To prioritize selectivity over binding affinity alone, the objective function should incorporate a weighted Δmargin metric to guide the design toward SSTR2-specific interactions."
+      "rationale": "The current objective prioritizes binding affinity (ddG) but not selectivity. Introducing a weighted objective that balances ddG with Δmargin will ensure candidates are optimized for SSTR2 selectivity."
     },
     {
       "parameter_name": "focus_positions",
@@ -22,7 +22,7 @@
         11,
         12
       ],
-      "rationale": "Disrupting conserved pocket contacts at these non-pharmacophore positions can reduce off-target binding to SSTR3/SSTR5 while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
+      "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing mutations at these positions can disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {

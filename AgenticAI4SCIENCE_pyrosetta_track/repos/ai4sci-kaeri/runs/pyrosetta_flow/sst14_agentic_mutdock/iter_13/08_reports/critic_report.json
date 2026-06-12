@@ -1,21 +1,35 @@
 {
   "type": "critic",
   "iteration": 13,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T10:48:18.700112+00:00",
-  "hypothesis": "The current designs are achieving good ddG and selectivity but are failing structurally. Tightening structural constraints and increasing candidate diversity may help generate designs that are both structurally valid and selective.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T16:56:44.101863+00:00",
+  "hypothesis": "The current focus on ddG binding energy is insufficient for achieving SSTR2 selectivity. The next iteration must prioritize disrupting off-target contacts at non-pharmacophore positions to increase Δmargin.",
   "proposed_changes": [
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs."
+      "parameter_name": "focus_positions",
+      "old_value": [],
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "Target non-pharmacophore positions where off-target contacts with SSTR3/SSTR5 are likely to occur. Disrupting these interactions will improve selectivity."
     },
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Reduce the allowed clash score to enforce better structural quality and avoid steric clashes in the binding pocket."
+      "parameter_name": "suggested_mutations",
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "A2R",
+        "V5D",
+        "L6E",
+        "F11Y",
+        "L12N"
+      ],
+      "rationale": "Propose mutations at focus positions to disrupt conserved pocket interactions with SSTR3/SSTR5, while preserving key pharmacophore residues (FWKT7-10) and cysteines."
     }
   ],
   "current_params": {

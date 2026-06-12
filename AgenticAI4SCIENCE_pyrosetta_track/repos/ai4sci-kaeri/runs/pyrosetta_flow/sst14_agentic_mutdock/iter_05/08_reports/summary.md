@@ -1,16 +1,16 @@
-# Iteration 5 Summary: sst14_mutdock_28000
+# Iteration 5 Summary: sst14_mutdock_32000
 
-            - **Run ID**: `sst14_mutdock_28000`
+            - **Run ID**: `sst14_mutdock_32000`
             - **Iteration**: 5
-            - **생성 시각**: 2026-06-12 11:52 UTC
+            - **생성 시각**: 2026-06-12 17:43 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 5 of the SSTR2 peptide binder design campaign evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The results demonstrated strong binding affinities, as indicated by ddG values ranging from -15.1 to -19.6 kcal/mol. However, the structural integrity of the candidates appears to be a limiting factor, as evidenced by the low pass rate of 37.5% in the previous iteration, suggesting that structural failures remain a critical issue to address. Notably, the selectivity margin (Δmargin) remains robustly positive, indicating continued progress toward achieving SSTR2 selectivity over other targets. This suggests that the design strategy is on the right trajectory for selectivity, but improvements in structural stability are necessary to increase the number of viable candidates.
+            Iteration 5 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, both of which passed all QC gates. The designs demonstrated strong ddG values, with the best candidate (iter05_cand003) achieving a ddG of -30.0 kcal/mol. However, structural failures were the primary mode of failure, indicating a need for improved structural stability in future designs. Additionally, selectivity remains a critical bottleneck, as the best Δmargin is still driven by a limited number of high-performing candidates. This suggests that while binding affinity is being effectively optimized, off-target disruption must be addressed to ensure broader selectivity across the target landscape.
 
             ## Recommendations
 
-            - Focus on improving structural stability in the next iteration to increase the pass rate and reduce structural failures.
-- Investigate the sequence and structural features of the top candidates to identify patterns that contribute to strong ddG values and robust selectivity.
-- Consider incorporating additional constraints or design rules to enhance structural integrity while maintaining binding affinity and selectivity.
+            - Prioritize structural stability in the next iteration to reduce structural failure rates.
+- Incorporate additional selectivity metrics into the design pipeline to improve off-target discrimination.
+- Focus on expanding the Δmargin by exploring a broader range of design features that enhance both affinity and selectivity.

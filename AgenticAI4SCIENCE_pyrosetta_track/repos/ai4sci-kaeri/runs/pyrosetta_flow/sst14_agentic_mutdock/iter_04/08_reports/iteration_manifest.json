@@ -1,69 +1,68 @@
 {
   "type": "iteration_manifest",
   "iteration": 4,
-  "run_id": "sst14_mutdock_28000",
-  "timestamp": "2026-06-12T11:48:50.295816+00:00",
+  "run_id": "sst14_mutdock_32000",
+  "timestamp": "2026-06-12T17:40:14.679828+00:00",
   "receptor_pdb": "data/somatostatin_receptor/SSTR2_SST14_complex_boltz_1.pdb",
   "baseline_pdb": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/baseline_refined.pdb",
   "candidates": [
     {
-      "candidate_id": "iter04_cand005",
-      "sequence": "MYCDNWFWKTLISC",
-      "ddg": -25.6447,
+      "candidate_id": "iter04_cand003",
+      "sequence": "AGCKWFFWKTLTSC",
+      "ddg": -43.0263,
       "clash_count": 0,
       "pass_gates": true,
       "fail_reasons": [],
-      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_005.pdb",
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_003.pdb",
       "pharma": {
-        "sequence": "MYCDNWFWKTLISC",
+        "sequence": "AGCKWFFWKTLTSC",
         "length": 14,
-        "gravy": 0.17857142857142852,
-        "boman_index": 0.33071428571428585,
-        "instability_index": 55.83571428571429,
-        "aliphatic_index": 55.714285714285715,
-        "isoelectric_point": 6.58,
-        "extinction_coefficient": 12615,
+        "gravy": 0.28571428571428564,
+        "boman_index": -0.0864285714285716,
+        "instability_index": 32.57142857142858,
+        "aliphatic_index": 35.0,
+        "isoelectric_point": 10.62,
+        "extinction_coefficient": 11125,
         "nend_rule_halflife": {
-          "n_terminal_residue": "M",
+          "n_terminal_residue": "A",
           "half_life_hours": 30.0,
           "category": "stable"
         },
-        "hydrophobic_moment_alpha": 0.2832691113542988,
-        "hydrophobic_moment_beta": 0.20134657629886227,
+        "hydrophobic_moment_alpha": 0.17577812773312562,
+        "hydrophobic_moment_beta": 0.17866553895108359,
         "wimley_white": {
-          "total_dG": -4.44,
-          "mean_dG": -0.317,
+          "total_dG": -4.43,
+          "mean_dG": -0.316,
           "per_residue": [
-            -0.23,
-            -0.94,
+            0.17,
+            0.01,
             -0.24,
-            1.23,
-            0.42,
+            0.99,
             -1.85,
+            -1.13,
             -1.13,
             -1.85,
             0.99,
             0.14,
             -0.56,
-            -0.31,
+            0.14,
             0.13,
             -0.24
           ]
         },
-        "net_charge_ph74": -0.008,
-        "net_charge_ph65": 0.0,
+        "net_charge_ph74": 1.993,
+        "net_charge_ph65": 1.999,
         "molecular_weight": {
-          "mw_average": 1808.12,
-          "mw_monoisotopic": 1807.03,
+          "mw_average": 1675.99,
+          "mw_monoisotopic": 1674.98,
           "n_residues": 14,
           "n_disulfide": 1
         },
         "protease_sites": {
           "chymotrypsin": {
-            "count": 6,
+            "count": 5,
             "positions": [
-              1,
-              2,
+              5,
               6,
               7,
               8,
@@ -71,44 +70,44 @@
             ]
           },
           "trypsin": {
-            "count": 1,
+            "count": 2,
             "positions": [
+              4,
               9
             ]
           },
           "neprilysin": {
-            "count": 6,
+            "count": 5,
             "positions": [
-              2,
+              5,
               6,
               7,
               8,
-              11,
-              12
+              11
             ]
           },
           "dppiv": {
             "count": 0,
             "positions": []
           },
-          "total": 13
+          "total": 12
         },
         "blosum62": {
-          "total_score": 50,
+          "total_score": 71,
           "per_position": [
             {
               "position": 1,
               "reference": "A",
-              "query": "M",
-              "score": -1,
-              "category": "non-conservative"
+              "query": "A",
+              "score": 4,
+              "category": "identical"
             },
             {
               "position": 2,
               "reference": "G",
-              "query": "Y",
-              "score": -3,
-              "category": "non-conservative"
+              "query": "G",
+              "score": 6,
+              "category": "identical"
             },
             {
               "position": 3,
@@ -120,23 +119,23 @@
             {
               "position": 4,
               "reference": "K",
-              "query": "D",
-              "score": -1,
-              "category": "non-conservative"
+              "query": "K",
+              "score": 5,
+              "category": "identical"
             },
             {
               "position": 5,
               "reference": "N",
-              "query": "N",
-              "score": 6,
-              "category": "identical"
+              "query": "W",
+              "score": -4,
+              "category": "non-conservative"
             },
             {
               "position": 6,
               "reference": "F",
-              "query": "W",
-              "score": 1,
-              "category": "conservative"
+              "query": "F",
+              "score": 6,
+              "category": "identical"
             },
             {
               "position": 7,
@@ -176,9 +175,643 @@
             {
               "position": 12,
               "reference": "T",
-              "query": "I",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 13,
+              "reference": "S",
+              "query": "S",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 14,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            }
+          ],
+          "n_mutations": 2
+        },
+        "metal_coordination": {
+          "residues": {
+            "His_imidazole": [],
+            "Cys_thiolate": [
+              3,
+              14
+            ],
+            "Asp_carboxylate": [],
+            "Glu_carboxylate": [],
+            "Met_thioether": []
+          },
+          "total_coordinating": 2,
+          "potential_metals": [
+            "Cu2+",
+            "Zn2+"
+          ]
+        },
+        "structural_rules": {
+          "rules": {
+            "fwkt_pharmacophore": {
+              "pass": true,
+              "detail": "positions 7-10 = FWKT"
+            },
+            "k9_salt_bridge": {
+              "pass": true,
+              "detail": "position 9 = K"
+            },
+            "cys3_cys14_disulfide": {
+              "pass": true,
+              "detail": "pos3=C, pos14=C"
+            },
+            "phe6_phe11_stacking": {
+              "pass": false,
+              "detail": "pos6=F, pos11=L"
+            },
+            "nterm_chelator": {
+              "pass": true,
+              "detail": "pos1=A (preferred)"
+            }
+          },
+          "all_pass": false
+        },
+        "radiolysis_susceptibility": {
+          "total_score": 9.0,
+          "risk_level": "high",
+          "vulnerable_residues": [
+            {
+              "position": 3,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            },
+            {
+              "position": 5,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 6,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 14,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            }
+          ],
+          "critical_positions": [
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            }
+          ]
+        }
+      },
+      "cluster": {
+        "cluster": "E",
+        "cluster_name": "Exploratory Candidates",
+        "priority": 5,
+        "criteria_met": {
+          "A": {
+            "ddG_lte_minus8": false,
+            "clash_lte_5": false,
+            "pLDDT_gte_75": true,
+            "pLDDT_available": false,
+            "fwkt_contact": true
+          },
+          "B": {
+            "selectivity_margin_gte_3": false,
+            "ddG_binding_present": false
+          },
+          "C": {
+            "instability_lt_30": false,
+            "blosum62_nonnegative": true,
+            "protease_sites_reduced": false
+          },
+          "D": {
+            "gravy_in_range": true,
+            "net_charge_low": false,
+            "chelator_site_available": true
+          }
+        },
+        "note": "Does not meet A–D criteria; includes non-conservative substitutions or Tier 3 exploratory candidates."
+      }
+    },
+    {
+      "candidate_id": "iter04_cand005",
+      "sequence": "AGCKWFFWKTVTSC",
+      "ddg": -31.2178,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_005.pdb",
+      "pharma": {
+        "sequence": "AGCKWFFWKTVTSC",
+        "length": 14,
+        "gravy": 0.3142857142857142,
+        "boman_index": -0.023571428571428688,
+        "instability_index": 26.507142857142856,
+        "aliphatic_index": 27.857142857142858,
+        "isoelectric_point": 10.62,
+        "extinction_coefficient": 11125,
+        "nend_rule_halflife": {
+          "n_terminal_residue": "A",
+          "half_life_hours": 30.0,
+          "category": "stable"
+        },
+        "hydrophobic_moment_alpha": 0.17709110398750835,
+        "hydrophobic_moment_beta": 0.17684953914601256,
+        "wimley_white": {
+          "total_dG": -3.8,
+          "mean_dG": -0.271,
+          "per_residue": [
+            0.17,
+            0.01,
+            -0.24,
+            0.99,
+            -1.85,
+            -1.13,
+            -1.13,
+            -1.85,
+            0.99,
+            0.14,
+            0.07,
+            0.14,
+            0.13,
+            -0.24
+          ]
+        },
+        "net_charge_ph74": 1.993,
+        "net_charge_ph65": 1.999,
+        "molecular_weight": {
+          "mw_average": 1661.97,
+          "mw_monoisotopic": 1660.97,
+          "n_residues": 14,
+          "n_disulfide": 1
+        },
+        "protease_sites": {
+          "chymotrypsin": {
+            "count": 4,
+            "positions": [
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          "trypsin": {
+            "count": 2,
+            "positions": [
+              4,
+              9
+            ]
+          },
+          "neprilysin": {
+            "count": 5,
+            "positions": [
+              5,
+              6,
+              7,
+              8,
+              11
+            ]
+          },
+          "dppiv": {
+            "count": 0,
+            "positions": []
+          },
+          "total": 11
+        },
+        "blosum62": {
+          "total_score": 70,
+          "per_position": [
+            {
+              "position": 1,
+              "reference": "A",
+              "query": "A",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 2,
+              "reference": "G",
+              "query": "G",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 3,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            },
+            {
+              "position": 4,
+              "reference": "K",
+              "query": "K",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 5,
+              "reference": "N",
+              "query": "W",
+              "score": -4,
+              "category": "non-conservative"
+            },
+            {
+              "position": 6,
+              "reference": "F",
+              "query": "F",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 7,
+              "reference": "F",
+              "query": "F",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 8,
+              "reference": "W",
+              "query": "W",
+              "score": 11,
+              "category": "identical"
+            },
+            {
+              "position": 9,
+              "reference": "K",
+              "query": "K",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 10,
+              "reference": "T",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 11,
+              "reference": "F",
+              "query": "V",
               "score": -1,
               "category": "non-conservative"
+            },
+            {
+              "position": 12,
+              "reference": "T",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 13,
+              "reference": "S",
+              "query": "S",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 14,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            }
+          ],
+          "n_mutations": 2
+        },
+        "metal_coordination": {
+          "residues": {
+            "His_imidazole": [],
+            "Cys_thiolate": [
+              3,
+              14
+            ],
+            "Asp_carboxylate": [],
+            "Glu_carboxylate": [],
+            "Met_thioether": []
+          },
+          "total_coordinating": 2,
+          "potential_metals": [
+            "Cu2+",
+            "Zn2+"
+          ]
+        },
+        "structural_rules": {
+          "rules": {
+            "fwkt_pharmacophore": {
+              "pass": true,
+              "detail": "positions 7-10 = FWKT"
+            },
+            "k9_salt_bridge": {
+              "pass": true,
+              "detail": "position 9 = K"
+            },
+            "cys3_cys14_disulfide": {
+              "pass": true,
+              "detail": "pos3=C, pos14=C"
+            },
+            "phe6_phe11_stacking": {
+              "pass": false,
+              "detail": "pos6=F, pos11=V"
+            },
+            "nterm_chelator": {
+              "pass": true,
+              "detail": "pos1=A (preferred)"
+            }
+          },
+          "all_pass": false
+        },
+        "radiolysis_susceptibility": {
+          "total_score": 9.0,
+          "risk_level": "high",
+          "vulnerable_residues": [
+            {
+              "position": 3,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            },
+            {
+              "position": 5,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 6,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 14,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            }
+          ],
+          "critical_positions": [
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            }
+          ]
+        }
+      },
+      "cluster": {
+        "cluster": "E",
+        "cluster_name": "Exploratory Candidates",
+        "priority": 5,
+        "criteria_met": {
+          "A": {
+            "ddG_lte_minus8": false,
+            "clash_lte_5": false,
+            "pLDDT_gte_75": true,
+            "pLDDT_available": false,
+            "fwkt_contact": true
+          },
+          "B": {
+            "selectivity_margin_gte_3": false,
+            "ddG_binding_present": false
+          },
+          "C": {
+            "instability_lt_30": true,
+            "blosum62_nonnegative": true,
+            "protease_sites_reduced": false
+          },
+          "D": {
+            "gravy_in_range": true,
+            "net_charge_low": false,
+            "chelator_site_available": true
+          }
+        },
+        "note": "Does not meet A–D criteria; includes non-conservative substitutions or Tier 3 exploratory candidates."
+      }
+    },
+    {
+      "candidate_id": "iter04_cand008",
+      "sequence": "AHCHYLFWKTDNSC",
+      "ddg": -30.2657,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_008.pdb",
+      "pharma": {
+        "sequence": "AHCHYLFWKTDNSC",
+        "length": 14,
+        "gravy": -0.5428571428571429,
+        "boman_index": 1.5528571428571427,
+        "instability_index": 81.17857142857143,
+        "aliphatic_index": 35.0,
+        "isoelectric_point": 7.9,
+        "extinction_coefficient": 7115,
+        "nend_rule_halflife": {
+          "n_terminal_residue": "A",
+          "half_life_hours": 30.0,
+          "category": "stable"
+        },
+        "hydrophobic_moment_alpha": 0.22160486156382822,
+        "hydrophobic_moment_beta": 0.3529531685829798,
+        "wimley_white": {
+          "total_dG": 0.04,
+          "mean_dG": 0.003,
+          "per_residue": [
+            0.17,
+            0.96,
+            -0.24,
+            0.96,
+            -0.94,
+            -0.56,
+            -1.13,
+            -1.85,
+            0.99,
+            0.14,
+            1.23,
+            0.42,
+            0.13,
+            -0.24
+          ]
+        },
+        "net_charge_ph74": 0.069,
+        "net_charge_ph65": 0.481,
+        "molecular_weight": {
+          "mw_average": 1722.92,
+          "mw_monoisotopic": 1721.89,
+          "n_residues": 14,
+          "n_disulfide": 1
+        },
+        "protease_sites": {
+          "chymotrypsin": {
+            "count": 4,
+            "positions": [
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          "trypsin": {
+            "count": 1,
+            "positions": [
+              9
+            ]
+          },
+          "neprilysin": {
+            "count": 4,
+            "positions": [
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          "dppiv": {
+            "count": 0,
+            "positions": []
+          },
+          "total": 9
+        },
+        "blosum62": {
+          "total_score": 45,
+          "per_position": [
+            {
+              "position": 1,
+              "reference": "A",
+              "query": "A",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 2,
+              "reference": "G",
+              "query": "H",
+              "score": -2,
+              "category": "non-conservative"
+            },
+            {
+              "position": 3,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            },
+            {
+              "position": 4,
+              "reference": "K",
+              "query": "H",
+              "score": -1,
+              "category": "non-conservative"
+            },
+            {
+              "position": 5,
+              "reference": "N",
+              "query": "Y",
+              "score": -2,
+              "category": "non-conservative"
+            },
+            {
+              "position": 6,
+              "reference": "F",
+              "query": "L",
+              "score": 0,
+              "category": "semi-conservative"
+            },
+            {
+              "position": 7,
+              "reference": "F",
+              "query": "F",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 8,
+              "reference": "W",
+              "query": "W",
+              "score": 11,
+              "category": "identical"
+            },
+            {
+              "position": 9,
+              "reference": "K",
+              "query": "K",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 10,
+              "reference": "T",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 11,
+              "reference": "F",
+              "query": "D",
+              "score": -3,
+              "category": "non-conservative"
+            },
+            {
+              "position": 12,
+              "reference": "T",
+              "query": "N",
+              "score": 0,
+              "category": "semi-conservative"
             },
             {
               "position": 13,
@@ -199,20 +832,21 @@
         },
         "metal_coordination": {
           "residues": {
-            "His_imidazole": [],
+            "His_imidazole": [
+              2,
+              4
+            ],
             "Cys_thiolate": [
               3,
               14
             ],
             "Asp_carboxylate": [
-              4
+              11
             ],
             "Glu_carboxylate": [],
-            "Met_thioether": [
-              1
-            ]
+            "Met_thioether": []
           },
-          "total_coordinating": 4,
+          "total_coordinating": 5,
           "potential_metals": [
             "Ac3+",
             "Ca2+",
@@ -239,30 +873,24 @@
             },
             "phe6_phe11_stacking": {
               "pass": false,
-              "detail": "pos6=W, pos11=L"
+              "detail": "pos6=L, pos11=D"
             },
             "nterm_chelator": {
-              "pass": false,
-              "detail": "pos1=M (suboptimal)"
+              "pass": true,
+              "detail": "pos1=A (preferred)"
             }
           },
           "all_pass": false
         },
         "radiolysis_susceptibility": {
-          "total_score": 12.5,
+          "total_score": 10.5,
           "risk_level": "high",
           "vulnerable_residues": [
             {
-              "position": 1,
-              "residue": "M",
-              "mechanism": "sulphur oxidation to Met-sulfoxide",
-              "weight": 3.0
-            },
-            {
               "position": 2,
-              "residue": "Y",
-              "mechanism": "phenol ring oxidation / dityrosine",
-              "weight": 1.0
+              "residue": "H",
+              "mechanism": "imidazole ring oxidation",
+              "weight": 2.0
             },
             {
               "position": 3,
@@ -271,10 +899,16 @@
               "weight": 1.0
             },
             {
-              "position": 6,
-              "residue": "W",
-              "mechanism": "indole ring oxidation to kynurenine",
-              "weight": 3.0
+              "position": 4,
+              "residue": "H",
+              "mechanism": "imidazole ring oxidation",
+              "weight": 2.0
+            },
+            {
+              "position": 5,
+              "residue": "Y",
+              "mechanism": "phenol ring oxidation / dityrosine",
+              "weight": 1.0
             },
             {
               "position": 7,
@@ -330,7 +964,7 @@
           "C": {
             "instability_lt_30": false,
             "blosum62_nonnegative": true,
-            "protease_sites_reduced": false
+            "protease_sites_reduced": true
           },
           "D": {
             "gravy_in_range": true,
@@ -343,38 +977,38 @@
     },
     {
       "candidate_id": "iter04_cand001",
-      "sequence": "RVCMQLFWKTITSC",
-      "ddg": -17.1021,
+      "sequence": "AGCKYFFWKTITSC",
+      "ddg": -25.4827,
       "clash_count": 0,
       "pass_gates": true,
       "fail_reasons": [],
       "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_001.pdb",
       "pharma": {
-        "sequence": "RVCMQLFWKTITSC",
+        "sequence": "AGCKYFFWKTITSC",
         "length": 14,
-        "gravy": 0.5142857142857142,
-        "boman_index": 0.7464285714285716,
-        "instability_index": 50.47142857142857,
-        "aliphatic_index": 76.42857142857143,
-        "isoelectric_point": 11.54,
-        "extinction_coefficient": 5625,
+        "gravy": 0.3071428571428571,
+        "boman_index": 0.0899999999999999,
+        "instability_index": 32.57142857142858,
+        "aliphatic_index": 35.0,
+        "isoelectric_point": 10.21,
+        "extinction_coefficient": 7115,
         "nend_rule_halflife": {
-          "n_terminal_residue": "R",
-          "half_life_hours": 1.0,
-          "category": "very_unstable"
+          "n_terminal_residue": "A",
+          "half_life_hours": 30.0,
+          "category": "stable"
         },
-        "hydrophobic_moment_alpha": 0.48496131214352894,
-        "hydrophobic_moment_beta": 0.4258668384902026,
+        "hydrophobic_moment_alpha": 0.24485394496774762,
+        "hydrophobic_moment_beta": 0.1347989520850723,
         "wimley_white": {
-          "total_dG": -1.7,
-          "mean_dG": -0.121,
+          "total_dG": -3.27,
+          "mean_dG": -0.234,
           "per_residue": [
-            0.81,
-            0.07,
+            0.17,
+            0.01,
             -0.24,
-            -0.23,
-            0.58,
-            -0.56,
+            0.99,
+            -0.94,
+            -1.13,
             -1.13,
             -1.85,
             0.99,
@@ -385,11 +1019,11 @@
             -0.24
           ]
         },
-        "net_charge_ph74": 1.994,
+        "net_charge_ph74": 1.991,
         "net_charge_ph65": 1.999,
         "molecular_weight": {
-          "mw_average": 1714.1,
-          "mw_monoisotopic": 1713.07,
+          "mw_average": 1652.95,
+          "mw_monoisotopic": 1651.96,
           "n_residues": 14,
           "n_disulfide": 1
         },
@@ -397,7 +1031,7 @@
           "chymotrypsin": {
             "count": 4,
             "positions": [
-              4,
+              5,
               6,
               7,
               8
@@ -406,15 +1040,14 @@
           "trypsin": {
             "count": 2,
             "positions": [
-              1,
+              4,
               9
             ]
           },
           "neprilysin": {
-            "count": 6,
+            "count": 5,
             "positions": [
-              2,
-              4,
+              5,
               6,
               7,
               8,
@@ -425,24 +1058,24 @@
             "count": 0,
             "positions": []
           },
-          "total": 12
+          "total": 11
         },
         "blosum62": {
-          "total_score": 49,
+          "total_score": 73,
           "per_position": [
             {
               "position": 1,
               "reference": "A",
-              "query": "R",
-              "score": -1,
-              "category": "non-conservative"
+              "query": "A",
+              "score": 4,
+              "category": "identical"
             },
             {
               "position": 2,
               "reference": "G",
-              "query": "V",
-              "score": -3,
-              "category": "non-conservative"
+              "query": "G",
+              "score": 6,
+              "category": "identical"
             },
             {
               "position": 3,
@@ -454,23 +1087,23 @@
             {
               "position": 4,
               "reference": "K",
-              "query": "M",
-              "score": -1,
-              "category": "non-conservative"
+              "query": "K",
+              "score": 5,
+              "category": "identical"
             },
             {
               "position": 5,
               "reference": "N",
-              "query": "Q",
-              "score": 0,
-              "category": "semi-conservative"
+              "query": "Y",
+              "score": -2,
+              "category": "non-conservative"
             },
             {
               "position": 6,
               "reference": "F",
-              "query": "L",
-              "score": 0,
-              "category": "semi-conservative"
+              "query": "F",
+              "score": 6,
+              "category": "identical"
             },
             {
               "position": 7,
@@ -529,7 +1162,7 @@
               "category": "identical"
             }
           ],
-          "n_mutations": 6
+          "n_mutations": 2
         },
         "metal_coordination": {
           "residues": {
@@ -540,11 +1173,9 @@
             ],
             "Asp_carboxylate": [],
             "Glu_carboxylate": [],
-            "Met_thioether": [
-              4
-            ]
+            "Met_thioether": []
           },
-          "total_coordinating": 3,
+          "total_coordinating": 2,
           "potential_metals": [
             "Cu2+",
             "Zn2+"
@@ -566,17 +1197,17 @@
             },
             "phe6_phe11_stacking": {
               "pass": false,
-              "detail": "pos6=L, pos11=I"
+              "detail": "pos6=F, pos11=I"
             },
             "nterm_chelator": {
-              "pass": false,
-              "detail": "pos1=R (suboptimal)"
+              "pass": true,
+              "detail": "pos1=A (preferred)"
             }
           },
           "all_pass": false
         },
         "radiolysis_susceptibility": {
-          "total_score": 8.5,
+          "total_score": 7.0,
           "risk_level": "high",
           "vulnerable_residues": [
             {
@@ -586,10 +1217,670 @@
               "weight": 1.0
             },
             {
+              "position": 5,
+              "residue": "Y",
+              "mechanism": "phenol ring oxidation / dityrosine",
+              "weight": 1.0
+            },
+            {
+              "position": 6,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 14,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            }
+          ],
+          "critical_positions": [
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            }
+          ]
+        }
+      },
+      "cluster": {
+        "cluster": "E",
+        "cluster_name": "Exploratory Candidates",
+        "priority": 5,
+        "criteria_met": {
+          "A": {
+            "ddG_lte_minus8": false,
+            "clash_lte_5": false,
+            "pLDDT_gte_75": true,
+            "pLDDT_available": false,
+            "fwkt_contact": true
+          },
+          "B": {
+            "selectivity_margin_gte_3": false,
+            "ddG_binding_present": false
+          },
+          "C": {
+            "instability_lt_30": false,
+            "blosum62_nonnegative": true,
+            "protease_sites_reduced": false
+          },
+          "D": {
+            "gravy_in_range": true,
+            "net_charge_low": false,
+            "chelator_site_available": true
+          }
+        },
+        "note": "Does not meet A–D criteria; includes non-conservative substitutions or Tier 3 exploratory candidates."
+      }
+    },
+    {
+      "candidate_id": "iter04_cand004",
+      "sequence": "AMCDWHFWKTKVSC",
+      "ddg": -25.4075,
+      "clash_count": 0,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_004.pdb",
+      "pharma": {
+        "sequence": "AMCDWHFWKTKVSC",
+        "length": 14,
+        "gravy": -0.14999999999999997,
+        "boman_index": 0.8607142857142858,
+        "instability_index": 49.77142857142858,
+        "aliphatic_index": 27.857142857142858,
+        "isoelectric_point": 9.9,
+        "extinction_coefficient": 11125,
+        "nend_rule_halflife": {
+          "n_terminal_residue": "A",
+          "half_life_hours": 30.0,
+          "category": "stable"
+        },
+        "hydrophobic_moment_alpha": 0.09829575396013378,
+        "hydrophobic_moment_beta": 0.5160382658333084,
+        "wimley_white": {
+          "total_dG": -0.86,
+          "mean_dG": -0.061,
+          "per_residue": [
+            0.17,
+            -0.23,
+            -0.24,
+            1.23,
+            -1.85,
+            0.96,
+            -1.13,
+            -1.85,
+            0.99,
+            0.14,
+            0.99,
+            0.07,
+            0.13,
+            -0.24
+          ]
+        },
+        "net_charge_ph74": 1.032,
+        "net_charge_ph65": 1.241,
+        "molecular_weight": {
+          "mw_average": 1740.06,
+          "mw_monoisotopic": 1739.01,
+          "n_residues": 14,
+          "n_disulfide": 1
+        },
+        "protease_sites": {
+          "chymotrypsin": {
+            "count": 4,
+            "positions": [
+              2,
+              5,
+              7,
+              8
+            ]
+          },
+          "trypsin": {
+            "count": 2,
+            "positions": [
+              9,
+              11
+            ]
+          },
+          "neprilysin": {
+            "count": 5,
+            "positions": [
+              2,
+              5,
+              7,
+              8,
+              12
+            ]
+          },
+          "dppiv": {
+            "count": 0,
+            "positions": []
+          },
+          "total": 11
+        },
+        "blosum62": {
+          "total_score": 41,
+          "per_position": [
+            {
+              "position": 1,
+              "reference": "A",
+              "query": "A",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 2,
+              "reference": "G",
+              "query": "M",
+              "score": -3,
+              "category": "non-conservative"
+            },
+            {
+              "position": 3,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            },
+            {
               "position": 4,
+              "reference": "K",
+              "query": "D",
+              "score": -1,
+              "category": "non-conservative"
+            },
+            {
+              "position": 5,
+              "reference": "N",
+              "query": "W",
+              "score": -4,
+              "category": "non-conservative"
+            },
+            {
+              "position": 6,
+              "reference": "F",
+              "query": "H",
+              "score": -1,
+              "category": "non-conservative"
+            },
+            {
+              "position": 7,
+              "reference": "F",
+              "query": "F",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 8,
+              "reference": "W",
+              "query": "W",
+              "score": 11,
+              "category": "identical"
+            },
+            {
+              "position": 9,
+              "reference": "K",
+              "query": "K",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 10,
+              "reference": "T",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 11,
+              "reference": "F",
+              "query": "K",
+              "score": -3,
+              "category": "non-conservative"
+            },
+            {
+              "position": 12,
+              "reference": "T",
+              "query": "V",
+              "score": 0,
+              "category": "semi-conservative"
+            },
+            {
+              "position": 13,
+              "reference": "S",
+              "query": "S",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 14,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            }
+          ],
+          "n_mutations": 6
+        },
+        "metal_coordination": {
+          "residues": {
+            "His_imidazole": [
+              6
+            ],
+            "Cys_thiolate": [
+              3,
+              14
+            ],
+            "Asp_carboxylate": [
+              4
+            ],
+            "Glu_carboxylate": [],
+            "Met_thioether": [
+              2
+            ]
+          },
+          "total_coordinating": 5,
+          "potential_metals": [
+            "Ac3+",
+            "Ca2+",
+            "Cu2+",
+            "Ga3+",
+            "Lu3+",
+            "Mg2+",
+            "Zn2+"
+          ]
+        },
+        "structural_rules": {
+          "rules": {
+            "fwkt_pharmacophore": {
+              "pass": true,
+              "detail": "positions 7-10 = FWKT"
+            },
+            "k9_salt_bridge": {
+              "pass": true,
+              "detail": "position 9 = K"
+            },
+            "cys3_cys14_disulfide": {
+              "pass": true,
+              "detail": "pos3=C, pos14=C"
+            },
+            "phe6_phe11_stacking": {
+              "pass": false,
+              "detail": "pos6=H, pos11=K"
+            },
+            "nterm_chelator": {
+              "pass": true,
+              "detail": "pos1=A (preferred)"
+            }
+          },
+          "all_pass": false
+        },
+        "radiolysis_susceptibility": {
+          "total_score": 13.5,
+          "risk_level": "high",
+          "vulnerable_residues": [
+            {
+              "position": 2,
               "residue": "M",
               "mechanism": "sulphur oxidation to Met-sulfoxide",
               "weight": 3.0
+            },
+            {
+              "position": 3,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            },
+            {
+              "position": 5,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 6,
+              "residue": "H",
+              "mechanism": "imidazole ring oxidation",
+              "weight": 2.0
+            },
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            },
+            {
+              "position": 14,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            }
+          ],
+          "critical_positions": [
+            {
+              "position": 7,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 8,
+              "residue": "W",
+              "mechanism": "indole ring oxidation to kynurenine",
+              "weight": 3.0
+            }
+          ]
+        }
+      },
+      "cluster": {
+        "cluster": "E",
+        "cluster_name": "Exploratory Candidates",
+        "priority": 5,
+        "criteria_met": {
+          "A": {
+            "ddG_lte_minus8": false,
+            "clash_lte_5": false,
+            "pLDDT_gte_75": true,
+            "pLDDT_available": false,
+            "fwkt_contact": true
+          },
+          "B": {
+            "selectivity_margin_gte_3": false,
+            "ddG_binding_present": false
+          },
+          "C": {
+            "instability_lt_30": false,
+            "blosum62_nonnegative": true,
+            "protease_sites_reduced": false
+          },
+          "D": {
+            "gravy_in_range": true,
+            "net_charge_low": false,
+            "chelator_site_available": true
+          }
+        },
+        "note": "Does not meet A–D criteria; includes non-conservative substitutions or Tier 3 exploratory candidates."
+      }
+    },
+    {
+      "candidate_id": "iter04_cand002",
+      "sequence": "AGCKFFFWKTLTSC",
+      "ddg": -19.52,
+      "clash_count": 1,
+      "pass_gates": true,
+      "fail_reasons": [],
+      "pdb_path": "/home/dongjukim/Documents/workspace/tmp/SST14-M_scr/AgenticAI4SCIENCE_pyrosetta_track/repos/ai4sci-kaeri/runs/pyrosetta_flow/sst14_agentic_mutdock/iter_04/cand_002.pdb",
+      "pharma": {
+        "sequence": "AGCKFFFWKTLTSC",
+        "length": 14,
+        "gravy": 0.5499999999999999,
+        "boman_index": -0.13285714285714292,
+        "instability_index": 32.57142857142858,
+        "aliphatic_index": 35.0,
+        "isoelectric_point": 10.62,
+        "extinction_coefficient": 5625,
+        "nend_rule_halflife": {
+          "n_terminal_residue": "A",
+          "half_life_hours": 30.0,
+          "category": "stable"
+        },
+        "hydrophobic_moment_alpha": 0.14289397071066381,
+        "hydrophobic_moment_beta": 0.20084516536480576,
+        "wimley_white": {
+          "total_dG": -3.71,
+          "mean_dG": -0.265,
+          "per_residue": [
+            0.17,
+            0.01,
+            -0.24,
+            0.99,
+            -1.13,
+            -1.13,
+            -1.13,
+            -1.85,
+            0.99,
+            0.14,
+            -0.56,
+            0.14,
+            0.13,
+            -0.24
+          ]
+        },
+        "net_charge_ph74": 1.993,
+        "net_charge_ph65": 1.999,
+        "molecular_weight": {
+          "mw_average": 1636.95,
+          "mw_monoisotopic": 1635.97,
+          "n_residues": 14,
+          "n_disulfide": 1
+        },
+        "protease_sites": {
+          "chymotrypsin": {
+            "count": 5,
+            "positions": [
+              5,
+              6,
+              7,
+              8,
+              11
+            ]
+          },
+          "trypsin": {
+            "count": 2,
+            "positions": [
+              4,
+              9
+            ]
+          },
+          "neprilysin": {
+            "count": 5,
+            "positions": [
+              5,
+              6,
+              7,
+              8,
+              11
+            ]
+          },
+          "dppiv": {
+            "count": 0,
+            "positions": []
+          },
+          "total": 12
+        },
+        "blosum62": {
+          "total_score": 72,
+          "per_position": [
+            {
+              "position": 1,
+              "reference": "A",
+              "query": "A",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 2,
+              "reference": "G",
+              "query": "G",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 3,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            },
+            {
+              "position": 4,
+              "reference": "K",
+              "query": "K",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 5,
+              "reference": "N",
+              "query": "F",
+              "score": -3,
+              "category": "non-conservative"
+            },
+            {
+              "position": 6,
+              "reference": "F",
+              "query": "F",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 7,
+              "reference": "F",
+              "query": "F",
+              "score": 6,
+              "category": "identical"
+            },
+            {
+              "position": 8,
+              "reference": "W",
+              "query": "W",
+              "score": 11,
+              "category": "identical"
+            },
+            {
+              "position": 9,
+              "reference": "K",
+              "query": "K",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 10,
+              "reference": "T",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 11,
+              "reference": "F",
+              "query": "L",
+              "score": 0,
+              "category": "semi-conservative"
+            },
+            {
+              "position": 12,
+              "reference": "T",
+              "query": "T",
+              "score": 5,
+              "category": "identical"
+            },
+            {
+              "position": 13,
+              "reference": "S",
+              "query": "S",
+              "score": 4,
+              "category": "identical"
+            },
+            {
+              "position": 14,
+              "reference": "C",
+              "query": "C",
+              "score": 9,
+              "category": "identical"
+            }
+          ],
+          "n_mutations": 2
+        },
+        "metal_coordination": {
+          "residues": {
+            "His_imidazole": [],
+            "Cys_thiolate": [
+              3,
+              14
+            ],
+            "Asp_carboxylate": [],
+            "Glu_carboxylate": [],
+            "Met_thioether": []
+          },
+          "total_coordinating": 2,
+          "potential_metals": [
+            "Cu2+",
+            "Zn2+"
+          ]
+        },
+        "structural_rules": {
+          "rules": {
+            "fwkt_pharmacophore": {
+              "pass": true,
+              "detail": "positions 7-10 = FWKT"
+            },
+            "k9_salt_bridge": {
+              "pass": true,
+              "detail": "position 9 = K"
+            },
+            "cys3_cys14_disulfide": {
+              "pass": true,
+              "detail": "pos3=C, pos14=C"
+            },
+            "phe6_phe11_stacking": {
+              "pass": false,
+              "detail": "pos6=F, pos11=L"
+            },
+            "nterm_chelator": {
+              "pass": true,
+              "detail": "pos1=A (preferred)"
+            }
+          },
+          "all_pass": false
+        },
+        "radiolysis_susceptibility": {
+          "total_score": 6.5,
+          "risk_level": "high",
+          "vulnerable_residues": [
+            {
+              "position": 3,
+              "residue": "C",
+              "mechanism": "thiol oxidation / SS-bond disruption",
+              "weight": 1.0
+            },
+            {
+              "position": 5,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
+            },
+            {
+              "position": 6,
+              "residue": "F",
+              "mechanism": "aromatic hydroxylation",
+              "weight": 0.5
             },
             {
               "position": 7,
@@ -658,7 +1949,7 @@
     }
   ],
   "rcsb_match_summary": {
-    "checked": 2,
+    "checked": 5,
     "matched": 0,
     "identity_cutoff": 0.4
   },

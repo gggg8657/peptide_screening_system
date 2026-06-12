@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 15,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T11:03:03.914222+00:00",
-  "hypothesis": "The current design strategy is producing candidates with strong ddG but insufficient selectivity. A more aggressive focus on disrupting off-target interactions at non-pharmacophore positions is required to push Δmargin further above zero.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T17:03:54.871593+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 binding but are not sufficiently disrupting off-target interactions. Targeting non-pharmacophore positions for mutagenesis and tightening the ddG threshold will help improve selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,38 +16,13 @@
         11,
         12
       ],
-      "rationale": "To increase selectivity, we must disrupt conserved interactions with off-targets SSTR3/SSTR5. These positions are non-pharmacophore and are known to contribute to off-target binding."
+      "rationale": "To target non-pharmacophore positions where off-target interactions (especially with SSTR3/SSTR5) are likely occurring."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "N",
-          "Q"
-        ],
-        "5": [
-          "L",
-          "I"
-        ],
-        "6": [
-          "T",
-          "S"
-        ],
-        "11": [
-          "K",
-          "R"
-        ],
-        "12": [
-          "A",
-          "G"
-        ]
-      },
-      "rationale": "These mutations are designed to break conserved hydrogen bonds or hydrophobic interactions with SSTR3/SSTR5 while avoiding disruption of the pharmacophore."
+      "parameter_name": "rosetta_ddg_max",
+      "old_value": -15.0,
+      "new_value": -20.0,
+      "rationale": "The current ddG threshold may be too lenient, allowing candidates with strong off-target binding. Tightening the threshold will filter out weaker binders and prioritize more selective designs."
     }
   ],
   "current_params": {

@@ -1,18 +1,19 @@
-# Iteration 13 Summary: sst14_mutdock_27000
+# Iteration 13 Summary: sst14_mutdock_31000
 
-            - **Run ID**: `sst14_mutdock_27000`
+            - **Run ID**: `sst14_mutdock_31000`
             - **Iteration**: 13
-            - **생성 시각**: 2026-06-12 10:48 UTC
+            - **생성 시각**: 2026-06-12 16:56 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 13 evaluated three candidates, all of which passed the quality control (QC) gates. However, the structural quality of the top candidates was poor, as indicated by pLDDT values of 0.0 for all three. Despite this limitation, the candidates exhibited strong binding affinities, with ddG values ranging from -17.1 to -34.7 kcal/mol. Docking scores were not informative (0.00), and while selectivity margins were positive, the designs have not yet consistently outperformed native SST-14 in this regard. The primary failure mode in this iteration was structural instability, suggesting a need for improved structural modeling or refinement strategies.
+            Iteration 13 evaluated four peptide binder candidates for SSTR2, all of which passed the quality control (QC) gates. The designs demonstrated strong binding affinity, as evidenced by favorable ddG values ranging from -16.8 to -25.6 kcal/mol. However, the pLDDT and docking scores remained at 0.0 for all candidates, indicating a lack of structural confidence and docking performance. While the best Δmargin is positive, the overall pass rate for selectivity remains low, suggesting that off-target interactions are still a concern. The primary failure mode was structural failures, which highlights the need for improved structural stability and selectivity in future designs.
 
-The top candidates, iter13_cand005, iter13_cand006, and iter13_cand007, show promise in terms of binding energy but require structural validation and optimization. The lack of structural confidence highlights the importance of integrating structural refinement techniques in the next iteration to ensure both strong binding and high structural quality. Overall, while the iteration demonstrates progress in binding affinity, structural improvements are critical for advancing viable candidates.
+The top-performing candidate, iter13_cand008, exhibited the most favorable ddG of -25.6 kcal/mol, followed closely by iter13_cand007 with a ddG of -25.0 kcal/mol. These candidates should be prioritized for further analysis and experimental validation. However, the marginal improvements in selectivity suggest that the design strategy should be adjusted to focus on disrupting off-target contacts and enhancing structural integrity.
 
             ## Recommendations
 
-            - Implement structural refinement techniques to improve pLDDT scores and overall structural quality.
-- Focus on balancing binding affinity (ddG) with structural stability in the next iteration.
-- Revisit the selectivity criteria to ensure designs consistently outperform native SST-14.
+            - Refine the design strategy to prioritize structural stability and selectivity over binding affinity alone.
+- Focus on disrupting off-target contacts to improve the selectivity pass rate.
+- Incorporate additional constraints or scoring terms to enhance pLDDT and docking performance.
+- Conduct experimental validation of top candidates to confirm predicted binding and selectivity.

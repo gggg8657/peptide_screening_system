@@ -1,13 +1,19 @@
 {
   "type": "critic",
   "iteration": 19,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T11:21:26.302940+00:00",
-  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be improved by disrupting off-target interactions at non-pharmacophore positions while preserving the native SST-14 pharmacophore. This iteration supports the hypothesis but shows limited progress in increasing Δmargin beyond the current best.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T17:18:54.192323+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity but are failing due to poor structural quality. Tightening structural filters and introducing mutations at non-pharmacophore positions will improve both structural quality and selectivity.",
   "proposed_changes": [
     {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "The current clash threshold is too lenient, allowing candidates with poor structural quality (e.g., iter19_cand007 has pLDDT=0.0). Tightening the clash score will enforce better geometry and reduce structural failures."
+    },
+    {
       "parameter_name": "focus_positions",
-      "old_value": [],
+      "old_value": null,
       "new_value": [
         1,
         2,
@@ -16,20 +22,7 @@
         11,
         12
       ],
-      "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3/SSTR5. Focusing mutations here can disrupt conserved-pocket contacts while preserving the critical FWKT(7-10) and Cys3/Cys14 pharmacophore."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "A5D",
-        "A6E",
-        "A11N",
-        "A12Q"
-      ],
-      "rationale": "These mutations introduce charged or polar residues at non-pharmacophore positions to disrupt conserved interactions with SSTR3/SSTR5. They are unlikely to interfere with the native SST-14 pharmacophore."
+      "rationale": "To improve selectivity and push Δmargin further positive, we should focus on mutating non-pharmacophore positions that are likely to form off-target contacts with SSTR3/SSTR5. This will help disrupt conserved pocket interactions while preserving key pharmacophore residues."
     }
   ],
   "current_params": {

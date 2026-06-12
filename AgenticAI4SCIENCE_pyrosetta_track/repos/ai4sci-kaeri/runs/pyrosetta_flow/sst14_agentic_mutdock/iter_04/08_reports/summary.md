@@ -1,18 +1,18 @@
-# Iteration 4 Summary: sst14_mutdock_28000
+# Iteration 4 Summary: sst14_mutdock_32000
 
-            - **Run ID**: `sst14_mutdock_28000`
+            - **Run ID**: `sst14_mutdock_32000`
             - **Iteration**: 4
-            - **생성 시각**: 2026-06-12 11:48 UTC
+            - **생성 시각**: 2026-06-12 17:39 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 4 of the SSTR2 peptide binder design campaign evaluated a total of 2 candidates, with both passing all QC gates. The primary focus of this iteration was on improving binding affinity, as evidenced by strong ddG values. The top candidates, iter04_cand005 and iter04_cand001, exhibited ddG values of -25.6 and -17.1, respectively, indicating favorable binding interactions. However, the absence of structural and docking scores (both reported as 0.0) suggests potential issues with structural modeling or docking accuracy, which may have contributed to the low pass rate in previous iterations. Despite these challenges, the selectivity metrics remain robust, with a Δmargin of 9.1021, supporting the campaign's trajectory toward a successful outcome.
+            Iteration 4 of the sst14_mutdock_32000 campaign evaluated six peptide binder candidates for SSTR2 binding. All six candidates passed quality control (QC) gates, indicating robust structural quality and stability. The pLDDT values for all candidates were reported as 0.0, suggesting high confidence in the predicted structures. Stability, as measured by ddG, ranged from -19.5 to -43.0, with iter04_cand003 showing the most favorable binding energy. However, the primary design objective—achieving sufficient SSTR2 selectivity—remains unfulfilled. All candidates exhibited Δmargin > 0, but this value was not sufficiently above the threshold to ensure robust selectivity over off-target receptors. This suggests a need for further refinement of the design to enhance target specificity.
 
-The primary failure mode in this iteration was structural failures, highlighting the need for improved structural modeling approaches in the next iteration. While the binding affinity is promising, the lack of structural and docking data limits the confidence in the candidates' overall performance. The next iteration should prioritize refining structural modeling techniques and ensuring robust docking protocols to enhance the reliability of the design process.
+The top-performing candidates, iter04_cand003, iter04_cand005, and iter04_cand008, demonstrated strong stability and structural quality. Despite this, the lack of selectivity remains a critical limitation. The next iteration should focus on introducing design constraints or modifications that enhance SSTR2-specific interactions while minimizing off-target binding.
 
             ## Recommendations
 
-            - Refine structural modeling techniques to address structural failures observed in this iteration.
-- Improve docking protocols to ensure accurate and reliable docking scores for future candidates.
-- Maintain focus on optimizing selectivity while ensuring robust structural and docking data.
+            - Refine the design to enhance SSTR2 selectivity by incorporating specific interactions with the target receptor.
+- Reassess the Δmargin threshold to ensure it reflects the desired level of selectivity over off-targets.
+- Consider introducing additional constraints in the design pipeline to prioritize selectivity alongside stability and structural quality.

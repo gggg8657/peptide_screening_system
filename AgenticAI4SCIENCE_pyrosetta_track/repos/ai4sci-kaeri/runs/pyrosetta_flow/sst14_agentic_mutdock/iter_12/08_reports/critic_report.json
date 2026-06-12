@@ -1,28 +1,21 @@
 {
   "type": "critic",
   "iteration": 12,
-  "run_id": "sst14_mutdock_27000",
-  "timestamp": "2026-06-12T10:44:42.643042+00:00",
-  "hypothesis": "The current hypothesis remains valid, but we must refine the focus on selectivity by targeting non-pharmacophore positions for mutations to reduce off-target interactions.",
+  "run_id": "sst14_mutdock_31000",
+  "timestamp": "2026-06-12T16:52:53.419366+00:00",
+  "hypothesis": "The current design protocol generates candidates with strong ddG values but poor structural quality and docking scores. The primary bottleneck is structural validity, not sequence or stability. Tightening clash constraints and increasing candidate diversity will address this.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -18.0,
-      "rationale": "Tightening the ddG threshold will filter out weaker binders and focus on candidates with stronger SSTR2 binding energy."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Structural failures (pLDDT=0.0) and poor docking scores suggest excessive clashes or poor geometry. Lowering the clash threshold will enforce better packing and geometry, improving structural quality and docking performance."
     },
     {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To improve selectivity, we need to disrupt off-target interactions at conserved positions (1, 2, 5, 6, 11, 12) that are not part of the pharmacophore while preserving FWKT(7-10) and Cys3/Cys14."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "The low pass rate (12.5%) suggests the search space is not being adequately explored. Increasing the number of candidates will provide more diversity and increase the likelihood of generating a structurally valid and selective candidate."
     }
   ],
   "current_params": {
