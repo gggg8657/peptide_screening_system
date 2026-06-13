@@ -1,28 +1,21 @@
 {
   "type": "critic",
   "iteration": 15,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:27:15.329880+00:00",
-  "hypothesis": "The current designs are achieving strong binding (ddG) but may not be sufficiently diverse or optimized for selectivity. Focusing on disrupting conserved pocket interactions at non-pharmacophore positions is critical to push Δmargin further above 0.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T04:40:33.009688+00:00",
+  "hypothesis": "The current design protocol is generating candidates with strong ddG but poor structural quality. Tightening clash penalties and increasing diversity through higher candidate counts should improve structural validity without compromising selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely enabling off-target binding to SSTR3/SSTR5."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Tightening the clash threshold will enforce better geometry and reduce structural failures due to poor packing or steric clashes."
     },
     {
       "parameter_name": "n_candidates",
       "old_value": 8,
-      "new_value": 16,
-      "rationale": "A low number of candidates reduces the chances of finding high-quality, selective designs. Increasing the number of candidates will improve diversity and coverage of the design space."
+      "new_value": 12,
+      "rationale": "Increasing the number of candidates will improve diversity and increase the chances of generating a structurally valid and selective design."
     }
   ],
   "current_params": {

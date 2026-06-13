@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 2,
-  "run_id": "sst14_mutdock_36000",
-  "timestamp": "2026-06-12T23:56:23.821501+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 binding but lack selectivity due to conserved interactions at non-pharmacophore positions. Targeted mutations at these positions will improve selectivity without compromising on-target affinity.",
+  "run_id": "sst14_mutdock_39000",
+  "timestamp": "2026-06-13T05:22:53.914888+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is necessary but insufficient. The focus must shift to disrupting off-target interactions at non-pharmacophore positions to increase selectivity. The next iteration should prioritize mutations at positions 1, 2, 5, 6, 11, and 12.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,38 +16,44 @@
         11,
         12
       ],
-      "rationale": "Target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5. These positions can be mutated to disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
+      "rationale": "To improve selectivity, we must disrupt conserved pocket interactions with off-target SSTR3/SSTR5. These positions are non-pharmacophore and can be mutated without affecting the core binding motif."
     },
     {
       "parameter_name": "suggested_mutations",
       "old_value": null,
       "new_value": {
         "1": [
-          "D",
-          "E"
+          "A",
+          "G",
+          "T"
         ],
         "2": [
+          "E",
           "K",
           "R"
         ],
         "5": [
-          "A",
-          "G"
+          "N",
+          "Q",
+          "S"
         ],
         "6": [
           "A",
-          "G"
+          "G",
+          "T"
         ],
         "11": [
-          "A",
-          "G"
+          "L",
+          "M",
+          "I"
         ],
         "12": [
-          "A",
-          "G"
+          "S",
+          "T",
+          "N"
         ]
       },
-      "rationale": "Introduce mutations at non-pharmacophore positions to disrupt conserved interactions with SSTR3/SSTR5. Acidic residues at position 1 and basic residues at position 2 can help repel off-target interactions, while small hydrophobic residues at positions 5, 6, 11, and 12 can reduce hydrophobic contacts with off-targets."
+      "rationale": "These mutations are selected to disrupt conserved interactions in SSTR3/SSTR5 binding pockets while maintaining compatibility with SSTR2 pharmacophore and overall stability."
     }
   ],
   "current_params": {

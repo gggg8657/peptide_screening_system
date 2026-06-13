@@ -1,16 +1,10 @@
 {
   "type": "critic",
   "iteration": 19,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:41:08.486424+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity. The next iteration should focus on optimizing non-pharmacophore positions to reduce off-target interactions while maintaining high-affinity binding to SSTR2.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T05:04:30.462063+00:00",
+  "hypothesis": "The current hypothesis is that improving selectivity requires targeted disruption of conserved-pocket interactions at non-pharmacophore positions. The next iteration will focus on these positions with specific mutations to increase Δmargin.",
   "proposed_changes": [
-    {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -20.0,
-      "rationale": "The current ddG threshold is too lenient, allowing candidates with weak binding (e.g., -20.2) to pass. Tightening the threshold will filter out weaker binders and focus on higher-affinity designs."
-    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -22,7 +16,38 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that contribute to off-target binding (SSTR3/SSTR5)."
+      "rationale": "To improve selectivity, we must target non-pharmacophore positions that are likely responsible for conserved-pocket contacts with off-target SSTR3/SSTR5. These positions are known to influence off-target binding."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
+          "Y",
+          "F"
+        ],
+        "6": [
+          "L",
+          "I"
+        ],
+        "11": [
+          "A",
+          "G"
+        ],
+        "12": [
+          "S",
+          "T"
+        ]
+      },
+      "rationale": "These mutations are designed to break conserved interactions with SSTR3/SSTR5 while maintaining overall binding affinity. For example, introducing charged residues at positions 1 and 2 can disrupt electrostatic interactions with off-targets."
     }
   ],
   "current_params": {

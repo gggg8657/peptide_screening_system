@@ -1,13 +1,19 @@
 {
   "type": "planner",
   "iteration": 19,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:38:30.706689+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific binding by improving complementarity with ECL2/ECL3 and TM5/TM6 regions, while avoiding off-target interactions by reducing electrostatic complementarity with SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T04:56:55.913704+00:00",
+  "hypothesis": "Enhancing steric complementarity at SSTR2-unique ECL2/TM5 interface (position 5) and introducing charge differentiation at position 11 will improve selectivity margin by strengthening SSTR2 binding and disrupting off-target (SSTR3/SSTR5) interactions.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis remains valid, but the decline in Δmargin suggests that off-target interactions are becoming more prominent. A more aggressive focus on disrupting SSTR3/SSTR5 conserved pocket contacts is necessary to achieve the desired selectivity.",
+    "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding can be achieved while reducing off-target interactions through targeted mutagenesis. However, structural modeling and docking accuracy must be improved to ensure realistic binding modes.",
     "proposed_changes": [
+      {
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Reducing the allowed clash score will enforce better structural quality and reduce steric conflicts in the binding pocket, which may improve docking and pLDDT scores."
+      },
       {
         "parameter_name": "focus_positions",
         "old_value": [],
@@ -19,22 +25,9 @@
           11,
           12
         ],
-        "rationale": "To improve SSTR2 selectivity, we must disrupt conserved pocket contacts with SSTR3/SSTR5. These positions are known to contribute to off-target binding and are not part of the pharmacophore."
-      },
-      {
-        "parameter_name": "suggested_mutations",
-        "old_value": [],
-        "new_value": [
-          "A1K",
-          "T2R",
-          "K5E",
-          "T6D",
-          "A11S",
-          "C12Y"
-        ],
-        "rationale": "These mutations are designed to disrupt conserved pocket interactions with SSTR3/SSTR5 while preserving the overall binding mode and pharmacophore. For example, A1K and T2R introduce charged residues that may repel off-target interactions."
+        "rationale": "Focusing on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will allow for targeted mutagenesis to disrupt conserved pocket contacts while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -25.8275
+  "previous_best_ddg": -39.2803
 }

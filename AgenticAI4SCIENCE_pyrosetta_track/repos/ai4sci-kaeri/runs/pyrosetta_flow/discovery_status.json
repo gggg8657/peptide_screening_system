@@ -1,10 +1,10 @@
 {
   "running": true,
-  "epochs_done": 34,
-  "elapsed_seconds": 215723.9,
+  "epochs_done": 37,
+  "elapsed_seconds": 235286.6,
   "global_best_delta_margin": 9.1021,
   "passing_count": 32,
-  "diversity_level": 9,
+  "diversity_level": 10,
   "top": [
     {
       "sequence": "ARCGKFFWKTATSC",
@@ -118,19 +118,19 @@
     }
   ],
   "last_epoch": {
-    "epoch": 34,
-    "seed_base": 35000,
+    "epoch": 37,
+    "seed_base": 38000,
     "max_random_mutations": 6,
     "ran_ok": true,
     "error": "",
     "global_best_delta": 9.1021,
     "n_unique_screened": 50,
     "passing_count": 32,
-    "diversity_level": 9,
+    "diversity_level": 10,
     "stale_epochs": 0,
     "improved": false,
     "next_max_mutations": 6,
-    "epoch_seconds": 4888.5
+    "epoch_seconds": 6054.5
   },
   "history": [
     {
@@ -642,6 +642,51 @@
       "improved": false,
       "next_max_mutations": 6,
       "epoch_seconds": 4888.5
+    },
+    {
+      "epoch": 35,
+      "seed_base": 36000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 32,
+      "diversity_level": 9,
+      "stale_epochs": 1,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 6769.5
+    },
+    {
+      "epoch": 36,
+      "seed_base": 37000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 32,
+      "diversity_level": 9,
+      "stale_epochs": 2,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 6738.8
+    },
+    {
+      "epoch": 37,
+      "seed_base": 38000,
+      "max_random_mutations": 6,
+      "ran_ok": true,
+      "error": "",
+      "global_best_delta": 9.1021,
+      "n_unique_screened": 50,
+      "passing_count": 32,
+      "diversity_level": 10,
+      "stale_epochs": 0,
+      "improved": false,
+      "next_max_mutations": 6,
+      "epoch_seconds": 6054.5
     }
   ]
 }

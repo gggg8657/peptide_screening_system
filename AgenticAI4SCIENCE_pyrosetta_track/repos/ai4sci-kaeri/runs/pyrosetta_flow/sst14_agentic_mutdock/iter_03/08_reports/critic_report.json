@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 3,
-  "run_id": "sst14_mutdock_36000",
-  "timestamp": "2026-06-13T00:00:22.469913+00:00",
-  "hypothesis": "The current hypothesis remains valid, but the focus must shift to fine-tuning mutations at non-pharmacophore positions to enhance selectivity over SSTR2. The next iteration should prioritize disrupting off-target interactions while preserving the pharmacophore.",
+  "run_id": "sst14_mutdock_39000",
+  "timestamp": "2026-06-13T05:26:38.375565+00:00",
+  "hypothesis": "The current design strategy is effective for generating strong SSTR2 binders but insufficient for achieving robust selectivity over SSTR3/SSTR5. Targeted mutations at non-pharmacophore positions are necessary to improve selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,44 +16,20 @@
         11,
         12
       ],
-      "rationale": "These positions are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing mutations here can disrupt conserved-pocket contacts without affecting the pharmacophore (FWKT7-10 and Cys3/Cys14)."
+      "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3/SSTR5. Focusing mutations here can disrupt conserved-pocket contacts while preserving the critical FWKT(7-10) and Cys3/Cys14 pharmacophore."
     },
     {
       "parameter_name": "suggested_mutations",
       "old_value": null,
-      "new_value": {
-        "1": [
-          "A",
-          "G",
-          "T"
-        ],
-        "2": [
-          "E",
-          "Q",
-          "K"
-        ],
-        "5": [
-          "G",
-          "A",
-          "S"
-        ],
-        "6": [
-          "K",
-          "R",
-          "H"
-        ],
-        "11": [
-          "T",
-          "S",
-          "A"
-        ],
-        "12": [
-          "C",
-          "S",
-          "T"
-        ]
-      },
-      "rationale": "These mutations are designed to disrupt conserved interactions with SSTR3/SSTR5 while maintaining flexibility and avoiding steric clashes."
+      "new_value": [
+        "A1K",
+        "A2R",
+        "F5D",
+        "F6E",
+        "T11N",
+        "T12Q"
+      ],
+      "rationale": "These mutations are designed to disrupt conserved interactions with SSTR3/SSTR5 while maintaining the overall scaffold and pharmacophore integrity."
     }
   ],
   "current_params": {

@@ -1,10 +1,16 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:30:49.169256+00:00",
-  "hypothesis": "The current design strategy is generating candidates with strong SSTR2 binding but insufficient selectivity. The focus must shift to explicitly disrupting conserved off-target interactions while preserving the pharmacophore and cysteine constraints.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T04:44:26.847576+00:00",
+  "hypothesis": "The current designs are achieving good selectivity (Δmargin > 0), but structural issues are limiting the number of viable candidates. Tightening structural constraints and focusing on disruption of off-target interactions at non-pharmacophore positions should improve both structural quality and selectivity.",
   "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Reducing the allowed clash score will enforce better structural quality and reduce steric clashes that may be causing structural failures."
+    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -16,38 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we need to disrupt conserved off-target contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) while preserving the pharmacophore (FWKT at 7-10) and Cys3/Cys14."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "1": [
-          "D",
-          "E"
-        ],
-        "2": [
-          "K",
-          "R"
-        ],
-        "5": [
-          "A",
-          "G"
-        ],
-        "6": [
-          "T",
-          "S"
-        ],
-        "11": [
-          "A",
-          "V"
-        ],
-        "12": [
-          "G",
-          "S"
-        ]
-      },
-      "rationale": "Introducing mutations at key non-pharmacophore positions to disrupt conserved interactions with SSTR3/SSTR5 while maintaining native-like interactions with SSTR2."
+      "rationale": "Focusing optimization on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5 conserved-pocket contacts) will help disrupt off-target interactions while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
     }
   ],
   "current_params": {

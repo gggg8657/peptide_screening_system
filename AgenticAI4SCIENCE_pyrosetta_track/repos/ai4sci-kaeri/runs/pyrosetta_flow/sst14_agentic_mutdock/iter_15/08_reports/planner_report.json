@@ -1,26 +1,33 @@
 {
   "type": "planner",
   "iteration": 15,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:24:37.742115+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific complementarity with ECL2/TM5 while avoiding off-target interactions, thereby increasing the selectivity margin.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T04:33:08.410000+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target (SSTR3/SSTR5) binding by avoiding unfavorable interactions in conserved pockets. This combination will increase the selectivity margin by improving SSTR2 affinity and reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving reasonable selectivity (Δmargin > 0), but structural issues are preventing them from passing QC. The focus should remain on maintaining selectivity while improving structural quality through tighter clash constraints and increased sampling.",
+    "hypothesis": "The current design strategy produces strong binders but lacks structural robustness. Tightening clash constraints and focusing mutations on non-pharmacophore positions should improve both structural quality and selectivity.",
     "proposed_changes": [
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
-        "new_value": 5,
-        "rationale": "Reducing the clash tolerance will enforce better geometry and reduce structural artifacts, which are likely the main reason for the low pLDDT and docking scores."
+        "new_value": 8,
+        "rationale": "Structural failures suggest poor clash resolution in the binding pocket. Tightening the clash threshold will enforce better geometry and reduce false positives."
       },
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "Increasing the number of candidates will improve the chances of generating at least one high-quality, structurally valid candidate that also maintains selectivity."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we need to disrupt conserved contacts with SSTR3/SSTR5 at non-pharmacophore positions while preserving pharmacophore positions 7-10 and Cys3/Cys14."
       }
     ]
   },
-  "previous_best_ddg": -18.9862
+  "previous_best_ddg": -24.3918
 }

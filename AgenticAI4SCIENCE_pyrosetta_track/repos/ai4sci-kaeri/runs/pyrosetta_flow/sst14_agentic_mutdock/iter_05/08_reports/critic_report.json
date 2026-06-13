@@ -1,59 +1,21 @@
 {
   "type": "critic",
   "iteration": 5,
-  "run_id": "sst14_mutdock_36000",
-  "timestamp": "2026-06-13T00:12:52.090743+00:00",
-  "hypothesis": "The current design strategy is generating high-affinity ligands but not sufficiently disrupting off-target interactions. A focused mutation strategy at non-pharmacophore positions is necessary to achieve SSTR2 selectivity.",
+  "run_id": "sst14_mutdock_39000",
+  "timestamp": "2026-06-13T05:34:17.184936+00:00",
+  "hypothesis": "The current hypothesis remains valid: strong SSTR2 selectivity can be achieved while maintaining pharmacophore integrity. However, structural failures are a bottleneck and must be addressed to enable progression of high-selectivity candidates.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": null,
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions (1/2/5/6/11/12) that are conserved in SSTR3/SSTR5 but not in SSTR2."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": null,
-      "new_value": {
-        "position_1": [
-          "A",
-          "G",
-          "T"
-        ],
-        "position_2": [
-          "E",
-          "K",
-          "R"
-        ],
-        "position_5": [
-          "N",
-          "D",
-          "Q"
-        ],
-        "position_6": [
-          "W",
-          "F",
-          "Y"
-        ],
-        "position_11": [
-          "T",
-          "S",
-          "N"
-        ],
-        "position_12": [
-          "C",
-          "S",
-          "A"
-        ]
-      },
-      "rationale": "These mutations are designed to break conserved interactions in SSTR3/SSTR5 while maintaining flexibility and avoiding disruption of the pharmacophore."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Tighten the clash filter to eliminate candidates with poor geometry that likely contribute to structural failures."
     }
   ],
   "current_params": {

@@ -1,16 +1,10 @@
 {
   "type": "critic",
   "iteration": 12,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:16:28.079515+00:00",
-  "hypothesis": "The hypothesis remains that SSTR2 selectivity can be achieved by optimizing non-pharmacophore positions to disrupt off-target contacts while maintaining the native pharmacophore. However, the stability threshold must be relaxed to allow more viable candidates.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T04:25:12.491273+00:00",
+  "hypothesis": "The current hypothesis is updated to emphasize the importance of disrupting conserved pocket interactions at non-pharmacophore positions to enhance selectivity over SSTR3/SSTR5. The focus will shift to testing mutations at positions 1, 2, 5, 6, 11, and 12.",
   "proposed_changes": [
-    {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -10.0,
-      "rationale": "The current ddG threshold is too aggressive, leading to overly stable designs that may sacrifice selectivity or flexibility. Relaxing the threshold will allow more diverse candidates that may better balance selectivity and stability."
-    },
     {
       "parameter_name": "focus_positions",
       "old_value": null,
@@ -22,7 +16,38 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we should focus on mutating positions that are not part of the pharmacophore (positions 1, 2, 5, 6, 11, 12) to disrupt off-target contacts in SSTR3/SSTR5 while preserving the conserved FWKT(7-10) and Cys3/Cys14."
+      "rationale": "To improve selectivity, we must disrupt conserved pocket interactions with SSTR3/SSTR5. These positions are non-pharmacophore and can be mutated to reduce off-target binding."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
+          "L",
+          "I"
+        ],
+        "6": [
+          "F",
+          "Y"
+        ],
+        "11": [
+          "N",
+          "Q"
+        ],
+        "12": [
+          "A",
+          "G"
+        ]
+      },
+      "rationale": "These mutations are designed to disrupt conserved interactions in SSTR3/SSTR5 without compromising the pharmacophore (FWKT(7-10)) or disulfide bond (Cys3/Cys14)."
     }
   ],
   "current_params": {

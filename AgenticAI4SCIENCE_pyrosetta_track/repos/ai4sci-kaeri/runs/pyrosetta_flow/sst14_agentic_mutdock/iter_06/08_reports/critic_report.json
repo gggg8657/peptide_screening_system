@@ -1,21 +1,21 @@
 {
   "type": "critic",
   "iteration": 6,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T22:49:34.717081+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity but are failing due to poor structural quality. Tightening structural constraints and increasing candidate diversity will improve the pass rate while maintaining selectivity.",
+  "run_id": "sst14_mutdock_39000",
+  "timestamp": "2026-06-13T05:42:20.184291+00:00",
+  "hypothesis": "The current designs are failing due to poor structural quality and lack of docking confidence. Increasing candidate diversity and tightening clash filters will help generate better candidates while maintaining selectivity focus.",
   "proposed_changes": [
-    {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Reducing the allowed clash score will enforce better structural quality, addressing structural failures and improving pLDDT scores."
-    },
     {
       "parameter_name": "n_candidates",
       "old_value": 8,
-      "new_value": 12,
-      "rationale": "Increasing the number of candidates will improve the chances of generating a higher number of structurally valid and selective designs."
+      "new_value": 16,
+      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid and selective designs."
+    },
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Tighter clash filtering will reduce structural failures by eliminating candidates with poor geometry."
     }
   ],
   "current_params": {

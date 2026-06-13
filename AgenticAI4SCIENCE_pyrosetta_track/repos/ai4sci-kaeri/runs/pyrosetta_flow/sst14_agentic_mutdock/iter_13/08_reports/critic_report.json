@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 13,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:20:14.729944+00:00",
-  "hypothesis": "The current designs achieve strong SSTR2 selectivity (Δmargin > 0), but structural quality remains a bottleneck. Focusing on improving structural validity and diversity will help converge on a viable, selective candidate.",
+  "run_id": "sst14_mutdock_38000",
+  "timestamp": "2026-06-13T04:28:43.640821+00:00",
+  "hypothesis": "The current design strategy is generating candidates with strong SSTR2 binding but insufficient structural quality and selectivity optimization. Tightening structural constraints and focusing mutagenesis on non-pharmacophore positions will improve both yield and selectivity.",
   "proposed_changes": [
-    {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "Low pass rate (25%) suggests insufficient diversity in candidate generation. Increasing the number of candidates will improve the chances of generating structurally valid designs."
-    },
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Structural failures may be due to high clash scores. Tightening the clash threshold will enforce better geometry and reduce invalid structures."
+      "rationale": "Reducing the clash tolerance will enforce better packing and reduce structural failures due to poor geometry."
+    },
+    {
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "Focusing design on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5) will allow more targeted disruption of off-target interactions while preserving key pharmacophore residues."
     }
   ],
   "current_params": {

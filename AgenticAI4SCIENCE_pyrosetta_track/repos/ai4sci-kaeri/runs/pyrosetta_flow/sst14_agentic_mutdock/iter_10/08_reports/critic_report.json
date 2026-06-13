@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 10,
-  "run_id": "sst14_mutdock_35000",
-  "timestamp": "2026-06-12T23:08:51.676665+00:00",
-  "hypothesis": "The current designs are achieving good selectivity but are structurally suboptimal. Tightening the ddG threshold and increasing candidate diversity should help converge on structurally stable and selective SSTR2 ligands.",
+  "run_id": "sst14_mutdock_39000",
+  "timestamp": "2026-06-13T06:06:24.841459+00:00",
+  "hypothesis": "The current designs show strong SSTR2 binding but insufficient structural diversity and sampling. Focusing on non-pharmacophore positions for selectivity while increasing candidate numbers should improve both structural quality and selectivity.",
   "proposed_changes": [
-    {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -20.0,
-      "rationale": "Tightening the ddG threshold will filter out structurally unstable designs and improve overall binding affinity for SSTR2 while maintaining selectivity."
-    },
     {
       "parameter_name": "n_candidates",
       "old_value": 8,
-      "new_value": 12,
-      "rationale": "Increasing the number of candidates will expand the diversity of the design space and increase the likelihood of finding structurally sound and selective candidates."
+      "new_value": 16,
+      "rationale": "Low pass rate suggests insufficient sampling of the design space. Increasing the number of candidates may yield more structurally valid designs."
+    },
+    {
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions (1/2/5/6/11/12) while preserving the pharmacophore (FWKT at 7-10) and Cys3/Cys14."
     }
   ],
   "current_params": {

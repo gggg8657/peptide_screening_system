@@ -1,26 +1,33 @@
 {
   "type": "planner",
   "iteration": 2,
-  "run_id": "sst14_mutdock_36000",
-  "timestamp": "2026-06-12T23:53:33.399551+00:00",
-  "hypothesis": "Enhancing steric and electrostatic complementarity at positions 5 and 6 will improve SSTR2 selectivity by forming unique interactions with SSTR2-specific residues in ECL2 and TM5, while avoiding off-target SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_39000",
+  "timestamp": "2026-06-13T05:20:04.266942+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2 (res 192/193/195/197) and TM5 (205/208/209/212) regions, while mutating position 6 to acidic residues (E/D) will introduce repulsive interactions with off-target SSTR3/SSTR5, thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are capable of strong SSTR2 binding and selectivity, but structural quality remains a bottleneck. Focusing on structural refinement and diversity expansion is critical.",
+    "hypothesis": "The current hypothesis is valid but incomplete. Selectivity is not being optimized directly, and structural failures suggest that the design protocol is not generating stable, well-folded candidates. The next iteration should prioritize selectivity-driven design and structural robustness.",
     "proposed_changes": [
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "Low pass rate indicates insufficient diversity in the candidate pool. Increasing the number of candidates may improve the chances of generating structurally valid designs."
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_only",
+        "new_value": "selectivity_weighted",
+        "rationale": "Prioritizing selectivity (Δmargin) over raw ddG will ensure that candidates are not only strong binders but also selective for SSTR2 over off-targets like SSTR3/SSTR5."
       },
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 5,
-        "rationale": "Structural failures likely stem from poor geometry or clashes. Tightening the clash threshold will enforce better packing and reduce structural artifacts."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "These positions are known to contribute to conserved pocket interactions with SSTR3/SSTR5. Focusing mutations here can disrupt off-target binding without affecting the pharmacophore core (positions 7-10 and Cys3/Cys14)."
       }
     ]
   },
-  "previous_best_ddg": -25.9163
+  "previous_best_ddg": -24.9289
 }
