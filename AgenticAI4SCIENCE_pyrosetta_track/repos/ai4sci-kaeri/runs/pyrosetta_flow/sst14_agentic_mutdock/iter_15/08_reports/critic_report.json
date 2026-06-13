@@ -1,21 +1,35 @@
 {
   "type": "critic",
   "iteration": 15,
-  "run_id": "sst14_mutdock_38000",
-  "timestamp": "2026-06-13T04:40:33.009688+00:00",
-  "hypothesis": "The current design protocol is generating candidates with strong ddG but poor structural quality. Tightening clash penalties and increasing diversity through higher candidate counts should improve structural validity without compromising selectivity.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T11:13:38.058131+00:00",
+  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be improved by disrupting conserved pocket interactions at non-pharmacophore positions. Iteration 15 confirms this hypothesis but highlights the need for more aggressive mutation strategies at these positions.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Tightening the clash threshold will enforce better geometry and reduce structural failures due to poor packing or steric clashes."
+      "parameter_name": "focus_positions",
+      "old_value": [],
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "Target non-pharmacophore positions that are likely involved in off-target (SSTR3/SSTR5) interactions. Disrupting these interactions can improve SSTR2 selectivity."
     },
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 12,
-      "rationale": "Increasing the number of candidates will improve diversity and increase the chances of generating a structurally valid and selective design."
+      "parameter_name": "suggested_mutations",
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "A2R",
+        "F5Y",
+        "F6W",
+        "T11D",
+        "T12E"
+      ],
+      "rationale": "Propose mutations at non-pharmacophore positions to break conserved pocket interactions with SSTR3/SSTR5 while preserving the pharmacophore FWKT(7-10) and Cys3/Cys14."
     }
   ],
   "current_params": {

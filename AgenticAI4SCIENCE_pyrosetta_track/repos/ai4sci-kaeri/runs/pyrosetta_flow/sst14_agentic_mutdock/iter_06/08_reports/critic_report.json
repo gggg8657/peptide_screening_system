@@ -1,21 +1,28 @@
 {
   "type": "critic",
   "iteration": 6,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T05:42:20.184291+00:00",
-  "hypothesis": "The current designs are failing due to poor structural quality and lack of docking confidence. Increasing candidate diversity and tightening clash filters will help generate better candidates while maintaining selectivity focus.",
+  "run_id": "sst14_mutdock_43000",
+  "timestamp": "2026-06-13T12:14:48.270023+00:00",
+  "hypothesis": "The current design strategy is generating strong binders but is not effectively improving selectivity beyond native SST-14. Focusing on structural quality and introducing mutations at non-pharmacophore positions will be critical to achieving the desired selectivity.",
   "proposed_changes": [
-    {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid and selective designs."
-    },
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
-      "new_value": 5,
-      "rationale": "Tighter clash filtering will reduce structural failures by eliminating candidates with poor geometry."
+      "new_value": 8,
+      "rationale": "Structural failures suggest excessive clashes in the top candidates. Lowering the clash threshold will enforce better geometry and improve structural quality."
+    },
+    {
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "To improve selectivity, we need to disrupt off-target interactions at conserved positions (1/2/5/6/11/12) without affecting the pharmacophore (FWKT at 7-10) or Cys3/Cys14. Focusing mutations on these positions will help optimize selectivity."
     }
   ],
   "current_params": {

@@ -1,19 +1,18 @@
-# Iteration 15 Summary: sst14_mutdock_38000
+# Iteration 15 Summary: sst14_mutdock_42000
 
-            - **Run ID**: `sst14_mutdock_38000`
+            - **Run ID**: `sst14_mutdock_42000`
             - **Iteration**: 15
-            - **생성 시각**: 2026-06-13 04:40 UTC
+            - **생성 시각**: 2026-06-13 11:13 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 15 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one passing all QC gates, resulting in a 100% pass rate for the single candidate. The top candidate, iter15_cand007, exhibited a ΔG binding value of -35.5 kcal/mol, indicating strong predicted binding affinity. However, the overall low yield of passing candidates (1 out of 1) suggests potential issues with design diversity or overly stringent constraints. The Critic analysis identified structural failures as the primary mode of failure, likely due to poor geometry or clash penalties, which may have limited the number of viable candidates generated in this iteration.
+            Iteration 15 evaluated four candidates, all of which passed quality control (QC) gates. The primary focus of this iteration was to improve binding affinity and selectivity for the SSTR2 receptor. While the ddG values indicate strong binding (ranging from -19.8 to -42.6 kcal/mol), the selectivity margin (Δmargin) remains suboptimal, with the best Δmargin being positive but not robust enough to ensure consistent SSTR2 selectivity over off-targets. This suggests that while the candidates exhibit favorable binding affinities, further optimization is needed to enhance their selectivity profile.
 
-Despite the low pass rate, the strong ΔG value of the top candidate demonstrates that high-affinity binders can still be achieved. The absence of meaningful pLDDT and docking scores suggests limitations in the current evaluation framework or candidate generation process. To improve the efficiency of the design pipeline, it is essential to address the structural failure mode and enhance the diversity of candidate designs in the next iteration.
+The top-performing candidate, iter15_cand007, demonstrated the lowest ddG of -42.6 kcal/mol, indicating the strongest binding affinity among the four. However, the lack of pLDDT and docking score data raises questions about the structural reliability of the predicted models. Structural failures were identified as the primary failure type, highlighting the need for improved structural modeling in the next iteration to ensure both strong binding and structural integrity.
 
             ## Recommendations
 
-            - Investigate the structural failure mode to identify and resolve issues with geometry or clash penalties.
-- Enhance the diversity of candidate designs to increase the number of viable structures passing QC.
-- Consider relaxing overly stringent constraints to improve yield while maintaining design quality.
-- Evaluate the scoring framework for pLDDT and docking to ensure they provide meaningful insights for candidate selection.
+            - Prioritize structural modeling improvements to ensure reliable pLDDT and docking scores for future candidates.
+- Focus on enhancing selectivity margins (Δmargin) to achieve robust SSTR2 selectivity over off-targets.
+- Consider incorporating additional selectivity filters in the design pipeline to preemptively eliminate candidates with low selectivity potential.

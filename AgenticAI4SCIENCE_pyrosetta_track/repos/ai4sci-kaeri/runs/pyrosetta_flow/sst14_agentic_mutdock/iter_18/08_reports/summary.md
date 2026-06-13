@@ -1,18 +1,16 @@
-# Iteration 18 Summary: sst14_mutdock_38000
+# Iteration 18 Summary: sst14_mutdock_42000
 
-            - **Run ID**: `sst14_mutdock_38000`
+            - **Run ID**: `sst14_mutdock_42000`
             - **Iteration**: 18
-            - **생성 시각**: 2026-06-13 04:56 UTC
+            - **생성 시각**: 2026-06-13 11:33 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 18 evaluated three candidate peptides for SSTR2 binding. All candidates passed quality control (QC) gates, but structural and docking quality metrics were severely compromised, with all candidates reporting pLDDT and docking scores of 0.0. Despite this, binding affinity, as measured by ddG, was strong, with the best candidate (iter18_cand006) achieving a ddG of -39.3 kcal/mol. Selectivity metrics indicated a positive Δmargin, but the improvement over the native SST-14 ligand was not substantial. The primary failure mode was structural modeling inaccuracies, which may have impacted the reliability of predicted binding modes and overall design quality.
-
-The top three candidates (iter18_cand006, iter18_cand005, and iter18_cand002) showed progressively weaker ddG values, but all lacked structural confidence. These results highlight the need to improve structural modeling accuracy in future iterations to ensure that high-affinity candidates are also structurally plausible and dockable. The next iteration should focus on refining structural prediction methods and validating binding modes through higher-resolution modeling or experimental validation.
+            Iteration 18 evaluated a total of 2 candidates, both of which passed all quality control (QC) gates. The primary focus of this iteration was to assess binding affinity and structural stability. While the candidates demonstrated strong binding affinities, as indicated by ddG values of -24.6 and -18.2 kcal/mol for iter18_cand002 and iter18_cand003, respectively, structural failures were identified as a major limitation. Notably, the pLDDT and docking scores were not available for these candidates, suggesting potential issues with structural modeling or docking accuracy. Despite the strong binding affinity, the absence of structural confidence highlights the need for improved modeling strategies to ensure both high affinity and structural integrity in future designs.
 
             ## Recommendations
 
-            - Improve structural modeling accuracy to enhance pLDDT and docking scores.
-- Validate top candidates using higher-resolution modeling or experimental techniques.
-- Focus on achieving a balance between strong ddG values and structural reliability in future iterations.
+            - Investigate the structural modeling pipeline to address the lack of pLDDT and docking scores, which may indicate modeling inaccuracies.
+- Optimize the balance between binding affinity and structural stability in the design process.
+- Consider incorporating additional structural validation metrics to ensure robustness in future iterations.

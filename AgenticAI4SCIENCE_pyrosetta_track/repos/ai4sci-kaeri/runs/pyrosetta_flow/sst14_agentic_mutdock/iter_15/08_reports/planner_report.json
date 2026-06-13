@@ -1,33 +1,26 @@
 {
   "type": "planner",
   "iteration": 15,
-  "run_id": "sst14_mutdock_38000",
-  "timestamp": "2026-06-13T04:33:08.410000+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3/TM5/TM6 regions, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target (SSTR3/SSTR5) binding by avoiding unfavorable interactions in conserved pockets. This combination will increase the selectivity margin by improving SSTR2 affinity and reducing off-target affinity.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T11:06:28.352691+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/ECL3 residues (e.g., E192, E193, K286), while mutating position 6 to acidic residues (E/D) will disrupt off-target SSTR3/SSTR5 interactions (which have more basic residues in the binding pocket). These changes will increase the selectivity margin by improving SSTR2 binding and reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design strategy produces strong binders but lacks structural robustness. Tightening clash constraints and focusing mutations on non-pharmacophore positions should improve both structural quality and selectivity.",
+    "hypothesis": "The current designs are achieving selectivity but are failing structurally. The focus should remain on maintaining selectivity while improving structural quality through tighter Rosetta scoring constraints.",
     "proposed_changes": [
+      {
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "Low pass rate suggests insufficient sampling of the design space. Increasing the number of candidates may improve the chances of generating structurally valid designs."
+      },
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 8,
-        "rationale": "Structural failures suggest poor clash resolution in the binding pocket. Tightening the clash threshold will enforce better geometry and reduce false positives."
-      },
-      {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To improve selectivity, we need to disrupt conserved contacts with SSTR3/SSTR5 at non-pharmacophore positions while preserving pharmacophore positions 7-10 and Cys3/Cys14."
+        "rationale": "Structural failures (pLDDT=0.0) suggest clashes or poor geometry in the generated candidates. Tightening the clash threshold may improve structural validity."
       }
     ]
   },
-  "previous_best_ddg": -24.3918
+  "previous_best_ddg": -34.0044
 }

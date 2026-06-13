@@ -1,19 +1,19 @@
-# Iteration 17 Summary: sst14_mutdock_38000
+# Iteration 17 Summary: sst14_mutdock_42000
 
-            - **Run ID**: `sst14_mutdock_38000`
+            - **Run ID**: `sst14_mutdock_42000`
             - **Iteration**: 17
-            - **생성 시각**: 2026-06-13 04:52 UTC
+            - **생성 시각**: 2026-06-13 11:29 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 17 of the SSTR2 peptide binder design campaign evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to improve binding affinity and structural stability. While the candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -21.0 to -35.9, the structural stability, as measured by pLDDT, was not assessed due to missing data. Notably, iter17_cand002 exhibited the strongest binding affinity with a ddG of -35.9. However, the selectivity for SSTR2 over off-targets remains suboptimal, and the overall pass rate is low, with structural instability being the primary failure mode. This highlights the need for further optimization to enhance structural stability while maintaining or improving binding affinity.
+            Iteration 17 evaluated four SSTR2 peptide binder candidates, all of which passed the quality control (QC) gates. The designs exhibited strong binding affinities as indicated by ddG values, with the top two candidates (iter17_cand004 and iter17_cand006) achieving a ddG of -31.8 kcal/mol. However, the pLDDT and docking scores for all candidates were not available (0.0), suggesting potential limitations in structural confidence or docking evaluation. Critically, the iteration showed mixed selectivity outcomes, with a low pass rate and structural failures observed in half of the candidates, indicating possible issues with stability or structural integrity.
 
-The results from this iteration suggest that while the design process is generating candidates with strong binding affinities, structural integrity remains a critical challenge. The absence of pLDDT values limits the ability to fully assess the structural quality of the candidates. Future iterations should prioritize the integration of structural stability metrics into the design process to ensure that high-affinity candidates are also structurally robust. Additionally, strategies to improve selectivity for SSTR2 over off-targets should be explored to enhance the overall efficacy of the designed binders.
+The overall assessment highlights the need to improve structural reliability while maintaining strong binding performance. The best Δmargin remains positive, but the low selectivity pass rate suggests that further refinement is necessary to enhance both specificity and structural robustness. The next iteration should focus on addressing these structural failures and improving the overall selectivity profile of the designs.
 
             ## Recommendations
 
-            - Integrate structural stability metrics (e.g., pLDDT) into the design pipeline to ensure candidates are both high-affinity and structurally robust.
-- Focus on improving selectivity for SSTR2 over off-targets to enhance the therapeutic potential of the designed binders.
-- Investigate the root causes of structural instability and incorporate strategies to mitigate these issues in future iterations.
-- Consider increasing the number of candidates evaluated to improve the likelihood of identifying high-quality binders.
+            - Investigate the structural failures observed in half of the candidates to improve stability and structural integrity.
+- Focus on enhancing selectivity by refining the binding interface and exploring alternative design strategies.
+- Revisit the docking and pLDDT evaluation protocols to ensure accurate structural confidence and binding predictions.
+- Maintain strong ddG performance while addressing the low selectivity pass rate in the next iteration.

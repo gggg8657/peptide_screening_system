@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 3,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T05:23:44.524206+00:00",
-  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interactions with ECL2 and TM5, while avoiding off-target interactions with SSTR3/SSTR5. This should increase the selectivity margin by differentiating SSTR2 from other subtypes.",
+  "run_id": "sst14_mutdock_43000",
+  "timestamp": "2026-06-13T12:00:48.654178+00:00",
+  "hypothesis": "Enhancing SSTR2 selectivity by optimizing aromatic interactions at position 5 and introducing charge complementarity at position 6 will increase the selectivity margin by improving SSTR2 binding while reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis remains valid: strong SSTR2 binding is necessary but insufficient. The focus must shift to disrupting off-target interactions at non-pharmacophore positions to increase selectivity. The next iteration should prioritize mutations at positions 1, 2, 5, 6, 11, and 12.",
+    "hypothesis": "The current hypothesis is that selectivity can be improved by disrupting off-target contacts at non-pharmacophore positions while maintaining the pharmacophore and cysteine residues. This hypothesis is supported by the observed Δmargin values and the pattern of off-target interactions.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,46 +19,15 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we must disrupt conserved pocket interactions with off-target SSTR3/SSTR5. These positions are non-pharmacophore and can be mutated without affecting the core binding motif."
+        "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "A",
-            "G",
-            "T"
-          ],
-          "2": [
-            "E",
-            "K",
-            "R"
-          ],
-          "5": [
-            "N",
-            "Q",
-            "S"
-          ],
-          "6": [
-            "A",
-            "G",
-            "T"
-          ],
-          "11": [
-            "L",
-            "M",
-            "I"
-          ],
-          "12": [
-            "S",
-            "T",
-            "N"
-          ]
-        },
-        "rationale": "These mutations are selected to disrupt conserved interactions in SSTR3/SSTR5 binding pockets while maintaining compatibility with SSTR2 pharmacophore and overall stability."
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -15.0,
+        "new_value": -20.0,
+        "rationale": "Tightening the ddG threshold will filter out weaker binders and focus on candidates with stronger SSTR2 binding, which is a prerequisite for achieving high selectivity."
       }
     ]
   },
-  "previous_best_ddg": -30.5221
+  "previous_best_ddg": -29.3684
 }

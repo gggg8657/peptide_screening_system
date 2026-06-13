@@ -1,12 +1,12 @@
 {
   "type": "planner",
   "iteration": 5,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T05:31:18.922408+00:00",
-  "hypothesis": "Introducing bulky aromatic residues at position 5 and hydrophobic substitutions at position 11 will enhance SSTR2-specific complementarity in ECL2/TM5 pockets while reducing off-target interactions with SSTR3/SSTR5.",
+  "run_id": "sst14_mutdock_43000",
+  "timestamp": "2026-06-13T12:08:23.905898+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W, F, Y) will enhance SSTR2-specific interactions with ECL2/ECL3, while mutating position 11 to hydrophobic residues (L, I, V) will improve steric complementarity in the SSTR2-specific TM5/TM6 pocket, thereby increasing the selectivity margin over off-target SSTR3/5.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are strong binders to SSTR2 but require further optimization to reduce off-target interactions. Targeted mutations at non-pharmacophore positions are expected to increase selectivity.",
+    "hypothesis": "The current hypothesis is that SSTR2 selectivity can be improved by disrupting conserved-pocket interactions at non-pharmacophore positions. The next iteration will focus on these positions with guided mutations to increase Δmargin and reduce off-target binding.",
     "proposed_changes": [
       {
         "parameter_name": "focus_positions",
@@ -19,46 +19,40 @@
           11,
           12
         ],
-        "rationale": "To improve SSTR2 selectivity, we should focus on mutating non-pharmacophore positions that are likely involved in off-target interactions (SSTR3/SSTR5 conserved-pocket contacts)."
+        "rationale": "These positions are known to form conserved-pocket contacts with SSTR3 and SSTR5. Focusing design on these positions allows us to disrupt off-target interactions while preserving pharmacophore positions (7-10) and Cys3/Cys14."
       },
       {
         "parameter_name": "suggested_mutations",
         "old_value": null,
         "new_value": {
           "1": [
-            "A",
-            "R",
-            "C"
+            "D",
+            "E"
           ],
           "2": [
-            "E",
-            "C",
-            "G"
+            "N",
+            "Q"
           ],
           "5": [
-            "N",
-            "R",
+            "A",
             "G"
           ],
           "6": [
-            "W",
-            "K",
+            "S",
             "T"
           ],
           "11": [
-            "M",
-            "D",
-            "L"
+            "L",
+            "I"
           ],
           "12": [
-            "S",
-            "C",
-            "T"
+            "A",
+            "V"
           ]
         },
-        "rationale": "These mutations are designed to reduce off-target binding by altering residues that are likely to form conserved interactions with SSTR3/SSTR5 while maintaining SSTR2 binding."
+        "rationale": "Introducing mutations at these positions with residues that are less likely to form conserved-pocket interactions with SSTR3/SSTR5 will reduce off-target binding and increase Δmargin."
       }
     ]
   },
-  "previous_best_ddg": -39.8755
+  "previous_best_ddg": -29.0556
 }

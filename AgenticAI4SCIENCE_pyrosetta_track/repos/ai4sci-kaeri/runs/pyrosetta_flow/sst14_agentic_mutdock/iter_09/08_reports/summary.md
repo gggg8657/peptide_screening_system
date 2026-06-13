@@ -1,19 +1,16 @@
-# Iteration 9 Summary: sst14_mutdock_39000
+# Iteration 9 Summary: sst14_mutdock_42000
 
-            - **Run ID**: `sst14_mutdock_39000`
+            - **Run ID**: `sst14_mutdock_42000`
             - **Iteration**: 9
-            - **생성 시각**: 2026-06-13 06:02 UTC
+            - **생성 시각**: 2026-06-13 10:47 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 9 evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The primary focus of this iteration was to enhance binding affinity and selectivity for the SSTR2 target. While the candidates demonstrated strong binding affinities, as indicated by ddG values ranging from -25.3 to -34.7 kcal/mol, there were limited improvements in selectivity over SSTR3 and SSTR5. The best candidate, iter09_cand005, exhibited the lowest ddG of -34.7 kcal/mol, suggesting a high binding affinity. However, the overall selectivity pass rate remains low, indicating a need for further optimization to ensure target specificity.
-
-Structural failures were identified as the primary failure type, suggesting that the current designs may not fully satisfy structural constraints or stability requirements. Although the best Δmargin remains positive, the low pass rate for selectivity highlights the importance of shifting the focus toward improving selectivity in the next iteration. This will be critical to ensure that the designed peptides are not only potent but also specific to the SSTR2 receptor.
+            Iteration 9 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one (100%) passing all QC gates. The top candidate, iter09_cand005, exhibited a pLDDT of 0.0, a docking score of 0.00, and a ddG of -23.2. Despite passing QC, the low pLDDT and docking score suggest structural and binding affinity limitations. The overall low pass rate (12.5%) indicates that structural failures remain a significant barrier to progress in this iteration. The weak ddG score further highlights the need for improvements in stability and binding energy optimization.
 
             ## Recommendations
 
-            - Prioritize the design of peptides with improved selectivity over SSTR3/SSTR5 in the next iteration.
-- Incorporate structural constraints and stability requirements to reduce structural failures.
-- Conduct a more detailed analysis of the binding modes of the top candidates to identify features that contribute to selectivity.
-- Consider using additional computational methods to refine selectivity and stability in the next round of design.
+            - Investigate structural failure modes to identify design constraints and improve model predictions.
+- Refine the design protocol to enhance binding affinity and stability metrics, particularly ddG and pLDDT.
+- Consider increasing the diversity of the candidate pool to improve the pass rate and identify more robust binders.

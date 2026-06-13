@@ -1,16 +1,19 @@
-# Iteration 16 Summary: sst14_mutdock_38000
+# Iteration 16 Summary: sst14_mutdock_42000
 
-            - **Run ID**: `sst14_mutdock_38000`
+            - **Run ID**: `sst14_mutdock_42000`
             - **Iteration**: 16
-            - **생성 시각**: 2026-06-13 04:44 UTC
+            - **생성 시각**: 2026-06-13 11:17 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 16 evaluated four candidate peptides for their binding affinity and selectivity toward SSTR2. All four candidates passed the quality control (QC) gates, indicating no immediate structural or sequence-based disqualifications. The top candidates demonstrated strong binding affinities, with ddG values ranging from -16.0 to -29.7 kcal/mol. Notably, the selectivity margin (Δmargin) remained above 0 for all candidates, indicating that the design has successfully achieved SSTR2 selectivity over other targets. However, the overall pass rate was low at 50%, suggesting that structural issues may still be limiting the number of viable candidates.
+            Iteration 16 of the SSTR2 peptide binder design campaign (sst14_mutdock_42000) yielded no candidates that passed all quality control (QC) gates, despite the generation of 8 total candidates. The primary failure mode was attributed to structural failures, indicating that the proposed designs may not meet the required stability or geometric constraints. While the best Δmargin value remained positive at 9.1021, this did not translate into viable candidates, suggesting that structural or sequence-level issues are impeding progress. Further investigation is required to identify the root causes of these failures and to refine the design parameters accordingly.
+
+The absence of any candidates passing QC highlights the need for a more rigorous evaluation of structural stability and design constraints in the next iteration. Additionally, the lack of pass rate underscores the importance of revisiting the current design strategy to ensure that generated candidates are not only energetically favorable but also structurally sound.
 
             ## Recommendations
 
-            - Investigate structural failures in the remaining candidates to identify common issues and refine the design strategy.
-- Optimize the sequence and structural features of the top candidates to improve stability and binding efficiency.
-- Expand the candidate pool in the next iteration to increase the likelihood of identifying more structurally viable and high-affinity binders.
+            - Conduct a detailed structural analysis of the top candidates to identify potential structural instabilities or design flaws.
+- Refine the design protocol to prioritize structural integrity and compatibility with the target interface.
+- Reassess the QC criteria to ensure they are appropriately aligned with the current design goals and constraints.
+- Explore alternative sequence motifs or backbone conformations that may improve structural stability.

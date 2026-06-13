@@ -1,15 +1,15 @@
 {
   "type": "critic",
   "iteration": 16,
-  "run_id": "sst14_mutdock_38000",
-  "timestamp": "2026-06-13T04:44:26.847576+00:00",
-  "hypothesis": "The current designs are achieving good selectivity (Δmargin > 0), but structural issues are limiting the number of viable candidates. Tightening structural constraints and focusing on disruption of off-target interactions at non-pharmacophore positions should improve both structural quality and selectivity.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T11:17:28.197308+00:00",
+  "hypothesis": "The current structural failures suggest that the design protocol is generating candidates with poor geometry. Tightening the clash threshold and focusing mutations on non-pharmacophore positions should improve both structural quality and selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Reducing the allowed clash score will enforce better structural quality and reduce steric clashes that may be causing structural failures."
+      "rationale": "Clash scores are likely too high in the current candidates, leading to structural instability. Tightening the clash threshold will enforce better geometry and reduce steric conflicts."
     },
     {
       "parameter_name": "focus_positions",
@@ -22,7 +22,7 @@
         11,
         12
       ],
-      "rationale": "Focusing optimization on non-pharmacophore positions known to contribute to off-target binding (SSTR3/SSTR5 conserved-pocket contacts) will help disrupt off-target interactions while preserving key pharmacophore residues (FWKT at 7-10 and Cys3/Cys14)."
+      "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) while preserving the pharmacophore FWKT(7-10) and Cys3/Cys14. Focusing design on these positions will allow us to optimize selectivity."
     }
   ],
   "current_params": {

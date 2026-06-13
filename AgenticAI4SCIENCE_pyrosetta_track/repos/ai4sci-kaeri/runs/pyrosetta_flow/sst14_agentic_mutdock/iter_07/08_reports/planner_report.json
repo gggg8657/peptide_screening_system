@@ -1,26 +1,26 @@
 {
   "type": "planner",
   "iteration": 7,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T05:43:09.113145+00:00",
-  "hypothesis": "Enhancing steric and electrostatic complementarity at positions 5 and 11 will improve SSTR2 selectivity by forming specific interactions with ECL2/TM5 residues unique to SSTR2, while reducing off-target affinity.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T10:36:50.725224+00:00",
+  "hypothesis": "Enhancing steric complementarity with SSTR2-unique ECL2/ECL3/TM5/TM6 regions by introducing aromatic residues at position 5 and hydrophobic residues at position 11 will increase selectivity margin by improving SSTR2 binding while reducing off-target interactions.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are failing due to poor structural quality and lack of docking confidence. Increasing candidate diversity and tightening clash filters will help generate better candidates while maintaining selectivity focus.",
+    "hypothesis": "The current hypothesis remains valid: the peptides can achieve strong SSTR2 binding and selectivity. However, structural quality must be improved to ensure the designs are physically plausible and can be synthesized or tested experimentally.",
     "proposed_changes": [
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "Increase the number of candidates to improve the chances of generating structurally valid and selective designs."
+        "parameter_name": "objective_mode",
+        "old_value": "ddg_plus_constraints",
+        "new_value": "plddt_plus_ddg_plus_constraints",
+        "rationale": "Incorporate pLDDT into the objective function to prioritize candidates with better predicted structural quality, addressing the structural failure pattern."
       },
       {
         "parameter_name": "rosetta_clash_max",
         "old_value": 10,
         "new_value": 5,
-        "rationale": "Tighter clash filtering will reduce structural failures by eliminating candidates with poor geometry."
+        "rationale": "Reduce the clash tolerance to enforce better geometry and reduce structural artifacts, which are likely contributing to the pLDDT=0.0 failures."
       }
     ]
   },
-  "previous_best_ddg": -37.8961
+  "previous_best_ddg": -25.1192
 }

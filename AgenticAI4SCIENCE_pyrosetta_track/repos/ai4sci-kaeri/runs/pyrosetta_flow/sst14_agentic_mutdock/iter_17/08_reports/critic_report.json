@@ -1,15 +1,15 @@
 {
   "type": "critic",
   "iteration": 17,
-  "run_id": "sst14_mutdock_38000",
-  "timestamp": "2026-06-13T04:52:14.078536+00:00",
-  "hypothesis": "The current hypothesis is that structural instability is the primary barrier to generating viable candidates. Tightening structural constraints and focusing mutations on non-pharmacophore positions should improve both structural quality and selectivity.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T11:29:11.278592+00:00",
+  "hypothesis": "The current hypothesis is valid, but the structural quality of the candidates is a limiting factor. Tightening structural constraints and focusing mutations on non-pharmacophore positions will improve both structural quality and selectivity.",
   "proposed_changes": [
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
-      "new_value": 5,
-      "rationale": "Structural failures suggest excessive clashes in the binding pocket. Tightening the clash threshold will enforce better packing and reduce structural instability."
+      "new_value": 8,
+      "rationale": "Reducing the clash tolerance will enforce better structural quality by eliminating candidates with steric clashes that may destabilize the protein or reduce binding specificity."
     },
     {
       "parameter_name": "focus_positions",
@@ -22,7 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions (1/2/5/6/11/12) while preserving the pharmacophore (FWKT at 7-10) and Cys3/Cys14."
+      "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) while preserving the pharmacophore (positions 7-10 and Cys3/Cys14). Focusing mutations on these positions can help break interactions with SSTR3/SSTR5."
     }
   ],
   "current_params": {

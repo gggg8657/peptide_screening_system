@@ -1,19 +1,17 @@
-# Iteration 11 Summary: sst14_mutdock_39000
+# Iteration 11 Summary: sst14_mutdock_42000
 
-            - **Run ID**: `sst14_mutdock_39000`
+            - **Run ID**: `sst14_mutdock_42000`
             - **Iteration**: 11
-            - **생성 시각**: 2026-06-13 06:10 UTC
+            - **생성 시각**: 2026-06-13 10:54 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 11 evaluated a total of 2 candidates, both of which passed all quality control (QC) gates. The primary focus of this iteration was to improve binding affinity while maintaining selectivity for SSTR2. While the candidates demonstrated strong binding affinities, as indicated by ddG values of -26.4 and -24.0 for iter11_cand008 and iter11_cand003, respectively, the selectivity objective was not fully achieved. The best Δmargin was positive, but the overall pass rate for selectivity remains low. This suggests that while the binding affinity is promising, further optimization is needed to enhance SSTR2 selectivity.
-
-Structural failures were the primary reason for candidate rejection in this iteration, indicating that structural stability and sequence constraints remain critical challenges. The lack of pLDDT and docking scores for the candidates highlights the need for more robust structural modeling and validation in future iterations. The results from this iteration provide a foundation for refining the design strategy to prioritize both affinity and selectivity in the next round of candidate development.
+            Iteration 11 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one passing all quality control (QC) gates. The low pass rate of 12.5% indicates a significant bottleneck in the pipeline, primarily attributed to structural failures. The sole candidate that passed QC, iter11_cand001, exhibited a ΔG of -16.8 kcal/mol, suggesting strong binding potential. However, the pLDDT and docking scores were both reported as 0.0, which may reflect incomplete or unreliable structural predictions for this candidate. This highlights the need for improved structural modeling and validation strategies to ensure robust candidate evaluation. The overall low yield from this iteration underscores the importance of refining the QC criteria to enhance selectivity and stability assessments.
 
             ## Recommendations
 
-            - Focus on improving SSTR2 selectivity in the next iteration by incorporating additional constraints or design rules.
-- Enhance structural modeling and validation to address the structural failure issues observed in this iteration.
-- Investigate the reasons for the lack of pLDDT and docking scores to ensure more comprehensive candidate evaluation.
-- Consider increasing the diversity of the candidate pool to explore a broader range of potential solutions.
+            - Refine structural modeling protocols to improve pLDDT and docking score reliability.
+- Reassess QC gate thresholds to better balance selectivity and yield.
+- Investigate the structural failure mode to identify and address underlying issues in candidate design.
+- Consider increasing the number of candidates per iteration to improve statistical power for identifying high-quality binders.

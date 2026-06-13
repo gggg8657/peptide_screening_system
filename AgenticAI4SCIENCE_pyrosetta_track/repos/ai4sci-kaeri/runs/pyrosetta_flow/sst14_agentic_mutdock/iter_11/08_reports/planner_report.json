@@ -1,22 +1,16 @@
 {
   "type": "planner",
   "iteration": 11,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T06:07:10.882350+00:00",
-  "hypothesis": "Introducing bulky aromatic residues at position 5 and hydrophobic substitutions at position 11 will enhance SSTR2-specific complementarity in ECL2/TM5 while reducing off-target affinity to SSTR3/5.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T10:51:38.634712+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific TM5/ECL2 complementarity while avoiding off-target SSTR3/5 interactions. Mutating position 11 to hydrophobic residues (L/I/V) will improve steric fit in the SSTR2-specific ECL3 pocket, increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs show strong SSTR2 binding but insufficient structural diversity and sampling. Focusing on non-pharmacophore positions for selectivity while increasing candidate numbers should improve both structural quality and selectivity.",
+    "hypothesis": "The current hypothesis is that the observed Δmargin is limited by conserved interactions at non-pharmacophore positions. Targeted mutations at positions 1, 2, 5, 6, 11, and 12 are expected to improve selectivity by reducing off-target binding.",
     "proposed_changes": [
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "Low pass rate suggests insufficient sampling of the design space. Increasing the number of candidates may yield more structurally valid designs."
-      },
-      {
         "parameter_name": "focus_positions",
-        "old_value": null,
+        "old_value": [],
         "new_value": [
           1,
           2,
@@ -25,9 +19,58 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity, we must disrupt off-target contacts at non-pharmacophore positions (1/2/5/6/11/12) while preserving the pharmacophore (FWKT at 7-10) and Cys3/Cys14."
+        "rationale": "To specifically target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5. These positions are critical for disrupting conserved-pocket contacts without affecting the pharmacophore core."
+      },
+      {
+        "parameter_name": "suggested_mutations",
+        "old_value": [],
+        "new_value": [
+          {
+            "position": 1,
+            "mutations": [
+              "A",
+              "G"
+            ]
+          },
+          {
+            "position": 2,
+            "mutations": [
+              "E",
+              "K"
+            ]
+          },
+          {
+            "position": 5,
+            "mutations": [
+              "N",
+              "T"
+            ]
+          },
+          {
+            "position": 6,
+            "mutations": [
+              "M",
+              "D"
+            ]
+          },
+          {
+            "position": 11,
+            "mutations": [
+              "L",
+              "T"
+            ]
+          },
+          {
+            "position": 12,
+            "mutations": [
+              "C",
+              "S"
+            ]
+          }
+        ],
+        "rationale": "These mutations are designed to disrupt conserved interactions with SSTR3/SSTR5 while maintaining the structural integrity and pharmacophore of the native SST-14."
       }
     ]
   },
-  "previous_best_ddg": -31.2964
+  "previous_best_ddg": -32.1028
 }

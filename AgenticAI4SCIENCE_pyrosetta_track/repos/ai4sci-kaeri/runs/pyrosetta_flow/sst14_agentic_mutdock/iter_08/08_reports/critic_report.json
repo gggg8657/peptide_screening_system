@@ -1,10 +1,16 @@
 {
   "type": "critic",
   "iteration": 8,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T05:54:37.640146+00:00",
-  "hypothesis": "The current hypothesis is that SSTR2 selectivity can be improved by disrupting conserved pocket interactions in SSTR3/SSTR5 through mutations at non-pharmacophore positions while preserving the core pharmacophore. This iteration supports the hypothesis but highlights the need for more precise tuning of these positions.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T10:43:24.719425+00:00",
+  "hypothesis": "The current design strategy produces strong SSTR2 binders with good selectivity, but structural quality remains a bottleneck. Tighter clash constraints and targeted mutation of non-pharmacophore positions will improve structural quality while preserving selectivity.",
   "proposed_changes": [
+    {
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 5,
+      "rationale": "Low pLDDT and high ddG suggest poor structural quality due to clashes. Tightening clash tolerance will enforce better geometry."
+    },
     {
       "parameter_name": "focus_positions",
       "old_value": [],
@@ -16,20 +22,7 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts in SSTR3/SSTR5. Focusing on non-pharmacophore positions 1, 2, 5, 6, 11, and 12 will allow us to tune these interactions while preserving the pharmacophore FWKT(7-10) and Cys3/Cys14."
-    },
-    {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "T2E",
-        "S5R",
-        "T6D",
-        "A11N",
-        "C12Q"
-      ],
-      "rationale": "These mutations are proposed to disrupt conserved interactions in SSTR3/SSTR5 while maintaining SSTR2 binding. For example, A1K and T2E can introduce electrostatic repulsion in off-targets, and S5R/T6D can alter hydrophobic interactions."
+      "rationale": "Despite good selectivity, structural failures dominate. Focusing on non-pharmacophore positions known to drive off-target contacts (SSTR3/SSTR5) will allow more precise mutation control to preserve selectivity while improving structure."
     }
   ],
   "current_params": {

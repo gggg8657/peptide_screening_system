@@ -1,58 +1,26 @@
 {
   "type": "planner",
   "iteration": 13,
-  "run_id": "sst14_mutdock_38000",
-  "timestamp": "2026-06-13T04:26:03.047707+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2/ECL3, while mutating position 11 to hydrophobic residues (L/I/V) will improve steric complementarity with SSTR2 TM5/TM6 and reduce off-target affinity. This combination will increase the selectivity margin (Δmargin) by strengthening SSTR2 binding and weakening off-target interactions.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T10:59:12.360889+00:00",
+  "hypothesis": "Introducing aromatic residues at position 5 and hydrophobic residues at position 11 will enhance SSTR2-specific interactions with ECL2/ECL3/TM5/TM6 regions, while avoiding off-target complementarity. This will increase the selectivity margin by improving SSTR2 binding and reducing off-target affinity.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis is updated to emphasize the importance of disrupting conserved pocket interactions at non-pharmacophore positions to enhance selectivity over SSTR3/SSTR5. The focus will shift to testing mutations at positions 1, 2, 5, 6, 11, and 12.",
+    "hypothesis": "The current designs are achieving strong SSTR2 selectivity, but structural issues are limiting the number of viable candidates. Tightening structural constraints and increasing candidate diversity should improve the overall yield of high-quality, selective designs.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To improve selectivity, we must disrupt conserved pocket interactions with SSTR3/SSTR5. These positions are non-pharmacophore and can be mutated to reduce off-target binding."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "Increase the number of candidates to improve the chances of generating structurally valid designs that pass the QC gate."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "K",
-            "R"
-          ],
-          "5": [
-            "L",
-            "I"
-          ],
-          "6": [
-            "F",
-            "Y"
-          ],
-          "11": [
-            "N",
-            "Q"
-          ],
-          "12": [
-            "A",
-            "G"
-          ]
-        },
-        "rationale": "These mutations are designed to disrupt conserved interactions in SSTR3/SSTR5 without compromising the pharmacophore (FWKT(7-10)) or disulfide bond (Cys3/Cys14)."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Tighten the clash threshold to reduce structural failures due to steric clashes, especially in the binding pocket."
       }
     ]
   },
-  "previous_best_ddg": -34.6184
+  "previous_best_ddg": -19.7028
 }

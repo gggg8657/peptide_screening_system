@@ -1,58 +1,26 @@
 {
   "type": "planner",
   "iteration": 10,
-  "run_id": "sst14_mutdock_39000",
-  "timestamp": "2026-06-13T06:03:17.899686+00:00",
-  "hypothesis": "Enhancing SSTR2 selectivity by introducing aromatic and hydrophobic substitutions at positions 5 and 11 to better engage SSTR2-specific ECL2/TM5 contacts while avoiding off-target SSTR3/5 interactions.",
+  "run_id": "sst14_mutdock_42000",
+  "timestamp": "2026-06-13T10:47:50.757301+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W, F, Y) will enhance complementarity with SSTR2-specific ECL2 (res 192/193/195/197) and TM5 (205/208/209/212) residues, while mutating position 6 to acidic residues (E, D) will disrupt off-target (SSTR3/5) electrostatic interactions without compromising SSTR2 binding. This will increase the selectivity margin by differentiating SSTR2 from off-targets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current focus on ddG binding is insufficient for achieving SSTR2 selectivity. Future iterations must prioritize mutations at non-pharmacophore positions to reduce off-target interactions with SSTR3/SSTR5.",
+    "hypothesis": "The current hypothesis remains valid: disrupting off-target contacts at non-pharmacophore positions while preserving the FWKT(7-10) motif and Cys3/Cys14 is the key to achieving SSTR2 selectivity. However, structural failures are limiting the number of viable candidates.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "To disrupt conserved pocket interactions with SSTR3/SSTR5 at non-pharmacophore positions while preserving the pharmacophore core (positions 7-10 and Cys3/Cys14)."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 8,
+        "rationale": "Reducing the allowed clash score will enforce better packing and reduce structural failures."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "position_1": [
-            "D",
-            "E"
-          ],
-          "position_2": [
-            "K",
-            "R"
-          ],
-          "position_5": [
-            "N",
-            "Q"
-          ],
-          "position_6": [
-            "K",
-            "R"
-          ],
-          "position_11": [
-            "D",
-            "E"
-          ],
-          "position_12": [
-            "K",
-            "R"
-          ]
-        },
-        "rationale": "Introducing charged or polar residues at these positions can disrupt conserved hydrophobic interactions with SSTR3/SSTR5, reducing off-target binding."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "Increasing the number of candidates will improve diversity and increase the chances of generating structurally valid designs."
       }
     ]
   },
-  "previous_best_ddg": -34.6781
+  "previous_best_ddg": -23.1878
 }
