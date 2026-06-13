@@ -1,58 +1,26 @@
 {
   "type": "planner",
   "iteration": 11,
-  "run_id": "sst14_mutdock_31000",
-  "timestamp": "2026-06-12T16:41:48.322242+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance complementarity with SSTR2-specific ECL2/TM5 contacts, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target SSTR3/SSTR5 binding by avoiding unfavorable interactions.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T23:09:40.600766+00:00",
+  "hypothesis": "Enhancing aromatic complementarity at position 5 and hydrophobic packing at position 11 will improve SSTR2-specific binding while reducing off-target affinity (SSTR3/SSTR5), thereby increasing selectivity margin.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity. The next iteration should focus on disrupting off-target interactions at non-pharmacophore positions while maintaining the core pharmacophore. This will help increase the Δmargin and achieve the primary objective of SSTR2 selectivity.",
+    "hypothesis": "The current designs are achieving good selectivity but are structurally suboptimal. Tightening the ddG threshold and increasing candidate diversity should help converge on structurally stable and selective SSTR2 ligands.",
     "proposed_changes": [
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "These positions are non-pharmacophore and are likely involved in off-target interactions with SSTR3/SSTR5. Focusing design efforts here can help disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -15.0,
+        "new_value": -20.0,
+        "rationale": "Tightening the ddG threshold will filter out structurally unstable designs and improve overall binding affinity for SSTR2 while maintaining selectivity."
       },
       {
-        "parameter_name": "suggested_mutations",
-        "old_value": null,
-        "new_value": {
-          "1": [
-            "D",
-            "E"
-          ],
-          "2": [
-            "K",
-            "R"
-          ],
-          "5": [
-            "A",
-            "G"
-          ],
-          "6": [
-            "A",
-            "G"
-          ],
-          "11": [
-            "A",
-            "G"
-          ],
-          "12": [
-            "A",
-            "G"
-          ]
-        },
-        "rationale": "Introducing charged or small hydrophobic residues at these positions can disrupt conserved interactions with off-target SSTR3/SSTR5 while maintaining overall peptide stability and pharmacophore integrity."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 12,
+        "rationale": "Increasing the number of candidates will expand the diversity of the design space and increase the likelihood of finding structurally sound and selective candidates."
       }
     ]
   },
-  "previous_best_ddg": -32.0228
+  "previous_best_ddg": -37.6433
 }

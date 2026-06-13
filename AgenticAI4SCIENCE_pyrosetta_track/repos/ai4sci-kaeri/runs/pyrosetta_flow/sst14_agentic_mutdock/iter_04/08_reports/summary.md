@@ -1,18 +1,19 @@
-# Iteration 4 Summary: sst14_mutdock_32000
+# Iteration 4 Summary: sst14_mutdock_36000
 
-            - **Run ID**: `sst14_mutdock_32000`
+            - **Run ID**: `sst14_mutdock_36000`
             - **Iteration**: 4
-            - **생성 시각**: 2026-06-12 17:39 UTC
+            - **생성 시각**: 2026-06-13 00:04 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 4 of the sst14_mutdock_32000 campaign evaluated six peptide binder candidates for SSTR2 binding. All six candidates passed quality control (QC) gates, indicating robust structural quality and stability. The pLDDT values for all candidates were reported as 0.0, suggesting high confidence in the predicted structures. Stability, as measured by ddG, ranged from -19.5 to -43.0, with iter04_cand003 showing the most favorable binding energy. However, the primary design objective—achieving sufficient SSTR2 selectivity—remains unfulfilled. All candidates exhibited Δmargin > 0, but this value was not sufficiently above the threshold to ensure robust selectivity over off-target receptors. This suggests a need for further refinement of the design to enhance target specificity.
+            Iteration 4 of the SSTR2 peptide binder design campaign evaluated four candidates, all of which passed quality control (QC) gates. The primary focus of this iteration was to improve binding affinity, as reflected by strong ddG values. The best candidate, iter04_cand003, exhibited the most favorable ddG of -40.9, indicating a strong predicted binding affinity. However, selectivity improvements were only moderate, with the best Δmargin not significantly exceeding that of native SST-14. This suggests that off-target interactions may still be present, limiting the overall selectivity of the designs. Structural failures were noted as a primary failure type, indicating that further refinement of structural stability is required to enhance overall performance.
 
-The top-performing candidates, iter04_cand003, iter04_cand005, and iter04_cand008, demonstrated strong stability and structural quality. Despite this, the lack of selectivity remains a critical limitation. The next iteration should focus on introducing design constraints or modifications that enhance SSTR2-specific interactions while minimizing off-target binding.
+The top-performing candidates demonstrated promising ddG values, but their lack of significant selectivity gains highlights the need for targeted improvements in off-target discrimination. The absence of pLDDT and docking scores for the candidates suggests that structural confidence and docking evaluations may need to be revisited in future iterations. The next iteration should focus on optimizing structural stability while maintaining or improving binding affinity and selectivity.
 
             ## Recommendations
 
-            - Refine the design to enhance SSTR2 selectivity by incorporating specific interactions with the target receptor.
-- Reassess the Δmargin threshold to ensure it reflects the desired level of selectivity over off-targets.
-- Consider introducing additional constraints in the design pipeline to prioritize selectivity alongside stability and structural quality.
+            - Focus on improving structural stability to address the primary failure type of structural failures.
+- Incorporate additional selectivity filters to enhance off-target discrimination and increase the selectivity pass rate.
+- Revisit pLDDT and docking score evaluations to ensure structural confidence and accurate binding predictions in future iterations.
+- Optimize the balance between binding affinity and selectivity to achieve a significant improvement over native SST-14.

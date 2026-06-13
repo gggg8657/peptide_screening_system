@@ -1,19 +1,13 @@
 {
   "type": "critic",
   "iteration": 18,
-  "run_id": "sst14_mutdock_31000",
-  "timestamp": "2026-06-12T17:15:10.580124+00:00",
-  "hypothesis": "The current designs are achieving good selectivity (Δmargin > 0), but structural quality remains a bottleneck. Tightening structural constraints and focusing mutations at non-pharmacophore positions should improve overall quality and increase the pass rate.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T23:37:35.684810+00:00",
+  "hypothesis": "The current hypothesis remains valid, but the decline in Δmargin suggests that off-target interactions are becoming more prominent. A more aggressive focus on disrupting SSTR3/SSTR5 conserved pocket contacts is necessary to achieve the desired selectivity.",
   "proposed_changes": [
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 8,
-      "rationale": "Clash filtering is too lenient, allowing candidates with poor structural quality to pass. Tightening the clash threshold will improve structural fidelity."
-    },
-    {
       "parameter_name": "focus_positions",
-      "old_value": null,
+      "old_value": [],
       "new_value": [
         1,
         2,
@@ -22,7 +16,20 @@
         11,
         12
       ],
-      "rationale": "To improve selectivity, we need to disrupt conserved-pocket contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that are likely responsible for off-target binding to SSTR3/SSTR5."
+      "rationale": "To improve SSTR2 selectivity, we must disrupt conserved pocket contacts with SSTR3/SSTR5. These positions are known to contribute to off-target binding and are not part of the pharmacophore."
+    },
+    {
+      "parameter_name": "suggested_mutations",
+      "old_value": [],
+      "new_value": [
+        "A1K",
+        "T2R",
+        "K5E",
+        "T6D",
+        "A11S",
+        "C12Y"
+      ],
+      "rationale": "These mutations are designed to disrupt conserved pocket interactions with SSTR3/SSTR5 while preserving the overall binding mode and pharmacophore. For example, A1K and T2R introduce charged residues that may repel off-target interactions."
     }
   ],
   "current_params": {

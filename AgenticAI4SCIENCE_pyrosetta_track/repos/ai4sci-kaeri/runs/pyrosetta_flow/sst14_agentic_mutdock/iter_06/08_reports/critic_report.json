@@ -1,28 +1,21 @@
 {
   "type": "critic",
   "iteration": 6,
-  "run_id": "sst14_mutdock_32000",
-  "timestamp": "2026-06-12T17:46:24.929884+00:00",
-  "hypothesis": "The current designs are showing strong SSTR2 binding and selectivity. The next step is to refine the sequence at non-pharmacophore positions to further improve selectivity and reduce off-target interactions.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T22:49:34.717081+00:00",
+  "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity but are failing due to poor structural quality. Tightening structural constraints and increasing candidate diversity will improve the pass rate while maintaining selectivity.",
   "proposed_changes": [
-    {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "To improve selectivity, we need to disrupt conserved pocket contacts at non-pharmacophore positions (1, 2, 5, 6, 11, 12) that may be contributing to off-target binding, particularly to SSTR3 and SSTR5."
-    },
     {
       "parameter_name": "rosetta_clash_max",
       "old_value": 10,
       "new_value": 8,
-      "rationale": "Tightening the clash threshold will improve the structural quality of the designed peptides and reduce potential steric clashes that might interfere with receptor binding or stability."
+      "rationale": "Reducing the allowed clash score will enforce better structural quality, addressing structural failures and improving pLDDT scores."
+    },
+    {
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 12,
+      "rationale": "Increasing the number of candidates will improve the chances of generating a higher number of structurally valid and selective designs."
     }
   ],
   "current_params": {

@@ -1,33 +1,26 @@
 {
   "type": "planner",
   "iteration": 2,
-  "run_id": "sst14_mutdock_32000",
-  "timestamp": "2026-06-12T17:29:35.017691+00:00",
-  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2 (res 192/193/195/197) and TM5 (205/208/209/212), while mutating position 6 to acidic residues (E/D) will disrupt off-target (SSTR3/5) electrostatic interactions and preserve SSTR2 selectivity.",
+  "run_id": "sst14_mutdock_36000",
+  "timestamp": "2026-06-12T23:53:33.399551+00:00",
+  "hypothesis": "Enhancing steric and electrostatic complementarity at positions 5 and 6 will improve SSTR2 selectivity by forming unique interactions with SSTR2-specific residues in ECL2 and TM5, while avoiding off-target SSTR3/SSTR5.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current hypothesis is valid: strong SSTR2 binding can be achieved. However, the next step is to refine the design to enhance selectivity by disrupting off-target interactions at non-pharmacophore positions.",
+    "hypothesis": "The current designs are capable of strong SSTR2 binding and selectivity, but structural quality remains a bottleneck. Focusing on structural refinement and diversity expansion is critical.",
     "proposed_changes": [
       {
-        "parameter_name": "objective_mode",
-        "old_value": "ddg_only",
-        "new_value": "selectivity_weighted",
-        "rationale": "The current objective prioritizes binding affinity (ddG) but not selectivity. Introducing a weighted objective that balances ddG with Δmargin will ensure candidates are optimized for SSTR2 selectivity."
+        "parameter_name": "n_candidates",
+        "old_value": 8,
+        "new_value": 16,
+        "rationale": "Low pass rate indicates insufficient diversity in the candidate pool. Increasing the number of candidates may improve the chances of generating structurally valid designs."
       },
       {
-        "parameter_name": "focus_positions",
-        "old_value": null,
-        "new_value": [
-          1,
-          2,
-          5,
-          6,
-          11,
-          12
-        ],
-        "rationale": "These positions are non-pharmacophore and are known to contribute to off-target interactions with SSTR3/SSTR5. Focusing mutations at these positions can disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT7-10 and Cys3/Cys14)."
+        "parameter_name": "rosetta_clash_max",
+        "old_value": 10,
+        "new_value": 5,
+        "rationale": "Structural failures likely stem from poor geometry or clashes. Tightening the clash threshold will enforce better packing and reduce structural artifacts."
       }
     ]
   },
-  "previous_best_ddg": -36.642
+  "previous_best_ddg": -25.9163
 }

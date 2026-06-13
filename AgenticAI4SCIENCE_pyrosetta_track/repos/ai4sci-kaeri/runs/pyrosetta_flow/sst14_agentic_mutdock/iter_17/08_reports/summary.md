@@ -1,17 +1,16 @@
-# Iteration 17 Summary: sst14_mutdock_31000
+# Iteration 17 Summary: sst14_mutdock_35000
 
-            - **Run ID**: `sst14_mutdock_31000`
+            - **Run ID**: `sst14_mutdock_35000`
             - **Iteration**: 17
-            - **생성 시각**: 2026-06-12 17:11 UTC
+            - **생성 시각**: 2026-06-12 23:34 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 17 of the SSTR2 peptide binder design campaign evaluated a single candidate, with only one passing all QC gates. The low pass rate of 12.5% raises concerns about the robustness of the design process and the optimization of selectivity. The top candidate, iter17_cand008, exhibited a strong ddG score of -26.4, indicating favorable binding energy. However, the pLDDT and docking scores were both reported as 0.0, suggesting potential issues with structural quality or scoring function reliability. The primary failure mode in this iteration was structural, likely due to poor geometry or clash penalties, which may have contributed to the low yield of viable candidates.
+            Iteration 17 evaluated a total of 3 candidates, all of which passed the quality control (QC) gates. The results showed strong binding affinities as indicated by favorable ddG values, with the best candidate (iter17_cand003) exhibiting a ddG of -36.8 kcal/mol. However, the overall pass rate for this iteration was relatively low at 37.5%, primarily due to structural failures. Selectivity remains a critical concern, as the Δmargin was positive for all candidates, but off-target interactions were not sufficiently minimized.
 
             ## Recommendations
 
-            - Investigate the structural issues leading to low pass rates, including potential geometry or clash penalties.
-- Revisit the design parameters to improve robustness and ensure better selectivity optimization.
-- Consider increasing the diversity of the candidate pool to enhance the chances of identifying viable binders.
-- Validate the scoring functions and structural evaluation tools to ensure accurate assessment of candidate quality.
+            - Focus on improving structural stability to reduce structural failures in future iterations.
+- Incorporate additional selectivity filters to minimize off-target interactions.
+- Explore design modifications that enhance both binding affinity and receptor specificity.

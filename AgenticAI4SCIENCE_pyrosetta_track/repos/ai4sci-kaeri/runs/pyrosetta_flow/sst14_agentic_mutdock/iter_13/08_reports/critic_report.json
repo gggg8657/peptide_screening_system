@@ -1,35 +1,21 @@
 {
   "type": "critic",
   "iteration": 13,
-  "run_id": "sst14_mutdock_31000",
-  "timestamp": "2026-06-12T16:56:44.101863+00:00",
-  "hypothesis": "The current focus on ddG binding energy is insufficient for achieving SSTR2 selectivity. The next iteration must prioritize disrupting off-target contacts at non-pharmacophore positions to increase Δmargin.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T23:20:14.729944+00:00",
+  "hypothesis": "The current designs achieve strong SSTR2 selectivity (Δmargin > 0), but structural quality remains a bottleneck. Focusing on improving structural validity and diversity will help converge on a viable, selective candidate.",
   "proposed_changes": [
     {
-      "parameter_name": "focus_positions",
-      "old_value": [],
-      "new_value": [
-        1,
-        2,
-        5,
-        6,
-        11,
-        12
-      ],
-      "rationale": "Target non-pharmacophore positions where off-target contacts with SSTR3/SSTR5 are likely to occur. Disrupting these interactions will improve selectivity."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "Low pass rate (25%) suggests insufficient diversity in candidate generation. Increasing the number of candidates will improve the chances of generating structurally valid designs."
     },
     {
-      "parameter_name": "suggested_mutations",
-      "old_value": [],
-      "new_value": [
-        "A1K",
-        "A2R",
-        "V5D",
-        "L6E",
-        "F11Y",
-        "L12N"
-      ],
-      "rationale": "Propose mutations at focus positions to disrupt conserved pocket interactions with SSTR3/SSTR5, while preserving key pharmacophore residues (FWKT7-10) and cysteines."
+      "parameter_name": "rosetta_clash_max",
+      "old_value": 10,
+      "new_value": 8,
+      "rationale": "Structural failures may be due to high clash scores. Tightening the clash threshold will enforce better geometry and reduce invalid structures."
     }
   ],
   "current_params": {

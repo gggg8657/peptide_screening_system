@@ -1,26 +1,33 @@
 {
   "type": "planner",
   "iteration": 13,
-  "run_id": "sst14_mutdock_31000",
-  "timestamp": "2026-06-12T16:53:39.145703+00:00",
-  "hypothesis": "Introducing a bulky aromatic residue at position 5 and a hydrophobic residue at position 11 will enhance SSTR2-specific interactions in the ECL2/TM5 pocket while avoiding off-target SSTR3/5 contacts, thereby increasing the selectivity margin.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T23:17:14.597468+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific complementarity with ECL2/TM5, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target (SSTR3/SSTR5) affinity by avoiding off-target-conserved hydrophilic pockets.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current design protocol generates candidates with strong ddG values but poor structural quality and docking scores. The primary bottleneck is structural validity, not sequence or stability. Tightening clash constraints and increasing candidate diversity will address this.",
+    "hypothesis": "The hypothesis remains that SSTR2 selectivity can be achieved by optimizing non-pharmacophore positions to disrupt off-target contacts while maintaining the native pharmacophore. However, the stability threshold must be relaxed to allow more viable candidates.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 8,
-        "rationale": "Structural failures (pLDDT=0.0) and poor docking scores suggest excessive clashes or poor geometry. Lowering the clash threshold will enforce better packing and geometry, improving structural quality and docking performance."
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -15.0,
+        "new_value": -10.0,
+        "rationale": "The current ddG threshold is too aggressive, leading to overly stable designs that may sacrifice selectivity or flexibility. Relaxing the threshold will allow more diverse candidates that may better balance selectivity and stability."
       },
       {
-        "parameter_name": "n_candidates",
-        "old_value": 8,
-        "new_value": 16,
-        "rationale": "The low pass rate (12.5%) suggests the search space is not being adequately explored. Increasing the number of candidates will provide more diversity and increase the likelihood of generating a structurally valid and selective candidate."
+        "parameter_name": "focus_positions",
+        "old_value": null,
+        "new_value": [
+          1,
+          2,
+          5,
+          6,
+          11,
+          12
+        ],
+        "rationale": "To improve selectivity, we should focus on mutating positions that are not part of the pharmacophore (positions 1, 2, 5, 6, 11, 12) to disrupt off-target contacts in SSTR3/SSTR5 while preserving the conserved FWKT(7-10) and Cys3/Cys14."
       }
     ]
   },
-  "previous_best_ddg": -30.0994
+  "previous_best_ddg": -24.6181
 }

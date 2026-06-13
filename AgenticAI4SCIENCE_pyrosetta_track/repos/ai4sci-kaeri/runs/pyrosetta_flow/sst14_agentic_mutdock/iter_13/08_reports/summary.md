@@ -1,19 +1,19 @@
-# Iteration 13 Summary: sst14_mutdock_31000
+# Iteration 13 Summary: sst14_mutdock_35000
 
-            - **Run ID**: `sst14_mutdock_31000`
+            - **Run ID**: `sst14_mutdock_35000`
             - **Iteration**: 13
-            - **생성 시각**: 2026-06-12 16:56 UTC
+            - **생성 시각**: 2026-06-12 23:20 UTC
             - **생성 방식**: LLM (Qwen 2.5 7B)
 
             ## Summary
 
-            Iteration 13 evaluated four peptide binder candidates for SSTR2, all of which passed the quality control (QC) gates. The designs demonstrated strong binding affinity, as evidenced by favorable ddG values ranging from -16.8 to -25.6 kcal/mol. However, the pLDDT and docking scores remained at 0.0 for all candidates, indicating a lack of structural confidence and docking performance. While the best Δmargin is positive, the overall pass rate for selectivity remains low, suggesting that off-target interactions are still a concern. The primary failure mode was structural failures, which highlights the need for improved structural stability and selectivity in future designs.
+            Iteration 13 evaluated a total of 2 candidates, both of which passed all QC gates. Despite the small candidate pool, the iteration demonstrated strong binding affinity, as evidenced by high ddG values. The top candidates, iter13_cand008 and iter13_cand005, exhibited ddG scores of -30.8 and -19.8 kcal/mol, respectively. However, the structural quality of the designs was poor, as indicated by pLDDT scores of 0.0 for both candidates, and docking scores were not informative (0.00). Selectivity remained favorable, with a Δmargin > 0 for all candidates, but the lack of structural confidence limits the utility of these designs for downstream applications.
 
-The top-performing candidate, iter13_cand008, exhibited the most favorable ddG of -25.6 kcal/mol, followed closely by iter13_cand007 with a ddG of -25.0 kcal/mol. These candidates should be prioritized for further analysis and experimental validation. However, the marginal improvements in selectivity suggest that the design strategy should be adjusted to focus on disrupting off-target contacts and enhancing structural integrity.
+The primary failure mode in this iteration was structural failures, which suggests that the design algorithm may be prioritizing binding affinity at the expense of structural stability. While selectivity is maintained, the campaign has not yet reached convergence due to the poor structural quality of the designs. Further refinement of the design process is necessary to balance affinity with structural integrity.
 
             ## Recommendations
 
-            - Refine the design strategy to prioritize structural stability and selectivity over binding affinity alone.
-- Focus on disrupting off-target contacts to improve the selectivity pass rate.
-- Incorporate additional constraints or scoring terms to enhance pLDDT and docking performance.
-- Conduct experimental validation of top candidates to confirm predicted binding and selectivity.
+            - Refine the design algorithm to prioritize structural quality (e.g., pLDDT) alongside binding affinity (ddG).
+- Investigate the root cause of structural failures and consider incorporating additional constraints or validation steps.
+- Expand the candidate pool in the next iteration to increase the likelihood of identifying structurally sound, high-affinity binders.
+- Maintain focus on selectivity metrics to ensure that new designs retain favorable SSTR2 specificity.

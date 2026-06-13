@@ -1,18 +1,18 @@
 {
   "type": "planner",
   "iteration": 20,
-  "run_id": "sst14_mutdock_31000",
-  "timestamp": "2026-06-12T17:19:42.941850+00:00",
-  "hypothesis": "Mutation of position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific TM5/ECL2 interactions while avoiding off-target SSTR3/5 binding. Mutation of position 6 to acidic residues (E/D) will introduce electrostatic complementarity with SSTR2 ECL3 (284/286) while disrupting off-target electrostatic interactions.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T23:41:58.670071+00:00",
+  "hypothesis": "Mutating position 5 to aromatic residues (W/F/Y) will enhance SSTR2-specific interactions with ECL2/ECL3, while mutating position 11 to hydrophobic residues (L/I/V) will reduce off-target SSTR3/SSTR5 binding by avoiding unfavorable steric clashes.",
   "strategy": "ddg_plus_constraints",
   "critic_feedback_used": {
-    "hypothesis": "The current designs are achieving strong SSTR2 binding and selectivity but are failing due to poor structural quality. Tightening structural filters and introducing mutations at non-pharmacophore positions will improve both structural quality and selectivity.",
+    "hypothesis": "The current designs achieve strong SSTR2 binding but lack sufficient selectivity. The next iteration should focus on optimizing non-pharmacophore positions to reduce off-target interactions while maintaining high-affinity binding to SSTR2.",
     "proposed_changes": [
       {
-        "parameter_name": "rosetta_clash_max",
-        "old_value": 10,
-        "new_value": 8,
-        "rationale": "The current clash threshold is too lenient, allowing candidates with poor structural quality (e.g., iter19_cand007 has pLDDT=0.0). Tightening the clash score will enforce better geometry and reduce structural failures."
+        "parameter_name": "rosetta_ddg_max",
+        "old_value": -15.0,
+        "new_value": -20.0,
+        "rationale": "The current ddG threshold is too lenient, allowing candidates with weak binding (e.g., -20.2) to pass. Tightening the threshold will filter out weaker binders and focus on higher-affinity designs."
       },
       {
         "parameter_name": "focus_positions",
@@ -25,9 +25,9 @@
           11,
           12
         ],
-        "rationale": "To improve selectivity and push Δmargin further positive, we should focus on mutating non-pharmacophore positions that are likely to form off-target contacts with SSTR3/SSTR5. This will help disrupt conserved pocket interactions while preserving key pharmacophore residues."
+        "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that contribute to off-target binding (SSTR3/SSTR5)."
       }
     ]
   },
-  "previous_best_ddg": -23.8364
+  "previous_best_ddg": -28.4171
 }

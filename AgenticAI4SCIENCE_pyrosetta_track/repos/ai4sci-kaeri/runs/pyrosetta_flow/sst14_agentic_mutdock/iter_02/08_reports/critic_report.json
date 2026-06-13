@@ -1,21 +1,53 @@
 {
   "type": "critic",
   "iteration": 2,
-  "run_id": "sst14_mutdock_32000",
-  "timestamp": "2026-06-12T17:32:27.241726+00:00",
-  "hypothesis": "The current designs are generating strong ddG values but lack structural validity. The next iteration should focus on improving structural quality and ensuring valid docking while maintaining selectivity.",
+  "run_id": "sst14_mutdock_36000",
+  "timestamp": "2026-06-12T23:56:23.821501+00:00",
+  "hypothesis": "The current designs achieve strong SSTR2 binding but lack selectivity due to conserved interactions at non-pharmacophore positions. Targeted mutations at these positions will improve selectivity without compromising on-target affinity.",
   "proposed_changes": [
     {
-      "parameter_name": "n_candidates",
-      "old_value": 8,
-      "new_value": 16,
-      "rationale": "Increase the number of candidates to improve the chances of generating structurally valid and high-quality designs."
+      "parameter_name": "focus_positions",
+      "old_value": null,
+      "new_value": [
+        1,
+        2,
+        5,
+        6,
+        11,
+        12
+      ],
+      "rationale": "Target non-pharmacophore positions that are likely involved in off-target interactions with SSTR3/SSTR5. These positions can be mutated to disrupt conserved-pocket contacts while preserving the pharmacophore (FWKT(7-10) and Cys3/Cys14)."
     },
     {
-      "parameter_name": "rosetta_clash_max",
-      "old_value": 10,
-      "new_value": 5,
-      "rationale": "Reduce the allowed clash score to enforce better packing and reduce structural artifacts that lead to low pLDDT and invalid docking."
+      "parameter_name": "suggested_mutations",
+      "old_value": null,
+      "new_value": {
+        "1": [
+          "D",
+          "E"
+        ],
+        "2": [
+          "K",
+          "R"
+        ],
+        "5": [
+          "A",
+          "G"
+        ],
+        "6": [
+          "A",
+          "G"
+        ],
+        "11": [
+          "A",
+          "G"
+        ],
+        "12": [
+          "A",
+          "G"
+        ]
+      },
+      "rationale": "Introduce mutations at non-pharmacophore positions to disrupt conserved interactions with SSTR3/SSTR5. Acidic residues at position 1 and basic residues at position 2 can help repel off-target interactions, while small hydrophobic residues at positions 5, 6, 11, and 12 can reduce hydrophobic contacts with off-targets."
     }
   ],
   "current_params": {

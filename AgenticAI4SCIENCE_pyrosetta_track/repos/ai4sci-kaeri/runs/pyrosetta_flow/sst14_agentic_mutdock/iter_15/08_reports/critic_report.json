@@ -1,9 +1,9 @@
 {
   "type": "critic",
   "iteration": 15,
-  "run_id": "sst14_mutdock_31000",
-  "timestamp": "2026-06-12T17:03:54.871593+00:00",
-  "hypothesis": "The current designs are achieving strong SSTR2 binding but are not sufficiently disrupting off-target interactions. Targeting non-pharmacophore positions for mutagenesis and tightening the ddG threshold will help improve selectivity.",
+  "run_id": "sst14_mutdock_35000",
+  "timestamp": "2026-06-12T23:27:15.329880+00:00",
+  "hypothesis": "The current designs are achieving strong binding (ddG) but may not be sufficiently diverse or optimized for selectivity. Focusing on disrupting conserved pocket interactions at non-pharmacophore positions is critical to push Δmargin further above 0.",
   "proposed_changes": [
     {
       "parameter_name": "focus_positions",
@@ -16,13 +16,13 @@
         11,
         12
       ],
-      "rationale": "To target non-pharmacophore positions where off-target interactions (especially with SSTR3/SSTR5) are likely occurring."
+      "rationale": "To improve selectivity, we must disrupt conserved pocket contacts at non-pharmacophore positions (1/2/5/6/11/12) that are likely enabling off-target binding to SSTR3/SSTR5."
     },
     {
-      "parameter_name": "rosetta_ddg_max",
-      "old_value": -15.0,
-      "new_value": -20.0,
-      "rationale": "The current ddG threshold may be too lenient, allowing candidates with strong off-target binding. Tightening the threshold will filter out weaker binders and prioritize more selective designs."
+      "parameter_name": "n_candidates",
+      "old_value": 8,
+      "new_value": 16,
+      "rationale": "A low number of candidates reduces the chances of finding high-quality, selective designs. Increasing the number of candidates will improve diversity and coverage of the design space."
     }
   ],
   "current_params": {
